@@ -136,6 +136,7 @@ class Administrasi_kontrak extends CI_Controller
     {
         $keyword = $this->input->post('keyword');
         $data['active_kontrak'] = 'active';
+        $data['id_kontrak'] = $id_kontrak;
         $data['menu_open_kontrak'] = 'menu-open';
         $get_pegawai = $this->Auth_model->get_pegawai();
         $id_departemen = $get_pegawai['id_departemen'];
