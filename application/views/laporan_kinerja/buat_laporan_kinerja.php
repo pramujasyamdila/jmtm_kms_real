@@ -582,7 +582,7 @@
                                                                                           <?php
                                                                                           $this->db->select('*');
                                                                                           $this->db->from('tbl_sub_detail_program_penyedia_jasa');
-                                                                                          $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                                                                                          $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
                                                                                           $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_checking', $id_detail_capex_1);
                                                                                           $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $checking_nama_uraian_1_capex);
                                                                                           if ($id_departemen == 4) {

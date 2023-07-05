@@ -101,13 +101,22 @@ $hasil_bobot  = round($hasil_bobot1 * 100);
                                                             } else {
                                                                 $data_render = $row_mc['sts_mc_nilai'];
                                                             } ?>
+
+ 
                                                             <ul class="nav nav-tabs" id="myTabku2" style="margin-top: 50px;">
                                                                 <?php
                                                                 $this->db->select('*');
                                                                 $this->db->from('tbl_sub_detail_program_penyedia_jasa');
                                                                 $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $row_kontrak['id_detail_program_penyedia_jasa']);
                                                                 $this->db->where('tbl_sub_detail_program_penyedia_jasa.status_mata_anggaran_addendum', null);
-                                                                $this->db->or_where('tbl_sub_detail_program_penyedia_jasa.addendum_ke', $data_render);
+                                                                if ($row_mc['sts_mc_nilai'] == '') {
+                                                                    // $this->db->or_where('tbl_sub_detail_program_penyedia_jasa.addendum_ke', $data_render);
+                                                                } else {
+                                                                    $this->db->or_where('tbl_sub_detail_program_penyedia_jasa.addendum_ke', $data_render);
+                                                                }
+                                                                
+                                                                
+                                                                
                                                                 $result_sub_program_tambahan_anggaran = $this->db->get();
                                                                 ?>
                                                                 <?php foreach ($result_sub_program_tambahan_anggaran->result_array() as $key => $value) { ?>
