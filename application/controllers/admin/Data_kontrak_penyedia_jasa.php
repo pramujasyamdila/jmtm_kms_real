@@ -13339,10 +13339,11 @@ class Data_kontrak_penyedia_jasa extends CI_Controller
 
     public function buat_administrasi_penyedia($id_kontrak)
     {
-        $get_pegawai = $this->Auth_model->get_pegawai();
-        $id_departemen = $get_pegawai['id_departemen'];
-        $id_area = $get_pegawai['id_area'];
-        $id_sub_area = $get_pegawai['id_sub_area'];
+
+        $row_kontrak =  $this->Data_kontrak_model->get_row_kontrak($id_kontrak);
+        $id_departemen = $row_kontrak['id_departemen'];
+        $id_area = $row_kontrak['id_area'];
+        $id_sub_area = $row_kontrak['id_sub_area'];
         $data_kontrak = [
             'nama_pekerjaan_program_mata_anggaran' => $this->input->post('nama_pekerjaan_program'),
             'id_kontrak' => $id_kontrak,
@@ -13394,7 +13395,6 @@ class Data_kontrak_penyedia_jasa extends CI_Controller
         }
 
         foreach ($mata_anggran as $key => $value) {
-            
         }
         $this->Data_kontrak_model->delete_tbl_list_mata_anggran($id_kontrak);
 
