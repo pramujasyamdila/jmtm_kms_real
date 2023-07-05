@@ -6353,9 +6353,9 @@ class Data_kontrak_model extends CI_Model
         $this->db->from('tbl_mc');
         $this->db->join('tbl_rapot_dummy', 'tbl_mc.id_mc = tbl_rapot_dummy.id_mc', 'left');
         $this->db->where('tbl_mc.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-        $this->db->where('tbl_rapot_dummy.pic', 'Vendor');
-        $this->db->group_by('tbl_mc.id_detail_program_penyedia_jasa');
-        $this->db->order_by('sts_tanggal_trakhir', 'desc');
+        // $this->db->group_by('tbl_mc.id_detail_program_penyedia_jasa');
+        $this->db->order_by('tbl_rapot_dummy.tanggal_rapot', 'desc');
+        $this->db->limit(1);
         $query = $this->db->get();
         return $query->result_array();
     }

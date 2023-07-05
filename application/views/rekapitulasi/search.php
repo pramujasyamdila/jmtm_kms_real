@@ -215,12 +215,14 @@
                                                         foreach ($get_program as $key => $value) { ?>
                                                             <?php
                                                             $data_mc = $this->Data_kontrak_model->get_mc_by_id($value['id_detail_program_penyedia_jasa']);
-                        
+                                                            
                                                            ?>
                                                             <?php foreach ($data_mc as $key => $value2) { ?>
+                                                                <?php if ($value2['pic'] == 'Vendor') { ?>
                                                                 <tr>
                                                                     <td>
-                                                                        <?= $i++ ?>
+                                                                        <?= $i++; ?>
+
                                                                     </td>
                                                                     <td><?= $value['nama_sub_area'] ?></td>
                                                                     <td><?= $value['nama_penyedia'] ?></td>
@@ -265,6 +267,10 @@
                                                                         ?>
                                                                     </td>
                                                                 </tr>
+                                                                <?php  } else { ?>
+                                                                   
+                                                                <?php } ?>
+                                                            
                                                             <?php } ?>
                                                         <?php  } ?>
                                                     </tbody>
@@ -296,11 +302,15 @@
                                                         <?php $i = 1;
                                                         foreach ($get_program as $key => $value) { ?>
                                                             <?php
-                                                            $data_mc_area = $this->Data_kontrak_model->get_mc_by_id2($value['id_detail_program_penyedia_jasa']);
+                                                            $data_mc_area = $this->Data_kontrak_model->get_mc_by_id($value['id_detail_program_penyedia_jasa']);
                                                             ?>
                                                             <?php foreach ($data_mc_area as $key => $value2) { ?>
+                                                                <?php if ($value2['pic'] == 'Area') { ?>
                                                                 <tr>
-                                                                    <td><?= $i++ ?></td>
+                                                                    <td>
+                                                                        <?= $i++; ?>
+
+                                                                    </td>
                                                                     <td><?= $value['nama_sub_area'] ?></td>
                                                                     <td><?= $value['nama_penyedia'] ?></td>
                                                                     <td>
@@ -313,6 +323,7 @@
                                                                     </td>
                                                                     <td><?= $value2['uraian'] ?></td>
                                                                     <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
+
                                                                     <td>
                                                                         <?php if ($value2) { ?>
                                                                             Rp. <?= number_format($value2['setelah_ppn'], 2, ',', '.');  ?>
@@ -343,6 +354,10 @@
                                                                         ?>
                                                                     </td>
                                                                 </tr>
+                                                                <?php  } else { ?>
+                                                                   
+                                                                <?php } ?>
+                                                            
                                                             <?php } ?>
                                                         <?php  } ?>
                                                     </tbody>
@@ -374,11 +389,15 @@
                                                         <?php $i = 1;
                                                         foreach ($get_program as $key => $value) { ?>
                                                             <?php
-                                                            $data_mc_pusat = $this->Data_kontrak_model->get_mc_by_id3($value['id_detail_program_penyedia_jasa']);
+                                                            $data_mc_pusat = $this->Data_kontrak_model->get_mc_by_id($value['id_detail_program_penyedia_jasa']);
                                                             ?>
-                                                            <?php foreach ($data_mc_pusat as $key => $value2) { ?>
+                                                             <?php foreach ($data_mc_pusat as $key => $value2) { ?>
+                                                                <?php if ($value2['pic'] == 'Pusat') { ?>
                                                                 <tr>
-                                                                    <td><?= $i++ ?></td>
+                                                                    <td>
+                                                                        <?= $i++; ?>
+
+                                                                    </td>
                                                                     <td><?= $value['nama_sub_area'] ?></td>
                                                                     <td><?= $value['nama_penyedia'] ?></td>
                                                                     <td>
@@ -410,14 +429,23 @@
                                                                     </td>
                                                                     <td>
                                                                         <?php if ($value2) { ?>
-                                                                            <?= $value2['keterangan_traking'] ?>
+                                                                            <?php if ($value2['keterangan_traking'] != NULL) { ?>
+                                                                                <?= $value2['keterangan_traking'] ?>
+                                                                            <?php  } else { ?>
+                                                                                Tidak Ada Keterangan Revisi
+                                                                            <?php } ?>
+
                                                                         <?php } else { ?>
                                                                             Tidak Ada Keterangan Revisi
                                                                         <?php    }
                                                                         ?>
                                                                     </td>
                                                                 </tr>
-                                                            <?php }  ?>
+                                                                <?php  } else { ?>
+                                                                   
+                                                                <?php } ?>
+                                                            
+                                                            <?php } ?>
                                                         <?php  } ?>
                                                     </tbody>
                                                 </table>
@@ -448,11 +476,15 @@
                                                         <?php $i = 1;
                                                         foreach ($get_program as $key => $value) { ?>
                                                             <?php
-                                                            $data_mc_pusat = $this->Data_kontrak_model->get_mc_by_id4($value['id_detail_program_penyedia_jasa']);
+                                                            $data_mc_finance = $this->Data_kontrak_model->get_mc_by_id($value['id_detail_program_penyedia_jasa']);
                                                             ?>
-                                                            <?php foreach ($data_mc_pusat as $key => $value2) { ?>
+                                                            <?php foreach ($data_mc_finance as $key => $value2) { ?>
+                                                                <?php if ($value2['uraian'] == 'Diterima Finance') { ?>
                                                                 <tr>
-                                                                    <td><?= $i++ ?></td>
+                                                                    <td>
+                                                                        <?= $i++; ?>
+
+                                                                    </td>
                                                                     <td><?= $value['nama_sub_area'] ?></td>
                                                                     <td><?= $value['nama_penyedia'] ?></td>
                                                                     <td>
@@ -465,6 +497,7 @@
                                                                     </td>
                                                                     <td><?= $value2['uraian'] ?></td>
                                                                     <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
+
                                                                     <td>
                                                                         <?php if ($value2) { ?>
                                                                             Rp. <?= number_format($value2['setelah_ppn'], 2, ',', '.');  ?>
@@ -483,14 +516,23 @@
                                                                     </td>
                                                                     <td>
                                                                         <?php if ($value2) { ?>
-                                                                            <?= $value2['keterangan_traking'] ?>
+                                                                            <?php if ($value2['keterangan_traking'] != NULL) { ?>
+                                                                                <?= $value2['keterangan_traking'] ?>
+                                                                            <?php  } else { ?>
+                                                                                Tidak Ada Keterangan Revisi
+                                                                            <?php } ?>
+
                                                                         <?php } else { ?>
                                                                             Tidak Ada Keterangan Revisi
                                                                         <?php    }
                                                                         ?>
                                                                     </td>
                                                                 </tr>
-                                                            <?php }  ?>
+                                                                <?php  } else { ?>
+                                                                   
+                                                                <?php } ?>
+                                                            
+                                                            <?php } ?>
                                                         <?php  } ?>
                                                     </tbody>
                                                 </table>
@@ -522,11 +564,15 @@
                                                         <?php $i = 1;
                                                         foreach ($get_program as $key => $value) { ?>
                                                             <?php
-                                                            $data_mc_pusat = $this->Data_kontrak_model->get_mc_by_id5($value['id_detail_program_penyedia_jasa']);
+                                                            $data_mc_finance2 = $this->Data_kontrak_model->get_mc_by_id5($value['id_detail_program_penyedia_jasa']);
                                                             ?>
-                                                            <?php foreach ($data_mc_pusat as $key => $value2) { ?>
+                                                            <?php foreach ($data_mc_finance2 as $key => $value2) { ?>
+                                                                <?php if ($value2['uraian'] == 'Pencairan') { ?>
                                                                 <tr>
-                                                                    <td><?= $i++ ?></td>
+                                                                    <td>
+                                                                        <?= $i++; ?>
+
+                                                                    </td>
                                                                     <td><?= $value['nama_sub_area'] ?></td>
                                                                     <td><?= $value['nama_penyedia'] ?></td>
                                                                     <td>
@@ -539,6 +585,7 @@
                                                                     </td>
                                                                     <td><?= $value2['uraian'] ?></td>
                                                                     <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
+
                                                                     <td>
                                                                         <?php if ($value2) { ?>
                                                                             Rp. <?= number_format($value2['setelah_ppn'], 2, ',', '.');  ?>
@@ -557,14 +604,23 @@
                                                                     </td>
                                                                     <td>
                                                                         <?php if ($value2) { ?>
-                                                                            <?= $value2['keterangan_traking'] ?>
+                                                                            <?php if ($value2['keterangan_traking'] != NULL) { ?>
+                                                                                <?= $value2['keterangan_traking'] ?>
+                                                                            <?php  } else { ?>
+                                                                                Tidak Ada Keterangan Revisi
+                                                                            <?php } ?>
+
                                                                         <?php } else { ?>
                                                                             Tidak Ada Keterangan Revisi
                                                                         <?php    }
                                                                         ?>
                                                                     </td>
                                                                 </tr>
-                                                            <?php }  ?>
+                                                                <?php  } else { ?>
+                                                                   
+                                                                <?php } ?>
+                                                            
+                                                            <?php } ?>
                                                         <?php  } ?>
                                                     </tbody>
                                                 </table>
