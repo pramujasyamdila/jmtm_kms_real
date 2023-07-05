@@ -1,0 +1,393 @@
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
+/* Background colors*/
+:root {
+  --gold: #f2d861;
+  --dark-gray: #504c62;
+  --blue: #003f9f;
+  --bg-main: url('https://jmtm-kms-real.kintekindo.net/kirim/member.png');
+  --bg-member: url("https://jmtm-kms-real.kintekindo.net/kirim/member.png");
+  --tali: url("https://jmtm-kms-real.kintekindo.net/kirim/owner2.png");
+  --lonceng: url("https://jmtm-kms-real.kintekindo.net/kirim/owner2.png");
+}
+body {
+  overflow: hidden;
+  background-image: url("https://jmtm-kms-real.kintekindo.net/kirim/keren.jpg");
+}
+yt-live-chat-banner-manager {
+  display: none !important;
+}
+
+yt-live-chat-action-panel-renderer,
+yt-live-chat-renderer #action-panel {
+  display: none !important;
+}
+/* Transparent background. */
+yt-live-chat-renderer {
+  background-color: transparent !important;
+}
+yt-live-chat-text-message-renderer,
+yt-live-chat-text-message-renderer[is-highlighted] {
+  background-color: transparent !important;
+}
+
+yt-live-chat-text-message-renderer[author-type="owner"],
+yt-live-chat-text-message-renderer[author-type="owner"][is-highlighted] {
+  background-color: transparent !important;
+}
+
+yt-live-chat-text-message-renderer[author-type="moderator"],
+yt-live-chat-text-message-renderer[author-type="moderator"][is-highlighted] {
+  background-color: transparent !important;
+}
+
+yt-live-chat-text-message-renderer[author-type="member"],
+yt-live-chat-text-message-renderer[author-type="member"][is-highlighted] {
+  background-color: transparent !important;
+}
+
+yt-live-chat-author-chip #author-name {
+  background-color: transparent !important;
+}
+/* Outlines */
+yt-live-chat-renderer * {
+  font-family: "Poppins";
+  font-size: 18px !important;
+  line-height: normalpx !important;
+}
+
+yt-live-chat-text-message-renderer #content,
+yt-live-chat-legacy-paid-message-renderer #content {
+  overflow: initial !important;
+}
+
+/* Hide scrollbar. */
+yt-live-chat-item-list-renderer #items {
+  overflow: hidden !important;
+}
+
+yt-live-chat-item-list-renderer #item-scroller {
+  overflow: hidden !important;
+}
+
+/* Hide header and input. */
+yt-live-chat-header-renderer,
+yt-live-chat-message-input-renderer {
+  display: none !important;
+}
+
+/* Reduce side padding. */
+yt-live-chat-text-message-renderer,
+yt-live-chat-legacy-paid-message-renderer {
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
+
+yt-live-chat-paid-message-renderer #header {
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
+
+/* Avatars. */
+
+yt-live-chat-paid-message-renderer #author-photo,
+yt-live-chat-legacy-paid-message-renderer #author-photo {
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 24px !important;
+  margin-right: 6px !important;
+}
+
+/* Hide badges. */
+yt-live-chat-text-message-renderer #author-badges {
+  display: none !important;
+  vertical-align: text-top !important;
+}
+
+/* Timestamps. */
+yt-live-chat-text-message-renderer #timestamp {
+  color: #999999 !important;
+  font-family: "Poppins";
+  font-size: 16px !important;
+  line-height: 16px !important;
+}
+
+/* Channel names. */
+yt-live-chat-text-message-renderer #author-photo {
+  display: none !important;
+}
+yt-live-chat-text-message-renderer #content {
+  display: flex;
+  overflow: visible !important;
+  flex-direction: column;
+  padding-bottom: 25px;
+  position: unset !important;
+  animation: contentAnim 0.5s ease-in-out;
+}
+@keyframes contentAnim {
+  0% {
+    opacity: 0%;
+    margin-bottom: -30px;
+    margin-left: -30px;
+  }
+  50% {
+    opacity: 100%;
+    margin-bottom: unset;
+    margin-left: unset;
+  }
+}
+yt-live-chat-text-message-renderer[author-type="owner"] {
+  justify-content: flex-end;
+}
+yt-live-chat-text-message-renderer[author-type="owner"] #author-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  right: 60px;
+  z-index: 999;
+  max-width: 240px;
+  color: var(--dark-gray) !important;
+  background-color: var(--gold) !important;
+  border: 3px solid var(--dark-gray);
+  padding: 8px 15px !important;
+  border-radius: 5px !important;
+  font-family: "Poppins";
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  line-height: 20px !important;
+}
+yt-live-chat-text-message-renderer[author-type="member"] #author-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: 30px;
+  z-index: 999;
+  max-width: 240px;
+  color: var(--gold) !important;
+  background-color: var(--dark-gray) !important;
+  border: 3px solid var(--gold);
+  padding: 8px 15px !important;
+  border-radius: 5px !important;
+  font-family: "Poppins";
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  line-height: 20px !important;
+}
+
+yt-live-chat-text-message-renderer
+  yt-live-chat-author-badge-renderer[type="moderator"] {
+  transform: scale(1.2);
+  color: var(--gold) !important;
+  z-index: 99999 !important;
+  position: absolute;
+  top: 0px;
+}
+yt-live-chat-text-message-renderer
+  yt-live-chat-author-badge-renderer[type="member"]
+  #image {
+  clip-path: polygon(0% 0%, 100% 0, 100% 100%, 50% 76%, 0% 100%);
+  background-color: white !important;
+  padding: 7px 2px 7px 2px !important;
+  transform: scale(1.5);
+  position: absolute !important;
+  top: 40px;
+  left: 30px;
+  animation: badgeAnim 1s ease-in-out;
+  z-index: 99;
+}
+@keyframes badgeAnim {
+  0% {
+    opacity: 0%;
+    top: 0px;
+  }
+  100% {
+    opacity: 100%;
+    top: 40px;
+  }
+}
+yt-live-chat-text-message-renderer #author-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: 50px;
+  z-index: 999;
+  max-width: 240px;
+  color: var(--gold) !important;
+  background-color: var(--dark-gray) !important;
+  border: 3px solid var(--gold);
+  padding: 8px 15px !important;
+  border-radius: 5px !important;
+  font-family: "Poppins";
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  line-height: 20px !important;
+}
+
+/* Messages. */
+yt-live-chat-text-message-renderer[author-type="owner"] #message {
+  padding: 20px 20px 20px 20px;
+  margin-top: -45px;
+  position: relative;
+  width: 80%;
+  padding-left: 60px;
+  background: var(--tali);
+  background-size: cover !important;
+  background-position: top right !important;
+  border: 5px solid gold;
+  border-radius: 45px;
+  background-repeat: no-repeat !important;
+  color: whitesmoke !important;
+  font-family: "Poppins";
+  font-weight: bold;
+  line-height: 20px;
+  font-size: 18px !important;
+  overflow: visible !important;
+}
+
+yt-live-chat-text-message-renderer #message {
+    padding: 20px 20px 20px 20px;
+    margin-top: -45px;
+    position: relative;
+    width: 100%;
+    padding-left: 83px;
+    background: var(--tali);
+    background-size: cover !important;
+    background-position: top right !important;
+    border: 5px solid gold;
+    border-radius: 45px;
+    background-repeat: no-repeat !important;
+    color: whitesmoke !important;
+    font-family: "Poppins";
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 18px !important;
+    overflow: visible !important;
+  }
+
+
+yt-live-chat-text-message-renderer #message::after {
+    content: "";
+    height: 90px;
+    width: 90px;
+    position: absolute;
+    bottom: -20px;
+    left: 40px;
+    transform: translateX(-50%) rotate(0deg);
+    background-image: var(--bg-main);
+    background-size: cover;
+    z-index: 9999;
+    animation: bg-main 1s ease-in-out;
+  }
+
+
+  yt-live-chat-text-message-renderer[author-type="owner"] #message::after {
+    content: "";
+    height: 150px;
+    width: 180px;
+    position: absolute;
+    bottom: -20px;
+    left: 5px;
+    transform: translateX(-50%) rotate(0deg);
+    background-image: var(--lonceng);
+    background-size: cover;
+    z-index: 9999;
+    animation: lo--lonceng 1s ease-in-out;
+  }
+yt-live-chat-text-message-renderer #message::before {
+  content: "";
+  height: 20px;
+  width: 156px;
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background: var(--tali);
+  background-size: cover;
+  z-index: -9999;
+}
+
+/* SuperChat/Fan Funding Messages. */
+yt-live-chat-paid-message-renderer #author-name,
+yt-live-chat-paid-message-renderer #author-name *,
+yt-live-chat-legacy-paid-message-renderer #event-text,
+yt-live-chat-legacy-paid-message-renderer #event-text * {
+  color: #ffffff !important;
+  font-family: "Poppins";
+  font-size: 20px !important;
+  line-height: 20px !important;
+}
+
+yt-live-chat-paid-message-renderer #purchase-amount,
+yt-live-chat-paid-message-renderer #purchase-amount *,
+yt-live-chat-legacy-paid-message-renderer #detail-text,
+yt-live-chat-legacy-paid-message-renderer #detail-text * {
+  color: #ffffff !important;
+  font-family: "Poppins";
+  font-size: 18px !important;
+  line-height: 18px !important;
+}
+
+yt-live-chat-paid-message-renderer #content,
+yt-live-chat-paid-message-renderer #content * {
+  color: #ffffff !important;
+  font-family: "Poppins";
+  font-size: 18px !important;
+  line-height: 18px !important;
+}
+
+yt-live-chat-moderation-message-renderer {
+  display: none !important;
+}
+
+yt-live-chat-paid-message-renderer {
+  margin: 4px 0 !important;
+}
+
+yt-live-chat-legacy-paid-message-renderer {
+  background-color: #0f9d58 !important;
+  margin: 4px 0 !important;
+}
+
+yt-live-chat-text-message-renderer a,
+yt-live-chat-legacy-paid-message-renderer a {
+  text-decoration: none !important;
+}
+
+yt-live-chat-text-message-renderer[is-deleted],
+yt-live-chat-legacy-paid-message-renderer[is-deleted] {
+  display: none !important;
+}
+
+yt-live-chat-ticker-renderer {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+yt-live-chat-ticker-renderer {
+  display: none !important;
+}
+
+yt-live-chat-ticker-paid-message-item-renderer,
+yt-live-chat-ticker-paid-message-item-renderer *,
+yt-live-chat-ticker-sponsor-item-renderer,
+yt-live-chat-ticker-sponsor-item-renderer * {
+  color: #ffffff !important;
+  font-family: "Poppins";
+}
+
+yt-live-chat-mode-change-message-renderer,
+yt-live-chat-viewer-engagement-message-renderer,
+yt-live-chat-restricted-participation-renderer {
+  display: none !important;
+}
+
+yt-live-chat-banner-manager {
+  display: none !important;
+}
+
+yt-live-chat-action-panel-renderer,
+yt-live-chat-renderer #action-panel {
+  display: none !important;
+}
