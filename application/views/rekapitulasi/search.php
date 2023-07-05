@@ -215,10 +215,13 @@
                                                         foreach ($get_program as $key => $value) { ?>
                                                             <?php
                                                             $data_mc = $this->Data_kontrak_model->get_mc_by_id($value['id_detail_program_penyedia_jasa']);
-                                                            ?>
+                        
+                                                           ?>
                                                             <?php foreach ($data_mc as $key => $value2) { ?>
                                                                 <tr>
-                                                                    <td><?= $i++ ?></td>
+                                                                    <td>
+                                                                        <?= $i++ ?>
+                                                                    </td>
                                                                     <td><?= $value['nama_sub_area'] ?></td>
                                                                     <td><?= $value['nama_penyedia'] ?></td>
                                                                     <td>

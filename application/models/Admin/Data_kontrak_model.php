@@ -6354,6 +6354,8 @@ class Data_kontrak_model extends CI_Model
         $this->db->join('tbl_rapot_dummy', 'tbl_mc.id_mc = tbl_rapot_dummy.id_mc', 'left');
         $this->db->where('tbl_mc.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
         $this->db->where('tbl_rapot_dummy.pic', 'Vendor');
+        $this->db->group_by('tbl_mc.id_detail_program_penyedia_jasa');
+        $this->db->order_by('sts_tanggal_trakhir', 'desc');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -6365,6 +6367,8 @@ class Data_kontrak_model extends CI_Model
         $this->db->join('tbl_rapot_dummy', 'tbl_mc.id_mc = tbl_rapot_dummy.id_mc', 'left');
         $this->db->where('tbl_mc.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
         $this->db->where('tbl_rapot_dummy.pic', 'Area');
+        $this->db->group_by('tbl_mc.id_detail_program_penyedia_jasa');
+        $this->db->order_by('sts_tanggal_trakhir', 'desc');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -6377,6 +6381,8 @@ class Data_kontrak_model extends CI_Model
         $this->db->join('tbl_rapot_dummy', 'tbl_mc.id_mc = tbl_rapot_dummy.id_mc', 'left');
         $this->db->where('tbl_mc.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
         $this->db->where('tbl_rapot_dummy.pic', 'Pusat');
+        $this->db->group_by('tbl_mc.id_detail_program_penyedia_jasa');
+        $this->db->order_by('sts_tanggal_trakhir', 'desc');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -6389,6 +6395,8 @@ class Data_kontrak_model extends CI_Model
         $this->db->where('tbl_mc.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
         $this->db->where('tbl_rapot_dummy.pic', 'Finance');
         $this->db->where('tbl_rapot_dummy.catatan_rapot !=', 'Pencairan');
+        $this->db->group_by('tbl_mc.id_detail_program_penyedia_jasa');
+        $this->db->order_by('sts_tanggal_trakhir', 'desc');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -6401,6 +6409,8 @@ class Data_kontrak_model extends CI_Model
         $this->db->where('tbl_mc.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
         $this->db->where('tbl_rapot_dummy.pic', 'Finance');
         $this->db->where('tbl_rapot_dummy.catatan_rapot !=', 'Diterima Finance');
+        $this->db->group_by('tbl_mc.id_detail_program_penyedia_jasa');
+        $this->db->order_by('sts_tanggal_trakhir', 'desc');
         $query = $this->db->get();
         return $query->result_array();
     }
