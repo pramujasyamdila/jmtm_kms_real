@@ -234,28 +234,33 @@
         $('.table').DataTable({
             "ordering": false,
             "info": true,
-            dom: 'Bfrtip',
+            dom: 'Blfrtip',
+            lengthMenu: [
+            [ 10, 25, 50, -1 ],
+            [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+            ],
             buttons: [
-            {
-                extend:    'copyHtml5',
-                text:      '<i class="fas fa-file"> Copy</i>',
-                titleAttr: 'Copy'
-            },
-            {
-                extend:    'excelHtml5',
-                text:      '<i class="fas fa-file-excel"> Excel</i>',
-                titleAttr: 'Excel'
-            },
-            {
-                extend:    'csvHtml5',
-                text:      '<i class="fas fa-file"> Csv</i>',
-                titleAttr: 'CSV'
-            },
-            {
-                extend:    'pdfHtml5',
-                text:      '<i class="fas fa-file-pdf"> Pdf</i>',
-                titleAttr: 'PDF'
-            }
+                'pageLength' 
+            // {
+            //     extend:    'copyHtml5',
+            //     text:      '<i class="fas fa-file"> Copy</i>',
+            //     titleAttr: 'Copy'
+            // },
+            // {
+            //     extend:    'excelHtml5',
+            //     text:      '<i class="fas fa-file-excel"> Excel</i>',
+            //     titleAttr: 'Excel'
+            // },
+            // {
+            //     extend:    'csvHtml5',
+            //     text:      '<i class="fas fa-file"> Csv</i>',
+            //     titleAttr: 'CSV'
+            // },
+            // {
+            //     extend:    'pdfHtml5',
+            //     text:      '<i class="fas fa-file-pdf"> Pdf</i>',
+            //     titleAttr: 'PDF'
+            // }
         ]
         });
     });

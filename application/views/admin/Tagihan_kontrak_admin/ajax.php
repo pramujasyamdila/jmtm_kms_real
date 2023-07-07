@@ -3205,7 +3205,6 @@
 <script>
     $(document).ready(function() {
         var table = $('#tabledetail').DataTable({
-            select: true,
             "ordering": false,
             dom: 'Blfrtip',
             lengthMenu: [
