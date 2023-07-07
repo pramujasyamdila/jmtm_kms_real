@@ -14,10 +14,14 @@ class Data_pengguna extends CI_Controller
 		$data['active_pengguna'] = 'active';
 		$data['menu_open_pengguna'] = 'menu-open';
 		$data['departemen'] = $this->Pengguna_model->get_departemen();
-		$this->load->view('template/head_ui');
-		$this->load->view('template/sidebar_ui', $data);
+		$get_pegawai = $this->Auth_model->get_pegawai();
+		$data['id_departemen'] = $get_pegawai['id_departemen'];
+        $data['id_area'] = $get_pegawai['id_area'];
+        $data['id_sub_area'] = $get_pegawai['id_sub_area'];
+		$this->load->view('template_stisla/header');
+		$this->load->view('template_stisla/sidebar', $data);
 		$this->load->view('admin/master_pengguna/index', $data);
-		$this->load->view('template/footer_ui');
+		$this->load->view('template_stisla/footer');
 		$this->load->view('admin/master_pengguna/ajax');
 	}
 

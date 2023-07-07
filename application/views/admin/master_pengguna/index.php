@@ -1,7 +1,7 @@
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<!-- <div class="content-wrapper"> -->
   <!-- Content Header (Page header) -->
-  <div class="content-header">
+  <!-- <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
@@ -9,14 +9,16 @@
             <i class="nav-icon far fa-address-card"></i>
             File Master / Data Pengguna
           </h1>
-        </div>
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
+        </div> -->
+      <!-- </div> -->
+      <!-- /.row -->
+    <!-- </div> -->
+    <!-- /.container-fluid -->
+  <!-- </div> -->
   <!-- /.content-header -->
 
   <!-- Main content -->
-  <section class="content">
+  <section class="main-content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
