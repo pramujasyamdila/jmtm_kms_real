@@ -15,6 +15,7 @@
     ];
     $this->Data_kontrak_model->update_tbl_unit_price($where, $data);
     // update after
+    
     $row_unit_price = $this->Data_kontrak_model->by_id_unit_price($id_unit_price);
     $this->db->select('*');
     $this->db->from('tbl_unit_price');

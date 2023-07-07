@@ -516,6 +516,18 @@ class Taggihan_kontrak_admin_model extends CI_Model
         return $data->result_array();
     }
 
+    public function generate_update_pindah($id_detail_program_penyedia_jasa, $no_mc)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_mc');
+        $this->db->where('id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('no_mc >=', $no_mc);
+        $this->db->not_like('no_mc', 'um');
+        $this->db->order_by('CAST(no_mc_manipulasi AS DECIMAL(2)) ASC');
+        $data = $this->db->get();
+        return $data->result_array();
+    }
+
     public function generate_update_tambah($id_detail_program_penyedia_jasa, $no_mc)
     {
         $this->db->select('*');
@@ -2024,4 +2036,6 @@ class Taggihan_kontrak_admin_model extends CI_Model
         $this->db->update('tbl_dokumen_ceklist', $data, $where);
         return $this->db->affected_rows();
     }
+    
+    
 }

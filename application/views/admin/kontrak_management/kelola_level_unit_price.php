@@ -254,6 +254,7 @@
 
                                                                     <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'tambah_level_2_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                     <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'edit_level_2_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
+                                                                    <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'tambah_level_2_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                     <!-- UBAH urutan -->
                                                                     <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'urutan_level_2_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                 <?php    } else { ?>
@@ -261,6 +262,7 @@
                                                                     <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'tambah_level_2_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                     <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'hapus_level_2_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                     <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'edit_level_2_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
+                                                                    <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'tambah_level_2_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                     <!-- UBAH urutan -->
                                                                     <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'urutan_level_2_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                 <?php   }  ?>
@@ -269,12 +271,14 @@
 
                                                                     <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'tambah_level_2_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                     <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'edit_level_2_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
+                                                                    <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'tambah_level_2_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                     <!-- UBAH urutan -->
                                                                     <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'urutan_level_2_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                 <?php    } else { ?>
                                                                     <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'update_nilai_level_2_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
                                                                     <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'hapus_level_2_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                     <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'edit_level_2_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
+                                                                    <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'tambah_level_2_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                     <!-- UBAH urutan -->
                                                                     <a onclick="modal_level_2_unit_price(<?= $value_tb_unit_price_1['id_unit_price_1'] ?>,'urutan_level_2_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                 <?php   }  ?>
@@ -403,6 +407,7 @@
 
                                                                         <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'tambah_level_3_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                         <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'edit_level_3_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
+                                                                        <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'tambah_level_3_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                         <!-- UBAH urutan -->
                                                                         <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'urutan_level_3_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                     <?php    } else { ?>
@@ -410,6 +415,7 @@
                                                                         <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'tambah_level_3_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                         <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'hapus_level_3_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                         <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'edit_level_3_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
+                                                                        <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'tambah_level_3_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                         <!-- UBAH urutan -->
                                                                         <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'urutan_level_3_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                     <?php   }  ?>
@@ -418,6 +424,7 @@
 
                                                                         <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'tambah_level_3_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                         <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'edit_level_3_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
+                                                                        <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'tambah_level_3_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                         <!-- UBAH urutan -->
                                                                         <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'urutan_level_3_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                     <?php    } else { ?>
@@ -425,6 +432,7 @@
 
                                                                         <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'hapus_level_3_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                         <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'edit_level_3_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
+                                                                        <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'tambah_level_3_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                         <!-- UBAH urutan -->
                                                                         <a onclick="modal_level_3_unit_price(<?= $value_tb_unit_price_2['id_unit_price_2'] ?>,'urutan_level_3_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                     <?php   }  ?>
@@ -555,6 +563,7 @@
 
                                                                             <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'tambah_level_4_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                             <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'edit_level_4_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
+                                                                            <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'tambah_level_4_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                             <!-- UBAH urutan -->
                                                                             <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'urutan_level_4_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                         <?php    } else { ?>
@@ -562,6 +571,7 @@
                                                                             <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'tambah_level_4_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                             <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'hapus_level_4_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                             <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'edit_level_4_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
+                                                                            <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'tambah_level_4_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                             <!-- UBAH urutan -->
                                                                             <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'urutan_level_4_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                         <?php   }  ?>
@@ -570,6 +580,7 @@
 
                                                                             <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'tambah_level_4_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                             <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'edit_level_4_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
+                                                                            <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'tambah_level_4_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                             <!-- UBAH urutan -->
                                                                             <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'urutan_level_4_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                         <?php    } else { ?>
@@ -577,6 +588,7 @@
 
                                                                             <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'hapus_level_4_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                             <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'edit_level_4_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
+                                                                            <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'tambah_level_4_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                             <!-- UBAH urutan -->
                                                                             <a onclick="modal_level_4_unit_price(<?= $value_tb_unit_price_3['id_unit_price_3'] ?>,'urutan_level_4_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                         <?php   }  ?>
@@ -708,14 +720,14 @@
 
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'tambah_level_5_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'edit_level_5_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                <!-- UBAH urutan -->
+                                                                                <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'tambah_level_5_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'urutan_level_5_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                             <?php    } else { ?>
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'update_nilai_level_5_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'tambah_level_5_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'hapus_level_5_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'edit_level_5_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                <!-- UBAH urutan -->
+                                                                                <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'tambah_level_5_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'urutan_level_5_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                             <?php   }  ?>
                                                                         <?php } else { ?>
@@ -723,14 +735,14 @@
 
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'tambah_level_5_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'edit_level_5_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                <!-- UBAH urutan -->
+                                                                                <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'tambah_level_5_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'urutan_level_5_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                             <?php    } else { ?>
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'update_nilai_level_5_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
 
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'hapus_level_5_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'edit_level_5_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                <!-- UBAH urutan -->
+                                                                                <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'tambah_level_5_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                 <a onclick="modal_level_5_unit_price(<?= $value_tb_unit_price_4['id_unit_price_4'] ?>,'urutan_level_5_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                             <?php   }  ?>
                                                                         <?php    } ?>
@@ -858,14 +870,14 @@
 
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'tambah_level_6_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'edit_level_6_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                    <!-- UBAH urutan -->
+                                                                                    <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'tambah_level_6_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'urutan_level_6_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                 <?php    } else { ?>
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'update_nilai_level_6_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'tambah_level_6_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'hapus_level_6_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'edit_level_6_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                    <!-- UBAH urutan -->
+                                                                                    <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'tambah_level_6_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'urutan_level_6_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                 <?php   }  ?>
                                                                             <?php } else { ?>
@@ -873,14 +885,14 @@
 
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'tambah_level_6_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'edit_level_6_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                    <!-- UBAH urutan -->
+                                                                                    <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'tambah_level_6_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'urutan_level_6_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                 <?php    } else { ?>
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'update_nilai_level_6_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
 
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'hapus_level_6_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'edit_level_6_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                    <!-- UBAH urutan -->
+                                                                                    <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'tambah_level_6_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                     <a onclick="modal_level_6_unit_price(<?= $value_tb_unit_price_5['id_unit_price_5'] ?>,'urutan_level_6_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                 <?php   }  ?>
                                                                             <?php    } ?>
@@ -1007,14 +1019,14 @@
 
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'tambah_level_7_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'edit_level_7_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                        <!-- UBAH urutan -->
+                                                                                        <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'tambah_level_7_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'urutan_level_7_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                     <?php    } else { ?>
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'update_nilai_level_7_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'tambah_level_7_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'hapus_level_7_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'edit_level_7_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                        <!-- UBAH urutan -->
+                                                                                        <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'tambah_level_7_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'urutan_level_7_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                     <?php   }  ?>
                                                                                 <?php } else { ?>
@@ -1022,14 +1034,15 @@
 
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'tambah_level_7_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'edit_level_7_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                        <!-- UBAH urutan -->
+                                                                                        <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'tambah_level_7_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'urutan_level_7_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                     <?php    } else { ?>
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'update_nilai_level_7_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
 
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'hapus_level_7_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'edit_level_7_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                        <!-- UBAH urutan -->
+
+                                                                                        <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'tambah_level_7_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                         <a onclick="modal_level_7_unit_price(<?= $value_tb_unit_price_6['id_unit_price_6'] ?>,'urutan_level_7_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                     <?php   }  ?>
                                                                                 <?php    } ?>
@@ -1157,14 +1170,14 @@
 
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'tambah_level_8_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'edit_level_8_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                            <!-- UBAH urutan -->
+                                                                                            <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'tambah_level_8_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'urutan_level_8_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                         <?php    } else { ?>
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'update_nilai_level_8_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'tambah_level_8_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'hapus_level_8_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'edit_level_8_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                            <!-- UBAH urutan -->
+                                                                                            <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'tambah_level_8_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'urutan_level_8_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                         <?php   }  ?>
                                                                                     <?php } else { ?>
@@ -1172,14 +1185,14 @@
 
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'tambah_level_8_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'edit_level_8_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                            <!-- UBAH urutan -->
+                                                                                            <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'tambah_level_8_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'urutan_level_8_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                         <?php    } else { ?>
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'update_nilai_level_8_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
 
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'hapus_level_8_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'edit_level_8_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                            <!-- UBAH urutan -->
+                                                                                            <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'tambah_level_8_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                             <a onclick="modal_level_8_unit_price(<?= $value_tb_unit_price_7['id_unit_price_7'] ?>,'urutan_level_8_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                         <?php   }  ?>
                                                                                     <?php    } ?>
@@ -1306,14 +1319,14 @@
 
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'tambah_level_9_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'edit_level_9_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                                <!-- UBAH urutan -->
+                                                                                                <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'tambah_level_9_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'urutan_level_9_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                             <?php    } else { ?>
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'update_nilai_level_9_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'tambah_level_9_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'hapus_level_9_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'edit_level_9_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                                <!-- UBAH urutan -->
+                                                                                                <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'tambah_level_9_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'urutan_level_9_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                             <?php   }  ?>
                                                                                         <?php } else { ?>
@@ -1321,14 +1334,14 @@
 
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'tambah_level_9_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'edit_level_9_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                                <!-- UBAH urutan -->
+                                                                                                <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'tambah_level_9_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'urutan_level_9_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                             <?php    } else { ?>
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'update_nilai_level_9_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
 
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'hapus_level_9_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'edit_level_9_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                                <!-- UBAH urutan -->
+                                                                                                <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'tambah_level_9_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                                 <a onclick="modal_level_9_unit_price(<?= $value_tb_unit_price_8['id_unit_price_8'] ?>,'urutan_level_9_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                             <?php   }  ?>
                                                                                         <?php    } ?>
@@ -1459,14 +1472,14 @@
 
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'tambah_level_10_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'edit_level_10_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                                    <!-- UBAH urutan -->
+                                                                                                    <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'tambah_level_10_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'urutan_level_10_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                                 <?php    } else { ?>
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'update_nilai_level_10_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'tambah_level_10_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'hapus_level_10_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'edit_level_10_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                                    <!-- UBAH urutan -->
+                                                                                                    <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'tambah_level_10_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'urutan_level_10_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                                 <?php   }  ?>
                                                                                             <?php } else { ?>
@@ -1474,14 +1487,14 @@
 
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'tambah_level_10_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'edit_level_10_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                                    <!-- UBAH urutan -->
+                                                                                                    <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'tambah_level_10_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'urutan_level_10_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                                 <?php    } else { ?>
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'update_nilai_level_10_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
 
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'hapus_level_10_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'edit_level_10_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                                    <!-- UBAH urutan -->
+                                                                                                    <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'tambah_level_10_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                                     <a onclick="modal_level_10_unit_price(<?= $value_tb_unit_price_9['id_unit_price_9'] ?>,'urutan_level_10_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                                 <?php   }  ?>
                                                                                             <?php    } ?>
@@ -1608,14 +1621,14 @@
 
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'tambah_level_11_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'edit_level_11_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                                        <!-- UBAH urutan -->
+                                                                                                        <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'tambah_level_11_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'urutan_level_11_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                                     <?php    } else { ?>
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'update_nilai_level_11_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'tambah_level_11_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'hapus_level_11_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'edit_level_11_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                                        <!-- UBAH urutan -->
+                                                                                                        <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'tambah_level_11_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'urutan_level_11_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                                     <?php   }  ?>
                                                                                                 <?php } else { ?>
@@ -1623,14 +1636,14 @@
 
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'tambah_level_11_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'edit_level_11_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                                        <!-- UBAH urutan -->
+                                                                                                        <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'tambah_level_11_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'urutan_level_11_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                                     <?php    } else { ?>
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'update_nilai_level_11_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
 
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'hapus_level_11_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'edit_level_11_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
-                                                                                                        <!-- UBAH urutan -->
+                                                                                                        <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'tambah_level_11_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                                                         <a onclick="modal_level_11_unit_price(<?= $value_tb_unit_price_10['id_unit_price_10'] ?>,'urutan_level_11_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
                                                                                                     <?php   }  ?>
                                                                                                 <?php    } ?>
@@ -1943,12 +1956,13 @@
             </div>
         </div>
         <!-- modal excel -->
+
         <!-- unit_price_1 -->
         <div class="modal fade" data-backdrop="false" id="modal_excel_unit_price_1" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
-                        <h5 class="modal-title" id="title_modal_excel"></h5>
+                        <h5 class="modal-title title_modal_excel"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -1964,8 +1978,8 @@
                             <label for="Divisi" style="font-weight: bold;" class="col-form-label">upload excel</label>
                         </center>
                         <?= form_open_multipart('excelisasi_kontrak/Upload_excel_kontrak/upload_data_excel_unit_price_1') ?>
-                        <input type="text" name="id_global_excel">
-                        <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                        <input type="hidden" name="id_global_excel">
+                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                         <div class="input-group">
                             <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
                             <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
@@ -1978,5 +1992,375 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- unit_price_2 -->
+        <div class="modal fade" data-backdrop="false" id="modal_excel_unit_price_2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title title_modal_excel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <div>
+                                <label for="">Download Format</label> <br>
+                                <div class="format_download"></div>
+                            </div>
+                        </center>
+                        <center>
+                            <label for="Divisi" style="font-weight: bold;" class="col-form-label">upload excel</label>
+                        </center>
+                        <?= form_open_multipart('excelisasi_kontrak/Upload_excel_kontrak/upload_data_excel_unit_price_2') ?>
+                        <input type="hidden" name="id_global_excel">
+                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                        <div class="input-group">
+                            <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                            <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                        </div>
+                        <?= form_close(); ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- unit_price_3 -->
+        <div class="modal fade" data-backdrop="false" id="modal_excel_unit_price_3" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title title_modal_excel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <div>
+                                <label for="">Download Format</label> <br>
+                                <div class="format_download"></div>
+                            </div>
+                        </center>
+                        <center>
+                            <label for="Divisi" style="font-weight: bold;" class="col-form-label">upload excel</label>
+                        </center>
+                        <?= form_open_multipart('excelisasi_kontrak/Upload_excel_kontrak/upload_data_excel_unit_price_3') ?>
+                        <input type="hidden" name="id_global_excel">
+                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                        <div class="input-group">
+                            <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                            <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                        </div>
+                        <?= form_close(); ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- unit_price_4 -->
+        <div class="modal fade" data-backdrop="false" id="modal_excel_unit_price_4" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title title_modal_excel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <div>
+                                <label for="">Download Format</label> <br>
+                                <div class="format_download"></div>
+                            </div>
+                        </center>
+                        <center>
+                            <label for="Divisi" style="font-weight: bold;" class="col-form-label">upload excel</label>
+                        </center>
+                        <?= form_open_multipart('excelisasi_kontrak/Upload_excel_kontrak/upload_data_excel_unit_price_4') ?>
+                        <input type="hidden" name="id_global_excel">
+                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                        <div class="input-group">
+                            <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                            <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                        </div>
+                        <?= form_close(); ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- unit_price_5 -->
+        <div class="modal fade" data-backdrop="false" id="modal_excel_unit_price_5" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title title_modal_excel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <div>
+                                <label for="">Download Format</label> <br>
+                                <div class="format_download"></div>
+                            </div>
+                        </center>
+                        <center>
+                            <label for="Divisi" style="font-weight: bold;" class="col-form-label">upload excel</label>
+                        </center>
+                        <?= form_open_multipart('excelisasi_kontrak/Upload_excel_kontrak/upload_data_excel_unit_price_5') ?>
+                        <input type="hidden" name="id_global_excel">
+                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                        <div class="input-group">
+                            <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                            <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                        </div>
+                        <?= form_close(); ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- unit_price_6 -->
+        <div class="modal fade" data-backdrop="false" id="modal_excel_unit_price_6" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title title_modal_excel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <div>
+                                <label for="">Download Format</label> <br>
+                                <div class="format_download"></div>
+                            </div>
+                        </center>
+                        <center>
+                            <label for="Divisi" style="font-weight: bold;" class="col-form-label">upload excel</label>
+                        </center>
+                        <?= form_open_multipart('excelisasi_kontrak/Upload_excel_kontrak/upload_data_excel_unit_price_6') ?>
+                        <input type="hidden" name="id_global_excel">
+                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                        <div class="input-group">
+                            <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                            <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                        </div>
+                        <?= form_close(); ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- unit_price_7 -->
+        <div class="modal fade" data-backdrop="false" id="modal_excel_unit_price_7" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title title_modal_excel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <div>
+                                <label for="">Download Format</label> <br>
+                                <div class="format_download"></div>
+                            </div>
+                        </center>
+                        <center>
+                            <label for="Divisi" style="font-weight: bold;" class="col-form-label">upload excel</label>
+                        </center>
+                        <?= form_open_multipart('excelisasi_kontrak/Upload_excel_kontrak/upload_data_excel_unit_price_7') ?>
+                        <input type="hidden" name="id_global_excel">
+                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                        <div class="input-group">
+                            <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                            <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                        </div>
+                        <?= form_close(); ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- unit_price_8 -->
+        <div class="modal fade" data-backdrop="false" id="modal_excel_unit_price_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title title_modal_excel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <div>
+                                <label for="">Download Format</label> <br>
+                                <div class="format_download"></div>
+                            </div>
+                        </center>
+                        <center>
+                            <label for="Divisi" style="font-weight: bold;" class="col-form-label">upload excel</label>
+                        </center>
+                        <?= form_open_multipart('excelisasi_kontrak/Upload_excel_kontrak/upload_data_excel_unit_price_8') ?>
+                        <input type="hidden" name="id_global_excel">
+                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                        <div class="input-group">
+                            <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                            <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                        </div>
+                        <?= form_close(); ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- unit_price_9 -->
+        <div class="modal fade" data-backdrop="false" id="modal_excel_unit_price_9" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title title_modal_excel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <div>
+                                <label for="">Download Format</label> <br>
+                                <div class="format_download"></div>
+                            </div>
+                        </center>
+                        <center>
+                            <label for="Divisi" style="font-weight: bold;" class="col-form-label">upload excel</label>
+                        </center>
+                        <?= form_open_multipart('excelisasi_kontrak/Upload_excel_kontrak/upload_data_excel_unit_price_9') ?>
+                        <input type="hidden" name="id_global_excel">
+                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                        <div class="input-group">
+                            <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                            <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                        </div>
+                        <?= form_close(); ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- unit_price_10 -->
+        <div class="modal fade" data-backdrop="false" id="modal_excel_unit_price_10" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title title_modal_excel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <div>
+                                <label for="">Download Format</label> <br>
+                                <div class="format_download"></div>
+                            </div>
+                        </center>
+                        <center>
+                            <label for="Divisi" style="font-weight: bold;" class="col-form-label">upload excel</label>
+                        </center>
+                        <?= form_open_multipart('excelisasi_kontrak/Upload_excel_kontrak/upload_data_excel_unit_price_10') ?>
+                        <input type="hidden" name="id_global_excel">
+                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                        <div class="input-group">
+                            <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                            <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                        </div>
+                        <?= form_close(); ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- unit_price_11 -->
+        <div class="modal fade" data-backdrop="false" id="modal_excel_unit_price_11" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title title_modal_excel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <div>
+                                <label for="">Download Format</label> <br>
+                                <div class="format_download"></div>
+                            </div>
+                        </center>
+                        <center>
+                            <label for="Divisi" style="font-weight: bold;" class="col-form-label">upload excel</label>
+                        </center>
+                        <?= form_open_multipart('excelisasi_kontrak/Upload_excel_kontrak/upload_data_excel_unit_price_11') ?>
+                        <input type="hidden" name="id_global_excel">
+                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                        <div class="input-group">
+                            <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                            <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                        </div>
+                        <?= form_close(); ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </section>
 </div>

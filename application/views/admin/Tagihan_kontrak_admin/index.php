@@ -429,7 +429,7 @@
                                                 <option value="">--- Plih ---</option>
                                                 <option value="Um">Um</option>
                                                 <?php for ($i = 1; $i < 30; $i++) {  ?>
-                                                    <option value="<?= $i?>"> <?= $i?> </option>
+                                                    <option value="<?= $i ?>"> <?= $i ?> </option>
                                                 <?php  } ?>
                                             </select>
                                         </div>
@@ -1139,6 +1139,42 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" data-backdrop="false" id="modal_pindah_urutan_mc" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Pindahkan Urutan Mc</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No Hps</th>
+                                <th>Jumlah Mc</th>
+                                <th><i class="fa fa-cogs" aria-hidden="true"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody class="table_result_urutan">
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>
+                <a href="javascript:;" onclick="Pencairan_grafik()" class="btn btn-sm btn-danger">Cairkan</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 
 

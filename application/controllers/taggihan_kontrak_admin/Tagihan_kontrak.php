@@ -1015,6 +1015,29 @@ class Tagihan_kontrak extends CI_Controller
     }
 
 
+    public function pindahkan_turunan()
+    {
+        $no_urut_ubah = $this->input->post('no_urut_ubah');
+        $id_mc = $this->input->post('id_ubah');
+        $data = [
+            'no_mc_manipulasi' => $no_urut_ubah,
+        ];
+        $this->Taggihan_kontrak_admin_model->update_mc($data, $id_mc);
+        $ambil_mc_edit = $this->Taggihan_kontrak_admin_model->get_only_now_edit($id_mc);
+        $ambil_no_mc_edit = $ambil_mc_edit['no_mc'];
+        $ambil_kontrak_edit = $ambil_mc_edit['id_detail_program_penyedia_jasa'];
+        $data_mc = $this->Taggihan_kontrak_admin_model->generate_update_pindah($ambil_kontrak_edit, $ambil_no_mc_edit);
+        $i = 1;
+        foreach ($data_mc as $key => $value) {
+            // $data_mc_row = $this->Taggihan_kontrak_admin_model->cek_row_mc($value['id_mc']);
+            $data = [
+                'no_mc' => $i++,
+            ];
+            $this->Taggihan_kontrak_admin_model->update_no_mc($value['id_mc'], $data);
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
     public function hapus_traking($id_mc)
     {
         $ambil_mc_edit = $this->Taggihan_kontrak_admin_model->get_only_now_edit($id_mc);
@@ -1024,7 +1047,7 @@ class Tagihan_kontrak extends CI_Controller
             $this->Taggihan_kontrak_admin_model->hapus_mc($id_mc);
         } else {
             $this->Taggihan_kontrak_admin_model->hapus_mc($id_mc);
-              $data_mc = $this->Taggihan_kontrak_admin_model->generate_update_hapus($ambil_kontrak_edit);
+            $data_mc = $this->Taggihan_kontrak_admin_model->generate_update_hapus($ambil_kontrak_edit);
             $i = 1;
             foreach ($data_mc as $key => $value) {
                 // $data_mc_row = $this->Taggihan_kontrak_admin_model->cek_row_mc($value['id_mc']);
@@ -1041,7 +1064,7 @@ class Tagihan_kontrak extends CI_Controller
                 $id_mc1 = $data_mc[1]['id_mc'];
                 $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
             }
-    
+
             if (!isset($data_mc[2])) {
             } else {
                 $id_mc2 = $data_mc[2]['id_mc'];
@@ -1052,7 +1075,7 @@ class Tagihan_kontrak extends CI_Controller
                 $id_mc3 = $data_mc[3]['id_mc'];
                 $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
             }
-    
+
             if (!isset($data_mc[4])) {
             } else {
                 $id_mc4 = $data_mc[4]['id_mc'];
@@ -1088,14 +1111,14 @@ class Tagihan_kontrak extends CI_Controller
                 $id_mc10 = $data_mc[10]['id_mc'];
                 $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
             }
-    
+
             // 1
             if (isset($data_mc[1])) {
                 $updateAray1 = [
                     'sd_bulan_lalu' => $sd_bulan_ini0,
                     'jumlah_mc' => $jumlah_mc1,
                     'sd_bulan_ini' =>  $sd_bulan_ini0 + $jumlah_mc1,
-    
+
                 ];
                 $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
                 $mc_real1 = $data_arrayku1['id_mc'];
@@ -1107,7 +1130,7 @@ class Tagihan_kontrak extends CI_Controller
                     'sd_bulan_lalu' => $data_row_post_array1['sd_bulan_ini'],
                     'jumlah_mc' => $jumlah_mc2,
                     'sd_bulan_ini' =>  $data_row_post_array1['sd_bulan_ini'] + $jumlah_mc2,
-    
+
                 ];
                 $data_arrayku2 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc2, $updateAray2);
                 $mc_real2 = $data_arrayku2['id_mc'];
@@ -1122,14 +1145,14 @@ class Tagihan_kontrak extends CI_Controller
                     'sd_bulan_lalu' => $data_row_post_array2['sd_bulan_ini'],
                     'jumlah_mc' => $jumlah_mc3,
                     'sd_bulan_ini' =>  $data_row_post_array2['sd_bulan_ini'] + $jumlah_mc3,
-    
+
                 ];
                 $data_arrayku3 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc3, $updateAray3);
                 $mc_real3 = $data_arrayku3['id_mc'];
             } else {
                 // 3
             }
-    
+
             if (isset($data_mc[4])) {
                 // 1
                 // 2
@@ -1138,12 +1161,12 @@ class Tagihan_kontrak extends CI_Controller
                     'sd_bulan_lalu' => $data_row_post_array3['sd_bulan_ini'],
                     'jumlah_mc' => $jumlah_mc4,
                     'sd_bulan_ini' =>  $data_row_post_array3['sd_bulan_ini'] + $jumlah_mc4,
-    
+
                 ];
                 $data_arrayku4 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc4, $updateAray4);
                 $mc_real4 = $data_arrayku4['id_mc'];
             } else {
-    
+
                 // 4
             }
             if (isset($data_mc[5])) {
@@ -1154,7 +1177,7 @@ class Tagihan_kontrak extends CI_Controller
                     'sd_bulan_lalu' => $data_row_post_array4['sd_bulan_ini'],
                     'jumlah_mc' => $jumlah_mc5,
                     'sd_bulan_ini' =>  $data_row_post_array4['sd_bulan_ini'] + $jumlah_mc5,
-    
+
                 ];
                 $data_arrayku5 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc5, $updateAray5);
                 $mc_real5 = $data_arrayku5['id_mc'];
@@ -1169,7 +1192,7 @@ class Tagihan_kontrak extends CI_Controller
                     'sd_bulan_lalu' => $data_row_post_array5['sd_bulan_ini'],
                     'jumlah_mc' => $jumlah_mc6,
                     'sd_bulan_ini' =>  $data_row_post_array5['sd_bulan_ini'] + $jumlah_mc6,
-    
+
                 ];
                 $data_arrayku6 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc6, $updateAray6);
                 $mc_real6 = $data_arrayku6['id_mc'];
@@ -1184,7 +1207,7 @@ class Tagihan_kontrak extends CI_Controller
                     'sd_bulan_lalu' => $data_row_post_array6['sd_bulan_ini'],
                     'jumlah_mc' => $jumlah_mc7,
                     'sd_bulan_ini' =>  $data_row_post_array6['sd_bulan_ini'] + $jumlah_mc7,
-    
+
                 ];
                 $data_arrayku7 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc7, $updateAray7);
                 $mc_real7 = $data_arrayku7['id_mc'];
@@ -1199,7 +1222,7 @@ class Tagihan_kontrak extends CI_Controller
                     'sd_bulan_lalu' => $data_row_post_array7['sd_bulan_ini'],
                     'jumlah_mc' => $jumlah_mc8,
                     'sd_bulan_ini' =>  $data_row_post_array7['sd_bulan_ini'] + $jumlah_mc8,
-    
+
                 ];
                 $data_arrayku8 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc8, $updateAray8);
                 $mc_real8 = $data_arrayku8['id_mc'];
@@ -1214,7 +1237,7 @@ class Tagihan_kontrak extends CI_Controller
                     'sd_bulan_lalu' => $data_row_post_array8['sd_bulan_ini'],
                     'jumlah_mc' => $jumlah_mc9,
                     'sd_bulan_ini' =>  $data_row_post_array8['sd_bulan_ini'] + $jumlah_mc9,
-    
+
                 ];
                 $data_arrayku9 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc9, $updateAray9);
                 $mc_real9 = $data_arrayku9['id_mc'];
@@ -1229,13 +1252,13 @@ class Tagihan_kontrak extends CI_Controller
                     'sd_bulan_lalu' => $data_row_post_array9['sd_bulan_ini'],
                     'jumlah_mc' => $jumlah_mc10,
                     'sd_bulan_ini' =>  $data_row_post_array9['sd_bulan_ini'] + $jumlah_mc10,
-    
+
                 ];
                 $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
                 $mc_real10 = $data_arrayku10['id_mc'];
             } else {
             }
-        // array_bulan_ini
+            // array_bulan_ini
         }
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }

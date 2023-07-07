@@ -22,7 +22,8 @@ class Data_excelisasi_model extends CI_Model
     {
         $jumlah = count($data);
         if ($jumlah > 0) {
-            $this->db->replace('tbl_sbu', $data);
+            // $this->db->replace('tbl_sbu', $data);
+            $this->db->replace('tbl_kbli', $data);
         }
     }
 
@@ -814,12 +815,89 @@ class Data_excelisasi_model extends CI_Model
         $this->db->delete('tbl_unit_price_1', ['id_unit_price' => $id_unit_price]);
         return $this->db->affected_rows();
     }
-
+    // _1
     public function insert_via_excel_unit_price_level_1($data)
     {
         $jumlah = count($data);
         if ($jumlah > 0) {
             $this->db->replace('tbl_unit_price_1', $data);
+        }
+    }
+
+    // _2
+    public function insert_via_excel_unit_price_level_2($data)
+    {
+        $jumlah = count($data);
+        if ($jumlah > 0) {
+            $this->db->replace('tbl_unit_price_2', $data);
+        }
+    }
+
+    // _3
+    public function insert_via_excel_unit_price_level_3($data)
+    {
+        $jumlah = count($data);
+        if ($jumlah > 0) {
+            $this->db->replace('tbl_unit_price_3', $data);
+        }
+    }
+
+    // _4
+    public function insert_via_excel_unit_price_level_4($data)
+    {
+        $jumlah = count($data);
+        if ($jumlah > 0) {
+            $this->db->replace('tbl_unit_price_4', $data);
+        }
+    }
+
+    // _5
+    public function insert_via_excel_unit_price_level_5($data)
+    {
+        $jumlah = count($data);
+        if ($jumlah > 0) {
+            $this->db->replace('tbl_unit_price_5', $data);
+        }
+    }
+
+    // _6
+    public function insert_via_excel_unit_price_level_6($data)
+    {
+        $jumlah = count($data);
+        if ($jumlah > 0) {
+            $this->db->replace('tbl_unit_price_6', $data);
+        }
+    }
+    // _7
+    public function insert_via_excel_unit_price_level_7($data)
+    {
+        $jumlah = count($data);
+        if ($jumlah > 0) {
+            $this->db->replace('tbl_unit_price_7', $data);
+        }
+    }
+    // _8
+    public function insert_via_excel_unit_price_level_8($data)
+    {
+        $jumlah = count($data);
+        if ($jumlah > 0) {
+            $this->db->replace('tbl_unit_price_8', $data);
+        }
+    }
+    // _9
+    public function insert_via_excel_unit_price_level_9($data)
+    {
+        $jumlah = count($data);
+        if ($jumlah > 0) {
+            $this->db->replace('tbl_unit_price_9', $data);
+        }
+    }
+    // _10
+    public function insert_via_excel_unit_price_level_10($data)
+    {
+        $jumlah = count($data);
+        if ($jumlah > 0) {
+            $this->db->replace('tbl_unit_price_10', $data);
         }
     }
 }

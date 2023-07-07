@@ -96,8 +96,8 @@
                 if (type == 'tambah_level_1_unit_price_excel') {
                     modal_excel_unit_price_1.modal('show');
                     $('[name="id_global_excel"]').val(response['row_unit_price'].id_unit_price);
-                    $('#title_modal_excel').text(level_2)
-                    $('.format_download').html('<a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_unit_price_1.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>')
+                    $('.title_modal_excel').text(level_2)
+                    $('.format_download').html('<a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_unit_price.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>')
                 }
                 if (type == 'update_nilai_level_1_unit_price') {
                     form_modal_level_1_unit_price.modal('show');
@@ -256,7 +256,8 @@
 <script>
     var form_modal_level_2_unit_price = $('#form_modal_level_2_unit_price')
     var form_simpan_level_2_unit_price = $('#form_simpan_level_2_unit_price')
-
+    var modal_excel_unit_price_2 = $('#modal_excel_unit_price_2');
+    var level_3 = 'Tambah Level 3 Dari Excel';
 
     function modal_level_2_unit_price(id, type) {
 
@@ -275,12 +276,21 @@
         if (type == 'urutan_level_2_unit_price') {
 
         }
+        if (type == 'tambah_level_2_unit_price_excel') {
 
+        }
         $.ajax({
             type: "GET",
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_1/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+                if (type == 'tambah_level_2_unit_price_excel') {
+                    modal_excel_unit_price_2.modal('show');
+                    $('[name="id_global_excel"]').val(response['row_unit_price_1'].id_unit_price_1);
+                    $('.title_modal_excel').text(level_3)
+                    $('.format_download').html('<a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_unit_price.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>')
+                }
+
                 if (type == 'update_nilai_level_2_unit_price') {
                     form_modal_level_2_unit_price.modal('show');
                     // kondisi butoon dan form
@@ -479,7 +489,8 @@
 <script>
     var form_modal_level_3_unit_price = $('#form_modal_level_3_unit_price')
     var form_simpan_level_3_unit_price = $('#form_simpan_level_3_unit_price')
-
+    var modal_excel_unit_price_3 = $('#modal_excel_unit_price_3');
+    var level_4 = 'Tambah Level 4 Dari Excel';
 
     function modal_level_3_unit_price(id, type) {
 
@@ -499,11 +510,21 @@
 
         }
 
+        if (type == 'tambah_level_3_unit_price_excel') {
+
+        }
+
         $.ajax({
             type: "GET",
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_2/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+                if (type == 'tambah_level_3_unit_price_excel') {
+                    modal_excel_unit_price_3.modal('show');
+                    $('[name="id_global_excel"]').val(response['row_unit_price_2'].id_unit_price_2);
+                    $('.title_modal_excel').text(level_4)
+                    $('.format_download').html('<a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_unit_price.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>')
+                }
                 if (type == 'update_nilai_level_3_unit_price') {
                     form_modal_level_3_unit_price.modal('show');
                     // kondisi butoon dan form
@@ -704,7 +725,8 @@
 <script>
     var form_modal_level_4_unit_price = $('#form_modal_level_4_unit_price')
     var form_simpan_level_4_unit_price = $('#form_simpan_level_4_unit_price')
-
+    var modal_excel_unit_price_4 = $('#modal_excel_unit_price_4');
+    var level_5 = 'Tambah Level 5 Dari Excel';
 
     function modal_level_4_unit_price(id, type) {
 
@@ -723,12 +745,21 @@
         if (type == 'urutan_level_4_unit_price') {
 
         }
+        if (type == 'tambah_level_4_unit_price_excel') {
+
+        }
 
         $.ajax({
             type: "GET",
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_3/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+                if (type == 'tambah_level_4_unit_price_excel') {
+                    modal_excel_unit_price_4.modal('show');
+                    $('[name="id_global_excel"]').val(response['row_unit_price_3'].id_unit_price_3);
+                    $('.title_modal_excel').text(level_5)
+                    $('.format_download').html('<a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_unit_price.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>')
+                }
                 if (type == 'update_nilai_level_4_unit_price') {
                     form_modal_level_4_unit_price.modal('show');
                     // kondisi butoon dan form
@@ -929,7 +960,8 @@
 <script>
     var form_modal_level_5_unit_price = $('#form_modal_level_5_unit_price')
     var form_simpan_level_5_unit_price = $('#form_simpan_level_5_unit_price')
-
+    var modal_excel_unit_price_5 = $('#modal_excel_unit_price_5');
+    var level_6 = 'Tambah Level 6 Dari Excel';
 
     function modal_level_5_unit_price(id, type) {
 
@@ -948,12 +980,23 @@
         if (type == 'urutan_level_5_unit_price') {
 
         }
+        if (type == 'tambah_level_5_unit_price_excel') {
+
+        }
+
 
         $.ajax({
             type: "GET",
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_4/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+
+                if (type == 'tambah_level_5_unit_price_excel') {
+                    modal_excel_unit_price_5.modal('show');
+                    $('[name="id_global_excel"]').val(response['row_unit_price_4'].id_unit_price_4);
+                    $('.title_modal_excel').text(level_6)
+                    $('.format_download').html('<a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_unit_price.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>')
+                }
                 if (type == 'update_nilai_level_5_unit_price') {
                     form_modal_level_5_unit_price.modal('show');
                     // kondisi butoon dan form
@@ -1155,7 +1198,8 @@
 <script>
     var form_modal_level_6_unit_price = $('#form_modal_level_6_unit_price')
     var form_simpan_level_6_unit_price = $('#form_simpan_level_6_unit_price')
-
+    var modal_excel_unit_price_6 = $('#modal_excel_unit_price_6');
+    var level_7 = 'Tambah Level 7 Dari Excel';
 
     function modal_level_6_unit_price(id, type) {
 
@@ -1174,12 +1218,21 @@
         if (type == 'urutan_level_6_unit_price') {
 
         }
+        if (type == 'tambah_level_6_unit_price_excel') {
+
+        }
 
         $.ajax({
             type: "GET",
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_5/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+                if (type == 'tambah_level_6_unit_price_excel') {
+                    modal_excel_unit_price_6.modal('show');
+                    $('[name="id_global_excel"]').val(response['row_unit_price_5'].id_unit_price_5);
+                    $('.title_modal_excel').text(level_7)
+                    $('.format_download').html('<a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_unit_price.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>')
+                }
                 if (type == 'update_nilai_level_6_unit_price') {
                     form_modal_level_6_unit_price.modal('show');
                     // kondisi butoon dan form
@@ -1381,7 +1434,8 @@
 <script>
     var form_modal_level_7_unit_price = $('#form_modal_level_7_unit_price')
     var form_simpan_level_7_unit_price = $('#form_simpan_level_7_unit_price')
-
+    var modal_excel_unit_price_7 = $('#modal_excel_unit_price_7');
+    var level_8 = 'Tambah Level 8 Dari Excel';
 
     function modal_level_7_unit_price(id, type) {
 
@@ -1401,11 +1455,23 @@
 
         }
 
+        if (type == 'tambah_level_7_unit_price_excel') {
+
+        }
+
+
         $.ajax({
             type: "GET",
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_6/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+
+                if (type == 'tambah_level_7_unit_price_excel') {
+                    modal_excel_unit_price_7.modal('show');
+                    $('[name="id_global_excel"]').val(response['row_unit_price_6'].id_unit_price_6);
+                    $('.title_modal_excel').text(level_8)
+                    $('.format_download').html('<a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_unit_price.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>')
+                }
                 if (type == 'update_nilai_level_7_unit_price') {
                     form_modal_level_7_unit_price.modal('show');
                     // kondisi butoon dan form
@@ -1606,7 +1672,8 @@
 <script>
     var form_modal_level_8_unit_price = $('#form_modal_level_8_unit_price')
     var form_simpan_level_8_unit_price = $('#form_simpan_level_8_unit_price')
-
+    var modal_excel_unit_price_8 = $('#modal_excel_unit_price_8');
+    var level_9 = 'Tambah Level 9 Dari Excel';
 
     function modal_level_8_unit_price(id, type) {
 
@@ -1626,11 +1693,21 @@
 
         }
 
+        if (type == 'tambah_level_8_unit_price_excel') {
+
+        }
+
         $.ajax({
             type: "GET",
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_7/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+                if (type == 'tambah_level_8_unit_price_excel') {
+                    modal_excel_unit_price_8.modal('show');
+                    $('[name="id_global_excel"]').val(response['row_unit_price_7'].id_unit_price_7);
+                    $('.title_modal_excel').text(level_9)
+                    $('.format_download').html('<a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_unit_price.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>')
+                }
                 if (type == 'update_nilai_level_8_unit_price') {
                     form_modal_level_8_unit_price.modal('show');
                     // kondisi butoon dan form
@@ -1832,7 +1909,8 @@
 <script>
     var form_modal_level_9_unit_price = $('#form_modal_level_9_unit_price')
     var form_simpan_level_9_unit_price = $('#form_simpan_level_9_unit_price')
-
+    var modal_excel_unit_price_9 = $('#modal_excel_unit_price_9');
+    var level_10 = 'Tambah Level 10 Dari Excel';
 
     function modal_level_9_unit_price(id, type) {
 
@@ -1851,12 +1929,21 @@
         if (type == 'urutan_level_9_unit_price') {
 
         }
+        if (type == 'tambah_level_9_unit_price_excel') {
+
+        }
 
         $.ajax({
             type: "GET",
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_8/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+                if (type == 'tambah_level_9_unit_price_excel') {
+                    modal_excel_unit_price_9.modal('show');
+                    $('[name="id_global_excel"]').val(response['row_unit_price_8'].id_unit_price_8);
+                    $('.title_modal_excel').text(level_10)
+                    $('.format_download').html('<a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_unit_price.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>')
+                }
                 if (type == 'update_nilai_level_9_unit_price') {
                     form_modal_level_9_unit_price.modal('show');
                     // kondisi butoon dan form
@@ -2057,7 +2144,8 @@
 <script>
     var form_modal_level_10_unit_price = $('#form_modal_level_10_unit_price')
     var form_simpan_level_10_unit_price = $('#form_simpan_level_10_unit_price')
-
+    var modal_excel_unit_price_10 = $('#modal_excel_unit_price_10');
+    var level_11 = 'Tambah Level 11 Dari Excel';
 
     function modal_level_10_unit_price(id, type) {
 
@@ -2077,11 +2165,21 @@
 
         }
 
+        if (type == 'tambah_level_10_unit_price_excel') {
+
+        }
+
         $.ajax({
             type: "GET",
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_9/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+                if (type == 'tambah_level_10_unit_price_excel') {
+                    modal_excel_unit_price_10.modal('show');
+                    $('[name="id_global_excel"]').val(response['row_unit_price_9'].id_unit_price_9);
+                    $('.title_modal_excel').text(level_11)
+                    $('.format_download').html('<a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_unit_price.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>')
+                }
                 if (type == 'update_nilai_level_10_unit_price') {
                     form_modal_level_10_unit_price.modal('show');
                     // kondisi butoon dan form
@@ -2282,7 +2380,8 @@
 <script>
     var form_modal_level_11_unit_price = $('#form_modal_level_11_unit_price')
     var form_simpan_level_11_unit_price = $('#form_simpan_level_11_unit_price')
-
+    var modal_excel_unit_price_11 = $('#modal_excel_unit_price_11');
+    var level_12 = 'Tambah Level 12 Dari Excel';
 
     function modal_level_11_unit_price(id, type) {
 
@@ -2301,12 +2400,22 @@
         if (type == 'urutan_level_11_unit_price') {
 
         }
+        if (type == 'tambah_level_11_unit_price_excel') {
+
+        }
 
         $.ajax({
             type: "GET",
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_10/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+
+                if (type == 'tambah_level_11_unit_price_excel') {
+                    modal_excel_unit_price_11.modal('show');
+                    $('[name="id_global_excel"]').val(response['row_unit_price_10'].id_unit_price_10);
+                    $('.title_modal_excel').text(level_12)
+                    $('.format_download').html('<a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_unit_price.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>')
+                }
                 if (type == 'update_nilai_level_11_unit_price') {
                     form_modal_level_11_unit_price.modal('show');
                     // kondisi butoon dan form

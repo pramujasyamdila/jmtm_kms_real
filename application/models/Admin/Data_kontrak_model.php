@@ -1129,6 +1129,7 @@ class Data_kontrak_model extends CI_Model
         $this->db->select('*');
         $this->db->from('table_adendum');
         $this->db->where('table_adendum.id_kontrak', $id_kontrak);
+        $this->db->order_by('CAST(no_adendum AS DECIMAL(10,6)) ASC');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -3621,6 +3622,85 @@ class Data_kontrak_model extends CI_Model
         $this->db->delete('tbl_unit_price_1', ['id_unit_price' => $id_unit_price]);
         return $this->db->affected_rows();
     }
+
+    // delete triger
+    // price_1
+    public function delete_tbl_unit_price_2($id_unit_price_1)
+    {
+        $this->db->delete('tbl_unit_price_2', ['id_unit_price_1' => $id_unit_price_1]);
+        return $this->db->affected_rows();
+    }
+
+    // price_2
+    public function delete_tbl_unit_price_3($id_unit_price_2)
+    {
+        $this->db->delete('tbl_unit_price_3', ['id_unit_price_2' => $id_unit_price_2]);
+        return $this->db->affected_rows();
+    }
+
+
+    // price_4
+    // id_unit_price_3
+    public function delete_tbl_unit_price_4($id_unit_price_3)
+    {
+        $this->db->delete('tbl_unit_price_4', ['id_unit_price_3' => $id_unit_price_3]);
+        return $this->db->affected_rows();
+    }
+
+
+    // price_5
+    // id_unit_price_4
+    public function delete_tbl_unit_price_5($id_unit_price_4)
+    {
+        $this->db->delete('tbl_unit_price_5', ['id_unit_price_4' => $id_unit_price_4]);
+        return $this->db->affected_rows();
+    }
+
+
+    // price_6
+    // id_unit_price_5
+    public function delete_tbl_unit_price_6($id_unit_price_5)
+    {
+        $this->db->delete('tbl_unit_price_6', ['id_unit_price_5' => $id_unit_price_5]);
+        return $this->db->affected_rows();
+    }
+
+
+    // price_7
+    // id_unit_price_6
+    public function delete_tbl_unit_price_7($id_unit_price_6)
+    {
+        $this->db->delete('tbl_unit_price_7', ['id_unit_price_6' => $id_unit_price_6]);
+        return $this->db->affected_rows();
+    }
+
+
+    // price_8
+    // id_unit_price_9
+    public function delete_tbl_unit_price_8($id_unit_price_9)
+    {
+        $this->db->delete('tbl_unit_price_8', ['id_unit_price_9' => $id_unit_price_9]);
+        return $this->db->affected_rows();
+    }
+
+    // price_9
+    // id_unit_price_8
+    public function delete_tbl_unit_price_9($id_unit_price_8)
+    {
+        $this->db->delete('tbl_unit_price_9', ['id_unit_price_8' => $id_unit_price_8]);
+        return $this->db->affected_rows();
+    }
+
+
+    // price_10
+    // id_unit_price_9
+    public function delete_tbl_unit_price_10($id_unit_price_9)
+    {
+        $this->db->delete('tbl_unit_price_10', ['id_unit_price_9' => $id_unit_price_9]);
+        return $this->db->affected_rows();
+    }
+
+
 
 
 
@@ -6328,6 +6408,94 @@ class Data_kontrak_model extends CI_Model
     {
         $this->db->update('tbl_unit_price', $data, $where);
         $updatedId = $this->db->get('tbl_unit_price')->row_array();
+        return $updatedId;
+    }
+
+    // price_1
+    public function update_tbl_unit_price_1($where, $data)
+    {
+        $this->db->update('tbl_unit_price_1', $data, $where);
+        $updatedId = $this->db->get('tbl_unit_price_1')->row_array();
+        return $updatedId;
+    }
+
+    // price_2
+    public function update_tbl_unit_price_2($where, $data)
+    {
+        $this->db->update('tbl_unit_price_2', $data, $where);
+        $updatedId = $this->db->get('tbl_unit_price_2')->row_array();
+        return $updatedId;
+    }
+
+    
+    // price_3
+    public function update_tbl_unit_price_3($where, $data)
+    {
+        $this->db->update('tbl_unit_price_3', $data, $where);
+        $updatedId = $this->db->get('tbl_unit_price_3')->row_array();
+        return $updatedId;
+    }
+
+    
+    // price_4
+    public function update_tbl_unit_price_4($where, $data)
+    {
+        $this->db->update('tbl_unit_price_4', $data, $where);
+        $updatedId = $this->db->get('tbl_unit_price_4')->row_array();
+        return $updatedId;
+    }
+
+    
+    // price_5
+    public function update_tbl_unit_price_5($where, $data)
+    {
+        $this->db->update('tbl_unit_price_5', $data, $where);
+        $updatedId = $this->db->get('tbl_unit_price_5')->row_array();
+        return $updatedId;
+    }
+
+    
+    // price_6
+    public function update_tbl_unit_price_6($where, $data)
+    {
+        $this->db->update('tbl_unit_price_6', $data, $where);
+        $updatedId = $this->db->get('tbl_unit_price_6')->row_array();
+        return $updatedId;
+    }
+
+    
+    // price_7
+    public function update_tbl_unit_price_7($where, $data)
+    {
+        $this->db->update('tbl_unit_price_7', $data, $where);
+        $updatedId = $this->db->get('tbl_unit_price_7')->row_array();
+        return $updatedId;
+    }
+
+    
+    // price_8
+    public function update_tbl_unit_price_8($where, $data)
+    {
+        $this->db->update('tbl_unit_price_8', $data, $where);
+        $updatedId = $this->db->get('tbl_unit_price_8')->row_array();
+        return $updatedId;
+    }
+
+    
+    // price_9
+    public function update_tbl_unit_price_9($where, $data)
+    {
+        $this->db->update('tbl_unit_price_9', $data, $where);
+        $updatedId = $this->db->get('tbl_unit_price_9')->row_array();
+        return $updatedId;
+    }
+
+    
+    // price_10
+    public function update_tbl_unit_price_10($where, $data)
+    {
+        $this->db->update('tbl_unit_price_10', $data, $where);
+        $updatedId = $this->db->get('tbl_unit_price_10')->row_array();
         return $updatedId;
     }
 

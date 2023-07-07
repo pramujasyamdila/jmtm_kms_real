@@ -4182,11 +4182,10 @@ class Upload_excel_kontrak extends CI_Controller
 
 
     // INI UNTUK UNIT PRICE
-        public function upload_data_excel_unit_price_1()
+    public function upload_data_excel_unit_price_1()
     {
         $id_unit_price = $this->input->post('id_global_excel');
         $id_kontrak = $this->input->post('id_kontrak');
-        $this->Data_excelisasi_model->delete_tbl_unit_price_1($id_unit_price);
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'xlsx|xls';
         $config['file_name'] = 'doc' . time();
@@ -4217,6 +4216,441 @@ class Upload_excel_kontrak extends CI_Controller
                 $this->session->set_flashdata('pesan', 'Data Berhasil Di Import');
                 $data['id_unit_price'] = $id_unit_price;
                 $this->load->view('unit_price_excel/nilai_level_excel_3', $data);
+                redirect('admin/data_kontrak/kelola_level_unit_price/' . $id_kontrak);
+            }
+        } else {
+            echo "Error : " . $this->upload->display_errors();
+        }
+    }
+
+
+    public function upload_data_excel_unit_price_2()
+    {
+        $id_unit_price_1 = $this->input->post('id_global_excel');
+        $id_kontrak = $this->input->post('id_kontrak');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'xlsx|xls';
+        $config['file_name'] = 'doc' . time();
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('importexcel')) {
+            $file = $this->upload->data();
+            $reader = ReaderEntityFactory::createXLSXReader();
+            $reader->open('uploads/' . $file['file_name']);
+            foreach ($reader->getSheetIterator() as $sheet) {
+                $numRow = 1;
+                foreach ($sheet->getRowIterator() as $row) {
+                    if ($numRow > 1) {
+                        $data = array(
+                            'id_unit_price_1' => $id_unit_price_1,
+                            'no_urut' => $row->getCellAtIndex(0),
+                            'nama_uraian' => $row->getCellAtIndex(1),
+                            'satuan' => $row->getCellAtIndex(2),
+                            'kuantitas' => $row->getCellAtIndex(3),
+                            'harga_satuan' => $row->getCellAtIndex(4),
+                            'total_harga' => $row->getCellAtIndex(5),
+                        );
+                        $this->Data_excelisasi_model->insert_via_excel_unit_price_level_2($data);
+                    }
+                    $numRow++;
+                }
+                $reader->close();
+                unlink('uploads/' . $file['file_name']);
+                $this->session->set_flashdata('pesan', 'Data Berhasil Di Import');
+                $data['id_unit_price_1'] = $id_unit_price_1;
+                $this->load->view('unit_price_excel/nilai_level_excel_4', $data);
+                redirect('admin/data_kontrak/kelola_level_unit_price/' . $id_kontrak);
+            }
+        } else {
+            echo "Error : " . $this->upload->display_errors();
+        }
+    }
+    // _3
+    // _2
+    public function upload_data_excel_unit_price_3()
+    {
+        $id_unit_price_2 = $this->input->post('id_global_excel');
+        $id_kontrak = $this->input->post('id_kontrak');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'xlsx|xls';
+        $config['file_name'] = 'doc' . time();
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('importexcel')) {
+            $file = $this->upload->data();
+            $reader = ReaderEntityFactory::createXLSXReader();
+            $reader->open('uploads/' . $file['file_name']);
+            foreach ($reader->getSheetIterator() as $sheet) {
+                $numRow = 1;
+                foreach ($sheet->getRowIterator() as $row) {
+                    if ($numRow > 1) {
+                        $data = array(
+                            'id_unit_price_2' => $id_unit_price_2,
+                            'no_urut' => $row->getCellAtIndex(0),
+                            'nama_uraian' => $row->getCellAtIndex(1),
+                            'satuan' => $row->getCellAtIndex(2),
+                            'kuantitas' => $row->getCellAtIndex(3),
+                            'harga_satuan' => $row->getCellAtIndex(4),
+                            'total_harga' => $row->getCellAtIndex(5),
+                        );
+                        $this->Data_excelisasi_model->insert_via_excel_unit_price_level_3($data);
+                    }
+                    $numRow++;
+                }
+                $reader->close();
+                unlink('uploads/' . $file['file_name']);
+                $this->session->set_flashdata('pesan', 'Data Berhasil Di Import');
+                $data['id_unit_price_2'] = $id_unit_price_2;
+                $this->load->view('unit_price_excel/nilai_level_excel_5', $data);
+                redirect('admin/data_kontrak/kelola_level_unit_price/' . $id_kontrak);
+            }
+        } else {
+            echo "Error : " . $this->upload->display_errors();
+        }
+    }
+
+    // _4
+    // _3
+    public function upload_data_excel_unit_price_4()
+    {
+        $id_unit_price_3 = $this->input->post('id_global_excel');
+        $id_kontrak = $this->input->post('id_kontrak');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'xlsx|xls';
+        $config['file_name'] = 'doc' . time();
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('importexcel')) {
+            $file = $this->upload->data();
+            $reader = ReaderEntityFactory::createXLSXReader();
+            $reader->open('uploads/' . $file['file_name']);
+            foreach ($reader->getSheetIterator() as $sheet) {
+                $numRow = 1;
+                foreach ($sheet->getRowIterator() as $row) {
+                    if ($numRow > 1) {
+                        $data = array(
+                            'id_unit_price_3' => $id_unit_price_3,
+                            'no_urut' => $row->getCellAtIndex(0),
+                            'nama_uraian' => $row->getCellAtIndex(1),
+                            'satuan' => $row->getCellAtIndex(2),
+                            'kuantitas' => $row->getCellAtIndex(3),
+                            'harga_satuan' => $row->getCellAtIndex(4),
+                            'total_harga' => $row->getCellAtIndex(5),
+                        );
+                        $this->Data_excelisasi_model->insert_via_excel_unit_price_level_4($data);
+                    }
+                    $numRow++;
+                }
+                $reader->close();
+                unlink('uploads/' . $file['file_name']);
+                $this->session->set_flashdata('pesan', 'Data Berhasil Di Import');
+                $data['id_unit_price_3'] = $id_unit_price_3;
+                $this->load->view('unit_price_excel/nilai_level_excel_6', $data);
+                redirect('admin/data_kontrak/kelola_level_unit_price/' . $id_kontrak);
+            }
+        } else {
+            echo "Error : " . $this->upload->display_errors();
+        }
+    }
+
+    // _5
+    // _4
+    public function upload_data_excel_unit_price_5()
+    {
+        $id_unit_price_4 = $this->input->post('id_global_excel');
+        $id_kontrak = $this->input->post('id_kontrak');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'xlsx|xls';
+        $config['file_name'] = 'doc' . time();
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('importexcel')) {
+            $file = $this->upload->data();
+            $reader = ReaderEntityFactory::createXLSXReader();
+            $reader->open('uploads/' . $file['file_name']);
+            foreach ($reader->getSheetIterator() as $sheet) {
+                $numRow = 1;
+                foreach ($sheet->getRowIterator() as $row) {
+                    if ($numRow > 1) {
+                        $data = array(
+                            'id_unit_price_4' => $id_unit_price_4,
+                            'no_urut' => $row->getCellAtIndex(0),
+                            'nama_uraian' => $row->getCellAtIndex(1),
+                            'satuan' => $row->getCellAtIndex(2),
+                            'kuantitas' => $row->getCellAtIndex(3),
+                            'harga_satuan' => $row->getCellAtIndex(4),
+                            'total_harga' => $row->getCellAtIndex(5),
+                        );
+                        $this->Data_excelisasi_model->insert_via_excel_unit_price_level_5($data);
+                    }
+                    $numRow++;
+                }
+                $reader->close();
+                unlink('uploads/' . $file['file_name']);
+                $this->session->set_flashdata('pesan', 'Data Berhasil Di Import');
+                $data['id_unit_price_4'] = $id_unit_price_4;
+                $this->load->view('unit_price_excel/nilai_level_excel_6', $data);
+                redirect('admin/data_kontrak/kelola_level_unit_price/' . $id_kontrak);
+            }
+        } else {
+            echo "Error : " . $this->upload->display_errors();
+        }
+    }
+
+
+    // _6
+    // _5
+    public function upload_data_excel_unit_price_6()
+    {
+        $id_unit_price_5 = $this->input->post('id_global_excel');
+        $id_kontrak = $this->input->post('id_kontrak');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'xlsx|xls';
+        $config['file_name'] = 'doc' . time();
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('importexcel')) {
+            $file = $this->upload->data();
+            $reader = ReaderEntityFactory::createXLSXReader();
+            $reader->open('uploads/' . $file['file_name']);
+            foreach ($reader->getSheetIterator() as $sheet) {
+                $numRow = 1;
+                foreach ($sheet->getRowIterator() as $row) {
+                    if ($numRow > 1) {
+                        $data = array(
+                            'id_unit_price_5' => $id_unit_price_5,
+                            'no_urut' => $row->getCellAtIndex(0),
+                            'nama_uraian' => $row->getCellAtIndex(1),
+                            'satuan' => $row->getCellAtIndex(2),
+                            'kuantitas' => $row->getCellAtIndex(3),
+                            'harga_satuan' => $row->getCellAtIndex(4),
+                            'total_harga' => $row->getCellAtIndex(5),
+                        );
+                        $this->Data_excelisasi_model->insert_via_excel_unit_price_level_6($data);
+                    }
+                    $numRow++;
+                }
+                $reader->close();
+                unlink('uploads/' . $file['file_name']);
+                $this->session->set_flashdata('pesan', 'Data Berhasil Di Import');
+                $data['id_unit_price_5'] = $id_unit_price_5;
+                $this->load->view('unit_price_excel/nilai_level_excel_7', $data);
+                redirect('admin/data_kontrak/kelola_level_unit_price/' . $id_kontrak);
+            }
+        } else {
+            echo "Error : " . $this->upload->display_errors();
+        }
+    }
+
+
+    // _7
+    // _6
+    public function upload_data_excel_unit_price_7()
+    {
+        $id_unit_price_6 = $this->input->post('id_global_excel');
+        $id_kontrak = $this->input->post('id_kontrak');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'xlsx|xls';
+        $config['file_name'] = 'doc' . time();
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('importexcel')) {
+            $file = $this->upload->data();
+            $reader = ReaderEntityFactory::createXLSXReader();
+            $reader->open('uploads/' . $file['file_name']);
+            foreach ($reader->getSheetIterator() as $sheet) {
+                $numRow = 1;
+                foreach ($sheet->getRowIterator() as $row) {
+                    if ($numRow > 1) {
+                        $data = array(
+                            'id_unit_price_6' => $id_unit_price_6,
+                            'no_urut' => $row->getCellAtIndex(0),
+                            'nama_uraian' => $row->getCellAtIndex(1),
+                            'satuan' => $row->getCellAtIndex(2),
+                            'kuantitas' => $row->getCellAtIndex(3),
+                            'harga_satuan' => $row->getCellAtIndex(4),
+                            'total_harga' => $row->getCellAtIndex(5),
+                        );
+                        $this->Data_excelisasi_model->insert_via_excel_unit_price_level_7($data);
+                    }
+                    $numRow++;
+                }
+                $reader->close();
+                unlink('uploads/' . $file['file_name']);
+                $this->session->set_flashdata('pesan', 'Data Berhasil Di Import');
+                $data['id_unit_price_6'] = $id_unit_price_6;
+                $this->load->view('unit_price_excel/nilai_level_excel_8', $data);
+                redirect('admin/data_kontrak/kelola_level_unit_price/' . $id_kontrak);
+            }
+        } else {
+            echo "Error : " . $this->upload->display_errors();
+        }
+    }
+
+
+
+    // _8
+    // _7
+    public function upload_data_excel_unit_price_8()
+    {
+        $id_unit_price_7 = $this->input->post('id_global_excel');
+        $id_kontrak = $this->input->post('id_kontrak');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'xlsx|xls';
+        $config['file_name'] = 'doc' . time();
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('importexcel')) {
+            $file = $this->upload->data();
+            $reader = ReaderEntityFactory::createXLSXReader();
+            $reader->open('uploads/' . $file['file_name']);
+            foreach ($reader->getSheetIterator() as $sheet) {
+                $numRow = 1;
+                foreach ($sheet->getRowIterator() as $row) {
+                    if ($numRow > 1) {
+                        $data = array(
+                            'id_unit_price_7' => $id_unit_price_7,
+                            'no_urut' => $row->getCellAtIndex(0),
+                            'nama_uraian' => $row->getCellAtIndex(1),
+                            'satuan' => $row->getCellAtIndex(2),
+                            'kuantitas' => $row->getCellAtIndex(3),
+                            'harga_satuan' => $row->getCellAtIndex(4),
+                            'total_harga' => $row->getCellAtIndex(5),
+                        );
+                        $this->Data_excelisasi_model->insert_via_excel_unit_price_level_8($data);
+                    }
+                    $numRow++;
+                }
+                $reader->close();
+                unlink('uploads/' . $file['file_name']);
+                $this->session->set_flashdata('pesan', 'Data Berhasil Di Import');
+                $data['id_unit_price_7'] = $id_unit_price_7;
+                $this->load->view('unit_price_excel/nilai_level_excel_9', $data);
+                redirect('admin/data_kontrak/kelola_level_unit_price/' . $id_kontrak);
+            }
+        } else {
+            echo "Error : " . $this->upload->display_errors();
+        }
+    }
+
+
+    // _9
+    // _8
+    public function upload_data_excel_unit_price_9()
+    {
+        $id_unit_price_8 = $this->input->post('id_global_excel');
+        $id_kontrak = $this->input->post('id_kontrak');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'xlsx|xls';
+        $config['file_name'] = 'doc' . time();
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('importexcel')) {
+            $file = $this->upload->data();
+            $reader = ReaderEntityFactory::createXLSXReader();
+            $reader->open('uploads/' . $file['file_name']);
+            foreach ($reader->getSheetIterator() as $sheet) {
+                $numRow = 1;
+                foreach ($sheet->getRowIterator() as $row) {
+                    if ($numRow > 1) {
+                        $data = array(
+                            'id_unit_price_8' => $id_unit_price_8,
+                            'no_urut' => $row->getCellAtIndex(0),
+                            'nama_uraian' => $row->getCellAtIndex(1),
+                            'satuan' => $row->getCellAtIndex(2),
+                            'kuantitas' => $row->getCellAtIndex(3),
+                            'harga_satuan' => $row->getCellAtIndex(4),
+                            'total_harga' => $row->getCellAtIndex(5),
+                        );
+                        $this->Data_excelisasi_model->insert_via_excel_unit_price_level_9($data);
+                    }
+                    $numRow++;
+                }
+                $reader->close();
+                unlink('uploads/' . $file['file_name']);
+                $this->session->set_flashdata('pesan', 'Data Berhasil Di Import');
+                $data['id_unit_price_8'] = $id_unit_price_8;
+                $this->load->view('unit_price_excel/nilai_level_excel_10', $data);
+                redirect('admin/data_kontrak/kelola_level_unit_price/' . $id_kontrak);
+            }
+        } else {
+            echo "Error : " . $this->upload->display_errors();
+        }
+    }
+
+
+
+    // _10
+    // _9
+    public function upload_data_excel_unit_price_10()
+    {
+        $id_unit_price_9 = $this->input->post('id_global_excel');
+        $id_kontrak = $this->input->post('id_kontrak');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'xlsx|xls';
+        $config['file_name'] = 'doc' . time();
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('importexcel')) {
+            $file = $this->upload->data();
+            $reader = ReaderEntityFactory::createXLSXReader();
+            $reader->open('uploads/' . $file['file_name']);
+            foreach ($reader->getSheetIterator() as $sheet) {
+                $numRow = 1;
+                foreach ($sheet->getRowIterator() as $row) {
+                    if ($numRow > 1) {
+                        $data = array(
+                            'id_unit_price_9' => $id_unit_price_9,
+                            'no_urut' => $row->getCellAtIndex(0),
+                            'nama_uraian' => $row->getCellAtIndex(1),
+                            'satuan' => $row->getCellAtIndex(2),
+                            'kuantitas' => $row->getCellAtIndex(3),
+                            'harga_satuan' => $row->getCellAtIndex(4),
+                            'total_harga' => $row->getCellAtIndex(5),
+                        );
+                        $this->Data_excelisasi_model->insert_via_excel_unit_price_level_10($data);
+                    }
+                    $numRow++;
+                }
+                $reader->close();
+                unlink('uploads/' . $file['file_name']);
+                $this->session->set_flashdata('pesan', 'Data Berhasil Di Import');
+                $data['id_unit_price_9'] = $id_unit_price_9;
+                $this->load->view('unit_price_excel/nilai_level_excel_11', $data);
+                redirect('admin/data_kontrak/kelola_level_unit_price/' . $id_kontrak);
+            }
+        } else {
+            echo "Error : " . $this->upload->display_errors();
+        }
+    }
+
+    // _11
+    // _10
+    public function upload_data_excel_unit_price_11()
+    {
+        $id_unit_price_10 = $this->input->post('id_global_excel');
+        $id_kontrak = $this->input->post('id_kontrak');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'xlsx|xls';
+        $config['file_name'] = 'doc' . time();
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('importexcel')) {
+            $file = $this->upload->data();
+            $reader = ReaderEntityFactory::createXLSXReader();
+            $reader->open('uploads/' . $file['file_name']);
+            foreach ($reader->getSheetIterator() as $sheet) {
+                $numRow = 1;
+                foreach ($sheet->getRowIterator() as $row) {
+                    if ($numRow > 1) {
+                        $data = array(
+                            'id_unit_price_10' => $id_unit_price_10,
+                            'no_urut' => $row->getCellAtIndex(0),
+                            'nama_uraian' => $row->getCellAtIndex(1),
+                            'satuan' => $row->getCellAtIndex(2),
+                            'kuantitas' => $row->getCellAtIndex(3),
+                            'harga_satuan' => $row->getCellAtIndex(4),
+                            'total_harga' => $row->getCellAtIndex(5),
+                        );
+                        $this->Data_excelisasi_model->insert_via_excel_unit_price_level_11($data);
+                    }
+                    $numRow++;
+                }
+                $reader->close();
+                unlink('uploads/' . $file['file_name']);
+                $this->session->set_flashdata('pesan', 'Data Berhasil Di Import');
+                $data['id_unit_price_10'] = $id_unit_price_10;
+                $this->load->view('unit_price_excel/nilai_level_excel_11', $data);
                 redirect('admin/data_kontrak/kelola_level_unit_price/' . $id_kontrak);
             }
         } else {
