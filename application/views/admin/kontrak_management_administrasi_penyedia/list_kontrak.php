@@ -3,10 +3,18 @@
 <div class="main-content" style="font-family: 'Highway Gothic', sans-serif;">
     <section class="section">
         <div class="section-header">
+            <?php if ($judul) { ?>
+                <h1><i class="fa fa-book"></i> <?= $judul?></h1>
+            <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item"><a href="<?= base_url('admin/lembar_kerja') ?>"><?= $judul?></a></div>
+            </div>
+           <?php } else { ?>
             <h1><i class="fa fa-book"></i>ADMINISTRASI PENYEDIA</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item"><a href="<?= base_url('admin/administrasi_penyedia') ?>">ADMINISTRASI PENYEDIA</a></div>
             </div>
+         <?php   }   ?>
+           
         </div>
         <div class="content-wrapper" style="background-color:white">
             <!-- Content Header (Page header) -->
