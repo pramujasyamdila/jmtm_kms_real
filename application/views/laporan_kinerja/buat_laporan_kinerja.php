@@ -1,4 +1,18 @@
 <!-- Content Wrapper. Contains page content -->
+<style>
+  div.dt-top-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+div.dt-center-in-div {
+  margin: 0 auto;
+}
+
+div.dt-filter-spacer {
+  margin: 10px 0;
+}
+</style>
 <div class="main-content">
     <section class="section">
         <div class="section-header">

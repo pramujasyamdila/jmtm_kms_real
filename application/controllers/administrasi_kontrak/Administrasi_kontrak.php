@@ -10,6 +10,10 @@ class Administrasi_kontrak extends CI_Controller
         $this->load->model('Admin/Data_kontrak_model');
         $this->load->model('Admin/Administrasi_kontrak_model');
         $this->load->model('Auth_model');
+        $session = $this->session->userdata('id_pegawai');
+        if (!$session) {
+			redirect('auth');
+		}
     }
 
     public function index()
