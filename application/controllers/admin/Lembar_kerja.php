@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 date_default_timezone_set('Asia/Jakarta');
 error_reporting(0);
-class Administrasi_penyedia extends CI_Controller
+class Lembar_kerja extends CI_Controller
 {
     function __construct()
     {
@@ -17,8 +17,7 @@ class Administrasi_penyedia extends CI_Controller
 
     public function index()
     {
-
-
+        $this->session->unset_userdata('id_kontrak');
         $data['active_kontrak'] = 'active';
         $data['menu_open_kontrak'] = 'menu-open';
         $get_pegawai = $this->Auth_model->get_pegawai();
@@ -31,11 +30,13 @@ class Administrasi_penyedia extends CI_Controller
         $data['get_departemen'] = $this->Data_kontrak_model->get_departemen($get_pegawai['id_departemen']);
         $data['get_area'] = $this->Data_kontrak_model->get_area($get_pegawai['id_area']);
         $data['get_sub_area'] = $this->Data_kontrak_model->get_sub_area($get_pegawai['id_sub_area']);
+
+        $data['judul'] = 'Lembar Kerja';
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('admin/kontrak_management_administrasi_penyedia/list_kontrak', $data);
         $this->load->view('template_stisla/footer');
-        $this->load->view('admin/kontrak_management_administrasi_penyedia/ajax_list_kontrak');
+        $this->load->view('admin/kontrak_management_administrasi_penyedia/ajax_lembar_kerja');
     }
 
 
@@ -51,6 +52,8 @@ class Administrasi_penyedia extends CI_Controller
         $id_area = $get_pegawai['id_area'];
         $id_sub_area = $get_pegawai['id_sub_area'];
         $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $id_kontrak);
+
+        $data['judul'] = 'Lembar Kerja';
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('admin/kontrak_management_administrasi_penyedia/index', $data);
@@ -219,7 +222,7 @@ class Administrasi_penyedia extends CI_Controller
                             Aksi
                          </button>
                          <div class="dropdown-menu">
-                         <a class="dropdown-item " href="javascript:;" class="btn btn-warning btn-sm" onClick="byid(' . "'" . $rs->id_kontrak . "','lihat_program'" . ')"><i class="fa fa-file-contract"></i> Kelola Program Pra</a>
+                         <a class="dropdown-item " href="javascript:;" class="btn btn-warning btn-sm" onClick="byid(' . "'" . $rs->id_kontrak . "','lembar_kerja_kontrak'" . ')"><i class="fa fa-file-contract"></i> Kelola Program Pra</a>
                          
                          </div>
                          </div>';
@@ -230,7 +233,7 @@ class Administrasi_penyedia extends CI_Controller
                             Aksi
                          </button>
                          <div class="dropdown-menu">
-                         <a class="dropdown-item "href="javascript:;" class="btn btn-warning btn-sm" onClick="byid(' . "'" . $rs->id_kontrak . "','lihat_program'" . ')"><i class="fa fa-file-contract"></i> Kelola Program Pra</a>
+                         <a class="dropdown-item "href="javascript:;" class="btn btn-warning btn-sm" onClick="byid(' . "'" . $rs->id_kontrak . "','lembar_kerja_kontrak'" . ')"><i class="fa fa-file-contract"></i> Kelola Program Pra</a>
                          
                          </div>
                          </div>';
@@ -3612,6 +3615,13 @@ class Administrasi_penyedia extends CI_Controller
 
     public function list_program($id_kontrak)
     {
+        $lembar_kerja = $this->input->post('lembar_kerja');
+       
+        if ($lembar_kerja) {
+            $this->session->set_userdata('id_kontrak',$id_kontrak);
+        } else {
+           
+        }
         $keyword = $this->input->post('keyword');
         $data['active_kontrak'] = 'active';
         $data['menu_open_kontrak'] = 'menu-open';
@@ -3621,11 +3631,13 @@ class Administrasi_penyedia extends CI_Controller
         $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $id_kontrak);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
         $data['id_kontrak'] = $id_kontrak;
-        $this->load->view('template_stisla/header');
-        $this->load->view('template_stisla/sidebar', $data);
-        $this->load->view('admin/kontrak_management_administrasi_penyedia/index', $data);
-        $this->load->view('template_stisla/footer');
-        $this->load->view('admin/kontrak_management_administrasi_penyedia/ajax');
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+        // $this->load->view('template_stisla/header');
+        // $this->load->view('template_stisla/sidebar', $data);
+        // $this->load->view('admin/kontrak_management_administrasi_penyedia/index', $data);
+        // $this->load->view('template_stisla/footer');
+        // $this->load->view('admin/kontrak_management_administrasi_penyedia/ajax');
+
     }
 
     // formating pdf

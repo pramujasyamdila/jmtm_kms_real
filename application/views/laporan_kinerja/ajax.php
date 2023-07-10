@@ -234,33 +234,32 @@
         $('.table').DataTable({
             "ordering": false,
             "info": true,
-            dom: 'Blfrtip',
+            dom: '<"dt-top-container"<l><"dt-center-in-div"B><f>r>t<"dt-filter-spacer"f><ip>',
             lengthMenu: [
             [ 10, 25, 50, -1 ],
             [ '10 rows', '25 rows', '50 rows', 'Show all' ]
             ],
-            buttons: [
-                'pageLength' 
-            // {
-            //     extend:    'copyHtml5',
-            //     text:      '<i class="fas fa-file"> Copy</i>',
-            //     titleAttr: 'Copy'
-            // },
-            // {
-            //     extend:    'excelHtml5',
-            //     text:      '<i class="fas fa-file-excel"> Excel</i>',
-            //     titleAttr: 'Excel'
-            // },
-            // {
-            //     extend:    'csvHtml5',
-            //     text:      '<i class="fas fa-file"> Csv</i>',
-            //     titleAttr: 'CSV'
-            // },
-            // {
-            //     extend:    'pdfHtml5',
-            //     text:      '<i class="fas fa-file-pdf"> Pdf</i>',
-            //     titleAttr: 'PDF'
-            // }
+            buttons: [ 
+            {
+                extend:    'copyHtml5',
+                text:      '<i class="fas fa-file"> Copy</i>',
+                titleAttr: 'Copy'
+            },
+            {
+                extend:    'excelHtml5',
+                text:      '<i class="fas fa-file-excel"> Excel</i>',
+                titleAttr: 'Excel'
+            },
+            {
+                extend:    'csvHtml5',
+                text:      '<i class="fas fa-file"> Csv</i>',
+                titleAttr: 'CSV'
+            },
+            {
+                extend:    'pdfHtml5',
+                text:      '<i class="fas fa-file-pdf"> Pdf</i>',
+                titleAttr: 'PDF'
+            }
         ]
         });
     });

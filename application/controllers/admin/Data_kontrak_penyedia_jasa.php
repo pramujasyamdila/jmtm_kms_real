@@ -8,6 +8,10 @@ class Data_kontrak_penyedia_jasa extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Admin/Data_kontrak_model');
+        $session = $this->session->userdata('id_pegawai');
+        if (!$session) {
+			redirect('auth');
+		}
     }
 
     public function index()
