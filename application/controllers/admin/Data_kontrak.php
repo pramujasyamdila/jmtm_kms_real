@@ -4777,9 +4777,11 @@ class Data_kontrak extends CI_Controller
     public function by_id_unit_price_1($id_unit_price_1)
     {
         $row_unit_price_1 = $this->Data_kontrak_model->by_id_unit_price_1($id_unit_price_1);
-
+        $id_unit_price = $row_unit_price_1['id_unit_price'];
+        $result_unit_price_1 = $this->Data_kontrak_model->by_result_unit_price_1($id_unit_price);
         $data = [
-            'row_unit_price_1' => $row_unit_price_1
+            'row_unit_price_1' => $row_unit_price_1,
+            'result_unit_price_1' => $result_unit_price_1
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -4884,9 +4886,12 @@ class Data_kontrak extends CI_Controller
     public function by_id_unit_price_2($id_unit_price_2)
     {
         $row_unit_price_2 = $this->Data_kontrak_model->by_id_unit_price_2($id_unit_price_2);
-
+        $id_unit_price_1 = $row_unit_price_2['id_unit_price_1'];
+        $result_unit_price_2 = $this->Data_kontrak_model->by_result_unit_price_2($id_unit_price_1);
         $data = [
-            'row_unit_price_2' => $row_unit_price_2
+            'row_unit_price_2' => $row_unit_price_2,
+            'result_unit_price_2' => $result_unit_price_2
+
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -5031,9 +5036,12 @@ class Data_kontrak extends CI_Controller
     public function by_id_unit_price_3($id_unit_price_3)
     {
         $row_unit_price_3 = $this->Data_kontrak_model->by_id_unit_price_3($id_unit_price_3);
-
+        $id_unit_price_2 = $row_unit_price_3['id_unit_price_2'];
+        $result_unit_price_3 = $this->Data_kontrak_model->by_result_unit_price_3($id_unit_price_2);
         $data = [
-            'row_unit_price_3' => $row_unit_price_3
+            'row_unit_price_3' => $row_unit_price_3,
+            'result_unit_price_3' => $result_unit_price_3
+
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -5212,9 +5220,12 @@ class Data_kontrak extends CI_Controller
     public function by_id_unit_price_4($id_unit_price_4)
     {
         $row_unit_price_4 = $this->Data_kontrak_model->by_id_unit_price_4($id_unit_price_4);
-
+        $id_unit_price_3 = $row_unit_price_4['id_unit_price_3'];
+        $result_unit_price_4 = $this->Data_kontrak_model->by_result_unit_price_4($id_unit_price_3);
         $data = [
-            'row_unit_price_4' => $row_unit_price_4
+            'row_unit_price_4' => $row_unit_price_4,
+            'result_unit_price_4' => $result_unit_price_4
+        
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -5429,9 +5440,12 @@ class Data_kontrak extends CI_Controller
     public function by_id_unit_price_5($id_unit_price_5)
     {
         $row_unit_price_5 = $this->Data_kontrak_model->by_id_unit_price_5($id_unit_price_5);
-
+        $id_unit_price_4 = $row_unit_price_5['id_unit_price_4'];
+        $result_unit_price_5 = $this->Data_kontrak_model->by_result_unit_price_5($id_unit_price_4);
         $data = [
-            'row_unit_price_5' => $row_unit_price_5
+            'row_unit_price_5' => $row_unit_price_5,
+            'result_unit_price_5' => $result_unit_price_5
+        
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -5682,9 +5696,12 @@ class Data_kontrak extends CI_Controller
     public function by_id_unit_price_6($id_unit_price_6)
     {
         $row_unit_price_6 = $this->Data_kontrak_model->by_id_unit_price_6($id_unit_price_6);
-
+        $id_unit_price_5 = $row_unit_price_6['id_unit_price_5'];
+        $result_unit_price_6 = $this->Data_kontrak_model->by_result_unit_price_6($id_unit_price_5);
         $data = [
-            'row_unit_price_6' => $row_unit_price_6
+            'row_unit_price_6' => $row_unit_price_6,
+            'result_unit_price_6' => $result_unit_price_6
+        
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -5973,9 +5990,12 @@ class Data_kontrak extends CI_Controller
     public function by_id_unit_price_7($id_unit_price_7)
     {
         $row_unit_price_7 = $this->Data_kontrak_model->by_id_unit_price_7($id_unit_price_7);
-
+        $id_unit_price_6 = $row_unit_price_7['id_unit_price_6'];
+        $result_unit_price_7 = $this->Data_kontrak_model->by_result_unit_price_7($id_unit_price_6);
         $data = [
-            'row_unit_price_7' => $row_unit_price_7
+            'row_unit_price_7' => $row_unit_price_7,
+            'result_unit_price_7' => $result_unit_price_7
+        
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -6301,9 +6321,12 @@ class Data_kontrak extends CI_Controller
     public function by_id_unit_price_8($id_unit_price_8)
     {
         $row_unit_price_8 = $this->Data_kontrak_model->by_id_unit_price_8($id_unit_price_8);
-
+        $id_unit_price_7 = $row_unit_price_8['id_unit_price_7'];
+        $result_unit_price_8 = $this->Data_kontrak_model->by_result_unit_price_8($id_unit_price_7);
         $data = [
-            'row_unit_price_8' => $row_unit_price_8
+            'row_unit_price_8' => $row_unit_price_8,
+            'result_unit_price_8' => $result_unit_price_8
+        
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -6667,9 +6690,12 @@ class Data_kontrak extends CI_Controller
     public function by_id_unit_price_9($id_unit_price_9)
     {
         $row_unit_price_9 = $this->Data_kontrak_model->by_id_unit_price_9($id_unit_price_9);
-
+        $id_unit_price_8 = $row_unit_price_9['id_unit_price_8'];
+        $result_unit_price_9 = $this->Data_kontrak_model->by_result_unit_price_9($id_unit_price_8);
         $data = [
-            'row_unit_price_9' => $row_unit_price_9
+            'row_unit_price_9' => $row_unit_price_9,
+            'result_unit_price_9' => $result_unit_price_9
+        
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }

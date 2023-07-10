@@ -82,7 +82,7 @@
                                                                 <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'edit_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
                                                                 <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'tambah_level_1_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                 <!-- UBAH urutan -->
-                                                                <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'urutan_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
+                                                                <!-- <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'urutan_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a> -->
                                                             <?php    } else { ?>
 
                                                                 <?php if ($value_tb_unit_price['no_urut'] == 1) { ?>
@@ -91,7 +91,7 @@
                                                                     <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'edit_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
                                                                     <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'tambah_level_1_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                     <!-- UBAH urutan -->
-                                                                    <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'urutan_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
+                                                                    <!-- <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'urutan_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a> -->
                                                                 <?php    } else { ?>
                                                                     <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'update_nilai_level_1_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
                                                                     <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'tambah_level_1_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
@@ -99,7 +99,7 @@
                                                                     <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'edit_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
                                                                     <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'tambah_level_1_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                     <!-- UBAH urutan -->
-                                                                    <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'urutan_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
+                                                                    <!-- <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'urutan_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a> -->
                                                                 <?php   }  ?>
 
                                                             <?php   }  ?>
@@ -109,26 +109,26 @@
                                                                 <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'edit_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
                                                                 <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'tambah_level_1_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                 <!-- UBAH urutan -->
-                                                                <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'urutan_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
+                                                                <!-- <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'urutan_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a> -->
                                                                 <?php if ($value_tb_unit_price['no_urut'] == 1) { ?>
                                                                     <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'tambah_level_1_unit_price')" class="btn btn-sm btn-primary" href="javascript:;"><i class="fas fa-plus"></i></a>
                                                                     <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'edit_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
                                                                     <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'tambah_level_1_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                     <!-- UBAH urutan -->
-                                                                    <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'urutan_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
+                                                                    <!-- <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'urutan_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a> -->
                                                                 <?php    } else { ?>
                                                                     <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'hapus_level_1_unit_price')" class="btn btn-sm btn-danger" href="javascript:;"><i class="fas fa-trash"></i></a>
                                                                     <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'edit_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
                                                                     <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'tambah_level_1_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                     <!-- UBAH urutan -->
-                                                                    <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'urutan_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
+                                                                    <!-- <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'urutan_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a> -->
                                                                 <?php   }  ?>
                                                             <?php    } else { ?>
                                                                 <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'update_nilai_level_1_unit_price')" class="btn btn-sm btn-warning" href="javascript:;"><i class="fas fa-dollar-sign"></i></a>
                                                                 <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'edit_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa-edit"></i></a>
                                                                 <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'tambah_level_1_unit_price_excel')" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
                                                                 <!-- UBAH urutan -->
-                                                                <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'urutan_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a>
+                                                                <!-- <a onclick="modal_level_1_unit_price(<?= $value_tb_unit_price['id_unit_price'] ?>,'urutan_level_1_unit_price')" class="btn btn-sm btn-info" href="javascript:;"><i class="fas fa fa-list-ol"></i></a> -->
                                                             <?php   }  ?>
                                                         <?php    } ?>
                                                     </td>
@@ -2356,6 +2356,40 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" data-backdrop="false" id="modal_unit_price_urutan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Pindahkan Urutan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>No Hps</th>
+                                        <th>Nama Program</th>
+                                        <th><i class="fa fa-cogs" aria-hidden="true"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="result_table_unit_price_urutan">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="javascript:;" onclick="Update_Turunan()" class="btn btn-primary">Simpan</a>
                     </div>
                 </div>
             </div>

@@ -62,6 +62,7 @@
 
 <!-- UNIT PRICE -->
 <script>
+    var modal_unit_price_urutan = $('#modal_unit_price_urutan');
     var form_modal_level_1_unit_price = $('#form_modal_level_1_unit_price')
     var form_simpan_level_1_unit_price = $('#form_simpan_level_1_unit_price')
     var modal_excel_unit_price_1 = $('#modal_excel_unit_price_1');
@@ -284,6 +285,21 @@
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_1/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+                if (type == 'urutan_level_2_unit_price') {
+                    modal_unit_price_urutan.modal('show')
+                    var html = '';
+                    var i;
+                    var no = 0;
+                    var kirim_inisial = 0;
+                    for (i = 0; i < response['result_unit_price_1'].length; ++i) {
+                        html += '<tr>' +
+                            '<td><input type="text" onkeyup="UbahUrutaan_unit_price(' + response['result_unit_price_1'][i].id_unit_price_1 + ',1.1' + ',' + kirim_inisial++ + ')" name="no_urut_ubah_' + no++ + '" value="' + response['result_unit_price_1'][i].no_urut + '" class="form-control form-control-sm"></td>' +
+                            '<td>' + response['result_unit_price_1'][i].nama_uraian + ' </td>' +
+                            '</tr>';
+                    }
+                    $('.result_table_unit_price_urutan').html(html);
+                }
+
                 if (type == 'tambah_level_2_unit_price_excel') {
                     modal_excel_unit_price_2.modal('show');
                     $('[name="id_global_excel"]').val(response['row_unit_price_1'].id_unit_price_1);
@@ -394,43 +410,6 @@
         })
     }
 
-    function Urutan_level_2(all_data, response) {
-        var html = '';
-        var i;
-        var start = response.start;
-        for (i = 0; i < all_data.length; ++i) {
-            html += '' + all_data[i].display_order + '';
-        }
-        Swal.fire({
-            title: 'Pilih Urutan',
-            input: 'select',
-            inputOptions: {
-                '1': '1',
-                '2': '2',
-                '3': '3',
-            },
-            inputPlaceholder: '-- Pindahkan Urutan --',
-            showCancelButton: true,
-            inputValidator: function(value) {
-                return new Promise(function(resolve, reject) {
-                    if (value !== '') {
-                        resolve();
-                    } else {
-                        resolve('You need to select a Tier');
-                    }
-                });
-            }
-        }).then(function(result) {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    icon: 'success',
-                    html: 'You selected: ' + result.value
-                });
-            }
-        });
-    }
-
-
     function Question_level_2(ket, id, id_unit_price) {
         Swal.fire({
             title: "Apakah Anda Yakin!?",
@@ -519,6 +498,20 @@
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_2/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+                if (type == 'urutan_level_3_unit_price') {
+                    modal_unit_price_urutan.modal('show')
+                    var html = '';
+                    var i;
+                    var no = 0;
+                    var kirim_inisial = 0;
+                    for (i = 0; i < response['result_unit_price_2'].length; ++i) {
+                        html += '<tr>' +
+                            '<td><input type="text" onkeyup="UbahUrutaan_unit_price(' + response['result_unit_price_2'][i].id_unit_price_2 + ',1.1' + ',' + kirim_inisial++ + ')" name="no_urut_ubah_' + no++ + '" value="' + response['result_unit_price_2'][i].no_urut + '" class="form-control form-control-sm"></td>' +
+                            '<td>' + response['result_unit_price_2'][i].nama_uraian + ' </td>' +
+                            '</tr>';
+                    }
+                    $('.result_table_unit_price_urutan').html(html);
+                }
                 if (type == 'tambah_level_3_unit_price_excel') {
                     modal_excel_unit_price_3.modal('show');
                     $('[name="id_global_excel"]').val(response['row_unit_price_2'].id_unit_price_2);
@@ -754,6 +747,20 @@
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_3/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+                if (type == 'urutan_level_4_unit_price') {
+                    modal_unit_price_urutan.modal('show')
+                    var html = '';
+                    var i;
+                    var no = 0;
+                    var kirim_inisial = 0;
+                    for (i = 0; i < response['result_unit_price_3'].length; ++i) {
+                        html += '<tr>' +
+                            '<td><input type="text" onkeyup="UbahUrutaan_unit_price(' + response['result_unit_price_3'][i].id_unit_price_3 + ',1.1' + ',' + kirim_inisial++ + ')" name="no_urut_ubah_' + no++ + '" value="' + response['result_unit_price_3'][i].no_urut + '" class="form-control form-control-sm"></td>' +
+                            '<td>' + response['result_unit_price_3'][i].nama_uraian + ' </td>' +
+                            '</tr>';
+                    }
+                    $('.result_table_unit_price_urutan').html(html);
+                }
                 if (type == 'tambah_level_4_unit_price_excel') {
                     modal_excel_unit_price_4.modal('show');
                     $('[name="id_global_excel"]').val(response['row_unit_price_3'].id_unit_price_3);
@@ -990,7 +997,20 @@
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_4/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
-
+                if (type == 'urutan_level_5_unit_price') {
+                    modal_unit_price_urutan.modal('show')
+                    var html = '';
+                    var i;
+                    var no = 0;
+                    var kirim_inisial = 0;
+                    for (i = 0; i < response['result_unit_price_4'].length; ++i) {
+                        html += '<tr>' +
+                            '<td><input type="text" onkeyup="UbahUrutaan_unit_price(' + response['result_unit_price_4'][i].id_unit_price_4 + ',1.1' + ',' + kirim_inisial++ + ')" name="no_urut_ubah_' + no++ + '" value="' + response['result_unit_price_4'][i].no_urut + '" class="form-control form-control-sm"></td>' +
+                            '<td>' + response['result_unit_price_4'][i].nama_uraian + ' </td>' +
+                            '</tr>';
+                    }
+                    $('.result_table_unit_price_urutan').html(html);
+                }
                 if (type == 'tambah_level_5_unit_price_excel') {
                     modal_excel_unit_price_5.modal('show');
                     $('[name="id_global_excel"]').val(response['row_unit_price_4'].id_unit_price_4);
@@ -1227,6 +1247,21 @@
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_5/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+                if (type == 'urutan_level_6_unit_price') {
+                    modal_unit_price_urutan.modal('show')
+                    var html = '';
+                    var i;
+                    var no = 0;
+                    var kirim_inisial = 0;
+                    for (i = 0; i < response['result_unit_price_5'].length; ++i) {
+                        html += '<tr>' +
+                            '<td><input type="text" onkeyup="UbahUrutaan_unit_price(' + response['result_unit_price_5'][i].id_unit_price_5 + ',1.1' + ',' + kirim_inisial++ + ')" name="no_urut_ubah_' + no++ + '" value="' + response['result_unit_price_5'][i].no_urut + '" class="form-control form-control-sm"></td>' +
+                            '<td>' + response['result_unit_price_5'][i].nama_uraian + ' </td>' +
+                            '</tr>';
+                    }
+                    $('.result_table_unit_price_urutan').html(html);
+                }
+
                 if (type == 'tambah_level_6_unit_price_excel') {
                     modal_excel_unit_price_6.modal('show');
                     $('[name="id_global_excel"]').val(response['row_unit_price_5'].id_unit_price_5);
@@ -1465,7 +1500,20 @@
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_6/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
-
+                if (type == 'urutan_level_7_unit_price') {
+                    modal_unit_price_urutan.modal('show')
+                    var html = '';
+                    var i;
+                    var no = 0;
+                    var kirim_inisial = 0;
+                    for (i = 0; i < response['result_unit_price_6'].length; ++i) {
+                        html += '<tr>' +
+                            '<td><input type="text" onkeyup="UbahUrutaan_unit_price(' + response['result_unit_price_6'][i].id_unit_price_6 + ',1.1' + ',' + kirim_inisial++ + ')" name="no_urut_ubah_' + no++ + '" value="' + response['result_unit_price_6'][i].no_urut + '" class="form-control form-control-sm"></td>' +
+                            '<td>' + response['result_unit_price_6'][i].nama_uraian + ' </td>' +
+                            '</tr>';
+                    }
+                    $('.result_table_unit_price_urutan').html(html);
+                }
                 if (type == 'tambah_level_7_unit_price_excel') {
                     modal_excel_unit_price_7.modal('show');
                     $('[name="id_global_excel"]').val(response['row_unit_price_6'].id_unit_price_6);
@@ -1702,6 +1750,20 @@
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_7/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+                if (type == 'urutan_level_8_unit_price') {
+                    modal_unit_price_urutan.modal('show')
+                    var html = '';
+                    var i;
+                    var no = 0;
+                    var kirim_inisial = 0;
+                    for (i = 0; i < response['result_unit_price_7'].length; ++i) {
+                        html += '<tr>' +
+                            '<td><input type="text" onkeyup="UbahUrutaan_unit_price(' + response['result_unit_price_7'][i].id_unit_price_7 + ',1.1' + ',' + kirim_inisial++ + ')" name="no_urut_ubah_' + no++ + '" value="' + response['result_unit_price_7'][i].no_urut + '" class="form-control form-control-sm"></td>' +
+                            '<td>' + response['result_unit_price_7'][i].nama_uraian + ' </td>' +
+                            '</tr>';
+                    }
+                    $('.result_table_unit_price_urutan').html(html);
+                }
                 if (type == 'tambah_level_8_unit_price_excel') {
                     modal_excel_unit_price_8.modal('show');
                     $('[name="id_global_excel"]').val(response['row_unit_price_7'].id_unit_price_7);
@@ -1938,6 +2000,20 @@
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_8/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+                if (type == 'urutan_level_9_unit_price') {
+                    modal_unit_price_urutan.modal('show')
+                    var html = '';
+                    var i;
+                    var no = 0;
+                    var kirim_inisial = 0;
+                    for (i = 0; i < response['result_unit_price_8'].length; ++i) {
+                        html += '<tr>' +
+                            '<td><input type="text" onkeyup="UbahUrutaan_unit_price(' + response['result_unit_price_8'][i].id_unit_price_8 + ',1.1' + ',' + kirim_inisial++ + ')" name="no_urut_ubah_' + no++ + '" value="' + response['result_unit_price_8'][i].no_urut + '" class="form-control form-control-sm"></td>' +
+                            '<td>' + response['result_unit_price_8'][i].nama_uraian + ' </td>' +
+                            '</tr>';
+                    }
+                    $('.result_table_unit_price_urutan').html(html);
+                }
                 if (type == 'tambah_level_9_unit_price_excel') {
                     modal_excel_unit_price_9.modal('show');
                     $('[name="id_global_excel"]').val(response['row_unit_price_8'].id_unit_price_8);
@@ -2174,6 +2250,20 @@
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_9/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
+                if (type == 'urutan_level_10_unit_price') {
+                    modal_unit_price_urutan.modal('show')
+                    var html = '';
+                    var i;
+                    var no = 0;
+                    var kirim_inisial = 0;
+                    for (i = 0; i < response['result_unit_price_9'].length; ++i) {
+                        html += '<tr>' +
+                            '<td><input type="text" onkeyup="UbahUrutaan_unit_price(' + response['result_unit_price_9'][i].id_unit_price_9 + ',1.1' + ',' + kirim_inisial++ + ')" name="no_urut_ubah_' + no++ + '" value="' + response['result_unit_price_9'][i].no_urut + '" class="form-control form-control-sm"></td>' +
+                            '<td>' + response['result_unit_price_9'][i].nama_uraian + ' </td>' +
+                            '</tr>';
+                    }
+                    $('.result_table_unit_price_urutan').html(html);
+                }
                 if (type == 'tambah_level_10_unit_price_excel') {
                     modal_excel_unit_price_10.modal('show');
                     $('[name="id_global_excel"]').val(response['row_unit_price_9'].id_unit_price_9);
@@ -2409,7 +2499,20 @@
             url: "<?= base_url('admin/data_kontrak/by_id_unit_price_10/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
-
+                if (type == 'urutan_level_11_unit_price') {
+                    modal_unit_price_urutan.modal('show')
+                    var html = '';
+                    var i;
+                    var no = 0;
+                    var kirim_inisial = 0;
+                    for (i = 0; i < response['result_unit_price_10'].length; ++i) {
+                        html += '<tr>' +
+                            '<td><input type="text" onkeyup="UbahUrutaan_unit_price(' + response['result_unit_price_10'][i].id_unit_price_10 + ',1.1' + ',' + kirim_inisial++ + ')" name="no_urut_ubah_' + no++ + '" value="' + response['result_unit_price_10'][i].no_urut + '" class="form-control form-control-sm"></td>' +
+                            '<td>' + response['result_unit_price_10'][i].nama_uraian + ' </td>' +
+                            '</tr>';
+                    }
+                    $('.result_table_unit_price_urutan').html(html);
+                }
                 if (type == 'tambah_level_11_unit_price_excel') {
                     modal_excel_unit_price_11.modal('show');
                     $('[name="id_global_excel"]').val(response['row_unit_price_10'].id_unit_price_10);
@@ -2615,5 +2718,27 @@
         });
 
     });
+</script>
+
+<script>
+        function UbahUrutaan_unit_price(id_ubah, type, initial) {
+        var no_urut_ubah = $('[name="no_urut_ubah_' + initial + '"]').val();
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('admin/data_kontrak/pindahkan_turunan_unit_price') ?>",
+            dataType: "JSON",
+            data: {
+                id_ubah: id_ubah,
+                type: type,
+                no_urut_ubah: no_urut_ubah
+            },
+            success: function(response) {
+                if (response == 'success') {}
+            }
+        })
+    }
+    function Update_Turunan() {
+        location.reload();
+    }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

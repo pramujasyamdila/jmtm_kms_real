@@ -3296,6 +3296,16 @@ class Data_kontrak_model extends CI_Model
         return $query->row_array();
     }
 
+    public function by_result_unit_price_1($id_unit_price)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_unit_price_1');
+        $this->db->where('tbl_unit_price_1.id_unit_price', $id_unit_price);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+
     public function by_id_unit_price_2($id_unit_price_2)
     {
         $this->db->select('*');
@@ -3305,6 +3315,16 @@ class Data_kontrak_model extends CI_Model
         return $query->row_array();
     }
 
+    
+    public function by_result_unit_price_2($id_unit_price_1)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_unit_price_2');
+        $this->db->where('tbl_unit_price_2.id_unit_price_1', $id_unit_price_1);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function by_id_unit_price_3($id_unit_price_3)
     {
         $this->db->select('*');
@@ -3312,6 +3332,15 @@ class Data_kontrak_model extends CI_Model
         $this->db->where('tbl_unit_price_3.id_unit_price_3', $id_unit_price_3);
         $query = $this->db->get();
         return $query->row_array();
+    }
+    
+    public function by_result_unit_price_3($id_unit_price_2)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_unit_price_3');
+        $this->db->where('tbl_unit_price_3.id_unit_price_2', $id_unit_price_2);
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
     public function by_id_unit_price_4($id_unit_price_4)
@@ -3323,6 +3352,15 @@ class Data_kontrak_model extends CI_Model
         return $query->row_array();
     }
 
+    public function by_result_unit_price_4($id_unit_price_3)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_unit_price_4');
+        $this->db->where('tbl_unit_price_4.id_unit_price_3', $id_unit_price_3);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function by_id_unit_price_5($id_unit_price_5)
     {
         $this->db->select('*');
@@ -3330,6 +3368,15 @@ class Data_kontrak_model extends CI_Model
         $this->db->where('tbl_unit_price_5.id_unit_price_5', $id_unit_price_5);
         $query = $this->db->get();
         return $query->row_array();
+    }
+
+    public function by_result_unit_price_5($id_unit_price_4)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_unit_price_5');
+        $this->db->where('tbl_unit_price_5.id_unit_price_4', $id_unit_price_4);
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
     public function by_id_unit_price_6($id_unit_price_6)
@@ -3341,6 +3388,15 @@ class Data_kontrak_model extends CI_Model
         return $query->row_array();
     }
 
+    public function by_result_unit_price_6($id_unit_price_5)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_unit_price_6');
+        $this->db->where('tbl_unit_price_6.id_unit_price_5', $id_unit_price_5);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function by_id_unit_price_7($id_unit_price_7)
     {
         $this->db->select('*');
@@ -3349,6 +3405,16 @@ class Data_kontrak_model extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
+
+    public function by_result_unit_price_7($id_unit_price_6)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_unit_price_7');
+        $this->db->where('tbl_unit_price_7.id_unit_price_6', $id_unit_price_6);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
 
     public function by_id_unit_price_8($id_unit_price_8)
     {
@@ -3359,6 +3425,14 @@ class Data_kontrak_model extends CI_Model
         return $query->row_array();
     }
 
+    public function by_result_unit_price_8($id_unit_price_7)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_unit_price_8');
+        $this->db->where('tbl_unit_price_8.id_unit_price_7', $id_unit_price_7);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
     public function by_id_unit_price_9($id_unit_price_9)
     {
         $this->db->select('*');
@@ -3368,6 +3442,15 @@ class Data_kontrak_model extends CI_Model
         return $query->row_array();
     }
 
+    public function by_result_unit_price_9($id_unit_price_8)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_unit_price_9');
+        $this->db->where('tbl_unit_price_9.id_unit_price_8', $id_unit_price_8);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function by_id_unit_price_10($id_unit_price_10)
     {
         $this->db->select('*');
@@ -3375,6 +3458,15 @@ class Data_kontrak_model extends CI_Model
         $this->db->where('tbl_unit_price_10.id_unit_price_10', $id_unit_price_10);
         $query = $this->db->get();
         return $query->row_array();
+    }
+
+    public function by_result_unit_price_10($id_unit_price_9)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_unit_price_10');
+        $this->db->where('tbl_unit_price_10.id_unit_price_9', $id_unit_price_9);
+        $query = $this->db->get();
+        return $query->result_array();
     }
     // by id unit price triger
     public function by_id_unit_price_triger($id_kontrak)
