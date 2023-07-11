@@ -1,5 +1,14 @@
 <!-- Content Wrapper. Contains page content -->
-<div class="main-content" style="font-family: 'Highway Gothic', sans-serif;">
+<style>
+th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 800px;
+        margin: 0 auto;
+    }
+ 
+    tr { height: 50px; }
+</style>
+<div class="main-content" style="font-family: 'RNSSanz-Light'">
     <section class="section">
         <div class="section-header">
             <h1><i class="fa fa-book"></i>MANAGEMENT KELOLA LEVEL</h1>
@@ -48,7 +57,8 @@
                                                 <!-- Modal -->
                                                 <div class="col-md-12">
                                                     <!-- lihat ad -->
-                                                    <div style="overflow-y: true;">
+                                                    <div style="overflow-x: auto;">
+                                
                                                         <table style="font-family: RNSSanz-Black;text-transform: uppercase;" id="table_kontrak" class="table table-bordered table-striped">
                                                             <thead class="bg-primary" >
                                                                 <tr>
@@ -126,24 +136,25 @@
                                                                                 <i class="fa fa-calendar" aria-hidden="true"></i> <br>
                                                                                 <?= $value['tanggal'] ?>
                                                                             </th>
-                                                                            <th class="table-secondary text-center text-white">
-                                                                                <a href="javascript:;" style="font-size:11px;" class="btn btn-sm btn-danger btn-sm" onclick="ModalPenunjang('<?= $romawi_add ?>')"><i class="fas fa fa-file"></i> Dokumen Penunjang / Kontrak</a>
+                                                                            <th class="table-secondary text-center text-white" style=
+                                                                            "background-color: #193B53">
+                                                                                <a href="javascript:;" style="font-size:11px;" class="btn btn-sm btn-danger btn-sm" onclick="ModalPenunjang('<?= $romawi_add ?>')"><i class="fas fa fa-file" title="Dokumen Penunjang / Kontrak"></i> </a>
                                                                                 <hr>
                                                                                 <i class="fa fa-key" aria-hidden="true"></i> Aksi <?= $romawi_add ?>
                                                                             </th>
                                                                         <?php   } ?>
                                                                     <?php } else { ?>
-                                                                        <th class="table-warning text-center text-white" style="width: 150px;"><i class="fa fa-list" aria-hidden="true"></i> Kontrak Awal
+                                                                        <th class="table-warning text-center text-white" style="width: 150px;background-color: #193B53"><i class="fa fa-list" aria-hidden="true"></i> Kontrak Awal
                                                                             <hr>
                                                                             <?= $row_kontrak['tahun_kontrak'] ?>
                                                                         </th>
-                                                                        <th class="table-secondary text-center text-white" style="width: 130px;"> <a href="javascript:;" style="font-size:11px;margin-top:-20px;" class="btn btn-sm btn-danger btn-lg" onclick="ModalPenunjang('Kontrak Awal')"><i class="fa fa-file-pdf" aria-hidden="true"></i> Dok. Penunjang / Kontrak</a><br><i class="fa fa-key" aria-hidden="true"></i> Aksi</th>
+                                                                        <th class="table-secondary text-center text-white" style="width: 130px;background-color: #193B53;" > <a href="javascript:;" style="font-size:11px;margin-top:-20px;" class="btn btn-sm btn-danger btn-lg" onclick="ModalPenunjang('Kontrak Awal')"><i class="fa fa-file-pdf" aria-hidden="true" title="Dok. Penunjang / Kontrak"></i> </a><br><i class="fa fa-key" aria-hidden="true"></i> Aksi</th>
                                                                     <?php  }  ?>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr style="font-size:12px;font-weight: 750;">
-                                                                    <td>
+                                                                <tr style="font-size:14px;font-weight: 750;font-family: RNSSanz-Black ">
+                                                                    <td style="height: 10px;">
                                                                         1
                                                                     </td>
                                                                     <td> <label for="" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $row_kontrak['nama_kontrak'] ?>"><?= $row_kontrak['nama_kontrak'] ?></label></td>
@@ -224,8 +235,8 @@
                                                                             <td class="tg-0lax">
                                                                                 <?php if ($row_kontrak[$nilai] == null || $row_kontrak[$nilai] == 0) { ?>
                                                                                     <div class="btn-group">
-                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                         </button>
                                                                                         <div class="dropdown-menu" role="menu">
@@ -235,8 +246,8 @@
 
                                                                                 <?php } else { ?>
                                                                                     <div class="btn-group">
-                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                         </button>
                                                                                         <div class="dropdown-menu" role="menu">
@@ -256,8 +267,8 @@
                                                                         <td class="tg-0lax">
                                                                             <?php if ($row_kontrak[$nilai] == null || $row_kontrak[$nilai] == 0) { ?>
                                                                                 <div class="btn-group">
-                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                     </button>
                                                                                     <div class="dropdown-menu" role="menu">
@@ -267,8 +278,8 @@
                                                                                 </div>
                                                                             <?php } else { ?>
                                                                                 <div class="btn-group">
-                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                     </button>
                                                                                     <div class="dropdown-menu" role="menu">

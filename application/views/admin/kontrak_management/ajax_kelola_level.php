@@ -1196,7 +1196,7 @@
     $(document).ready(function() {
         $('#table_kontrak').DataTable({
             "ordering": false,
-            "scrollX": "500px",
+            // "scrollX": "500px",
             "paging": true
         });
 

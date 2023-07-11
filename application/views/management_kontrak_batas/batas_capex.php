@@ -12,11 +12,11 @@
                                                                     $this->db->from('tbl_capex_detail');
                                                                     $this->db->where('tbl_capex_detail.id_capex', $id_capex);
                                                                     $kondisi_detail_capex = $this->db->get()->result_array() ?>
-                                                                    <tr class="bg-info text-white" style="font-size:12px;font-weight:700">
-                                                                        <td class="tg-0lax">
+                                                                    <tr class="text-white" style="font-family: RNSSanz-Black;font-size:16px;font-weight:700;background-color: #193B53;">
+                                                                        <td class="tg-0lax" style="height:30px">
                                                                             1.1
                                                                         </td>
-                                                                        <td class="tg-0lax text-white">&nbsp;&nbsp; CAPEX</td>
+                                                                        <td class="tg-0lax text-white"> CAPEX</td>
                                                                         <?php if ($adendum_result) { ?>
                                                                             <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                 <?php
@@ -150,8 +150,8 @@
                                                                                 </td>
                                                                                 <td class="tg-0lax">
                                                                                     <div class="btn-group">
-                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                         </button>
                                                                                         <div class="dropdown-menu" role="menu">
@@ -188,8 +188,8 @@
                                                                             </td>
                                                                             <td class="tg-0lax">
                                                                                 <div class="btn-group">
-                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                     </button>
                                                                                     <div class="dropdown-menu" role="menu">
@@ -278,10 +278,10 @@
                                                                             $this->db->from('tbl_detail_capex_1');
                                                                             $this->db->where('tbl_detail_capex_1.id_capex_detail', $id_capex_detail);
                                                                             $kondisi_capex_detail_1 = $this->db->get()->result_array() ?>
-                                                                    <tr class="text-warning" style="font-size:11px;font-weight: 650;">
+                                                                    <tr style="font-family: RNSSanz-Bold;font-size:15px;">
                                                                         <td class="tg-0lax">
                                                                             <?= $value_detail_capex['no_urut'] ?> </td>
-                                                                        <td class="tg-0lax" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_capex['nama_uraian'] ?>">&nbsp;&nbsp;&nbsp; <?= $value_detail_capex['nama_uraian'] ?></td>
+                                                                        <td class="tg-0lax" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_capex['nama_uraian'] ?>"> <?= $value_detail_capex['nama_uraian'] ?></td>
                                                                         <?php if ($adendum_result) { ?>
                                                                             <?php foreach ($adendum_result as $key => $value) { ?>
 
@@ -416,8 +416,8 @@
                                                                                 </td>
                                                                                 <td class="tg-0lax">
                                                                                     <div class="btn-group">
-                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                         </button>
                                                                                         <div class="dropdown-menu" role="menu">
@@ -468,8 +468,8 @@
                                                                             </td>
                                                                             <td class="tg-0lax">
                                                                                 <div class="btn-group">
-                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                     </button>
                                                                                     <div class="dropdown-menu" role="menu">
@@ -578,11 +578,11 @@
                                                                                 $this->db->from('tbl_detail_capex_2');
                                                                                 $this->db->where('tbl_detail_capex_2.id_detail_capex_1', $id_detail_capex_1);
                                                                                 $kondisi_capex_detail_1 = $this->db->get()->result_array() ?>
-                                                                        <tr class="text-info" style="font-size:11px;font-weight: 450;">
+                                                                        <tr  style="font-family: RNSSanz-Bold;font-size:14px;">
                                                                             <td class="tg-0lax">
                                                                                 <?= $value_detail_capex_1['no_urut_1_capex'] ?>
                                                                             </td>
-                                                                            <td class="tg-0lax" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_capex_1['nama_uraian_1_capex'] ?>">&nbsp;&nbsp;&nbsp;&nbsp; <?= $value_detail_capex_1['nama_uraian_1_capex'] ?></td>
+                                                                            <td class="tg-0lax" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_capex_1['nama_uraian_1_capex'] ?>"> <?= $value_detail_capex_1['nama_uraian_1_capex'] ?></td>
                                                                             <?php if ($adendum_result) { ?>
                                                                                 <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                     <?php
@@ -716,8 +716,8 @@
                                                                                     </td>
                                                                                     <td class="tg-0lax">
                                                                                         <div class="btn-group">
-                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                             </button>
                                                                                             <div class="dropdown-menu" role="menu">
@@ -763,8 +763,8 @@
                                                                                 </td>
                                                                                 <td class="tg-0lax">
                                                                                     <div class="btn-group">
-                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                         </button>
                                                                                         <div class="dropdown-menu" role="menu">
@@ -867,11 +867,11 @@
                                                                                     $this->db->from('tbl_detail_capex_3');
                                                                                     $this->db->where('tbl_detail_capex_3.id_detail_capex_2', $id_detail_capex_2);
                                                                                     $kondisi_capex_detail_2 = $this->db->get()->result_array() ?>
-                                                                            <tr class="text-danger" style="font-size:11px;font-weight: 400;">
+                                                                            <tr class="text-danger" style="font-family: RNSSanz-Medium;font-size:14px;">
                                                                                 <td class="tg-0lax">
                                                                                     <?= $value_detail_capex_2['no_urut_2_capex'] ?> </td>
                                                                                 </td>
-                                                                                <td class="tg-0lax" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_capex_2['nama_uraian_2_capex'] ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_capex_2['nama_uraian_2_capex'] ?></td>
+                                                                                <td class="tg-0lax" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_capex_2['nama_uraian_2_capex'] ?>"><?= $value_detail_capex_2['nama_uraian_2_capex'] ?></td>
                                                                                 <?php if ($adendum_result) { ?>
                                                                                     <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                         <?php
@@ -1005,8 +1005,8 @@
                                                                                         </td>
                                                                                         <td class="tg-0lax">
                                                                                             <div class="btn-group">
-                                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                                                 </button>
                                                                                                 <div class="dropdown-menu" role="menu">
@@ -1053,8 +1053,8 @@
                                                                                     </td>
                                                                                     <td class="tg-0lax">
                                                                                         <div class="btn-group">
-                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                             </button>
                                                                                             <div class="dropdown-menu" role="menu">
@@ -1158,10 +1158,10 @@
                                                                                         $this->db->from('tbl_detail_capex_4');
                                                                                         $this->db->where('tbl_detail_capex_4.id_detail_capex_3', $id_detail_capex_3);
                                                                                         $kondisi_capex_detail_4 = $this->db->get()->result_array() ?>
-                                                                                <tr class="text-success" style="font-size:11px;font-weight: 350;">
+                                                                                <tr class="text-success" style="font-family: RNSSanz-Medium;font-size:14px;">
                                                                                     <td class="tg-0lax">
                                                                                         <?= $value_detail_capex_3['no_urut_3_capex'] ?> </td>
-                                                                                    <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_capex_3['nama_uraian_3_capex'] ?></td>
+                                                                                    <td class="tg-0lax"><?= $value_detail_capex_3['nama_uraian_3_capex'] ?></td>
 
                                                                                     <?php if ($adendum_result) { ?>
                                                                                         <?php foreach ($adendum_result as $key => $value) { ?>
@@ -1296,8 +1296,8 @@
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <div class="btn-group">
-                                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                                     </button>
                                                                                                     <div class="dropdown-menu" role="menu">
@@ -1346,8 +1346,8 @@
                                                                                         </td>
                                                                                         <td class="tg-0lax">
                                                                                             <div class="btn-group">
-                                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                                                 </button>
                                                                                                 <div class="dropdown-menu" role="menu">
@@ -1453,10 +1453,10 @@
                                                                                             $this->db->from('tbl_detail_capex_5');
                                                                                             $this->db->where('tbl_detail_capex_5.id_detail_capex_4', $id_detail_capex_4);
                                                                                             $kondisi_capex_detail_5 = $this->db->get()->result_array() ?>
-                                                                                    <tr>
+                                                                                    <tr style="font-family: RNSSanz-Medium;font-size:14px;">
                                                                                         <td class="tg-0lax">
                                                                                             <?= $value_detail_capex_4['no_urut_4_capex'] ?> </td>
-                                                                                        <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_capex_4['nama_uraian_4_capex'] ?></td>
+                                                                                        <td class="tg-0lax"><?= $value_detail_capex_4['nama_uraian_4_capex'] ?></td>
                                                                                         <?php if ($adendum_result) { ?>
                                                                                             <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                 <?php
@@ -1591,8 +1591,8 @@
                                                                                                 <td class="tg-0lax">
 
                                                                                                     <div class="btn-group">
-                                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                                         </button>
                                                                                                         <div class="dropdown-menu" role="menu">
@@ -1637,8 +1637,8 @@
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <div class="btn-group">
-                                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                                     </button>
                                                                                                     <div class="dropdown-menu" role="menu">
@@ -1742,11 +1742,11 @@
                                                                                                 $this->db->from('tbl_detail_capex_6');
                                                                                                 $this->db->where('tbl_detail_capex_6.id_detail_capex_5', $id_detail_capex_5);
                                                                                                 $kondisi_capex_detail_6 = $this->db->get()->result_array() ?>
-                                                                                        <tr>
+                                                                                        <tr style="font-family: RNSSanz-Medium;font-size:14px;">
                                                                                             <td class="tg-0lax">
                                                                                                 <?= $value_detail_capex_5['no_urut_5_capex'] ?>
                                                                                             </td>
-                                                                                            <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_capex_5['nama_uraian_5_capex'] ?></td>
+                                                                                            <td class="tg-0lax"> <?= $value_detail_capex_5['nama_uraian_5_capex'] ?></td>
                                                                                             <?php if ($adendum_result) { ?>
                                                                                                 <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                     <?php
@@ -1880,8 +1880,8 @@
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <div class="btn-group">
-                                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                                             </button>
                                                                                                             <div class="dropdown-menu" role="menu">
@@ -1929,8 +1929,8 @@
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
                                                                                                     <div class="btn-group">
-                                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                                         </button>
                                                                                                         <div class="dropdown-menu" role="menu">
@@ -2032,11 +2032,11 @@
                                                                                                     $this->db->from('tbl_detail_capex_7');
                                                                                                     $this->db->where('tbl_detail_capex_7.id_detail_capex_6', $id_detail_capex_6);
                                                                                                     $kondisi_capex_detail_7 = $this->db->get()->result_array() ?>
-                                                                                            <tr>
+                                                                                            <tr style="font-family: RNSSanz-Medium;font-size:14px;">
                                                                                                 <td class="tg-0lax">
                                                                                                     <?= $value_detail_capex_6['no_urut_6_capex'] ?> </td>
                                                                                                 </td>
-                                                                                                <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_capex_6['nama_uraian_6_capex'] ?></td>
+                                                                                                <td class="tg-0lax"> <?= $value_detail_capex_6['nama_uraian_6_capex'] ?></td>
                                                                                                 <?php if ($adendum_result) { ?>
                                                                                                     <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                         <?php
@@ -2170,8 +2170,8 @@
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <div class="btn-group">
-                                                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                                                                 </button>
                                                                                                                 <div class="dropdown-menu" role="menu">
@@ -2218,8 +2218,8 @@
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <div class="btn-group">
-                                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                                             </button>
                                                                                                             <div class="dropdown-menu" role="menu">
@@ -2324,11 +2324,11 @@
                                                                                                         $this->db->from('tbl_detail_capex_8');
                                                                                                         $this->db->where('tbl_detail_capex_8.id_detail_capex_7', $id_detail_capex_7);
                                                                                                         $kondisi_capex_detail_8 = $this->db->get()->result_array() ?>
-                                                                                                <tr>
+                                                                                                <tr style="font-family: RNSSanz-Medium;font-size:14px;">
                                                                                                     <td class="tg-0lax">
                                                                                                         <?= $value_detail_capex_7['no_urut_7_capex'] ?> </td>
                                                                                                     </td>
-                                                                                                    <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_capex_7['nama_uraian_7_capex'] ?></td>
+                                                                                                    <td class="tg-0lax"> <?= $value_detail_capex_7['nama_uraian_7_capex'] ?></td>
                                                                                                     <?php if ($adendum_result) { ?>
                                                                                                         <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                             <?php
@@ -2462,8 +2462,8 @@
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <div class="btn-group">
-                                                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                                                     </button>
                                                                                                                     <div class="dropdown-menu" role="menu">
@@ -2511,8 +2511,8 @@
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <div class="btn-group">
-                                                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                                                                 </button>
                                                                                                                 <div class="dropdown-menu" role="menu">
@@ -2615,10 +2615,10 @@
                                                                                                             $this->db->from('tbl_detail_capex_9');
                                                                                                             $this->db->where('tbl_detail_capex_9.id_detail_capex_8', $id_detail_capex_8);
                                                                                                             $kondisi_capex_detail_9 = $this->db->get()->result_array() ?>
-                                                                                                    <tr>
+                                                                                                    <tr style="font-family: RNSSanz-Medium;font-size:14px;">
                                                                                                         <td class="tg-0lax">
                                                                                                             <?= $value_detail_capex_8['no_urut_8_capex'] ?> </td>
-                                                                                                        <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_capex_8['nama_uraian_8_capex'] ?></td>
+                                                                                                        <td class="tg-0lax"> <?= $value_detail_capex_8['nama_uraian_8_capex'] ?></td>
                                                                                                         <?php if ($adendum_result) { ?>
                                                                                                             <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                                 <?php
@@ -2753,8 +2753,8 @@
                                                                                                                 <td class="tg-0lax">
 
                                                                                                                     <div class="btn-group">
-                                                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                                                         </button>
                                                                                                                         <div class="dropdown-menu" role="menu">
@@ -2803,8 +2803,8 @@
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <div class="btn-group">
-                                                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                                                     </button>
                                                                                                                     <div class="dropdown-menu" role="menu">
@@ -2909,11 +2909,11 @@
                                                                                                                 $this->db->from('tbl_detail_capex_10');
                                                                                                                 $this->db->where('tbl_detail_capex_10.id_detail_capex_9', $id_detail_capex_9);
                                                                                                                 $kondisi_capex_detail_10 = $this->db->get()->result_array() ?>
-                                                                                                        <tr>
+                                                                                                        <tr style="font-family: RNSSanz-Medium;font-size:14px;">
                                                                                                             <td class="tg-0lax">
                                                                                                                 <?= $value_detail_capex_9['no_urut_9_capex'] ?> </td>
                                                                                                             </td>
-                                                                                                            <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_capex_9['nama_uraian_9_capex'] ?></td>
+                                                                                                            <td class="tg-0lax"> <?= $value_detail_capex_9['nama_uraian_9_capex'] ?></td>
                                                                                                             <?php if ($adendum_result) { ?>
                                                                                                                 <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                                     <?php
@@ -3048,8 +3048,8 @@
                                                                                                                     <td class="tg-0lax">
 
                                                                                                                         <div class="btn-group">
-                                                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                                                             </button>
                                                                                                                             <div class="dropdown-menu" role="menu">
@@ -3097,8 +3097,8 @@
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
                                                                                                                     <div class="btn-group">
-                                                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                                                         </button>
                                                                                                                         <div class="dropdown-menu" role="menu">

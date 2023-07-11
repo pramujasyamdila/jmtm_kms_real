@@ -150,8 +150,8 @@
                                                                                 </td>
                                                                                 <td class="tg-0lax">
                                                                                     <div class="btn-group">
-                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                         </button>
                                                                                         <div class="dropdown-menu" role="menu">
@@ -188,8 +188,8 @@
                                                                             </td>
                                                                             <td class="tg-0lax">
                                                                                 <div class="btn-group">
-                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                     </button>
                                                                                     <div class="dropdown-menu" role="menu">
@@ -416,8 +416,8 @@
                                                                                 </td>
                                                                                 <td class="tg-0lax">
                                                                                     <div class="btn-group">
-                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                         </button>
                                                                                         <div class="dropdown-menu" role="menu">
@@ -468,8 +468,8 @@
                                                                             </td>
                                                                             <td class="tg-0lax">
                                                                                 <div class="btn-group">
-                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                     </button>
                                                                                     <div class="dropdown-menu" role="menu">
@@ -716,8 +716,8 @@
                                                                                     </td>
                                                                                     <td class="tg-0lax">
                                                                                         <div class="btn-group">
-                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                             </button>
                                                                                             <div class="dropdown-menu" role="menu">
@@ -763,8 +763,8 @@
                                                                                 </td>
                                                                                 <td class="tg-0lax">
                                                                                     <div class="btn-group">
-                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                         </button>
                                                                                         <div class="dropdown-menu" role="menu">
@@ -1005,8 +1005,8 @@
                                                                                         </td>
                                                                                         <td class="tg-0lax">
                                                                                             <div class="btn-group">
-                                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                                                 </button>
                                                                                                 <div class="dropdown-menu" role="menu">
@@ -1053,8 +1053,8 @@
                                                                                     </td>
                                                                                     <td class="tg-0lax">
                                                                                         <div class="btn-group">
-                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                             </button>
                                                                                             <div class="dropdown-menu" role="menu">
@@ -1296,8 +1296,8 @@
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <div class="btn-group">
-                                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                                     </button>
                                                                                                     <div class="dropdown-menu" role="menu">
@@ -1346,8 +1346,8 @@
                                                                                         </td>
                                                                                         <td class="tg-0lax">
                                                                                             <div class="btn-group">
-                                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                                                 </button>
                                                                                                 <div class="dropdown-menu" role="menu">
@@ -1591,8 +1591,8 @@
                                                                                                 <td class="tg-0lax">
 
                                                                                                     <div class="btn-group">
-                                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                                         </button>
                                                                                                         <div class="dropdown-menu" role="menu">
@@ -1637,8 +1637,8 @@
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <div class="btn-group">
-                                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                                     </button>
                                                                                                     <div class="dropdown-menu" role="menu">
@@ -1880,8 +1880,8 @@
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <div class="btn-group">
-                                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                                             </button>
                                                                                                             <div class="dropdown-menu" role="menu">
@@ -1929,8 +1929,8 @@
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
                                                                                                     <div class="btn-group">
-                                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                                         </button>
                                                                                                         <div class="dropdown-menu" role="menu">
@@ -2170,8 +2170,8 @@
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <div class="btn-group">
-                                                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                                                                 </button>
                                                                                                                 <div class="dropdown-menu" role="menu">
@@ -2218,8 +2218,8 @@
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <div class="btn-group">
-                                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                                             </button>
                                                                                                             <div class="dropdown-menu" role="menu">
@@ -2462,8 +2462,8 @@
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <div class="btn-group">
-                                                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                                                     </button>
                                                                                                                     <div class="dropdown-menu" role="menu">
@@ -2511,8 +2511,8 @@
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <div class="btn-group">
-                                                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                                                                 </button>
                                                                                                                 <div class="dropdown-menu" role="menu">
@@ -2753,8 +2753,8 @@
                                                                                                                 <td class="tg-0lax">
 
                                                                                                                     <div class="btn-group">
-                                                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                                                         </button>
                                                                                                                         <div class="dropdown-menu" role="menu">
@@ -2803,8 +2803,8 @@
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <div class="btn-group">
-                                                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                                                     </button>
                                                                                                                     <div class="dropdown-menu" role="menu">
@@ -3048,8 +3048,8 @@
                                                                                                                     <td class="tg-0lax">
 
                                                                                                                         <div class="btn-group">
-                                                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                                                             </button>
                                                                                                                             <div class="dropdown-menu" role="menu">
@@ -3097,8 +3097,8 @@
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
                                                                                                                     <div class="btn-group">
-                                                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                                                         </button>
                                                                                                                         <div class="dropdown-menu" role="menu">
