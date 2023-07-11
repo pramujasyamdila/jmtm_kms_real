@@ -1,6 +1,6 @@
-<footer class="main-footer">
-  <div class="footer-left">
-    Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+<footer class="main-footer" style="background-color: #302B63;">
+  <div class="footer-left" style="color: white;">
+    Copyright &copy; 2022 <div class="bullet"></div>JASAMARGA TOLLROAD MAINTENANCE</a>
   </div>
   <div class="footer-right">
 

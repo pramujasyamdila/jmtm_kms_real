@@ -40,11 +40,47 @@
         gtag('config', 'UA-94034622-3');
     </script>
     <!-- /END GA -->
+    <style>
+        @font-face {
+            font-family: "RNSSanz-Black";
+            src: url(<?= base_url('assets_stisla/fonts/RNSSanz-Black.ttf') ?>) format("truetype");
+        }
+
+        @font-face {
+            font-family: "RNSSanz-Bold";
+            src: url(<?= base_url('assets_stisla/fonts/RNSSanz-Bold.ttf') ?>) format("truetype");
+        }
+
+        @font-face {
+            font-family: "RNSSanz-ExtraBold";
+            src: url(<?= base_url('assets_stisla/fonts/RNSSanz-ExtraBold.ttf') ?>) format("truetype");
+        }
+
+        @font-face {
+            font-family: "RNSSanz-Light";
+            src: url(<?= base_url('assets_stisla/fonts/RNSSanz-Light.ttf') ?>) format("truetype");
+        }
+
+        @font-face {
+            font-family: "RNSSanz-Medium";
+            src: url(<?= base_url('assets_stisla/fonts/RNSSanz-Medium.ttf') ?>) format("truetype");
+        }
+
+        @font-face {
+            font-family: "RNSSanz-Normal";
+            src: url(<?= base_url('assets_stisla/fonts/RNSSanz-Normal.ttf') ?>) format("truetype");
+        }
+
+        @font-face {
+            font-family: "RNSSanz-SemiBold";
+            src: url(<?= base_url('assets_stisla/fonts/RNSSanz-SemiBold.ttf') ?>) format("truetype");
+        }
+    </style>
 </head>
 
 
 
-<body>
+<body style="font-size: 14px;font-family:'RNSSanz-Light';">
     <?php
     function tgl_indo($tanggal)
     {
@@ -84,8 +120,8 @@
     ?>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
-            <div class="navbar-bg"></div>
-            <nav class="navbar navbar-expand-lg main-navbar">
+            <div class="navbar-bg" style="background-color: #302B63;"></div>
+            <nav class="navbar navbar-expand-lg main-navbar" style="background-color: #302B63;">
                 <form class="form-inline mr-auto">
                     <ul class="navbar-nav mr-3">
                         <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>

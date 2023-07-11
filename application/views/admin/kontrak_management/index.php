@@ -229,13 +229,13 @@
                                                     <div class="col-md-12">
                                                         <div class="card-body">
                                                             <table id="table" class="table-bordered table-striped">
-                                                                <thead>
-                                                                    <tr style="font-size: 12px;" class="bg-primary text-white">
-                                                                        <th class="text-center bg-primary text-white" rowspan="2">No </th>
-                                                                        <th class="text-center bg-primary text-white" style="width:200px;" rowspan="2">Kontrak Manajemen</th>
-                                                                        <th class="text-center bg-primary text-white" style="width:100px;" rowspan="2">Departemen</th>
-                                                                        <th class="text-center bg-primary text-white" style="width:100px;" rowspan="2">Area</th>
-                                                                        <th class="text-center bg-primary text-white" style="width:100px;" rowspan="2">Sub Area</th>
+                                                                <thead style="font-family: RNSSanz-Black;text-transform: uppercase;">
+                                                                    <tr style="font-size: 13px; height:10px; background-color: #193B53;" class="text-white">
+                                                                        <th class="text-center text-white" style="background-color: #193B53;" rowspan="2">No </th>
+                                                                        <th class="text-center text-white" style="width:200px;background-color: #193B53;" rowspan="2">Kontrak Manajemen</th>
+                                                                        <th class="text-center text-white" style="width:100px;background-color: #193B53;" rowspan="2">Departemen</th>
+                                                                        <th class="text-center text-white" style="width:100px;background-color: #193B53;" rowspan="2">Area</th>
+                                                                        <th class="text-center text-white" style="width:100px;background-color: #193B53;" rowspan="2">Sub Area</th>
                                                                         <th class="text-center" style="width:100px" rowspan="2">No Kontrak</th>
                                                                         <th class="text-center" style="width:100px" rowspan="2">Tahun Kontrak</th>
                                                                         <th class="text-center" style="width:100px" rowspan="2">Tahun Anggaran</th>
@@ -243,13 +243,13 @@
                                                                         <th class="text-center" style="width:100px" rowspan="2">Jenis Kontrak</th>
                                                                         <th class="text-center" rowspan="2">Aksi</th>
                                                                     </tr>
-                                                                    <tr style="font-size: 12px;" class="table-warning">
+                                                                    <tr style="font-size: 12px;background-color: #193B53;" class="text-white">
                                                                         <th class="text-center" style="width:100px">Nilai Add</th>
                                                                         <th class="text-center" style="width:100px">Tanggal Add</th>
                                                                         <th class="text-center" style="width:100px">Periode Add</th>
                                                                     </tr>
                                                                 </thead>
-                                                                <tbody style="font-size: 12px;">
+                                                                <tbody style="font-size: 12px;font-family: RNSSanz-Bold;">
 
                                                                 </tbody>
                                                             </table>

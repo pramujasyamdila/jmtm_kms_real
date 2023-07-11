@@ -49,11 +49,11 @@
                                                 <div class="col-md-12">
                                                     <!-- lihat ad -->
                                                     <div style="overflow-y: true;">
-                                                        <table id="table_kontrak" class="table table-bordered table-striped">
-                                                            <thead class="bg-primary">
+                                                        <table style="font-family: RNSSanz-Black;text-transform: uppercase;" id="table_kontrak" class="table table-bordered table-striped">
+                                                            <thead class="bg-primary" >
                                                                 <tr>
-                                                                    <th class="table-primary text-center text-white" style="width: 150px;"><i class="fa fa-list-ol" aria-hidden="true"></i> No</th>
-                                                                    <th class="table-primary text-center text-white" style="width: 250px;"><i class="fa fa-database" aria-hidden="true"></i> Nama Program</th>
+                                                                    <th class="table-primary text-center text-white" style="width: 150px;background-color: #193B53;"><i class="fa fa-list-ol" aria-hidden="true"></i> No</th>
+                                                                    <th class="table-primary text-center text-white" style="width: 250px;background-color: #193B53;"><i class="fa fa-database" aria-hidden="true"></i> Nama Program</th>
                                                                     <?php if ($adendum_result) { ?>
                                                                         <?php foreach ($adendum_result as $key => $value) { ?>
                                                                             <?php
@@ -121,7 +121,7 @@
                                                                                 $romawi_add = 'Kontrak Awal';
                                                                             }
                                                                             ?>
-                                                                            <th class="table-warning text-center text-white" style="width: 200px;"><i class="fa fa-list" aria-hidden="true"></i> <?= $romawi_add ?>
+                                                                            <th class="table-warning text-center text-white" style="width: 200px;background-color: #193B53;"><i class="fa fa-list" aria-hidden="true"></i> <?= $romawi_add ?>
                                                                                 <hr>
                                                                                 <i class="fa fa-calendar" aria-hidden="true"></i> <br>
                                                                                 <?= $value['tanggal'] ?>
