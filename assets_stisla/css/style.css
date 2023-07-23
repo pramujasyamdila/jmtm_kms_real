@@ -1134,7 +1134,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 .table:not(.table-sm):not(.table-md):not(.dataTable) td, .table:not(.table-sm):not(.table-md):not(.dataTable) th {
   padding: 0 25px;
-  height: 60px;
+  height: 20px;
   vertical-align: middle;
 }
 .table:not(.table-sm) thead th {
@@ -1145,7 +1145,7 @@ select.form-control:not([size]):not([multiple]) {
   padding-bottom: 15px;
 }
 .table.table-md th, .table.table-md td {
-  padding: 10px 15px;
+  padding: 5px 5px;
 }
 .table.table-bordered td, .table.table-bordered th {
   border-color: #f6f6f6;

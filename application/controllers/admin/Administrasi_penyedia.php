@@ -81,12 +81,11 @@ class Administrasi_penyedia extends CI_Controller
         $data['menu_open_kontrak'] = 'menu-open';
         $data['row_program']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
         $data['result_sub_program']  = $this->Data_kontrak_model->get_sub_program_by_id_detail_program($id_detail_program_penyedia_jasa);
-        $get_pegawai = $this->Auth_model->get_pegawai();
-        $id_departemen = $get_pegawai['id_departemen'];
-        $id_area = $get_pegawai['id_area'];
-        $id_sub_area = $get_pegawai['id_sub_area'];
+        $id_departemen =  $data['row_program']['id_departemen'];
+        $id_area =  $data['row_program']['id_area'];
+        $id_sub_area =  $data['row_program']['id_sub_area'];
         $id_kontrak =  $data['row_program']['id_kontrak'];
-        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $id_kontrak);
+        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area,$id_sub_area, $keyword, $id_kontrak);
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('admin/kontrak_management_administrasi_penyedia/hps', $data);
@@ -2251,7 +2250,7 @@ class Administrasi_penyedia extends CI_Controller
             'id_hps_penyedia_kontrak_1' => $id_hps_penyedia_kontrak_1
         ];
         $data = [
-            'no_hps_addendeum_' . $add . '' => $no_hps,
+            'no_hps' => $no_hps,
             'uraian_hps_addendum_' . $add . '' => $uraian_hps,
             'volume_hps_addendum_' . $add . '' => $volume_hps,
             'satuan_hps_addendum_' . $add . '' => $satuan_hps,
@@ -2502,7 +2501,7 @@ class Administrasi_penyedia extends CI_Controller
             'id_hps_penyedia_kontrak_2' => $id_hps_penyedia_kontrak_2
         ];
         $data = [
-            'no_hps_addendeum_' . $add . '' => $no_hps,
+            'no_hps_addendum_' . $add . '' => $no_hps,
             'uraian_hps_addendum_' . $add . '' => $uraian_hps,
             'volume_hps_addendum_' . $add . '' => $volume_hps,
             'satuan_hps_addendum_' . $add . '' => $satuan_hps,
@@ -2591,7 +2590,7 @@ class Administrasi_penyedia extends CI_Controller
             'id_hps_penyedia_kontrak_3' => $id_hps_penyedia_kontrak_3
         ];
         $data = [
-            'no_hps_addendeum_' . $add . '' => $no_hps,
+            'no_hps_addendum_' . $add . '' => $no_hps,
             'uraian_hps_addendum_' . $add . '' => $uraian_hps,
             'volume_hps_addendum_' . $add . '' => $volume_hps,
             'satuan_hps_addendum_' . $add . '' => $satuan_hps,
@@ -2677,7 +2676,7 @@ class Administrasi_penyedia extends CI_Controller
             'id_hps_penyedia_kontrak_4' => $id_hps_penyedia_kontrak_4
         ];
         $data = [
-            'no_hps_addendeum_' . $add . '' => $no_hps,
+            'no_hps_addendum_' . $add . '' => $no_hps,
             'uraian_hps_addendum_' . $add . '' => $uraian_hps,
             'volume_hps_addendum_' . $add . '' => $volume_hps,
             'satuan_hps_addendum_' . $add . '' => $satuan_hps,
@@ -2763,7 +2762,7 @@ class Administrasi_penyedia extends CI_Controller
             'id_hps_penyedia_kontrak_5' => $id_hps_penyedia_kontrak_5
         ];
         $data = [
-            'no_hps_addendeum_' . $add . '' => $no_hps,
+            'no_hps_addendum_' . $add . '' => $no_hps,
             'uraian_hps_addendum_' . $add . '' => $uraian_hps,
             'volume_hps_addendum_' . $add . '' => $volume_hps,
             'satuan_hps_addendum_' . $add . '' => $satuan_hps,
@@ -3615,10 +3614,11 @@ class Administrasi_penyedia extends CI_Controller
         $keyword = $this->input->post('keyword');
         $data['active_kontrak'] = 'active';
         $data['menu_open_kontrak'] = 'menu-open';
-        $get_pegawai = $this->Auth_model->get_pegawai();
-        $id_departemen = $get_pegawai['id_departemen'];
-        $id_area = $get_pegawai['id_area'];
-        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $id_kontrak);
+        $row_kontrak =  $this->Data_kontrak_model->get_row_kontrak($id_kontrak);
+        $id_departemen = $row_kontrak['id_departemen'];
+        $id_area = $row_kontrak['id_area'];
+        $id_sub_area = $row_kontrak['id_sub_area'];
+        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
         $data['id_kontrak'] = $id_kontrak;
         $this->load->view('template_stisla/header');

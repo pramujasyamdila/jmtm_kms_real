@@ -87,7 +87,7 @@
                                                                     $this->db->select('*');
                                                                     $this->db->from('tbl_sub_detail_program_penyedia_jasa');
                                                                     $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-                                                                    // $this->db->order_by('display_order', 'ASC');
+                                                                    $this->db->where('tbl_sub_detail_program_penyedia_jasa.status_mata_anggaran_addendum', 0);
                                                                     $get_nilai_kontrak = $this->db->get() ?>
                                                                     <?php
                                                                     $total_kontrak  = 0;
@@ -162,7 +162,7 @@
                                                                     $this->db->select('*');
                                                                     $this->db->from('tbl_sub_detail_program_penyedia_jasa');
                                                                     $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-                                                                    // $this->db->order_by('display_order', 'ASC');
+                                                                    $this->db->where('tbl_sub_detail_program_penyedia_jasa.status_mata_anggaran_addendum', 0);
                                                                     $query_result_sub_detail_program = $this->db->get() ?>
                                                                     <?php
                                                                     $b = 1;

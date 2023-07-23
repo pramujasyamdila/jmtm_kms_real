@@ -11,8 +11,8 @@ class Lembar_kerja extends CI_Controller
         $this->load->model('Auth_model');
         $session = $this->session->userdata('id_pegawai');
         if (!$session) {
-			redirect('auth');
-		}
+            redirect('auth');
+        }
     }
 
     public function index()
@@ -47,11 +47,11 @@ class Lembar_kerja extends CI_Controller
         $keyword = $this->input->post('keyword');
         $data['active_kontrak'] = 'active';
         $data['menu_open_kontrak'] = 'menu-open';
-        $get_pegawai = $this->Auth_model->get_pegawai();
-        $id_departemen = $get_pegawai['id_departemen'];
-        $id_area = $get_pegawai['id_area'];
-        $id_sub_area = $get_pegawai['id_sub_area'];
-        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $id_kontrak);
+        $row_kontrak =  $this->Data_kontrak_model->get_row_kontrak($id_kontrak);
+        $id_departemen = $row_kontrak['id_departemen'];
+        $id_area = $row_kontrak['id_area'];
+        $id_sub_area = $row_kontrak['id_sub_area'];
+        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
 
         $data['judul'] = 'Lembar Kerja';
         $this->load->view('template_stisla/header');
@@ -3616,19 +3616,19 @@ class Lembar_kerja extends CI_Controller
     public function list_program($id_kontrak)
     {
         $lembar_kerja = $this->input->post('lembar_kerja');
-       
+
         if ($lembar_kerja) {
-            $this->session->set_userdata('id_kontrak',$id_kontrak);
+            $this->session->set_userdata('id_kontrak', $id_kontrak);
         } else {
-           
         }
         $keyword = $this->input->post('keyword');
         $data['active_kontrak'] = 'active';
         $data['menu_open_kontrak'] = 'menu-open';
-        $get_pegawai = $this->Auth_model->get_pegawai();
-        $id_departemen = $get_pegawai['id_departemen'];
-        $id_area = $get_pegawai['id_area'];
-        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $id_kontrak);
+        $row_kontrak =  $this->Data_kontrak_model->get_row_kontrak($id_kontrak);
+        $id_departemen = $row_kontrak['id_departemen'];
+        $id_area = $row_kontrak['id_area'];
+        $id_sub_area = $row_kontrak['id_sub_area'];
+        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
         $data['id_kontrak'] = $id_kontrak;
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
@@ -4096,6 +4096,9 @@ class Lembar_kerja extends CI_Controller
     }
 
 
-
-
+    function hapus_session_lembar_kerja()
+    {
+        $this->session->unset_userdata('id_kontrak');
+        redirect('admin/dashboard');
+    }
 }

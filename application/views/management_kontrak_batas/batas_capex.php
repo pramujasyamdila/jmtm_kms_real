@@ -1,8 +1,30 @@
                                                                 <!-- capex -->
+
+                                                                <style>
+                                                                    table,
+                                                                    td,
+                                                                    th {
+                                                                        height: 10px !important;
+                                                                        border: 1px solid black;
+                                                                        vertical-align: center;
+
+                                                                    }
+
+                                                                    table {
+                                                                        border-collapse: collapse;
+                                                                        width: 100%;
+                                                                    }
+
+                                                                    td {
+                                                                        height: 10px !important;
+                                                                        vertical-align: center;
+                                                                    }
+                                                                </style>
                                                                 <?php
                                                                 $this->db->select('*');
                                                                 $this->db->from('tbl_capex');
                                                                 $this->db->where('tbl_capex.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
                                                                 $query_result_capex = $this->db->get() ?>
                                                                 <?php
                                                                 foreach ($query_result_capex->result_array() as $value_capex) { ?>
@@ -12,8 +34,8 @@
                                                                     $this->db->from('tbl_capex_detail');
                                                                     $this->db->where('tbl_capex_detail.id_capex', $id_capex);
                                                                     $kondisi_detail_capex = $this->db->get()->result_array() ?>
-                                                                    <tr class="text-white" style="font-family: RNSSanz-Black;font-size:16px;font-weight:700;background-color: #193B53;">
-                                                                        <td class="tg-0lax" style="height:30px">
+                                                                    <tr class="text-white" style="font-family: RNSSanz-Black;font-size:16px;font-weight:300;background-color: #1c4e80;">
+                                                                        <td style="font-family: RNSSanz-Medium;font-size:13px;"class="tg-0lax">
                                                                             1.1
                                                                         </td>
                                                                         <td class="tg-0lax text-white"> CAPEX</td>
@@ -146,15 +168,15 @@
                                                                                     $update_reusable = 'update_nilai_level_2_capex';
                                                                                 }
                                                                                 ?>
-                                                                                <td class="tg-0lax text-white"> <?= "Rp " . number_format($value_capex[$nilai], 2, ',', '.') ?>
+                                                                                <td class="tg-0lax text-white" style="font-family: RNSSanz-Bold;font-size:13px;" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_capex[$nilai], 2, ',', '.') ?>
                                                                                 </td>
                                                                                 <td class="tg-0lax">
-                                                                                    <div class="btn-group">
-                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                            <span class="sr-only">Toggle Dropdown</span>
+                                                                                    <div class="btn-group" style="padding: -20px !important;">
+                                                                                        <button type="button" style="height: 25px;" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true" style="font-size: 10px;"></i></button>
+                                                                                        <button type="button" style="height: 25px;" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                            <span style="font-size: 10px;"  class="sr-only">Toggle Dropdown</span>
                                                                                         </button>
-                                                                                        <div class="dropdown-menu" role="menu">
+                                                                                        <div class="dropdown-menu" style="margin-top: -10px;" role="menu">
                                                                                             <?php if ($value_capex[$nilai] == null || $value_capex[$nilai] == 0) { ?>
                                                                                                 <?php if ($kondisi_detail_capex) { ?>
                                                                                                     <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
@@ -184,7 +206,7 @@
                                                                             $update_reusable = 'update_nilai_level_2_capex';
                                                                             $type_add_nilai = null;
                                                                             ?>
-                                                                            <td class="tg-0lax text-white"> <?= "Rp " . number_format($value_capex[$nilai], 2, ',', '.') ?>
+                                                                            <td class="tg-0lax text-white" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_capex[$nilai], 2, ',', '.') ?>
                                                                             </td>
                                                                             <td class="tg-0lax">
                                                                                 <div class="btn-group">
@@ -268,7 +290,7 @@
                                                                         $this->db->select('*');
                                                                         $this->db->from('tbl_capex_detail');
                                                                         $this->db->where('tbl_capex_detail.id_capex', $id_capex);
-                                                                        $this->db->order_by('no_urut', 'ASC');
+                                                                        $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
                                                                         $query_result_detail_capex = $this->db->get() ?>
                                                                         <?php
                                                                         foreach ($query_result_detail_capex->result_array() as $value_detail_capex) { ?>
@@ -278,8 +300,8 @@
                                                                             $this->db->from('tbl_detail_capex_1');
                                                                             $this->db->where('tbl_detail_capex_1.id_capex_detail', $id_capex_detail);
                                                                             $kondisi_capex_detail_1 = $this->db->get()->result_array() ?>
-                                                                    <tr style="font-family: RNSSanz-Bold;font-size:15px;">
-                                                                        <td class="tg-0lax">
+                                                                    <tr style="font-family: RNSSanz-ExtraBold;font-size:15px;">
+                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                             <?= $value_detail_capex['no_urut'] ?> </td>
                                                                         <td class="tg-0lax" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_capex['nama_uraian'] ?>"> <?= $value_detail_capex['nama_uraian'] ?></td>
                                                                         <?php if ($adendum_result) { ?>
@@ -412,7 +434,7 @@
                                                                                         $update_reusable = 'update_nilai_level_3_capex';
                                                                                     }
                                                                                 ?>
-                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex[$nilai], 2, ',', '.') ?>
+                                                                                <td class="tg-0lax" style="font-family: RNSSanz-ExtraBold;font-size:15px;"> <?=  number_format($value_detail_capex[$nilai], 2, ',', '.') ?>
                                                                                 </td>
                                                                                 <td class="tg-0lax">
                                                                                     <div class="btn-group">
@@ -464,7 +486,7 @@
                                                                                 $update_reusable = 'update_nilai_level_3_capex';
                                                                                 $type_add_nilai = null;
                                                                             ?>
-                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex[$nilai], 2, ',', '.') ?>
+                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex[$nilai], 2, ',', '.') ?>
                                                                             </td>
                                                                             <td class="tg-0lax">
                                                                                 <div class="btn-group">
@@ -568,7 +590,7 @@
                                                                             $this->db->select('*');
                                                                             $this->db->from('tbl_detail_capex_1');
                                                                             $this->db->where('tbl_detail_capex_1.id_capex_detail', $id_capex_detail);
-                                                                            $this->db->order_by('no_urut_1_capex', 'ASC');
+                                                                            $this->db->order_by('CAST(no_urut_1_capex AS DECIMAL(10,6)) ASC');
                                                                             $query_result_detail_capex_1 = $this->db->get() ?>
                                                                     <?php
                                                                             foreach ($query_result_detail_capex_1->result_array() as $value_detail_capex_1) { ?>
@@ -578,8 +600,8 @@
                                                                                 $this->db->from('tbl_detail_capex_2');
                                                                                 $this->db->where('tbl_detail_capex_2.id_detail_capex_1', $id_detail_capex_1);
                                                                                 $kondisi_capex_detail_1 = $this->db->get()->result_array() ?>
-                                                                        <tr  style="font-family: RNSSanz-Bold;font-size:14px;">
-                                                                            <td class="tg-0lax">
+                                                                        <tr style="font-family: RNSSanz-ExtraBold;font-size:15px;">
+                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                                 <?= $value_detail_capex_1['no_urut_1_capex'] ?>
                                                                             </td>
                                                                             <td class="tg-0lax" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_capex_1['nama_uraian_1_capex'] ?>"> <?= $value_detail_capex_1['nama_uraian_1_capex'] ?></td>
@@ -712,7 +734,7 @@
                                                                                             $update_reusable = 'update_nilai_level_4_capex';
                                                                                         }
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_1[$nilai], 2, ',', '.') ?>
+                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_1[$nilai], 2, ',', '.') ?>
                                                                                     </td>
                                                                                     <td class="tg-0lax">
                                                                                         <div class="btn-group">
@@ -759,7 +781,7 @@
                                                                                     $update_reusable = 'update_nilai_level_4_capex';
                                                                                     $type_add_nilai = null;
                                                                                 ?>
-                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_1[$nilai], 2, ',', '.') ?>
+                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_1[$nilai], 2, ',', '.') ?>
                                                                                 </td>
                                                                                 <td class="tg-0lax">
                                                                                     <div class="btn-group">
@@ -857,7 +879,7 @@
                                                                                 $this->db->select('*');
                                                                                 $this->db->from('tbl_detail_capex_2');
                                                                                 $this->db->where('tbl_detail_capex_2.id_detail_capex_1', $id_detail_capex_1);
-                                                                                $this->db->order_by('no_urut_2_capex', 'ASC');
+                                                                                $this->db->order_by('CAST(no_urut_2_capex AS DECIMAL(10,6)) ASC');
                                                                                 $query_result_detail_capex_2 = $this->db->get() ?>
                                                                         <?php
                                                                                 foreach ($query_result_detail_capex_2->result_array() as $value_detail_capex_2) { ?>
@@ -867,11 +889,11 @@
                                                                                     $this->db->from('tbl_detail_capex_3');
                                                                                     $this->db->where('tbl_detail_capex_3.id_detail_capex_2', $id_detail_capex_2);
                                                                                     $kondisi_capex_detail_2 = $this->db->get()->result_array() ?>
-                                                                            <tr class="text-danger" style="font-family: RNSSanz-Medium;font-size:14px;">
-                                                                                <td class="tg-0lax">
+                                                                            <tr class="" style="font-family: RNSSanz-Bold;font-size:13px;">
+                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                                     <?= $value_detail_capex_2['no_urut_2_capex'] ?> </td>
                                                                                 </td>
-                                                                                <td class="tg-0lax" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_capex_2['nama_uraian_2_capex'] ?>"><?= $value_detail_capex_2['nama_uraian_2_capex'] ?></td>
+                                                                                <td class="tg-0lax" style="padding-left:40px; white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_capex_2['nama_uraian_2_capex'] ?>"><?= $value_detail_capex_2['nama_uraian_2_capex'] ?></td>
                                                                                 <?php if ($adendum_result) { ?>
                                                                                     <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                         <?php
@@ -1001,7 +1023,7 @@
                                                                                                 $update_reusable = 'update_nilai_level_5_capex';
                                                                                             }
                                                                                         ?>
-                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_2[$nilai], 2, ',', '.') ?>
+                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_2[$nilai], 2, ',', '.') ?>
                                                                                         </td>
                                                                                         <td class="tg-0lax">
                                                                                             <div class="btn-group">
@@ -1049,7 +1071,7 @@
                                                                                         $update_reusable = 'update_nilai_level_5_capex';
                                                                                         $type_add_nilai = null;
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_2[$nilai], 2, ',', '.') ?>
+                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_2[$nilai], 2, ',', '.') ?>
                                                                                     </td>
                                                                                     <td class="tg-0lax">
                                                                                         <div class="btn-group">
@@ -1148,7 +1170,7 @@
                                                                                     $this->db->select('*');
                                                                                     $this->db->from('tbl_detail_capex_3');
                                                                                     $this->db->where('tbl_detail_capex_3.id_detail_capex_2', $id_detail_capex_2);
-                                                                                    $this->db->order_by('no_urut_3_capex', 'ASC');
+                                                                                    $this->db->order_by('CAST(no_urut_3_capex AS DECIMAL(10,6)) ASC');
                                                                                     $query_result_detail_capex_3 = $this->db->get() ?>
                                                                             <?php
                                                                                     foreach ($query_result_detail_capex_3->result_array() as $value_detail_capex_3) { ?>
@@ -1158,10 +1180,10 @@
                                                                                         $this->db->from('tbl_detail_capex_4');
                                                                                         $this->db->where('tbl_detail_capex_4.id_detail_capex_3', $id_detail_capex_3);
                                                                                         $kondisi_capex_detail_4 = $this->db->get()->result_array() ?>
-                                                                                <tr class="text-success" style="font-family: RNSSanz-Medium;font-size:14px;">
-                                                                                    <td class="tg-0lax">
+                                                                                <tr class="" style="font-family: RNSSanz-Bold;font-size:13px;">
+                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                                         <?= $value_detail_capex_3['no_urut_3_capex'] ?> </td>
-                                                                                    <td class="tg-0lax"><?= $value_detail_capex_3['nama_uraian_3_capex'] ?></td>
+                                                                                    <td class="tg-0lax" style="padding-left:70px;"><?= $value_detail_capex_3['nama_uraian_3_capex'] ?></td>
 
                                                                                     <?php if ($adendum_result) { ?>
                                                                                         <?php foreach ($adendum_result as $key => $value) { ?>
@@ -1292,7 +1314,7 @@
                                                                                                     $update_reusable = 'update_nilai_level_6_capex';
                                                                                                 }
                                                                                             ?>
-                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_3[$nilai], 2, ',', '.') ?>
+                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_3[$nilai], 2, ',', '.') ?>
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <div class="btn-group">
@@ -1342,7 +1364,7 @@
                                                                                             $update_reusable = 'update_nilai_level_6_capex';
                                                                                             $type_add_nilai = null;
                                                                                         ?>
-                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_3[$nilai], 2, ',', '.') ?>
+                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_3[$nilai], 2, ',', '.') ?>
                                                                                         </td>
                                                                                         <td class="tg-0lax">
                                                                                             <div class="btn-group">
@@ -1443,7 +1465,7 @@
                                                                                         $this->db->select('*');
                                                                                         $this->db->from('tbl_detail_capex_4');
                                                                                         $this->db->where('tbl_detail_capex_4.id_detail_capex_3', $id_detail_capex_3);
-                                                                                        $this->db->order_by('no_urut_4_capex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_4_capex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_capex_4 = $this->db->get() ?>
                                                                                 <?php
                                                                                         foreach ($query_result_detail_capex_4->result_array() as $value_detail_capex_4) { ?>
@@ -1453,10 +1475,10 @@
                                                                                             $this->db->from('tbl_detail_capex_5');
                                                                                             $this->db->where('tbl_detail_capex_5.id_detail_capex_4', $id_detail_capex_4);
                                                                                             $kondisi_capex_detail_5 = $this->db->get()->result_array() ?>
-                                                                                    <tr style="font-family: RNSSanz-Medium;font-size:14px;">
-                                                                                        <td class="tg-0lax">
+                                                                                    <tr style="font-family: RNSSanz-Bold;font-size:13px;">
+                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                                             <?= $value_detail_capex_4['no_urut_4_capex'] ?> </td>
-                                                                                        <td class="tg-0lax"><?= $value_detail_capex_4['nama_uraian_4_capex'] ?></td>
+                                                                                        <td class="tg-0lax" style="padding-left:100px;"><?= $value_detail_capex_4['nama_uraian_4_capex'] ?></td>
                                                                                         <?php if ($adendum_result) { ?>
                                                                                             <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                 <?php
@@ -1586,7 +1608,7 @@
                                                                                                         $update_reusable = 'update_nilai_level_7_capex';
                                                                                                     }
                                                                                                 ?>
-                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_4[$nilai], 2, ',', '.') ?>
+                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_4[$nilai], 2, ',', '.') ?>
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
 
@@ -1633,7 +1655,7 @@
                                                                                                 $update_reusable = 'update_nilai_level_7_capex';
                                                                                                 $type_add_nilai = null;
                                                                                             ?>
-                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_4[$nilai], 2, ',', '.') ?>
+                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_4[$nilai], 2, ',', '.') ?>
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <div class="btn-group">
@@ -1732,7 +1754,7 @@
                                                                                             $this->db->select('*');
                                                                                             $this->db->from('tbl_detail_capex_5');
                                                                                             $this->db->where('tbl_detail_capex_5.id_detail_capex_4', $id_detail_capex_4);
-                                                                                            $this->db->order_by('no_urut_5_capex', 'ASC');
+                                                                                            $this->db->order_by('CAST(no_urut_5_capex AS DECIMAL(10,6)) ASC');
                                                                                             $query_result_detail_capex_5 = $this->db->get() ?>
                                                                                     <?php
                                                                                             foreach ($query_result_detail_capex_5->result_array() as $value_detail_capex_5) { ?>
@@ -1742,8 +1764,8 @@
                                                                                                 $this->db->from('tbl_detail_capex_6');
                                                                                                 $this->db->where('tbl_detail_capex_6.id_detail_capex_5', $id_detail_capex_5);
                                                                                                 $kondisi_capex_detail_6 = $this->db->get()->result_array() ?>
-                                                                                        <tr style="font-family: RNSSanz-Medium;font-size:14px;">
-                                                                                            <td class="tg-0lax">
+                                                                                        <tr style="font-family: RNSSanz-Medium;font-size:13px;">
+                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                                                 <?= $value_detail_capex_5['no_urut_5_capex'] ?>
                                                                                             </td>
                                                                                             <td class="tg-0lax"> <?= $value_detail_capex_5['nama_uraian_5_capex'] ?></td>
@@ -1876,7 +1898,7 @@
                                                                                                             $update_reusable = 'update_nilai_level_8_capex';
                                                                                                         }
                                                                                                     ?>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_5[$nilai], 2, ',', '.') ?>
+                                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_5[$nilai], 2, ',', '.') ?>
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <div class="btn-group">
@@ -1925,7 +1947,7 @@
                                                                                                     $update_reusable = 'update_nilai_level_8_capex';
                                                                                                     $type_add_nilai = null;
                                                                                                 ?>
-                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_5[$nilai], 2, ',', '.') ?>
+                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_5[$nilai], 2, ',', '.') ?>
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
                                                                                                     <div class="btn-group">
@@ -2022,7 +2044,7 @@
                                                                                                 $this->db->select('*');
                                                                                                 $this->db->from('tbl_detail_capex_6');
                                                                                                 $this->db->where('tbl_detail_capex_6.id_detail_capex_5', $id_detail_capex_5);
-                                                                                                $this->db->order_by('no_urut_6_capex', 'ASC');
+                                                                                                $this->db->order_by('CAST(no_urut_6_capex AS DECIMAL(10,6)) ASC');
                                                                                                 $query_result_detail_capex_6 = $this->db->get() ?>
                                                                                         <?php
                                                                                                 foreach ($query_result_detail_capex_6->result_array() as $value_detail_capex_6) { ?>
@@ -2033,7 +2055,7 @@
                                                                                                     $this->db->where('tbl_detail_capex_7.id_detail_capex_6', $id_detail_capex_6);
                                                                                                     $kondisi_capex_detail_7 = $this->db->get()->result_array() ?>
                                                                                             <tr style="font-family: RNSSanz-Medium;font-size:14px;">
-                                                                                                <td class="tg-0lax">
+                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                                                     <?= $value_detail_capex_6['no_urut_6_capex'] ?> </td>
                                                                                                 </td>
                                                                                                 <td class="tg-0lax"> <?= $value_detail_capex_6['nama_uraian_6_capex'] ?></td>
@@ -2166,7 +2188,7 @@
                                                                                                                 $update_reusable = 'update_nilai_level_9_capex';
                                                                                                             }
                                                                                                         ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_6[$nilai], 2, ',', '.') ?>
+                                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_6[$nilai], 2, ',', '.') ?>
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <div class="btn-group">
@@ -2214,7 +2236,7 @@
                                                                                                         $update_reusable = 'update_nilai_level_9_capex';
                                                                                                         $type_add_nilai = null;
                                                                                                     ?>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_6[$nilai], 2, ',', '.') ?>
+                                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_6[$nilai], 2, ',', '.') ?>
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <div class="btn-group">
@@ -2314,7 +2336,7 @@
                                                                                                     $this->db->select('*');
                                                                                                     $this->db->from('tbl_detail_capex_7');
                                                                                                     $this->db->where('tbl_detail_capex_7.id_detail_capex_6', $id_detail_capex_6);
-                                                                                                    $this->db->order_by('no_urut_7_capex', 'ASC');
+                                                                                                    $this->db->order_by('CAST(no_urut_7_capex AS DECIMAL(10,6)) ASC');
                                                                                                     $query_result_detail_capex_7 = $this->db->get() ?>
                                                                                             <?php
                                                                                                     foreach ($query_result_detail_capex_7->result_array() as $value_detail_capex_7) { ?>
@@ -2325,7 +2347,7 @@
                                                                                                         $this->db->where('tbl_detail_capex_8.id_detail_capex_7', $id_detail_capex_7);
                                                                                                         $kondisi_capex_detail_8 = $this->db->get()->result_array() ?>
                                                                                                 <tr style="font-family: RNSSanz-Medium;font-size:14px;">
-                                                                                                    <td class="tg-0lax">
+                                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                                                         <?= $value_detail_capex_7['no_urut_7_capex'] ?> </td>
                                                                                                     </td>
                                                                                                     <td class="tg-0lax"> <?= $value_detail_capex_7['nama_uraian_7_capex'] ?></td>
@@ -2458,7 +2480,7 @@
                                                                                                                     $update_reusable = 'update_nilai_level_10_capex';
                                                                                                                 }
                                                                                                             ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_7[$nilai], 2, ',', '.') ?>
+                                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_7[$nilai], 2, ',', '.') ?>
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <div class="btn-group">
@@ -2507,7 +2529,7 @@
                                                                                                             $update_reusable = 'update_nilai_level_10_capex';
                                                                                                             $type_add_nilai = null;
                                                                                                         ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_7[$nilai], 2, ',', '.') ?>
+                                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_7[$nilai], 2, ',', '.') ?>
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <div class="btn-group">
@@ -2605,7 +2627,7 @@
                                                                                                         $this->db->select('*');
                                                                                                         $this->db->from('tbl_detail_capex_8');
                                                                                                         $this->db->where('tbl_detail_capex_8.id_detail_capex_7', $id_detail_capex_7);
-                                                                                                        $this->db->order_by('no_urut_8_capex', 'ASC');
+                                                                                                        $this->db->order_by('CAST(no_urut_8_capex AS DECIMAL(10,6)) ASC');
                                                                                                         $query_result_detail_capex_8 = $this->db->get() ?>
                                                                                                 <?php
                                                                                                         foreach ($query_result_detail_capex_8->result_array() as $value_detail_capex_8) { ?>
@@ -2748,7 +2770,7 @@
                                                                                                                         $update_reusable = 'update_nilai_level_11_capex';
                                                                                                                     }
                                                                                                                 ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?>
+                                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?>
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
 
@@ -2799,7 +2821,7 @@
                                                                                                                 $update_reusable = 'update_nilai_level_11_capex';
                                                                                                                 $type_add_nilai = null;
                                                                                                             ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?>
+                                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?>
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <div class="btn-group">
@@ -2899,7 +2921,7 @@
                                                                                                             $this->db->select('*');
                                                                                                             $this->db->from('tbl_detail_capex_9');
                                                                                                             $this->db->where('tbl_detail_capex_9.id_detail_capex_8', $id_detail_capex_8);
-                                                                                                            $this->db->order_by('no_urut_9_capex', 'ASC');
+                                                                                                            $this->db->order_by('CAST(no_urut_9_capex AS DECIMAL(10,6)) ASC');
                                                                                                             $query_result_detail_capex_9 = $this->db->get() ?>
                                                                                                     <?php
                                                                                                             foreach ($query_result_detail_capex_9->result_array() as $value_detail_capex_9) { ?>
@@ -3043,7 +3065,7 @@
                                                                                                                             $update_reusable = 'update_nilai_level_12_capex';
                                                                                                                         }
                                                                                                                     ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_9[$nilai], 2, ',', '.') ?>
+                                                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_9[$nilai], 2, ',', '.') ?>
                                                                                                                     </td>
                                                                                                                     <td class="tg-0lax">
 
@@ -3093,7 +3115,7 @@
                                                                                                                     $update_reusable = 'update_nilai_level_12_capex';
                                                                                                                     $type_add_nilai = null;
                                                                                                                 ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_9[$nilai], 2, ',', '.') ?>
+                                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_9[$nilai], 2, ',', '.') ?>
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
                                                                                                                     <div class="btn-group">

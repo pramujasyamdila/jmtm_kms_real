@@ -13366,6 +13366,7 @@ class Data_kontrak_penyedia_jasa extends CI_Controller
                 'nilai_program_mata_anggran' => $value['nilai_program_mata_anggran'],
                 'id_checking' => $value['id_checking'],
                 'no_add_checking' => $value['no_add'],
+                'addendum_ke' => 'kosong'
             ];
             $this->Data_kontrak_model->add_sub_program($data);
         }

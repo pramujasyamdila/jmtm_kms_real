@@ -1314,7 +1314,7 @@ class Data_kontrak_model extends CI_Model
         return $this->db->affected_rows();
     }
 
-    public function get_mata_anggaran($id_departemen, $id_area, $keyword = null, $id_kontrak)
+    public function get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword = null, $id_kontrak)
     {
         $this->db->select('*');
         $this->db->from('tbl_detail_program_penyedia_jasa');
@@ -1346,10 +1346,15 @@ class Data_kontrak_model extends CI_Model
                 $this->db->or_like('nama_sub_area', $keyword);
             } else {
             }
-            $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $id_departemen);
-            if ($id_area == 0 || $id_area == null) {
-            } else {
-                $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $id_area);
+            if ($id_departemen && $id_area == 0 && $id_sub_area == 0) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+            } else if ($id_departemen && $id_area && $id_sub_area == 0) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+                $this->db->where('mst_kontrak.id_area', $id_area);
+            } else if ($id_departemen && $id_area && $id_sub_area) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+                $this->db->where('mst_kontrak.id_area', $id_area);
+                $this->db->where('mst_kontrak.id_sub_area', $id_sub_area);
             }
         }
         $query = $this->db->get();
@@ -3304,7 +3309,7 @@ class Data_kontrak_model extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
-    
+
 
     public function by_id_unit_price_2($id_unit_price_2)
     {
@@ -3315,7 +3320,7 @@ class Data_kontrak_model extends CI_Model
         return $query->row_array();
     }
 
-    
+
     public function by_result_unit_price_2($id_unit_price_1)
     {
         $this->db->select('*');
@@ -3333,7 +3338,7 @@ class Data_kontrak_model extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
-    
+
     public function by_result_unit_price_3($id_unit_price_2)
     {
         $this->db->select('*');
@@ -3414,7 +3419,7 @@ class Data_kontrak_model extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
-    
+
 
     public function by_id_unit_price_8($id_unit_price_8)
     {
@@ -3950,7 +3955,7 @@ class Data_kontrak_model extends CI_Model
         $this->db->select('*');
         $this->db->from('tbl_sub_detail_program_penyedia_jasa');
         $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-        $this->db->where('tbl_sub_detail_program_penyedia_jasa.status_mata_anggaran_addendum', null);
+        $this->db->where('tbl_sub_detail_program_penyedia_jasa.status_mata_anggaran_addendum', 0);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -4395,7 +4400,7 @@ class Data_kontrak_model extends CI_Model
         $this->db->select('*');
         $this->db->from('tbl_sub_detail_program_penyedia_jasa');
         $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-        $this->db->where('tbl_sub_detail_program_penyedia_jasa.status_mata_anggaran_addendum', null);
+        $this->db->where('tbl_sub_detail_program_penyedia_jasa.status_mata_anggaran_addendum', 0);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -6519,7 +6524,7 @@ class Data_kontrak_model extends CI_Model
         return $updatedId;
     }
 
-    
+
     // price_3
     public function update_tbl_unit_price_3($where, $data)
     {
@@ -6528,7 +6533,7 @@ class Data_kontrak_model extends CI_Model
         return $updatedId;
     }
 
-    
+
     // price_4
     public function update_tbl_unit_price_4($where, $data)
     {
@@ -6537,7 +6542,7 @@ class Data_kontrak_model extends CI_Model
         return $updatedId;
     }
 
-    
+
     // price_5
     public function update_tbl_unit_price_5($where, $data)
     {
@@ -6546,7 +6551,7 @@ class Data_kontrak_model extends CI_Model
         return $updatedId;
     }
 
-    
+
     // price_6
     public function update_tbl_unit_price_6($where, $data)
     {
@@ -6555,7 +6560,7 @@ class Data_kontrak_model extends CI_Model
         return $updatedId;
     }
 
-    
+
     // price_7
     public function update_tbl_unit_price_7($where, $data)
     {
@@ -6564,7 +6569,7 @@ class Data_kontrak_model extends CI_Model
         return $updatedId;
     }
 
-    
+
     // price_8
     public function update_tbl_unit_price_8($where, $data)
     {
@@ -6573,7 +6578,7 @@ class Data_kontrak_model extends CI_Model
         return $updatedId;
     }
 
-    
+
     // price_9
     public function update_tbl_unit_price_9($where, $data)
     {
@@ -6582,7 +6587,7 @@ class Data_kontrak_model extends CI_Model
         return $updatedId;
     }
 
-    
+
     // price_10
     public function update_tbl_unit_price_10($where, $data)
     {

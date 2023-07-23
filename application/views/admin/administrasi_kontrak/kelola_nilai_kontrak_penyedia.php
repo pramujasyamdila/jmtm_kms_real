@@ -563,7 +563,7 @@
                                                                                                 <thead style="font-size: 12px;" class="thead-inverse bg-primary">
                                                                                                     <tr>
                                                                                                         <th class="text-white">No</th>
-                                                                                                        <th class="text-white">No Mata Anggaran</th>
+                                                                                                        <th class="text-white">No Mata Anggaranasd</th>
                                                                                                         <th class="text-white">Uraian</th>
                                                                                                         <th class="text-white">Satuan</th>
                                                                                                         <th class="text-white">Kuantitas</th>
@@ -578,12 +578,13 @@
                                                                                                     $this->db->from('tbl_hps_penyedia_kontrak_1');
                                                                                                     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
                                                                                                     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_sub_program_penyedia_jasa', $value['id_detail_sub_program_penyedia_jasa']);
+                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_1.item_baru', 'kosong');
                                                                                                     $this->db->order_by('no_urut', 'ASC');
                                                                                                     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get() ?>
                                                                                                     <?php
                                                                                                     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) { ?>
                                                                                                         <?php
-                                                                                                        $id_refrence_hps_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+                                                                                                        $id_refrence_hps_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
                                                                                                         if ($value_hps_penyedia_kontrak_1['total_harga']) {
                                                                                                             $total_hps_penyedia_kontrak_1 +=  $value_hps_penyedia_kontrak_1['total_harga'];
                                                                                                         } else {
@@ -626,12 +627,13 @@
                                                                                                         $this->db->select('*');
                                                                                                         $this->db->from('tbl_hps_penyedia_kontrak_2');
                                                                                                         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_refrence_hps_hps_penyedia_kontrak_1);
+                                                                                                        $this->db->where('tbl_hps_penyedia_kontrak_2.item_baru', 'kosong');
                                                                                                         $this->db->order_by('no_urut', 'ASC');
                                                                                                         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get() ?>
                                                                                                         <?php
                                                                                                         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) { ?>
                                                                                                             <?php
-                                                                                                            $id_refrence_hps_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+                                                                                                            $id_refrence_hps_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
                                                                                                             if ($value_hps_penyedia_kontrak_2['total_harga']) {
                                                                                                                 $total_hps_penyedia_kontrak_2 +=  $value_hps_penyedia_kontrak_2['total_harga'];
                                                                                                             } else {
@@ -677,7 +679,7 @@
                                                                                                             <?php
                                                                                                             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) { ?>
                                                                                                                 <?php
-                                                                                                                $id_refrence_hps_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                                                                                                                $id_refrence_hps_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                                                                                                                 if ($value_hps_penyedia_kontrak_3['total_harga']) {
                                                                                                                     $total_hps_penyedia_kontrak_3 +=  $value_hps_penyedia_kontrak_3['total_harga'];
                                                                                                                 } else {
@@ -723,7 +725,7 @@
                                                                                                                 <?php
                                                                                                                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) { ?>
                                                                                                                     <?php
-                                                                                                                    $id_refrence_hps_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                                                                                                                    $id_refrence_hps_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                                                                                                                     if ($value_hps_penyedia_kontrak_4['total_harga']) {
                                                                                                                         $total_hps_penyedia_kontrak_4 +=  $value_hps_penyedia_kontrak_4['total_harga'];
                                                                                                                     } else {
@@ -769,7 +771,7 @@
                                                                                                                     <?php
                                                                                                                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) { ?>
                                                                                                                         <?php
-                                                                                                                        $id_refrence_hps_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                                                                                                                        $id_refrence_hps_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                                                                                                                         if ($value_hps_penyedia_kontrak_5['total_harga']) {
                                                                                                                             $total_hps_penyedia_kontrak_5 +=  $value_hps_penyedia_kontrak_5['total_harga'];
                                                                                                                         } else {
@@ -930,6 +932,7 @@
                                                                         $romawi_add = 'Addendum XXX';
                                                                         $field_addendum = '_addendum_30';
                                                                     } else {
+                                                                        $field_addendum = NULL;
                                                                     } ?>
                                                                     <div class="tab-pane fade show" id="custom-tabs-two-<?= $value_addendum['no_addendum'] ?>" role="tabpanel" aria-labelledby="custom-tabs-two-<?= $value_addendum['no_addendum'] ?>-tab">
                                                                         <div class="row">
@@ -985,13 +988,13 @@
                                                                             $this->db->select('*');
                                                                             $this->db->from('tbl_sub_detail_program_penyedia_jasa');
                                                                             $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $row_program_kontrak_detail['id_detail_program_penyedia_jasa']);
-                                                                            $this->db->where('tbl_sub_detail_program_penyedia_jasa.status_mata_anggaran_addendum', null);
-                                                                            $this->db->or_where('tbl_sub_detail_program_penyedia_jasa.addendum_ke', $field_addendum);
+                                                                            $this->db->where_in('tbl_sub_detail_program_penyedia_jasa.status_mata_anggaran_addendum', [0, 1]);
+                                                                            $this->db->where_in('tbl_sub_detail_program_penyedia_jasa.addendum_ke', [$field_addendum, 'kosong']);
                                                                             $result_sub_program_tambahan_anggaran = $this->db->get();
                                                                             ?>
                                                                             <?php foreach ($result_sub_program_tambahan_anggaran->result_array() as $key => $value) { ?>
                                                                                 <li>
-                                                                                    <a class="nav-link bg-primary" href="#kirun_addendum<?= $value_addendum['no_addendum'] ?><?= $value['id_detail_sub_program_penyedia_jasa'] ?>"><?= $value['nama_program_mata_anggaran'] ?></a>
+                                                                                    <a class="nav-link bg-primary text-white" href="#kirun_addendum<?= $value_addendum['no_addendum'] ?><?= $value['id_detail_sub_program_penyedia_jasa'] ?>"><?= $value['nama_program_mata_anggaran'] ?></a>
                                                                                 </li>
                                                                             <?php  } ?>
                                                                         </ul>
@@ -1012,17 +1015,17 @@
                                                                                             </div>
                                                                                             <div class="card-body">
                                                                                                 <table class="table table-bordered table-striped">
-                                                                                                    <thead style="font-size: 12px;" class="thead-inverse bg-primary">
+                                                                                                    <thead style="font-size: 12px;color:white" class="thead-inverse bg-primary text-white">
                                                                                                         <tr>
-                                                                                                            <th>No</th>
-                                                                                                            <th>No Mata Anggaran</th>
-                                                                                                            <th>Uraian</th>
-                                                                                                            <th>Satuan</th>
-                                                                                                            <th>Kuantitas</th>
-                                                                                                            <th>Harga Satuan</th>
-                                                                                                            <th>Jumlah Harga</th>
-                                                                                                            <th>Keterangan</th>
-                                                                                                            <th>Action</th>
+                                                                                                            <th class="text-white">No</th>
+                                                                                                            <th class="text-white">No Mata Anggaranads</th>
+                                                                                                            <th class="text-white">Uraian</th>
+                                                                                                            <th class="text-white">Satuan</th>
+                                                                                                            <th class="text-white">Kuantitas</th>
+                                                                                                            <th class="text-white">Harga Satuan</th>
+                                                                                                            <th class="text-white">Jumlah Harga</th>
+                                                                                                            <th class="text-white">Keterangan</th>
+                                                                                                            <th class="text-white">Action</th>
                                                                                                         </tr>
                                                                                                     </thead>
                                                                                                     <tbody style="font-size: 10px;">
@@ -1031,13 +1034,14 @@
                                                                                                         $this->db->from('tbl_hps_penyedia_kontrak_1');
                                                                                                         $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
                                                                                                         $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_sub_program_penyedia_jasa', $value['id_detail_sub_program_penyedia_jasa']);
+                                                                                                        $this->db->where('tbl_hps_penyedia_kontrak_1.uraian_hps' . $field_addendum . '!=', NULL);
                                                                                                         $this->db->order_by('no_urut', 'ASC');
                                                                                                         $query_tbl_hps_penyedia_kontrak_1 = $this->db->get() ?>
                                                                                                         <?php
                                                                                                         foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) { ?>
 
                                                                                                             <?php
-                                                                                                            $id_refrence_hps_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+                                                                                                            $id_refrence_hps_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
                                                                                                             $id_detail_sub_program_penyedia_jasa = $value_hps_penyedia_kontrak_1['id_detail_sub_program_penyedia_jasa'];
                                                                                                             if ($value_hps_penyedia_kontrak_1['total_harga' . $field_addendum]) {
                                                                                                                 $total_hps_penyedia_kontrak_addendum_1 +=  $value_hps_penyedia_kontrak_1['total_harga' . $field_addendum];
@@ -1094,12 +1098,14 @@
                                                                                                             $this->db->select('*');
                                                                                                             $this->db->from('tbl_hps_penyedia_kontrak_2');
                                                                                                             $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_refrence_hps_hps_penyedia_kontrak_1);
+                                                                                                            $this->db->where('tbl_hps_penyedia_kontrak_2.uraian_hps' . $field_addendum . '!=', NULL);
                                                                                                             $this->db->order_by('no_urut', 'ASC');
                                                                                                             $query_tbl_hps_penyedia_kontrak_2 = $this->db->get() ?>
+
                                                                                                             <?php
                                                                                                             foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) { ?>
                                                                                                                 <?php
-                                                                                                                $id_refrence_hps_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+                                                                                                                $id_refrence_hps_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
                                                                                                                 if ($value_hps_penyedia_kontrak_2['total_harga' . $field_addendum]) {
                                                                                                                     $total_hps_penyedia_kontrak_addendum_2 +=  $value_hps_penyedia_kontrak_2['total_harga' . $field_addendum];
                                                                                                                 } else {
@@ -1155,12 +1161,13 @@
                                                                                                                 $this->db->select('*');
                                                                                                                 $this->db->from('tbl_hps_penyedia_kontrak_3');
                                                                                                                 $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_refrence_hps_hps_penyedia_kontrak_2);
+                                                                                                                $this->db->where('tbl_hps_penyedia_kontrak_3.uraian_hps' . $field_addendum . '!=', NULL);
                                                                                                                 $this->db->order_by('no_urut', 'ASC');
                                                                                                                 $query_tbl_hps_penyedia_kontrak_3 = $this->db->get() ?>
                                                                                                                 <?php
                                                                                                                 foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) { ?>
                                                                                                                     <?php
-                                                                                                                    $id_refrence_hps_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                                                                                                                    $id_refrence_hps_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                                                                                                                     if ($value_hps_penyedia_kontrak_3['total_harga' . $field_addendum]) {
                                                                                                                         $total_hps_penyedia_kontrak_addendum_3 +=  $value_hps_penyedia_kontrak_3['total_harga' . $field_addendum];
                                                                                                                     } else {
@@ -1216,12 +1223,13 @@
                                                                                                                     $this->db->select('*');
                                                                                                                     $this->db->from('tbl_hps_penyedia_kontrak_4');
                                                                                                                     $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_refrence_hps_hps_penyedia_kontrak_3);
+                                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_4.uraian_hps' . $field_addendum . '!=', NULL);
                                                                                                                     $this->db->order_by('no_urut', 'ASC');
                                                                                                                     $query_tbl_hps_penyedia_kontrak_4 = $this->db->get() ?>
                                                                                                                     <?php
                                                                                                                     foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) { ?>
                                                                                                                         <?php
-                                                                                                                        $id_refrence_hps_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                                                                                                                        $id_refrence_hps_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                                                                                                                         if ($value_hps_penyedia_kontrak_4['total_harga' . $field_addendum]) {
                                                                                                                             $total_hps_penyedia_kontrak_addendum_4 +=  $value_hps_penyedia_kontrak_4['total_harga' . $field_addendum];
                                                                                                                         } else {
@@ -1277,12 +1285,13 @@
                                                                                                                         $this->db->select('*');
                                                                                                                         $this->db->from('tbl_hps_penyedia_kontrak_5');
                                                                                                                         $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_refrence_hps_hps_penyedia_kontrak_4);
+                                                                                                                        $this->db->where('tbl_hps_penyedia_kontrak_5.uraian_hps' . $field_addendum . '!=', NULL);
                                                                                                                         $this->db->order_by('no_urut', 'ASC');
                                                                                                                         $query_tbl_hps_penyedia_kontrak_5 = $this->db->get() ?>
                                                                                                                         <?php
                                                                                                                         foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) { ?>
                                                                                                                             <?php
-                                                                                                                            $id_refrence_hps_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                                                                                                                            $id_refrence_hps_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                                                                                                                             if ($value_hps_penyedia_kontrak_5['total_harga' . $field_addendum]) {
                                                                                                                                 $total_hps_penyedia_kontrak_addendum_5 +=  $value_hps_penyedia_kontrak_5['total_harga' . $field_addendum];
                                                                                                                             } else {
@@ -1394,7 +1403,7 @@
     </section>
 </div>
 
-<div class="modal fade" data-backdrop="false"  id="modal_tambah_dkh" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" data-backdrop="false" id="modal_tambah_dkh" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">

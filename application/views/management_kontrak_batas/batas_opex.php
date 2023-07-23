@@ -1,8 +1,30 @@
                                                                 <!-- opex -->
+
+                                                                <style>
+                                                                    table,
+                                                                    td,
+                                                                    th {
+                                                                        height: 10px !important;
+                                                                        border: 1px solid black;
+                                                                        vertical-align: center;
+
+                                                                    }
+
+                                                                    table {
+                                                                        border-collapse: collapse;
+                                                                        width: 100%;
+                                                                    }
+
+                                                                    td {
+                                                                        height: 10px !important;
+                                                                        vertical-align: center;
+                                                                    }
+                                                                </style>
                                                                 <?php
                                                                 $this->db->select('*');
                                                                 $this->db->from('tbl_opex');
                                                                 $this->db->where('tbl_opex.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
                                                                 $query_result_opex = $this->db->get() ?>
                                                                 <?php
                                                                 foreach ($query_result_opex->result_array() as $value_opex) { ?>
@@ -12,11 +34,11 @@
                                                                     $this->db->from('tbl_opex_detail');
                                                                     $this->db->where('tbl_opex_detail.id_opex', $id_opex);
                                                                     $kondisi_detail_opex = $this->db->get()->result_array() ?>
-                                                                    <tr class="bg-warning text-white" style="font-size:12px;font-weight:700">
-                                                                        <td class="tg-0lax">
+                                                                    <tr class="text-white" style="font-family: RNSSanz-Black;font-size:16px;font-weight:300;background-color: #1c4e80;">
+                                                                        <td style="font-family: RNSSanz-Medium;font-size:13px;"class="tg-0lax">
                                                                             1.2
                                                                         </td>
-                                                                        <td class="tg-0lax text-white">&nbsp;&nbsp; OPEX</td>
+                                                                        <td class="tg-0lax text-white"> OPEX</td>
                                                                         <?php if ($adendum_result) { ?>
                                                                             <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                 <?php
@@ -146,15 +168,15 @@
                                                                                     $update_reusable = 'update_nilai_level_2_opex';
                                                                                 }
                                                                                 ?>
-                                                                                <td class="tg-0lax text-white"> <?= "Rp " . number_format($value_opex[$nilai], 2, ',', '.') ?>
+                                                                                <td class="tg-0lax text-white" style="font-family: RNSSanz-Bold;font-size:13px;" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_opex[$nilai], 2, ',', '.') ?>
                                                                                 </td>
                                                                                 <td class="tg-0lax">
-                                                                                    <div class="btn-group">
-                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                            <span class="sr-only">Toggle Dropdown</span>
+                                                                                    <div class="btn-group" style="padding: -20px !important;">
+                                                                                        <button type="button" style="height: 25px;" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true" style="font-size: 10px;"></i></button>
+                                                                                        <button type="button" style="height: 25px;" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                            <span style="font-size: 10px;"  class="sr-only">Toggle Dropdown</span>
                                                                                         </button>
-                                                                                        <div class="dropdown-menu" role="menu">
+                                                                                        <div class="dropdown-menu" style="margin-top: -10px;" role="menu">
                                                                                             <?php if ($value_opex[$nilai] == null || $value_opex[$nilai] == 0) { ?>
                                                                                                 <?php if ($kondisi_detail_opex) { ?>
                                                                                                     <a onclick="modal_level_2_opex(<?= $value_opex['id_opex'] ?>,'tambah_level_2_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
@@ -184,12 +206,12 @@
                                                                             $update_reusable = 'update_nilai_level_2_opex';
                                                                             $type_add_nilai = null;
                                                                             ?>
-                                                                            <td class="tg-0lax text-white"> <?= "Rp " . number_format($value_opex[$nilai], 2, ',', '.') ?>
+                                                                            <td class="tg-0lax text-white" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_opex[$nilai], 2, ',', '.') ?>
                                                                             </td>
                                                                             <td class="tg-0lax">
                                                                                 <div class="btn-group">
-                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                     </button>
                                                                                     <div class="dropdown-menu" role="menu">
@@ -268,7 +290,7 @@
                                                                         $this->db->select('*');
                                                                         $this->db->from('tbl_opex_detail');
                                                                         $this->db->where('tbl_opex_detail.id_opex', $id_opex);
-                                                                        $this->db->order_by('no_urut', 'ASC');
+                                                                        $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
                                                                         $query_result_detail_opex = $this->db->get() ?>
                                                                         <?php
                                                                         foreach ($query_result_detail_opex->result_array() as $value_detail_opex) { ?>
@@ -278,10 +300,10 @@
                                                                             $this->db->from('tbl_detail_opex_1');
                                                                             $this->db->where('tbl_detail_opex_1.id_opex_detail', $id_opex_detail);
                                                                             $kondisi_opex_detail_1 = $this->db->get()->result_array() ?>
-                                                                    <tr class="text-warning" style="font-size:11px;font-weight: 650;">
-                                                                        <td class="tg-0lax">
+                                                                    <tr style="font-family: RNSSanz-ExtraBold;font-size:15px;">
+                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                             <?= $value_detail_opex['no_urut'] ?> </td>
-                                                                        <td class="tg-0lax" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_opex['nama_uraian'] ?>">&nbsp;&nbsp;&nbsp; <?= $value_detail_opex['nama_uraian'] ?></td>
+                                                                        <td class="tg-0lax" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_opex['nama_uraian'] ?>"> <?= $value_detail_opex['nama_uraian'] ?></td>
                                                                         <?php if ($adendum_result) { ?>
                                                                             <?php foreach ($adendum_result as $key => $value) { ?>
 
@@ -412,12 +434,12 @@
                                                                                         $update_reusable = 'update_nilai_level_3_opex';
                                                                                     }
                                                                                 ?>
-                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex[$nilai], 2, ',', '.') ?>
+                                                                                <td class="tg-0lax" style="font-family: RNSSanz-ExtraBold;font-size:15px;"> <?=  number_format($value_detail_opex[$nilai], 2, ',', '.') ?>
                                                                                 </td>
                                                                                 <td class="tg-0lax">
                                                                                     <div class="btn-group">
-                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                         </button>
                                                                                         <div class="dropdown-menu" role="menu">
@@ -426,14 +448,14 @@
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'tambah_level_3_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'edit_level_3_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-info" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit Turunan"><i class="fas fa-edit"></i></a>
                                                                                                     <!-- UBAH urutan -->
-                                                                                                    <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'tambah_level_3_opex_excel', <?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
+                                                                                                    <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'tambah_level_3_opex_excel', <?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file">angga 1</i></a>
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'urutan_level_3_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-info" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Pindahkan Level Turunan"><i class="fas fa fa-list-ol"></i></a>
                                                                                                 <?php    } else { ?>
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'<?= $update_reusable ?>')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Masukan Nilai Turunan"><i class="fas fa-dollar-sign"></i></a>
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'tambah_level_3_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'hapus_level_3_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus Turunan"><i class="fas fa-trash"></i></a>
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'edit_level_3_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-info" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit Turunan"><i class="fas fa-edit"></i></a>
-                                                                                                    <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'tambah_level_3_opex_excel', <?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
+                                                                                                    <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'tambah_level_3_opex_excel', <?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i>angga 2</a>
                                                                                                     <!-- UBAH urutan -->
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'urutan_level_3_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-info" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Pindahkan Level Turunan"><i class="fas fa fa-list-ol"></i></a>
                                                                                                 <?php   }  ?>
@@ -441,7 +463,7 @@
                                                                                                 <?php if ($kondisi_opex_detail_1) { ?>
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'tambah_level_3_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'edit_level_3_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-info" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit Turunan"><i class="fas fa-edit"></i></a>
-                                                                                                    <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'tambah_level_3_opex_excel', <?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
+                                                                                                    <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'tambah_level_3_opex_excel', <?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i>angga 3</a>
                                                                                                     <!-- UBAH urutan -->
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'urutan_level_3_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-info" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Pindahkan Level Turunan"><i class="fas fa fa-list-ol"></i></a>
                                                                                                 <?php    } else { ?>
@@ -449,7 +471,7 @@
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'tambah_level_3_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'hapus_level_3_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus Turunan"><i class="fas fa-trash"></i></a>
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'edit_level_3_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-info" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit Turunan"><i class="fas fa-edit"></i></a>
-                                                                                                    <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'tambah_level_3_opex_excel', <?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
+                                                                                                    <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'tambah_level_3_opex_excel', <?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"> angga 4</i></a>
                                                                                                     <!-- UBAH urutan -->
                                                                                                     <a onclick="modal_level_3_opex(<?= $value_detail_opex['id_opex_detail'] ?>,'urutan_level_3_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-info" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Pindahkan Level Turunan"><i class="fas fa fa-list-ol"></i></a>
                                                                                                 <?php   }  ?>
@@ -464,12 +486,12 @@
                                                                                 $update_reusable = 'update_nilai_level_3_opex';
                                                                                 $type_add_nilai = null;
                                                                             ?>
-                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex[$nilai], 2, ',', '.') ?>
+                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex[$nilai], 2, ',', '.') ?>
                                                                             </td>
                                                                             <td class="tg-0lax">
                                                                                 <div class="btn-group">
-                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                     </button>
                                                                                     <div class="dropdown-menu" role="menu">
@@ -568,7 +590,7 @@
                                                                             $this->db->select('*');
                                                                             $this->db->from('tbl_detail_opex_1');
                                                                             $this->db->where('tbl_detail_opex_1.id_opex_detail', $id_opex_detail);
-                                                                            $this->db->order_by('no_urut_1_opex', 'ASC');
+                                                                            $this->db->order_by('CAST(no_urut_1_opex AS DECIMAL(10,6)) ASC');
                                                                             $query_result_detail_opex_1 = $this->db->get() ?>
                                                                     <?php
                                                                             foreach ($query_result_detail_opex_1->result_array() as $value_detail_opex_1) { ?>
@@ -578,11 +600,11 @@
                                                                                 $this->db->from('tbl_detail_opex_2');
                                                                                 $this->db->where('tbl_detail_opex_2.id_detail_opex_1', $id_detail_opex_1);
                                                                                 $kondisi_opex_detail_1 = $this->db->get()->result_array() ?>
-                                                                        <tr class="text-info" style="font-size:11px;font-weight: 450;">
-                                                                            <td class="tg-0lax">
+                                                                        <tr style="font-family: RNSSanz-ExtraBold;font-size:15px;">
+                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                                 <?= $value_detail_opex_1['no_urut_1_opex'] ?>
                                                                             </td>
-                                                                            <td class="tg-0lax" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_opex_1['nama_uraian_1_opex'] ?>">&nbsp;&nbsp;&nbsp;&nbsp; <?= $value_detail_opex_1['nama_uraian_1_opex'] ?></td>
+                                                                            <td class="tg-0lax" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_opex_1['nama_uraian_1_opex'] ?>"> <?= $value_detail_opex_1['nama_uraian_1_opex'] ?></td>
                                                                             <?php if ($adendum_result) { ?>
                                                                                 <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                     <?php
@@ -712,12 +734,12 @@
                                                                                             $update_reusable = 'update_nilai_level_4_opex';
                                                                                         }
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_1[$nilai], 2, ',', '.') ?>
+                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_1[$nilai], 2, ',', '.') ?>
                                                                                     </td>
                                                                                     <td class="tg-0lax">
                                                                                         <div class="btn-group">
-                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                             </button>
                                                                                             <div class="dropdown-menu" role="menu">
@@ -725,7 +747,7 @@
                                                                                                     <?php if ($kondisi_opex_detail_1) { ?>
                                                                                                         <a onclick="modal_level_4_opex(<?= $value_detail_opex_1['id_detail_opex_1'] ?>,'tambah_level_4_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
                                                                                                         <a onclick="modal_level_4_opex(<?= $value_detail_opex_1['id_detail_opex_1'] ?>,'edit_level_4_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-info" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit Turunan"><i class="fas fa-edit"></i></a>
-                                                                                                        <a onclick="modal_level_4_opex(<?= $value_detail_opex_1['id_detail_opex_1'] ?>,'tambah_level_4_opex_excel', <?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
+                                                                                                        <a onclick="modal_level_4_opex(<?= $value_detail_opex_1['id_detail_opex_1'] ?>,'tambah_level_4_opex_excel', <?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file">ss</i></a>
                                                                                                         <a onclick="modal_level_4_opex(<?= $value_detail_opex_1['id_detail_opex_1'] ?>,'urutan_level_4_opex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-info" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Pindahkan Level Turunan"><i class="fas fa fa-list-ol"></i></a>
                                                                                                     <?php    } else { ?>
                                                                                                         <a onclick="modal_level_4_opex(<?= $value_detail_opex_1['id_detail_opex_1'] ?>,'<?= $update_reusable ?>')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Masukan Nilai Turunan"><i class="fas fa-dollar-sign"></i></a>
@@ -759,12 +781,12 @@
                                                                                     $update_reusable = 'update_nilai_level_4_opex';
                                                                                     $type_add_nilai = null;
                                                                                 ?>
-                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_1[$nilai], 2, ',', '.') ?>
+                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_1[$nilai], 2, ',', '.') ?>
                                                                                 </td>
                                                                                 <td class="tg-0lax">
                                                                                     <div class="btn-group">
-                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                         </button>
                                                                                         <div class="dropdown-menu" role="menu">
@@ -857,7 +879,7 @@
                                                                                 $this->db->select('*');
                                                                                 $this->db->from('tbl_detail_opex_2');
                                                                                 $this->db->where('tbl_detail_opex_2.id_detail_opex_1', $id_detail_opex_1);
-                                                                                $this->db->order_by('no_urut_2_opex', 'ASC');
+                                                                                $this->db->order_by('CAST(no_urut_2_opex AS DECIMAL(10,6)) ASC');
                                                                                 $query_result_detail_opex_2 = $this->db->get() ?>
                                                                         <?php
                                                                                 foreach ($query_result_detail_opex_2->result_array() as $value_detail_opex_2) { ?>
@@ -867,11 +889,11 @@
                                                                                     $this->db->from('tbl_detail_opex_3');
                                                                                     $this->db->where('tbl_detail_opex_3.id_detail_opex_2', $id_detail_opex_2);
                                                                                     $kondisi_opex_detail_2 = $this->db->get()->result_array() ?>
-                                                                            <tr class="text-danger" style="font-size:11px;font-weight: 400;">
-                                                                                <td class="tg-0lax">
+                                                                            <tr class="" style="font-family: RNSSanz-Bold;font-size:13px;">
+                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                                     <?= $value_detail_opex_2['no_urut_2_opex'] ?> </td>
                                                                                 </td>
-                                                                                <td class="tg-0lax" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_opex_2['nama_uraian_2_opex'] ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_opex_2['nama_uraian_2_opex'] ?></td>
+                                                                                <td class="tg-0lax" style="padding-left:40px; white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $value_detail_opex_2['nama_uraian_2_opex'] ?>"><?= $value_detail_opex_2['nama_uraian_2_opex'] ?></td>
                                                                                 <?php if ($adendum_result) { ?>
                                                                                     <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                         <?php
@@ -1001,12 +1023,12 @@
                                                                                                 $update_reusable = 'update_nilai_level_5_opex';
                                                                                             }
                                                                                         ?>
-                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_2[$nilai], 2, ',', '.') ?>
+                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_2[$nilai], 2, ',', '.') ?>
                                                                                         </td>
                                                                                         <td class="tg-0lax">
                                                                                             <div class="btn-group">
-                                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                                                 </button>
                                                                                                 <div class="dropdown-menu" role="menu">
@@ -1049,12 +1071,12 @@
                                                                                         $update_reusable = 'update_nilai_level_5_opex';
                                                                                         $type_add_nilai = null;
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_2[$nilai], 2, ',', '.') ?>
+                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_2[$nilai], 2, ',', '.') ?>
                                                                                     </td>
                                                                                     <td class="tg-0lax">
                                                                                         <div class="btn-group">
-                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                             </button>
                                                                                             <div class="dropdown-menu" role="menu">
@@ -1148,7 +1170,7 @@
                                                                                     $this->db->select('*');
                                                                                     $this->db->from('tbl_detail_opex_3');
                                                                                     $this->db->where('tbl_detail_opex_3.id_detail_opex_2', $id_detail_opex_2);
-                                                                                    $this->db->order_by('no_urut_3_opex', 'ASC');
+                                                                                    $this->db->order_by('CAST(no_urut_3_opex AS DECIMAL(10,6)) ASC');
                                                                                     $query_result_detail_opex_3 = $this->db->get() ?>
                                                                             <?php
                                                                                     foreach ($query_result_detail_opex_3->result_array() as $value_detail_opex_3) { ?>
@@ -1158,10 +1180,10 @@
                                                                                         $this->db->from('tbl_detail_opex_4');
                                                                                         $this->db->where('tbl_detail_opex_4.id_detail_opex_3', $id_detail_opex_3);
                                                                                         $kondisi_opex_detail_4 = $this->db->get()->result_array() ?>
-                                                                                <tr class="text-success" style="font-size:11px;font-weight: 350;">
-                                                                                    <td class="tg-0lax">
+                                                                                <tr class="" style="font-family: RNSSanz-Bold;font-size:13px;">
+                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                                         <?= $value_detail_opex_3['no_urut_3_opex'] ?> </td>
-                                                                                    <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_opex_3['nama_uraian_3_opex'] ?></td>
+                                                                                    <td class="tg-0lax" style="padding-left:70px;"><?= $value_detail_opex_3['nama_uraian_3_opex'] ?></td>
 
                                                                                     <?php if ($adendum_result) { ?>
                                                                                         <?php foreach ($adendum_result as $key => $value) { ?>
@@ -1292,12 +1314,12 @@
                                                                                                     $update_reusable = 'update_nilai_level_6_opex';
                                                                                                 }
                                                                                             ?>
-                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_3[$nilai], 2, ',', '.') ?>
+                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_3[$nilai], 2, ',', '.') ?>
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <div class="btn-group">
-                                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                                     </button>
                                                                                                     <div class="dropdown-menu" role="menu">
@@ -1342,12 +1364,12 @@
                                                                                             $update_reusable = 'update_nilai_level_6_opex';
                                                                                             $type_add_nilai = null;
                                                                                         ?>
-                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_3[$nilai], 2, ',', '.') ?>
+                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_3[$nilai], 2, ',', '.') ?>
                                                                                         </td>
                                                                                         <td class="tg-0lax">
                                                                                             <div class="btn-group">
-                                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                                                 </button>
                                                                                                 <div class="dropdown-menu" role="menu">
@@ -1443,7 +1465,7 @@
                                                                                         $this->db->select('*');
                                                                                         $this->db->from('tbl_detail_opex_4');
                                                                                         $this->db->where('tbl_detail_opex_4.id_detail_opex_3', $id_detail_opex_3);
-                                                                                        $this->db->order_by('no_urut_4_opex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_4_opex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_opex_4 = $this->db->get() ?>
                                                                                 <?php
                                                                                         foreach ($query_result_detail_opex_4->result_array() as $value_detail_opex_4) { ?>
@@ -1453,10 +1475,10 @@
                                                                                             $this->db->from('tbl_detail_opex_5');
                                                                                             $this->db->where('tbl_detail_opex_5.id_detail_opex_4', $id_detail_opex_4);
                                                                                             $kondisi_opex_detail_5 = $this->db->get()->result_array() ?>
-                                                                                    <tr>
-                                                                                        <td class="tg-0lax">
+                                                                                    <tr style="font-family: RNSSanz-Bold;font-size:13px;">
+                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                                             <?= $value_detail_opex_4['no_urut_4_opex'] ?> </td>
-                                                                                        <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_opex_4['nama_uraian_4_opex'] ?></td>
+                                                                                        <td class="tg-0lax" style="padding-left:100px;"><?= $value_detail_opex_4['nama_uraian_4_opex'] ?></td>
                                                                                         <?php if ($adendum_result) { ?>
                                                                                             <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                 <?php
@@ -1586,13 +1608,13 @@
                                                                                                         $update_reusable = 'update_nilai_level_7_opex';
                                                                                                     }
                                                                                                 ?>
-                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_4[$nilai], 2, ',', '.') ?>
+                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_4[$nilai], 2, ',', '.') ?>
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
 
                                                                                                     <div class="btn-group">
-                                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                                         </button>
                                                                                                         <div class="dropdown-menu" role="menu">
@@ -1633,12 +1655,12 @@
                                                                                                 $update_reusable = 'update_nilai_level_7_opex';
                                                                                                 $type_add_nilai = null;
                                                                                             ?>
-                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_4[$nilai], 2, ',', '.') ?>
+                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_4[$nilai], 2, ',', '.') ?>
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <div class="btn-group">
-                                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                                     </button>
                                                                                                     <div class="dropdown-menu" role="menu">
@@ -1732,7 +1754,7 @@
                                                                                             $this->db->select('*');
                                                                                             $this->db->from('tbl_detail_opex_5');
                                                                                             $this->db->where('tbl_detail_opex_5.id_detail_opex_4', $id_detail_opex_4);
-                                                                                            $this->db->order_by('no_urut_5_opex', 'ASC');
+                                                                                            $this->db->order_by('CAST(no_urut_5_opex AS DECIMAL(10,6)) ASC');
                                                                                             $query_result_detail_opex_5 = $this->db->get() ?>
                                                                                     <?php
                                                                                             foreach ($query_result_detail_opex_5->result_array() as $value_detail_opex_5) { ?>
@@ -1742,11 +1764,11 @@
                                                                                                 $this->db->from('tbl_detail_opex_6');
                                                                                                 $this->db->where('tbl_detail_opex_6.id_detail_opex_5', $id_detail_opex_5);
                                                                                                 $kondisi_opex_detail_6 = $this->db->get()->result_array() ?>
-                                                                                        <tr>
-                                                                                            <td class="tg-0lax">
+                                                                                        <tr style="font-family: RNSSanz-Medium;font-size:13px;">
+                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                                                 <?= $value_detail_opex_5['no_urut_5_opex'] ?>
                                                                                             </td>
-                                                                                            <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_opex_5['nama_uraian_5_opex'] ?></td>
+                                                                                            <td class="tg-0lax"> <?= $value_detail_opex_5['nama_uraian_5_opex'] ?></td>
                                                                                             <?php if ($adendum_result) { ?>
                                                                                                 <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                     <?php
@@ -1876,12 +1898,12 @@
                                                                                                             $update_reusable = 'update_nilai_level_8_opex';
                                                                                                         }
                                                                                                     ?>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_5[$nilai], 2, ',', '.') ?>
+                                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_5[$nilai], 2, ',', '.') ?>
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <div class="btn-group">
-                                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                                             </button>
                                                                                                             <div class="dropdown-menu" role="menu">
@@ -1925,12 +1947,12 @@
                                                                                                     $update_reusable = 'update_nilai_level_8_opex';
                                                                                                     $type_add_nilai = null;
                                                                                                 ?>
-                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_5[$nilai], 2, ',', '.') ?>
+                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_5[$nilai], 2, ',', '.') ?>
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
                                                                                                     <div class="btn-group">
-                                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                                         </button>
                                                                                                         <div class="dropdown-menu" role="menu">
@@ -2022,7 +2044,7 @@
                                                                                                 $this->db->select('*');
                                                                                                 $this->db->from('tbl_detail_opex_6');
                                                                                                 $this->db->where('tbl_detail_opex_6.id_detail_opex_5', $id_detail_opex_5);
-                                                                                                $this->db->order_by('no_urut_6_opex', 'ASC');
+                                                                                                $this->db->order_by('CAST(no_urut_6_opex AS DECIMAL(10,6)) ASC');
                                                                                                 $query_result_detail_opex_6 = $this->db->get() ?>
                                                                                         <?php
                                                                                                 foreach ($query_result_detail_opex_6->result_array() as $value_detail_opex_6) { ?>
@@ -2032,11 +2054,11 @@
                                                                                                     $this->db->from('tbl_detail_opex_7');
                                                                                                     $this->db->where('tbl_detail_opex_7.id_detail_opex_6', $id_detail_opex_6);
                                                                                                     $kondisi_opex_detail_7 = $this->db->get()->result_array() ?>
-                                                                                            <tr>
-                                                                                                <td class="tg-0lax">
+                                                                                            <tr style="font-family: RNSSanz-Medium;font-size:14px;">
+                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                                                     <?= $value_detail_opex_6['no_urut_6_opex'] ?> </td>
                                                                                                 </td>
-                                                                                                <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_opex_6['nama_uraian_6_opex'] ?></td>
+                                                                                                <td class="tg-0lax"> <?= $value_detail_opex_6['nama_uraian_6_opex'] ?></td>
                                                                                                 <?php if ($adendum_result) { ?>
                                                                                                     <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                         <?php
@@ -2166,12 +2188,12 @@
                                                                                                                 $update_reusable = 'update_nilai_level_9_opex';
                                                                                                             }
                                                                                                         ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_6[$nilai], 2, ',', '.') ?>
+                                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_6[$nilai], 2, ',', '.') ?>
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <div class="btn-group">
-                                                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                                                                 </button>
                                                                                                                 <div class="dropdown-menu" role="menu">
@@ -2214,12 +2236,12 @@
                                                                                                         $update_reusable = 'update_nilai_level_9_opex';
                                                                                                         $type_add_nilai = null;
                                                                                                     ?>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_6[$nilai], 2, ',', '.') ?>
+                                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_6[$nilai], 2, ',', '.') ?>
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <div class="btn-group">
-                                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                                             </button>
                                                                                                             <div class="dropdown-menu" role="menu">
@@ -2314,7 +2336,7 @@
                                                                                                     $this->db->select('*');
                                                                                                     $this->db->from('tbl_detail_opex_7');
                                                                                                     $this->db->where('tbl_detail_opex_7.id_detail_opex_6', $id_detail_opex_6);
-                                                                                                    $this->db->order_by('no_urut_7_opex', 'ASC');
+                                                                                                    $this->db->order_by('CAST(no_urut_7_opex AS DECIMAL(10,6)) ASC');
                                                                                                     $query_result_detail_opex_7 = $this->db->get() ?>
                                                                                             <?php
                                                                                                     foreach ($query_result_detail_opex_7->result_array() as $value_detail_opex_7) { ?>
@@ -2324,11 +2346,11 @@
                                                                                                         $this->db->from('tbl_detail_opex_8');
                                                                                                         $this->db->where('tbl_detail_opex_8.id_detail_opex_7', $id_detail_opex_7);
                                                                                                         $kondisi_opex_detail_8 = $this->db->get()->result_array() ?>
-                                                                                                <tr>
-                                                                                                    <td class="tg-0lax">
+                                                                                                <tr style="font-family: RNSSanz-Medium;font-size:14px;">
+                                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;">
                                                                                                         <?= $value_detail_opex_7['no_urut_7_opex'] ?> </td>
                                                                                                     </td>
-                                                                                                    <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_opex_7['nama_uraian_7_opex'] ?></td>
+                                                                                                    <td class="tg-0lax"> <?= $value_detail_opex_7['nama_uraian_7_opex'] ?></td>
                                                                                                     <?php if ($adendum_result) { ?>
                                                                                                         <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                             <?php
@@ -2458,12 +2480,12 @@
                                                                                                                     $update_reusable = 'update_nilai_level_10_opex';
                                                                                                                 }
                                                                                                             ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_7[$nilai], 2, ',', '.') ?>
+                                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_7[$nilai], 2, ',', '.') ?>
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <div class="btn-group">
-                                                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                                                     </button>
                                                                                                                     <div class="dropdown-menu" role="menu">
@@ -2507,12 +2529,12 @@
                                                                                                             $update_reusable = 'update_nilai_level_10_opex';
                                                                                                             $type_add_nilai = null;
                                                                                                         ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_7[$nilai], 2, ',', '.') ?>
+                                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_7[$nilai], 2, ',', '.') ?>
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <div class="btn-group">
-                                                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                                                                 </button>
                                                                                                                 <div class="dropdown-menu" role="menu">
@@ -2605,7 +2627,7 @@
                                                                                                         $this->db->select('*');
                                                                                                         $this->db->from('tbl_detail_opex_8');
                                                                                                         $this->db->where('tbl_detail_opex_8.id_detail_opex_7', $id_detail_opex_7);
-                                                                                                        $this->db->order_by('no_urut_8_opex', 'ASC');
+                                                                                                        $this->db->order_by('CAST(no_urut_8_opex AS DECIMAL(10,6)) ASC');
                                                                                                         $query_result_detail_opex_8 = $this->db->get() ?>
                                                                                                 <?php
                                                                                                         foreach ($query_result_detail_opex_8->result_array() as $value_detail_opex_8) { ?>
@@ -2615,10 +2637,10 @@
                                                                                                             $this->db->from('tbl_detail_opex_9');
                                                                                                             $this->db->where('tbl_detail_opex_9.id_detail_opex_8', $id_detail_opex_8);
                                                                                                             $kondisi_opex_detail_9 = $this->db->get()->result_array() ?>
-                                                                                                    <tr>
+                                                                                                    <tr style="font-family: RNSSanz-Medium;font-size:14px;">
                                                                                                         <td class="tg-0lax">
                                                                                                             <?= $value_detail_opex_8['no_urut_8_opex'] ?> </td>
-                                                                                                        <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_opex_8['nama_uraian_8_opex'] ?></td>
+                                                                                                        <td class="tg-0lax"> <?= $value_detail_opex_8['nama_uraian_8_opex'] ?></td>
                                                                                                         <?php if ($adendum_result) { ?>
                                                                                                             <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                                 <?php
@@ -2748,13 +2770,13 @@
                                                                                                                         $update_reusable = 'update_nilai_level_11_opex';
                                                                                                                     }
                                                                                                                 ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_8[$nilai], 2, ',', '.') ?>
+                                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_8[$nilai], 2, ',', '.') ?>
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
 
                                                                                                                     <div class="btn-group">
-                                                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                                                         </button>
                                                                                                                         <div class="dropdown-menu" role="menu">
@@ -2799,12 +2821,12 @@
                                                                                                                 $update_reusable = 'update_nilai_level_11_opex';
                                                                                                                 $type_add_nilai = null;
                                                                                                             ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_8[$nilai], 2, ',', '.') ?>
+                                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_8[$nilai], 2, ',', '.') ?>
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <div class="btn-group">
-                                                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                                                     </button>
                                                                                                                     <div class="dropdown-menu" role="menu">
@@ -2899,7 +2921,7 @@
                                                                                                             $this->db->select('*');
                                                                                                             $this->db->from('tbl_detail_opex_9');
                                                                                                             $this->db->where('tbl_detail_opex_9.id_detail_opex_8', $id_detail_opex_8);
-                                                                                                            $this->db->order_by('no_urut_9_opex', 'ASC');
+                                                                                                            $this->db->order_by('CAST(no_urut_9_opex AS DECIMAL(10,6)) ASC');
                                                                                                             $query_result_detail_opex_9 = $this->db->get() ?>
                                                                                                     <?php
                                                                                                             foreach ($query_result_detail_opex_9->result_array() as $value_detail_opex_9) { ?>
@@ -2909,11 +2931,11 @@
                                                                                                                 $this->db->from('tbl_detail_opex_10');
                                                                                                                 $this->db->where('tbl_detail_opex_10.id_detail_opex_9', $id_detail_opex_9);
                                                                                                                 $kondisi_opex_detail_10 = $this->db->get()->result_array() ?>
-                                                                                                        <tr>
+                                                                                                        <tr style="font-family: RNSSanz-Medium;font-size:14px;">
                                                                                                             <td class="tg-0lax">
                                                                                                                 <?= $value_detail_opex_9['no_urut_9_opex'] ?> </td>
                                                                                                             </td>
-                                                                                                            <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<?= $value_detail_opex_9['nama_uraian_9_opex'] ?></td>
+                                                                                                            <td class="tg-0lax"> <?= $value_detail_opex_9['nama_uraian_9_opex'] ?></td>
                                                                                                             <?php if ($adendum_result) { ?>
                                                                                                                 <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                                     <?php
@@ -3043,13 +3065,13 @@
                                                                                                                             $update_reusable = 'update_nilai_level_12_opex';
                                                                                                                         }
                                                                                                                     ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_9[$nilai], 2, ',', '.') ?>
+                                                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_9[$nilai], 2, ',', '.') ?>
                                                                                                                     </td>
                                                                                                                     <td class="tg-0lax">
 
                                                                                                                         <div class="btn-group">
-                                                                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                            <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                                                                                             </button>
                                                                                                                             <div class="dropdown-menu" role="menu">
@@ -3093,12 +3115,12 @@
                                                                                                                     $update_reusable = 'update_nilai_level_12_opex';
                                                                                                                     $type_add_nilai = null;
                                                                                                                 ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_9[$nilai], 2, ',', '.') ?>
+                                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_opex_9[$nilai], 2, ',', '.') ?>
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
                                                                                                                     <div class="btn-group">
-                                                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                             <span class="sr-only">Toggle Dropdown</span>
                                                                                                                         </button>
                                                                                                                         <div class="dropdown-menu" role="menu">

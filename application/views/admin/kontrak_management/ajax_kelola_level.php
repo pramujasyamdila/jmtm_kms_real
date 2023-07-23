@@ -1193,12 +1193,20 @@
 </script>
 
 <script>
-    $(document).ready(function() {
-        $('#table_kontrak').DataTable({
-            "ordering": false,
-            // "scrollX": "500px",
-            "paging": true
-        });
+    // $(document).ready(function() {
+    //     $('#table_kontrak').DataTable({
+    //         "ordering": false,
+    //         // "scrollX": "500px",
+    //         "paging": true
+    //     });
 
+    // });
+    $(function() {
+        $(".wrapper1").scroll(function() {
+            $(".wrapper2").scrollLeft($(".wrapper1").scrollLeft());
+        });
+        $(".wrapper2").scroll(function() {
+            $(".wrapper1").scrollLeft($(".wrapper2").scrollLeft());
+        });
     });
 </script>

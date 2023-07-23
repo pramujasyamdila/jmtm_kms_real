@@ -44,10 +44,11 @@ class Administrasi_kontrak extends CI_Controller
         $keyword = $this->input->post('keyword');
         $data['active_kontrak'] = 'active';
         $data['menu_open_kontrak'] = 'menu-open';
-        $get_pegawai = $this->Auth_model->get_pegawai();
-        $id_departemen = $get_pegawai['id_departemen'];
-        $id_area = $get_pegawai['id_area'];
-        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $id_kontrak);
+        $row_kontrak =  $this->Data_kontrak_model->get_row_kontrak($id_kontrak);
+        $id_departemen = $row_kontrak['id_departemen'];
+        $id_area = $row_kontrak['id_area'];
+        $id_sub_area = $row_kontrak['id_sub_area'];
+        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
         $data['id_kontrak'] = $id_kontrak;
         $this->load->view('template_stisla/header');
@@ -124,10 +125,11 @@ class Administrasi_kontrak extends CI_Controller
         $keyword = $this->input->post('keyword');
         $data['active_kontrak'] = 'active';
         $data['menu_open_kontrak'] = 'menu-open';
-        $get_pegawai = $this->Auth_model->get_pegawai();
-        $id_departemen = $get_pegawai['id_departemen'];
-        $id_area = $get_pegawai['id_area'];
-        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $id_kontrak);
+        $row_kontrak =  $this->Data_kontrak_model->get_row_kontrak($id_kontrak);
+        $id_departemen = $row_kontrak['id_departemen'];
+        $id_area = $row_kontrak['id_area'];
+        $id_sub_area = $row_kontrak['id_sub_area'];
+        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
         $data['id_kontrak'] = $id_kontrak;
         $this->load->view('template_stisla/header');
@@ -142,36 +144,35 @@ class Administrasi_kontrak extends CI_Controller
         $data['active_kontrak'] = 'active';
         $data['id_kontrak'] = $id_kontrak;
         $data['menu_open_kontrak'] = 'menu-open';
-        $get_pegawai = $this->Auth_model->get_pegawai();
-        $id_departemen = $get_pegawai['id_departemen'];
-        $id_area = $get_pegawai['id_area'];
-        $id_sub_area = $get_pegawai['id_sub_area'];
-        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $id_kontrak);
+        $row_kontrak =  $this->Data_kontrak_model->get_row_kontrak($id_kontrak);
+        $id_departemen = $row_kontrak['id_departemen'];
+        $id_area = $row_kontrak['id_area'];
+        $id_sub_area = $row_kontrak['id_sub_area'];
+        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('admin/administrasi_kontrak/pasca_pengadaan', $data);
         $this->load->view('template_stisla/footer');
         $this->load->view('admin/administrasi_kontrak/ajax');
     }
-    public function addendum_kontrak($id_detail_program_penyedia_jasa)
-    {
-        $data['active_kontrak'] = 'active';
-        $data['menu_open_kontrak'] = 'menu-open';
-        $get_pegawai = $this->Auth_model->get_pegawai();
-        $id_departemen = $get_pegawai['id_departemen'];
-        $id_area = $get_pegawai['id_area'];
-        $id_sub_area = $get_pegawai['id_sub_area'];
+    // public function addendum_kontrak($id_detail_program_penyedia_jasa)
+    // {
+    //     $data['active_kontrak'] = 'active';
+    //     $data['menu_open_kontrak'] = 'menu-open';
+    //     $get_pegawai = $this->Auth_model->get_pegawai();
+    //     $id_departemen = $get_pegawai['id_departemen'];
+    //     $id_area = $get_pegawai['id_area'];
+    //     $id_sub_area = $get_pegawai['id_sub_area'];
+    //     $keyword = $this->input->post('keyword');
+    //     $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $data['row_program']['id_kontrak']);
+    //     $data['row_program_kontrak_detail']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
 
-        $keyword = $this->input->post('keyword');
-        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $data['row_program']['id_kontrak']);
-        $data['row_program_kontrak_detail']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
-
-        $this->load->view('template_stisla/header');
-        $this->load->view('template_stisla/sidebar', $data);
-        $this->load->view('admin/administrasi_kontrak/addendum_kontrak', $data);
-        $this->load->view('template_stisla/footer');
-        $this->load->view('admin/administrasi_kontrak/ajax');
-    }
+    //     $this->load->view('template_stisla/header');
+    //     $this->load->view('template_stisla/sidebar', $data);
+    //     $this->load->view('admin/administrasi_kontrak/addendum_kontrak', $data);
+    //     $this->load->view('template_stisla/footer');
+    //     $this->load->view('admin/administrasi_kontrak/ajax');
+    // }
 
 
 
