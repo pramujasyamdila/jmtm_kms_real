@@ -57,7 +57,8 @@ class Upload_excel_hps extends CI_Controller
                             'satuan_hps' => $row->getCellAtIndex(3),
                             'volume_hps' => $row->getCellAtIndex(4),
                             'harga_satuan_hps' => $row->getCellAtIndex(5),
-                            'total_harga' => $row->getCellAtIndex(6)
+                            'total_harga' => $row->getCellAtIndex(6),
+                            'item_baru' => 'kosong',
 
                         );
                         $this->Data_excelisasi_model->insert_via_hps_penyedia_kontrak_1($data_2);
@@ -112,7 +113,8 @@ class Upload_excel_hps extends CI_Controller
                             'satuan_hps' => $row->getCellAtIndex(3),
                             'volume_hps' => $row->getCellAtIndex(4),
                             'harga_satuan_hps' => $row->getCellAtIndex(5),
-                            'total_harga' => $row->getCellAtIndex(6)
+                            'total_harga' => $row->getCellAtIndex(6),
+                            'item_baru' => 'kosong',
 
                         );
                         $this->Data_excelisasi_model->insert_via_hps_penyedia_kontrak_2($data_2);
@@ -168,7 +170,8 @@ class Upload_excel_hps extends CI_Controller
                             'satuan_hps' => $row->getCellAtIndex(3),
                             'volume_hps' => $row->getCellAtIndex(4),
                             'harga_satuan_hps' => $row->getCellAtIndex(5),
-                            'total_harga' => $row->getCellAtIndex(6)
+                            'total_harga' => $row->getCellAtIndex(6),
+                            'item_baru' => 'kosong',
 
                         );
                         $this->Data_excelisasi_model->insert_via_hps_penyedia_kontrak_3($data_2);
@@ -224,7 +227,8 @@ class Upload_excel_hps extends CI_Controller
                             'satuan_hps' => $row->getCellAtIndex(3),
                             'volume_hps' => $row->getCellAtIndex(4),
                             'harga_satuan_hps' => $row->getCellAtIndex(5),
-                            'total_harga' => $row->getCellAtIndex(6)
+                            'total_harga' => $row->getCellAtIndex(6),
+                            'item_baru' => 'kosong',
 
                         );
                         $this->Data_excelisasi_model->insert_via_hps_penyedia_kontrak_4($data_2);
@@ -280,7 +284,8 @@ class Upload_excel_hps extends CI_Controller
                             'satuan_hps' => $row->getCellAtIndex(3),
                             'volume_hps' => $row->getCellAtIndex(4),
                             'harga_satuan_hps' => $row->getCellAtIndex(5),
-                            'total_harga' => $row->getCellAtIndex(6)
+                            'total_harga' => $row->getCellAtIndex(6),
+                            'item_baru' => 'kosong',
 
                         );
                         $this->Data_excelisasi_model->insert_via_hps_penyedia_kontrak_5($data_2);

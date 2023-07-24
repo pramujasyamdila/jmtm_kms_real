@@ -11,8 +11,8 @@ class Administrasi_penyedia extends CI_Controller
         $this->load->model('Auth_model');
         $session = $this->session->userdata('id_pegawai');
         if (!$session) {
-			redirect('auth');
-		}
+            redirect('auth');
+        }
     }
 
     public function index()
@@ -85,7 +85,7 @@ class Administrasi_penyedia extends CI_Controller
         $id_area =  $data['row_program']['id_area'];
         $id_sub_area =  $data['row_program']['id_sub_area'];
         $id_kontrak =  $data['row_program']['id_kontrak'];
-        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area,$id_sub_area, $keyword, $id_kontrak);
+        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('admin/kontrak_management_administrasi_penyedia/hps', $data);
@@ -935,7 +935,8 @@ class Administrasi_penyedia extends CI_Controller
                 'volume_hps' => $volume_hps,
                 'harga_satuan_hps' => $harga_satuan,
                 'total_harga' => $total_harga,
-                'id_refrence_hps' => $insert_id
+                'id_refrence_hps' => $insert_id,
+                'item_baru' => 'kosong'
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_1($data_nilai_kontrak);
         } else {
@@ -962,7 +963,8 @@ class Administrasi_penyedia extends CI_Controller
                 'volume_hps' => $volume_hps,
                 'harga_satuan_hps' => $harga_satuan,
                 'total_harga' => $total_harga,
-                'id_refrence_hps' => $insert_id
+                'id_refrence_hps' => $insert_id,
+                'item_baru' => 'kosong'
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_1($data_nilai_kontrak);
         }
@@ -1113,7 +1115,8 @@ class Administrasi_penyedia extends CI_Controller
                 'volume_hps' => $volume_hps,
                 'harga_satuan_hps' => $harga_satuan,
                 'total_harga' => $total_harga,
-                'id_refrence_hps' => $insert_id
+                'id_refrence_hps' => $insert_id,
+                'item_baru' => 'kosong'
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_2($data_nilai_kontrak);
             // logika update ke hps_penyedia_1
@@ -1140,7 +1143,8 @@ class Administrasi_penyedia extends CI_Controller
                 'volume_hps' => $volume_hps,
                 'harga_satuan_hps' => $harga_satuan,
                 'total_harga' => $total_harga,
-                'id_refrence_hps' => $insert_id
+                'id_refrence_hps' => $insert_id,
+                'item_baru' => 'kosong'
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_2($data_nilai_kontrak);
             // logika update ke hps_penyedia_1
@@ -1274,7 +1278,8 @@ class Administrasi_penyedia extends CI_Controller
                 'volume_hps' => $volume_hps,
                 'harga_satuan_hps' => $harga_satuan,
                 'total_harga' => $total_harga,
-                'id_refrence_hps' => $insert_id
+                'id_refrence_hps' => $insert_id,
+                'item_baru' => 'kosong'
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_3($data_nilai_kontrak);
             // logic update
@@ -1300,7 +1305,8 @@ class Administrasi_penyedia extends CI_Controller
                 'volume_hps' => $volume_hps,
                 'harga_satuan_hps' => $harga_satuan,
                 'total_harga' => $total_harga,
-                'id_refrence_hps' => $insert_id
+                'id_refrence_hps' => $insert_id,
+                'item_baru' => 'kosong'
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_3($data_nilai_kontrak);
         }
@@ -1428,7 +1434,8 @@ class Administrasi_penyedia extends CI_Controller
                 'volume_hps' => $volume_hps,
                 'harga_satuan_hps' => $harga_satuan,
                 'total_harga' => $total_harga,
-                'id_refrence_hps' => $insert_id
+                'id_refrence_hps' => $insert_id,
+                'item_baru' => 'kosong'
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_4($data_nilai_kontrak);
             $this->load->view('hps_penyedia_level_logic/nilai_level_4', $data_logic);
@@ -1454,7 +1461,8 @@ class Administrasi_penyedia extends CI_Controller
                 'volume_hps' => $volume_hps,
                 'harga_satuan_hps' => $harga_satuan,
                 'total_harga' => $total_harga,
-                'id_refrence_hps' => $insert_id
+                'id_refrence_hps' => $insert_id,
+                'item_baru' => 'kosong'
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_4($data_nilai_kontrak);
             $this->load->view('hps_penyedia_level_logic/nilai_level_4', $data_logic);
@@ -1584,7 +1592,8 @@ class Administrasi_penyedia extends CI_Controller
                 'volume_hps' => $volume_hps,
                 'harga_satuan_hps' => $harga_satuan,
                 'total_harga' => $total_harga,
-                'id_refrence_hps' => $insert_id
+                'id_refrence_hps' => $insert_id,
+                'item_baru' => 'kosong'
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_5($data_nilai_kontrak);
             $this->load->view('hps_penyedia_level_logic/nilai_level_5', $data_logic);
@@ -1610,7 +1619,8 @@ class Administrasi_penyedia extends CI_Controller
                 'volume_hps' => $volume_hps,
                 'harga_satuan_hps' => $harga_satuan,
                 'total_harga' => $total_harga,
-                'id_refrence_hps' => $insert_id
+                'id_refrence_hps' => $insert_id,
+                'item_baru' => 'kosong'
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_5($data_nilai_kontrak);
             $this->load->view('hps_penyedia_level_logic/nilai_level_5', $data_logic);
@@ -1739,7 +1749,8 @@ class Administrasi_penyedia extends CI_Controller
                 'volume_hps' => $volume_hps,
                 'harga_satuan_hps' => $harga_satuan,
                 'total_harga' => $total_harga,
-                'id_refrence_hps' => $insert_id
+                'id_refrence_hps' => $insert_id,
+                'item_baru' => 'kosong'
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_6($data_nilai_kontrak);
         } else {
@@ -1764,7 +1775,8 @@ class Administrasi_penyedia extends CI_Controller
                 'volume_hps' => $volume_hps,
                 'harga_satuan_hps' => $harga_satuan,
                 'total_harga' => $total_harga,
-                'id_refrence_hps' => $insert_id
+                'id_refrence_hps' => $insert_id,
+                'item_baru' => 'kosong'
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_6($data_nilai_kontrak);
         }
@@ -4082,8 +4094,4 @@ class Administrasi_penyedia extends CI_Controller
         } else {
         }
     }
-
-
-
-
 }
