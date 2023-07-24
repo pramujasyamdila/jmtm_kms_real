@@ -2376,7 +2376,7 @@ class Data_kontrak extends CI_Controller
         // _7
         $row_capex_detail_8 = $this->Data_kontrak_model->by_id_detail_capex_8($id_detail_capex_8);
         $id_detail_capex_7 = $row_capex_detail_8['id_detail_capex_7'];
-        $result_detail_capex_8 = $this->Data_kontrak_model->result_detail_capex_8_by_id_capex_detail($id_detail_capex_6);
+        $result_detail_capex_8 = $this->Data_kontrak_model->result_detail_capex_8_by_id_capex_detail($id_detail_capex_7);
         $data = [
             'row_capex_detail_8' => $row_capex_detail_8,
             'result_detail_capex_8' => $result_detail_capex_8
@@ -3094,7 +3094,7 @@ class Data_kontrak extends CI_Controller
         // _7
         $row_opex_detail_8 = $this->Data_kontrak_model->by_id_detail_opex_8($id_detail_opex_8);
         $id_detail_opex_7 = $row_opex_detail_8['id_detail_opex_7'];
-        $result_detail_opex_8 = $this->Data_kontrak_model->result_detail_opex_8_by_id_opex_detail($id_detail_opex_6);
+        $result_detail_opex_8 = $this->Data_kontrak_model->result_detail_opex_8_by_id_opex_detail($id_detail_opex_7);
         $data = [
             'row_opex_detail_8' => $row_opex_detail_8,
             'result_detail_opex_8' => $result_detail_opex_8
@@ -3812,7 +3812,7 @@ class Data_kontrak extends CI_Controller
         // _7
         $row_bua_detail_8 = $this->Data_kontrak_model->by_id_detail_bua_8($id_detail_bua_8);
         $id_detail_bua_7 = $row_bua_detail_8['id_detail_bua_7'];
-        $result_detail_bua_8 = $this->Data_kontrak_model->result_detail_bua_8_by_id_bua_detail($id_detail_bua_6);
+        $result_detail_bua_8 = $this->Data_kontrak_model->result_detail_bua_8_by_id_bua_detail($id_detail_bua_7);
         $data = [
             'row_bua_detail_8' => $row_bua_detail_8,
             'result_detail_bua_8' => $result_detail_bua_8
@@ -4530,7 +4530,7 @@ class Data_kontrak extends CI_Controller
         // _7
         $row_sdm_detail_8 = $this->Data_kontrak_model->by_id_detail_sdm_8($id_detail_sdm_8);
         $id_detail_sdm_7 = $row_sdm_detail_8['id_detail_sdm_7'];
-        $result_detail_sdm_8 = $this->Data_kontrak_model->result_detail_sdm_8_by_id_sdm_detail($id_detail_sdm_6);
+        $result_detail_sdm_8 = $this->Data_kontrak_model->result_detail_sdm_8_by_id_sdm_detail($id_detail_sdm_7);
         $data = [
             'row_sdm_detail_8' => $row_sdm_detail_8,
             'result_detail_sdm_8' => $result_detail_sdm_8
