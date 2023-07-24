@@ -1037,9 +1037,9 @@
                                                                                                         $this->db->where('tbl_hps_penyedia_kontrak_1.uraian_hps' . $field_addendum . '!=', NULL);
                                                                                                         $this->db->order_by('no_urut', 'ASC');
                                                                                                         $query_tbl_hps_penyedia_kontrak_1 = $this->db->get() ?>
+                                                                                                        
                                                                                                         <?php
                                                                                                         foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) { ?>
-
                                                                                                             <?php
                                                                                                             $id_refrence_hps_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
                                                                                                             $id_detail_sub_program_penyedia_jasa = $value_hps_penyedia_kontrak_1['id_detail_sub_program_penyedia_jasa'];
@@ -1061,7 +1061,6 @@
                                                                                                                 $timpang = '';
                                                                                                             }
                                                                                                             ?>
-
                                                                                                             <tr>
                                                                                                                 <td> &nbsp;<?= $value_hps_penyedia_kontrak_1['no_urut' . $field_addendum] ?></td>
                                                                                                                 <td><?= $value_hps_penyedia_kontrak_1['no_hps' . $field_addendum] ?></td>

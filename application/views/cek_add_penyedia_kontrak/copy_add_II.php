@@ -6,7 +6,6 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
         $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
@@ -971,7 +970,7 @@ if ($copy_add == 1) {
             'volume_hps_addendum_28' => $value_hps_penyedia_kontrak_1['volume_hps_addendum_28'],
             'volume_hps_addendum_29' => $value_hps_penyedia_kontrak_1['volume_hps_addendum_29'],
             'volume_hps_addendum_30' => $value_hps_penyedia_kontrak_1['volume_hps_addendum_30'],
-            'harga_satuan_hps_addendum_2' => $value_hps_penyedia_kontrak_1['harga_satuan_hps_addendum_1'],
+            'harga_satuan_hps_addendum_2' => $value_hps_penyedia_kontrak_1['harga_satuan_hps_addendum_2'],
             // harga_satuan_hps
             'harga_satuan_hps_addendum_1' => $value_hps_penyedia_kontrak_1['harga_satuan_hps_addendum_1'],
             'harga_satuan_hps_addendum_3' => $value_hps_penyedia_kontrak_1['harga_satuan_hps_addendum_3'],
@@ -1002,7 +1001,7 @@ if ($copy_add == 1) {
             'harga_satuan_hps_addendum_28' => $value_hps_penyedia_kontrak_1['harga_satuan_hps_addendum_28'],
             'harga_satuan_hps_addendum_29' => $value_hps_penyedia_kontrak_1['harga_satuan_hps_addendum_29'],
             'harga_satuan_hps_addendum_30' => $value_hps_penyedia_kontrak_1['harga_satuan_hps_addendum_30'],
-            'total_harga_addendum_2' => $value_hps_penyedia_kontrak_1['total_harga_addendum_1'],
+            'total_harga_addendum_2' => $value_hps_penyedia_kontrak_1['total_harga_addendum_2'],
             // total_harga
             'total_harga_addendum_1' => $value_hps_penyedia_kontrak_1['total_harga_addendum_1'],
             'total_harga_addendum_3' => $value_hps_penyedia_kontrak_1['total_harga_addendum_3'],

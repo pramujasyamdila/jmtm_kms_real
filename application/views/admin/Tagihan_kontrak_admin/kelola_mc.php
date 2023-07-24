@@ -102,21 +102,18 @@ $hasil_bobot  = round($hasil_bobot1 * 100);
                                                                 $data_render = $row_mc['sts_mc_nilai'];
                                                             } ?>
 
- 
+                                                            <?php if ($row_mc['sts_mc_nilai'] == 'kontrak_awal') {
+                                                                $data_render_logic = '';
+                                                            } else {
+                                                                $data_render_logic = $row_mc['sts_mc_nilai'];
+                                                            } ?>
                                                             <ul class="nav nav-tabs" id="myTabku2" style="margin-top: 50px;">
                                                                 <?php
                                                                 $this->db->select('*');
                                                                 $this->db->from('tbl_sub_detail_program_penyedia_jasa');
                                                                 $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $row_kontrak['id_detail_program_penyedia_jasa']);
-                                                                $this->db->where('tbl_sub_detail_program_penyedia_jasa.status_mata_anggaran_addendum', null);
-                                                                if ($row_mc['sts_mc_nilai'] == '') {
-                                                                    // $this->db->or_where('tbl_sub_detail_program_penyedia_jasa.addendum_ke', $data_render);
-                                                                } else {
-                                                                    $this->db->or_where('tbl_sub_detail_program_penyedia_jasa.addendum_ke', $data_render);
-                                                                }
-                                                                
-                                                                
-                                                                
+                                                                $this->db->where_in('tbl_sub_detail_program_penyedia_jasa.status_mata_anggaran_addendum', [0, 1]);
+                                                                $this->db->where_in('tbl_sub_detail_program_penyedia_jasa.addendum_ke', [$data_render_logic, 'kosong']);
                                                                 $result_sub_program_tambahan_anggaran = $this->db->get();
                                                                 ?>
                                                                 <?php foreach ($result_sub_program_tambahan_anggaran->result_array() as $key => $value) { ?>
@@ -424,7 +421,7 @@ $hasil_bobot  = round($hasil_bobot1 * 100);
                                                                                                     <?php } ?>
                                                                                                 <?php } ?>
                                                                                             <?php } ?>
-                                                                                        <!-- <tfoot>
+                                                                                            <!-- <tfoot>
                                                                                             <tr>
                                                                                                 <td colspan="5"> Mata Anggaran <?= $value['nama_program_mata_anggaran'] ?> Sebelum (ppn) : </td>
                                                                                                 <td></td>

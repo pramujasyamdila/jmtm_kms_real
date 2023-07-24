@@ -2560,9 +2560,10 @@ class Tagihan_kontrak extends CI_Controller
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_1');
                 $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+                $this->db->where('tbl_hps_penyedia_kontrak_1.item_baru', 'kosong');
                 $query_tbl_hps = $this->db->get();
                 foreach ($query_tbl_hps->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-                    $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
                     $data = [
                         'id_mc' => $id_mc,
                         'id_detail_program_penyedia_jasa' => $value_hps_penyedia_kontrak_1['id_detail_program_penyedia_jasa'],
@@ -2574,7 +2575,7 @@ class Tagihan_kontrak extends CI_Controller
                         'volume_hps' => null,
                         'harga_satuan_hps' => $value_hps_penyedia_kontrak_1['harga_satuan_hps'],
                         'total_harga' => null,
-                        'id_refrence_hps' => $value_hps_penyedia_kontrak_1['id_refrence_hps'],
+                        'id_refrence_hps' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
                         'sts_mc_nilai' => 'kontrak_awal',
                     ];
                     $this->Taggihan_kontrak_admin_model->create_hps_penyedia_kontrak_mc_1($data);
@@ -2583,9 +2584,10 @@ class Tagihan_kontrak extends CI_Controller
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_2');
                     $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
+                    $this->db->where('tbl_hps_penyedia_kontrak_2.item_baru', 'kosong');
                     $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-                        $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
                         $data = [
                             'id_hps_penyedia_kontrak_mc_1' => $id_insert_hps_penyedia_kontrak_mc_1,
                             'id_mc' => $id_mc,
@@ -2597,7 +2599,7 @@ class Tagihan_kontrak extends CI_Controller
                             'harga_satuan_hps' => $value_hps_penyedia_kontrak_2['harga_satuan_hps'],
                             'total_harga' => null,
                             'sts_mc_nilai' => 'kontrak_awal',
-                            'id_refrence_hps' => $value_hps_penyedia_kontrak_2['id_refrence_hps'],
+                            'id_refrence_hps' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
                         ];
                         $this->Taggihan_kontrak_admin_model->create_hps_penyedia_kontrak_mc_2($data);
                         $id_insert_hps_penyedia_kontrak_mc_2 = $this->db->insert_id();
@@ -2605,9 +2607,10 @@ class Tagihan_kontrak extends CI_Controller
                         $this->db->select('*');
                         $this->db->from('tbl_hps_penyedia_kontrak_3');
                         $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
+                        $this->db->where('tbl_hps_penyedia_kontrak_3.item_baru', 'kosong');
                         $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
                         foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                            $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                            $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                             $data = [
                                 'id_hps_penyedia_kontrak_mc_2' => $id_insert_hps_penyedia_kontrak_mc_2,
                                 'id_mc' => $id_mc,
@@ -2619,7 +2622,7 @@ class Tagihan_kontrak extends CI_Controller
                                 'harga_satuan_hps' => $value_hps_penyedia_kontrak_3['harga_satuan_hps'],
                                 'total_harga' => null,
                                 'sts_mc_nilai' => 'kontrak_awal',
-                                'id_refrence_hps' => $value_hps_penyedia_kontrak_3['id_refrence_hps'],
+                                'id_refrence_hps' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                             ];
                             $this->Taggihan_kontrak_admin_model->create_hps_penyedia_kontrak_mc_3($data);
                             // batas tbl_hps_penyedia_kontrak_4
@@ -2627,9 +2630,10 @@ class Tagihan_kontrak extends CI_Controller
                             $this->db->select('*');
                             $this->db->from('tbl_hps_penyedia_kontrak_4');
                             $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
+                            $this->db->where('tbl_hps_penyedia_kontrak_4.item_baru', 'kosong');
                             $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                             foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                                $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                                $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                                 $data = [
                                     'id_hps_penyedia_kontrak_mc_3' => $id_insert_hps_penyedia_kontrak_mc_3,
                                     'id_mc' => $id_mc,
@@ -2641,7 +2645,7 @@ class Tagihan_kontrak extends CI_Controller
                                     'harga_satuan_hps' => $value_hps_penyedia_kontrak_4['harga_satuan_hps'],
                                     'total_harga' => null,
                                     'sts_mc_nilai' => 'kontrak_awal',
-                                    'id_refrence_hps' => $value_hps_penyedia_kontrak_4['id_refrence_hps'],
+                                    'id_refrence_hps' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                                 ];
                                 $this->Taggihan_kontrak_admin_model->create_hps_penyedia_kontrak_mc_4($data);
                                 // batas tbl_hps_penyedia_kontrak_5
@@ -2649,6 +2653,7 @@ class Tagihan_kontrak extends CI_Controller
                                 $this->db->select('*');
                                 $this->db->from('tbl_hps_penyedia_kontrak_5');
                                 $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
+                                $this->db->where('tbl_hps_penyedia_kontrak_5.item_baru', 'kosong');
                                 $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                                 foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
                                     $data = [
@@ -2662,7 +2667,7 @@ class Tagihan_kontrak extends CI_Controller
                                         'harga_satuan_hps' => $value_hps_penyedia_kontrak_5['harga_satuan_hps'],
                                         'total_harga' => null,
                                         'sts_mc_nilai' => 'kontrak_awal',
-                                        'id_refrence_hps' => $value_hps_penyedia_kontrak_5['id_refrence_hps'],
+                                        'id_refrence_hps' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                                     ];
                                     $this->Taggihan_kontrak_admin_model->create_hps_penyedia_kontrak_mc_5($data);
                                 }
@@ -2679,9 +2684,10 @@ class Tagihan_kontrak extends CI_Controller
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_1');
                 $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+                $this->db->where('tbl_hps_penyedia_kontrak_1.uraian_hps' . '_addendum_' . $cek_kontrak_penyedia . ' !=', NULL);
                 $query_tbl_hps = $this->db->get();
                 foreach ($query_tbl_hps->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-                    $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
                     $data = [
                         'id_mc' => $id_mc,
                         'id_detail_program_penyedia_jasa' => $value_hps_penyedia_kontrak_1['id_detail_program_penyedia_jasa'],
@@ -2694,7 +2700,7 @@ class Tagihan_kontrak extends CI_Controller
                         'harga_satuan_hps_addendum_' . $cek_kontrak_penyedia . '' => $value_hps_penyedia_kontrak_1['harga_satuan_hps_' . 'addendum_' . $cek_kontrak_penyedia . ''],
                         'total_harga_addendum_' . $cek_kontrak_penyedia . '' => null,
                         'sts_mc_nilai' => 'addendum_' . $cek_kontrak_penyedia . '',
-                        'id_refrence_hps' => $value_hps_penyedia_kontrak_1['id_refrence_hps'],
+                        'id_refrence_hps' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
                     ];
                     $this->Taggihan_kontrak_admin_model->create_hps_penyedia_kontrak_mc_1($data);
                     $id_insert_hps_penyedia_kontrak_mc_1 = $this->db->insert_id();
@@ -2702,9 +2708,10 @@ class Tagihan_kontrak extends CI_Controller
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_2');
                     $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
+                    $this->db->where('tbl_hps_penyedia_kontrak_2.uraian_hps' . '_addendum_' . $cek_kontrak_penyedia . ' !=', NULL);
                     $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-                        $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
                         $data = [
                             'id_hps_penyedia_kontrak_mc_1' => $id_insert_hps_penyedia_kontrak_mc_1,
                             'id_mc' => $id_mc,
@@ -2716,7 +2723,7 @@ class Tagihan_kontrak extends CI_Controller
                             'harga_satuan_hps_addendum_' . $cek_kontrak_penyedia . '' => $value_hps_penyedia_kontrak_2['harga_satuan_hps_' . 'addendum_' . $cek_kontrak_penyedia . ''],
                             'total_harga_addendum_' . $cek_kontrak_penyedia . '' => null,
                             'sts_mc_nilai' => 'addendum_' . $cek_kontrak_penyedia . '',
-                            'id_refrence_hps' => $value_hps_penyedia_kontrak_2['id_refrence_hps'],
+                            'id_refrence_hps' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
                         ];
                         $this->Taggihan_kontrak_admin_model->create_hps_penyedia_kontrak_mc_2($data);
                         $id_insert_hps_penyedia_kontrak_mc_2 = $this->db->insert_id();
@@ -2724,9 +2731,10 @@ class Tagihan_kontrak extends CI_Controller
                         $this->db->select('*');
                         $this->db->from('tbl_hps_penyedia_kontrak_3');
                         $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
+                        $this->db->where('tbl_hps_penyedia_kontrak_3.uraian_hps' . '_addendum_' . $cek_kontrak_penyedia . ' !=', NULL);
                         $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
                         foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                            $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                            $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                             $data = [
                                 'id_hps_penyedia_kontrak_mc_2' => $id_insert_hps_penyedia_kontrak_mc_2,
                                 'id_mc' => $id_mc,
@@ -2738,7 +2746,7 @@ class Tagihan_kontrak extends CI_Controller
                                 'harga_satuan_hps_addendum_' . $cek_kontrak_penyedia . '' => $value_hps_penyedia_kontrak_3['harga_satuan_hps_' . 'addendum_' . $cek_kontrak_penyedia . ''],
                                 'total_harga_addendum_' . $cek_kontrak_penyedia . '' => null,
                                 'sts_mc_nilai' => 'addendum_' . $cek_kontrak_penyedia . '',
-                                'id_refrence_hps' => $value_hps_penyedia_kontrak_3['id_refrence_hps'],
+                                'id_refrence_hps' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                             ];
                             $this->Taggihan_kontrak_admin_model->create_hps_penyedia_kontrak_mc_3($data);
                             $id_insert_hps_penyedia_kontrak_mc_3 = $this->db->insert_id();
@@ -2746,9 +2754,10 @@ class Tagihan_kontrak extends CI_Controller
                             $this->db->select('*');
                             $this->db->from('tbl_hps_penyedia_kontrak_4');
                             $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
+                            $this->db->where('tbl_hps_penyedia_kontrak_4.uraian_hps' . '_addendum_' . $cek_kontrak_penyedia . ' !=', NULL);
                             $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                             foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                                $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                                $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                                 $data = [
                                     'id_hps_penyedia_kontrak_mc_3' => $id_insert_hps_penyedia_kontrak_mc_3,
                                     'id_mc' => $id_mc,
@@ -2760,7 +2769,7 @@ class Tagihan_kontrak extends CI_Controller
                                     'harga_satuan_hps_addendum_' . $cek_kontrak_penyedia . '' => $value_hps_penyedia_kontrak_4['harga_satuan_hps_' . 'addendum_' . $cek_kontrak_penyedia . ''],
                                     'total_harga_addendum_' . $cek_kontrak_penyedia . '' => null,
                                     'sts_mc_nilai' => 'addendum_' . $cek_kontrak_penyedia . '',
-                                    'id_refrence_hps' => $value_hps_penyedia_kontrak_4['id_refrence_hps'],
+                                    'id_refrence_hps' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                                 ];
                                 $this->Taggihan_kontrak_admin_model->create_hps_penyedia_kontrak_mc_4($data);
                                 $id_insert_hps_penyedia_kontrak_mc_4 = $this->db->insert_id();
@@ -2768,6 +2777,7 @@ class Tagihan_kontrak extends CI_Controller
                                 $this->db->select('*');
                                 $this->db->from('tbl_hps_penyedia_kontrak_5');
                                 $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
+                                $this->db->where('tbl_hps_penyedia_kontrak_5.uraian_hps' . '_addendum_' . $cek_kontrak_penyedia . ' !=', NULL);
                                 $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                                 foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
                                     $data = [
@@ -2781,7 +2791,7 @@ class Tagihan_kontrak extends CI_Controller
                                         'harga_satuan_hps_addendum_' . $cek_kontrak_penyedia . '' => $value_hps_penyedia_kontrak_5['harga_satuan_hps_' . 'addendum_' . $cek_kontrak_penyedia . ''],
                                         'total_harga_addendum_' . $cek_kontrak_penyedia . '' => null,
                                         'sts_mc_nilai' => 'addendum_' . $cek_kontrak_penyedia . '',
-                                        'id_refrence_hps' => $value_hps_penyedia_kontrak_5['id_refrence_hps'],
+                                        'id_refrence_hps' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                                     ];
                                     $this->Taggihan_kontrak_admin_model->create_hps_penyedia_kontrak_mc_5($data);
                                 }

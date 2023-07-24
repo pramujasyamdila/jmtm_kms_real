@@ -3566,10 +3566,13 @@ class Administrasi_penyedia extends CI_Controller
         $id_departemen = $get_pegawai['id_departemen'];
         $id_area = $get_pegawai['id_area'];
         $id_sub_area = $get_pegawai['id_sub_area'];
-        $data['row_program']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
         $data['result_sub_program']  = $this->Data_kontrak_model->get_sub_program_by_id_detail_program($id_detail_program_penyedia_jasa);
+        $data['row_program']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
+        $id_departemen =  $data['row_program']['id_departemen'];
+        $id_area =  $data['row_program']['id_area'];
+        $id_sub_area =  $data['row_program']['id_sub_area'];
         $id_kontrak =  $data['row_program']['id_kontrak'];
-        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $id_kontrak);
+        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);

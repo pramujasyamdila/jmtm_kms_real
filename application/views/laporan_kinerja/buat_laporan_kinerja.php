@@ -267,7 +267,7 @@ div.dt-filter-spacer {
                                                                                     $this->db->select('*');
                                                                                     $this->db->from('tbl_capex');
                                                                                     $this->db->where('tbl_capex.id_kontrak', $row_kontrak['id_kontrak']);
-                                                                                    $this->db->order_by('no_urut', 'ASC');
+                                                                                    $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
                                                                                     $query_result_capex = $this->db->get() ?>
                                                                                     <?php
                                                                                     foreach ($query_result_capex->result_array() as $value_capex) { ?>
@@ -413,7 +413,7 @@ div.dt-filter-spacer {
                                                                                       $this->db->select('*');
                                                                                       $this->db->from('tbl_capex_detail');
                                                                                       $this->db->where('tbl_capex_detail.id_capex', $id_capex);
-                                                                                      $this->db->order_by('no_urut','ASC');
+                                                                                      $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
                                                                                       $query_result_capex_detail = $this->db->get() ?>
                                                                                       <?php
                                                                                       foreach ($query_result_capex_detail->result_array() as $value_capex_detail) { ?>
@@ -561,7 +561,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->select('*');
                                                                                         $this->db->from('tbl_detail_capex_1');
                                                                                         $this->db->where('tbl_detail_capex_1.id_capex_detail', $id_capex_detail);
-                                                                                        $this->db->order_by('no_urut_1_capex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_1_capex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_capex_1 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_capex_1->result_array() as $value_detail_capex_1) { ?>
@@ -712,7 +712,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->select('*');
                                                                                         $this->db->from('tbl_detail_capex_2');
                                                                                         $this->db->where('tbl_detail_capex_2.id_detail_capex_1', $id_detail_capex_1);
-                                                                                        $this->db->order_by('no_urut_2_capex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_2_capex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_capex_2 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_capex_2->result_array() as $value_detail_capex_2) { ?>
@@ -865,7 +865,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->select('*');
                                                                                         $this->db->from('tbl_detail_capex_3');
                                                                                         $this->db->where('tbl_detail_capex_3.id_detail_capex_2', $id_detail_capex_2);
-                                                                                        $this->db->order_by('no_urut_3_capex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_3_capex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_capex_3 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_capex_3->result_array() as $value_detail_capex_3) { ?>
@@ -1018,7 +1018,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->select('*');
                                                                                         $this->db->from('tbl_detail_capex_4');
                                                                                         $this->db->where('tbl_detail_capex_4.id_detail_capex_3', $id_detail_capex_3);
-                                                                                        $this->db->order_by('no_urut_4_capex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_4_capex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_capex_4 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_capex_4->result_array() as $value_detail_capex_4) { ?>
@@ -1173,7 +1173,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->from('tbl_detail_capex_5');
                                                                                         // _4
                                                                                         $this->db->where('tbl_detail_capex_5.id_detail_capex_4', $id_detail_capex_4);
-                                                                                        $this->db->order_by('no_urut_5_capex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_5_capex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_capex_5 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_capex_5->result_array() as $value_detail_capex_5) { ?>
@@ -1328,7 +1328,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->from('tbl_detail_capex_6');
                                                                                         // _5
                                                                                         $this->db->where('tbl_detail_capex_6.id_detail_capex_5', $id_detail_capex_5);
-                                                                                        $this->db->order_by('no_urut_6_capex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_6_capex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_capex_6 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_capex_6->result_array() as $value_detail_capex_6) { ?>
@@ -1483,7 +1483,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->from('tbl_detail_capex_7');
                                                                                         // _6
                                                                                         $this->db->where('tbl_detail_capex_7.id_detail_capex_6', $id_detail_capex_6);
-                                                                                        $this->db->order_by('no_urut_7_capex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_7_capex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_capex_7 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_capex_7->result_array() as $value_detail_capex_7) { ?>
@@ -1638,7 +1638,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->from('tbl_detail_capex_8');
                                                                                         // _7
                                                                                         $this->db->where('tbl_detail_capex_8.id_detail_capex_7', $id_detail_capex_7);
-                                                                                        $this->db->order_by('no_urut_8_capex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_8_capex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_capex_8 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_capex_8->result_array() as $value_detail_capex_8) { ?>
@@ -1793,7 +1793,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->from('tbl_detail_capex_9');
                                                                                         // _8
                                                                                         $this->db->where('tbl_detail_capex_9.id_detail_capex_8', $id_detail_capex_8);
-                                                                                        $this->db->order_by('no_urut_9_capex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_9_capex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_capex_9 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_capex_9->result_array() as $value_detail_capex_9) { ?>
@@ -1951,7 +1951,7 @@ div.dt-filter-spacer {
                                                                                     $this->db->select('*');
                                                                                     $this->db->from('tbl_opex');
                                                                                     $this->db->where('tbl_opex.id_kontrak', $row_kontrak['id_kontrak']);
-                                                                                    $this->db->order_by('no_urut', 'ASC');
+                                                                                    $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
                                                                                    $query_result_opex = $this->db->get() ?>
                                                                                     <?php
                                                                                     foreach ($query_result_opex->result_array() as $value_opex) { ?>
@@ -2097,7 +2097,7 @@ div.dt-filter-spacer {
                                                                                       $this->db->select('*');
                                                                                       $this->db->from('tbl_opex_detail');
                                                                                       $this->db->where('tbl_opex_detail.id_opex', $id_opex);
-                                                                                      $this->db->order_by('no_urut', 'ASC');
+                                                                                      $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
                                                                                       $query_result_opex_detail = $this->db->get() ?>
                                                                                       <?php
                                                                                       foreach ($query_result_opex_detail->result_array() as $value_opex_detail) { ?>
@@ -2245,7 +2245,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->select('*');
                                                                                         $this->db->from('tbl_detail_opex_1');
                                                                                         $this->db->where('tbl_detail_opex_1.id_opex_detail', $id_opex_detail);
-                                                                                        $this->db->order_by('no_urut_1_opex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_1_opex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_opex_1 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_opex_1->result_array() as $value_detail_opex_1) { ?>
@@ -2396,7 +2396,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->select('*');
                                                                                         $this->db->from('tbl_detail_opex_2');
                                                                                         $this->db->where('tbl_detail_opex_2.id_detail_opex_1', $id_detail_opex_1);
-                                                                                        $this->db->order_by('no_urut_2_opex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_2_opex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_opex_2 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_opex_2->result_array() as $value_detail_opex_2) { ?>
@@ -2549,7 +2549,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->select('*');
                                                                                         $this->db->from('tbl_detail_opex_3');
                                                                                         $this->db->where('tbl_detail_opex_3.id_detail_opex_2', $id_detail_opex_2);
-                                                                                        $this->db->order_by('no_urut_3_opex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_3_opex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_opex_3 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_opex_3->result_array() as $value_detail_opex_3) { ?>
@@ -2702,7 +2702,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->select('*');
                                                                                         $this->db->from('tbl_detail_opex_4');
                                                                                         $this->db->where('tbl_detail_opex_4.id_detail_opex_3', $id_detail_opex_3);
-                                                                                        $this->db->order_by('no_urut_4_opex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_4_opex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_opex_4 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_opex_4->result_array() as $value_detail_opex_4) { ?>
@@ -2857,7 +2857,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->from('tbl_detail_opex_5');
                                                                                         // _4
                                                                                         $this->db->where('tbl_detail_opex_5.id_detail_opex_4', $id_detail_opex_4);
-                                                                                        $this->db->order_by('no_urut_5_opex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_5_opex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_opex_5 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_opex_5->result_array() as $value_detail_opex_5) { ?>
@@ -3012,7 +3012,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->from('tbl_detail_opex_6');
                                                                                         // _5
                                                                                         $this->db->where('tbl_detail_opex_6.id_detail_opex_5', $id_detail_opex_5);
-                                                                                        $this->db->order_by('no_urut_6_opex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_6_opex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_opex_6 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_opex_6->result_array() as $value_detail_opex_6) { ?>
@@ -3167,7 +3167,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->from('tbl_detail_opex_7');
                                                                                         // _6
                                                                                         $this->db->where('tbl_detail_opex_7.id_detail_opex_6', $id_detail_opex_6);
-                                                                                        $this->db->order_by('no_urut_7_opex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_7_opex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_opex_7 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_opex_7->result_array() as $value_detail_opex_7) { ?>
@@ -3322,7 +3322,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->from('tbl_detail_opex_8');
                                                                                         // _7
                                                                                         $this->db->where('tbl_detail_opex_8.id_detail_opex_7', $id_detail_opex_7);
-                                                                                        $this->db->order_by('no_urut_8_opex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_8_opex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_opex_8 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_opex_8->result_array() as $value_detail_opex_8) { ?>
@@ -3477,7 +3477,7 @@ div.dt-filter-spacer {
                                                                                         $this->db->from('tbl_detail_opex_9');
                                                                                         // _8
                                                                                         $this->db->where('tbl_detail_opex_9.id_detail_opex_8', $id_detail_opex_8);
-                                                                                        $this->db->order_by('no_urut_9_opex', 'ASC');
+                                                                                        $this->db->order_by('CAST(no_urut_9_opex AS DECIMAL(10,6)) ASC');
                                                                                         $query_result_detail_opex_9 = $this->db->get() ?>
                                                                                         <?php
                                                                                         foreach ($query_result_detail_opex_9->result_array() as $value_detail_opex_9) { ?>
@@ -3635,7 +3635,7 @@ div.dt-filter-spacer {
                                                                                     $this->db->select('*');
                                                                                     $this->db->from('tbl_bua');
                                                                                     $this->db->where('tbl_bua.id_kontrak', $row_kontrak['id_kontrak']);
-                                                                                    $this->db->order_by('no_urut', 'ASC');
+                                                                                    $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
                                                                                     $query_result_bua = $this->db->get() ?>
                                                                                     <?php
                                                                                     foreach ($query_result_bua->result_array() as $value_bua) { ?>
@@ -3781,7 +3781,7 @@ div.dt-filter-spacer {
                                                                                       $this->db->select('*');
                                                                                       $this->db->from('tbl_bua_detail');
                                                                                       $this->db->where('tbl_bua_detail.id_bua', $id_bua);
-                                                                                      $this->db->order_by('no_urut', 'ASC');
+                                                                                      $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
                                                                                       $query_result_bua_detail = $this->db->get() ?>
                                                                                       <?php
                                                                                       foreach ($query_result_bua_detail->result_array() as $value_bua_detail) { ?>

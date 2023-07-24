@@ -4,10 +4,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -175,10 +174,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -349,10 +347,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -521,10 +518,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -693,10 +689,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -869,10 +864,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -1040,10 +1034,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -1214,10 +1207,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -1386,10 +1378,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -1558,10 +1549,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -1734,10 +1724,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -1905,10 +1894,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -2079,10 +2067,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -2251,10 +2238,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -2423,10 +2409,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -2599,10 +2584,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -2770,10 +2754,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -2944,10 +2927,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -3116,10 +3098,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -3288,10 +3269,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -3464,10 +3444,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -3635,10 +3614,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -3809,10 +3787,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -3981,10 +3958,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -4153,10 +4129,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -4329,10 +4304,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -4500,10 +4474,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -4674,10 +4647,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -4846,10 +4818,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -5018,10 +4989,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -5194,10 +5164,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -5365,10 +5334,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -5539,10 +5507,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -5711,10 +5678,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -5883,10 +5849,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -6059,10 +6024,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -6230,10 +6194,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -6404,10 +6367,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -6576,10 +6538,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -6748,10 +6709,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -6924,10 +6884,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -7095,10 +7054,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -7269,10 +7227,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -7441,10 +7398,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -7613,10 +7569,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -7789,10 +7744,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -7960,10 +7914,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -8134,10 +8087,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -8306,10 +8258,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -8478,10 +8429,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -8654,10 +8604,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -8825,10 +8774,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -8999,10 +8947,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -9171,10 +9118,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -9343,10 +9289,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -9519,10 +9464,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -9690,10 +9634,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -9864,10 +9807,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -10036,10 +9978,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -10208,10 +10149,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -10384,10 +10324,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -10555,10 +10494,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -10729,10 +10667,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -10901,10 +10838,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -11073,10 +11009,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -11249,10 +11184,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -11420,10 +11354,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -11594,10 +11527,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -11766,10 +11698,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -11938,10 +11869,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -12114,10 +12044,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -12285,10 +12214,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -12459,10 +12387,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -12631,10 +12558,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -12803,10 +12729,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -12979,10 +12904,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -13150,10 +13074,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -13324,10 +13247,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -13496,10 +13418,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -13668,10 +13589,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -13844,10 +13764,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -14015,10 +13934,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -14189,10 +14107,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -14361,10 +14278,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -14533,10 +14449,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -14709,10 +14624,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -14880,10 +14794,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -15054,10 +14967,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -15226,10 +15138,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -15398,10 +15309,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -15574,10 +15484,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -15745,10 +15654,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -15919,10 +15827,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -16091,10 +15998,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -16263,10 +16169,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -16439,10 +16344,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -16610,10 +16514,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -16784,10 +16687,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -16956,10 +16858,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -17128,10 +17029,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -17304,10 +17204,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -17475,10 +17374,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -17649,10 +17547,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -17821,10 +17718,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -17993,10 +17889,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -18169,10 +18064,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -18340,10 +18234,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -18514,10 +18407,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -18686,10 +18578,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -18858,10 +18749,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -19034,10 +18924,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -19205,10 +19094,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -19379,10 +19267,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -19551,10 +19438,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -19723,10 +19609,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -19899,10 +19784,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -20070,10 +19954,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -20244,10 +20127,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -20416,10 +20298,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -20588,10 +20469,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -20764,10 +20644,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -20935,10 +20814,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -21109,10 +20987,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -21281,10 +21158,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -21453,10 +21329,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -21629,10 +21504,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -21800,10 +21674,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -21974,10 +21847,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -22146,10 +22018,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -22318,10 +22189,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -22494,10 +22364,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -22665,10 +22534,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -22839,10 +22707,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -23011,10 +22878,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -23183,10 +23049,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -23359,10 +23224,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -23530,10 +23394,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -23704,10 +23567,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -23876,10 +23738,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -24048,10 +23909,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -24224,10 +24084,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -24395,10 +24254,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -24569,10 +24427,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -24741,10 +24598,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -24913,10 +24769,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
@@ -25089,10 +24944,9 @@ if ($copy_add == 1) {
     $this->db->select('*');
     $this->db->from('tbl_hps_penyedia_kontrak_1');
     $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-    $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get();
     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) {
-        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_refrence_hps'];
+        $id_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
         $where_hps_penyedia_kontrak_1 = [
             'id_hps_penyedia_kontrak_1' => $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'],
         ];
@@ -25260,10 +25114,9 @@ if ($copy_add == 1) {
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_kontrak_2');
         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_hps_penyedia_kontrak_1);
-        $this->db->where('tbl_hps_penyedia_kontrak_2.harga_satuan_hps !=', null);
         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get();
         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) {
-            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_refrence_hps'];
+            $id_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
             $where_hps_penyedia_kontrak_2 = [
                 'id_hps_penyedia_kontrak_2' => $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'],
             ];
@@ -25434,10 +25287,9 @@ if ($copy_add == 1) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_3');
             $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_hps_penyedia_kontrak_2);
-            $this->db->where('tbl_hps_penyedia_kontrak_3.harga_satuan_hps !=', null);
             $query_tbl_hps_penyedia_kontrak_3 = $this->db->get();
             foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) {
-                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_refrence_hps'];
+                $id_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
                 $where_hps_penyedia_kontrak_3 = [
                     'id_hps_penyedia_kontrak_3' => $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'],
                 ];
@@ -25606,10 +25458,9 @@ if ($copy_add == 1) {
                 $this->db->select('*');
                 $this->db->from('tbl_hps_penyedia_kontrak_4');
                 $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_hps_penyedia_kontrak_3);
-                $this->db->where('tbl_hps_penyedia_kontrak_4.harga_satuan_hps !=', null);
                 $query_tbl_hps_penyedia_kontrak_4 = $this->db->get();
                 foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) {
-                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_refrence_hps'];
+                    $id_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
                     $where_hps_penyedia_kontrak_4 = [
                         'id_hps_penyedia_kontrak_4' => $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'],
                     ];
@@ -25778,10 +25629,9 @@ if ($copy_add == 1) {
                     $this->db->select('*');
                     $this->db->from('tbl_hps_penyedia_kontrak_5');
                     $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_hps_penyedia_kontrak_4);
-                    $this->db->where('tbl_hps_penyedia_kontrak_5.harga_satuan_hps !=', null);
                     $query_tbl_hps_penyedia_kontrak_5 = $this->db->get();
                     foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) {
-                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_refrence_hps'];
+                        $id_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
                         $where_hps_penyedia_kontrak_5 = [
                             'id_hps_penyedia_kontrak_5' => $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'],
                         ];
