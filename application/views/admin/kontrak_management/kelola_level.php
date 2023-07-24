@@ -18,6 +18,7 @@
     <section class="section">
         <nav class="navbar navbar-expand-lg main-navbar" style="background-color: white;height:50px;
   position: fixed; top:50px">
+            <span> <?= $row_kontrak['nama_kontrak'] ?></span>
             <span style="margin-left: auto; font-weight:bold;""><a href=" <?= base_url('admin/data_kontrak') ?>">Data Kontrak</a> / <span><b>Kelola Level</b></span> </span>
         </nav>
         <div class="content-wrapper">

@@ -1,4 +1,19 @@
 <!-- Content Wrapper. Contains page content -->
+<style>
+    th,
+    td {
+        white-space: nowrap;
+    }
+
+    div.dataTables_wrapper {
+        width: 800px;
+        margin: 0 auto;
+    }
+
+    tr {
+        height: 50px;
+    }
+</style>
 <div class="main-content">
     <section class="section">
         <!-- <div class="section-header">
@@ -9,50 +24,22 @@
         </div> -->
         <nav class="navbar navbar-expand-lg main-navbar" style="background-color: white;height:50px;
   position: fixed; top:50px">
+  <span> <?= $row_kontrak['nama_kontrak'] ?></span>
             <span style="margin-left: auto; font-weight:bold;""><a href=" <?= base_url('admin/data_kontrak_penyedia_jasa/') ?>">Mata Anggaran</a> / <span><b>Kelola Mata Anggaran</b></span> </span>
         </nav>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">
-                    </h1>
-                </div>
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
+
     <!-- /.content-header -->
     <input type="hidden" name="type_add">
      <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak']?>">
     <!-- Main content -->
     <section class="content">
-        <div class="container-fluid">
+        <div >
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card card-outline card-warning">
-                        <div class="card-body">
-
-
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <center>
-                                        <h5>
-                                            <?= $row_kontrak['nama_kontrak'] ?>
-                                        </h5>
-                                    </center>
-                                </div>
-                                <div class="card-body">
-
-
-                                    <div class="card card-outline card-primary">
-                                        <div class="card-header">
-                                            <div class="card-tools">
-                                            </div>
-                                        </div>
+                                  
                                         <!-- /.card-header -->
-                                        <div class="card-body">
                                             <div class="row">
                                                 <!-- Button trigger modal -->
                                                 <!-- Modal -->
@@ -166,16 +153,16 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                <button type="button" class="btn btn-sm btn-outline-primary btn-lg" data-toggle="modal" data-target="#modelId">
+                                                <button type="button" class="btn btn-sm btn-outline-primary btn-lg mt-3" data-toggle="modal" data-target="#modelId">
                                                     Buat Program Administrasi Penyedia
                                                 </button>
                                                     <!-- lihat ad -->
-                                                    <div style="overflow-x:auto;" class="mb-5"><br>
-                                                        <table class="table table-bordered table-striped">
+                                                    <div style="overflow-x: auto;overflow-y: auto;height:550px;margin-bottom:-40px" class="mb-5"><br>
+                                                        <table class="table" style="font-family: RNSSanz-Black;text-transform: uppercase;">
                                                             <thead class="bg-primary">
                                                                 <tr>
-                                                                    <th class="tg-i25s table-primary text-center text-white" style="width: 150px;"><i class="fa fa-list-ol" aria-hidden="true"></i> No</th>
-                                                                    <th class="tg-i25s table-primary text-center text-white" style="width: 250px;"><i class="fa fa-database" aria-hidden="true"></i> Nama Program</th>
+                                                                    <th class="tg-i25s table-primary text-center text-white" style="width: 150px;background-color: #193B53;"><i class="fa fa-list-ol" aria-hidden="true"></i> No</th>
+                                                                    <th class="tg-i25s table-primary text-center text-white" style="width: 250px;background-color: #193B53;"><i class="fa fa-database" aria-hidden="true"></i> Nama Program</th>
                                                                     <?php if ($adendum_result) { ?>
                                                                         <?php foreach ($adendum_result as $key => $value) { ?>
                                                                             <?php
@@ -243,18 +230,18 @@
                                                                                 $romawi_add = 'Kontrak Awal';
                                                                             }
                                                                             ?>
-                                                                            <th class="tg-i25s table-warning text-center text-white" style="width: 150px;"><i class="fa fa-list" aria-hidden="true"></i> <?= $romawi_add ?>
+                                                                            <th class="tg-i25s table-warning text-center text-white" style="width: 150px; background-color: #193B53;"><i class="fa fa-list" aria-hidden="true"></i> <?= $romawi_add ?>
                                                                                 <hr>
                                                                                 <i class="fa fa-calendar" aria-hidden="true"></i> <?= $value['tanggal'] ?>
                                                                             </th>
-                                                                            <th class="tg-i25s table-secondary text-center text-white" style="width: 130px;"><i class="fa fa-key" aria-hidden="true"></i> Aksi <?= $romawi_add ?></th>
+                                                                            <th class="tg-i25s table-secondary text-center text-white" style="width: 130px; background-color: #193B53;"><i class="fa fa-key" aria-hidden="true"></i> Aksi <?= $romawi_add ?></th>
                                                                         <?php   } ?>
                                                                     <?php } else { ?>
-                                                                        <th class="tg-i25s table-warning text-center text-white" style="width: 150px;"><i class="fa fa-list" aria-hidden="true"></i> Kontrak Awal
+                                                                        <th class="tg-i25s table-warning text-center text-white" style="width: 150px; background-color: #193B53;"><i class="fa fa-list" aria-hidden="true"></i> Kontrak Awal
                                                                             <hr>
                                                                             <?= $row_kontrak['tahun_kontrak'] ?>
                                                                         </th>
-                                                                        <th class="tg-i25s table-secondary text-center text-white" style="width: 130px;"><i class="fa fa-key" aria-hidden="true"></i> Aksi</th>
+                                                                        <th class="tg-i25s table-secondary text-center text-white" style="width: 130px; background-color: #193B53;"><i class="fa fa-key" aria-hidden="true"></i> Aksi</th>
                                                                     <?php  }  ?>
                                                                 </tr>
                                                             </thead>
@@ -479,11 +466,11 @@
                                                                         $this->db->from('tbl_capex_detail');
                                                                         $this->db->where('tbl_capex_detail.id_capex', $id_capex);
                                                                         $kondisi_detail_capex = $this->db->get()->result_array() ?>
-                                                                        <tr class="bg-info text-white" style="font-size:12px;font-weight:700">
-                                                                            <td class="tg-0lax">
+                                                                        <tr class=" text-white"  style="font-family: RNSSanz-Black;font-size:16px;font-weight:300;background-color: #1c4e80;">
+                                                                            <td style="font-family: RNSSanz-Medium;font-size:13px;"class="tg-0lax">
                                                                                 1.1
                                                                             </td>
-                                                                            <td class="tg-0lax">&nbsp;&nbsp; CAPEX</td>
+                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;"class="tg-0lax">&nbsp;&nbsp; CAPEX</td>
                                                                             <?php if ($adendum_result) { ?>
                                                                                 <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                     <?php
@@ -745,7 +732,7 @@
                                                                                 $this->db->from('tbl_detail_capex_1');
                                                                                 $this->db->where('tbl_detail_capex_1.id_capex_detail', $id_capex_detail);
                                                                                 $kondisi_capex_detail_1 = $this->db->get()->result_array() ?>
-                                                                         <tr class="text-warning" style="font-size:12px;font-weight: 650;">
+                                                                         <tr style="font-family: RNSSanz-Bold;font-size:13px;">
                                                                             <td class="tg-0lax">
                                                                                 <?= $value_detail_capex['no_urut'] ?> </td>
                                                                             <td class="tg-0lax">&nbsp;&nbsp;&nbsp; <?= $value_detail_capex['nama_uraian'] ?></td>
@@ -3663,11 +3650,11 @@
                                                                         $this->db->from('tbl_opex_detail');
                                                                         $this->db->where('tbl_opex_detail.id_opex', $id_opex);
                                                                         $kondisi_detail_opex = $this->db->get()->result_array() ?>
-                                                                        <tr class="bg-warning text-white" style="font-size:12px;font-weight:700">
-                                                                            <td class="tg-0lax">
+                                                                        <tr class="text-white" style="font-family: RNSSanz-Black;font-size:16px;font-weight:300;background-color: #1c4e80;">
+                                                                            <td  style="font-family: RNSSanz-Medium;font-size:13px;" class="tg-0lax">
                                                                                 1.2
                                                                             </td>
-                                                                            <td class="tg-0lax">&nbsp;&nbsp; OPEX</td>
+                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;"class="tg-0lax">&nbsp;&nbsp; OPEX</td>
                                                                             <?php if ($adendum_result) { ?>
                                                                                 <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                     <?php
@@ -3929,7 +3916,7 @@
                                                                                 $this->db->from('tbl_detail_opex_1');
                                                                                 $this->db->where('tbl_detail_opex_1.id_opex_detail', $id_opex_detail);
                                                                                 $kondisi_opex_detail_1 = $this->db->get()->result_array() ?>
-                                                                         <tr class="text-warning" style="font-size:12px;font-weight: 650;">
+                                                                         <tr style="font-family: RNSSanz-Bold;font-size:13px;">
                                                                             <td class="tg-0lax">
                                                                                 <?= $value_detail_opex['no_urut'] ?> </td>
                                                                             <td class="tg-0lax">&nbsp;&nbsp;&nbsp; <?= $value_detail_opex['nama_uraian'] ?></td>
@@ -6848,11 +6835,11 @@
                                                                         $this->db->from('tbl_bua_detail');
                                                                         $this->db->where('tbl_bua_detail.id_bua', $id_bua);
                                                                         $kondisi_detail_bua = $this->db->get()->result_array() ?>
-                                                                        <tr class="bg-danger text-white" style="font-size:12px;font-weight:700">
-                                                                            <td class="tg-0lax">
+                                                                        <tr class="text-white" style="font-family: RNSSanz-Black;font-size:16px;font-weight:300;background-color: #1c4e80;">
+                                                                            <td style="font-family: RNSSanz-Medium;font-size:13px;"class="tg-0lax">
                                                                                 1.3
                                                                             </td>
-                                                                            <td class="tg-0lax">&nbsp;&nbsp; BUA</td>
+                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;" class="tg-0lax">&nbsp;&nbsp; BUA</td>
                                                                             <?php if ($adendum_result) { ?>
                                                                                 <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                     <?php
@@ -7114,7 +7101,7 @@
                                                                                 $this->db->from('tbl_detail_bua_1');
                                                                                 $this->db->where('tbl_detail_bua_1.id_bua_detail', $id_bua_detail);
                                                                                 $kondisi_bua_detail_1 = $this->db->get()->result_array() ?>
-                                                                         <tr class="text-warning" style="font-size:12px;font-weight: 650;">
+                                                                         <tr style="font-family: RNSSanz-Bold;font-size:13px;">
                                                                             <td class="tg-0lax">
                                                                                 <?= $value_detail_bua['no_urut'] ?> </td>
                                                                             <td class="tg-0lax">&nbsp;&nbsp;&nbsp; <?= $value_detail_bua['nama_uraian'] ?></td>
@@ -10036,11 +10023,11 @@
                                                                         $this->db->from('tbl_sdm_detail');
                                                                         $this->db->where('tbl_sdm_detail.id_sdm', $id_sdm);
                                                                         $kondisi_detail_sdm = $this->db->get()->result_array() ?>
-                                                                        <tr class="bg-success text-white" style="font-size:12px;font-weight:700">
-                                                                            <td class="tg-0lax">
+                                                                        <tr class="text-white"  style="font-family: RNSSanz-Black;font-size:16px;font-weight:300;background-color: #1c4e80;">
+                                                                            <td class="tg-0lax"  style="font-family: RNSSanz-Medium;font-size:13px;"class="tg-0lax">
                                                                                 1.4
                                                                             </td>
-                                                                            <td class="tg-0lax">&nbsp;&nbsp; SDM</td>
+                                                                            <td class="tg-0lax"  style="font-family: RNSSanz-Medium;font-size:13px;"class="tg-0lax">&nbsp;&nbsp; SDM</td>
                                                                             <?php if ($adendum_result) { ?>
                                                                                 <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                     <?php
@@ -10302,7 +10289,7 @@
                                                                                 $this->db->from('tbl_detail_sdm_1');
                                                                                 $this->db->where('tbl_detail_sdm_1.id_sdm_detail', $id_sdm_detail);
                                                                                 $kondisi_sdm_detail_1 = $this->db->get()->result_array() ?>
-                                                                         <tr class="text-warning" style="font-size:12px;font-weight: 650;">
+                                                                         <tr style="font-family: RNSSanz-Bold;font-size:13px;">
                                                                             <td class="tg-0lax">
                                                                                 <?= $value_detail_sdm['no_urut'] ?> </td>
                                                                             <td class="tg-0lax">&nbsp;&nbsp;&nbsp; <?= $value_detail_sdm['nama_uraian'] ?></td>
@@ -13214,18 +13201,18 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                 
+                                
                                     <!-- /.card -->
-                                </div>
-                            </div>
+                           
+                        
 
                             <!-- /.col -->
-                        </div>
+                        
                         <!-- /.row -->
                         <!-- Main row -->
                         <!-- /.row -->
-                    </div>
+                   
                     <!--/. container-fluid -->
                     <!-- Button trigger modal -->
 
