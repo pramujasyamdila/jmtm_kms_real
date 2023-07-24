@@ -1,12 +1,16 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="main-content">
     <section class="section">
-        <div class="section-header">
+        <!-- <div class="section-header">
             <h1><i class="fa fa-book"></i> PILIH PROGRAM MATA ANGGARAN</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="#">PILIH PROGRAM MATA ANGGARAN</a></div>
             </div>
-        </div>
+        </div> -->
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color: white;height:50px;
+  position: fixed; top:50px">
+            <span style="margin-left: auto; font-weight:bold;""><a href=" <?= base_url('admin/data_kontrak_penyedia_jasa/') ?>">Mata Anggaran</a> / <span><b>Kelola Mata Anggaran</b></span> </span>
+        </nav>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">

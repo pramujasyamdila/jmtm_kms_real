@@ -11,8 +11,8 @@ class Data_kontrak extends CI_Controller
         $this->load->model('Auth_model');
         $session = $this->session->userdata('id_pegawai');
         if (!$session) {
-			redirect('auth');
-		}
+            redirect('auth');
+        }
     }
 
     public function index()
@@ -5229,7 +5229,7 @@ class Data_kontrak extends CI_Controller
         $data = [
             'row_unit_price_4' => $row_unit_price_4,
             'result_unit_price_4' => $result_unit_price_4
-        
+
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -5449,7 +5449,7 @@ class Data_kontrak extends CI_Controller
         $data = [
             'row_unit_price_5' => $row_unit_price_5,
             'result_unit_price_5' => $result_unit_price_5
-        
+
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -5705,7 +5705,7 @@ class Data_kontrak extends CI_Controller
         $data = [
             'row_unit_price_6' => $row_unit_price_6,
             'result_unit_price_6' => $result_unit_price_6
-        
+
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -5999,7 +5999,7 @@ class Data_kontrak extends CI_Controller
         $data = [
             'row_unit_price_7' => $row_unit_price_7,
             'result_unit_price_7' => $result_unit_price_7
-        
+
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -6330,7 +6330,7 @@ class Data_kontrak extends CI_Controller
         $data = [
             'row_unit_price_8' => $row_unit_price_8,
             'result_unit_price_8' => $result_unit_price_8
-        
+
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -6699,7 +6699,7 @@ class Data_kontrak extends CI_Controller
         $data = [
             'row_unit_price_9' => $row_unit_price_9,
             'result_unit_price_9' => $result_unit_price_9
-        
+
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }

@@ -16,15 +16,19 @@
 </style>
 <div class="main-content" style="font-family: 'RNSSanz-Light'">
     <section class="section">
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color: white;height:50px;
+  position: fixed; top:50px">
+            <span style="margin-left: auto; font-weight:bold;""><a href=" <?= base_url('admin/data_kontrak') ?>">Data Kontrak</a> / <span><b>Kelola Level</b></span> </span>
+        </nav>
         <div class="content-wrapper">
             <!-- Button trigger modal -->
             <!-- Modal -->
             <!-- lihat ad -->
-            <button type="button" class="btn btn-outline-primary btn-sm btn-lg mb-2" data-toggle="modal" data-target="#tambah_addendum">
+            <button type="button" class="btn btn-outline-primary btn-sm btn-lg mb-2 mt-4" data-toggle="modal" data-target="#tambah_addendum">
                 <i class="fas fa fa-plus"></i> Tambah Addendum
             </button>
             <br>
-          
+
             <div style="overflow-x: auto;overflow-y: auto;height:550px;margin-bottom:-40px">
                 <table style="font-family: RNSSanz-Black;text-transform: uppercase;" class="table" id="table_kontrak">
                     <thead class="bg-primary">
@@ -268,14 +272,14 @@
 
                     </tbody>
                 </table>
-         
-            <!-- /.col -->
 
-            <!-- /.row -->
-            <!-- Main row -->
-            <!-- /.row -->
+                <!-- /.col -->
 
-            <!--/. container-fluid -->
+                <!-- /.row -->
+                <!-- Main row -->
+                <!-- /.row -->
+
+                <!--/. container-fluid -->
     </section>
 </div>
 <!-- Modal -->

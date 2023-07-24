@@ -1,12 +1,17 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="main-content">
     <section class="section">
-        <div class="section-header">
+        <!-- <div class="section-header">
             <h1><i class="fa fa-book"></i> MANAGEMENT KONTRAK</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="<?= base_url('admin/data_kontrak') ?>">MANAGEMENT KONTRAK</a></div>
             </div>
-        </div>
+        </div> -->
+
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color: white;height:50px;
+  position: fixed; top:50px">
+            <h6 style="margin-left: auto;">Data Kontrak</h6>
+        </nav>
         <div class="content-wrapper" style="background-color:white">
             <!-- Content Header (Page header) -->
             <div class="content-header">

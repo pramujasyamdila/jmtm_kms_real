@@ -1,12 +1,16 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="main-content">
     <section class="section">
-        <div class="section-header">
+        <!-- <div class="section-header">
             <h1><i class="fa fa-book"></i> MANAGEMENT MATA ANGGARAN</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="#">MANAGEMENT MATA ANGGARAN</a></div>
             </div>
-        </div>
+        </div> -->
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color: white;height:50px;
+  position: fixed; top:50px">
+            <h6 style="margin-left: auto;">Mata Anggaran</h6>
+        </nav>
         <div class="content-wrapper" style="background-color:white">
             <!-- Content Header (Page header) -->
             <div class="content-header">
@@ -204,31 +208,31 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="card-body">
-                                                                <table id="table" class="table-bordered table-striped">
-                                                                    <thead>
-                                                                        <tr style="font-size: 12px;" class="bg-primary">
-                                                                            <th class="text-center text-white bg-primary" rowspan="2">No </th>
-                                                                            <th class="text-center text-white bg-primary" style="width:200px;" rowspan="2">Kontrak Manajemen</th>
-                                                                            <th class="text-center text-white bg-primary" style="width:100px;" rowspan="2">Departemen</th>
-                                                                            <th class="text-center text-white bg-primary" style="width:100px;" rowspan="2">Area</th>
-                                                                            <th class="text-center text-white bg-primary" style="width:100px;" rowspan="2">Sub Area</th>
-                                                                            <th class="text-center text-white" style="width:100px" rowspan="2">No Kontrak</th>
-                                                                            <th class="text-center text-white" style="width:100px" rowspan="2">Tahun Kontrak</th>
-                                                                            <th class="text-center text-white" style="width:100px" rowspan="2">Tahun Anggaran</th>
-                                                                            <th class="text-center text-white" colspan="3">Informasi Addendum Terakhir</th>
-                                                                            <th class="text-center text-white" style="width:100px" rowspan="2">Jenis Kontrak</th>
-                                                                            <th class="text-center text-white" rowspan="2">Aksi</th>
-                                                                        </tr>
-                                                                        <tr style="font-size: 12px;" class="table-warning">
-                                                                            <th class="text-center" style="width:100px">Nilai Add</th>
-                                                                            <th class="text-center" style="width:100px">Tanggal Add</th>
-                                                                            <th class="text-center" style="width:100px">Periode Add</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody style="font-size: 12px;">
+                                                            <table id="table" class="table-bordered table-striped">
+                                                                <thead>
+                                                                    <tr style="font-size: 12px;" class="bg-primary">
+                                                                        <th class="text-center text-white bg-primary" rowspan="2">No </th>
+                                                                        <th class="text-center text-white bg-primary" style="width:200px;" rowspan="2">Kontrak Manajemen</th>
+                                                                        <th class="text-center text-white bg-primary" style="width:100px;" rowspan="2">Departemen</th>
+                                                                        <th class="text-center text-white bg-primary" style="width:100px;" rowspan="2">Area</th>
+                                                                        <th class="text-center text-white bg-primary" style="width:100px;" rowspan="2">Sub Area</th>
+                                                                        <th class="text-center text-white" style="width:100px" rowspan="2">No Kontrak</th>
+                                                                        <th class="text-center text-white" style="width:100px" rowspan="2">Tahun Kontrak</th>
+                                                                        <th class="text-center text-white" style="width:100px" rowspan="2">Tahun Anggaran</th>
+                                                                        <th class="text-center text-white" colspan="3">Informasi Addendum Terakhir</th>
+                                                                        <th class="text-center text-white" style="width:100px" rowspan="2">Jenis Kontrak</th>
+                                                                        <th class="text-center text-white" rowspan="2">Aksi</th>
+                                                                    </tr>
+                                                                    <tr style="font-size: 12px;" class="table-warning">
+                                                                        <th class="text-center" style="width:100px">Nilai Add</th>
+                                                                        <th class="text-center" style="width:100px">Tanggal Add</th>
+                                                                        <th class="text-center" style="width:100px">Periode Add</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody style="font-size: 12px;">
 
-                                                                    </tbody>
-                                                                </table>
+                                                                </tbody>
+                                                            </table>
                                                         </div>
 
                                                     </div>
