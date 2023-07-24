@@ -10,8 +10,8 @@ class Data_kontrak_penyedia_jasa extends CI_Controller
         $this->load->model('Admin/Data_kontrak_model');
         $session = $this->session->userdata('id_pegawai');
         if (!$session) {
-			redirect('auth');
-		}
+            redirect('auth');
+        }
     }
 
     public function index()
@@ -13395,6 +13395,8 @@ class Data_kontrak_penyedia_jasa extends CI_Controller
             $data_baru_mata_anggaran = [
                 'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                 'id_detail_sub_program_penyedia_jasa' => $this->db->insert_id(),
+                'no_hps' . $type_addendum . '' => '1.1',
+                'uraian_hps' . $type_addendum . '' => '.'
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_1($data_baru_mata_anggaran);
         }

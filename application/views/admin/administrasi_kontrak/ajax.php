@@ -936,7 +936,7 @@
 
                     if (add == 1) {
                         $('[name="type_add"]').val(1);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_1);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_1);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_1);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_1);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_1);
@@ -945,7 +945,7 @@
                         // 2
                         // _addendum_2
                         $('[name="type_add"]').val(2);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_2);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_2);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_2);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_2);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_2);
@@ -954,7 +954,7 @@
                         // 3
                         // _addendum_3
                         $('[name="type_add"]').val(3);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_3);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_3);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_3);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_3);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_3);
@@ -964,7 +964,7 @@
                         // _addendum_4
                     } else if (add == 4) {
                         $('[name="type_add"]').val(4);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_4);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_4);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_4);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_4);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_4);
@@ -973,7 +973,7 @@
                         // _addendum_5
                     } else if (add == 5) {
                         $('[name="type_add"]').val(5);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_5);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_5);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_5);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_5);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_5);
@@ -982,7 +982,7 @@
                         // _addendum_6
                     } else if (add == 6) {
                         $('[name="type_add"]').val(6);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_6);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_6);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_6);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_6);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_6);
@@ -991,7 +991,7 @@
                         // _addendum_7
                     } else if (add == 7) {
                         $('[name="type_add"]').val(7);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_7);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_7);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_7);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_7);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_7);
@@ -1000,7 +1000,7 @@
                         // _addendum_8
                     } else if (add == 8) {
                         $('[name="type_add"]').val(8);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_8);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_8);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_8);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_8);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_8);
@@ -1009,7 +1009,7 @@
                         // _addendum_9
                     } else if (add == 9) {
                         $('[name="type_add"]').val(9);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_9);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_9);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_9);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_9);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_9);
@@ -1018,7 +1018,7 @@
                         // _addendum_10
                     } else if (add == 10) {
                         $('[name="type_add"]').val(10);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_10);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_10);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_10);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_10);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_10);
@@ -1027,7 +1027,7 @@
                         // _addendum_11
                     } else if (add == 11) {
                         $('[name="type_add"]').val(11);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_11);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_11);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_11);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_11);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_11);
@@ -1036,7 +1036,7 @@
                         // _addendum_12
                     } else if (add == 12) {
                         $('[name="type_add"]').val(12);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_12);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_12);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_12);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_12);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_12);
@@ -1045,7 +1045,7 @@
                         // _addendum_13
                     } else if (add == 13) {
                         $('[name="type_add"]').val(13);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_13);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_13);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_13);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_13);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_13);
@@ -1054,7 +1054,7 @@
                         // _addendum_14
                     } else if (add == 14) {
                         $('[name="type_add"]').val(14);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_14);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_14);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_14);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_14);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_14);
@@ -1063,7 +1063,7 @@
                         // _addendum_15
                     } else if (add == 15) {
                         $('[name="type_add"]').val(15);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_15);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_15);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_15);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_15);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_15);
@@ -1072,7 +1072,7 @@
                         // _addendum_16
                     } else if (add == 16) {
                         $('[name="type_add"]').val(16);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_16);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_16);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_16);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_16);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_16);
@@ -1081,7 +1081,7 @@
                         // _addendum_17
                     } else if (add == 17) {
                         $('[name="type_add"]').val(17);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_17);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_17);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_17);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_17);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_17);
@@ -1090,7 +1090,7 @@
                         // _addendum_18
                     } else if (add == 18) {
                         $('[name="type_add"]').val(18);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_18);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_18);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_18);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_18);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_18);
@@ -1099,7 +1099,7 @@
                         // _addendum_19
                     } else if (add == 19) {
                         $('[name="type_add"]').val(19);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_19);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_19);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_19);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_19);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_19);
@@ -1108,7 +1108,7 @@
                         // _addendum_20
                     } else if (add == 20) {
                         $('[name="type_add"]').val(20);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_20);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_20);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_20);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_20);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_20);
@@ -1117,7 +1117,7 @@
                         // _addendum_21
                     } else if (add == 21) {
                         $('[name="type_add"]').val(21);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_21);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_21);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_21);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_21);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_21);
@@ -1126,7 +1126,7 @@
                         // _addendum_22
                     } else if (add == 22) {
                         $('[name="type_add"]').val(22);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_22);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_22);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_22);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_22);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_22);
@@ -1135,7 +1135,7 @@
                         // _addendum_23
                     } else if (add == 23) {
                         $('[name="type_add"]').val(23);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_23);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_23);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_23);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_23);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_23);
@@ -1144,7 +1144,7 @@
                         // _addendum_24
                     } else if (add == 24) {
                         $('[name="type_add"]').val(24);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_24);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_24);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_24);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_24);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_24);
@@ -1153,7 +1153,7 @@
                         // _addendum_25
                     } else if (add == 25) {
                         $('[name="type_add"]').val(25);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_25);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_25);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_25);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_25);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_25);
@@ -1162,7 +1162,7 @@
                         // _addendum_26
                     } else if (add == 26) {
                         $('[name="type_add"]').val(26);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_26);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_26);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_26);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_26);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_26);
@@ -1171,7 +1171,7 @@
                         // _addendum_27
                     } else if (add == 27) {
                         $('[name="type_add"]').val(27);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_27);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_27);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_27);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_27);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_27);
@@ -1180,7 +1180,7 @@
                         // _addendum_28
                     } else if (add == 28) {
                         $('[name="type_add"]').val(28);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_28);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_28);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_28);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_28);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_28);
@@ -1189,7 +1189,7 @@
                         // _addendum_29
                     } else if (add == 29) {
                         $('[name="type_add"]').val(29);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_29);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_29);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_29);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_29);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_29);
@@ -1198,7 +1198,7 @@
                         // _addendum_30
                     } else if (add == 30) {
                         $('[name="type_add"]').val(30);
-                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendeum_30);
+                        $('[name="no_hps"]').val(response['get_hps_penyedia_kontrak_1'].no_hps_addendum_30);
                         $('[name="uraian_hps"]').val(response['get_hps_penyedia_kontrak_1'].uraian_hps_addendum_30);
                         $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps_addendum_30);
                         $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps_addendum_30);

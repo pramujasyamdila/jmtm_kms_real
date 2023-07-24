@@ -1063,8 +1063,8 @@
                                                                                                             ?>
 
                                                                                                             <tr>
-                                                                                                                <td> &nbsp;<?= $value_hps_penyedia_kontrak_1['no_urut'] ?></td>
-                                                                                                                <td><?= $value_hps_penyedia_kontrak_1['no_hps'] ?></td>
+                                                                                                                <td> &nbsp;<?= $value_hps_penyedia_kontrak_1['no_urut' . $field_addendum] ?></td>
+                                                                                                                <td><?= $value_hps_penyedia_kontrak_1['no_hps' . $field_addendum] ?></td>
                                                                                                                 <td><?= $value_hps_penyedia_kontrak_1['uraian_hps' . $field_addendum] ?></td>
                                                                                                                 <td><?= $value_hps_penyedia_kontrak_1['satuan_hps' . $field_addendum] ?></td>
                                                                                                                 <td><?= $value_hps_penyedia_kontrak_1['volume_hps' . $field_addendum] ?></td>
@@ -1126,7 +1126,7 @@
                                                                                                                 ?>
                                                                                                                 <tr>
                                                                                                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_kontrak_2['no_urut'] ?></td>
-                                                                                                                    <td><?= $value_hps_penyedia_kontrak_2['no_hps'] ?></td>
+                                                                                                                    <td><?= $value_hps_penyedia_kontrak_2['no_hps' . $field_addendum] ?></td>
                                                                                                                     <td><?= $value_hps_penyedia_kontrak_2['uraian_hps' . $field_addendum] ?></td>
                                                                                                                     <td><?= $value_hps_penyedia_kontrak_2['satuan_hps' . $field_addendum] ?></td>
                                                                                                                     <td><?= $value_hps_penyedia_kontrak_2['volume_hps' . $field_addendum] ?></td>

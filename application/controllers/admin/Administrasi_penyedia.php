@@ -2262,7 +2262,7 @@ class Administrasi_penyedia extends CI_Controller
             'id_hps_penyedia_kontrak_1' => $id_hps_penyedia_kontrak_1
         ];
         $data = [
-            'no_hps' => $no_hps,
+            'no_hps_addendum_' . $add . '' => $no_hps,
             'uraian_hps_addendum_' . $add . '' => $uraian_hps,
             'volume_hps_addendum_' . $add . '' => $volume_hps,
             'satuan_hps_addendum_' . $add . '' => $satuan_hps,
