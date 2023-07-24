@@ -12,8 +12,8 @@ class Administrasi_kontrak extends CI_Controller
         $this->load->model('Auth_model');
         $session = $this->session->userdata('id_pegawai');
         if (!$session) {
-			redirect('auth');
-		}
+            redirect('auth');
+        }
     }
 
     public function index()
@@ -132,6 +132,7 @@ class Administrasi_kontrak extends CI_Controller
         $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
         $data['id_kontrak'] = $id_kontrak;
+        $data['nama_kontrak'] = $row_kontrak['nama_kontrak'];
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('admin/administrasi_kontrak/pasca_pengadaan', $data);

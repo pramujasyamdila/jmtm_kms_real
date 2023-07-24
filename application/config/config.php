@@ -23,7 +23,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/jmtm_kms/';
+$config['base_url'] = 'http://localhost/jmtm_kms_real/';
+// $config['base_url'] = 'http://localhost/jmtm_kms/';
 // $config['base_url'] = 'https://jmtm-kms-real.kintekindo.net/';
 
 /*

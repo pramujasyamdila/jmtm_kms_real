@@ -69,7 +69,7 @@
 
                                         <div class="card card-outline card-primary">
                                             <div class="card-header">
-                                               <h5><i class="fas fa fa-list"></i> LIST DATA PROGRAM</h5>
+                                                <h5><i class="fas fa fa-list"></i> LIST DATA PROGRAM</h5>
                                             </div>
                                             <!-- /.card-header -->
                                             <div class="card-body">
