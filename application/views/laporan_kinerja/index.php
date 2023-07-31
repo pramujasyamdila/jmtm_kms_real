@@ -1,96 +1,71 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="main-content">
     <section class="section">
-        <div class="section-header">
-            <h1><i class="fa fa-book"></i> LAPORAN KINERJA</h1>
-            <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="<?= base_url('Laporan_kinerja') ?>">LAPORAN KINERJA</a></div>
-            </div>
-        </div>
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
+  position: fixed; top:50px;">
+            <b style="margin-left: auto; font-weight:900">Laporan Kinerja</b>
+        </nav>
         <div class="content-wrapper" style="background-color:white">
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="col-sm-12">
-                                <div class="card card-outline card-warning">
-                                    <div class="card-header">
-                                        <h5> <i class="fa fa-book"></i> KONTRAK LAPORAN KINERJA</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-
-                                            </div>
-                                            <div class="col-md-10">
-                                                <div class="card card-primary">
-                                                    <div class="card-header text-center">
-                                                        <h6> <i class="fa fa-search-plus" aria-hidden="true"></i> FILTER KONTRAK</h6>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-md-5">
-                                                                <div class="form-group">
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" placeholder="Cari Kontrak" class="form-control rounded-0">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-5">
-                                                                <div class="form-group">
-                                                                    <div class="input-group mb-3">
-                                                                        <input type="text" placeholder="Cari No.Kontrak" class="form-control rounded-0">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-2 mt-1">
-                                                                <a href="#" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-10 mt-4">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" placeholder="Cari Kontrak" class="form-control rounded-0">
                                                 </div>
                                             </div>
-                                            <div class="col-md-1">
-
-                                            </div>
                                         </div>
-
-                                        <div class="card card-outline card-primary">
-                                            <div class="card-header">
-                                                <div class="card-tools">
-                                                    <button type="button" class="btn btn-sm btn-outline-primary btn-block" data-toggle="modal" data-target="#tambah_program">
-                                                        <i class="fas fa-plus"></i>
-                                                        Tambah Kontrak
-                                                    </button>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" placeholder="Cari No.Kontrak" class="form-control rounded-0">
                                                 </div>
                                             </div>
-                                            <div class="card-body">
-                                                <table id="table" class="table-bordered table-striped">
-                                                    <thead>
-                                                        <tr style="font-size: 12px;" class="bg-primary">
-                                                            <th class="text-center text-white bg-primary">No </th>
-                                                            <th class="text-center text-white bg-primary" style="width:200px;">Kontrak Manajemen</th>
-                                                            <th class="text-center text-white bg-primary" style="width:100px;">Departemen</th>
-                                                            <th class="text-center text-white" style="width:100px">No Kontrak</th>
-                                                            <th class="text-center text-white" style="width:100px">Tahun Kontrak</th>
-                                                            <th class="text-center text-white" style="width:100px">Tahun Anggaran</th>
-                                                            <th class="text-center text-white" style="width:100px">Jenis Kontrak</th>
-                                                            <th class="text-center text-white" style="width:100px">Aksi</th>
-                                                    </thead>
-                                                    <tbody style="font-size: 12px;">
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- /.card -->
+                                        </div>
+                                        <div class="col-md-3 mt-1">
+                                            <a href="#" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</a>
+                                        </div>
+                                        <div class="col-md-3 mt-1">
+                                            <button type="button" class="btn btn-sm btn-outline-primary btn-block" data-toggle="modal" data-target="#tambah_program">
+                                                <i class="fas fa-plus"></i>
+                                                Tambah Kontrak
+                                            </button>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
+                            <table id="table" class="table-bordered table-striped" style="font-family: RNSSanz-Black;text-transform: uppercase; margin-top: -10px">
+                                <thead>
+                                    <tr style="font-size: 13px; height:10px; background-color: #193B53;">
+                                        <th class="text-center text-white " style="font-size: 13px; height:10px; background-color: #193B53;">No </th>
+                                        <th class="text-center text-white " style="width:200px; background-color: #193B53;">Kontrak Manajemen</th>
+                                        <th class="text-center text-white " style="width:100px;">Departemen</th>
+                                        <th class="text-center text-white" style="width:100px">No Kontrak</th>
+                                        <th class="text-center text-white" style="width:100px">Tahun Kontrak</th>
+                                        <th class="text-center text-white" style="width:100px">Tahun Anggaran</th>
+                                        <th class="text-center text-white" style="width:100px">Jenis Kontrak</th>
+                                        <th class="text-center text-white" style="width:100px">Aksi</th>
+                                </thead>
+                                <tbody style="font-size: 12px;">
 
-                            <!-- /.col -->
+                                </tbody>
+                            </table>
+
+                            <!-- /.card -->
+
+
+
                         </div>
+
+                        <!-- /.col -->
+
                         <!-- /.row -->
                         <!-- Main row -->
                         <!-- /.row -->

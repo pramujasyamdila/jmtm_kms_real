@@ -8,7 +8,7 @@
                 <div class="breadcrumb-item active"><a href="<?= base_url('admin/data_kontrak') ?>"> Pra Pengadaan</a></div>
             </div>
         </div> -->
-        <nav class="navbar navbar-expand-lg main-navbar" style="background-color: white;height:50px;
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
   position: fixed; top:50px">
             <h6><?= $nama_kontrak ?></h6>
             <h6 style="margin-left: auto;"> Pra Pengadaan</h6>

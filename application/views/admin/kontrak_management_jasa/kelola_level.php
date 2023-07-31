@@ -22,10 +22,10 @@
                 <div class="breadcrumb-item active"><a href="#">PILIH PROGRAM MATA ANGGARAN</a></div>
             </div>
         </div> -->
-        <nav class="navbar navbar-expand-lg main-navbar" style="background-color: white;height:50px;
-  position: fixed; top:50px">
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
+  position: fixed; top:50px;  padding-bottom: -10px;">
   <span> <?= $row_kontrak['nama_kontrak'] ?></span>
-            <span style="margin-left: auto; font-weight:bold;""><a href=" <?= base_url('admin/data_kontrak_penyedia_jasa/') ?>">Mata Anggaran</a> / <span><b>Kelola Mata Anggaran</b></span> </span>
+            <span style="margin-left: auto; font-weight:bold;"><a href=" <?= base_url('admin/data_kontrak_penyedia_jasa/') ?>">Mata Anggaran</a> / <span><b>Kelola Mata Anggaran</b></span> </span>
         </nav>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -158,7 +158,7 @@
                                                 </button>
                                                     <!-- lihat ad -->
                                                     <div style="overflow-x: auto;overflow-y: auto;height:550px;margin-bottom:-40px" class="mb-5"><br>
-                                                        <table class="table" style="font-family: RNSSanz-Black;text-transform: uppercase;">
+                                                        <table class="table table-bordered" style="font-family: RNSSanz-Black;text-transform: uppercase;">
                                                             <thead class="bg-primary">
                                                                 <tr>
                                                                     <th class="tg-i25s table-primary text-center text-white" style="width: 150px;background-color: #193B53;"><i class="fa fa-list-ol" aria-hidden="true"></i> No</th>
