@@ -35,186 +35,147 @@
                                                                     $this->db->where('tbl_capex_detail.id_capex', $id_capex);
                                                                     $kondisi_detail_capex = $this->db->get()->result_array() ?>
                                                                     <tr class="text-white" style="font-family: RNSSanz-Black;font-size:16px;font-weight:300;background-color: #1c4e80;">
-                                                                        <td style="font-family: RNSSanz-Medium;font-size:13px;"class="tg-0lax">
+                                                                        <td style="font-family: RNSSanz-Medium;font-size:13px;" class="tg-0lax">
                                                                             1.1
                                                                         </td>
                                                                         <td class="tg-0lax text-white"> CAPEX</td>
-                                                                        <?php if ($adendum_result) { ?>
-                                                                            <?php foreach ($adendum_result as $key => $value) { ?>
-                                                                                <?php
-                                                                                if ($value['no_adendum'] == 1) {
-                                                                                    $type_add_nilai = 1;
-                                                                                    $nilai = 'nilai_capex_add_I';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_1';
-                                                                                } else if ($value['no_adendum'] == 2) {
-                                                                                    $type_add_nilai = 2;
-                                                                                    $nilai = 'nilai_capex_add_II';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_2';
-                                                                                } else if ($value['no_adendum'] == 3) {
-                                                                                    $type_add_nilai = 3;
-                                                                                    $nilai = 'nilai_capex_add_III';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_3';
-                                                                                } else if ($value['no_adendum'] == 4) {
-                                                                                    $type_add_nilai = 4;
-                                                                                    $nilai = 'nilai_capex_add_IV';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_4';
-                                                                                } else if ($value['no_adendum'] == 5) {
-                                                                                    $type_add_nilai = 5;
-                                                                                    $nilai = 'nilai_capex_add_V';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_5';
-                                                                                } else if ($value['no_adendum'] == 6) {
-                                                                                    $type_add_nilai = 6;
-                                                                                    $nilai = 'nilai_capex_add_VI';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_6';
-                                                                                } else if ($value['no_adendum'] == 7) {
-                                                                                    $type_add_nilai = 7;
-                                                                                    $nilai = 'nilai_capex_add_VII';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_7';
-                                                                                } else if ($value['no_adendum'] == 8) {
-                                                                                    $type_add_nilai = 8;
-                                                                                    $nilai = 'nilai_capex_add_VIII';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_8';
-                                                                                } else if ($value['no_adendum'] == 9) {
-                                                                                    $type_add_nilai = 9;
-                                                                                    $nilai = 'nilai_capex_add_IX';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_9';
-                                                                                } else if ($value['no_adendum'] == 10) {
-                                                                                    $type_add_nilai = 10;
-                                                                                    $nilai = 'nilai_capex_add_X';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_10';
-                                                                                } else if ($value['no_adendum'] == 11) {
-                                                                                    $type_add_nilai = 11;
-                                                                                    $nilai = 'nilai_capex_add_XI';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_11';
-                                                                                } else if ($value['no_adendum'] == 12) {
-                                                                                    $type_add_nilai = 12;
-                                                                                    $nilai = 'nilai_capex_add_XII';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_12';
-                                                                                } else if ($value['no_adendum'] == 13) {
-                                                                                    $type_add_nilai = 13;
-                                                                                    $nilai = 'nilai_capex_add_XIII';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_13';
-                                                                                } else if ($value['no_adendum'] == 14) {
-                                                                                    $type_add_nilai = 14;
-                                                                                    $nilai = 'nilai_capex_add_XIV';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_14';
-                                                                                } else if ($value['no_adendum'] == 15) {
-                                                                                    $type_add_nilai = 15;
-                                                                                    $nilai = 'nilai_capex_add_XV';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_15';
-                                                                                } else if ($value['no_adendum'] == 16) {
-                                                                                    $type_add_nilai = 16;
-                                                                                    $nilai = 'nilai_capex_add_XVI';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_16';
-                                                                                } else if ($value['no_adendum'] == 17) {
-                                                                                    $type_add_nilai = 17;
-                                                                                    $nilai = 'nilai_capex_add_XVII';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_17';
-                                                                                } else if ($value['no_adendum'] == 18) {
-                                                                                    $type_add_nilai = 18;
-                                                                                    $nilai = 'nilai_capex_add_XVIII';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_18';
-                                                                                } else if ($value['no_adendum'] == 19) {
-                                                                                    $type_add_nilai = 19;
-                                                                                    $nilai = 'nilai_capex_add_XIX';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_19';
-                                                                                } else if ($value['no_adendum'] == 20) {
-                                                                                    $type_add_nilai = 20;
-                                                                                    $nilai = 'nilai_capex_add_XX';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_20';
-                                                                                } else if ($value['no_adendum'] == 21) {
-                                                                                    $type_add_nilai = 21;
-                                                                                    $nilai = 'nilai_capex_add_XXI';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_21';
-                                                                                } else if ($value['no_adendum'] == 22) {
-                                                                                    $type_add_nilai = 22;
-                                                                                    $nilai = 'nilai_capex_add_XXII';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_22';
-                                                                                } else if ($value['no_adendum'] == 23) {
-                                                                                    $type_add_nilai = 23;
-                                                                                    $nilai = 'nilai_capex_add_XXIII';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_23';
-                                                                                } else if ($value['no_adendum'] == 24) {
-                                                                                    $type_add_nilai = 24;
-                                                                                    $nilai = 'nilai_capex_add_XXIV';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_24';
-                                                                                } else if ($value['no_adendum'] == 25) {
-                                                                                    $type_add_nilai = 25;
-                                                                                    $nilai = 'nilai_capex_add_XXV';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_25';
-                                                                                } else if ($value['no_adendum'] == 26) {
-                                                                                    $type_add_nilai = 26;
-                                                                                    $nilai = 'nilai_capex_add_XXVI';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_26';
-                                                                                } else if ($value['no_adendum'] == 27) {
-                                                                                    $type_add_nilai = 27;
-                                                                                    $nilai = 'nilai_capex_add_XXVII';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_27';
-                                                                                } else if ($value['no_adendum'] == 28) {
-                                                                                    $type_add_nilai = 28;
-                                                                                    $nilai = 'nilai_capex_add_XXVIII';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_28';
-                                                                                } else if ($value['no_adendum'] == 29) {
-                                                                                    $type_add_nilai = 29;
-                                                                                    $nilai = 'nilai_capex_add_XXIX';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_29';
-                                                                                } else if ($value['no_adendum'] == 30) {
-                                                                                    $type_add_nilai = 30;
-                                                                                    $nilai = 'nilai_capex_add_XXX';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex_add_30';
-                                                                                } else {
-                                                                                    $type_add_nilai = null;
-                                                                                    $nilai = 'nilai_capex';
-                                                                                    $update_reusable = 'update_nilai_level_2_capex';
-                                                                                }
-                                                                                ?>
-                                                                                <td class="tg-0lax text-white" style="font-family: RNSSanz-Bold;font-size:13px;" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_capex[$nilai], 2, ',', '.') ?>
-                                                                                </td>
-                                                                                <td class="tg-0lax">
-                                                                                    <div class="btn-group" style="padding: -20px !important;">
-                                                                                        <button type="button" style="height: 25px;" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true" style="font-size: 10px;"></i></button>
-                                                                                        <button type="button" style="height: 25px;" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                            <span style="font-size: 10px;"  class="sr-only">Toggle Dropdown</span>
-                                                                                        </button>
-                                                                                        <div class="dropdown-menu" style="margin-top: -10px;" role="menu">
-                                                                                            <?php if ($value_capex[$nilai] == null || $value_capex[$nilai] == 0) { ?>
-                                                                                                <?php if ($kondisi_detail_capex) { ?>
-                                                                                                    <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
-                                                                                                    <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex_excel',<?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
-                                                                                                <?php    } else { ?>
-                                                                                                    <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'<?= $update_reusable ?>')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Masukan Nilai Turunan"><i class="fas fa-dollar-sign"></i></a>
-                                                                                                    <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
-                                                                                                    <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex_excel',<?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
-                                                                                                <?php   }  ?>
-                                                                                            <?php } else { ?>
-                                                                                                <?php if ($kondisi_detail_capex) { ?>
-                                                                                                    <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
-                                                                                                    <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex_excel',<?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
-                                                                                                <?php    } else { ?>
-                                                                                                    <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'<?= $update_reusable ?>')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Masukan Nilai Turunan"><i class="fas fa-dollar-sign"></i></a>
-                                                                                                    <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex_excel',<?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
-                                                                                                <?php   }  ?>
-                                                                                            <?php    } ?>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-
-                                                                            <?php   } ?>
-                                                                        <?php } else { ?>
+                                                                        <?php foreach ($adendum_result as $key => $value) { ?>
                                                                             <?php
-                                                                            $nilai = 'nilai_capex';
-                                                                            $update_reusable = 'update_nilai_level_2_capex';
-                                                                            $type_add_nilai = null;
+                                                                            if ($value['no_adendum'] == 1) {
+                                                                                $type_add_nilai = 1;
+                                                                                $nilai = 'nilai_capex_add_I';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_1';
+                                                                            } else if ($value['no_adendum'] == 2) {
+                                                                                $type_add_nilai = 2;
+                                                                                $nilai = 'nilai_capex_add_II';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_2';
+                                                                            } else if ($value['no_adendum'] == 3) {
+                                                                                $type_add_nilai = 3;
+                                                                                $nilai = 'nilai_capex_add_III';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_3';
+                                                                            } else if ($value['no_adendum'] == 4) {
+                                                                                $type_add_nilai = 4;
+                                                                                $nilai = 'nilai_capex_add_IV';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_4';
+                                                                            } else if ($value['no_adendum'] == 5) {
+                                                                                $type_add_nilai = 5;
+                                                                                $nilai = 'nilai_capex_add_V';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_5';
+                                                                            } else if ($value['no_adendum'] == 6) {
+                                                                                $type_add_nilai = 6;
+                                                                                $nilai = 'nilai_capex_add_VI';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_6';
+                                                                            } else if ($value['no_adendum'] == 7) {
+                                                                                $type_add_nilai = 7;
+                                                                                $nilai = 'nilai_capex_add_VII';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_7';
+                                                                            } else if ($value['no_adendum'] == 8) {
+                                                                                $type_add_nilai = 8;
+                                                                                $nilai = 'nilai_capex_add_VIII';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_8';
+                                                                            } else if ($value['no_adendum'] == 9) {
+                                                                                $type_add_nilai = 9;
+                                                                                $nilai = 'nilai_capex_add_IX';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_9';
+                                                                            } else if ($value['no_adendum'] == 10) {
+                                                                                $type_add_nilai = 10;
+                                                                                $nilai = 'nilai_capex_add_X';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_10';
+                                                                            } else if ($value['no_adendum'] == 11) {
+                                                                                $type_add_nilai = 11;
+                                                                                $nilai = 'nilai_capex_add_XI';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_11';
+                                                                            } else if ($value['no_adendum'] == 12) {
+                                                                                $type_add_nilai = 12;
+                                                                                $nilai = 'nilai_capex_add_XII';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_12';
+                                                                            } else if ($value['no_adendum'] == 13) {
+                                                                                $type_add_nilai = 13;
+                                                                                $nilai = 'nilai_capex_add_XIII';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_13';
+                                                                            } else if ($value['no_adendum'] == 14) {
+                                                                                $type_add_nilai = 14;
+                                                                                $nilai = 'nilai_capex_add_XIV';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_14';
+                                                                            } else if ($value['no_adendum'] == 15) {
+                                                                                $type_add_nilai = 15;
+                                                                                $nilai = 'nilai_capex_add_XV';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_15';
+                                                                            } else if ($value['no_adendum'] == 16) {
+                                                                                $type_add_nilai = 16;
+                                                                                $nilai = 'nilai_capex_add_XVI';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_16';
+                                                                            } else if ($value['no_adendum'] == 17) {
+                                                                                $type_add_nilai = 17;
+                                                                                $nilai = 'nilai_capex_add_XVII';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_17';
+                                                                            } else if ($value['no_adendum'] == 18) {
+                                                                                $type_add_nilai = 18;
+                                                                                $nilai = 'nilai_capex_add_XVIII';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_18';
+                                                                            } else if ($value['no_adendum'] == 19) {
+                                                                                $type_add_nilai = 19;
+                                                                                $nilai = 'nilai_capex_add_XIX';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_19';
+                                                                            } else if ($value['no_adendum'] == 20) {
+                                                                                $type_add_nilai = 20;
+                                                                                $nilai = 'nilai_capex_add_XX';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_20';
+                                                                            } else if ($value['no_adendum'] == 21) {
+                                                                                $type_add_nilai = 21;
+                                                                                $nilai = 'nilai_capex_add_XXI';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_21';
+                                                                            } else if ($value['no_adendum'] == 22) {
+                                                                                $type_add_nilai = 22;
+                                                                                $nilai = 'nilai_capex_add_XXII';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_22';
+                                                                            } else if ($value['no_adendum'] == 23) {
+                                                                                $type_add_nilai = 23;
+                                                                                $nilai = 'nilai_capex_add_XXIII';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_23';
+                                                                            } else if ($value['no_adendum'] == 24) {
+                                                                                $type_add_nilai = 24;
+                                                                                $nilai = 'nilai_capex_add_XXIV';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_24';
+                                                                            } else if ($value['no_adendum'] == 25) {
+                                                                                $type_add_nilai = 25;
+                                                                                $nilai = 'nilai_capex_add_XXV';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_25';
+                                                                            } else if ($value['no_adendum'] == 26) {
+                                                                                $type_add_nilai = 26;
+                                                                                $nilai = 'nilai_capex_add_XXVI';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_26';
+                                                                            } else if ($value['no_adendum'] == 27) {
+                                                                                $type_add_nilai = 27;
+                                                                                $nilai = 'nilai_capex_add_XXVII';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_27';
+                                                                            } else if ($value['no_adendum'] == 28) {
+                                                                                $type_add_nilai = 28;
+                                                                                $nilai = 'nilai_capex_add_XXVIII';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_28';
+                                                                            } else if ($value['no_adendum'] == 29) {
+                                                                                $type_add_nilai = 29;
+                                                                                $nilai = 'nilai_capex_add_XXIX';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_29';
+                                                                            } else if ($value['no_adendum'] == 30) {
+                                                                                $type_add_nilai = 30;
+                                                                                $nilai = 'nilai_capex_add_XXX';
+                                                                                $update_reusable = 'update_nilai_level_2_capex_add_30';
+                                                                            } else {
+                                                                                $type_add_nilai = null;
+                                                                                $nilai = 'nilai_capex';
+                                                                                $update_reusable = 'update_nilai_level_2_capex';
+                                                                            }
                                                                             ?>
-                                                                            <td class="tg-0lax text-white" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_capex[$nilai], 2, ',', '.') ?>
+                                                                            <td class="tg-0lax text-white" style="font-family: RNSSanz-Bold;font-size:13px;" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_capex[$nilai], 2, ',', '.') ?>
                                                                             </td>
                                                                             <td class="tg-0lax">
-                                                                                <div class="btn-group">
-                                                                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                                                <div class="btn-group" style="padding: -20px !important;">
+                                                                                    <button type="button" style="height: 25px;" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true" style="font-size: 10px;"></i></button>
+                                                                                    <button type="button" style="height: 25px;" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                        <span style="font-size: 10px;" class="sr-only">Toggle Dropdown</span>
                                                                                     </button>
-                                                                                    <div class="dropdown-menu" role="menu">
+                                                                                    <div class="dropdown-menu" style="margin-top: -10px;" role="menu">
                                                                                         <?php if ($value_capex[$nilai] == null || $value_capex[$nilai] == 0) { ?>
                                                                                             <?php if ($kondisi_detail_capex) { ?>
                                                                                                 <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
@@ -236,7 +197,43 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </td>
-                                                                        <?php  }  ?>
+
+                                                                        <?php   } ?>
+                                                                        <?php
+                                                                        $nilai = 'nilai_capex';
+                                                                        $update_reusable = 'update_nilai_level_2_capex';
+                                                                        $type_add_nilai = null;
+                                                                        ?>
+                                                                        <td class="tg-0lax text-white" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_capex[$nilai], 2, ',', '.') ?>
+                                                                        </td>
+                                                                        <td class="tg-0lax">
+                                                                            <div class="btn-group">
+                                                                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                    <span class="sr-only">Toggle Dropdown</span>
+                                                                                </button>
+                                                                                <div class="dropdown-menu" role="menu">
+                                                                                    <?php if ($value_capex[$nilai] == null || $value_capex[$nilai] == 0) { ?>
+                                                                                        <?php if ($kondisi_detail_capex) { ?>
+                                                                                            <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
+                                                                                            <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex_excel',<?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
+                                                                                        <?php    } else { ?>
+                                                                                            <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'<?= $update_reusable ?>')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Masukan Nilai Turunan"><i class="fas fa-dollar-sign"></i></a>
+                                                                                            <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
+                                                                                            <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex_excel',<?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
+                                                                                        <?php   }  ?>
+                                                                                    <?php } else { ?>
+                                                                                        <?php if ($kondisi_detail_capex) { ?>
+                                                                                            <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex',<?= $type_add_nilai ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
+                                                                                            <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex_excel',<?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
+                                                                                        <?php    } else { ?>
+                                                                                            <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'<?= $update_reusable ?>')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Masukan Nilai Turunan"><i class="fas fa-dollar-sign"></i></a>
+                                                                                            <a onclick="modal_level_2_capex(<?= $value_capex['id_capex'] ?>,'tambah_level_2_capex_excel',<?= $type_add_nilai ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Dengan Excel"><i class="fas fa-file"></i></a>
+                                                                                        <?php   }  ?>
+                                                                                    <?php    } ?>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
                                                                         <div class="modal fade" data-backdrop="false" id="form_modal_level_2_capex" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                                                             <div class="modal-dialog" role="document">
                                                                                 <div class="modal-content">
@@ -434,7 +431,7 @@
                                                                                         $update_reusable = 'update_nilai_level_3_capex';
                                                                                     }
                                                                                 ?>
-                                                                                <td class="tg-0lax" style="font-family: RNSSanz-ExtraBold;font-size:15px;"> <?=  number_format($value_detail_capex[$nilai], 2, ',', '.') ?>
+                                                                                <td class="tg-0lax" style="font-family: RNSSanz-ExtraBold;font-size:15px;"> <?= number_format($value_detail_capex[$nilai], 2, ',', '.') ?>
                                                                                 </td>
                                                                                 <td class="tg-0lax">
                                                                                     <div class="btn-group">
@@ -486,7 +483,7 @@
                                                                                 $update_reusable = 'update_nilai_level_3_capex';
                                                                                 $type_add_nilai = null;
                                                                             ?>
-                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex[$nilai], 2, ',', '.') ?>
+                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex[$nilai], 2, ',', '.') ?>
                                                                             </td>
                                                                             <td class="tg-0lax">
                                                                                 <div class="btn-group">
@@ -734,7 +731,7 @@
                                                                                             $update_reusable = 'update_nilai_level_4_capex';
                                                                                         }
                                                                                     ?>
-                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_1[$nilai], 2, ',', '.') ?>
+                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_1[$nilai], 2, ',', '.') ?>
                                                                                     </td>
                                                                                     <td class="tg-0lax">
                                                                                         <div class="btn-group">
@@ -781,7 +778,7 @@
                                                                                     $update_reusable = 'update_nilai_level_4_capex';
                                                                                     $type_add_nilai = null;
                                                                                 ?>
-                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_1[$nilai], 2, ',', '.') ?>
+                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_1[$nilai], 2, ',', '.') ?>
                                                                                 </td>
                                                                                 <td class="tg-0lax">
                                                                                     <div class="btn-group">
@@ -1023,7 +1020,7 @@
                                                                                                 $update_reusable = 'update_nilai_level_5_capex';
                                                                                             }
                                                                                         ?>
-                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_2[$nilai], 2, ',', '.') ?>
+                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_2[$nilai], 2, ',', '.') ?>
                                                                                         </td>
                                                                                         <td class="tg-0lax">
                                                                                             <div class="btn-group">
@@ -1071,7 +1068,7 @@
                                                                                         $update_reusable = 'update_nilai_level_5_capex';
                                                                                         $type_add_nilai = null;
                                                                                     ?>
-                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_2[$nilai], 2, ',', '.') ?>
+                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_2[$nilai], 2, ',', '.') ?>
                                                                                     </td>
                                                                                     <td class="tg-0lax">
                                                                                         <div class="btn-group">
@@ -1314,7 +1311,7 @@
                                                                                                     $update_reusable = 'update_nilai_level_6_capex';
                                                                                                 }
                                                                                             ?>
-                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_3[$nilai], 2, ',', '.') ?>
+                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_3[$nilai], 2, ',', '.') ?>
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <div class="btn-group">
@@ -1364,7 +1361,7 @@
                                                                                             $update_reusable = 'update_nilai_level_6_capex';
                                                                                             $type_add_nilai = null;
                                                                                         ?>
-                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_3[$nilai], 2, ',', '.') ?>
+                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_3[$nilai], 2, ',', '.') ?>
                                                                                         </td>
                                                                                         <td class="tg-0lax">
                                                                                             <div class="btn-group">
@@ -1608,7 +1605,7 @@
                                                                                                         $update_reusable = 'update_nilai_level_7_capex';
                                                                                                     }
                                                                                                 ?>
-                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_4[$nilai], 2, ',', '.') ?>
+                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_4[$nilai], 2, ',', '.') ?>
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
 
@@ -1655,7 +1652,7 @@
                                                                                                 $update_reusable = 'update_nilai_level_7_capex';
                                                                                                 $type_add_nilai = null;
                                                                                             ?>
-                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_4[$nilai], 2, ',', '.') ?>
+                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_4[$nilai], 2, ',', '.') ?>
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <div class="btn-group">
@@ -1898,7 +1895,7 @@
                                                                                                             $update_reusable = 'update_nilai_level_8_capex';
                                                                                                         }
                                                                                                     ?>
-                                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_5[$nilai], 2, ',', '.') ?>
+                                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_5[$nilai], 2, ',', '.') ?>
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <div class="btn-group">
@@ -1947,7 +1944,7 @@
                                                                                                     $update_reusable = 'update_nilai_level_8_capex';
                                                                                                     $type_add_nilai = null;
                                                                                                 ?>
-                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_5[$nilai], 2, ',', '.') ?>
+                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_5[$nilai], 2, ',', '.') ?>
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
                                                                                                     <div class="btn-group">
@@ -2188,7 +2185,7 @@
                                                                                                                 $update_reusable = 'update_nilai_level_9_capex';
                                                                                                             }
                                                                                                         ?>
-                                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_6[$nilai], 2, ',', '.') ?>
+                                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_6[$nilai], 2, ',', '.') ?>
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <div class="btn-group">
@@ -2236,7 +2233,7 @@
                                                                                                         $update_reusable = 'update_nilai_level_9_capex';
                                                                                                         $type_add_nilai = null;
                                                                                                     ?>
-                                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_6[$nilai], 2, ',', '.') ?>
+                                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_6[$nilai], 2, ',', '.') ?>
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <div class="btn-group">
@@ -2480,7 +2477,7 @@
                                                                                                                     $update_reusable = 'update_nilai_level_10_capex';
                                                                                                                 }
                                                                                                             ?>
-                                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_7[$nilai], 2, ',', '.') ?>
+                                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_7[$nilai], 2, ',', '.') ?>
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <div class="btn-group">
@@ -2529,7 +2526,7 @@
                                                                                                             $update_reusable = 'update_nilai_level_10_capex';
                                                                                                             $type_add_nilai = null;
                                                                                                         ?>
-                                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_7[$nilai], 2, ',', '.') ?>
+                                                                                                        <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_7[$nilai], 2, ',', '.') ?>
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <div class="btn-group">
@@ -2770,7 +2767,7 @@
                                                                                                                         $update_reusable = 'update_nilai_level_11_capex';
                                                                                                                     }
                                                                                                                 ?>
-                                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?>
+                                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?>
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
 
@@ -2821,7 +2818,7 @@
                                                                                                                 $update_reusable = 'update_nilai_level_11_capex';
                                                                                                                 $type_add_nilai = null;
                                                                                                             ?>
-                                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?>
+                                                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?>
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <div class="btn-group">
@@ -3065,7 +3062,7 @@
                                                                                                                             $update_reusable = 'update_nilai_level_12_capex';
                                                                                                                         }
                                                                                                                     ?>
-                                                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_9[$nilai], 2, ',', '.') ?>
+                                                                                                                    <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_9[$nilai], 2, ',', '.') ?>
                                                                                                                     </td>
                                                                                                                     <td class="tg-0lax">
 
@@ -3115,7 +3112,7 @@
                                                                                                                     $update_reusable = 'update_nilai_level_12_capex';
                                                                                                                     $type_add_nilai = null;
                                                                                                                 ?>
-                                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?=  number_format($value_detail_capex_9[$nilai], 2, ',', '.') ?>
+                                                                                                                <td class="tg-0lax" style="font-family: RNSSanz-Bold;font-size:13px;"> <?= number_format($value_detail_capex_9[$nilai], 2, ',', '.') ?>
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
                                                                                                                     <div class="btn-group">

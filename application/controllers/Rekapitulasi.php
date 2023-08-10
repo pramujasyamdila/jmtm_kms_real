@@ -13,9 +13,6 @@ class Rekapitulasi extends CI_Controller
         $this->load->model('Admin/Data_kontrak_model');
         $this->load->model('Admin/Data_excelisasi_model');
         $this->load->model('Auth_model');
-        if (!$session) {
-			redirect('auth');
-		}
     }
     public function index()
     {

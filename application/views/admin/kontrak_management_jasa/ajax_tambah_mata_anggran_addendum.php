@@ -221,7 +221,7 @@
 
 
     function modal_level_1(id, type,cek_add) {
-                if (type == 'hapus_list_anggaran') {
+        if (type == 'hapus_list_anggaran') {
          }
 
 
@@ -493,6 +493,9 @@
 
                     $('[name="id_capex"]').val(response['row_capex'].id_capex);
                     $('#title_modal_level_2_capex').text('Tambah Uraian')
+                }
+                if (type == 'hapus_list_anggaran') {
+                    Question_hapus_list_anggaran(response['row_capex'].id_capex, cek_add)
                 }
 
                 // INI UNTUK YANG ADD 1
@@ -8906,14 +8909,16 @@
     });
 </script>
 
-<!-- BATAS OPEX  -->
+
+<!-- BATAS opex  -->
+<!-- opex -->
 <script>
     var form_modal_level_2_opex = $('#form_modal_level_2_opex')
     var form_simpan_level_2_opex = $('#form_simpan_level_2_opex')
 
 
     function modal_level_2_opex(id, type,cek_add) {
-                if (type == 'hapus_list_anggaran') {
+        if (type == 'hapus_list_anggaran') {
          }
 
         if (type == 'update_nilai_level_2_opex') {
@@ -9050,6 +9055,9 @@
 
                     $('[name="id_opex"]').val(response['row_opex'].id_opex);
                     $('#title_modal_level_2_opex').text('Tambah Uraian')
+                }
+                if (type == 'hapus_list_anggaran') {
+                    Question_hapus_list_anggaran(response['row_opex'].id_opex, cek_add)
                 }
 
                 // INI UNTUK YANG ADD 1
@@ -9583,7 +9591,7 @@
 
 
     function modal_level_3_opex(id, type,cek_add) {
-                if (type == 'hapus_list_anggaran') {
+        if (type == 'hapus_list_anggaran') {
          }
 
         if (type == 'update_nilai_level_3_opex') {
@@ -9746,6 +9754,9 @@
                 }
                 if (type == 'urutan_level_3_opex') {
                     Urutan_detail_opex(response['result_opex'], response)
+                }
+                if (type == 'hapus_list_anggaran') {
+                    Question_hapus_list_anggaran(response['row_opex_detail'].id_opex_detail, cek_add)
                 }
 
                 // INI UTK ADDENDUM 1
@@ -17461,15 +17472,15 @@
 </script>
 
 
-
-<!-- BATAS BUA  -->
+<!-- BATAS bua  -->
+<!-- bua -->
 <script>
     var form_modal_level_2_bua = $('#form_modal_level_2_bua')
     var form_simpan_level_2_bua = $('#form_simpan_level_2_bua')
 
 
     function modal_level_2_bua(id, type,cek_add) {
-                if (type == 'hapus_list_anggaran') {
+        if (type == 'hapus_list_anggaran') {
          }
 
         if (type == 'update_nilai_level_2_bua') {
@@ -17606,6 +17617,9 @@
 
                     $('[name="id_bua"]').val(response['row_bua'].id_bua);
                     $('#title_modal_level_2_bua').text('Tambah Uraian')
+                }
+                if (type == 'hapus_list_anggaran') {
+                    Question_hapus_list_anggaran(response['row_bua'].id_bua, cek_add)
                 }
 
                 // INI UNTUK YANG ADD 1
@@ -18139,7 +18153,7 @@
 
 
     function modal_level_3_bua(id, type,cek_add) {
-                if (type == 'hapus_list_anggaran') {
+        if (type == 'hapus_list_anggaran') {
          }
 
         if (type == 'update_nilai_level_3_bua') {
@@ -18302,6 +18316,9 @@
                 }
                 if (type == 'urutan_level_3_bua') {
                     Urutan_detail_bua(response['result_bua'], response)
+                }
+                if (type == 'hapus_list_anggaran') {
+                    Question_hapus_list_anggaran(response['row_bua_detail'].id_bua_detail, cek_add)
                 }
 
                 // INI UTK ADDENDUM 1
@@ -26017,14 +26034,15 @@
 </script>
 
 
-<!-- BATAS SDM  -->
+<!-- BATAS sdm  -->
+<!-- sdm -->
 <script>
     var form_modal_level_2_sdm = $('#form_modal_level_2_sdm')
     var form_simpan_level_2_sdm = $('#form_simpan_level_2_sdm')
 
 
     function modal_level_2_sdm(id, type,cek_add) {
-                if (type == 'hapus_list_anggaran') {
+        if (type == 'hapus_list_anggaran') {
          }
 
         if (type == 'update_nilai_level_2_sdm') {
@@ -26161,6 +26179,9 @@
 
                     $('[name="id_sdm"]').val(response['row_sdm'].id_sdm);
                     $('#title_modal_level_2_sdm').text('Tambah Uraian')
+                }
+                if (type == 'hapus_list_anggaran') {
+                    Question_hapus_list_anggaran(response['row_sdm'].id_sdm, cek_add)
                 }
 
                 // INI UNTUK YANG ADD 1
@@ -26694,7 +26715,7 @@
 
 
     function modal_level_3_sdm(id, type,cek_add) {
-                if (type == 'hapus_list_anggaran') {
+        if (type == 'hapus_list_anggaran') {
          }
 
         if (type == 'update_nilai_level_3_sdm') {
@@ -26857,6 +26878,9 @@
                 }
                 if (type == 'urutan_level_3_sdm') {
                     Urutan_detail_sdm(response['result_sdm'], response)
+                }
+                if (type == 'hapus_list_anggaran') {
+                    Question_hapus_list_anggaran(response['row_sdm_detail'].id_sdm_detail, cek_add)
                 }
 
                 // INI UTK ADDENDUM 1
@@ -34571,9 +34595,6 @@
     });
 </script>
 
-
-
-
 <!-- BUAT ADENDUM -->
 <script>
     var tambah_addendum = $('#tambah_addendum')
@@ -34634,7 +34655,7 @@
 
     }
 
-    var form_nama_pekerjaan = $('#form_nama_pekerjaan')
+var form_nama_pekerjaan = $('#form_nama_pekerjaan')
     function Buat_administrasi_penyedia(id_kontrak) {
         var id_detail_program_penyedia_jasa =  $('[name="id_detail_program_penyedia_jasa"]').val();
         $.ajax({

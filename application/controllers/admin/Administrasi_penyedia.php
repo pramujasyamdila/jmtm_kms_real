@@ -3204,13 +3204,18 @@ class Administrasi_penyedia extends CI_Controller
         $keyword = $this->input->post('keyword');
         $data['active_kontrak'] = 'active';
         $data['menu_open_kontrak'] = 'menu-open';
-        $get_pegawai = $this->Auth_model->get_pegawai();
-        $id_departemen = $get_pegawai['id_departemen'];
-        $id_area = $get_pegawai['id_area'];
-        $id_sub_area = $get_pegawai['id_sub_area'];
-        $data['row_program']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
+        // $get_pegawai = $this->Auth_model->get_pegawai();
+        // $id_departemen = $get_pegawai['id_departemen'];
+        // $id_area = $get_pegawai['id_area'];
+        // $id_sub_area = $get_pegawai['id_sub_area'];
+        // $data['row_program']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
         $data['result_sub_program']  = $this->Data_kontrak_model->get_sub_program_by_id_detail_program($id_detail_program_penyedia_jasa);
-        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $data['row_program']['id_kontrak']);
+        $data['row_program']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
+        $id_departemen =  $data['row_program']['id_departemen'];
+        $id_area =  $data['row_program']['id_area'];
+        $id_sub_area =  $data['row_program']['id_sub_area'];
+        $id_kontrak =  $data['row_program']['id_kontrak'];
+        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
 
         $get_flow = $this->db->query("SELECT flow_pra_dokumen_kontrak FROM tbl_detail_program_penyedia_jasa WHERE id_detail_program_penyedia_jasa = $id_detail_program_penyedia_jasa")->row();
@@ -3233,12 +3238,19 @@ class Administrasi_penyedia extends CI_Controller
         $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
         $flow_1_ip = $this->input->post('flow_1_ip');
         $flow_2_ip = $this->input->post('flow_2_ip');
-        $get_pegawai = $this->Auth_model->get_pegawai();
-        $id_departemen = $get_pegawai['id_departemen'];
-        $id_area = $get_pegawai['id_area'];
+        // $get_pegawai = $this->Auth_model->get_pegawai();
+        // $id_departemen = $get_pegawai['id_departemen'];
+        // $id_area = $get_pegawai['id_area'];
         $data['row_program']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
+        $id_departemen =  $data['row_program']['id_departemen'];
+        $id_area =  $data['row_program']['id_area'];
+        $id_sub_area =  $data['row_program']['id_sub_area'];
+        $id_kontrak =  $data['row_program']['id_kontrak'];
+        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
+        
+        // $data['row_program']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
         $data['result_sub_program']  = $this->Data_kontrak_model->get_sub_program_by_id_detail_program($id_detail_program_penyedia_jasa);
-        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $data['row_program']['id_kontrak']);
+        // $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $data['row_program']['id_kontrak']);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
 
         if ($flow_1_ip) {
@@ -3279,12 +3291,15 @@ class Administrasi_penyedia extends CI_Controller
         $get_pegawai = $this->Auth_model->get_pegawai();
         $id_departemen = $get_pegawai['id_departemen'];
         $id_area = $get_pegawai['id_area'];
-        $data['row_program']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
         $data['result_sub_program']  = $this->Data_kontrak_model->get_sub_program_by_id_detail_program($id_detail_program_penyedia_jasa);
-        $id_kontrak =  $data['row_program']['id_kontrak'];
-        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $id_kontrak);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
-
+        $data['row_program']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
+        $id_departemen =  $data['row_program']['id_departemen'];
+        $id_area =  $data['row_program']['id_area'];
+        $id_sub_area =  $data['row_program']['id_sub_area'];
+        $id_kontrak =  $data['row_program']['id_kontrak'];
+        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
+        
         if ($flow_1_hps) {
             if ($flow_1_hps == 1) {
                 $this->load->view('admin/kontrak_management_administrasi_penyedia/flow_1_hps1', $data);

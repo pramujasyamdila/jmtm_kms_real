@@ -404,7 +404,7 @@ div.dt-filter-spacer {
                                                                                           <td class="tg-c3ow">
                                                                                             <a href="javascript:;" onclick="ProgresFisik(<?= $value_program_1['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
                                                                                             <a href="javascript:;" onclick="Keterangan(<?= $value_program_1['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
-                                                                                            <a href="javascript:;" onclick="PilihFormula(<?= $value_program_1['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                                                                            <a href="javascript:;" onclick="PilihFormula(<?= $value_program_1['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
 
                                                                                           </td>
                                                                                         </tr>
@@ -552,7 +552,7 @@ div.dt-filter-spacer {
                                                                                             <td class="tg-c3ow">
                                                                                               <a href="javascript:;" onclick="ProgresFisik(<?= $value_program_2['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
                                                                                               <a href="javascript:;" onclick="Keterangan(<?= $value_program_2['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
-                                                                                              <a href="javascript:;" onclick="PilihFormula(<?= $value_program_2['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                                                                              <a href="javascript:;" onclick="PilihFormula(<?= $value_program_2['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
 
                                                                                             </td>
                                                                                           </tr>
@@ -5456,7 +5456,7 @@ div.dt-filter-spacer {
                                                                                           <td class="tg-c3ow">
                                                                                             <a href="javascript:;" onclick="ProgresFisik(<?= $value_program_1['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
                                                                                             <a href="javascript:;" onclick="Keterangan(<?= $value_program_1['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
-                                                                                            <a href="javascript:;" onclick="PilihFormula(<?= $value_program_1['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                                                                            <a href="javascript:;" onclick="PilihFormula(<?= $value_program_1['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
 
                                                                                           </td>
                                                                                         </tr>
@@ -5604,7 +5604,7 @@ div.dt-filter-spacer {
                                                                                             <td class="tg-c3ow">
                                                                                               <a href="javascript:;" onclick="ProgresFisik(<?= $value_program_2['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
                                                                                               <a href="javascript:;" onclick="Keterangan(<?= $value_program_2['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
-                                                                                              <a href="javascript:;" onclick="PilihFormula(<?= $value_program_2['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                                                                              <a href="javascript:;" onclick="PilihFormula(<?= $value_program_2['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;"class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
 
                                                                                             </td>
                                                                                           </tr>
