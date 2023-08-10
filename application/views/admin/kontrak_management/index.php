@@ -8,9 +8,9 @@
             </div>
         </div> -->
 
-        <nav class="navbar navbar-expand-lg main-navbar" style="background-color: white;height:50px;
-  position: fixed; top:50px">
-            <h6 style="margin-left: auto;">Data Kontrak</h6>
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
+  position: fixed; top:50px;  padding-bottom: -10px;">
+            <b style="margin-left: auto; font-weight:900" class="text-black">Data Kontrak</b>
         </nav>
         <div class="content-wrapper" style="background-color:white">
             <!-- Content Header (Page header) -->
@@ -21,7 +21,7 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 mt-2">
                             <div class="row">
                                 <div class="col-md-1">
 
@@ -160,13 +160,13 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-1">
-
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-sm btn-outline-primary btn-block mt-1 mb-1" data-toggle="modal" data-target="#tambah_program" style="margin-left: -13px">
+                                    <i class="fas fa-plus"></i>
+                                    Tambah Kontrak
+                                </button>
                             </div>
-                            <button type="button" class="btn btn-sm btn-outline-primary btn-block" data-toggle="modal" data-target="#tambah_program">
-                                <i class="fas fa-plus"></i>
-                                Tambah Kontrak
-                            </button>
+
                             <!-- /.card-header -->
                             <div class="row">
 

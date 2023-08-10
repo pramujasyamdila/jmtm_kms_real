@@ -7,9 +7,9 @@
                 <div class="breadcrumb-item active"><a href="#">MANAGEMENT MATA ANGGARAN</a></div>
             </div>
         </div> -->
-        <nav class="navbar navbar-expand-lg main-navbar" style="background-color: white;height:50px;
-  position: fixed; top:50px">
-            <h6 style="margin-left: auto;">Mata Anggaran</h6>
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
+  position: fixed; top:50px;">
+            <b style="margin-left: auto; font-weight:900">Mata Anggaran</b>
         </nav>
         <div class="content-wrapper" style="background-color:white">
             <!-- Content Header (Page header) -->
@@ -23,125 +23,26 @@
                         <div class="card card-outline card-warning">
 
                             <div class="row mt-3">
-
-                                <?php if ($id_departemen == 4) { ?>
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <select name="id_departemen" onchange="get_area()" class="form-control id_departemen">
-                                                    <option value="">--Pilih Operasi--</option>
-                                                    <?php foreach ($get_departemen_all as $key => $value) { ?>
-                                                        <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
-                                                    <?php  } ?>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <select name="id_area" id="get_area" onchange="get_sub_area()" class="form-control id_area">
-                                                    <option value="">--Pilih Area--</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <select name="id_sub_area" id="get_sub_area" class="form-control id_sub_area">
-                                                    <option value="">--Pilih Sub Area--</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div style="overflow-x: auto;">
-
-                                            <!-- <div class="table" id="insert-lokasi"></div> -->
-                                        </div>
-                                    </div>
-                                <?php } else { ?>
-                                    <?php if ($id_departemen && $id_area == 0 && $id_sub_area == 0) { ?>
+                                <div class="col-md-12">
+                                    <?php if ($id_departemen == 4) { ?>
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <select name="id_departemen" onchange="get_area()" class="form-control">
+                                                    <select name="id_departemen" onchange="get_area()" class="form-control id_departemen">
                                                         <option value="">--Pilih Operasi--</option>
-                                                        <?php foreach ($get_departemen as $key => $value) { ?>
+                                                        <?php foreach ($get_departemen_all as $key => $value) { ?>
                                                             <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
                                                         <?php  } ?>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select name="id_area" id="get_area" onchange="get_sub_area()" class="form-control">
+                                                    <select name="id_area" id="get_area" onchange="get_sub_area()" class="form-control id_area">
                                                         <option value="">--Pilih Area--</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select name="id_sub_area" id="get_sub_area" class="form-control">
+                                                    <select name="id_sub_area" id="get_sub_area" class="form-control id_sub_area">
                                                         <option value="">--Pilih Sub Area--</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div style="overflow-x: auto;">
-
-                                                <!-- <div class="table" id="insert-lokasi"></div> -->
-                                            </div>
-                                        </div>
-
-                                    <?php  } else if ($id_departemen && $id_area && $id_sub_area == 0) { ?>
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <select name="id_departemen" class="form-control">
-                                                        <option value="">--Pilih Operasi--</option>
-                                                        <?php foreach ($get_departemen as $key => $value) { ?>
-                                                            <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
-                                                        <?php  } ?>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select name="id_area" class="form-control">
-                                                        <option value="">--Pilih Area--</option>
-                                                        <?php foreach ($get_area as $key => $value) { ?>
-                                                            <option value="<?= $value['id_area'] ?>"><?= $value['nama_area'] ?></option>
-                                                        <?php  } ?>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select name="id_sub_area" id="get_sub_area" class="form-control">
-                                                        <option value="">--Pilih Sub Area--</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div style="overflow-x: auto;">
-
-                                                <!-- <div class="table" id="insert-lokasi"></div> -->
-                                            </div>
-                                        </div>
-
-                                    <?php  } else if ($id_departemen && $id_area && $id_sub_area) { ?>
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <select name="id_departemen" class="form-control">
-                                                        <option value="">--Pilih Operasi--</option>
-                                                        <?php foreach ($get_departemen as $key => $value) { ?>
-                                                            <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
-                                                        <?php  } ?>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select name="id_area" class="form-control">
-                                                        <option value="">--Pilih Area--</option>
-                                                        <?php foreach ($get_area as $key => $value) { ?>
-                                                            <option value="<?= $value['id_area'] ?>"><?= $value['nama_area'] ?></option>
-                                                        <?php  } ?>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select name="id_sub_area" id="get_sub_area" class="form-control">
-                                                        <option value="">--Pilih Sub Area--</option>
-                                                        <?php foreach ($get_sub_area as $key => $value) { ?>
-                                                            <option value="<?= $value['id_sub_area'] ?>"><?= $value['nama_sub_area'] ?></option>
-                                                        <?php  } ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -153,10 +54,115 @@
                                             </div>
                                         </div>
                                     <?php } else { ?>
+                                        <?php if ($id_departemen && $id_area == 0 && $id_sub_area == 0) { ?>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <select name="id_departemen" onchange="get_area()" class="form-control">
+                                                            <option value="">--Pilih Operasi--</option>
+                                                            <?php foreach ($get_departemen as $key => $value) { ?>
+                                                                <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
+                                                            <?php  } ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <select name="id_area" id="get_area" onchange="get_sub_area()" class="form-control">
+                                                            <option value="">--Pilih Area--</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <select name="id_sub_area" id="get_sub_area" class="form-control">
+                                                            <option value="">--Pilih Sub Area--</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div style="overflow-x: auto;">
+
+                                                    <!-- <div class="table" id="insert-lokasi"></div> -->
+                                                </div>
+                                            </div>
+
+                                        <?php  } else if ($id_departemen && $id_area && $id_sub_area == 0) { ?>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <select name="id_departemen" class="form-control">
+                                                            <option value="">--Pilih Operasi--</option>
+                                                            <?php foreach ($get_departemen as $key => $value) { ?>
+                                                                <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
+                                                            <?php  } ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <select name="id_area" class="form-control">
+                                                            <option value="">--Pilih Area--</option>
+                                                            <?php foreach ($get_area as $key => $value) { ?>
+                                                                <option value="<?= $value['id_area'] ?>"><?= $value['nama_area'] ?></option>
+                                                            <?php  } ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <select name="id_sub_area" id="get_sub_area" class="form-control">
+                                                            <option value="">--Pilih Sub Area--</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div style="overflow-x: auto;">
+
+                                                    <!-- <div class="table" id="insert-lokasi"></div> -->
+                                                </div>
+                                            </div>
+
+                                        <?php  } else if ($id_departemen && $id_area && $id_sub_area) { ?>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <select name="id_departemen" class="form-control">
+                                                            <option value="">--Pilih Operasi--</option>
+                                                            <?php foreach ($get_departemen as $key => $value) { ?>
+                                                                <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
+                                                            <?php  } ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <select name="id_area" class="form-control">
+                                                            <option value="">--Pilih Area--</option>
+                                                            <?php foreach ($get_area as $key => $value) { ?>
+                                                                <option value="<?= $value['id_area'] ?>"><?= $value['nama_area'] ?></option>
+                                                            <?php  } ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <select name="id_sub_area" id="get_sub_area" class="form-control">
+                                                            <option value="">--Pilih Sub Area--</option>
+                                                            <?php foreach ($get_sub_area as $key => $value) { ?>
+                                                                <option value="<?= $value['id_sub_area'] ?>"><?= $value['nama_sub_area'] ?></option>
+                                                            <?php  } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div style="overflow-x: auto;">
+
+                                                    <!-- <div class="table" id="insert-lokasi"></div> -->
+                                                </div>
+                                            </div>
+                                        <?php } else { ?>
+                                        <?php } ?>
                                     <?php } ?>
-                                <?php } ?>
+                                    <div class="col-md-2 mt-2">
+                                        <a href="javascript:;" onclick="Filter()" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</a>
+                                    </div>
+                                </div>
+
+
                             </div>
-                            <a href="javascript:;" onclick="Filter()" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</a>
+
                             <!-- /.card-header -->
                             <div class="row">
                                 <div class="col-md-12">

@@ -1,29 +1,23 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="main-content">
     <section class="section">
-        <div class="section-header">
-            <h1><i class="fa fa-book"></i> ADMINISTRASI TAGGIHAN PENYEDIA</h1>
-            <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/buat_tagihan/') . $row_kontrak['id_kontrak'] ?>">ADMINISTRASI TAGGIHAN PENYEDIA</a></div>
-            </div>
-        </div>
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
+  position: fixed; top:50px">
+            <b>
+                <?= $row_kontrak['nama_pekerjaan_program_mata_anggaran'] ?>
+            </b>
+            <b style="margin-left: auto;"> Administrasi Tagihan</b>
+        </nav>
         <div class="content-wrapper">
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="card card-outline card-warning">
-                            <div class="card-header">
-                                <center>
-                                    <h5>
-                                        <?= $row_kontrak['nama_pekerjaan_program_mata_anggaran'] ?>
-                                    </h5>
-                                </center>
-                            </div>
                             <div class="card-body">
                                 <div class="col-md-12">
                                     <div class="card">
-                                        <div class="card-header bg-primary text-white">
+                                        <div class="card-header text-white" style="background-color:#193B53;">
                                             <h5 class="card-title">
                                                 <i class="nav-icon far fa-file-alt"></i>
                                                 Detail Kontrak
@@ -110,7 +104,7 @@
                                                                 }
                                                             </style>
                                                             <table class="tg table bg-primary">
-                                                                <thead>
+                                                                <thead style="background-color:#193B53;font-family: RNSSanz-Black;text-transform: uppercase;">
                                                                     <tr>
                                                                         <th class="tg-c3ow text-white">No Kontrak</th>
                                                                         <th class="tg-c3ow text-white">Kontrak Awal</th>
@@ -224,9 +218,9 @@
                                                                         background-color: #F0F8FF;
                                                                     }
                                                                 </style>
-                                                                <table id="tabledetail" class="table div1">
+                                                                <table id="tabledetail" class="table div1" style="font-family: RNSSanz-Black;text-transform: uppercase;">
                                                                     <thead class="text-center">
-                                                                        <tr class="bg-primary">
+                                                                        <tr style="background-color:#193B53;">
                                                                             <th style="font-size: 13px;color:white;width:250px" rowspan="2">Pekerjaan</th>
                                                                             <th style="font-size: 13px;color:white; width:250px" rowspan="2">Penyedia</th>
                                                                             <th style="font-size: 13px;color:white; width:100px" rowspan="2">MC Ke</th>

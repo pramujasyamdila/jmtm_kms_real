@@ -16,9 +16,9 @@
 </style>
 <div class="main-content" style="font-family: 'RNSSanz-Light'">
     <section class="section">
-        <nav class="navbar navbar-expand-lg main-navbar" style="background-color: white;height:50px;
-  position: fixed; top:50px">
-            <span> <?= $row_kontrak['nama_kontrak'] ?></span>
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
+  position: fixed; top:50px;  padding-bottom: -10px;">
+            <b> <?= $row_kontrak['nama_kontrak'] ?></b>
             <span style="margin-left: auto; font-weight:bold;""><a href=" <?= base_url('admin/data_kontrak') ?>">Data Kontrak</a> / <span><b>Kelola Level</b></span> </span>
         </nav>
         <div class="content-wrapper">

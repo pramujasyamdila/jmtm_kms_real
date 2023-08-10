@@ -16,15 +16,23 @@
                     <a href="<?= base_url('admin/dashboard') ?>"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                 </li>
                 <li class="menu-header">Lembar Kerja</li>
+<<<<<<< HEAD
                 <li class="menu-header" style="font-size: 16px;">MODUL 1 <br> <label for="" style="font-size: 14x;">KONTRAK MANAJEMEN</label> </li>
                 <li><a class="nav-link" href="<?= base_url('admin/data_kontrak_penyedia_jasa/kelola_level/' . $session) ?>"><i class="fa fa-tags" aria-hidden="true"></i><span>Mata Anggaran</span></a></li>
+=======
+                <!-- <li><a class="nav-link" href="<?= base_url('admin/lembar_kerja') ?>"><i class="fa fa-tasks" aria-hidden="true"></i><span>Lembar Kerja</span></a></li> -->
+>>>>>>> efddd73f7206b43334e476f38620607a1ac2b90d
                 <li class="menu-header" style="font-size: 16px;">MODUL 2 <br> <label for="" style="font-size: 14x;">ADMINISTRASI KONTRAK</label> </li>
                 <li><a class="nav-link" href="<?= base_url('admin/administrasi_penyedia/list_program/') . $session ?>"><i class="fa fa-indent" aria-hidden="true"></i><span>Pra Pengadaan</span></a></li>
                 <li><a class="nav-link" href="<?= base_url('administrasi_kontrak/administrasi_kontrak/list_program/') . $session ?>"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Pasca Pengadaan</span></a></li>
                 <li class="menu-header" style="font-size: 16px;">MODUL 3 <br> <label for="" style="font-size: 14x;">ADMINISTRASI TAGIHAN</label> </li>
                 <li><a class="nav-link" href="<?= base_url('administrasi_kontrak/administrasi_kontrak/list_program_taggihan/') . $session ?>"><i class="fa fa-credit-card" aria-hidden="true"></i><span>Administrasi Tagihan</span></a></li>
                 <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+<<<<<<< HEAD
                     <a href="<?= base_url('admin/lembar_kerja/hapus_session_lembar_kerja') ?>" class="btn btn-primary btn-lg btn-block btn-icon-split" style="background-color: #302B63;">
+=======
+                    <a href="<?= base_url('admin/lembar_kerja/hapus_session_lembar_kerja') ?>" class="btn btn-primary btn-lg btn-block btn-icon-split">
+>>>>>>> efddd73f7206b43334e476f38620607a1ac2b90d
                         <i class="fas fa-sign-out"></i> Pilih Lembar Kerja Baru
                     </a>
                 </div>
@@ -47,17 +55,17 @@
 
                 <?php   }
                 ?>
-                <li class="menu-header" style="font-size: 16px;">MODUL 1 <br> <label for="" style="font-size: 14x;">KONTRAK MANAJEMEN</label> </li>
+                <li class="menu-header text-modul" style="font-size: 16px;">MODUL 1 <br> <label for="" style="font-size: 14x;">KONTRAK MANAJEMEN</label> </li>
                 <li><a class="nav-link" href="<?= base_url('admin/data_kontrak') ?>"><i class="fa fa-tasks" aria-hidden="true"></i><span>Management Kontrak</span></a></li>
-                <!-- <li><a class="nav-link" href="<?= base_url('admin/data_kontrak_penyedia_jasa') ?>"><i class="fa fa-tags" aria-hidden="true"></i><span>Mata Anggaran</span></a></li> -->
-                <li class="menu-header" style="font-size: 16px;">MODUL Lembar Kerja</li>
+                <li><a class="nav-link" href="<?= base_url('admin/data_kontrak_penyedia_jasa') ?>"><i class="fa fa-tags" aria-hidden="true"></i><span>Mata Anggaran</span></a></li>
+                <li class="menu-header text-modul" style="font-size: 16px;">MODUL Lembar Kerja</li>
                 <li><a class="nav-link" href="<?= base_url('admin/lembar_kerja') ?>"><i class="fa fa-tasks" aria-hidden="true"></i><span>Lembar Kerja</span></a></li>
                 <!-- <li class="menu-header">Administrasi Penyedia</li>
             <li><a class="nav-link" href="<?= base_url('admin/administrasi_penyedia') ?>"><i class="fa fa-indent" aria-hidden="true"></i><span>Pra Pengadaan</span></a></li>
             <li><a class="nav-link" href="<?= base_url('administrasi_kontrak/administrasi_kontrak/pasca_pengadaan') ?>"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Pasca Pengadaan</span></a></li>
             <li class="menu-header">Administrasi Taggihan</li> -->
                 <!-- <li><a class="nav-link" href="<?= base_url('administrasi_kontrak/administrasi_kontrak') ?>"><i class="fa fa-credit-card" aria-hidden="true"></i><span>Administrasi Tagihan</span></a></li> -->
-                <li class="menu-header" style="font-size: 16px;">MODUL 4 <br> <label for="" style="font-size: 14x;">ANALISIS DATA</label> </li>
+                <li class="menu-header text-modul" style="font-size: 16px;">MODUL 4 <br> <label for="" style="font-size: 14x;">ANALISIS DATA</label> </li>
                 <li><a class="nav-link" href="<?= base_url('traking_hps/traking_hps') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Tracking Harga Satuan</span></a></li>
                 <li><a class="nav-link" href="<?= base_url('laporan_kinerja') ?>"><i class="fa fa-file" aria-hidden="true"></i><span>Laporan Kinerja</span></a></li>
                 <li><a class="nav-link" href="<?= base_url('rekapitulasi') ?>"><i class="fa fa-file" aria-hidden="true"></i><span>Rekapitulasi Berkas </span></a></li>
