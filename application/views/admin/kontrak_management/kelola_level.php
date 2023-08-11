@@ -16,11 +16,21 @@
 </style>
 <div class="main-content" style="font-family: 'RNSSanz-Light'">
     <section class="section">
-        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
-  position: fixed; top:50px;  padding-bottom: -10px;">
-            <b> <?= $row_kontrak['nama_kontrak'] ?></b>
-            <span style="margin-left: auto; font-weight:bold;""><a href=" <?= base_url('admin/data_kontrak') ?>">Data Kontrak</a> / <span><b>Kelola Level</b></span> </span>
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-image: url(<?= base_url('assets/image/jmtmaja.png') ?>); 
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: fixed; top:0; height:200px; width:100%;">
+            <b class="text-white" style="margin-top: -35px;margin-left:200px;font-family: RNSSanz-Black;text-transform: uppercase;"> Selamat Datang Di
+                <br>
+                Kontrak Mangement Sistem
+            </b>
         </nav>
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
+  position: fixed; top:100px;  padding-bottom: -10px;">
+            <b> <?= $row_kontrak['nama_kontrak'] ?></b>
+            <span style="margin-left: auto; font-weight:bold;"><a href=" <?= base_url('admin/data_kontrak') ?>">Data Kontrak</a> / <span><b>Kelola Level</b></span> </span>
+        </nav>
+        <br><br><br>
         <div class="content-wrapper">
             <!-- Button trigger modal -->
             <!-- Modal -->
@@ -102,22 +112,22 @@
                                     $romawi_add = 'Kontrak Awal';
                                 }
                                 ?>
+                                <th class="table-warning text-center text-white" style="width: 150px;background-color: #193B53"><i class="fa fa-list" aria-hidden="true"></i> Kontrak Awal
+                                    <hr>
+                                    <?= $row_kontrak['tahun_kontrak'] ?>
+                                </th>
+                                <th class="table-secondary text-center text-white" style="width: 130px;background-color: #193B53;"> <a href="javascript:;" style="font-size:11px;margin-top:-20px;" class="btn btn-sm btn-danger btn-lg" onclick="ModalPenunjang('Kontrak Awal')"><i class="fa fa-file-pdf" aria-hidden="true" title="Dok. Penunjang / Kontrak"></i> </a><br><i title="Aksi" class="fa fa-key" aria-hidden="true"></i></th>
                                 <th class="table-warning text-center text-white" style="width: 200px;background-color: #193B53;"><i class="fa fa-list" aria-hidden="true"></i> <?= $romawi_add ?>
                                     <hr>
                                     <?= $value['tanggal'] ?>
                                 </th>
                                 <th class="table-secondary text-center text-white" style="background-color: #193B53">
-                                    <a href="javascript:;" style="font-size:11px;" class="btn btn-sm btn-success btn-sm" onclick="ModalPenunjang('<?= $romawi_add ?>')"><i class="fas fa fa-file" title="Dokumen Penunjang / Kontrak"></i> </a>
-                                    <a href="javascript:;" style="font-size:11px;" class="btn btn-sm btn-danger btn-sm" onclick="Hapus_addendum('<?= $romawi_add ?>')"><i class="fas fa fa-trash" title="Hapus Addendum"></i> </a>
-                                    <hr>
+                                    <a href="javascript:;" style="font-size:11px;" class="btn btn-sm btn-danger btn-sm" onclick="ModalPenunjang('<?= $romawi_add ?>')"><i class="fa fa-file-pdf" title="Dokumen Penunjang / Kontrak"></i> </a>
+                                    <!-- <a href="javascript:;" style="font-size:11px;" class="btn btn-sm btn-danger btn-sm" onclick="Hapus_addendum('<?= $romawi_add ?>')"><i class="fas fa fa-trash" title="Hapus Addendum"></i> </a> -->
+                                    <br>
                                     <i class="fa fa-key" title="Aksi <?= $romawi_add ?>" aria-hidden="true"></i>
                                 </th>
                             <?php   } ?>
-                            <th class="table-warning text-center text-white" style="width: 150px;background-color: #193B53"><i class="fa fa-list" aria-hidden="true"></i> Kontrak Awal
-                                <hr>
-                                <?= $row_kontrak['tahun_kontrak'] ?>
-                            </th>
-                            <th class="table-secondary text-center text-white" style="width: 130px;background-color: #193B53;"> <a href="javascript:;" style="font-size:11px;margin-top:-20px;" class="btn btn-sm btn-danger btn-lg" onclick="ModalPenunjang('Kontrak Awal')"><i class="fa fa-file-pdf" aria-hidden="true" title="Dok. Penunjang / Kontrak"></i> </a><br><i class="fa fa-key" aria-hidden="true"></i> Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -126,7 +136,37 @@
                                 1
                             </td>
                             <td> <label for="" style="white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;" title="<?= $row_kontrak['nama_kontrak'] ?>"><?= $row_kontrak['nama_kontrak'] ?></label></td>
+                            <?php
+                            $nilai = 'nilai_kontrak_awal';
+                            ?>
+                            <td style="width: 300px;" class="tg-0lax"> <?= number_format($row_kontrak[$nilai], 2, ',', '.') ?>
+                            </td>
+                            <td class="tg-0lax">
+                                <?php if ($row_kontrak[$nilai] == null || $row_kontrak[$nilai] == 0) { ?>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <div class="dropdown-menu" role="menu">
+                                            <a data-toggle="tooltip" data-placement="top" title="Edit Nama Kontrak" onclick="modal_level_1(<?= $row_kontrak['id_kontrak'] ?>,'edit_level_1')" class="btn btn-sm btn-info dropdown-item" href="javascript:;"><i class="fas fa fa-edit"></i></a>
 
+                                        </div>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <div class="dropdown-menu" role="menu">
+                                            <a data-toggle="tooltip" data-placement="top" title="Edit Nama Kontrak" onclick="modal_level_1(<?= $row_kontrak['id_kontrak'] ?>,'edit_level_1')" class="btn btn-sm btn-info dropdown-item" href="javascript:;"><i class="fas fa fa-edit"></i></a>
+
+                                        </div>
+                                    </div>
+
+                                <?php    } ?>
+                            </td>
                             <?php foreach ($adendum_result as $key => $value) { ?>
                                 <?php
                                 if ($value['no_adendum'] == 1) {
@@ -226,37 +266,6 @@
                                     <?php    } ?>
                                 </td>
                             <?php   } ?>
-                            <?php
-                            $nilai = 'nilai_kontrak_awal';
-                            ?>
-                            <td style="width: 300px;" class="tg-0lax"> <?= number_format($row_kontrak[$nilai], 2, ',', '.') ?>
-                            </td>
-                            <td class="tg-0lax">
-                                <?php if ($row_kontrak[$nilai] == null || $row_kontrak[$nilai] == 0) { ?>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <div class="dropdown-menu" role="menu">
-                                            <a data-toggle="tooltip" data-placement="top" title="Edit Nama Kontrak" onclick="modal_level_1(<?= $row_kontrak['id_kontrak'] ?>,'edit_level_1')" class="btn btn-sm btn-info dropdown-item" href="javascript:;"><i class="fas fa fa-edit"></i></a>
-
-                                        </div>
-                                    </div>
-                                <?php } else { ?>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <div class="dropdown-menu" role="menu">
-                                            <a data-toggle="tooltip" data-placement="top" title="Edit Nama Kontrak" onclick="modal_level_1(<?= $row_kontrak['id_kontrak'] ?>,'edit_level_1')" class="btn btn-sm btn-info dropdown-item" href="javascript:;"><i class="fas fa fa-edit"></i></a>
-
-                                        </div>
-                                    </div>
-
-                                <?php    } ?>
-                            </td>
                         </tr>
                         <!-- BATAS CAPEX -->
                         <?php $this->load->view('management_kontrak_batas/batas_capex'); ?>
@@ -2098,8 +2107,8 @@
                                 } else {
                                     $romawi_add = 'Kontrak Awal';
                                 }
-
                                 ?>
+                                 <option value="">Kontrak Awal</option>
                                 <option value="<?= $value['no_adendum'] ?>"><?= $romawi_add ?></option>
                             <?php   } ?>
                         </select>

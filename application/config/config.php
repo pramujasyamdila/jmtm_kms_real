@@ -24,8 +24,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://localhost/jmtm_kms_real/';
-$config['base_url'] = 'http://localhost/jmtm_kms/';
-// $config['base_url'] = 'https://jmtm-kms-real.kintekindo.net/';
+// $config['base_url'] = 'http://localhost/jmtm_kms/';
+$config['base_url'] = 'https://jmtm-kms.kintekindo.net/';
 
 /*
 |--------------------------------------------------------------------------
