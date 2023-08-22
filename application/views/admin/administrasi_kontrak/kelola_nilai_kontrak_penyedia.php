@@ -1085,17 +1085,10 @@
                                                                                                         $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_refrence_hps_hps_penyedia_kontrak_1);
                                                                                                         $this->db->where('tbl_hps_penyedia_kontrak_2.uraian_hps' . $field_addendum . '!=', NULL);
                                                                                                         $this->db->order_by('no_urut', 'ASC');
-<<<<<<< HEAD
-                                                                                                        $query_tbl_hps_penyedia_kontrak_1 = $this->db->get() ?>
-                                                                                                        
-                                                                                                        <?php
-                                                                                                        foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) { ?>
-=======
                                                                                                         $query_tbl_hps_penyedia_kontrak_2 = $this->db->get() ?>
 
                                                                                                         <?php
                                                                                                         foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) { ?>
->>>>>>> efddd73f7206b43334e476f38620607a1ac2b90d
                                                                                                             <?php
                                                                                                             $id_refrence_hps_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
                                                                                                             if ($value_hps_penyedia_kontrak_2['total_harga' . $field_addendum]) {

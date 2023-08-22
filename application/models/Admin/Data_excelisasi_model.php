@@ -23,7 +23,7 @@ class Data_excelisasi_model extends CI_Model
         $jumlah = count($data);
         if ($jumlah > 0) {
             // $this->db->replace('tbl_sbu', $data);
-            $this->db->replace('tbl_kbli', $data);
+            $this->db->replace('tbl_sbu', $data);
         }
     }
 
