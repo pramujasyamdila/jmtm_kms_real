@@ -129,6 +129,14 @@
             scrollCollapse: true,
             "dom": 'Bfrtip',
             fixedColumns: {
+                left: 1,
+                right: 1
+            },
+            paging: false,
+            scrollCollapse: true,
+            scrollX: true,
+            scrollY: 300,
+            fixedColumns: {
                 left: 2,
             },
             buttons: [{

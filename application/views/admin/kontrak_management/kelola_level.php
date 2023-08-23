@@ -16,15 +16,19 @@
 </style>
 <div class="main-content" style="font-family: 'RNSSanz-Light'">
     <section class="section">
-        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
   position: fixed; top:50px;  padding-bottom: -10px;">
-            <b> <?= $row_kontrak['nama_kontrak'] ?></b>
-            <span style="margin-left: auto; font-weight:bold;""><a href=" <?= base_url('admin/data_kontrak') ?>">Data Kontrak</a> / <span><b>Kelola Level</b></span> </span>
+            <b style="margin-left: auto; font-weight:1000" class="text-black">Modul 1 : Kontrak Manajemen - <?= $row_kontrak['no_kontrak'] ?> - <?= $row_kontrak['tahun_anggaran'] ?> - Kelola Level Kontrak Manajemen</b>
         </nav>
-        <div class="content-wrapper">
-            <!-- Button trigger modal -->
-            <!-- Modal -->
-            <!-- lihat ad -->
+
+        <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
+background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
+            <h6>MODUL 1 - MODUL KELOLA LEVEL KONTRAK MANAJEMEN</h6>
+            <label for="">Modul ini digunakan dalam menyusun Mata Anggaran di dalam Kontrak Manajemen</label>
+
+        </div>
+
+        <div class="card" style="margin-top: -20px; padding-bottom: 30px; padding-top: 2px;padding-left:20px;padding-right:20px">
             <button type="button" class="btn btn-outline-primary btn-sm btn-lg mb-2 mt-4" data-toggle="modal" data-target="#tambah_addendum">
                 <i class="fas fa fa-plus"></i> Tambah Addendum
             </button>
@@ -275,14 +279,35 @@
 
                     </tbody>
                 </table>
+            </div>
+        </div>
 
-                <!-- /.col -->
+        <div class="card" style="margin-top: -18px; padding: 20px">
+            <h6>SUBTOTAL (SEBELUM PPN)</h6>
+            <h6>SUBTOTAL (Dibulatkan) -> Diinput Oleh User</h6>
+            <h6>PPN -> Diinput Oleh User, 10%, 11% -> Agar di Round ;0 (Tanpa Koma)</h6>
+            <h6>TOTAL(SETELAH PPN) -> SubTotal (Dibulatkan) + PPN</h6>
+        </div>
 
-                <!-- /.row -->
-                <!-- Main row -->
-                <!-- /.row -->
+        <div class="card" style="margin-top: -18px; padding: 20px">
+            <h6>*Pastikan Nilai Nominal hanya diisi pada Turunan Terakhir</h6>
+            <h6>*Ubah Nilai Nominal menjadi "0" (nol) jika ingin menurunkan mata anggaran ke level selanjutnya</h6>
+            <h6>*Addendum maksimal dalam sistem adalah Addendum 30 dengan Turunan level maksimal 7 level turunan</h6>
+            <h6>*Pastikan Kontrak Manajemen / Addendumnya diupload ke dalam sistem. Dokumen pendukung (jika ada) juga dapat diinput ke dalam sistem</h6>
 
-                <!--/. container-fluid -->
+        </div>
+        <!-- Button trigger modal -->
+        <!-- Modal -->
+        <!-- lihat ad -->
+
+
+        <!-- /.col -->
+
+        <!-- /.row -->
+        <!-- Main row -->
+        <!-- /.row -->
+
+        <!--/. container-fluid -->
     </section>
 </div>
 <!-- Modal -->

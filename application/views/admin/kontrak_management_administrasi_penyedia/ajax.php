@@ -143,6 +143,13 @@
                 "url": "<?= base_url('admin/data_kontrak/get_data/') ?>",
                 "type": "POST"
             },
+            paging: false,
+            scrollCollapse: true,
+            scrollX: true,
+            scrollY: 300,
+            fixedColumns: {
+                left: 2,
+            },
             "columnDefs": [{
                 "target": [-1],
                 "orderable": false

@@ -22,25 +22,22 @@
                 <div class="breadcrumb-item active"><a href="#">PILIH PROGRAM MATA ANGGARAN</a></div>
             </div>
         </div> -->
-        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
   position: fixed; top:50px;  padding-bottom: -10px;">
-  <span> <?= $row_kontrak['nama_kontrak'] ?></span>
-            <span style="margin-left: auto; font-weight:bold;"><a href=" <?= base_url('admin/data_kontrak_penyedia_jasa/') ?>">Mata Anggaran</a> / <span><b>Kelola Mata Anggaran</b></span> </span>
+            <b style="margin-left: auto; font-weight:1000" class="text-black">(<?= $row_kontrak['no_kontrak'] ?>) (<?= $row_kontrak['tahun_anggaran'] ?>) - Lembar Kerja - Mata Anggaran</b>
         </nav>
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
 
-    <!-- /.content-header -->
-    <input type="hidden" name="type_add">
-     <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak']?>">
-    <!-- Main content -->
-    <section class="content">
-        <div >
-            <div class="row">
-                <div class="col-md-12">
-                                  
-                                        <!-- /.card-header -->
-                                            <div class="row">
+        <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
+background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
+            <h6>MODUL 1 - MATA ANGGARAN</h6>
+            <label for="">Modul ini bertujuan untuk memilih mata anggaran yang akan dibuat menjadi suatu Program Pekerjaan</label>
+        </div>
+        <div class="card" style="margin-top: -25px; padding: 20px;background: rgb(36,93,120);
+background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
+            <label for="">Tekan tombol silang (x) hingga menjadi ceklist (v), Jika seluruh mata anggaran yang diinginkan telah dipilih maka Tekan tombol Buat Program</label>
+        </div>
+        <div class="card" style="margin-top: -20px; padding-bottom: -20px; padding-top: 2px;padding-left:20px;padding-right:20px">
+        <div class="row">
                                                 <!-- Button trigger modal -->
                                                 <!-- Modal -->
                                                 <div class="modal fade" data-backdrop="false" id="tambah_addendum" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -13201,20 +13198,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                 
-                                
-                                    <!-- /.card -->
-                           
-                        
+        </div>
 
-                            <!-- /.col -->
-                        
-                        <!-- /.row -->
-                        <!-- Main row -->
-                        <!-- /.row -->
-                   
-                    <!--/. container-fluid -->
-                    <!-- Button trigger modal -->
+        <div class="card" style="margin-top: -18px; padding: 20px">
+            <h6>*Pilih satu atau beberapa mata anggaran untuk dibuat menjadi program pekerjaan</h6>
+
+        </div>
 
 <!-- Modal -->
 <div class="modal fade" data-backdrop="false" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
