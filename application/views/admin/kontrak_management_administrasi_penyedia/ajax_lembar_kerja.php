@@ -1,4 +1,3 @@
-
 <script>
     var tabledata = $('#table')
     var form_edit = $('#form_edit')
@@ -47,7 +46,7 @@
                     type: "POST",
                     url: "<?= base_url('admin/lembar_kerja/list_program/'); ?>" + id,
                     data: {
-                        lembar_kerja:lembar_kerja,
+                        lembar_kerja: lembar_kerja,
                     },
                     dataType: "JSON",
                     success: function(response) {
@@ -150,9 +149,12 @@
             "autoWidth": true,
             "processing": true,
             "serverSide": true,
-            scrollX: true,
-            scrollCollapse: true,
+
             "dom": 'Bfrtip',
+            paging: false,
+            scrollCollapse: true,
+            scrollX: true,
+            scrollY: 300,
             fixedColumns: {
                 left: 2,
             },

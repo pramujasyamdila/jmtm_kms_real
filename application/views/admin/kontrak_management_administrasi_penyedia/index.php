@@ -8,34 +8,46 @@
                 <div class="breadcrumb-item active"><a href="<?= base_url('admin/data_kontrak') ?>"> Pra Pengadaan</a></div>
             </div>
         </div> -->
-        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
-  position: fixed; top:50px">
-            <h6><?= $nama_kontrak ?></h6>
-            <h6 style="margin-left: auto;"> Pra Pengadaan</h6>
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
+  position: fixed; top:50px;  padding-bottom: -10px;">
+            <b style="margin-left: auto; font-weight:1000" class="text-black">(<?= $nama_kontrak['nama_kontrak'] ?>) (<?= $nama_kontrak['tahun_anggaran'] ?>) - Lembar Kerja - Pra Pengadaan</b>
         </nav>
-        <div class="content-wrapper" style="background-color:white">
+
+        <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
+background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
+            <h6>MODUL 2 - PRA PENGADAAN</h6>
+            <label for="">Modul ini bertujuan untuk memilih mata anggaran yang akan dibuat menjadi suatu Program Pekerjaan</label>
+
+        </div>
+
+
+        <div class="card" style="margin-top: -20px; padding: 20px;background: rgb(36,93,120);
+background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
+
+            <form action="<?= base_url('admin/administrasi_penyedia/search/') . $id_kontrak ?>" method="post">
+                <div class="row">
+                    <div class="col-md-10">
+                        <input type="text" name="keyword" placeholder="Masukan Keyword Pencarian..." class="form-control  rounded-0">
+
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-sm btn-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</button>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+
+
+        <div class="content-wrapper" style="margin-top: -18px;background-color:white">
             <!-- Content Header (Page header) -->
             <!-- /.content-header -->
             <!-- Main content -->
             <section class="content">
                 <div class="card card-outline card-warning">
                     <div class="card-body">
-                        <div class="row">
-                            <form action="<?= base_url('admin/administrasi_penyedia/search/') . $id_kontrak ?>" method="post">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <div class="form-group">
-                                            <div class="input-group mb-3">
-                                                <input type="text" name="keyword" placeholder="Masukan Keyword Pencarian..." class="form-control form-control-sm rounded-0">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5 mt-1">
-                                        <button type="submit" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+
                         <!-- /.card-header -->
                         <style type="text/css">
                             .angga {
@@ -224,6 +236,14 @@
                 </div>
             </section>
             <!-- /.content -->
+        </div>
+
+
+
+        <div class="card" style="margin-top: -18px; padding: 20px">
+            <h6>*Jenis Pengadaan diambil otomatis dari Persetujuan Izin Prinsip</h6>
+            <h6>*Nilai Pagu diambil otomatis dari Rekapitulasi Daftar Kuantitas dan Harga Perkiraan Sendiri (HPS)</h6>
+            <h6>*Seluruh Nilai pada Tabel di atas adalah Nilai Sebelum PPN</h6>
         </div>
     </section>
 </div>
