@@ -81,6 +81,7 @@ class Administrasi_penyedia extends CI_Controller
         $data['menu_open_kontrak'] = 'menu-open';
         $data['row_program']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
         $data['result_sub_program']  = $this->Data_kontrak_model->get_sub_program_by_id_detail_program($id_detail_program_penyedia_jasa);
+        $data['result_rekap_hps']  = $this->Data_kontrak_model->result_rekap_hps($id_detail_program_penyedia_jasa);
         $id_departemen =  $data['row_program']['id_departemen'];
         $id_area =  $data['row_program']['id_area'];
         $id_sub_area =  $data['row_program']['id_sub_area'];
@@ -777,8 +778,9 @@ class Administrasi_penyedia extends CI_Controller
                 $row[] =  "Rp " . number_format($rs->harga_satuan_hps, 2, ',', '.');
                 $row[] =  "Rp " . number_format($rs->total_harga, 2, ',', '.');
             }
-
-
+            $row[] = $rs->tkdn . '%';
+            $row[] =  "Rp " . number_format($rs->harga_satuan_tkdn, 2, ',', '.');
+            $row[] =  "Rp " . number_format($rs->jumlah_harga_tkdn, 2, ',', '.');
             $row[] = '<a href="javascript:;" class="btn btn-danger btn-sm" onClick="byid_detail_sub_program_penyedia_jasa(' . "'" . $rs->id_hps_kontrak_penyedia_jasa . "','hapus'" . ')"><i class="fas fa fa-trash"></i> hapus</a><a href="javascript:;" class="btn btn-warning btn-sm" onClick="byid_hps_kontrak_penyedia_jasa(' . "'" . $rs->id_hps_kontrak_penyedia_jasa . "','edit'" . ')"><i class="fas fa fa-edit"></i> Edit</a>';
             $data[] = $row;
         }
@@ -903,12 +905,17 @@ class Administrasi_penyedia extends CI_Controller
         $uraian_hps =  $this->input->post('uraian_hps');
         $satuan_hps =  $this->input->post('satuan_hps');
         $volume_hps =  $this->input->post('volume_hps');
+        $tkdn =  $this->input->post('tkdn');
         $harga_satuan =  $this->input->post('harga_satuan_hps');
         if ($harga_satuan == null) {
             $total_harga = '';
         } else {
             $total_harga = $volume_hps *  $harga_satuan;
         }
+        $hitung_harga_satuan_tkdn = $harga_satuan * ($tkdn / 100);
+        $hasil_harga_satuan_tkdn = round($hitung_harga_satuan_tkdn, 2);
+        $hitung_jumlah_harga_tkdn = $volume_hps * $hasil_harga_satuan_tkdn;
+        $hasil_jumlah_harga_tkdn = round($hitung_jumlah_harga_tkdn, 2);
         $buat_no_urut = $this->Data_kontrak_model->cek_no_urut_tbl_hps_penyedia_1($id_where_detail_program, $id_detail_sub_program_penyedia_jasa);
         $count = $buat_no_urut + 1;
         if ($buat_no_urut == 0) {
@@ -921,24 +928,27 @@ class Administrasi_penyedia extends CI_Controller
                 'volume_hps' => $volume_hps,
                 'satuan_hps' => $satuan_hps,
                 'harga_satuan_hps' => $harga_satuan,
-                'total_harga' => $total_harga
+                'total_harga' => $total_harga,
+                'tkdn' => $tkdn,
+                'harga_satuan_tkdn' => $hasil_harga_satuan_tkdn,
+                'jumlah_harga_tkdn' => $hasil_jumlah_harga_tkdn,
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_1($data);
-            $insert_id = $this->db->insert_id();
-            $data_nilai_kontrak = [
-                'id_detail_program_penyedia_jasa' => $id_where_detail_program,
-                'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
-                'no_urut' => 1 . '.' . $count,
-                'uraian_hps' => $uraian_hps,
-                'no_hps' => $no_hps,
-                'satuan_hps' => $satuan_hps,
-                'volume_hps' => $volume_hps,
-                'harga_satuan_hps' => $harga_satuan,
-                'total_harga' => $total_harga,
-                'id_refrence_hps' => $insert_id,
-                'item_baru' => 'kosong'
-            ];
-            $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_1($data_nilai_kontrak);
+            // $insert_id = $this->db->insert_id();
+            // $data_nilai_kontrak = [
+            //     'id_detail_program_penyedia_jasa' => $id_where_detail_program,
+            //     'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
+            //     'no_urut' => 1 . '.' . $count,
+            //     'uraian_hps' => $uraian_hps,
+            //     'no_hps' => $no_hps,
+            //     'satuan_hps' => $satuan_hps,
+            //     'volume_hps' => $volume_hps,
+            //     'harga_satuan_hps' => $harga_satuan,
+            //     'total_harga' => $total_harga,
+            //     'id_refrence_hps' => $insert_id,
+            //     'item_baru' => 'kosong'
+            // ];
+            // $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_1($data_nilai_kontrak);
         } else {
             $data = [
                 'id_detail_program_penyedia_jasa' => $id_where_detail_program,
@@ -949,24 +959,27 @@ class Administrasi_penyedia extends CI_Controller
                 'volume_hps' => $volume_hps,
                 'satuan_hps' => $satuan_hps,
                 'harga_satuan_hps' => $harga_satuan,
-                'total_harga' => $total_harga
+                'total_harga' => $total_harga,
+                'tkdn' => $tkdn,
+                'harga_satuan_tkdn' => $hasil_harga_satuan_tkdn,
+                'jumlah_harga_tkdn' => $hasil_jumlah_harga_tkdn,
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_1($data);
-            $insert_id = $this->db->insert_id();
-            $data_nilai_kontrak = [
-                'id_detail_program_penyedia_jasa' => $id_where_detail_program,
-                'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
-                'no_urut' => 1 . '.' . $count,
-                'uraian_hps' => $uraian_hps,
-                'no_hps' => $no_hps,
-                'satuan_hps' => $satuan_hps,
-                'volume_hps' => $volume_hps,
-                'harga_satuan_hps' => $harga_satuan,
-                'total_harga' => $total_harga,
-                'id_refrence_hps' => $insert_id,
-                'item_baru' => 'kosong'
-            ];
-            $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_1($data_nilai_kontrak);
+            // $insert_id = $this->db->insert_id();
+            // $data_nilai_kontrak = [
+            //     'id_detail_program_penyedia_jasa' => $id_where_detail_program,
+            //     'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
+            //     'no_urut' => 1 . '.' . $count,
+            //     'uraian_hps' => $uraian_hps,
+            //     'no_hps' => $no_hps,
+            //     'satuan_hps' => $satuan_hps,
+            //     'volume_hps' => $volume_hps,
+            //     'harga_satuan_hps' => $harga_satuan,
+            //     'total_harga' => $total_harga,
+            //     'id_refrence_hps' => $insert_id,
+            //     'item_baru' => 'kosong'
+            // ];
+            // $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_1($data_nilai_kontrak);
         }
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_1');
@@ -1851,6 +1864,7 @@ class Administrasi_penyedia extends CI_Controller
     public function update_ke_sub_dan_detail_program()
     {
         $id_detail_program_penyedia_jasa =  $this->input->post('id_detail_program_penyedia_jasa');
+        $ppn_hps =  $this->input->post('ppn_hps');
         $id_detail_sub_program_penyedia_jasa =  $this->input->post('id_detail_sub_program_penyedia_jasa');
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_1');
@@ -1908,11 +1922,19 @@ class Administrasi_penyedia extends CI_Controller
         $where = [
             'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa
         ];
+        $total_ppn =  ($ppn_hps * $total_hps_penyedia_1) / 100;
+        $total_setalah_ppn = $total_ppn + $total_hps_penyedia_1;
         $data = [
-            'nilai_hps' => $total_hps_penyedia_1,
-            'nilai_sub_kontrak_penyedia' =>  $total_hps_penyedia_1,
+            'nilai_hps' => $total_setalah_ppn,
+            'nilai_sub_kontrak_penyedia' => $total_setalah_ppn
         ];
         $this->Data_kontrak_model->update_rup_ke_sub_detail_program_penyedia_jasa($where, $data);
+        $data = [
+            'ppn' => $total_ppn,
+            'total_sebelum_ppn' => $total_hps_penyedia_1,
+            'total_setelah_ppn' => $total_setalah_ppn
+        ];
+        $this->Data_kontrak_model->update_ke_tbl_rekap_hps($where, $data);
         $this->db->select('*');
         $this->db->from('tbl_sub_detail_program_penyedia_jasa');
         $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
@@ -3247,7 +3269,7 @@ class Administrasi_penyedia extends CI_Controller
         $id_sub_area =  $data['row_program']['id_sub_area'];
         $id_kontrak =  $data['row_program']['id_kontrak'];
         $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
-        
+
         // $data['row_program']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
         $data['result_sub_program']  = $this->Data_kontrak_model->get_sub_program_by_id_detail_program($id_detail_program_penyedia_jasa);
         // $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $keyword, $data['row_program']['id_kontrak']);
@@ -3299,7 +3321,7 @@ class Administrasi_penyedia extends CI_Controller
         $id_sub_area =  $data['row_program']['id_sub_area'];
         $id_kontrak =  $data['row_program']['id_kontrak'];
         $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
-        
+
         if ($flow_1_hps) {
             if ($flow_1_hps == 1) {
                 $this->load->view('admin/kontrak_management_administrasi_penyedia/flow_1_hps1', $data);
@@ -4134,6 +4156,37 @@ class Administrasi_penyedia extends CI_Controller
             'nilai_program_mata_anggran' => $this->input->post('nilai_program_mata_anggran'),
         ];
         $this->Data_kontrak_model->update_rup_ke_sub_detail_program_penyedia_jasa($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+    public function update_ppn_sub_detail_program()
+    {
+        $id_detail_sub_program_penyedia_jasa =  $this->input->post('id_detail_sub_program_penyedia_jasa');
+        $ppn_hps =  $this->input->post('ppn_hps');
+        $where = [
+            'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa
+        ];
+        $data = [
+            'ppn_hps' => $ppn_hps,
+        ];
+        $this->Data_kontrak_model->update_rup_ke_sub_detail_program_penyedia_jasa($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+    public function update_tahun_anggaran_rekap()
+    {
+        $id_detail_program_penyedia_jasa =  $this->input->post('id_detail_program_penyedia_jasa');
+        $result_sub_program = $this->Data_kontrak_model->result_sub_program($id_detail_program_penyedia_jasa);
+        $tahun_anggaran_rekap =  $this->input->post('tahun_anggaran_rekap');
+        foreach ($result_sub_program as $key => $value) {
+            $data = [
+                'id_detail_program_penyedia_jasa' => $value['id_detail_program_penyedia_jasa'],
+                'id_detail_sub_program_penyedia_jasa' => $value['id_detail_sub_program_penyedia_jasa'],
+                'tahun_anggaran' => $tahun_anggaran_rekap,
+            ];
+            $this->Data_kontrak_model->create_tbl_rekap_hps($data);
+        }
+
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 }

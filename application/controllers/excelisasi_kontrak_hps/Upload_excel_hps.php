@@ -34,6 +34,13 @@ class Upload_excel_hps extends CI_Controller
                 $numRow = 1;
                 foreach ($sheet->getRowIterator() as $row) {
                     if ($numRow > 1) {
+                        $tkdn = $row->getCellAtIndex(6)->getValue();
+                        $volume = $row->getCellAtIndex(4)->getValue();
+                        $harga_satuan =  $row->getCellAtIndex(5)->getValue();
+                        $hitung_harga_satuan_tkdn = $harga_satuan * ($tkdn / 100);
+                        $hasil_harga_satuan_tkdn = round($hitung_harga_satuan_tkdn, 2);
+                        $hitung_jumlah_harga_tkdn = $volume * $hasil_harga_satuan_tkdn;
+                        $hasil_jumlah_harga_tkdn = round($hitung_jumlah_harga_tkdn, 2);
                         $data = array(
                             'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                             'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
@@ -41,27 +48,15 @@ class Upload_excel_hps extends CI_Controller
                             'no_hps' => $row->getCellAtIndex(1),
                             'uraian_hps' => $row->getCellAtIndex(2),
                             'satuan_hps' => $row->getCellAtIndex(3),
-                            'volume_hps' => $row->getCellAtIndex(4),
-                            'harga_satuan_hps' => $row->getCellAtIndex(5),
-                            'total_harga' => $row->getCellAtIndex(6)
-                        );
-                        $this->Data_excelisasi_model->insert_via_hps_penyedia_1($data);
-                        $id_refrence_hps = $this->db->insert_id();
-                        $data_2 = array(
-                            'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
-                            'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
-                            'id_refrence_hps' => $id_refrence_hps,
-                            'no_urut' => $row->getCellAtIndex(0),
-                            'no_hps' => $row->getCellAtIndex(1),
-                            'uraian_hps' => $row->getCellAtIndex(2),
-                            'satuan_hps' => $row->getCellAtIndex(3),
-                            'volume_hps' => $row->getCellAtIndex(4),
-                            'harga_satuan_hps' => $row->getCellAtIndex(5),
-                            'total_harga' => $row->getCellAtIndex(6),
-                            'item_baru' => 'kosong',
+                            'volume_hps' => $volume,
+                            'harga_satuan_hps' => $harga_satuan,
+                            'total_harga' => $volume * $harga_satuan,
+                            'tkdn' => $tkdn,
+                            'harga_satuan_tkdn' => $hasil_harga_satuan_tkdn,
+                            'jumlah_harga_tkdn' => $hasil_jumlah_harga_tkdn,
 
                         );
-                        $this->Data_excelisasi_model->insert_via_hps_penyedia_kontrak_1($data_2);
+                        $this->Data_excelisasi_model->insert_via_hps_penyedia_1($data);
                     }
                     $numRow++;
                 }

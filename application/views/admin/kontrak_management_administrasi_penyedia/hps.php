@@ -9,11 +9,6 @@
         <div class="content-wrapper">
             <br><br>
             <?php
-            $total_hps_penyedia_1 = 0;
-            $total_hps_penyedia_2 = 0;
-            $total_hps_penyedia_3 = 0;
-            $total_hps_penyedia_4 = 0;
-            $total_hps_penyedia_5 = 0;
             $total_hps = 0;
             ?>
             <!-- Content Header (Page header) -->
@@ -28,6 +23,17 @@
                             </div>
                         </div>
 
+                        <div class="container-fluid">
+                            <div class="form-group">
+                                <label for="">Tahun Anggaran</label>
+                                <select name="tahun_anggaran_rekap" style="width: 200px;" onchange="pilih_tahun_rekap('<?= $row_program['id_detail_program_penyedia_jasa'] ?>')" class="form-control" id="">
+                                    <?php $i = 0;
+                                    for ($i = 20; $i <= 30; $i++) {  ?>
+                                        <option value="20<?= $i ?>">20<?= $i ?></option>
+                                    <?php  } ?>
+                                </select>
+                            </div>
+                        </div>
                         <ul class="nav nav-tabs" id="myTab">
                             <?php foreach ($result_sub_program as $key => $value) { ?>
                                 <li>
@@ -59,19 +65,23 @@
                                                     <!--  -->
                                                     <div class="form-group">
                                                         <label for="">No Mata Anggaran</label>
-                                                        <input type="text" name="no_hps" class="form-control form-control-sm" placeholder="No Hps">
+                                                        <input type="text" name="no_hps" required class="form-control form-control-sm" placeholder="No Hps">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="">Uraian</label>
-                                                        <input type="text" name="uraian_hps" class="form-control form-control-sm" placeholder="Uraian">
+                                                        <input type="text" name="uraian_hps" required class="form-control form-control-sm" placeholder="Uraian">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="">Satuan</label>
-                                                        <input type="text" name="satuan_hps" class="form-control form-control-sm" placeholder="Satuan">
+                                                        <input type="text" name="satuan_hps" required class="form-control form-control-sm" placeholder="Satuan">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="">Volume</label>
-                                                        <input type="number" id="volume" name="volume_hps" class="form-control form-control-sm" placeholder="Volume">
+                                                        <input type="number" id="volume" required name="volume_hps" class="form-control form-control-sm" placeholder="Volume">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="">Tkdn</label>
+                                                        <input type="number" id="tkdn" required name="tkdn" class="form-control form-control-sm" placeholder="Tkdn">
                                                     </div>
                                                     <label for="">Harga Satuan</label>
                                                     <div class="input-group mb-3">
@@ -131,6 +141,9 @@
                                                             <th class="text-white">Kuantitas</th>
                                                             <th class="text-white">Harga Satuan</th>
                                                             <th class="text-white">Jumlah Harga</th>
+                                                            <th class="text-white">TKDN</th>
+                                                            <th class="text-white">Harga Satuan TKDN</th>
+                                                            <th class="text-white">Jumlah Harga TKDN</th>
                                                             <th class="text-white">Action</th>
                                                         </tr>
                                                     </thead>
@@ -140,9 +153,11 @@
                                                         $this->db->from('tbl_hps_penyedia_1');
                                                         $this->db->where('tbl_hps_penyedia_1.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
                                                         $this->db->where('tbl_hps_penyedia_1.id_detail_sub_program_penyedia_jasa', $value['id_detail_sub_program_penyedia_jasa']);
-                                                        $this->db->order_by('no_urut', 'ASC');
+                                                        $this->db->order_by('id_hps_penyedia_1', 'DESC');
                                                         $query_tbl_hps_penyedia_1 = $this->db->get() ?>
                                                         <?php
+                                                        $no = 1;
+                                                        $total_hps_penyedia_1 = 0;
                                                         foreach ($query_tbl_hps_penyedia_1->result_array() as $key => $value_hps_penyedia_1) { ?>
                                                             <?php
                                                             $id_hps_penyedia_1 = $value_hps_penyedia_1['id_hps_penyedia_1'];
@@ -157,7 +172,7 @@
                                                             }
                                                             ?>
                                                             <tr class="text-black">
-                                                                <td> &nbsp;<?= $value_hps_penyedia_1['no_urut'] ?></td>
+                                                                <td> &nbsp;<?= $no++ ?></td>
                                                                 <td><?= $value_hps_penyedia_1['no_hps'] ?></td>
                                                                 <td><?= $value_hps_penyedia_1['uraian_hps'] ?></td>
                                                                 <td><?= $value_hps_penyedia_1['satuan_hps'] ?></td>
@@ -174,6 +189,9 @@
                                                                     <td></td>
                                                                 <?php }
                                                                 ?>
+                                                                <td><?= $value_hps_penyedia_1['tkdn'] ?>%</td>
+                                                                <td><?= "Rp " . number_format($value_hps_penyedia_1['harga_satuan_tkdn'], 2, ',', '.') ?></td>
+                                                                <td><?= "Rp " . number_format($value_hps_penyedia_1['jumlah_harga_tkdn'], 2, ',', '.') ?></td>
                                                                 <td>
                                                                     <div class="btn-group">
                                                                         <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
@@ -203,283 +221,58 @@
                                                                     </div>
                                                                 </td>
                                                             </tr>
-                                                            <?php
-                                                            $this->db->select('*');
-                                                            $this->db->from('tbl_hps_penyedia_2');
-                                                            $this->db->where('tbl_hps_penyedia_2.id_hps_penyedia_1', $id_hps_penyedia_1);
-                                                            $this->db->order_by('no_urut', 'ASC');
-                                                            $query_tbl_hps_penyedia_2 = $this->db->get() ?>
-                                                            <?php
-                                                            foreach ($query_tbl_hps_penyedia_2->result_array() as $key => $value_hps_penyedia_2) { ?>
-                                                                <?php
-                                                                $id_hps_penyedia_2 = $value_hps_penyedia_2['id_hps_penyedia_2'];
-                                                                $this->db->select('*');
-                                                                $this->db->from('tbl_hps_penyedia_3');
-                                                                $this->db->where('tbl_hps_penyedia_3.id_hps_penyedia_2', $value_hps_penyedia_2['id_hps_penyedia_2']);
-                                                                $query_cek_tbl_hps_penyedia_3 = $this->db->get()->result_array();
-
-                                                                $id_hps_penyedia_2 = $value_hps_penyedia_2['id_hps_penyedia_2'];
-                                                                if ($value_hps_penyedia_2['total_harga']) {
-                                                                    $total_hps_penyedia_2 +=  $value_hps_penyedia_2['total_harga'];
-                                                                } else {
-                                                                    $total_hps_penyedia_2 +=  0;
-                                                                }
-                                                                ?>
-                                                                <tr class="text-black">
-                                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_2['no_urut'] ?></td>
-                                                                    <td><?= $value_hps_penyedia_2['no_hps'] ?></td>
-                                                                    <td><?= $value_hps_penyedia_2['uraian_hps'] ?></td>
-                                                                    <td><?= $value_hps_penyedia_2['satuan_hps'] ?></td>
-                                                                    <td><?= $value_hps_penyedia_2['volume_hps'] ?></td>
-                                                                    <?php if ($value_hps_penyedia_2['harga_satuan_hps']) { ?>
-                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_2['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                                                    <?php  } else { ?>
-                                                                        <td></td>
-                                                                    <?php }
-                                                                    ?>
-                                                                    <?php if ($value_hps_penyedia_2['total_harga']) { ?>
-                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_2['total_harga'], 2, ',', '.') ?></td>
-                                                                    <?php  } else { ?>
-                                                                        <td></td>
-                                                                    <?php }
-                                                                    ?>
-                                                                    <td>
-                                                                        <div class="btn-group">
-                                                                            <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                <span class="sr-only">Toggle Dropdown</span>
-                                                                            </button>
-                                                                            <div class="dropdown-menu" role="menu">
-                                                                                <?php if ($query_cek_tbl_hps_penyedia_3) { ?>
-                                                                                    <!-- <a onclick="modal_hps_penyedia_3(<?= $value_hps_penyedia_2['id_hps_penyedia_2'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a> -->
-                                                                                    <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_3(<?= $value_hps_penyedia_2['id_hps_penyedia_2'] ?>)"> <i class="fas fa fa-file"></i></a>
-                                                                                <?php   } else { ?>
-                                                                                    <?php if ($value_hps_penyedia_2['total_harga']) { ?>
-                                                                                        <a onclick="modal_hps_penyedia_3(<?= $value_hps_penyedia_2['id_hps_penyedia_2'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                                        <a onclick="modal_hps_penyedia_3(<?= $value_hps_penyedia_2['id_hps_penyedia_2'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
-                                                                                    <?php  } else { ?>
-                                                                                        <!-- <a onclick="modal_hps_penyedia_3(<?= $value_hps_penyedia_2['id_hps_penyedia_2'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a> -->
-                                                                                        <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_3(<?= $value_hps_penyedia_2['id_hps_penyedia_2'] ?>)"> <i class="fas fa fa-file"></i></a>
-                                                                                        <a onclick="modal_hps_penyedia_3(<?= $value_hps_penyedia_2['id_hps_penyedia_2'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                                        <a onclick="modal_hps_penyedia_3(<?= $value_hps_penyedia_2['id_hps_penyedia_2'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
-                                                                                    <?php } ?>
-                                                                                <?php  } ?>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <?php
-                                                                $this->db->select('*');
-                                                                $this->db->from('tbl_hps_penyedia_3');
-                                                                $this->db->where('tbl_hps_penyedia_3.id_hps_penyedia_2', $id_hps_penyedia_2);
-                                                                $this->db->order_by('no_urut', 'ASC');
-                                                                $query_tbl_hps_penyedia_3 = $this->db->get() ?>
-                                                                <?php
-                                                                foreach ($query_tbl_hps_penyedia_3->result_array() as $key => $value_hps_penyedia_3) { ?>
-                                                                    <?php
-                                                                    $id_hps_penyedia_3 = $value_hps_penyedia_3['id_hps_penyedia_3'];
-                                                                    $this->db->select('*');
-                                                                    $this->db->from('tbl_hps_penyedia_4');
-                                                                    $this->db->where('tbl_hps_penyedia_4.id_hps_penyedia_3', $value_hps_penyedia_3['id_hps_penyedia_3']);
-                                                                    $query_cek_tbl_hps_penyedia_4 = $this->db->get()->result_array();
-
-
-                                                                    $id_hps_penyedia_3 = $value_hps_penyedia_3['id_hps_penyedia_3'];
-                                                                    if ($value_hps_penyedia_3['total_harga']) {
-                                                                        $total_hps_penyedia_3 +=  $value_hps_penyedia_3['total_harga'];
-                                                                    } else {
-                                                                        $total_hps_penyedia_3 +=  0;
-                                                                    }
-                                                                    ?>
-                                                                    <tr class="text-black">
-                                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_3['no_urut'] ?></td>
-                                                                        <td><?= $value_hps_penyedia_3['no_hps'] ?></td>
-                                                                        <td><?= $value_hps_penyedia_3['uraian_hps'] ?></td>
-                                                                        <td><?= $value_hps_penyedia_3['satuan_hps'] ?></td>
-                                                                        <td><?= $value_hps_penyedia_3['volume_hps'] ?></td>
-                                                                        <?php if ($value_hps_penyedia_3['harga_satuan_hps']) { ?>
-                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_3['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                                                        <?php  } else { ?>
-                                                                            <td></td>
-                                                                        <?php }
-                                                                        ?>
-                                                                        <?php if ($value_hps_penyedia_3['total_harga']) { ?>
-                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_3['total_harga'], 2, ',', '.') ?></td>
-                                                                        <?php  } else { ?>
-                                                                            <td></td>
-                                                                        <?php }
-                                                                        ?>
-                                                                        <td>
-                                                                            <div class="btn-group">
-                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                    <span class="sr-only">Toggle Dropdown</span>
-                                                                                </button>
-                                                                                <div class="dropdown-menu" role="menu">
-                                                                                    <?php if ($query_cek_tbl_hps_penyedia_4) { ?>
-                                                                                        <!-- <a onclick="modal_hps_penyedia_4(<?= $value_hps_penyedia_3['id_hps_penyedia_3'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a> -->
-                                                                                        <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_4(<?= $value_hps_penyedia_3['id_hps_penyedia_3'] ?>)"> <i class="fas fa fa-file"></i></a>
-                                                                                    <?php   } else { ?>
-                                                                                        <?php if ($value_hps_penyedia_3['total_harga']) { ?>
-                                                                                            <a onclick="modal_hps_penyedia_4(<?= $value_hps_penyedia_3['id_hps_penyedia_3'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                                            <a onclick="modal_hps_penyedia_4(<?= $value_hps_penyedia_3['id_hps_penyedia_3'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
-                                                                                        <?php  } else { ?>
-                                                                                            <!-- <a onclick="modal_hps_penyedia_4(<?= $value_hps_penyedia_3['id_hps_penyedia_3'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a> -->
-                                                                                            <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_4(<?= $value_hps_penyedia_3['id_hps_penyedia_3'] ?>)"> <i class="fas fa fa-file"></i></a>
-                                                                                            <a onclick="modal_hps_penyedia_4(<?= $value_hps_penyedia_3['id_hps_penyedia_3'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                                            <a onclick="modal_hps_penyedia_4(<?= $value_hps_penyedia_3['id_hps_penyedia_3'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
-                                                                                        <?php } ?>
-                                                                                    <?php  } ?>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <?php
-                                                                    $this->db->select('*');
-                                                                    $this->db->from('tbl_hps_penyedia_4');
-                                                                    $this->db->where('tbl_hps_penyedia_4.id_hps_penyedia_3', $id_hps_penyedia_3);
-                                                                    $this->db->order_by('no_urut', 'ASC');
-                                                                    $query_tbl_hps_penyedia_4 = $this->db->get() ?>
-                                                                    <?php
-                                                                    foreach ($query_tbl_hps_penyedia_4->result_array() as $key => $value_hps_penyedia_4) { ?>
-                                                                        <?php
-                                                                        $id_hps_penyedia_4 = $value_hps_penyedia_4['id_hps_penyedia_4'];
-                                                                        $this->db->select('*');
-                                                                        $this->db->from('tbl_hps_penyedia_5');
-                                                                        $this->db->where('tbl_hps_penyedia_5.id_hps_penyedia_4', $value_hps_penyedia_4['id_hps_penyedia_4']);
-                                                                        $query_cek_tbl_hps_penyedia_5 = $this->db->get()->result_array();
-
-                                                                        $id_hps_penyedia_4 = $value_hps_penyedia_4['id_hps_penyedia_4'];
-                                                                        if ($value_hps_penyedia_4['total_harga']) {
-                                                                            $total_hps_penyedia_4 +=  $value_hps_penyedia_4['total_harga'];
-                                                                        } else {
-                                                                            $total_hps_penyedia_4 +=  0;
-                                                                        }
-                                                                        ?>
-                                                                        <tr>
-                                                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_4['no_urut'] ?></td>
-                                                                            <td><?= $value_hps_penyedia_4['no_hps'] ?></td>
-                                                                            <td><?= $value_hps_penyedia_4['uraian_hps'] ?></td>
-                                                                            <td><?= $value_hps_penyedia_4['satuan_hps'] ?></td>
-                                                                            <td><?= $value_hps_penyedia_4['volume_hps'] ?></td>
-                                                                            <?php if ($value_hps_penyedia_4['harga_satuan_hps']) { ?>
-                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_4['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                                                            <?php  } else { ?>
-                                                                                <td></td>
-                                                                            <?php }
-                                                                            ?>
-                                                                            <?php if ($value_hps_penyedia_4['total_harga']) { ?>
-                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_4['total_harga'], 2, ',', '.') ?></td>
-                                                                            <?php  } else { ?>
-                                                                                <td></td>
-                                                                            <?php }
-                                                                            ?>
-                                                                            <td>
-                                                                                <div class="btn-group">
-                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                        <span class="sr-only">Toggle Dropdown</span>
-                                                                                    </button>
-                                                                                    <div class="dropdown-menu" role="menu">
-                                                                                        <?php if ($query_cek_tbl_hps_penyedia_5) { ?>
-                                                                                            <!-- <a onclick="modal_hps_penyedia_5(<?= $value_hps_penyedia_4['id_hps_penyedia_4'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a> -->
-                                                                                            <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_5(<?= $value_hps_penyedia_4['id_hps_penyedia_4'] ?>)"> <i class="fas fa fa-file"></i></a>
-                                                                                        <?php   } else { ?>
-                                                                                            <?php if ($value_hps_penyedia_4['total_harga']) { ?>
-                                                                                                <a onclick="modal_hps_penyedia_5(<?= $value_hps_penyedia_4['id_hps_penyedia_4'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                                                <a onclick="modal_hps_penyedia_5(<?= $value_hps_penyedia_4['id_hps_penyedia_4'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
-                                                                                            <?php  } else { ?>
-                                                                                                <!-- <a onclick="modal_hps_penyedia_5(<?= $value_hps_penyedia_4['id_hps_penyedia_4'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a> -->
-                                                                                                <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_5(<?= $value_hps_penyedia_4['id_hps_penyedia_4'] ?>)"> <i class="fas fa fa-file"></i></a>
-                                                                                                <a onclick="modal_hps_penyedia_5(<?= $value_hps_penyedia_4['id_hps_penyedia_4'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                                                <a onclick="modal_hps_penyedia_5(<?= $value_hps_penyedia_4['id_hps_penyedia_4'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
-                                                                                            <?php } ?>
-                                                                                        <?php  } ?>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <?php
-                                                                        $this->db->select('*');
-                                                                        $this->db->from('tbl_hps_penyedia_5');
-                                                                        $this->db->where('tbl_hps_penyedia_5.id_hps_penyedia_4', $id_hps_penyedia_4);
-                                                                        $this->db->order_by('no_urut', 'ASC');
-                                                                        $query_tbl_hps_penyedia_5 = $this->db->get() ?>
-                                                                        <?php
-                                                                        foreach ($query_tbl_hps_penyedia_5->result_array() as $key => $value_hps_penyedia_5) { ?>
-                                                                            <?php
-                                                                            $id_hps_penyedia_5 = $value_hps_penyedia_5['id_hps_penyedia_5'];
-                                                                            $this->db->select('*');
-                                                                            $this->db->from('tbl_hps_penyedia_6');
-                                                                            $this->db->where('tbl_hps_penyedia_6.id_hps_penyedia_5', $value_hps_penyedia_5['id_hps_penyedia_5']);
-                                                                            $query_cek_tbl_hps_penyedia_6 = $this->db->get()->result_array();
-                                                                            $id_hps_penyedia_5 = $value_hps_penyedia_5['id_hps_penyedia_5'];
-                                                                            if ($value_hps_penyedia_5['total_harga']) {
-                                                                                $total_hps_penyedia_5 +=  $value_hps_penyedia_5['total_harga'];
-                                                                            } else {
-                                                                                $total_hps_penyedia_5 +=  0;
-                                                                            }
-                                                                            ?>
-                                                                            <tr>
-                                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_5['no_urut'] ?></td>
-                                                                                <td><?= $value_hps_penyedia_5['no_hps'] ?></td>
-                                                                                <td><?= $value_hps_penyedia_5['uraian_hps'] ?></td>
-                                                                                <td><?= $value_hps_penyedia_5['satuan_hps'] ?></td>
-                                                                                <td><?= $value_hps_penyedia_5['volume_hps'] ?></td>
-                                                                                <?php if ($value_hps_penyedia_5['harga_satuan_hps']) { ?>
-                                                                                    <td><?= "Rp " . number_format($value_hps_penyedia_5['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                                                                <?php  } else { ?>
-                                                                                    <td></td>
-                                                                                <?php }
-                                                                                ?>
-                                                                                <?php if ($value_hps_penyedia_5['total_harga']) { ?>
-                                                                                    <td><?= "Rp " . number_format($value_hps_penyedia_5['total_harga'], 2, ',', '.') ?></td>
-                                                                                <?php  } else { ?>
-                                                                                    <td></td>
-                                                                                <?php }
-                                                                                ?>
-                                                                                <td>
-                                                                                    <div class="btn-group">
-                                                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                            <span class="sr-only">Toggle Dropdown</span>
-                                                                                        </button>
-                                                                                        <div class="dropdown-menu" role="menu">
-                                                                                            <?php if ($query_cek_tbl_hps_penyedia_6) { ?>
-                                                                                                <!-- <a onclick="modal_hps_penyedia_6(<?= $value_hps_penyedia_5['id_hps_penyedia_5'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a> -->
-                                                                                                <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_6(<?= $value_hps_penyedia_5['id_hps_penyedia_5'] ?>)"> <i class="fas fa fa-file"></i></a>
-                                                                                            <?php   } else { ?>
-                                                                                                <?php if ($value_hps_penyedia_5['total_harga']) { ?>
-                                                                                                    <a onclick="modal_hps_penyedia_6(<?= $value_hps_penyedia_5['id_hps_penyedia_5'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                                                    <a onclick="modal_hps_penyedia_6(<?= $value_hps_penyedia_5['id_hps_penyedia_5'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
-                                                                                                <?php  } else { ?>
-                                                                                                    <!-- <a onclick="modal_hps_penyedia_6(<?= $value_hps_penyedia_5['id_hps_penyedia_5'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a> -->
-                                                                                                    <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_6(<?= $value_hps_penyedia_5['id_hps_penyedia_5'] ?>)"> <i class="fas fa fa-file"></i></a>
-                                                                                                    <a onclick="modal_hps_penyedia_6(<?= $value_hps_penyedia_5['id_hps_penyedia_5'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                                                    <a onclick="modal_hps_penyedia_6(<?= $value_hps_penyedia_5['id_hps_penyedia_5'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
-                                                                                                <?php } ?>
-                                                                                            <?php  } ?>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
-                                                                        <?php } ?>
-                                                                    <?php } ?>
-                                                                <?php } ?>
-                                                            <?php } ?>
                                                         <?php } ?>
                                                     </tbody>
                                                     <tfoot>
                                                         <tr>
                                                             <td colspan="2">
-                                                                <!-- <label for="" style="font-size: 12px;">GRAND TOTAL (Rp.)</label> -->
+                                                                <label for="" style="font-size: 12px;">SUBTOTAL (SEBELUM PPN Rp.)</label>
                                                             </td>
-                                                            <td colspan="3"></td>
+                                                            <td colspan="4"></td>
                                                             <?php                                                                       ?>
                                                             <td>
-                                                                <!-- <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_1 + $total_hps_penyedia_2, 2, ',', '.') ?> 
-                                                                            </label> -->
+                                                                <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_1, 2, ',', '.') ?>
+                                                                </label>
                                                             </td>
+                                                            <td colspan="3"></td>
+                                                            <td>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <label for="" style="font-size: 12px;">PPN(<?= $value['ppn_hps'] ?>%)<?= $value['id_detail_sub_program_penyedia_jasa'] ?> <select name="ppn_hps<?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="pilih_ppn_sub_program('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')">
+                                                                        <option selected value="<?= $value['ppn_hps'] ?>">--Pilih PPN--</option>
+                                                                        <option value="10">10%</option>
+                                                                        <option value="11">11%</option>
+                                                                        <option value="12">12%</option>
+                                                                    </select></label>
+                                                            </td>
+                                                            <td colspan="4"></td>
+                                                            <?php
+                                                            $total_ppn = ($value['ppn_hps'] * $total_hps_penyedia_1) / 100;
+                                                            $total_setelah_ppn = $total_ppn + $total_hps_penyedia_1;
+                                                            ?>
+                                                            <td>
+                                                                <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
+                                                                </label>
+                                                            </td>
+                                                            <td colspan="3"></td>
+                                                            <td>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
+                                                            </td>
+                                                            <td colspan="4"></td>
+                                                            <?php                                                                       ?>
+                                                            <td>
+                                                                <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
+                                                                </label>
+                                                            </td>
+                                                            <td colspan="3"></td>
                                                             <td>
                                                                 <a href="javascript:;" onclick="Update_nilai_ke_sub_program('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')" class="btn btn-sm btn-success"> <i class="fas fa fa-save"></i> Simpan Dan Update</a>
                                                             </td>
@@ -489,6 +282,38 @@
                                             </div>
                                         </div>
                                         <br>
+                                        <div class="card">
+                                            <div class="card-header bg-warning text-white">
+                                                PENJELASAN REKAP
+                                            </div>
+                                            <div class="card-body">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>Mata Anggaran</th>
+                                                            <th>Tahun Anggaran</th>
+                                                            <th>Subtotal (Sebelum PPN)</th>
+                                                            <th>PPN</th>
+                                                            <th>Subtotal (Setelah PPN)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php $nomor = 1;
+                                                        foreach ($result_rekap_hps as $key => $value) { ?>
+                                                            <tr>
+                                                                <td><?= $nomor++ ?></td>
+                                                                <td><?= $value['nama_program_mata_anggaran'] ?></td>
+                                                                <td><?= $value['tahun_anggaran'] ?></td>
+                                                                <td><?= "Rp " . number_format($value['total_sebelum_ppn'], 2, ',', '.') ?></td>
+                                                                <td><?= "Rp " . number_format($value['ppn'], 2, ',', '.') ?></td>
+                                                                <td><?= "Rp " . number_format($value['total_setelah_ppn'], 2, ',', '.') ?></td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- Modal -->
                                 </div>

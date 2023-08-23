@@ -3960,6 +3960,25 @@ class Data_kontrak_model extends CI_Model
         return $query->result_array();
     }
 
+    public function result_sub_program($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+        $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function result_rekap_hps($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_rekap_hps');
+        $this->db->join('tbl_sub_detail_program_penyedia_jasa', 'tbl_sub_detail_program_penyedia_jasa.id_detail_sub_program_penyedia_jasa = tbl_rekap_hps.id_detail_sub_program_penyedia_jasa', 'left');
+        $this->db->where('tbl_rekap_hps.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 
     var $table_list_mata_anggran = 'tbl_list_mata_anggran';
     var $order_mata_anggran = array('id_list_mata_anggaran', 'nilai_program_mata_anggran', 'id_list_mata_anggaran');
@@ -6704,5 +6723,16 @@ class Data_kontrak_model extends CI_Model
         }
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+    public function create_tbl_rekap_hps($data)
+    {
+        $this->db->insert('tbl_rekap_hps', $data);
+        return $this->db->affected_rows();
+    }
+    public function update_ke_tbl_rekap_hps($where, $data)
+    {
+        $this->db->update('tbl_rekap_hps', $data, $where);
+        return $this->db->affected_rows();
     }
 }

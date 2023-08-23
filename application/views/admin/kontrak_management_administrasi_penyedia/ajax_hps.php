@@ -754,12 +754,14 @@
 <script>
     function Update_nilai_ke_sub_program(id_detail_sub_program_penyedia_jasa) {
         var id_detail_program_penyedia_jasa = $('[name="id_detail_program_penyedia_jasa"]').val();
+        var ppn_hps = $('[name="ppn_hps' + id_detail_sub_program_penyedia_jasa + '"]').val();
         $.ajax({
             method: "POST",
             url: "<?= base_url('admin/Administrasi_penyedia/update_ke_sub_dan_detail_program') ?>",
             data: {
                 id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
                 id_detail_sub_program_penyedia_jasa: id_detail_sub_program_penyedia_jasa,
+                ppn_hps: ppn_hps
             },
             dataType: "JSON",
             success: function(response) {
@@ -798,45 +800,45 @@
 </script>
 
 <script>
-    document.getElementById("harga_satuan_hps").onkeyup = function() {
-        var validasiHuruf = /^[a-zA-Z ]+ $ /;
-        var validasisimbol = /[^0-9]/;
-        var harga_satuan_hps = $('#harga_satuan_hps').val();
-        if (harga_satuan_hps.match(validasiHuruf)) {
-            $('#harga_satuan_hps').css('border-color', 'red');
-            message('warning', 'Isi Hanya Dengan Angka', 'Maaf')
-            $('#harga_satuan_hps').val('');
-        } else if (harga_satuan_hps.match(validasisimbol)) {
-            $('#harga_satuan_hps').css('border-color', 'red');
-            message('warning', 'Isi Hanya Dengan Angka', 'Maaf')
-            $('#harga_satuan_hps').val('');
-        } else {
-            $('#harga_satuan_hps').css('border-color', 'green');
-            $('#harga_satuan_hps').val(harga_satuan_hps);
+    // document.getElementById("harga_satuan_hps").onkeyup = function() {
+    //     var validasiHuruf = /^[a-zA-Z ]+ $ /;
+    //     var validasisimbol = /[^0-9]/;
+    //     var harga_satuan_hps = $('#harga_satuan_hps').val();
+    //     if (harga_satuan_hps.match(validasiHuruf)) {
+    //         $('#harga_satuan_hps').css('border-color', 'red');
+    //         message('warning', 'Isi Hanya Dengan Angka', 'Maaf')
+    //         $('#harga_satuan_hps').val('');
+    //     } else if (harga_satuan_hps.match(validasisimbol)) {
+    //         $('#harga_satuan_hps').css('border-color', 'red');
+    //         message('warning', 'Isi Hanya Dengan Angka', 'Maaf')
+    //         $('#harga_satuan_hps').val('');
+    //     } else {
+    //         $('#harga_satuan_hps').css('border-color', 'green');
+    //         $('#harga_satuan_hps').val(harga_satuan_hps);
 
-        }
+    //     }
 
-    };
+    // };
 
-    document.getElementById("volume").onkeyup = function() {
-        var validasiHuruf = /^[a-zA-Z ]+ $ /;
-        var validasisimbol = /[^0-9]/;
-        var volume = $('#volume').val();
-        if (volume.match(validasiHuruf)) {
-            $('#volume').css('border-color', 'red');
-            message('warning', 'Isi Hanya Dengan Angka', 'Maaf')
-            $('#volume').val('');
-        } else if (volume.match(validasisimbol)) {
-            $('#volume').css('border-color', 'red');
-            message('warning', 'Isi Hanya Dengan Angka', 'Maaf')
-            $('#volume').val('');
-        } else {
-            $('#volume').css('border-color', 'green');
-            $('#volume').val(volume);
+    // document.getElementById("volume").onkeyup = function() {
+    //     var validasiHuruf = /^[a-zA-Z ]+ $ /;
+    //     var validasisimbol = /[^0-9]/;
+    //     var volume = $('#volume').val();
+    //     if (volume.match(validasiHuruf)) {
+    //         $('#volume').css('border-color', 'red');
+    //         message('warning', 'Isi Hanya Dengan Angka', 'Maaf')
+    //         $('#volume').val('');
+    //     } else if (volume.match(validasisimbol)) {
+    //         $('#volume').css('border-color', 'red');
+    //         message('warning', 'Isi Hanya Dengan Angka', 'Maaf')
+    //         $('#volume').val('');
+    //     } else {
+    //         $('#volume').css('border-color', 'green');
+    //         $('#volume').val(volume);
 
-        }
+    //     }
 
-    };
+    // };
 </script>
 
 
@@ -886,7 +888,7 @@
                 var kirim_inisial = 0;
                 for (i = 0; i < response['result_urutan_hps_penyedia_1'].length; ++i) {
                     html += '<tr>' +
-                        '<td><input type="text" onkeyup="UbahUrutaan_hps(' + response['result_urutan_hps_penyedia_1'][i].id_hps_penyedia_1+ ',1.1' + ',' + kirim_inisial++ + ')" name="no_urut_ubah_' + no++ + '" value="' + response['result_urutan_hps_penyedia_1'][i].no_urut + '" class="form-control form-control-sm"></td>' +
+                        '<td><input type="text" onkeyup="UbahUrutaan_hps(' + response['result_urutan_hps_penyedia_1'][i].id_hps_penyedia_1 + ',1.1' + ',' + kirim_inisial++ + ')" name="no_urut_ubah_' + no++ + '" value="' + response['result_urutan_hps_penyedia_1'][i].no_urut + '" class="form-control form-control-sm"></td>' +
                         '<td>' + response['result_urutan_hps_penyedia_1'][i].uraian_hps + ' </td>' +
                         '</tr>';
                 }
@@ -916,5 +918,44 @@
 
     function Update_Turunan() {
         location.reload();
+    }
+</script>
+<script>
+    function pilih_ppn_sub_program(id_detail_sub_program_penyedia_jasa) {
+        var ppn_hps = $('[name="ppn_hps' + id_detail_sub_program_penyedia_jasa + '"]').val();
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/Administrasi_penyedia/update_ppn_sub_detail_program') ?>",
+            data: {
+                id_detail_sub_program_penyedia_jasa: id_detail_sub_program_penyedia_jasa,
+                ppn_hps: ppn_hps
+            },
+            dataType: "JSON",
+            success: function(response) {
+                if (response == 'success') {
+                    message('success', 'PPN Berhasil Di Update!', 'Berhasil')
+                    location.reload()
+                }
+            }
+        })
+    }
+
+    function pilih_tahun_rekap(id_detail_program_penyedia_jasa) {
+        var tahun_anggaran_rekap = $('[name="tahun_anggaran_rekap"]').val();
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/Administrasi_penyedia/update_tahun_anggaran_rekap') ?>",
+            data: {
+                id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
+                tahun_anggaran_rekap:tahun_anggaran_rekap
+            },
+            dataType: "JSON",
+            success: function(response) {
+                if (response == 'success') {
+                    message('success', 'Tahun Anggaran Rekap Berhasil Di Tambah!', 'Berhasil')
+                    location.reload()
+                }
+            }
+        })
     }
 </script>
