@@ -4113,4 +4113,27 @@ class Administrasi_penyedia extends CI_Controller
         } else {
         }
     }
+
+    public function get_detail_sub_program($id_detail_sub_program_penyedia_jasa)
+    {
+        $row_sub_program = $this->Data_kontrak_model->get_sub_program_penyedia_jasa($id_detail_sub_program_penyedia_jasa);
+        $data = [
+            'row_sub_program' => $row_sub_program,
+        ];
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+    }
+
+    public function update_nilai_pagu()
+    {
+        $id_detail_sub_program_penyedia_jasa = $this->input->post('id_detail_sub_program_penyedia_jasa');
+
+        $where = [
+            'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa
+        ];
+        $data = [
+            'nilai_program_mata_anggran' => $this->input->post('nilai_program_mata_anggran'),
+        ];
+        $this->Data_kontrak_model->update_rup_ke_sub_detail_program_penyedia_jasa($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
 }

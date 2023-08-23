@@ -411,7 +411,7 @@
                                                                             </div>
                                                                             <div class="modal-body">
                                                                                 <form action="javascript:;" method="post" id="form_simpan_nilai_kontrak_awal_level_1">
-                                                                                    <input type="text" name="type_add">
+                                                                                    <input type="hidden" name="type_add">
                                                                                      <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak']?>">
                                                                                     <div class="form-group" style="display: none;" id="form_input_nama_kontrak_level_1">
                                                                                         <div class="row">
@@ -1560,8 +1560,8 @@
                                                                                             <div class="modal-body">
                                                                                                 <form action="javascript:;" method="post" id="form_simpan_level_5_capex">
                                                                                                     <input type="hidden" name="id_detail_capex_2">
-                                                                                                    <input type="text" name="type_add">
-                                                                                                    <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                    <input type="hidden" name="type_add">
+                                                                                                    <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                     <div class="form-group" style="display: none;" id="form_tambah_level_5_capex">
                                                                                                         <div class="row">
                                                                                                             <div class="col-md-12">
@@ -2140,8 +2140,8 @@
                                                                                                     <div class="modal-body">
                                                                                                         <form action="javascript:;" method="post" id="form_simpan_level_7_capex">
                                                                                                             <input type="hidden" name="id_detail_capex_4">
-                                                                                                            <input type="text" name="type_add">
-                                                                                                            <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                            <input type="hidden" name="type_add">
+                                                                                                            <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                             <div class="form-group" style="display: none;" id="form_tambah_level_7_capex">
                                                                                                                 <div class="row">
                                                                                                                     <div class="col-md-12">
@@ -2431,8 +2431,8 @@
                                                                                                         <div class="modal-body">
                                                                                                             <form action="javascript:;" method="post" id="form_simpan_level_8_capex">
                                                                                                                 <input type="hidden" name="id_detail_capex_5">
-                                                                                                                <input type="text" name="type_add">
-                                                                                                                <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                <input type="hidden" name="type_add">
+                                                                                                                <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                 <div class="form-group" style="display: none;" id="form_tambah_level_8_capex">
                                                                                                                     <div class="row">
                                                                                                                         <div class="col-md-12">
@@ -2722,8 +2722,8 @@
                                                                                                             <div class="modal-body">
                                                                                                                 <form action="javascript:;" method="post" id="form_simpan_level_9_capex">
                                                                                                                     <input type="hidden" name="id_detail_capex_6">
-                                                                                                                    <input type="text" name="type_add">
-                                                                                                                    <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                    <input type="hidden" name="type_add">
+                                                                                                                    <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                     <div class="form-group" style="display: none;" id="form_tambah_level_9_capex">
                                                                                                                         <div class="row">
                                                                                                                             <div class="col-md-12">
@@ -3010,8 +3010,8 @@
                                                                                                                 <div class="modal-body">
                                                                                                                     <form action="javascript:;" method="post" id="form_simpan_level_10_capex">
                                                                                                                         <input type="hidden" name="id_detail_capex_7">
-                                                                                                                        <input type="text" name="type_add">
-                                                                                                                        <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                        <input type="hidden" name="type_add">
+                                                                                                                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                         <div class="form-group" style="display: none;" id="form_tambah_level_10_capex">
                                                                                                                             <div class="row">
                                                                                                                                 <div class="col-md-12">
@@ -3296,8 +3296,8 @@
                                                                                                                     <div class="modal-body">
                                                                                                                         <form action="javascript:;" method="post" id="form_simpan_level_11_capex">
                                                                                                                             <input type="hidden" name="id_detail_capex_8">
-                                                                                                                            <input type="text" name="type_add">
-                                                                                                                            <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                            <input type="hidden" name="type_add">
+                                                                                                                            <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                             <div class="form-group" style="display: none;" id="form_tambah_level_11_capex">
                                                                                                                                 <div class="row">
                                                                                                                                     <div class="col-md-12">
@@ -3583,8 +3583,8 @@
                                                                                                                         <div class="modal-body">
                                                                                                                             <form action="javascript:;" method="post" id="form_simpan_level_12_capex">
                                                                                                                                 <input type="hidden" name="id_detail_capex_9">
-                                                                                                                                <input type="text" name="type_add">
-                                                                                                                                <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                                <input type="hidden" name="type_add">
+                                                                                                                                <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                                 <div class="form-group" style="display: none;" id="form_tambah_level_12_capex">
                                                                                                                                     <div class="row">
                                                                                                                                         <div class="col-md-12">
@@ -4745,8 +4745,8 @@
                                                                                             <div class="modal-body">
                                                                                                 <form action="javascript:;" method="post" id="form_simpan_level_5_opex">
                                                                                                     <input type="hidden" name="id_detail_opex_2">
-                                                                                                    <input type="text" name="type_add">
-                                                                                                    <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                    <input type="hidden" name="type_add">
+                                                                                                    <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                     <div class="form-group" style="display: none;" id="form_tambah_level_5_opex">
                                                                                                         <div class="row">
                                                                                                             <div class="col-md-12">
@@ -5325,8 +5325,8 @@
                                                                                                     <div class="modal-body">
                                                                                                         <form action="javascript:;" method="post" id="form_simpan_level_7_opex">
                                                                                                             <input type="hidden" name="id_detail_opex_4">
-                                                                                                            <input type="text" name="type_add">
-                                                                                                            <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                            <input type="hidden" name="type_add">
+                                                                                                            <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                             <div class="form-group" style="display: none;" id="form_tambah_level_7_opex">
                                                                                                                 <div class="row">
                                                                                                                     <div class="col-md-12">
@@ -5616,8 +5616,8 @@
                                                                                                         <div class="modal-body">
                                                                                                             <form action="javascript:;" method="post" id="form_simpan_level_8_opex">
                                                                                                                 <input type="hidden" name="id_detail_opex_5">
-                                                                                                                <input type="text" name="type_add">
-                                                                                                                <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                <input type="hidden" name="type_add">
+                                                                                                                <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                 <div class="form-group" style="display: none;" id="form_tambah_level_8_opex">
                                                                                                                     <div class="row">
                                                                                                                         <div class="col-md-12">
@@ -5907,8 +5907,8 @@
                                                                                                             <div class="modal-body">
                                                                                                                 <form action="javascript:;" method="post" id="form_simpan_level_9_opex">
                                                                                                                     <input type="hidden" name="id_detail_opex_6">
-                                                                                                                    <input type="text" name="type_add">
-                                                                                                                    <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                    <input type="hidden" name="type_add">
+                                                                                                                    <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                     <div class="form-group" style="display: none;" id="form_tambah_level_9_opex">
                                                                                                                         <div class="row">
                                                                                                                             <div class="col-md-12">
@@ -6195,8 +6195,8 @@
                                                                                                                 <div class="modal-body">
                                                                                                                     <form action="javascript:;" method="post" id="form_simpan_level_10_opex">
                                                                                                                         <input type="hidden" name="id_detail_opex_7">
-                                                                                                                        <input type="text" name="type_add">
-                                                                                                                        <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                        <input type="hidden" name="type_add">
+                                                                                                                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                         <div class="form-group" style="display: none;" id="form_tambah_level_10_opex">
                                                                                                                             <div class="row">
                                                                                                                                 <div class="col-md-12">
@@ -6481,8 +6481,8 @@
                                                                                                                     <div class="modal-body">
                                                                                                                         <form action="javascript:;" method="post" id="form_simpan_level_11_opex">
                                                                                                                             <input type="hidden" name="id_detail_opex_8">
-                                                                                                                            <input type="text" name="type_add">
-                                                                                                                            <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                            <input type="hidden" name="type_add">
+                                                                                                                            <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                             <div class="form-group" style="display: none;" id="form_tambah_level_11_opex">
                                                                                                                                 <div class="row">
                                                                                                                                     <div class="col-md-12">
@@ -6768,8 +6768,8 @@
                                                                                                                         <div class="modal-body">
                                                                                                                             <form action="javascript:;" method="post" id="form_simpan_level_12_opex">
                                                                                                                                 <input type="hidden" name="id_detail_opex_9">
-                                                                                                                                <input type="text" name="type_add">
-                                                                                                                                <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                                <input type="hidden" name="type_add">
+                                                                                                                                <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                                 <div class="form-group" style="display: none;" id="form_tambah_level_12_opex">
                                                                                                                                     <div class="row">
                                                                                                                                         <div class="col-md-12">
@@ -7929,8 +7929,8 @@
                                                                                             <div class="modal-body">
                                                                                                 <form action="javascript:;" method="post" id="form_simpan_level_5_bua">
                                                                                                     <input type="hidden" name="id_detail_bua_2">
-                                                                                                    <input type="text" name="type_add">
-                                                                                                    <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                    <input type="hidden" name="type_add">
+                                                                                                    <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                     <div class="form-group" style="display: none;" id="form_tambah_level_5_bua">
                                                                                                         <div class="row">
                                                                                                             <div class="col-md-12">
@@ -8509,8 +8509,8 @@
                                                                                                     <div class="modal-body">
                                                                                                         <form action="javascript:;" method="post" id="form_simpan_level_7_bua">
                                                                                                             <input type="hidden" name="id_detail_bua_4">
-                                                                                                            <input type="text" name="type_add">
-                                                                                                            <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                            <input type="hidden" name="type_add">
+                                                                                                            <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                             <div class="form-group" style="display: none;" id="form_tambah_level_7_bua">
                                                                                                                 <div class="row">
                                                                                                                     <div class="col-md-12">
@@ -8800,8 +8800,8 @@
                                                                                                         <div class="modal-body">
                                                                                                             <form action="javascript:;" method="post" id="form_simpan_level_8_bua">
                                                                                                                 <input type="hidden" name="id_detail_bua_5">
-                                                                                                                <input type="text" name="type_add">
-                                                                                                                <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                <input type="hidden" name="type_add">
+                                                                                                                <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                 <div class="form-group" style="display: none;" id="form_tambah_level_8_bua">
                                                                                                                     <div class="row">
                                                                                                                         <div class="col-md-12">
@@ -9092,8 +9092,8 @@
                                                                                                             <div class="modal-body">
                                                                                                                 <form action="javascript:;" method="post" id="form_simpan_level_9_bua">
                                                                                                                     <input type="hidden" name="id_detail_bua_6">
-                                                                                                                    <input type="text" name="type_add">
-                                                                                                                    <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                    <input type="hidden" name="type_add">
+                                                                                                                    <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                     <div class="form-group" style="display: none;" id="form_tambah_level_9_bua">
                                                                                                                         <div class="row">
                                                                                                                             <div class="col-md-12">
@@ -9380,8 +9380,8 @@
                                                                                                                 <div class="modal-body">
                                                                                                                     <form action="javascript:;" method="post" id="form_simpan_level_10_bua">
                                                                                                                         <input type="hidden" name="id_detail_bua_7">
-                                                                                                                        <input type="text" name="type_add">
-                                                                                                                        <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                        <input type="hidden" name="type_add">
+                                                                                                                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                         <div class="form-group" style="display: none;" id="form_tambah_level_10_bua">
                                                                                                                             <div class="row">
                                                                                                                                 <div class="col-md-12">
@@ -9666,8 +9666,8 @@
                                                                                                                     <div class="modal-body">
                                                                                                                         <form action="javascript:;" method="post" id="form_simpan_level_11_bua">
                                                                                                                             <input type="hidden" name="id_detail_bua_8">
-                                                                                                                            <input type="text" name="type_add">
-                                                                                                                            <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                            <input type="hidden" name="type_add">
+                                                                                                                            <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                             <div class="form-group" style="display: none;" id="form_tambah_level_11_bua">
                                                                                                                                 <div class="row">
                                                                                                                                     <div class="col-md-12">
@@ -9953,8 +9953,8 @@
                                                                                                                         <div class="modal-body">
                                                                                                                             <form action="javascript:;" method="post" id="form_simpan_level_12_bua">
                                                                                                                                 <input type="hidden" name="id_detail_bua_9">
-                                                                                                                                <input type="text" name="type_add">
-                                                                                                                                <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                                <input type="hidden" name="type_add">
+                                                                                                                                <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                                 <div class="form-group" style="display: none;" id="form_tambah_level_12_bua">
                                                                                                                                     <div class="row">
                                                                                                                                         <div class="col-md-12">
@@ -11117,8 +11117,8 @@
                                                                                             <div class="modal-body">
                                                                                                 <form action="javascript:;" method="post" id="form_simpan_level_5_sdm">
                                                                                                     <input type="hidden" name="id_detail_sdm_2">
-                                                                                                    <input type="text" name="type_add">
-                                                                                                    <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                    <input type="hidden" name="type_add">
+                                                                                                    <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                     <div class="form-group" style="display: none;" id="form_tambah_level_5_sdm">
                                                                                                         <div class="row">
                                                                                                             <div class="col-md-12">
@@ -11697,8 +11697,8 @@
                                                                                                     <div class="modal-body">
                                                                                                         <form action="javascript:;" method="post" id="form_simpan_level_7_sdm">
                                                                                                             <input type="hidden" name="id_detail_sdm_4">
-                                                                                                            <input type="text" name="type_add">
-                                                                                                            <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                            <input type="hidden" name="type_add">
+                                                                                                            <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                             <div class="form-group" style="display: none;" id="form_tambah_level_7_sdm">
                                                                                                                 <div class="row">
                                                                                                                     <div class="col-md-12">
@@ -11988,8 +11988,8 @@
                                                                                                         <div class="modal-body">
                                                                                                             <form action="javascript:;" method="post" id="form_simpan_level_8_sdm">
                                                                                                                 <input type="hidden" name="id_detail_sdm_5">
-                                                                                                                <input type="text" name="type_add">
-                                                                                                                <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                <input type="hidden" name="type_add">
+                                                                                                                <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                 <div class="form-group" style="display: none;" id="form_tambah_level_8_sdm">
                                                                                                                     <div class="row">
                                                                                                                         <div class="col-md-12">
@@ -12279,8 +12279,8 @@
                                                                                                             <div class="modal-body">
                                                                                                                 <form action="javascript:;" method="post" id="form_simpan_level_9_sdm">
                                                                                                                     <input type="hidden" name="id_detail_sdm_6">
-                                                                                                                    <input type="text" name="type_add">
-                                                                                                                    <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                    <input type="hidden" name="type_add">
+                                                                                                                    <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                     <div class="form-group" style="display: none;" id="form_tambah_level_9_sdm">
                                                                                                                         <div class="row">
                                                                                                                             <div class="col-md-12">
@@ -12567,8 +12567,8 @@
                                                                                                                 <div class="modal-body">
                                                                                                                     <form action="javascript:;" method="post" id="form_simpan_level_10_sdm">
                                                                                                                         <input type="hidden" name="id_detail_sdm_7">
-                                                                                                                        <input type="text" name="type_add">
-                                                                                                                        <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                        <input type="hidden" name="type_add">
+                                                                                                                        <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                         <div class="form-group" style="display: none;" id="form_tambah_level_10_sdm">
                                                                                                                             <div class="row">
                                                                                                                                 <div class="col-md-12">
@@ -12853,8 +12853,8 @@
                                                                                                                     <div class="modal-body">
                                                                                                                         <form action="javascript:;" method="post" id="form_simpan_level_11_sdm">
                                                                                                                             <input type="hidden" name="id_detail_sdm_8">
-                                                                                                                            <input type="text" name="type_add">
-                                                                                                                            <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                            <input type="hidden" name="type_add">
+                                                                                                                            <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                             <div class="form-group" style="display: none;" id="form_tambah_level_11_sdm">
                                                                                                                                 <div class="row">
                                                                                                                                     <div class="col-md-12">
@@ -13140,8 +13140,8 @@
                                                                                                                         <div class="modal-body">
                                                                                                                             <form action="javascript:;" method="post" id="form_simpan_level_12_sdm">
                                                                                                                                 <input type="hidden" name="id_detail_sdm_9">
-                                                                                                                                <input type="text" name="type_add">
-                                                                                                                                <input type="text" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
+                                                                                                                                <input type="hidden" name="type_add">
+                                                                                                                                <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                                                                                                                                 <div class="form-group" style="display: none;" id="form_tambah_level_12_sdm">
                                                                                                                                     <div class="row">
                                                                                                                                         <div class="col-md-12">

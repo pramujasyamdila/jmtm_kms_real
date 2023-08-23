@@ -1562,3 +1562,100 @@
         });
     });
 </script>
+
+<script>
+    var modal_edit_pagu = $('#modal_edit_pagu');
+    var form_edit_pagu = $('#form_edit_pagu');
+
+    function Edit_pagu(id_detail_sub_program_penyedia_jasa) {
+        $.ajax({
+            type: 'GET',
+            url: '<?= base_url('admin/administrasi_penyedia/get_detail_sub_program/') ?>' + id_detail_sub_program_penyedia_jasa,
+            async: false,
+            dataType: 'json',
+            success: function(response) {
+                modal_edit_pagu.modal('show')
+                $('[name="id_detail_sub_program_penyedia_jasa"]').val(response['row_sub_program'].id_detail_sub_program_penyedia_jasa);
+                $('[name="nilai_program_mata_anggran"]').val(response['row_sub_program'].nilai_program_mata_anggran);
+            }
+        })
+    }
+
+    function save_edit_pagu() {
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/administrasi_penyedia/update_nilai_pagu') ?>",
+            data: form_edit_pagu.serialize(),
+            dataType: "JSON",
+            success: function(response) {
+                if (response == 'success') {
+                    modal_edit_pagu.modal('hide')
+                    message('success', 'Pagu Berhasil Di Update!', 'Berhasil');
+                    location.reload()
+                }
+            }
+        })
+    }
+    $(".nilai_program_mata_anggran").keyup(function() {
+        var harga = $(".nilai_program_mata_anggran").val();
+        var tanpa_rupiah = document.getElementById('rupiah_nilai_program_mata_anggran');
+        tanpa_rupiah.value = formatRupiah(this.value, 'Rp. ');
+        /* Fungsi */
+        function formatRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                split = number_string.split(','),
+                sisa = split[0].length % 3,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+        }
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#table_list_program').DataTable({
+            "autoWidth": false,
+            responsive: false,
+            paging: false,
+            searching: true,
+            lengthChange: false,
+            sorting: true,
+            pageLength: 200,
+            scrollY: 300,
+            scrollX: 300,
+            scrollCollapse: true,
+            fixedHeader: {
+                header: true,
+            },
+            dom: '<"dt-top-container"<l><"dt-center-in-div"B><f>r>t<"dt-filter-spacer"f><ip>',
+            buttons: [{
+                    extend: 'copyHtml5',
+                    text: '<i class="fas fa-file"> Copy</i>',
+                    titleAttr: 'Copy'
+                },
+                {
+                    extend: 'excelHtml5',
+                    text: '<i class="fas fa-file-excel"> Excel</i>',
+                    titleAttr: 'Excel'
+                },
+                {
+                    extend: 'csvHtml5',
+                    text: '<i class="fas fa-file"> Csv</i>',
+                    titleAttr: 'CSV'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    text: '<i class="fas fa-file-pdf"> Pdf</i>',
+                    titleAttr: 'PDF'
+                }
+            ]
+        });
+    });
+</script>

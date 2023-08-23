@@ -181,7 +181,7 @@
                                                 <th class="text-center text-white" style="width:100px;background-color: #193B53;" rowspan="2">Area</th>
                                                 <th class="text-center text-white" style="width:100px;background-color: #193B53;" rowspan="2">Sub Area</th>
                                                 <th class="text-center" style="width:100px" rowspan="2">No Kontrak</th>
-                                                <th class="text-center" style="width:100px" rowspan="2">Tahun Kontrak</th>
+                                                <th class="text-center" style="width:100px" rowspan="2">Tanggal Kontrak</th>
                                                 <th class="text-center" style="width:100px" rowspan="2">Tahun Anggaran</th>
                                                 <th class="text-center" colspan="3">Informasi Addendum Terakhir</th>
                                                 <th class="text-center" style="width:100px" rowspan="2">Jenis Kontrak</th>
@@ -291,7 +291,7 @@
                                             </div>
 
                                             <div class="col-md-6">
-                                                <label for="">Tahun Kontrak</label>
+                                                <label for="">Tanggal Kontrak</label>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">
@@ -304,7 +304,7 @@
                                             <div class="col-md-6">
                                                 <label for="">Jenis Kontrak</label>
                                                 <select class="form-control" name="jenis_kontrak">
-                                                    <option value="Lumpsum">Capex At Cost,Opex Lumpsum</option>
+                                                    <option value="Capex at Cost, Opex Lumpsum">Capex At Cost,Opex Lumpsum</option>
                                                     <option value="Unit Price">Unit Price</option>
                                                 </select>
                                             </div>
