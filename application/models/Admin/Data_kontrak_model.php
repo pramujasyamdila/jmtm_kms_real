@@ -6735,4 +6735,13 @@ class Data_kontrak_model extends CI_Model
         $this->db->update('tbl_rekap_hps', $data, $where);
         return $this->db->affected_rows();
     }
+
+    public function cek_no_urut_tbl_hps_penyedia_kontrak_1($id_detail_program_penyedia_jasa, $id_detail_sub_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_hps_penyedia_kontrak_1');
+        $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_sub_program_penyedia_jasa', $id_detail_sub_program_penyedia_jasa);
+        return $this->db->count_all_results();
+    }
 }

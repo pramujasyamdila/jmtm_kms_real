@@ -470,6 +470,8 @@
                     $('[name="satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].satuan_hps);
                     $('[name="volume_hps"]').val(response['get_hps_penyedia_kontrak_1'].volume_hps);
                     $('[name="harga_satuan_hps"]').val(response['get_hps_penyedia_kontrak_1'].harga_satuan_hps);
+                    $('[name="tkdn"]').val(response['get_hps_penyedia_kontrak_1'].tkdn);
+                    $('.modal-title').html('Edit Uraian');
                     // edit
                     $('#edit_1').css('display', 'none');
                     $('#edit_2').css('display', 'block');
@@ -3266,4 +3268,71 @@
         table.buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');
 
     });
+</script>
+
+<script>
+    var modal_tambah_dkh = $('#modal_tambah_dkh');
+    var form_tambah = $('#form_tambah')
+
+    function tambah_uraian(id_detail_sub_program_penyedia_jasa) {
+        var id_detail_program_penyedia_jasa = $('[name="id_detail_program_penyedia_jasa"]').val();
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/Administrasi_penyedia/get_sub_program_penyedia') ?>",
+            data: {
+                id_detail_sub_program_penyedia_jasa: id_detail_sub_program_penyedia_jasa,
+                id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
+            },
+            dataType: "JSON",
+            success: function(response) {
+                $('.modal-title').html('Tambah Uraian');
+                modal_tambah_dkh.modal('show');
+                $('[name="id_detail_program_penyedia_jasa"]').val(response['row_sub_program'].id_detail_program_penyedia_jasa);
+                $('[name="id_detail_sub_program_penyedia_jasa"]').val(response['row_sub_program'].id_detail_sub_program_penyedia_jasa);
+                $('#simpan_1').css('display', 'block');
+                $('#simpan_2').css('display', 'none');
+                $('#simpan_3').css('display', 'none');
+                $('#simpan_4').css('display', 'none');
+                $('#simpan_5').css('display', 'none');
+                // edit
+                $('#edit_1').css('display', 'none');
+                $('#edit_2').css('display', 'none');
+                $('#edit_3').css('display', 'none');
+                $('#edit_4').css('display', 'none');
+                $('#edit_5').css('display', 'none');
+            }
+        })
+    }
+
+    function save_hps_penyedia_kontrak_1(simpan) {
+        if (simpan == 'simpan') {
+            $.ajax({
+                method: "POST",
+                url: "<?= base_url('administrasi_kontrak/administrasi_kontrak/tambah_hps_penyedia_kontrak_1') ?>",
+                data: form_tambah.serialize(),
+                dataType: "JSON",
+                success: function(response) {
+                    if (response == 'success') {
+                        modal_tambah_dkh.modal('hide');
+                        message('success', 'Data Berhasil Di Simpan!', 'Berhasil')
+                        location.reload()
+                    }
+                }
+            })
+        } else {
+            $.ajax({
+                method: "POST",
+                url: "<?= base_url('administrasi_kontrak/administrasi_kontrak/edit_hps_penyedia_kontrak_1') ?>",
+                data: form_tambah.serialize(),
+                dataType: "JSON",
+                success: function(response) {
+                    if (response == 'success') {
+                        modal_tambah_dkh.modal('hide');
+                        message('success', 'Data Berhasil Di Simpan!', 'Berhasil')
+                        location.reload()
+                    }
+                }
+            })
+        }
+    }
 </script>

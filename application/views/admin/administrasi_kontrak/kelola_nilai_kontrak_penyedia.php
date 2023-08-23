@@ -260,6 +260,39 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <br>
+                                                                <div class="card">
+                                                                    <div class="card-header bg-warning text-white">
+                                                                        PENJELASAN REKAP
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <table class="table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>No</th>
+                                                                                    <th>Mata Anggaran</th>
+                                                                                    <th>Tahun Anggaran</th>
+                                                                                    <th>Subtotal (Sebelum PPN)</th>
+                                                                                    <th>PPN</th>
+                                                                                    <th>Subtotal (Setelah PPN)</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <?php $nomor = 1;
+                                                                                foreach ($result_rekap_hps as $key => $value) { ?>
+                                                                                    <tr>
+                                                                                        <td><?= $nomor++ ?></td>
+                                                                                        <td><?= $value['nama_program_mata_anggaran'] ?></td>
+                                                                                        <td><?= $value['tahun_anggaran'] ?></td>
+                                                                                        <td><?= "Rp " . number_format($value['total_sebelum_ppn'], 2, ',', '.') ?></td>
+                                                                                        <td><?= "Rp " . number_format($value['ppn'], 2, ',', '.') ?></td>
+                                                                                        <td><?= "Rp " . number_format($value['total_setelah_ppn'], 2, ',', '.') ?></td>
+                                                                                    </tr>
+                                                                                <?php } ?>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
                                                                 <ul class="nav nav-tabs" id="myTab">
                                                                     <?php foreach ($result_sub_program as $key => $value) { ?>
                                                                         <li>
@@ -277,19 +310,22 @@
                                                                                         <i>
                                                                                             DKH <?= $value['nama_program_mata_anggaran'] ?>
                                                                                         </i>
+
                                                                                     </div>
                                                                                     <div class="card-body">
                                                                                         <table class="table table-bordered table-striped" style="font-family: RNSSanz-Black;text-transform: uppercase;">
                                                                                             <thead style="font-size: 12px;" class="thead-inverse bg-primary">
                                                                                                 <tr style="background-color: #193B53;">
                                                                                                     <th class="text-white">No</th>
-                                                                                                    <th class="text-white">No Mata Anggaran</th>
+                                                                                                    <th class="text-white">Nomor Mata Pembayaran</th>
                                                                                                     <th class="text-white">Uraian</th>
                                                                                                     <th class="text-white">Satuan</th>
                                                                                                     <th class="text-white">Kuantitas</th>
                                                                                                     <th class="text-white">Harga Satuan</th>
                                                                                                     <th class="text-white">Jumlah Harga</th>
-
+                                                                                                    <th class="text-white">TKDN</th>
+                                                                                                    <th class="text-white">Harga Satuan TKDN</th>
+                                                                                                    <th class="text-white">Jumlah Harga TKDN</th>
                                                                                                 </tr>
                                                                                             </thead>
                                                                                             <tbody style="font-size: 10px;">
@@ -311,7 +347,7 @@
                                                                                                     }
                                                                                                     ?>
                                                                                                     <tr>
-                                                                                                        <td> &nbsp;<?= $value_hps_penyedia_1['no_urut'] ?></td>
+                                                                                                        <td> &nbsp;<?= $no++ ?></td>
                                                                                                         <td><?= $value_hps_penyedia_1['no_hps'] ?></td>
                                                                                                         <td><?= $value_hps_penyedia_1['uraian_hps'] ?></td>
                                                                                                         <td><?= $value_hps_penyedia_1['satuan_hps'] ?></td>
@@ -328,155 +364,10 @@
                                                                                                             <td></td>
                                                                                                         <?php }
                                                                                                         ?>
+                                                                                                        <td><?= $value_hps_penyedia_1['tkdn'] ?>%</td>
+                                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_1['harga_satuan_tkdn'], 2, ',', '.') ?></td>
+                                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_1['jumlah_harga_tkdn'], 2, ',', '.') ?></td>
                                                                                                     </tr>
-                                                                                                    <?php
-                                                                                                    $this->db->select('*');
-                                                                                                    $this->db->from('tbl_hps_penyedia_2');
-                                                                                                    $this->db->where('tbl_hps_penyedia_2.id_hps_penyedia_1', $id_hps_penyedia_1);
-                                                                                                    $this->db->order_by('no_urut', 'ASC');
-                                                                                                    $query_tbl_hps_penyedia_2 = $this->db->get() ?>
-                                                                                                    <?php
-                                                                                                    foreach ($query_tbl_hps_penyedia_2->result_array() as $key => $value_hps_penyedia_2) { ?>
-                                                                                                        <?php
-                                                                                                        $id_hps_penyedia_2 = $value_hps_penyedia_2['id_hps_penyedia_2'];
-                                                                                                        if ($value_hps_penyedia_2['total_harga']) {
-                                                                                                            $total_hps_penyedia_2 +=  $value_hps_penyedia_2['total_harga'];
-                                                                                                        } else {
-                                                                                                            $total_hps_penyedia_2 +=  0;
-                                                                                                        }
-                                                                                                        ?>
-                                                                                                        <tr>
-                                                                                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_2['no_urut'] ?></td>
-                                                                                                            <td><?= $value_hps_penyedia_2['no_hps'] ?></td>
-                                                                                                            <td><?= $value_hps_penyedia_2['uraian_hps'] ?></td>
-                                                                                                            <td><?= $value_hps_penyedia_2['satuan_hps'] ?></td>
-                                                                                                            <td><?= $value_hps_penyedia_2['volume_hps'] ?></td>
-                                                                                                            <?php if ($value_hps_penyedia_2['harga_satuan_hps']) { ?>
-                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_2['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                                                                                            <?php  } else { ?>
-                                                                                                                <td></td>
-                                                                                                            <?php }
-                                                                                                            ?>
-                                                                                                            <?php if ($value_hps_penyedia_2['total_harga']) { ?>
-                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_2['total_harga'], 2, ',', '.') ?></td>
-                                                                                                            <?php  } else { ?>
-                                                                                                                <td></td>
-                                                                                                            <?php }
-                                                                                                            ?>
-
-                                                                                                        </tr>
-                                                                                                        <?php
-                                                                                                        $this->db->select('*');
-                                                                                                        $this->db->from('tbl_hps_penyedia_3');
-                                                                                                        $this->db->where('tbl_hps_penyedia_3.id_hps_penyedia_2', $id_hps_penyedia_2);
-                                                                                                        $this->db->order_by('no_urut', 'ASC');
-                                                                                                        $query_tbl_hps_penyedia_3 = $this->db->get() ?>
-                                                                                                        <?php
-                                                                                                        foreach ($query_tbl_hps_penyedia_3->result_array() as $key => $value_hps_penyedia_3) { ?>
-                                                                                                            <?php
-                                                                                                            $id_hps_penyedia_3 = $value_hps_penyedia_3['id_hps_penyedia_3'];
-                                                                                                            if ($value_hps_penyedia_3['total_harga']) {
-                                                                                                                $total_hps_penyedia_3 +=  $value_hps_penyedia_3['total_harga'];
-                                                                                                            } else {
-                                                                                                                $total_hps_penyedia_3 +=  0;
-                                                                                                            }
-                                                                                                            ?>
-                                                                                                            <tr>
-                                                                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_3['no_urut'] ?></td>
-                                                                                                                <td><?= $value_hps_penyedia_3['no_hps'] ?></td>
-                                                                                                                <td><?= $value_hps_penyedia_3['uraian_hps'] ?></td>
-                                                                                                                <td><?= $value_hps_penyedia_3['satuan_hps'] ?></td>
-                                                                                                                <td><?= $value_hps_penyedia_3['volume_hps'] ?></td>
-                                                                                                                <?php if ($value_hps_penyedia_3['harga_satuan_hps']) { ?>
-                                                                                                                    <td><?= "Rp " . number_format($value_hps_penyedia_3['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                                                                                                <?php  } else { ?>
-                                                                                                                    <td></td>
-                                                                                                                <?php }
-                                                                                                                ?>
-                                                                                                                <?php if ($value_hps_penyedia_3['total_harga']) { ?>
-                                                                                                                    <td><?= "Rp " . number_format($value_hps_penyedia_3['total_harga'], 2, ',', '.') ?></td>
-                                                                                                                <?php  } else { ?>
-                                                                                                                    <td></td>
-                                                                                                                <?php }
-                                                                                                                ?>
-
-                                                                                                            </tr>
-                                                                                                            <?php
-                                                                                                            $this->db->select('*');
-                                                                                                            $this->db->from('tbl_hps_penyedia_4');
-                                                                                                            $this->db->where('tbl_hps_penyedia_4.id_hps_penyedia_3', $id_hps_penyedia_3);
-                                                                                                            $this->db->order_by('no_urut', 'ASC');
-                                                                                                            $query_tbl_hps_penyedia_4 = $this->db->get() ?>
-                                                                                                            <?php
-                                                                                                            foreach ($query_tbl_hps_penyedia_4->result_array() as $key => $value_hps_penyedia_4) { ?>
-                                                                                                                <?php
-                                                                                                                $id_hps_penyedia_4 = $value_hps_penyedia_4['id_hps_penyedia_4'];
-                                                                                                                if ($value_hps_penyedia_4['total_harga']) {
-                                                                                                                    $total_hps_penyedia_4 +=  $value_hps_penyedia_4['total_harga'];
-                                                                                                                } else {
-                                                                                                                    $total_hps_penyedia_4 +=  0;
-                                                                                                                }
-                                                                                                                ?>
-                                                                                                                <tr>
-                                                                                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_4['no_urut'] ?></td>
-                                                                                                                    <td><?= $value_hps_penyedia_4['no_hps'] ?></td>
-                                                                                                                    <td><?= $value_hps_penyedia_4['uraian_hps'] ?></td>
-                                                                                                                    <td><?= $value_hps_penyedia_4['satuan_hps'] ?></td>
-                                                                                                                    <td><?= $value_hps_penyedia_4['volume_hps'] ?></td>
-                                                                                                                    <?php if ($value_hps_penyedia_4['harga_satuan_hps']) { ?>
-                                                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_4['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                                                                                                    <?php  } else { ?>
-                                                                                                                        <td></td>
-                                                                                                                    <?php }
-                                                                                                                    ?>
-                                                                                                                    <?php if ($value_hps_penyedia_4['total_harga']) { ?>
-                                                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_4['total_harga'], 2, ',', '.') ?></td>
-                                                                                                                    <?php  } else { ?>
-                                                                                                                        <td></td>
-                                                                                                                    <?php }
-                                                                                                                    ?>
-
-                                                                                                                </tr>
-                                                                                                                <?php
-                                                                                                                $this->db->select('*');
-                                                                                                                $this->db->from('tbl_hps_penyedia_5');
-                                                                                                                $this->db->where('tbl_hps_penyedia_5.id_hps_penyedia_4', $id_hps_penyedia_4);
-                                                                                                                $this->db->order_by('no_urut', 'ASC');
-                                                                                                                $query_tbl_hps_penyedia_5 = $this->db->get() ?>
-                                                                                                                <?php
-                                                                                                                foreach ($query_tbl_hps_penyedia_5->result_array() as $key => $value_hps_penyedia_5) { ?>
-                                                                                                                    <?php
-                                                                                                                    $id_hps_penyedia_5 = $value_hps_penyedia_5['id_hps_penyedia_5'];
-                                                                                                                    if ($value_hps_penyedia_5['total_harga']) {
-                                                                                                                        $total_hps_penyedia_5 +=  $value_hps_penyedia_5['total_harga'];
-                                                                                                                    } else {
-                                                                                                                        $total_hps_penyedia_5 +=  0;
-                                                                                                                    }
-                                                                                                                    ?>
-                                                                                                                    <tr>
-                                                                                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_5['no_urut'] ?></td>
-                                                                                                                        <td><?= $value_hps_penyedia_5['no_hps'] ?></td>
-                                                                                                                        <td><?= $value_hps_penyedia_5['uraian_hps'] ?></td>
-                                                                                                                        <td><?= $value_hps_penyedia_5['satuan_hps'] ?></td>
-                                                                                                                        <td><?= $value_hps_penyedia_5['volume_hps'] ?></td>
-                                                                                                                        <?php if ($value_hps_penyedia_5['harga_satuan_hps']) { ?>
-                                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_5['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                                                                                                        <?php  } else { ?>
-                                                                                                                            <td></td>
-                                                                                                                        <?php }
-                                                                                                                        ?>
-                                                                                                                        <?php if ($value_hps_penyedia_5['total_harga']) { ?>
-                                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_5['total_harga'], 2, ',', '.') ?></td>
-                                                                                                                        <?php  } else { ?>
-                                                                                                                            <td></td>
-                                                                                                                        <?php }
-                                                                                                                        ?>
-
-                                                                                                                    </tr>
-                                                                                                                <?php } ?>
-                                                                                                            <?php } ?>
-                                                                                                        <?php } ?>
-                                                                                                    <?php } ?>
                                                                                                 <?php } ?>
                                                                                             </tbody>
                                                                                             <tfoot>
@@ -534,6 +425,78 @@
                                                                 </ul>
                                                                 <div class="tab-content mt-3">
                                                                     <?php foreach ($result_sub_program as $key => $value) { ?>
+                                                                        <div class="modal fade" data-backdrop="false" id="modal_tambah_dkh" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                                                            <div class="modal-dialog" role="document">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header bg-primary text-white">
+                                                                                        <h5 class="modal-title">Tambah Uraian</h5>
+                                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <form action="javascript:;" id="form_tambah" method="post">
+                                                                                            <!-- hps_penyedia_1 -->
+                                                                                            <input type="hidden" name="id_detail_sub_program_penyedia_jasa">
+                                                                                            <input type="hidden" name="id_detail_program_penyedia_jasa">
+                                                                                            <input type="hidden" name="id_hps_penyedia_kontrak_1">
+                                                                                            <!--  -->
+                                                                                            <div class="form-group">
+                                                                                                <label for="">No Mata Anggaran</label>
+                                                                                                <input type="text" name="no_hps" required class="form-control form-control-sm" placeholder="No Hps">
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="">Uraian</label>
+                                                                                                <input type="text" name="uraian_hps" required class="form-control form-control-sm" placeholder="Uraian">
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="">Satuan</label>
+                                                                                                <input type="text" name="satuan_hps" required class="form-control form-control-sm" placeholder="Satuan">
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="">Volume</label>
+                                                                                                <input type="number" id="volume" required name="volume_hps" class="form-control form-control-sm" placeholder="Volume">
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="">Tkdn</label>
+                                                                                                <input type="number" id="tkdn" required name="tkdn" class="form-control form-control-sm" placeholder="Tkdn">
+                                                                                            </div>
+                                                                                            <label for="">Harga Satuan</label>
+                                                                                            <div class="input-group mb-3">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-6">
+                                                                                                        <div class="input-group-prepend">
+                                                                                                            <span class="input-group-text">
+                                                                                                                <i class="fa fa-money-bill-alt" aria-hidden="true"></i>
+                                                                                                            </span>
+                                                                                                            <input type="number" class="form-control" name="harga_satuan_hps" id="harga_satuan_hps" aria-describedby="helpId" placeholder="Harga Satuan">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-6">
+                                                                                                        <input type="text" disabled class="float-right form-control form-control-sm mt-1" style="width: 200px;" id="tanpa-rupiah2">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                        <!-- simpan -->
+                                                                                        <button type="button" style="display: none;" class="btn btn-primary" id="simpan_1" onclick="save_hps_penyedia_kontrak_1('simpan')">Save</button>
+                                                                                        <button type="button" style="display: none;" class="btn btn-primary" id="simpan_2" onclick="save_hps_penyedia_kontrak_1('simpan')">Save 2</button>
+                                                                                        <button type="button" style="display: none;" class="btn btn-primary" id="simpan_3" onclick="save_hps_penyedia_kontrak_1('simpan')">Save 3</button>
+                                                                                        <button type="button" style="display: none;" class="btn btn-primary" id="simpan_4" onclick="save_hps_penyedia_kontrak_1('simpan')">Save 4</button>
+                                                                                        <button type="button" style="display: none;" class="btn btn-primary" id="simpan_5" onclick="save_hps_penyedia_kontrak_1('simpan')">Save 5</button>
+                                                                                        <!-- edit -->
+                                                                                        <button type="button" style="display: none;" class="btn btn-primary" id="edit_1" onclick="save_hps_penyedia_kontrak_1('edit')">Update</button>
+                                                                                        <button type="button" style="display: none;" class="btn btn-primary" id="edit_2" onclick="save_hps_penyedia_kontrak_1('edit')">Update 2</button>
+                                                                                        <button type="button" style="display: none;" class="btn btn-primary" id="edit_3" onclick="save_hps_penyedia_kontrak_1('edit')">Update 3</button>
+                                                                                        <button type="button" style="display: none;" class="btn btn-primary" id="edit_4" onclick="save_hps_penyedia_kontrak_1('edit')">Update 4</button>
+                                                                                        <button type="button" style="display: none;" class="btn btn-primary" id="edit_5" onclick="save_hps_penyedia_kontrak_1('edit')">Update 5</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="tab-pane fade show" id="kirun_kontrak<?= $value['id_detail_sub_program_penyedia_jasa'] ?>">
                                                                             <div class="content">
                                                                                 <br>
@@ -543,17 +506,31 @@
                                                                                             NILAI KONTRAK AWAL <?= $value['nama_program_mata_anggaran'] ?>
                                                                                         </i>
                                                                                     </div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-8">
+
+                                                                                        </div>
+                                                                                        <div class="col-md-4">
+                                                                                            <div class="card-header-action">
+                                                                                                <a class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"> <i class="fas fa fa-file"></i> Buat Uraian Dengan Excel</a>
+                                                                                                <a class="btn btn-sm btn-info" href="javascript:;" onclick="tambah_uraian(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"><i class="fas fa fa-plus"></i> Buat Uraian</a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
                                                                                     <div class="card-body">
                                                                                         <table class="table table-bordered table-striped">
                                                                                             <thead style="font-size: 12px;" class="thead-inverse bg-primary">
                                                                                                 <tr>
                                                                                                     <th class="text-white">No</th>
-                                                                                                    <th class="text-white">No Mata Anggaranasd</th>
+                                                                                                    <th class="text-white">No Mata Anggaran</th>
                                                                                                     <th class="text-white">Uraian</th>
                                                                                                     <th class="text-white">Satuan</th>
                                                                                                     <th class="text-white">Kuantitas</th>
                                                                                                     <th class="text-white">Harga Satuan</th>
                                                                                                     <th class="text-white">Jumlah Harga</th>
+                                                                                                    <th class="text-white">TKDN</th>
+                                                                                                    <th class="text-white">Harga Satuan TKDN</th>
+                                                                                                    <th class="text-white">Jumlah Harga TKDN</th>
                                                                                                     <th class="text-white">Action</th>
                                                                                                 </tr>
                                                                                             </thead>
@@ -567,6 +544,7 @@
                                                                                                 $this->db->order_by('no_urut', 'ASC');
                                                                                                 $query_tbl_hps_penyedia_kontrak_1 = $this->db->get() ?>
                                                                                                 <?php
+                                                                                                $nomor = 1;
                                                                                                 foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) { ?>
                                                                                                     <?php
                                                                                                     $id_refrence_hps_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
@@ -577,7 +555,7 @@
                                                                                                     }
                                                                                                     ?>
                                                                                                     <tr>
-                                                                                                        <td> &nbsp;<?= $value_hps_penyedia_kontrak_1['no_urut'] ?></td>
+                                                                                                        <td> &nbsp;<?= $nomor++ ?></td>
                                                                                                         <td><?= $value_hps_penyedia_kontrak_1['no_hps'] ?></td>
                                                                                                         <td><?= $value_hps_penyedia_kontrak_1['uraian_hps'] ?></td>
                                                                                                         <td><?= $value_hps_penyedia_kontrak_1['satuan_hps'] ?></td>
@@ -594,10 +572,28 @@
                                                                                                             <td></td>
                                                                                                         <?php }
                                                                                                         ?>
-
-
+                                                                                                        <td><?= $value_hps_penyedia_kontrak_1['tkdn'] ?>%</td>
+                                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_tkdn'], 2, ',', '.') ?></td>
+                                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['jumlah_harga_tkdn'], 2, ',', '.') ?></td>
                                                                                                         <td>
                                                                                                             <div class="btn-group">
+                                                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                    <span class="sr-only">Toggle Dropdown</span>
+                                                                                                                </button>
+                                                                                                                <div class="dropdown-menu" role="menu">
+                                                                                                                    <?php if ($value_hps_penyedia_kontrak_1['total_harga']) { ?>
+                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
+                                                                                                                    <?php  } else { ?>
+                                                                                                                        <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>)"> <i class="fas fa fa-file"></i></a>
+                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
+                                                                                                                    <?php } ?>
+
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <!-- <div class="btn-group">
                                                                                                                 <button type="button" class="btn btn-default">Action</button>
                                                                                                                 <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                     <span class="sr-only">Toggle Dropdown</span>
@@ -605,198 +601,9 @@
                                                                                                                 <div class="dropdown-menu" role="menu">
                                                                                                                     <a onclick="modal_hps_penyedia_kontrak_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit Turunan"><i class="fas fa-edit"></i></a>
                                                                                                                 </div>
-                                                                                                            </div>
+                                                                                                            </div> -->
                                                                                                         </td>
                                                                                                     </tr>
-                                                                                                    <?php
-                                                                                                    $this->db->select('*');
-                                                                                                    $this->db->from('tbl_hps_penyedia_kontrak_2');
-                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_refrence_hps_hps_penyedia_kontrak_1);
-                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_2.item_baru', 'kosong');
-                                                                                                    $this->db->order_by('no_urut', 'ASC');
-                                                                                                    $query_tbl_hps_penyedia_kontrak_2 = $this->db->get() ?>
-                                                                                                    <?php
-                                                                                                    foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) { ?>
-                                                                                                        <?php
-                                                                                                        $id_refrence_hps_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
-                                                                                                        if ($value_hps_penyedia_kontrak_2['total_harga']) {
-                                                                                                            $total_hps_penyedia_kontrak_2 +=  $value_hps_penyedia_kontrak_2['total_harga'];
-                                                                                                        } else {
-                                                                                                            $total_hps_penyedia_kontrak_2 +=  0;
-                                                                                                        }
-                                                                                                        ?>
-                                                                                                        <tr>
-                                                                                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_kontrak_2['no_urut'] ?></td>
-                                                                                                            <td><?= $value_hps_penyedia_kontrak_2['no_hps'] ?></td>
-                                                                                                            <td><?= $value_hps_penyedia_kontrak_2['uraian_hps'] ?></td>
-                                                                                                            <td><?= $value_hps_penyedia_kontrak_2['satuan_hps'] ?></td>
-                                                                                                            <td><?= $value_hps_penyedia_kontrak_2['volume_hps'] ?></td>
-                                                                                                            <?php if ($value_hps_penyedia_kontrak_2['harga_satuan_hps']) { ?>
-                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_2['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                                                                                            <?php  } else { ?>
-                                                                                                                <td></td>
-                                                                                                            <?php }
-                                                                                                            ?>
-                                                                                                            <?php if ($value_hps_penyedia_kontrak_2['total_harga']) { ?>
-                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_2['total_harga'], 2, ',', '.') ?></td>
-                                                                                                            <?php  } else { ?>
-                                                                                                                <td></td>
-                                                                                                            <?php }
-                                                                                                            ?>
-                                                                                                            <td>
-                                                                                                                <div class="btn-group">
-                                                                                                                    <button type="button" class="btn btn-default">Action</button>
-                                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                                                        <span class="sr-only">Toggle Dropdown</span>
-                                                                                                                    </button>
-                                                                                                                    <div class="dropdown-menu" role="menu">
-                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_3(<?= $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-edit"></i></a>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <?php
-                                                                                                        $this->db->select('*');
-                                                                                                        $this->db->from('tbl_hps_penyedia_kontrak_3');
-                                                                                                        $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_refrence_hps_hps_penyedia_kontrak_2);
-                                                                                                        $this->db->order_by('no_urut', 'ASC');
-                                                                                                        $query_tbl_hps_penyedia_kontrak_3 = $this->db->get() ?>
-                                                                                                        <?php
-                                                                                                        foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) { ?>
-                                                                                                            <?php
-                                                                                                            $id_refrence_hps_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
-                                                                                                            if ($value_hps_penyedia_kontrak_3['total_harga']) {
-                                                                                                                $total_hps_penyedia_kontrak_3 +=  $value_hps_penyedia_kontrak_3['total_harga'];
-                                                                                                            } else {
-                                                                                                                $total_hps_penyedia_kontrak_3 +=  0;
-                                                                                                            }
-                                                                                                            ?>
-                                                                                                            <tr>
-                                                                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_kontrak_3['no_urut'] ?></td>
-                                                                                                                <td><?= $value_hps_penyedia_kontrak_3['no_hps'] ?></td>
-                                                                                                                <td><?= $value_hps_penyedia_kontrak_3['uraian_hps'] ?></td>
-                                                                                                                <td><?= $value_hps_penyedia_kontrak_3['satuan_hps'] ?></td>
-                                                                                                                <td><?= $value_hps_penyedia_kontrak_3['volume_hps'] ?></td>
-                                                                                                                <?php if ($value_hps_penyedia_kontrak_3['harga_satuan_hps']) { ?>
-                                                                                                                    <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_3['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                                                                                                <?php  } else { ?>
-                                                                                                                    <td></td>
-                                                                                                                <?php }
-                                                                                                                ?>
-                                                                                                                <?php if ($value_hps_penyedia_kontrak_3['total_harga']) { ?>
-                                                                                                                    <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_3['total_harga'], 2, ',', '.') ?></td>
-                                                                                                                <?php  } else { ?>
-                                                                                                                    <td></td>
-                                                                                                                <?php }
-                                                                                                                ?>
-                                                                                                                <td>
-                                                                                                                    <div class="btn-group">
-                                                                                                                        <button type="button" class="btn btn-default">Action</button>
-                                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                                                            <span class="sr-only">Toggle Dropdown</span>
-                                                                                                                        </button>
-                                                                                                                        <div class="dropdown-menu" role="menu">
-                                                                                                                            <a onclick="modal_hps_penyedia_kontrak_4(<?= $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-edit"></i></a>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </td>
-                                                                                                            </tr>
-                                                                                                            <?php
-                                                                                                            $this->db->select('*');
-                                                                                                            $this->db->from('tbl_hps_penyedia_kontrak_4');
-                                                                                                            $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_refrence_hps_hps_penyedia_kontrak_3);
-                                                                                                            $this->db->order_by('no_urut', 'ASC');
-                                                                                                            $query_tbl_hps_penyedia_kontrak_4 = $this->db->get() ?>
-                                                                                                            <?php
-                                                                                                            foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) { ?>
-                                                                                                                <?php
-                                                                                                                $id_refrence_hps_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
-                                                                                                                if ($value_hps_penyedia_kontrak_4['total_harga']) {
-                                                                                                                    $total_hps_penyedia_kontrak_4 +=  $value_hps_penyedia_kontrak_4['total_harga'];
-                                                                                                                } else {
-                                                                                                                    $total_hps_penyedia_kontrak_4 +=  0;
-                                                                                                                }
-                                                                                                                ?>
-                                                                                                                <tr>
-                                                                                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_kontrak_4['no_urut'] ?></td>
-                                                                                                                    <td><?= $value_hps_penyedia_kontrak_4['no_hps'] ?></td>
-                                                                                                                    <td><?= $value_hps_penyedia_kontrak_4['uraian_hps'] ?></td>
-                                                                                                                    <td><?= $value_hps_penyedia_kontrak_4['satuan_hps'] ?></td>
-                                                                                                                    <td><?= $value_hps_penyedia_kontrak_4['volume_hps'] ?></td>
-                                                                                                                    <?php if ($value_hps_penyedia_kontrak_4['harga_satuan_hps']) { ?>
-                                                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_4['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                                                                                                    <?php  } else { ?>
-                                                                                                                        <td></td>
-                                                                                                                    <?php }
-                                                                                                                    ?>
-                                                                                                                    <?php if ($value_hps_penyedia_kontrak_4['total_harga']) { ?>
-                                                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_4['total_harga'], 2, ',', '.') ?></td>
-                                                                                                                    <?php  } else { ?>
-                                                                                                                        <td></td>
-                                                                                                                    <?php }
-                                                                                                                    ?>
-                                                                                                                    <td>
-                                                                                                                        <div class="btn-group">
-                                                                                                                            <button type="button" class="btn btn-default">Action</button>
-                                                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                                                                <span class="sr-only">Toggle Dropdown</span>
-                                                                                                                            </button>
-                                                                                                                            <div class="dropdown-menu" role="menu">
-                                                                                                                                <a onclick="modal_hps_penyedia_kontrak_5(<?= $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-edit"></i></a>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                                <?php
-                                                                                                                $this->db->select('*');
-                                                                                                                $this->db->from('tbl_hps_penyedia_kontrak_5');
-                                                                                                                $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_refrence_hps_hps_penyedia_kontrak_4);
-                                                                                                                $this->db->order_by('no_urut', 'ASC');
-                                                                                                                $query_tbl_hps_penyedia_kontrak_5 = $this->db->get() ?>
-                                                                                                                <?php
-                                                                                                                foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) { ?>
-                                                                                                                    <?php
-                                                                                                                    $id_refrence_hps_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
-                                                                                                                    if ($value_hps_penyedia_kontrak_5['total_harga']) {
-                                                                                                                        $total_hps_penyedia_kontrak_5 +=  $value_hps_penyedia_kontrak_5['total_harga'];
-                                                                                                                    } else {
-                                                                                                                        $total_hps_penyedia_kontrak_5 +=  0;
-                                                                                                                    }
-                                                                                                                    ?>
-                                                                                                                    <tr>
-                                                                                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_kontrak_5['no_urut'] ?></td>
-                                                                                                                        <td><?= $value_hps_penyedia_kontrak_5['no_hps'] ?></td>
-                                                                                                                        <td><?= $value_hps_penyedia_kontrak_5['uraian_hps'] ?></td>
-                                                                                                                        <td><?= $value_hps_penyedia_kontrak_5['satuan_hps'] ?></td>
-                                                                                                                        <td><?= $value_hps_penyedia_kontrak_5['volume_hps'] ?></td>
-                                                                                                                        <?php if ($value_hps_penyedia_kontrak_5['harga_satuan_hps']) { ?>
-                                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_5['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                                                                                                        <?php  } else { ?>
-                                                                                                                            <td></td>
-                                                                                                                        <?php }
-                                                                                                                        ?>
-                                                                                                                        <?php if ($value_hps_penyedia_kontrak_5['total_harga']) { ?>
-                                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_5['total_harga'], 2, ',', '.') ?></td>
-                                                                                                                        <?php  } else { ?>
-                                                                                                                            <td></td>
-                                                                                                                        <?php }
-                                                                                                                        ?>
-                                                                                                                        <td>
-                                                                                                                            <div class="btn-group">
-                                                                                                                                <button type="button" class="btn btn-default">Action</button>
-                                                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                                                                    <span class="sr-only">Toggle Dropdown</span>
-                                                                                                                                </button>
-                                                                                                                                <div class="dropdown-menu" role="menu">
-                                                                                                                                    <a onclick="modal_hps_penyedia_kontrak_6(<?= $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-edit"></i></a>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </td>
-                                                                                                                    </tr>
-                                                                                                                <?php } ?>
-                                                                                                            <?php } ?>
-                                                                                                        <?php } ?>
-                                                                                                    <?php } ?>
                                                                                                 <?php } ?>
                                                                                             </tbody>
                                                                                             <tfoot>
@@ -968,6 +775,17 @@
                                                                         </div>
                                                                     </div>
                                                                     <br>
+                                                                    <div class="row">
+                                                                        <div class="col-md-8">
+
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="card-header-action">
+                                                                                <a class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_addendum(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"> <i class="fas fa fa-file"></i> Buat Uraian Dengan Excel</a>
+                                                                                <a class="btn btn-sm btn-info" href="javascript:;" onclick="tambah_uraian_addendum(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"><i class="fas fa fa-plus"></i> Buat Uraian</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                     <ul class="nav nav-tabs" id="myTabku<?= $value_addendum['no_addendum'] ?>" style="margin-top: 50px;">
                                                                         <?php
                                                                         $this->db->select('*');
@@ -1079,259 +897,6 @@
                                                                                                                 </div>
                                                                                                             </td>
                                                                                                         </tr>
-                                                                                                        <?php
-                                                                                                        $this->db->select('*');
-                                                                                                        $this->db->from('tbl_hps_penyedia_kontrak_2');
-                                                                                                        $this->db->where('tbl_hps_penyedia_kontrak_2.id_hps_penyedia_kontrak_1', $id_refrence_hps_hps_penyedia_kontrak_1);
-                                                                                                        $this->db->where('tbl_hps_penyedia_kontrak_2.uraian_hps' . $field_addendum . '!=', NULL);
-                                                                                                        $this->db->order_by('no_urut', 'ASC');
-                                                                                                        $query_tbl_hps_penyedia_kontrak_2 = $this->db->get() ?>
-
-                                                                                                        <?php
-                                                                                                        foreach ($query_tbl_hps_penyedia_kontrak_2->result_array() as $key => $value_hps_penyedia_kontrak_2) { ?>
-                                                                                                            <?php
-                                                                                                            $id_refrence_hps_hps_penyedia_kontrak_2 = $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'];
-                                                                                                            if ($value_hps_penyedia_kontrak_2['total_harga' . $field_addendum]) {
-                                                                                                                $total_hps_penyedia_kontrak_addendum_2 +=  $value_hps_penyedia_kontrak_2['total_harga' . $field_addendum];
-                                                                                                            } else {
-                                                                                                                $total_hps_penyedia_kontrak_addendum_2 +=  0;
-                                                                                                            }
-                                                                                                            if ($value_hps_penyedia_kontrak_2['volume_hps'] < $value_hps_penyedia_kontrak_2['volume_hps' . $field_addendum]) {
-                                                                                                                $keterangan_volume = '<label for="" class="badge badge-success">Volumen Bertambah</label>';
-                                                                                                            } else if ($value_hps_penyedia_kontrak_2['volume_hps'] == $value_hps_penyedia_kontrak_2['volume_hps' . $field_addendum]) {
-                                                                                                                $keterangan_volume = '';
-                                                                                                            } else {
-                                                                                                                $keterangan_volume = '<label for="" class="badge badge-warning">Volumen Berkurang</label>';
-                                                                                                            }
-                                                                                                            if ($value_hps_penyedia_kontrak_2['harga_satuan_hps'] < $value_hps_penyedia_kontrak_2['harga_satuan_hps' . $field_addendum]) {
-                                                                                                                $timpang = '<a title="Mengalami Timpang Harga" style="font-size:8px;" class="badge badge-sm badge-info"><i class="fas fa fa-info"></i></a>';
-                                                                                                            } else {
-                                                                                                                $timpang = '';
-                                                                                                            }
-                                                                                                            ?>
-                                                                                                            <tr>
-                                                                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_kontrak_2['no_urut'] ?></td>
-                                                                                                                <td><?= $value_hps_penyedia_kontrak_2['no_hps' . $field_addendum] ?></td>
-                                                                                                                <td><?= $value_hps_penyedia_kontrak_2['uraian_hps' . $field_addendum] ?></td>
-                                                                                                                <td><?= $value_hps_penyedia_kontrak_2['satuan_hps' . $field_addendum] ?></td>
-                                                                                                                <td><?= $value_hps_penyedia_kontrak_2['volume_hps' . $field_addendum] ?></td>
-                                                                                                                <?php if ($value_hps_penyedia_kontrak_2['harga_satuan_hps' . $field_addendum]) { ?>
-                                                                                                                    <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_2['harga_satuan_hps' . $field_addendum], 2, ',', '.') ?> <?= $timpang ?></td>
-                                                                                                                <?php  } else { ?>
-                                                                                                                    <td></td>
-                                                                                                                <?php }
-                                                                                                                ?>
-                                                                                                                <?php if ($value_hps_penyedia_kontrak_2['total_harga' . $field_addendum]) { ?>
-                                                                                                                    <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_2['total_harga' . $field_addendum], 2, ',', '.') ?> <?= $timpang ?></td>
-                                                                                                                <?php  } else { ?>
-                                                                                                                    <td></td>
-                                                                                                                <?php }
-                                                                                                                ?>
-
-                                                                                                                <td><?= $keterangan_volume ?></td>
-                                                                                                                <td>
-                                                                                                                    <div class="btn-group">
-                                                                                                                        <button type="button" class="btn btn-default">Action</button>
-                                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                                                            <span class="sr-only">Toggle Dropdown</span>
-                                                                                                                        </button>
-                                                                                                                        <div class="dropdown-menu" role="menu">
-                                                                                                                            <a onclick="modal_hps_penyedia_kontrak_3_addendum(<?= $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'] ?>,'simpan',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
-                                                                                                                            <a onclick="modal_hps_penyedia_kontrak_3_addendum(<?= $value_hps_penyedia_kontrak_2['id_hps_penyedia_kontrak_2'] ?>,'edit',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-edit"></i></a>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </td>
-                                                                                                            </tr>
-                                                                                                            <?php
-                                                                                                            $this->db->select('*');
-                                                                                                            $this->db->from('tbl_hps_penyedia_kontrak_3');
-                                                                                                            $this->db->where('tbl_hps_penyedia_kontrak_3.id_hps_penyedia_kontrak_2', $id_refrence_hps_hps_penyedia_kontrak_2);
-                                                                                                            $this->db->where('tbl_hps_penyedia_kontrak_3.uraian_hps' . $field_addendum . '!=', NULL);
-                                                                                                            $this->db->order_by('no_urut', 'ASC');
-                                                                                                            $query_tbl_hps_penyedia_kontrak_3 = $this->db->get() ?>
-                                                                                                            <?php
-                                                                                                            foreach ($query_tbl_hps_penyedia_kontrak_3->result_array() as $key => $value_hps_penyedia_kontrak_3) { ?>
-                                                                                                                <?php
-                                                                                                                $id_refrence_hps_hps_penyedia_kontrak_3 = $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'];
-                                                                                                                if ($value_hps_penyedia_kontrak_3['total_harga' . $field_addendum]) {
-                                                                                                                    $total_hps_penyedia_kontrak_addendum_3 +=  $value_hps_penyedia_kontrak_3['total_harga' . $field_addendum];
-                                                                                                                } else {
-                                                                                                                    $total_hps_penyedia_kontrak_addendum_3 +=  0;
-                                                                                                                }
-                                                                                                                if ($value_hps_penyedia_kontrak_3['volume_hps'] < $value_hps_penyedia_kontrak_3['volume_hps' . $field_addendum]) {
-                                                                                                                    $keterangan_volume = '<label for="" class="badge badge-success">Volumen Bertambah</label>';
-                                                                                                                } else if ($value_hps_penyedia_kontrak_3['volume_hps'] == $value_hps_penyedia_kontrak_3['volume_hps' . $field_addendum]) {
-                                                                                                                    $keterangan_volume = '';
-                                                                                                                } else {
-                                                                                                                    $keterangan_volume = '<label for="" class="badge badge-warning">Volumen Berkurang</label>';
-                                                                                                                }
-                                                                                                                if ($value_hps_penyedia_kontrak_3['harga_satuan_hps'] < $value_hps_penyedia_kontrak_3['harga_satuan_hps' . $field_addendum]) {
-                                                                                                                    $timpang = '<a title="Mengalami Timpang Harga" style="font-size:8px;" class="badge badge-sm badge-info"><i class="fas fa fa-info"></i></a>';
-                                                                                                                } else {
-                                                                                                                    $timpang = '';
-                                                                                                                }
-
-                                                                                                                ?>
-                                                                                                                <tr>
-                                                                                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_kontrak_3['no_urut'] ?></td>
-                                                                                                                    <td><?= $value_hps_penyedia_kontrak_3['no_hps'] ?></td>
-                                                                                                                    <td><?= $value_hps_penyedia_kontrak_3['uraian_hps' . $field_addendum] ?></td>
-                                                                                                                    <td><?= $value_hps_penyedia_kontrak_3['satuan_hps' . $field_addendum] ?></td>
-                                                                                                                    <td><?= $value_hps_penyedia_kontrak_3['volume_hps' . $field_addendum] ?></td>
-                                                                                                                    <?php if ($value_hps_penyedia_kontrak_3['harga_satuan_hps' . $field_addendum]) { ?>
-                                                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_3['harga_satuan_hps' . $field_addendum], 2, ',', '.') ?> <?= $timpang ?></td>
-                                                                                                                    <?php  } else { ?>
-                                                                                                                        <td></td>
-                                                                                                                    <?php }
-                                                                                                                    ?>
-                                                                                                                    <?php if ($value_hps_penyedia_kontrak_3['total_harga' . $field_addendum]) { ?>
-                                                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_3['total_harga' . $field_addendum], 2, ',', '.') ?></td>
-                                                                                                                    <?php  } else { ?>
-                                                                                                                        <td></td>
-                                                                                                                    <?php }
-                                                                                                                    ?>
-                                                                                                                    <td><?= $keterangan_volume ?></td>
-                                                                                                                    <td>
-                                                                                                                        <div class="btn-group">
-                                                                                                                            <button type="button" class="btn btn-default">Action</button>
-                                                                                                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                                                                <span class="sr-only">Toggle Dropdown</span>
-                                                                                                                            </button>
-                                                                                                                            <div class="dropdown-menu" role="menu">
-                                                                                                                                <a onclick="modal_hps_penyedia_kontrak_4_addendum(<?= $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'] ?>,'simpan',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
-                                                                                                                                <a onclick="modal_hps_penyedia_kontrak_4_addendum(<?= $value_hps_penyedia_kontrak_3['id_hps_penyedia_kontrak_3'] ?>,'edit',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-edit"></i></a>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                                <?php
-                                                                                                                $this->db->select('*');
-                                                                                                                $this->db->from('tbl_hps_penyedia_kontrak_4');
-                                                                                                                $this->db->where('tbl_hps_penyedia_kontrak_4.id_hps_penyedia_kontrak_3', $id_refrence_hps_hps_penyedia_kontrak_3);
-                                                                                                                $this->db->where('tbl_hps_penyedia_kontrak_4.uraian_hps' . $field_addendum . '!=', NULL);
-                                                                                                                $this->db->order_by('no_urut', 'ASC');
-                                                                                                                $query_tbl_hps_penyedia_kontrak_4 = $this->db->get() ?>
-                                                                                                                <?php
-                                                                                                                foreach ($query_tbl_hps_penyedia_kontrak_4->result_array() as $key => $value_hps_penyedia_kontrak_4) { ?>
-                                                                                                                    <?php
-                                                                                                                    $id_refrence_hps_hps_penyedia_kontrak_4 = $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'];
-                                                                                                                    if ($value_hps_penyedia_kontrak_4['total_harga' . $field_addendum]) {
-                                                                                                                        $total_hps_penyedia_kontrak_addendum_4 +=  $value_hps_penyedia_kontrak_4['total_harga' . $field_addendum];
-                                                                                                                    } else {
-                                                                                                                        $total_hps_penyedia_kontrak_addendum_4 +=  0;
-                                                                                                                    }
-
-                                                                                                                    if ($value_hps_penyedia_kontrak_4['volume_hps'] < $value_hps_penyedia_kontrak_4['volume_hps' . $field_addendum]) {
-                                                                                                                        $keterangan_volume = '<label for="" class="badge badge-success">Volumen Bertambah</label>';
-                                                                                                                    } else if ($value_hps_penyedia_kontrak_4['volume_hps'] == $value_hps_penyedia_kontrak_4['volume_hps' . $field_addendum]) {
-                                                                                                                        $keterangan_volume = '';
-                                                                                                                    } else {
-                                                                                                                        $keterangan_volume = '<label for="" class="badge badge-warning">Volumen Berkurang</label>';
-                                                                                                                    }
-                                                                                                                    if ($value_hps_penyedia_kontrak_4['harga_satuan_hps'] < $value_hps_penyedia_kontrak_4['harga_satuan_hps' . $field_addendum]) {
-                                                                                                                        $timpang = '<a title="Mengalami Timpang Harga" style="font-size:8px;" class="badge badge-sm badge-info"><i class="fas fa fa-info"></i></a>';
-                                                                                                                    } else {
-                                                                                                                        $timpang = '';
-                                                                                                                    }
-                                                                                                                    ?>
-                                                                                                                    <tr>
-                                                                                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_kontrak_4['no_urut'] ?></td>
-                                                                                                                        <td><?= $value_hps_penyedia_kontrak_4['no_hps'] ?></td>
-                                                                                                                        <td><?= $value_hps_penyedia_kontrak_4['uraian_hps' . $field_addendum] ?></td>
-                                                                                                                        <td><?= $value_hps_penyedia_kontrak_4['satuan_hps' . $field_addendum] ?></td>
-                                                                                                                        <td><?= $value_hps_penyedia_kontrak_4['volume_hps' . $field_addendum] ?></td>
-                                                                                                                        <?php if ($value_hps_penyedia_kontrak_4['harga_satuan_hps' . $field_addendum]) { ?>
-                                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_4['harga_satuan_hps' . $field_addendum], 2, ',', '.') ?> <?= $timpang ?></td>
-                                                                                                                        <?php  } else { ?>
-                                                                                                                            <td></td>
-                                                                                                                        <?php }
-                                                                                                                        ?>
-                                                                                                                        <?php if ($value_hps_penyedia_kontrak_4['total_harga' . $field_addendum]) { ?>
-                                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_4['total_harga' . $field_addendum], 2, ',', '.') ?></td>
-                                                                                                                        <?php  } else { ?>
-                                                                                                                            <td></td>
-                                                                                                                        <?php }
-                                                                                                                        ?>
-                                                                                                                        <td><?= $keterangan_volume ?></td>
-                                                                                                                        <td>
-                                                                                                                            <div class="btn-group">
-                                                                                                                                <button type="button" class="btn btn-default">Action</button>
-                                                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                                                                    <span class="sr-only">Toggle Dropdown</span>
-                                                                                                                                </button>
-                                                                                                                                <div class="dropdown-menu" role="menu">
-                                                                                                                                    <a onclick="modal_hps_penyedia_kontrak_5_addendum(<?= $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'] ?>,'simpan',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
-                                                                                                                                    <a onclick="modal_hps_penyedia_kontrak_5_addendum(<?= $value_hps_penyedia_kontrak_4['id_hps_penyedia_kontrak_4'] ?>,'edit',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-edit"></i></a>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </td>
-                                                                                                                    </tr>
-                                                                                                                    <?php
-                                                                                                                    $this->db->select('*');
-                                                                                                                    $this->db->from('tbl_hps_penyedia_kontrak_5');
-                                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_5.id_hps_penyedia_kontrak_4', $id_refrence_hps_hps_penyedia_kontrak_4);
-                                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_5.uraian_hps' . $field_addendum . '!=', NULL);
-                                                                                                                    $this->db->order_by('no_urut', 'ASC');
-                                                                                                                    $query_tbl_hps_penyedia_kontrak_5 = $this->db->get() ?>
-                                                                                                                    <?php
-                                                                                                                    foreach ($query_tbl_hps_penyedia_kontrak_5->result_array() as $key => $value_hps_penyedia_kontrak_5) { ?>
-                                                                                                                        <?php
-                                                                                                                        $id_refrence_hps_hps_penyedia_kontrak_5 = $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'];
-                                                                                                                        if ($value_hps_penyedia_kontrak_5['total_harga' . $field_addendum]) {
-                                                                                                                            $total_hps_penyedia_kontrak_addendum_5 +=  $value_hps_penyedia_kontrak_5['total_harga' . $field_addendum];
-                                                                                                                        } else {
-                                                                                                                            $total_hps_penyedia_kontrak_addendum_5 +=  0;
-                                                                                                                        }
-
-                                                                                                                        if ($value_hps_penyedia_kontrak_5['volume_hps'] < $value_hps_penyedia_kontrak_5['volume_hps' . $field_addendum]) {
-                                                                                                                            $keterangan_volume = '<label for="" class="badge badge-success">Volumen Bertambah</label>';
-                                                                                                                        } else if ($value_hps_penyedia_kontrak_5['volume_hps'] == $value_hps_penyedia_kontrak_5['volume_hps' . $field_addendum]) {
-                                                                                                                            $keterangan_volume = '';
-                                                                                                                        } else {
-                                                                                                                            $keterangan_volume = '<label for="" class="badge badge-warning">Volumen Berkurang</label>';
-                                                                                                                        }
-                                                                                                                        if ($value_hps_penyedia_kontrak_4['harga_satuan_hps'] < $value_hps_penyedia_kontrak_4['harga_satuan_hps' . $field_addendum]) {
-                                                                                                                            $timpang = '<a title="Mengalami Timpang Harga" style="font-size:8px;" class="badge badge-sm badge-info"><i class="fas fa fa-info"></i></a>';
-                                                                                                                        } else {
-                                                                                                                            $timpang = '';
-                                                                                                                        }
-                                                                                                                        ?>
-                                                                                                                        <tr>
-                                                                                                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_kontrak_5['no_urut'] ?></td>
-                                                                                                                            <td><?= $value_hps_penyedia_kontrak_5['no_hps' . $field_addendum] ?></td>
-                                                                                                                            <td><?= $value_hps_penyedia_kontrak_5['uraian_hps' . $field_addendum] ?></td>
-                                                                                                                            <td><?= $value_hps_penyedia_kontrak_5['satuan_hps' . $field_addendum] ?></td>
-                                                                                                                            <td><?= $value_hps_penyedia_kontrak_5['volume_hps' . $field_addendum] ?></td>
-                                                                                                                            <?php if ($value_hps_penyedia_kontrak_5['harga_satuan_hps' . $field_addendum]) { ?>
-                                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_5['harga_satuan_hps' . $field_addendum], 2, ',', '.') ?><?= $timpang ?></td>
-                                                                                                                            <?php  } else { ?>
-                                                                                                                                <td></td>
-                                                                                                                            <?php }
-                                                                                                                            ?>
-                                                                                                                            <?php if ($value_hps_penyedia_kontrak_5['total_harga' . $field_addendum]) { ?>
-                                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_5['total_harga' . $field_addendum], 2, ',', '.') ?></td>
-                                                                                                                            <?php  } else { ?>
-                                                                                                                                <td></td>
-                                                                                                                            <?php }
-                                                                                                                            ?>
-                                                                                                                            <td><?= $keterangan_volume ?></td>
-                                                                                                                            <td>
-                                                                                                                                <div class="btn-group">
-                                                                                                                                    <button type="button" class="btn btn-default">Action</button>
-                                                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                                                                        <span class="sr-only">Toggle Dropdown</span>
-                                                                                                                                    </button>
-                                                                                                                                    <div class="dropdown-menu" role="menu">
-                                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_6_addendum(<?= $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'] ?>,'simpan',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
-                                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_6_addendum(<?= $value_hps_penyedia_kontrak_5['id_hps_penyedia_kontrak_5'] ?>,'edit',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-edit"></i></a>
-                                                                                                                                    </div>
-                                                                                                                                </div>
-                                                                                                                            </td>
-                                                                                                                        </tr>
-                                                                                                                    <?php } ?>
-                                                                                                                <?php } ?>
-                                                                                                            <?php } ?>
-                                                                                                        <?php } ?>
                                                                                                     <?php } ?>
                                                                                                 </tbody>
                                                                                                 <tfoot>
@@ -1386,79 +951,6 @@
             <!-- /.content -->
         </div>
     </section>
-</div>
-
-<div class="modal fade" data-backdrop="false" id="modal_tambah_dkh" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title">Edit Kuantitas / Volume</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="javascript:;" id="form_tambah" method="post">
-                    <!-- hps_penyedia_1 -->
-                    <input type="hidden" name="id_detail_sub_program_penyedia_jasa">
-                    <input type="hidden" name="id_detail_program_penyedia_jasa">
-                    <input type="hidden" name="id_hps_penyedia_kontrak_1">
-                    <input type="hidden" name="id_hps_penyedia_kontrak_2">
-                    <input type="hidden" name="id_hps_penyedia_kontrak_3">
-                    <input type="hidden" name="id_hps_penyedia_kontrak_4">
-                    <input type="hidden" name="id_hps_penyedia_kontrak_5">
-                    <!--  -->
-                    <div class="form-group">
-                        <label for="">No Hps</label>
-                        <input type="text" name="no_hps" class="form-control form-control-sm" placeholder="No Hps">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Uraian</label>
-                        <input type="text" name="uraian_hps" class="form-control form-control-sm" placeholder="Uraian">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Satuan</label>
-                        <input type="text" name="satuan_hps" class="form-control form-control-sm" placeholder="Satuan">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Volume</label>
-                        <input type="number" name="volume_hps" id="volume1" class="form-control form-control-sm" placeholder="Volume">
-                    </div>
-                    <label for="">Harga Satuan</label>
-                    <div class="input-group mb-3">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-money-bill-alt" aria-hidden="true"></i>
-                                    </span>
-                                    <input type="number" class="form-control harga_satuan_hps1" name="harga_satuan_hps" id="harga_satuan_hps1" aria-describedby="helpId" placeholder="Harga Satuan">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <input type="text" disabled class="float-right form-control form-control-sm mt-1" style="width: 200px;" id="tanpa-rupiah1">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <!-- simpan -->
-                <button type="button" style="display: none;" class="btn btn-primary" id="simpan_1" onclick="save_hps_penyedia_kontrak_1('simpan')">Save</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="simpan_2" onclick="save_hps_penyedia_kontrak_2('simpan')">Save 2</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="simpan_3" onclick="save_hps_penyedia_kontrak_3('simpan')">Save 3</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="simpan_4" onclick="save_hps_penyedia_kontrak_4('simpan')">Save 4</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="simpan_5" onclick="save_hps_penyedia_kontrak_5('simpan')">Save 5</button>
-                <!-- edit -->
-                <button type="button" style="display: none;" class="btn btn-primary" id="edit_1" onclick="save_hps_penyedia_kontrak_1('edit')">Update</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="edit_2" onclick="save_hps_penyedia_kontrak_2('edit')">Update 2</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="edit_3" onclick="save_hps_penyedia_kontrak_3('edit')">Update 3</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="edit_4" onclick="save_hps_penyedia_kontrak_4('edit')">Update 4</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="edit_5" onclick="save_hps_penyedia_kontrak_5('edit')">Update 5</button>
-            </div>
-        </div>
-    </div>
 </div>
 
 <div class="modal fade" data-backdrop="false" id="modal_tambah_dkh_addendum" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">

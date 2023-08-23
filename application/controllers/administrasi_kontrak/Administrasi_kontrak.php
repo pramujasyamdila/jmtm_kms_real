@@ -459,6 +459,7 @@ class Administrasi_kontrak extends CI_Controller
     {
         $data['active_kontrak'] = 'active';
         $data['menu_open_kontrak'] = 'menu-open';
+        $data['result_rekap_hps']  = $this->Data_kontrak_model->result_rekap_hps($id_detail_program_penyedia_jasa);
         $data['row_program_kontrak_detail']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
         $data['result_sub_program']  = $this->Data_kontrak_model->get_sub_program($id_detail_program_penyedia_jasa);
         $data['adendum_result'] = $this->Data_kontrak_model->get_addendum_by_result_penyedia_kontrak($id_detail_program_penyedia_jasa);
@@ -584,5 +585,150 @@ class Administrasi_kontrak extends CI_Controller
         $this->load->view('admin/tagihan_kontrak_admin/kelola_format_dokumen', $data);
         $this->load->view('template_stisla/footer');
         $this->load->view('admin/administrasi_kontrak/ajax');
+    }
+
+    public function tambah_hps_penyedia_kontrak_1()
+    {
+        $id_detail_sub_program_penyedia_jasa =  $this->input->post('id_detail_sub_program_penyedia_jasa');
+        $id_where_detail_program = $this->input->post('id_detail_program_penyedia_jasa');
+        $id_detail_program_penyedia_jasa = $this->Data_kontrak_model->get_sub_program_penyedia_jasa($id_detail_sub_program_penyedia_jasa);
+        $no_hps =  $this->input->post('no_hps');
+        $uraian_hps =  $this->input->post('uraian_hps');
+        $satuan_hps =  $this->input->post('satuan_hps');
+        $volume_hps =  $this->input->post('volume_hps');
+        $tkdn =  $this->input->post('tkdn');
+        $harga_satuan =  $this->input->post('harga_satuan_hps');
+        if ($harga_satuan == null) {
+            $total_harga = '';
+        } else {
+            $total_harga = $volume_hps *  $harga_satuan;
+        }
+        $hitung_harga_satuan_tkdn = $harga_satuan * ($tkdn / 100);
+        $hasil_harga_satuan_tkdn = round($hitung_harga_satuan_tkdn, 2);
+        $hitung_jumlah_harga_tkdn = $volume_hps * $hasil_harga_satuan_tkdn;
+        $hasil_jumlah_harga_tkdn = round($hitung_jumlah_harga_tkdn, 2);
+        $buat_no_urut = $this->Data_kontrak_model->cek_no_urut_tbl_hps_penyedia_kontrak_1($id_where_detail_program, $id_detail_sub_program_penyedia_jasa);
+        $count = $buat_no_urut + 1;
+        if ($buat_no_urut == 0) {
+            $data = [
+                'id_detail_program_penyedia_jasa' => $id_where_detail_program,
+                'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
+                'no_urut' => 1 . '.' . $count,
+                'uraian_hps' => $uraian_hps,
+                'no_hps' => $no_hps,
+                'volume_hps' => $volume_hps,
+                'satuan_hps' => $satuan_hps,
+                'harga_satuan_hps' => $harga_satuan,
+                'total_harga' => $total_harga,
+                'tkdn' => $tkdn,
+                'harga_satuan_tkdn' => $hasil_harga_satuan_tkdn,
+                'jumlah_harga_tkdn' => $hasil_jumlah_harga_tkdn,
+                'item_baru' => 'kosong'
+            ];
+            $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_1($data);
+        } else {
+            $data = [
+                'id_detail_program_penyedia_jasa' => $id_where_detail_program,
+                'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
+                'no_urut' => 1 . '.' . $count,
+                'uraian_hps' => $uraian_hps,
+                'no_hps' => $no_hps,
+                'volume_hps' => $volume_hps,
+                'satuan_hps' => $satuan_hps,
+                'harga_satuan_hps' => $harga_satuan,
+                'total_harga' => $total_harga,
+                'tkdn' => $tkdn,
+                'harga_satuan_tkdn' => $hasil_harga_satuan_tkdn,
+                'jumlah_harga_tkdn' => $hasil_jumlah_harga_tkdn,
+                'item_baru' => 'kosong'
+            ];
+            $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_1($data);
+        }
+        $this->db->select('*');
+        $this->db->from('tbl_hps_penyedia_kontrak_1');
+        $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_sub_program_penyedia_jasa', $id_detail_sub_program_penyedia_jasa);
+        $this->db->where('tbl_hps_penyedia_kontrak_1.harga_satuan_hps !=', null);
+        $this->db->order_by('id_detail_sub_program_penyedia_jasa', 'ASC');
+        $query_tbl_hps = $this->db->get();
+        $total = 0;
+        foreach ($query_tbl_hps->result_array() as $key => $dataku) {
+            $total += $dataku['total_harga'];
+        }
+        $where = [
+            'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa
+        ];
+        $data_update = [
+            'nilai_sub_kontrak_penyedia' => $total
+        ];
+        $this->Data_kontrak_model->update_rup_ke_sub_detail_program_penyedia_jasa($where, $data_update);
+        $id_where_detail_program = $id_detail_program_penyedia_jasa['id_detail_program_penyedia_jasa'];
+        $this->db->select('*');
+        $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+        $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $id_where_detail_program);
+        $query_tbl_hps_sub = $this->db->get();
+        $total_sub_nilai_kontrak = 0;
+        foreach ($query_tbl_hps_sub->result_array() as $key => $dataku_sub) {
+            $total_sub_nilai_kontrak += $dataku_sub['nilai_sub_kontrak_penyedia'];
+        }
+        $where_sub = [
+            'id_detail_program_penyedia_jasa' => $id_where_detail_program
+        ];
+        $data_update_sub = [
+            'total_kontrak' => $total_sub_nilai_kontrak
+        ];
+        $this->Data_kontrak_model->update_rup($where_sub, $data_update_sub);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+    public function edit_hps_penyedia_kontrak_1()
+    {
+
+        $id_hps_penyedia_kontrak_1 = $this->input->post('id_hps_penyedia_kontrak_1');
+        $no_hps =  $this->input->post('no_hps');
+        $uraian_hps =  $this->input->post('uraian_hps');
+        $satuan_hps =  $this->input->post('satuan_hps');
+        $volume_hps =  $this->input->post('volume_hps');
+        $harga_satuan =  $this->input->post('harga_satuan_hps');
+        $tkdn =  $this->input->post('tkdn');
+        $hitung_harga_satuan_tkdn = $harga_satuan * ($tkdn / 100);
+        $hasil_harga_satuan_tkdn = round($hitung_harga_satuan_tkdn, 2);
+        $hitung_jumlah_harga_tkdn = $volume_hps * $hasil_harga_satuan_tkdn;
+        $hasil_jumlah_harga_tkdn = round($hitung_jumlah_harga_tkdn, 2);
+        if ($harga_satuan == null) {
+            $total_harga = '';
+        } else {
+            $total_harga = $volume_hps *  $harga_satuan;
+        }
+        $id_where_hps_penyedia_kontrak_1 = [
+            'id_hps_penyedia_kontrak_1' => $id_hps_penyedia_kontrak_1
+        ];
+        $data = [
+            'uraian_hps' => $uraian_hps,
+            'no_hps' => $no_hps,
+            'volume_hps' => $volume_hps,
+            'satuan_hps' => $satuan_hps,
+            'harga_satuan_hps' => $harga_satuan,
+            'total_harga' => $total_harga,
+            'tkdn' => $tkdn,
+            'harga_satuan_tkdn' => $hasil_harga_satuan_tkdn,
+            'jumlah_harga_tkdn' => $hasil_jumlah_harga_tkdn,
+        ];
+        $this->Data_kontrak_model->update_tbl_hps_penyedia_kontrak_1($data, $id_where_hps_penyedia_kontrak_1);
+        $id_where_hps_penyedia_kontrak_1 = [
+            'id_refrence_hps' =>  $id_hps_penyedia_kontrak_1
+        ];
+        $data_nilai_kontrak = [
+            'uraian_hps' => $uraian_hps,
+            'no_hps' => $no_hps,
+            'satuan_hps' => $satuan_hps,
+            'volume_hps' => $volume_hps,
+            'harga_satuan_hps' => $harga_satuan,
+            'total_harga' => $total_harga,
+            'tkdn' => $tkdn,
+            'harga_satuan_tkdn' => $hasil_harga_satuan_tkdn,
+            'jumlah_harga_tkdn' => $hasil_jumlah_harga_tkdn,
+        ];
+        $this->Data_kontrak_model->update_tbl_hps_penyedia_kontrak_1($data_nilai_kontrak, $id_where_hps_penyedia_kontrak_1);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 }

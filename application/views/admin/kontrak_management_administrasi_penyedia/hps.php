@@ -33,6 +33,39 @@
                                     <?php  } ?>
                                 </select>
                             </div>
+                            <br>
+                            <div class="card">
+                                <div class="card-header bg-warning text-white">
+                                    PENJELASAN REKAP
+                                </div>
+                                <div class="card-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Mata Anggaran</th>
+                                                <th>Tahun Anggaran</th>
+                                                <th>Subtotal (Sebelum PPN)</th>
+                                                <th>PPN</th>
+                                                <th>Subtotal (Setelah PPN)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $nomor = 1;
+                                            foreach ($result_rekap_hps as $key => $value) { ?>
+                                                <tr>
+                                                    <td><?= $nomor++ ?></td>
+                                                    <td><?= $value['nama_program_mata_anggaran'] ?></td>
+                                                    <td><?= $value['tahun_anggaran'] ?></td>
+                                                    <td><?= "Rp " . number_format($value['total_sebelum_ppn'], 2, ',', '.') ?></td>
+                                                    <td><?= "Rp " . number_format($value['ppn'], 2, ',', '.') ?></td>
+                                                    <td><?= "Rp " . number_format($value['total_setelah_ppn'], 2, ',', '.') ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                         <ul class="nav nav-tabs" id="myTab">
                             <?php foreach ($result_sub_program as $key => $value) { ?>
@@ -278,39 +311,6 @@
                                                             </td>
                                                         </tr>
                                                     </tfoot>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="card">
-                                            <div class="card-header bg-warning text-white">
-                                                PENJELASAN REKAP
-                                            </div>
-                                            <div class="card-body">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>No</th>
-                                                            <th>Mata Anggaran</th>
-                                                            <th>Tahun Anggaran</th>
-                                                            <th>Subtotal (Sebelum PPN)</th>
-                                                            <th>PPN</th>
-                                                            <th>Subtotal (Setelah PPN)</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php $nomor = 1;
-                                                        foreach ($result_rekap_hps as $key => $value) { ?>
-                                                            <tr>
-                                                                <td><?= $nomor++ ?></td>
-                                                                <td><?= $value['nama_program_mata_anggaran'] ?></td>
-                                                                <td><?= $value['tahun_anggaran'] ?></td>
-                                                                <td><?= "Rp " . number_format($value['total_sebelum_ppn'], 2, ',', '.') ?></td>
-                                                                <td><?= "Rp " . number_format($value['ppn'], 2, ',', '.') ?></td>
-                                                                <td><?= "Rp " . number_format($value['total_setelah_ppn'], 2, ',', '.') ?></td>
-                                                            </tr>
-                                                        <?php } ?>
-                                                    </tbody>
                                                 </table>
                                             </div>
                                         </div>
