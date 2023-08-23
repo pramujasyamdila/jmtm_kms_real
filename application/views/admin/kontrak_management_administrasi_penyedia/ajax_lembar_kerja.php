@@ -50,7 +50,7 @@
                     },
                     dataType: "JSON",
                     success: function(response) {
-                        window.location.href = "<?= base_url('admin/administrasi_penyedia/list_program/') ?>" + id
+                        window.location.href = "<?= base_url('home') ?>"
                     }
                 })
             }

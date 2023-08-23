@@ -2127,8 +2127,7 @@ class Lembar_kerja extends CI_Controller
             } else if ($cek_no_add == 30) {
                 $this->load->view('tidak_ada_add_penyedia_kontrak/add_XXX', $data_ke_logic);
                 $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-            } else {
-            }
+            } else { }
         }
     }
 
@@ -2946,8 +2945,7 @@ class Lembar_kerja extends CI_Controller
     {
         $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
         $papenkon = $this->input->post('papenkon');
-        if ($papenkon == null) {
-        } else {
+        if ($papenkon == null) { } else {
             $where_sub = [
                 'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa
             ];
@@ -3544,8 +3542,7 @@ class Lembar_kerja extends CI_Controller
                 'lampiran_smk' => $lampiran_smk,
             ];
             $this->Data_kontrak_model->update_rup($where, $data);
-        } else {
-        }
+        } else { }
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 
@@ -3619,8 +3616,7 @@ class Lembar_kerja extends CI_Controller
 
         if ($lembar_kerja) {
             $this->session->set_userdata('id_kontrak', $id_kontrak);
-        } else {
-        }
+        } else { }
         $keyword = $this->input->post('keyword');
         $data['active_kontrak'] = 'active';
         $data['menu_open_kontrak'] = 'menu-open';
@@ -3720,8 +3716,7 @@ class Lembar_kerja extends CI_Controller
         $row_program  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
         $flow = $row_program['flow_pra_dokumen_kontrak'];
         $cek_tbl_monitoring = $this->Data_kontrak_model->cek_tbl_monitoring($id_detail_program_penyedia_jasa, $flow);
-        if ($cek_tbl_monitoring) {
-        } else {
+        if ($cek_tbl_monitoring) { } else {
             if ($flow == 'Flow 1') {
                 $this->Data_kontrak_model->delete_flow_2($id_detail_program_penyedia_jasa);
             } else {
@@ -3888,8 +3883,7 @@ class Lembar_kerja extends CI_Controller
     {
         $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
         $cek_tbl_dokumen_surat_pasca = $this->Data_kontrak_model->cek_tbl_dokumen_surat_pasca($id_detail_program_penyedia_jasa);
-        if ($cek_tbl_dokumen_surat_pasca) {
-        } else {
+        if ($cek_tbl_dokumen_surat_pasca) { } else {
             $data_1 = [
                 'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                 'nama_file' => 'Gunning',
@@ -4091,14 +4085,13 @@ class Lembar_kerja extends CI_Controller
             ];
             $this->Data_kontrak_model->update_urutan_detail_capex_5($where, $data);
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-        } else {
-        }
+        } else { }
     }
 
 
     function hapus_session_lembar_kerja()
     {
         $this->session->unset_userdata('id_kontrak');
-        redirect('admin/dashboard');
+        redirect('home');
     }
 }

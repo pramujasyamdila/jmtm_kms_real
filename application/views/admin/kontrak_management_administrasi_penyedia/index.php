@@ -17,7 +17,6 @@
 background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
             <h6>MODUL 2 - PRA PENGADAAN</h6>
             <label for="">Modul ini bertujuan untuk memilih mata anggaran yang akan dibuat menjadi suatu Program Pekerjaan</label>
-
         </div>
 
 
