@@ -120,50 +120,16 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         </div>
                     </div>
                     <div class="tab-pane fade show" id="kirun<?= $value['id_detail_sub_program_penyedia_jasa'] ?>">
+
                         <br>
                         <div class="card-header" style="margin-top:-50px">
-                            <div class="card">
-                                <div class="card-header bg-warning text-white">
-                                    PENJELASAN REKAP
-                                </div>
-                                <div class="card-body">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Mata Anggaran</th>
-                                                <th>Tahun Anggaran</th>
-                                                <th>Subtotal (Sebelum PPN)</th>
-                                                <th>PPN</th>
-                                                <th>Subtotal (Setelah PPN)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php $nomor = 1;
-                                            foreach ($result_rekap_hps as $key => $value) { ?>
-                                                <tr>
-                                                    <td><?= $nomor++ ?></td>
-                                                    <td><?= $value['nama_program_mata_anggaran'] ?></td>
-                                                    <td><?= $value['tahun_anggaran'] ?></td>
-                                                    <td><?= "Rp " . number_format($value['total_sebelum_ppn'], 2, ',', '.') ?></td>
-                                                    <td><?= "Rp " . number_format($value['ppn'], 2, ',', '.') ?></td>
-                                                    <td><?= "Rp " . number_format($value['total_setelah_ppn'], 2, ',', '.') ?></td>
-                                                </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <h4> DKH <?= $value['nama_program_mata_anggaran'] ?></h4>
+                            <div class="card-header-action">
+                                <a class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"> <i class="fas fa fa-file"></i> Buat Uraian Dengan Excel</a>
+                                <a class="btn btn-sm btn-info" href="javascript:;" onclick="tambah_uraian(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"><i class="fas fa fa-plus"></i> Buat Uraian</a>
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="card-header">
-                                <h4> DKH <?= $value['nama_program_mata_anggaran'] ?></h4>
-                                <div class="card-header-action">
-                                    <a class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"> <i class="fas fa fa-file"></i> Buat Uraian Dengan Excel</a>
-                                    <a class="btn btn-sm btn-info" href="javascript:;" onclick="tambah_uraian(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"><i class="fas fa fa-plus"></i> Buat Uraian</a>
-                                </div>
-                                <br>
-                            </div>
                             <table id="table_data" class="table table-bordered table-striped">
                                 <thead style="background-color:#193B53;font-family: RNSSanz-Black;text-transform: uppercase;" class="thead-inverse">
                                     <tr>
@@ -313,7 +279,41 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                 </tfoot>
                             </table>
                         </div>
+
                         <br>
+                        <div class="card">
+                            <div class="card-header bg-warning text-white">
+                                PENJELASAN REKAP
+                            </div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Mata Anggaran</th>
+                                            <th>Tahun Anggaran</th>
+                                            <th>Subtotal (Sebelum PPN)</th>
+                                            <th>PPN</th>
+                                            <th>Subtotal (Setelah PPN)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $nomor = 1;
+                                        foreach ($result_rekap_hps as $key => $value) { ?>
+                                            <tr>
+                                                <td><?= $nomor++ ?></td>
+                                                <td><?= $value['nama_program_mata_anggaran'] ?></td>
+                                                <td><?= $value['tahun_anggaran'] ?></td>
+                                                <td><?= "Rp " . number_format($value['total_sebelum_ppn'], 2, ',', '.') ?></td>
+                                                <td><?= "Rp " . number_format($value['ppn'], 2, ',', '.') ?></td>
+                                                <td><?= "Rp " . number_format($value['total_setelah_ppn'], 2, ',', '.') ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
                         <!-- Modal -->
                     </div>
                     <div class="modal fade" data-backdrop="false" id="modal_urutan2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">

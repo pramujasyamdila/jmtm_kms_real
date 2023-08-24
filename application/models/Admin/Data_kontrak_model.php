@@ -4489,16 +4489,6 @@ class Data_kontrak_model extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
-    public function create_tbl_hps_penyedia_kontrak_1($data)
-    {
-        $this->db->insert('tbl_hps_penyedia_kontrak_1', $data);
-        return $this->db->affected_rows();
-    }
-    public function update_tbl_hps_penyedia_kontrak_1($data, $where)
-    {
-        $this->db->update('tbl_hps_penyedia_kontrak_1', $data, $where);
-        return $this->db->affected_rows();
-    }
     // LINE 2 LOGIC ADDENDUM PENYEDIA
     // hps_penyedia_2
     public function cek_no_urut_tbl_hps_penyedia_2($id_hps_penyedia_1)
@@ -4549,6 +4539,17 @@ class Data_kontrak_model extends CI_Model
     public function update_tbl_hps_penyedia_kontrak_2($data, $where)
     {
         $this->db->update('tbl_hps_penyedia_kontrak_2', $data, $where);
+        return $this->db->affected_rows();
+    }
+
+    public function create_tbl_hps_penyedia_kontrak_1($data)
+    {
+        $this->db->insert('tbl_hps_penyedia_kontrak_1', $data);
+        return $this->db->affected_rows();
+    }
+    public function update_tbl_hps_penyedia_kontrak_1($data, $where)
+    {
+        $this->db->update('tbl_hps_penyedia_kontrak_1', $data, $where);
         return $this->db->affected_rows();
     }
 

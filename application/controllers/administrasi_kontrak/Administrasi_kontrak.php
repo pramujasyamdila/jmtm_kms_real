@@ -682,7 +682,6 @@ class Administrasi_kontrak extends CI_Controller
 
     public function edit_hps_penyedia_kontrak_1()
     {
-
         $id_hps_penyedia_kontrak_1 = $this->input->post('id_hps_penyedia_kontrak_1');
         $no_hps =  $this->input->post('no_hps');
         $uraian_hps =  $this->input->post('uraian_hps');
@@ -729,6 +728,27 @@ class Administrasi_kontrak extends CI_Controller
             'jumlah_harga_tkdn' => $hasil_jumlah_harga_tkdn,
         ];
         $this->Data_kontrak_model->update_tbl_hps_penyedia_kontrak_1($data_nilai_kontrak, $id_where_hps_penyedia_kontrak_1);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+    public function hapus_hps_penyedia_kontrak_1($id_hps_penyedia_kontrak_1)
+    {
+        $id_where_hps_penyedia_kontrak_1 = [
+            'id_hps_penyedia_kontrak_1' => $id_hps_penyedia_kontrak_1
+        ];
+        $data = [
+            'uraian_hps' => '',
+            'no_hps' => '',
+            'volume_hps' => '',
+            'satuan_hps' => '',
+            'harga_satuan_hps' => '',
+            'total_harga' => '',
+            'tkdn' => '',
+            'harga_satuan_tkdn' => '',
+            'jumlah_harga_tkdn' => '',
+            'item_baru' => '',
+        ];
+        $this->Data_kontrak_model->update_tbl_hps_penyedia_kontrak_1($data, $id_where_hps_penyedia_kontrak_1);
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 }

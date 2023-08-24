@@ -60,7 +60,7 @@
                                                                 <?php  } ?>
                                                             </select>
                                                         </div>
-                                                        <div class="form-group">
+                                                        <!-- <div class="form-group">
                                                             <label for="">Refrence</label>
                                                             <select class="form-control" name="copy_add">
                                                                 <?php foreach ($adendum_result as $key => $value) { ?>
@@ -133,7 +133,7 @@
                                                                     <option value="<?= $value['no_addendum'] ?>"><?= $romawi_add ?></option>
                                                                 <?php   } ?>
                                                             </select>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="form-group">
                                                             <label for="">Tanggal Addendum</label>
                                                             <input type="date" name="tanggal_addendum" class="form-control">
@@ -512,8 +512,8 @@
                                                                                         </div>
                                                                                         <div class="col-md-4">
                                                                                             <div class="card-header-action">
-                                                                                                <a class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"> <i class="fas fa fa-file"></i> Buat Uraian Dengan Excel</a>
-                                                                                                <a class="btn btn-sm btn-info" href="javascript:;" onclick="tambah_uraian(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"><i class="fas fa fa-plus"></i> Buat Uraian</a>
+                                                                                                <a class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,'excel')"> <i class="fas fa fa-file"></i> Buat Uraian Dengan Excel</a>
+                                                                                                <a class="btn btn-sm btn-info" href="javascript:;" onclick="tambah_uraian(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,'biasa')"><i class="fas fa fa-plus"></i> Buat Uraian</a>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -775,17 +775,6 @@
                                                                         </div>
                                                                     </div>
                                                                     <br>
-                                                                    <div class="row">
-                                                                        <div class="col-md-8">
-
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <div class="card-header-action">
-                                                                                <a class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_addendum(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"> <i class="fas fa fa-file"></i> Buat Uraian Dengan Excel</a>
-                                                                                <a class="btn btn-sm btn-info" href="javascript:;" onclick="tambah_uraian_addendum(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"><i class="fas fa fa-plus"></i> Buat Uraian</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                     <ul class="nav nav-tabs" id="myTabku<?= $value_addendum['no_addendum'] ?>" style="margin-top: 50px;">
                                                                         <?php
                                                                         $this->db->select('*');
@@ -813,20 +802,26 @@
                                                                                             <i>
                                                                                                 Nilai <?= $romawi_add ?> <?= $value['nama_program_mata_anggaran'] ?>
                                                                                             </i>
-
-
+                                                                                            <div class="col-md-7"></div>
+                                                                                            <div class="card-header-action">
+                                                                                                <a class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,'excel_addendum',<?= $value_addendum['no_addendum'] ?>)"> <i class="fas fa fa-file"></i> Buat Uraian Dengan Excel</a>
+                                                                                                <a class="btn btn-sm btn-info" href="javascript:;" onclick="tambah_uraian(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,'biasa_addendum',<?= $value_addendum['no_addendum'] ?>)"><i class="fas fa fa-plus"></i> Buat Uraian</a>
+                                                                                            </div>
                                                                                         </div>
                                                                                         <div class="card-body">
                                                                                             <table class="table table-bordered table-striped">
                                                                                                 <thead style="font-size: 12px;color:white" class="thead-inverse bg-primary text-white">
                                                                                                     <tr>
                                                                                                         <th class="text-white">No</th>
-                                                                                                        <th class="text-white">No Mata Anggaranads</th>
+                                                                                                        <th class="text-white">No Mata Anggaran</th>
                                                                                                         <th class="text-white">Uraian</th>
                                                                                                         <th class="text-white">Satuan</th>
                                                                                                         <th class="text-white">Kuantitas</th>
                                                                                                         <th class="text-white">Harga Satuan</th>
                                                                                                         <th class="text-white">Jumlah Harga</th>
+                                                                                                        <th class="text-white">TKDN</th>
+                                                                                                        <th class="text-white">Harga Satuan TKDN</th>
+                                                                                                        <th class="text-white">Jumlah Harga TKDN</th>
                                                                                                         <th class="text-white">Keterangan</th>
                                                                                                         <th class="text-white">Action</th>
                                                                                                     </tr>
@@ -840,7 +835,7 @@
                                                                                                     $this->db->where('tbl_hps_penyedia_kontrak_1.uraian_hps' . $field_addendum . '!=', NULL);
                                                                                                     $this->db->order_by('no_urut', 'ASC');
                                                                                                     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get() ?>
-                                                                                                    <?php
+                                                                                                    <?php $nomorku = 1;
                                                                                                     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) { ?>
 
                                                                                                         <?php
@@ -866,23 +861,26 @@
                                                                                                         ?>
 
                                                                                                         <tr>
-                                                                                                            <td> &nbsp;<?= $value_hps_penyedia_kontrak_1['no_urut' . $field_addendum] ?></td>
+                                                                                                            <td> &nbsp;<?= $nomorku++ ?></td>
                                                                                                             <td><?= $value_hps_penyedia_kontrak_1['no_hps' . $field_addendum] ?></td>
                                                                                                             <td><?= $value_hps_penyedia_kontrak_1['uraian_hps' . $field_addendum] ?></td>
                                                                                                             <td><?= $value_hps_penyedia_kontrak_1['satuan_hps' . $field_addendum] ?></td>
                                                                                                             <td><?= $value_hps_penyedia_kontrak_1['volume_hps' . $field_addendum] ?></td>
                                                                                                             <?php if ($value_hps_penyedia_kontrak_1['harga_satuan_hps' . $field_addendum]) { ?>
-                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_hps' . $field_addendum], 2, ',', '.') ?> <?= $timpang ?></td>
+                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_hps' . $field_addendum], 2, ',', '.') ?></td>
                                                                                                             <?php  } else { ?>
                                                                                                                 <td></td>
                                                                                                             <?php }
                                                                                                             ?>
                                                                                                             <?php if ($value_hps_penyedia_kontrak_1['total_harga' . $field_addendum]) { ?>
-                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['total_harga' . $field_addendum], 2, ',', '.') ?> <?= $timpang ?></td>
+                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['total_harga' . $field_addendum], 2, ',', '.') ?></td>
                                                                                                             <?php  } else { ?>
                                                                                                                 <td></td>
                                                                                                             <?php }
                                                                                                             ?>
+                                                                                                            <td><?= $value_hps_penyedia_kontrak_1['tkdn' . $field_addendum] ?>%</td>
+                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_tkdn' . $field_addendum], 2, ',', '.') ?></td>
+                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['jumlah_harga_tkdn' . $field_addendum], 2, ',', '.') ?></td>
                                                                                                             <td><?= $keterangan_volume ?></td>
                                                                                                             <td>
                                                                                                                 <div class="btn-group">
@@ -965,14 +963,14 @@
             <div class="modal-body">
                 <form action="javascript:;" id="form_tambah_addendum_hps_penyedia_kontrak" method="post">
                     <!-- hps_penyedia_1 -->
-                    <input type="hidden" name="id_detail_sub_program_penyedia_jasa">
-                    <input type="hidden" name="id_detail_program_penyedia_jasa">
-                    <input type="hidden" name="id_hps_penyedia_kontrak_1">
-                    <input type="hidden" name="id_hps_penyedia_kontrak_2">
-                    <input type="hidden" name="id_hps_penyedia_kontrak_3">
-                    <input type="hidden" name="id_hps_penyedia_kontrak_4">
-                    <input type="hidden" name="id_hps_penyedia_kontrak_5">
-                    <input type="hidden" name="type_add">
+                    <input type="text" name="id_detail_sub_program_penyedia_jasa">
+                    <input type="text" name="id_detail_program_penyedia_jasa">
+                    <input type="text" name="id_hps_penyedia_kontrak_1">
+                    <input type="text" name="id_hps_penyedia_kontrak_2">
+                    <input type="text" name="id_hps_penyedia_kontrak_3">
+                    <input type="text" name="id_hps_penyedia_kontrak_4">
+                    <input type="text" name="id_hps_penyedia_kontrak_5">
+                    <input type="text" name="type_add">
                     <!--  -->
                     <div class="form-group">
                         <label for="">No Hps</label>
@@ -989,6 +987,10 @@
                     <div class="form-group">
                         <label for="">Volume</label>
                         <input type="number" id="volume2" name="volume_hps" class="form-control form-control-sm" placeholder="Volume">
+                    </div>
+                    <div class="form-group">
+                        <label for="">TKDN</label>
+                        <input type="number" name="tkdn" class="form-control form-control-sm" placeholder="tkdn">
                     </div>
                     <label for="">Harga Satuan</label>
                     <div class="input-group mb-3">
@@ -1012,16 +1014,8 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <!-- simpan -->
                 <button type="button" style="display: none;" class="btn btn-primary" id="simpan_1_addendum" onclick="save_hps_penyedia_kontrak_1_addendum('simpan')">Save</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="simpan_2_addendum" onclick="save_hps_penyedia_kontrak_2_addendum('simpan')">Save 2</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="simpan_3_addendum" onclick="save_hps_penyedia_kontrak_3_addendum('simpan')">Save 3</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="simpan_4_addendum" onclick="save_hps_penyedia_kontrak_4_addendum('simpan')">Save 4</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="simpan_5_addendum" onclick="save_hps_penyedia_kontrak_5_addendum('simpan')">Save 5</button>
                 <!-- edit -->
-                <button type="button" style="display: none;" class="btn btn-primary" id="edit_1_addendum" onclick="save_hps_penyedia_kontrak_1_addendum('edit')">Update</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="edit_2_addendum" onclick="save_hps_penyedia_kontrak_2_addendum('edit')">Update 2</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="edit_3_addendum" onclick="save_hps_penyedia_kontrak_3_addendum('edit')">Update 3</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="edit_4_addendum" onclick="save_hps_penyedia_kontrak_4_addendum('edit')">Update 4</button>
-                <button type="button" style="display: none;" class="btn btn-primary" id="edit_5_addendum" onclick="save_hps_penyedia_kontrak_5_addendum('edit')">Update 5</button>
+                <button type="button" style="display: none;" class="btn btn-primary" id="edit_1_addendum" onclick="save_hps_penyedia_kontrak_1_addendum('edit')">Update1</button>
             </div>
         </div>
     </div>
