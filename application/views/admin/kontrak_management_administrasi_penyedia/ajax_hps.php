@@ -854,15 +854,24 @@
             ],
             dom: 'Bfrtip',
             buttons: [{
-                extend: 'pdf',
-                text: ' Export a PDF'
-            }, {
-                extend: 'csv',
-                text: ' Export a CSV'
-            }, {
-                extend: 'excel',
-                text: ' Export a EXCEL'
-            }, 'pageLength'],
+                    extend: 'pdf',
+                    text: ' Export a PDF',
+                    className: 'btn btn-primary'
+                }, {
+                    extend: 'csv',
+                    text: ' Export a CSV',
+                    className: 'btn btn-primary'
+                }, {
+                    extend: 'excel',
+                    text: ' Export a EXCEL',
+                    className: 'btn btn-primary'
+                }, {
+                    extend: 'pageLength',
+                    text: ' Show 10 Rows',
+                    className: 'btn btn-primary'
+                }
+
+            ],
         });
         table.buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');
 
@@ -947,7 +956,7 @@
             url: "<?= base_url('admin/Administrasi_penyedia/update_tahun_anggaran_rekap') ?>",
             data: {
                 id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
-                tahun_anggaran_rekap:tahun_anggaran_rekap
+                tahun_anggaran_rekap: tahun_anggaran_rekap
             },
             dataType: "JSON",
             success: function(response) {
