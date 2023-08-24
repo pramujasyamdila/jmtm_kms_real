@@ -55,7 +55,7 @@ class Role_login
 					$this->ci->session->set_userdata('nama_area', $nama_area);
 					$this->ci->session->set_userdata('nama_departemen', $nama_departemen);
 					if ($this->ci->session->userdata('id_departemen')) {
-						redirect('admin/dashboard');
+						redirect('home');
 					} else {
 						$this->ci->session->set_userdata('username', $username);
 						$this->ci->session->set_userdata('id_pegawai', $id_pegawai);
@@ -71,7 +71,7 @@ class Role_login
 						$this->ci->session->set_userdata('nama_sub_area', $nama_sub_area);
 						$this->ci->session->set_userdata('nama_area', $nama_area);
 						$this->ci->session->set_userdata('nama_departemen', $nama_departemen);
-						redirect('admin/dashboard');
+						redirect('home');
 					}
 				} else {
 					$this->ci->session->set_flashdata('tidak_aktif', 'Username Tidak Aktif');
