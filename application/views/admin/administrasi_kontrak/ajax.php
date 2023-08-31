@@ -1503,3 +1503,44 @@
         }
     }
 </script>
+
+<script>
+    function Pilih_ppn_kontrak_awal(id_detail_sub_program_penyedia_jasa) {
+        var ppn_hps = $('[name="ppn_hps_kontrak_awal' + id_detail_sub_program_penyedia_jasa + '"]').val();
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/Administrasi_penyedia/update_ppn_sub_detail_program_kontrak_awal') ?>",
+            data: {
+                id_detail_sub_program_penyedia_jasa: id_detail_sub_program_penyedia_jasa,
+                ppn_hps: ppn_hps
+            },
+            dataType: "JSON",
+            success: function(response) {
+                if (response == 'success') {
+                    message('success', 'PPN Berhasil Di Update!', 'Berhasil')
+                    location.reload()
+                }
+            }
+        })
+    }
+
+    function Pilih_ppn_kontrak_addendum(id_detail_sub_program_penyedia_jasa, no_addendum) {
+        var ppn_hps = $('[name="ppn_hps_kontrak_addendum_' + no_addendum + id_detail_sub_program_penyedia_jasa + '"]').val();
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/Administrasi_penyedia/update_ppn_sub_detail_program_kontrak_addendum') ?>",
+            data: {
+                id_detail_sub_program_penyedia_jasa: id_detail_sub_program_penyedia_jasa,
+                ppn_hps: ppn_hps,
+                no_addendum: no_addendum
+            },
+            dataType: "JSON",
+            success: function(response) {
+                if (response == 'success') {
+                    message('success', 'PPN Berhasil Di Update!', 'Berhasil')
+                    location.reload()
+                }
+            }
+        })
+    }
+</script>
