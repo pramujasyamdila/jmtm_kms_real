@@ -1,2141 +1,656 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+header("Content-Security-Policy: default-src 'self' *");
+header("Content-Security-Policy: img-src 'self' *");
+?>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Navbar & Tabs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPROC - JMTO</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" href="https://themes.potenzaglobalsolutions.com/html/academic/images/favicon.ico" /> -->
 
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap" rel="stylesheet">
+    <!-- CSS Global Compulsory (Do not remove)-->
+    <link rel="stylesheet" href="https://themes.potenzaglobalsolutions.com/html/academic/css/bootstrap/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="../../plugins/sweetalert2/sweetalert2.min.css">
+    <!-- Page CSS Implementing Plugins (Remove the plugin CSS here if site does not use that feature)-->
+    <link rel="stylesheet" href="https://themes.potenzaglobalsolutions.com/html/academic/css/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="https://themes.potenzaglobalsolutions.com/html/academic/css/magnific-popup/magnific-popup.css" />
+    <link rel="stylesheet" href="https://themes.potenzaglobalsolutions.com/html/academic/css/swiper/swiper.min.css" />
+    <link rel="stylesheet" href="https://themes.potenzaglobalsolutions.com/html/academic/css/animate/animate.min.css" />
 
-    <link rel="stylesheet" href="../../plugins/toastr/toastr.min.css">
-
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css?v=3.2.0">
-    <script nonce="403c3ced-77d5-41bf-9a42-bde930a1fff1">
-        (function(w, d) {
-            ! function(bw, bx, by, bz) {
-                bw[by] = bw[by] || {};
-                bw[by].executed = [];
-                bw.zaraz = {
-                    deferred: [],
-                    listeners: []
-                };
-                bw.zaraz.q = [];
-                bw.zaraz._f = function(bA) {
-                    return function() {
-                        var bB = Array.prototype.slice.call(arguments);
-                        bw.zaraz.q.push({
-                            m: bA,
-                            a: bB
-                        })
-                    }
-                };
-                for (const bC of ["track", "set", "debug"]) bw.zaraz[bC] = bw.zaraz._f(bC);
-                bw.zaraz.init = () => {
-                    var bD = bx.getElementsByTagName(bz)[0],
-                        bE = bx.createElement(bz),
-                        bF = bx.getElementsByTagName("title")[0];
-                    bF && (bw[by].t = bx.getElementsByTagName("title")[0].text);
-                    bw[by].x = Math.random();
-                    bw[by].w = bw.screen.width;
-                    bw[by].h = bw.screen.height;
-                    bw[by].j = bw.innerHeight;
-                    bw[by].e = bw.innerWidth;
-                    bw[by].l = bw.location.href;
-                    bw[by].r = bx.referrer;
-                    bw[by].k = bw.screen.colorDepth;
-                    bw[by].n = bx.characterSet;
-                    bw[by].o = (new Date).getTimezoneOffset();
-                    if (bw.dataLayer)
-                        for (const bJ of Object.entries(Object.entries(dataLayer).reduce(((bK, bL) => ({
-                                ...bK[1],
-                                ...bL[1]
-                            }))))) zaraz.set(bJ[0], bJ[1], {
-                            scope: "page"
-                        });
-                    bw[by].q = [];
-                    for (; bw.zaraz.q.length;) {
-                        const bM = bw.zaraz.q.shift();
-                        bw[by].q.push(bM)
-                    }
-                    bE.defer = !0;
-                    for (const bN of [localStorage, sessionStorage]) Object.keys(bN || {}).filter((bP => bP.startsWith("_zaraz_"))).forEach((bO => {
-                        try {
-                            bw[by]["z_" + bO.slice(7)] = JSON.parse(bN.getItem(bO))
-                        } catch {
-                            bw[by]["z_" + bO.slice(7)] = bN.getItem(bO)
-                        }
-                    }));
-                    bE.referrerPolicy = "origin";
-                    bE.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(bw[by])));
-                    bD.parentNode.insertBefore(bE, bD)
-                };
-                ["complete", "interactive"].includes(bx.readyState) ? zaraz.init() : bw.addEventListener("DOMContentLoaded", zaraz.init)
-            }(w, d, "zarazData", "script");
-        })(window, document);
-    </script>
+    <!-- dattable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css" />
+    <!-- Template Style -->
+    <link rel="stylesheet" href="https://themes.potenzaglobalsolutions.com/html/academic/css/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
 </head>
 
-<body class="hold-transition sidebar-mini">
-    <div class="wrapper">
+<body>
 
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!--=================================
+    Header -->
+    <header class="header header-transparent header-sticky">
+        <div class="header-main py-2 py-lg-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="d-lg-flex align-items-center">
+                            <!-- logo -->
+                            <a class="navbar-brand text-lg-center" href="index.html">
+                                <img class="logo" src="<?= base_url() ?>assets/img/jmto_logo.png" alt="Logo">
+                                <img class="sticky-logo" src="https://media.licdn.com/dms/image/C5616AQEu8BWysPOY4g/profile-displaybackgroundimage-shrink_200_800/0/1629163094732?e=2147483647&v=beta&t=Q8dE2xAcWWwU9GuheMkq6cZB_qfUpQkN7Mgk_ezYBpY" alt="Logo">
+                            </a>
+                            <nav class="navbar navbar-expand-lg">
 
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../../index3.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
-            </ul>
+                                <!-- Navbar toggler START-->
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <!-- Navbar toggler END-->
 
-            <ul class="navbar-nav ml-auto">
+                                <!-- Navbar START -->
+                                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                                    <ul class="navbar-nav">
 
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" data-target="#main-header-search" href="#" role="button">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <div class="navbar-search-block" id="main-header-search">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
+                                    </ul>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
-
-                            <div class="media">
-                                <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Brad Diesel
-                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">Call me whenever you can
-                                    </p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-
-                            <div class="media">
-                                <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        John Pierce
-                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">I got your message bro</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-
-                            <div class="media">
-                                <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">The subject goes here</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                    </div>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
-
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
-            <a href="../../index3.html" class="brand-link">
-                <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
-            </a>
-
-            <div class="sidebar">
-
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
-                    </div>
-                </div>
-
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
+                                <!-- Navbar END-->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle btn btn-dark text-black d-lg-flex d-none" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i>LOGIN</i><i class="fa fa-chevron-down"></i>
+                                    </a>
+                                    <!-- Dropdown Menu -->
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="https://drtproc.jmto.co.id/auth"><i> Penyedia</i></a></li>
+                                        <li><a class="dropdown-item" href="https://eprocurement.jmto.co.id/auth"><i> Non Penyedia</i></a></li>
+                                    </ul>
+                                </li>
+                                <a href="https://drtproc.jmto.co.id/registrasi" class="btn btn-warning text-white btn-round ml-3"><i>REGISTRASI PENYEDIA</i></a>
+                            </nav>
                         </div>
                     </div>
                 </div>
-
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../../index.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v1</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../../index2.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../../index3.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v3</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../widgets.html" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Widgets
-                                    <span class="right badge badge-danger">New</span>
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>
-                                    Layout Options
-                                    <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">6</span>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../layout/top-nav.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Top Navigation</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../layout/top-nav-sidebar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Top Navigation + Sidebar</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../layout/boxed.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Boxed</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../layout/fixed-sidebar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Fixed Sidebar</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../layout/fixed-sidebar-custom.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../layout/fixed-topnav.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Fixed Navbar</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../layout/fixed-footer.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Fixed Footer</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../layout/collapsed-sidebar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Collapsed Sidebar</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Charts
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../charts/chartjs.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>ChartJS</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../charts/flot.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Flot</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../charts/inline.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Inline</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../charts/uplot.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>uPlot</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tree"></i>
-                                <p>
-                                    UI Elements
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../UI/general.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>General</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../UI/icons.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Icons</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../UI/buttons.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Buttons</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../UI/sliders.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Sliders</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../UI/modals.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Modals & Alerts</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../UI/navbar.html" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Navbar & Tabs</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../UI/timeline.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Timeline</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../UI/ribbons.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Ribbons</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    Forms
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../forms/general.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>General Elements</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../forms/advanced.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Advanced Elements</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../forms/editors.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Editors</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../forms/validation.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Validation</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    Tables
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../tables/simple.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Simple Tables</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../tables/data.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>DataTables</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../tables/jsgrid.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>jsGrid</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-header">EXAMPLES</li>
-                        <li class="nav-item">
-                            <a href="../calendar.html" class="nav-link">
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>
-                                    Calendar
-                                    <span class="badge badge-info right">2</span>
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../gallery.html" class="nav-link">
-                                <i class="nav-icon far fa-image"></i>
-                                <p>
-                                    Gallery
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../kanban.html" class="nav-link">
-                                <i class="nav-icon fas fa-columns"></i>
-                                <p>
-                                    Kanban Board
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-envelope"></i>
-                                <p>
-                                    Mailbox
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../mailbox/mailbox.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Inbox</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../mailbox/compose.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Compose</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../mailbox/read-mail.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Read</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-book"></i>
-                                <p>
-                                    Pages
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../examples/invoice.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Invoice</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/profile.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Profile</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/e-commerce.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>E-commerce</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/projects.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Projects</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/project-add.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Project Add</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/project-edit.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Project Edit</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/project-detail.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Project Detail</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/contacts.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Contacts</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/faq.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>FAQ</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/contact-us.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Contact us</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-plus-square"></i>
-                                <p>
-                                    Extras
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>
-                                            Login & Register v1
-                                            <i class="fas fa-angle-left right"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <a href="../examples/login.html" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Login v1</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="../examples/register.html" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Register v1</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="../examples/forgot-password.html" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Forgot Password v1</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="../examples/recover-password.html" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Recover Password v1</p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>
-                                            Login & Register v2
-                                            <i class="fas fa-angle-left right"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <a href="../examples/login-v2.html" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Login v2</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="../examples/register-v2.html" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Register v2</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="../examples/forgot-password-v2.html" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Forgot Password v2</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="../examples/recover-password-v2.html" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Recover Password v2</p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/lockscreen.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Lockscreen</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/legacy-user-menu.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Legacy User Menu</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/language-menu.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Language Menu</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/404.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Error 404</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/500.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Error 500</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/pace.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Pace</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/blank.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Blank Page</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../../starter.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Starter Page</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-search"></i>
-                                <p>
-                                    Search
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../search/simple.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Simple Search</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../search/enhanced.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Enhanced</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-header">MISCELLANEOUS</li>
-                        <li class="nav-item">
-                            <a href="../../iframe.html" class="nav-link">
-                                <i class="nav-icon fas fa-ellipsis-h"></i>
-                                <p>Tabbed IFrame Plugin</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
-                                <p>Documentation</p>
-                            </a>
-                        </li>
-                        <li class="nav-header">MULTI LEVEL EXAMPLE</li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>Level 1</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-circle"></i>
-                                <p>
-                                    Level 1
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Level 2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>
-                                            Level 2
-                                            <i class="right fas fa-angle-left"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="far fa-dot-circle nav-icon"></i>
-                                                <p>Level 3</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="far fa-dot-circle nav-icon"></i>
-                                                <p>Level 3</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="far fa-dot-circle nav-icon"></i>
-                                                <p>Level 3</p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Level 2</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>Level 1</p>
-                            </a>
-                        </li>
-                        <li class="nav-header">LABELS</li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-circle text-danger"></i>
-                                <p class="text">Important</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-circle text-warning"></i>
-                                <p>Warning</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-circle text-info"></i>
-                                <p>Informational</p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
             </div>
-
-        </aside>
-
-        <div class="content-wrapper">
-
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>
-                                Navbar & Tabs
-                                <small>new</small>
-                            </h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Navbar & Tabs</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card card-primary card-outline">
-                                <div class="card-header">
-                                    <h3 class="card-title">
-                                        <i class="fas fa-edit"></i>
-                                        Navbar Examples
-                                    </h3>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6">
-                                            <h4>Default Navbar <small>(navbar-light)</small></h4>
-                                            <nav class="navbar navbar-expand navbar-light">
-
-                                                <ul class="navbar-nav">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                                                    </li>
-                                                    <li class="nav-item d-none d-sm-inline-block">
-                                                        <a href="../../index3.html" class="nav-link">Home</a>
-                                                    </li>
-                                                    <li class="nav-item d-none d-sm-inline-block">
-                                                        <a href="#" class="nav-link">Contact</a>
-                                                    </li>
-                                                </ul>
-
-                                                <ul class="navbar-nav ml-auto">
-
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="navbar-search" data-target="#navbar-search1" href="#" role="button">
-                                                            <i class="fas fa-search"></i>
-                                                        </a>
-                                                        <div class="navbar-search-block" id="navbar-search1">
-                                                            <form class="form-inline">
-                                                                <div class="input-group input-group-sm">
-                                                                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                                                                    <div class="input-group-append">
-                                                                        <button class="btn btn-navbar" type="submit">
-                                                                            <i class="fas fa-search"></i>
-                                                                        </button>
-                                                                        <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                                                            <i class="fas fa-times"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="nav-item dropdown">
-                                                        <a class="nav-link" data-toggle="dropdown" href="#">
-                                                            <i class="far fa-comments"></i>
-                                                            <span class="badge badge-danger navbar-badge">3</span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            Brad Diesel
-                                                                            <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">Call me whenever you can
-                                                                        </p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            John Pierce
-                                                                            <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">I got your message bro</p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            Nora Silvester
-                                                                            <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">The subject goes here</p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="nav-item dropdown">
-                                                        <a class="nav-link" data-toggle="dropdown" href="#">
-                                                            <i class="far fa-bell"></i>
-                                                            <span class="badge badge-warning navbar-badge">15</span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                                            <span class="dropdown-item dropdown-header">15 Notifications</span>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                                                                <span class="float-right text-muted text-sm">3 mins</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-users mr-2"></i> 8 friend requests
-                                                                <span class="float-right text-muted text-sm">12 hours</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-file mr-2"></i> 3 new reports
-                                                                <span class="float-right text-muted text-sm">2 days</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                                                        </div>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                                                            <i class="fas fa-expand-arrows-alt"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                                                            <i class="fas fa-th-large"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                            <h4>Default Navbar <small>(navbar-white navbar-light)</small></h4>
-                                            <nav class="navbar navbar-expand navbar-white navbar-light">
-
-                                                <ul class="navbar-nav">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                                                    </li>
-                                                    <li class="nav-item d-none d-sm-inline-block">
-                                                        <a href="../../index3.html" class="nav-link">Home</a>
-                                                    </li>
-                                                    <li class="nav-item d-none d-sm-inline-block">
-                                                        <a href="#" class="nav-link">Contact</a>
-                                                    </li>
-                                                </ul>
-
-                                                <ul class="navbar-nav ml-auto">
-
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="navbar-search" data-target="#navbar-search2" href="#" role="button">
-                                                            <i class="fas fa-search"></i>
-                                                        </a>
-                                                        <div class="navbar-search-block" id="navbar-search2">
-                                                            <form class="form-inline">
-                                                                <div class="input-group input-group-sm">
-                                                                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                                                                    <div class="input-group-append">
-                                                                        <button class="btn btn-navbar" type="submit">
-                                                                            <i class="fas fa-search"></i>
-                                                                        </button>
-                                                                        <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                                                            <i class="fas fa-times"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="nav-item dropdown">
-                                                        <a class="nav-link" data-toggle="dropdown" href="#">
-                                                            <i class="far fa-comments"></i>
-                                                            <span class="badge badge-danger navbar-badge">3</span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            Brad Diesel
-                                                                            <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">Call me whenever you can
-                                                                        </p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            John Pierce
-                                                                            <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">I got your message bro</p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            Nora Silvester
-                                                                            <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">The subject goes here</p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="nav-item dropdown">
-                                                        <a class="nav-link" data-toggle="dropdown" href="#">
-                                                            <i class="far fa-bell"></i>
-                                                            <span class="badge badge-warning navbar-badge">15</span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                                            <span class="dropdown-item dropdown-header">15 Notifications</span>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                                                                <span class="float-right text-muted text-sm">3 mins</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-users mr-2"></i> 8 friend requests
-                                                                <span class="float-right text-muted text-sm">12 hours</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-file mr-2"></i> 3 new reports
-                                                                <span class="float-right text-muted text-sm">2 days</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                                                        </div>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                                                            <i class="fas fa-expand-arrows-alt"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                                                            <i class="fas fa-th-large"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6">
-                                            <h4 class="mt-4">Primary Navbar <small><b>recommended</b> (navbar-primary navbar-dark)</small></h4>
-                                            <nav class="navbar navbar-expand navbar-primary navbar-dark">
-
-                                                <ul class="navbar-nav">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                                                    </li>
-                                                    <li class="nav-item d-none d-sm-inline-block">
-                                                        <a href="../../index3.html" class="nav-link">Home</a>
-                                                    </li>
-                                                    <li class="nav-item d-none d-sm-inline-block">
-                                                        <a href="#" class="nav-link">Contact</a>
-                                                    </li>
-                                                </ul>
-
-                                                <ul class="navbar-nav ml-auto">
-
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="navbar-search" data-target="#navbar-search3" href="#" role="button">
-                                                            <i class="fas fa-search"></i>
-                                                        </a>
-                                                        <div class="navbar-search-block" id="navbar-search3">
-                                                            <form class="form-inline">
-                                                                <div class="input-group input-group-sm">
-                                                                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                                                                    <div class="input-group-append">
-                                                                        <button class="btn btn-navbar" type="submit">
-                                                                            <i class="fas fa-search"></i>
-                                                                        </button>
-                                                                        <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                                                            <i class="fas fa-times"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="nav-item dropdown">
-                                                        <a class="nav-link" data-toggle="dropdown" href="#">
-                                                            <i class="far fa-comments"></i>
-                                                            <span class="badge badge-danger navbar-badge">3</span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            Brad Diesel
-                                                                            <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">Call me whenever you can
-                                                                        </p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            John Pierce
-                                                                            <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">I got your message bro</p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            Nora Silvester
-                                                                            <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">The subject goes here</p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="nav-item dropdown">
-                                                        <a class="nav-link" data-toggle="dropdown" href="#">
-                                                            <i class="far fa-bell"></i>
-                                                            <span class="badge badge-warning navbar-badge">15</span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                                            <span class="dropdown-item dropdown-header">15 Notifications</span>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                                                                <span class="float-right text-muted text-sm">3 mins</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-users mr-2"></i> 8 friend requests
-                                                                <span class="float-right text-muted text-sm">12 hours</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-file mr-2"></i> 3 new reports
-                                                                <span class="float-right text-muted text-sm">2 days</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                                                        </div>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                                                            <i class="fas fa-expand-arrows-alt"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                                                            <i class="fas fa-th-large"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                            <h4 class="mt-4">Primary Navbar <small>(navbar-primary navbar-light)</small></h4>
-                                            <nav class="navbar navbar-expand navbar-primary navbar-light">
-
-                                                <ul class="navbar-nav">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                                                    </li>
-                                                    <li class="nav-item d-none d-sm-inline-block">
-                                                        <a href="../../index3.html" class="nav-link">Home</a>
-                                                    </li>
-                                                    <li class="nav-item d-none d-sm-inline-block">
-                                                        <a href="#" class="nav-link">Contact</a>
-                                                    </li>
-                                                </ul>
-
-                                                <ul class="navbar-nav ml-auto">
-
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="navbar-search" data-target="#navbar-search4" href="#" role="button">
-                                                            <i class="fas fa-search"></i>
-                                                        </a>
-                                                        <div class="navbar-search-block" id="navbar-search4">
-                                                            <form class="form-inline">
-                                                                <div class="input-group input-group-sm">
-                                                                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                                                                    <div class="input-group-append">
-                                                                        <button class="btn btn-navbar" type="submit">
-                                                                            <i class="fas fa-search"></i>
-                                                                        </button>
-                                                                        <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                                                            <i class="fas fa-times"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="nav-item dropdown">
-                                                        <a class="nav-link" data-toggle="dropdown" href="#">
-                                                            <i class="far fa-comments"></i>
-                                                            <span class="badge badge-danger navbar-badge">3</span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            Brad Diesel
-                                                                            <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">Call me whenever you can
-                                                                        </p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            John Pierce
-                                                                            <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">I got your message bro</p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            Nora Silvester
-                                                                            <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">The subject goes here</p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="nav-item dropdown">
-                                                        <a class="nav-link" data-toggle="dropdown" href="#">
-                                                            <i class="far fa-bell"></i>
-                                                            <span class="badge badge-warning navbar-badge">15</span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                                            <span class="dropdown-item dropdown-header">15 Notifications</span>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                                                                <span class="float-right text-muted text-sm">3 mins</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-users mr-2"></i> 8 friend requests
-                                                                <span class="float-right text-muted text-sm">12 hours</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-file mr-2"></i> 3 new reports
-                                                                <span class="float-right text-muted text-sm">2 days</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                                                        </div>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                                                            <i class="fas fa-expand-arrows-alt"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                                                            <i class="fas fa-th-large"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6">
-                                            <h4 class="mt-4">Orange Navbar <small><b>recommended</b> (navbar-orange navbar-light)</small></h4>
-                                            <nav class="navbar navbar-expand navbar-orange navbar-light">
-
-                                                <ul class="navbar-nav">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                                                    </li>
-                                                    <li class="nav-item d-none d-sm-inline-block">
-                                                        <a href="../../index3.html" class="nav-link">Home</a>
-                                                    </li>
-                                                    <li class="nav-item d-none d-sm-inline-block">
-                                                        <a href="#" class="nav-link">Contact</a>
-                                                    </li>
-                                                </ul>
-
-                                                <ul class="navbar-nav ml-auto">
-
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="navbar-search" data-target="#navbar-search5" href="#" role="button">
-                                                            <i class="fas fa-search"></i>
-                                                        </a>
-                                                        <div class="navbar-search-block" id="navbar-search5">
-                                                            <form class="form-inline">
-                                                                <div class="input-group input-group-sm">
-                                                                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                                                                    <div class="input-group-append">
-                                                                        <button class="btn btn-navbar" type="submit">
-                                                                            <i class="fas fa-search"></i>
-                                                                        </button>
-                                                                        <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                                                            <i class="fas fa-times"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="nav-item dropdown">
-                                                        <a class="nav-link" data-toggle="dropdown" href="#">
-                                                            <i class="far fa-comments"></i>
-                                                            <span class="badge badge-danger navbar-badge">3</span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            Brad Diesel
-                                                                            <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">Call me whenever you can
-                                                                        </p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            John Pierce
-                                                                            <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">I got your message bro</p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            Nora Silvester
-                                                                            <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">The subject goes here</p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="nav-item dropdown">
-                                                        <a class="nav-link" data-toggle="dropdown" href="#">
-                                                            <i class="far fa-bell"></i>
-                                                            <span class="badge badge-warning navbar-badge">15</span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                                            <span class="dropdown-item dropdown-header">15 Notifications</span>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                                                                <span class="float-right text-muted text-sm">3 mins</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-users mr-2"></i> 8 friend requests
-                                                                <span class="float-right text-muted text-sm">12 hours</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-file mr-2"></i> 3 new reports
-                                                                <span class="float-right text-muted text-sm">2 days</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                                                        </div>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                                                            <i class="fas fa-expand-arrows-alt"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                                                            <i class="fas fa-th-large"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                            <h4 class="mt-4">Orange Navbar <small>(navbar-orange navbar-dark)</small></h4>
-                                            <nav class="navbar navbar-expand navbar-orange navbar-dark">
-
-                                                <ul class="navbar-nav">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                                                    </li>
-                                                    <li class="nav-item d-none d-sm-inline-block">
-                                                        <a href="../../index3.html" class="nav-link">Home</a>
-                                                    </li>
-                                                    <li class="nav-item d-none d-sm-inline-block">
-                                                        <a href="#" class="nav-link">Contact</a>
-                                                    </li>
-                                                </ul>
-
-                                                <ul class="navbar-nav ml-auto">
-
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="navbar-search" data-target="#navbar-search6" href="#" role="button">
-                                                            <i class="fas fa-search"></i>
-                                                        </a>
-                                                        <div class="navbar-search-block" id="navbar-search6">
-                                                            <form class="form-inline">
-                                                                <div class="input-group input-group-sm">
-                                                                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                                                                    <div class="input-group-append">
-                                                                        <button class="btn btn-navbar" type="submit">
-                                                                            <i class="fas fa-search"></i>
-                                                                        </button>
-                                                                        <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                                                            <i class="fas fa-times"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="nav-item dropdown">
-                                                        <a class="nav-link" data-toggle="dropdown" href="#">
-                                                            <i class="far fa-comments"></i>
-                                                            <span class="badge badge-danger navbar-badge">3</span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            Brad Diesel
-                                                                            <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">Call me whenever you can
-                                                                        </p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            John Pierce
-                                                                            <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">I got your message bro</p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-
-                                                                <div class="media">
-                                                                    <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                                                    <div class="media-body">
-                                                                        <h3 class="dropdown-item-title">
-                                                                            Nora Silvester
-                                                                            <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                                                        </h3>
-                                                                        <p class="text-sm">The subject goes here</p>
-                                                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                                                    </div>
-                                                                </div>
-
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="nav-item dropdown">
-                                                        <a class="nav-link" data-toggle="dropdown" href="#">
-                                                            <i class="far fa-bell"></i>
-                                                            <span class="badge badge-warning navbar-badge">15</span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                                            <span class="dropdown-item dropdown-header">15 Notifications</span>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                                                                <span class="float-right text-muted text-sm">3 mins</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-users mr-2"></i> 8 friend requests
-                                                                <span class="float-right text-muted text-sm">12 hours</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item">
-                                                                <i class="fas fa-file mr-2"></i> 3 new reports
-                                                                <span class="float-right text-muted text-sm">2 days</span>
-                                                            </a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                                                        </div>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                                                            <i class="fas fa-expand-arrows-alt"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                                                            <i class="fas fa-th-large"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <h4>Nav Tabs inside Card Header <small>card-tabs / card-outline-tabs</small></h4>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <div class="card card-primary card-tabs">
-                                <div class="card-header p-0 pt-1">
-                                    <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Profile</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Messages</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Settings</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="card-body">
-                                    <div class="tab-content" id="custom-tabs-one-tabContent">
-                                        <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                                            Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-                                            Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
-                                            Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <div class="card card-primary card-tabs">
-                                <div class="card-header p-0 pt-1">
-                                    <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
-                                        <li class="pt-2 px-3">
-                                            <h3 class="card-title">Card Title</h3>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Profile</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill" href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">Messages</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">Settings</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="card-body">
-                                    <div class="tab-content" id="custom-tabs-two-tabContent">
-                                        <div class="tab-pane fade show active" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel" aria-labelledby="custom-tabs-two-profile-tab">
-                                            Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-two-messages" role="tabpanel" aria-labelledby="custom-tabs-two-messages-tab">
-                                            Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
-                                            Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <div class="card card-primary card-outline card-tabs">
-                                <div class="card-header p-0 pt-1 border-bottom-0">
-                                    <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Profile</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false">Messages</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-three-settings-tab" data-toggle="pill" href="#custom-tabs-three-settings" role="tab" aria-controls="custom-tabs-three-settings" aria-selected="false">Settings</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="card-body">
-                                    <div class="tab-content" id="custom-tabs-three-tabContent">
-                                        <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
-                                            Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">
-                                            Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-three-settings" role="tabpanel" aria-labelledby="custom-tabs-three-settings-tab">
-                                            Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <div class="card card-primary card-outline card-outline-tabs">
-                                <div class="card-header p-0 border-bottom-0">
-                                    <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Profile</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Messages</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-four-settings-tab" data-toggle="pill" href="#custom-tabs-four-settings" role="tab" aria-controls="custom-tabs-four-settings" aria-selected="false">Settings</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="card-body">
-                                    <div class="tab-content" id="custom-tabs-four-tabContent">
-                                        <div class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
-                                            Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
-                                            Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-four-settings" role="tabpanel" aria-labelledby="custom-tabs-four-settings-tab">
-                                            Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <h4>Nav Tabs Overlay for loading</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card card-primary card-tabs">
-                                <div class="card-header p-0 pt-1">
-                                    <ul class="nav nav-tabs" id="custom-tabs-five-tab" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="custom-tabs-five-overlay-tab" data-toggle="pill" href="#custom-tabs-five-overlay" role="tab" aria-controls="custom-tabs-five-overlay" aria-selected="true">Overlay</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-five-overlay-dark-tab" data-toggle="pill" href="#custom-tabs-five-overlay-dark" role="tab" aria-controls="custom-tabs-five-overlay-dark" aria-selected="false">Overlay Dark</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-five-normal-tab" data-toggle="pill" href="#custom-tabs-five-normal" role="tab" aria-controls="custom-tabs-five-normal" aria-selected="false">Normal Tab</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="card-body">
-                                    <div class="tab-content" id="custom-tabs-five-tabContent">
-                                        <div class="tab-pane fade show active" id="custom-tabs-five-overlay" role="tabpanel" aria-labelledby="custom-tabs-five-overlay-tab">
-                                            <div class="overlay-wrapper">
-                                                <div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
-                                                    <div class="text-bold pt-2">Loading...</div>
-                                                </div>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-five-overlay-dark" role="tabpanel" aria-labelledby="custom-tabs-five-overlay-dark-tab">
-                                            <div class="overlay-wrapper">
-                                                <div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
-                                                    <div class="text-bold pt-2">Loading...</div>
-                                                </div>
-                                                Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-five-normal" role="tabpanel" aria-labelledby="custom-tabs-five-normal-tab">
-                                            Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card card-primary card-outline">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="fas fa-edit"></i>
-                                Vertical Tabs Examples
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <h4>Left Sided</h4>
-                            <div class="row">
-                                <div class="col-5 col-sm-3">
-                                    <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
-                                        <a class="nav-link active" id="vert-tabs-home-tab" data-toggle="pill" href="#vert-tabs-home" role="tab" aria-controls="vert-tabs-home" aria-selected="true">Home</a>
-                                        <a class="nav-link" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile" role="tab" aria-controls="vert-tabs-profile" aria-selected="false">Profile</a>
-                                        <a class="nav-link" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab" aria-controls="vert-tabs-messages" aria-selected="false">Messages</a>
-                                        <a class="nav-link" id="vert-tabs-settings-tab" data-toggle="pill" href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings" aria-selected="false">Settings</a>
-                                    </div>
-                                </div>
-                                <div class="col-7 col-sm-9">
-                                    <div class="tab-content" id="vert-tabs-tabContent">
-                                        <div class="tab-pane text-left fade show active" id="vert-tabs-home" role="tabpanel" aria-labelledby="vert-tabs-home-tab">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
-                                        </div>
-                                        <div class="tab-pane fade" id="vert-tabs-profile" role="tabpanel" aria-labelledby="vert-tabs-profile-tab">
-                                            Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
-                                        </div>
-                                        <div class="tab-pane fade" id="vert-tabs-messages" role="tabpanel" aria-labelledby="vert-tabs-messages-tab">
-                                            Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
-                                        </div>
-                                        <div class="tab-pane fade" id="vert-tabs-settings" role="tabpanel" aria-labelledby="vert-tabs-settings-tab">
-                                            Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="mt-4">Right Sided <small>(nav-tabs-right)</small></h4>
-                            <div class="row">
-                                <div class="col-7 col-sm-9">
-                                    <div class="tab-content" id="vert-tabs-right-tabContent">
-                                        <div class="tab-pane fade show active" id="vert-tabs-right-home" role="tabpanel" aria-labelledby="vert-tabs-right-home-tab">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
-                                        </div>
-                                        <div class="tab-pane fade" id="vert-tabs-right-profile" role="tabpanel" aria-labelledby="vert-tabs-right-profile-tab">
-                                            Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
-                                        </div>
-                                        <div class="tab-pane fade" id="vert-tabs-right-messages" role="tabpanel" aria-labelledby="vert-tabs-right-messages-tab">
-                                            Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
-                                        </div>
-                                        <div class="tab-pane fade" id="vert-tabs-right-settings" role="tabpanel" aria-labelledby="vert-tabs-right-settings-tab">
-                                            Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-5 col-sm-3">
-                                    <div class="nav flex-column nav-tabs nav-tabs-right h-100" id="vert-tabs-right-tab" role="tablist" aria-orientation="vertical">
-                                        <a class="nav-link active" id="vert-tabs-right-home-tab" data-toggle="pill" href="#vert-tabs-right-home" role="tab" aria-controls="vert-tabs-right-home" aria-selected="true">Home</a>
-                                        <a class="nav-link" id="vert-tabs-right-profile-tab" data-toggle="pill" href="#vert-tabs-right-profile" role="tab" aria-controls="vert-tabs-right-profile" aria-selected="false">Profile</a>
-                                        <a class="nav-link" id="vert-tabs-right-messages-tab" data-toggle="pill" href="#vert-tabs-right-messages" role="tab" aria-controls="vert-tabs-right-messages" aria-selected="false">Messages</a>
-                                        <a class="nav-link" id="vert-tabs-right-settings-tab" data-toggle="pill" href="#vert-tabs-right-settings" role="tab" aria-controls="vert-tabs-right-settings" aria-selected="false">Settings</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="card card-primary card-outline">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="fas fa-edit"></i>
-                                Tabs Custom Content Examples
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <h4>Custom Content Below</h4>
-                            <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="custom-content-below-home-tab" data-toggle="pill" href="#custom-content-below-home" role="tab" aria-controls="custom-content-below-home" aria-selected="true">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="custom-content-below-profile-tab" data-toggle="pill" href="#custom-content-below-profile" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">Profile</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="custom-content-below-messages-tab" data-toggle="pill" href="#custom-content-below-messages" role="tab" aria-controls="custom-content-below-messages" aria-selected="false">Messages</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="custom-content-below-settings-tab" data-toggle="pill" href="#custom-content-below-settings" role="tab" aria-controls="custom-content-below-settings" aria-selected="false">Settings</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="custom-content-below-tabContent">
-                                <div class="tab-pane fade show active" id="custom-content-below-home" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
-                                </div>
-                                <div class="tab-pane fade" id="custom-content-below-profile" role="tabpanel" aria-labelledby="custom-content-below-profile-tab">
-                                    Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
-                                </div>
-                                <div class="tab-pane fade" id="custom-content-below-messages" role="tabpanel" aria-labelledby="custom-content-below-messages-tab">
-                                    Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
-                                </div>
-                                <div class="tab-pane fade" id="custom-content-below-settings" role="tabpanel" aria-labelledby="custom-content-below-settings-tab">
-                                    Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
-                                </div>
-                            </div>
-                            <div class="tab-custom-content">
-                                <p class="lead mb-0">Custom Content goes here</p>
-                            </div>
-                            <h4 class="mt-5 ">Custom Content Above</h4>
-                            <ul class="nav nav-tabs" id="custom-content-above-tab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="custom-content-above-home-tab" data-toggle="pill" href="#custom-content-above-home" role="tab" aria-controls="custom-content-above-home" aria-selected="true">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="custom-content-above-profile-tab" data-toggle="pill" href="#custom-content-above-profile" role="tab" aria-controls="custom-content-above-profile" aria-selected="false">Profile</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="custom-content-above-messages-tab" data-toggle="pill" href="#custom-content-above-messages" role="tab" aria-controls="custom-content-above-messages" aria-selected="false">Messages</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="custom-content-above-settings-tab" data-toggle="pill" href="#custom-content-above-settings" role="tab" aria-controls="custom-content-above-settings" aria-selected="false">Settings</a>
-                                </li>
-                            </ul>
-                            <div class="tab-custom-content">
-                                <p class="lead mb-0">Custom Content goes here</p>
-                            </div>
-                            <div class="tab-content" id="custom-content-above-tabContent">
-                                <div class="tab-pane fade show active" id="custom-content-above-home" role="tabpanel" aria-labelledby="custom-content-above-home-tab">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
-                                </div>
-                                <div class="tab-pane fade" id="custom-content-above-profile" role="tabpanel" aria-labelledby="custom-content-above-profile-tab">
-                                    Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
-                                </div>
-                                <div class="tab-pane fade" id="custom-content-above-messages" role="tabpanel" aria-labelledby="custom-content-above-messages-tab">
-                                    Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
-                                </div>
-                                <div class="tab-pane fade" id="custom-content-above-settings" role="tabpanel" aria-labelledby="custom-content-above-settings-tab">
-                                    Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
         </div>
+    </header>
+    <!--=================================
+    Header -->
+    <div class="sticky-container">
+        <style>
+            /* Ikon media sosial */
+            .sticky-container {
+                padding: 0px;
+                margin: 0px;
+                position: fixed;
+                right: -130px;
+                top: 230px;
+                width: 210px;
+                z-index: 1100;
+            }
 
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.2.0
-            </div>
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-        </footer>
+            .sticky li {
+                list-style-type: none;
+                background-color: #fff;
+                color: #efefef;
+                height: 43px;
+                padding: 0px;
+                margin: 0px 0px 1px 0px;
+                -webkit-transition: all 0.25s ease-in-out;
+                -moz-transition: all 0.25s ease-in-out;
+                -o-transition: all 0.25s ease-in-out;
+                transition: all 0.25s ease-in-out;
+                cursor: pointer;
+            }
 
-        <aside class="control-sidebar control-sidebar-dark">
+            .sticky li:hover {
+                margin-left: -115px;
+            }
 
-        </aside>
+            .sticky li img {
+                float: left;
+                margin: 5px 4px;
+                margin-right: 5px;
+            }
 
+            .sticky li p {
+                padding-top: 5px;
+                margin: 0px;
+                line-height: 16px;
+                font-size: 11px;
+            }
+
+            .sticky li p a {
+                text-decoration: none;
+                color: #2C3539;
+            }
+
+            .sticky li p a:hover {
+                text-decoration: underline;
+            }
+        </style>
+        <ul class="sticky">
+            <li>
+                <img src="<?= base_url('assets/img/volume_logo.png') ?>" width="32" height="32">
+                <p><a href="javascript:;" onclick="matikan()">Klik Untuk <br>Backsound</a></p>
+            </li>
+            <li>
+                <img src="<?= base_url('assets/img/wa_logo.png') ?>" width="32" height="32">
+                <p><a href="#" target="_blank">Kontak Kami<br>08978201075</a></p>
+            </li>
+        </ul>
     </div>
+    <!--=================================
+    banner -->
+    <section id="video1" class="banner align-items-center d-flex space-ptb bg-holder h-100vh bg-overlay-black-40" style="display: block;" data-jarallax='{"speed": 0.6}' data-jarallax-video="https://www.youtube.com/watch?v=bmyYwQr__B8&t=17s">
+        <!-- Background Vimeo Parallax -->
+        <div style="margin-top: 500px;margin-left:20px">
+            <i class="text-white" style="font-size: 14px;font-weight:bold;">E - PROCUREMENT JMTO</i>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center text-center mb-0 pb-md-4">
+                <div class="col-xl-12">
+
+                </div>
+            </div>
+            <div class="row justify-content-center text-center pt-0 pt-md-4">
+                <div class="col-xl-12">
+
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <section style="display: none;" id="video2" class="slider-04 bg-overlay-dark-50 bg-holder jarallax" data-speed='1' data-video-src="https://www.youtube.com/watch?v=bmyYwQr__B8&t=17s">
+        <!-- Background Vimeo Parallax -->
+        <div style="margin-top: 500px;margin-left:20px">
+            <i class="text-white" style="font-size: 14px;font-weight:bold;">E - PROCUREMENT JMTO</i>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center text-center mb-0 pb-md-4">
+                <div class="col-xl-12">
 
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+                </div>
+            </div>
+            <div class="row justify-content-center text-center pt-0 pt-md-4">
+                <div class="col-xl-12">
 
-    <script src="../../dist/js/adminlte.min.js?v=3.2.0"></script>
+                </div>
+            </div>
+        </div>
+        <div class="sticky-container">
+            <ul class="sticky">
+                <li>
+                    <img src="<?= base_url('assets/img/volume_logo.png') ?>" width="32" height="32">
+                    <p><a href="javascript:;" onclick="matikan()">Kelik Untuk <br>Backsound</a></p>
+                </li>
+                <li>
+                    <img src="<?= base_url('assets/img/wa_logo.png') ?>" width="32" height="32">
+                    <p><a href="#" target="_blank">Kontak Kami<br>08978201075</a></p>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-    <script src="../../dist/js/demo.js"></script>
+
+    <!--=================================
+    banner -->
+    <div class="footer-bottom bg-dark py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <i class="mb-0 text-white" style="font-size: 18px;">Saat ini JMTO mengoperasikan beberapa gerbang tol yang terdapat pada ruas tol sebagai berikut</i>
+                    <br><br>
+                </div>
+                <br><br>
+                <div class="col-md-3">
+                    <center>
+                        <img width="70px" src="<?= base_url() ?>assets/img/ruastol.png" alt="Logo"> <br><i class="text-white ml-2" style="font-size: 15px;"> Ruas Tol <i class="fa fa-caret-right" aria-hidden="true"></i> 50</i>
+                    </center>
+                </div>
+                <div class="col-md-3">
+                    <center>
+                        <img width="70px" src="<?= base_url() ?>assets/img/gerbang.png" alt="Logo"> <br><i class="text-white ml-2" style="font-size: 15px;"> Gerbang Tol <i class="fa fa-caret-right" aria-hidden="true"></i> 316</i>
+                    </center>
+                </div>
+                <div class="col-md-3">
+                    <center>
+                        <img width="70px" src="<?= base_url() ?>assets/img/gardu.png" alt="Logo"> <br><i class="text-white ml-2" style="font-size: 15px;"> Gardu Tol <i class="fa fa-caret-right" aria-hidden="true"></i> 1839</i>
+                    </center>
+                </div>
+                <div class="col-md-3">
+                    <center>
+                        <img width="70px" src="<?= base_url() ?>assets/img/jalan.png" alt="Logo"> <br><i class="text-white ml-2" style="font-size: 15px;"> Panjang Jalan <i class="fa fa-caret-right" aria-hidden="true"></i> 2234 KM</i>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--=================================
+    Category -->
+    <section class="space-ptb">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9 text-center">
+                    <div class="section-title">
+                        <h2 class="title"> <i> FITUR FITUR DALAM E - PROCUREMENT JMTO </i></h2>
+                        <p class="mb-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="category border-radius py-4">
+                        <div class="category-icon">
+                            <a href="#" class="category-item text-center">
+                                <img width="200px" height="188px" src="<?= base_url() ?>assets/img/logo3.png" alt="Logo">
+                            </a>
+                        </div>
+                        <center>
+                            <i style="font-size: 20px;" class="mt-3 text-black-20">Global supply Chain Solutions
+                            </i>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-4 ml-5">
+                    <div class="category border-radius py-4">
+                        <div class="category-icon">
+                            <a href="#" class="category-item text-center">
+                                <img width="200px" height="100%" src="<?= base_url() ?>assets/img/monitoring.png" alt="Logo">
+                            </a>
+                        </div>
+                        <center>
+                            <i style="font-size: 20px;" class="mt-3 text-black-20">Solutions & Special Expertise
+                            </i>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-4 ml-5">
+                    <div class="category border-radius py-4">
+                        <div class="category-icon">
+                            <a href="#" class="category-item text-center">
+                                <img width="200px" src="<?= base_url() ?>assets/img/proc.png" alt="Logo">
+                            </a>
+                        </div>
+                        <center>
+                            <i style="font-size: 20px;" class="mt-3 text-black-20">Integration Vendor </i>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-4 ml-5">
+                    <div class="category border-radius py-4">
+                        <div class="category-icon">
+                            <a href="#" class="category-item text-center">
+                                <img width="200px" src="<?= base_url() ?>assets/img/support.png" alt="Logo">
+                            </a>
+                        </div>
+                        <center>
+                            <i style="font-size: 20px;" class="mt-3 text-black-20">Technical Support
+                            </i>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    Category -->
+
+    <!--=================================
+    Gallery -->
+    <section class="space-ptb">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10 text-center">
+                    <!-- Section Title START -->
+                    <div class="section-title">
+                        <h2>BERITA TENDER <i class="fa fa-newspaper-o" aria-hidden="true"></i></h2>
+                        <p>Berita Terkini</p>
+                    </div>
+                    <!-- Section Title END -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped table-bordered table_berita" style="font-style: italic;color:black">
+                        <thead class="thead-inverse bg-dark text-white">
+                            <tr>
+                                <th>No <i class="fa fa-list-ol" aria-hidden="true"></i></th>
+                                <th>Nama Berita <i class="fa fa-newspaper-o" aria-hidden="true"></i></th>
+                                <th>Tanggal <i class="fa fa-clock-o" aria-hidden="true"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr>
+                                <td scope="row">1</td>
+                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
+                                <td>20 Mei 2023</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">2</td>
+                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
+                                <td>20 Mei 2023</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    Gallery -->
+
+
+    <!--=================================
+    tabs -->
+    <section class="space-ptb">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10 text-center">
+                    <!-- Section Title START -->
+                    <div class="section-title">
+                        <h2>DAFTAR TENDER <i class="fa fa-newspaper-o" aria-hidden="true"></i></h2>
+                        <p>Daftar Tender E-procurement JMTO</p>
+                    </div>
+                    <!-- Section Title END -->
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-lg-12">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active bg-dark text-white" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i>PENGADAAN BARANG</i></a>
+                            <a class="nav-item nav-link bg-warning text-white" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i>PENGADAAN JASA KONSULTASI</i></a>
+                            <a class="nav-item nav-link bg-dark text-white" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><i>PENGADAAN JASA KONTRUKSI</i></a>
+                            <a class="nav-item nav-link bg-warning text-white" id="nav-design-tab" data-toggle="tab" href="#nav-design" role="tab" aria-controls="nav-design" aria-selected="false"><i>PENGADAAN JASA LAINYA</i></a>
+                        </div>
+                    </nav>
+                    <div class="tab-content bg-white p-4 p-md-5" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div class="section-title mb-4">
+                                <h3 class="title">DATA PENGADAAN BARANG</h3>
+                                <p class="mb-0">Data Tender Pengadaan Barang Yang Ada Pada E-procurement JMTO.</p>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-striped table-bordered table_berita" style="font-style: italic;font-size:10px;color:black">
+                                            <thead class="thead-inverse bg-dark text-white">
+                                                <tr>
+                                                    <th>No <i class="fa fa-list-ol" aria-hidden="true"></i></th>
+                                                    <th style="width:400px">Nama Paket <i class="fa fa-database" aria-hidden="true"></i></th>
+                                                    <th>Hps <i class="fa fa-usd" aria-hidden="true"></i></th>
+                                                    <th>Akhir Pendaftaran <i class="fa fa-calendar" aria-hidden="true"></i></th>
+                                                    <th>Persyaratan <i class="fa fa-files-o" aria-hidden="true"></i></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- <tr>
+                                                    <td scope="row">1</td>
+                                                    <td>Jasa Pemborongan Pekerjaan Pemeliharaan Periodik Scrapping Filling Overlay (SFO) Pada Ruas Jalan Tol Bali - Mandara Tahun 2023</td>
+                                                    <td>Rp 16.610.361.900,00</td>
+                                                    <td>10-May-2023 12:00</td>
+                                                    <td><a class="btn btn-sm btn-dark text-white" href="javascript:;"><i class="fas fa fa-file"></i> View</a></td>
+                                                </tr> -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="section-title mb-4">
+                                <h3 class="title">DATA PENGADAAN JASA KONSULTASI</h3>
+                                <p class="mb-0">Data Tender Pengadaan Barang Yang Ada Pada E-procurement JMTO.</p>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-striped table-bordered table_berita" style="font-style: italic;font-size:10px;color:black">
+                                            <thead class="thead-inverse bg-dark text-white">
+                                                <tr>
+                                                    <th>No <i class="fa fa-list-ol" aria-hidden="true"></i></th>
+                                                    <th style="width:400px">Nama Paket <i class="fa fa-database" aria-hidden="true"></i></th>
+                                                    <th>Hps <i class="fa fa-usd" aria-hidden="true"></i></th>
+                                                    <th>Akhir Pendaftaran <i class="fa fa-calendar" aria-hidden="true"></i></th>
+                                                    <th>Persyaratan <i class="fa fa-files-o" aria-hidden="true"></i></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td scope="row">1</td>
+                                                    <td>Jasa Pemborongan Pekerjaan Pemeliharaan Periodik Scrapping Filling Overlay (SFO) Pada Ruas Jalan Tol Bali - Mandara Tahun 2023</td>
+                                                    <td>Rp 16.610.361.900,00</td>
+                                                    <td>10-May-2023 12:00</td>
+                                                    <td><a class="btn btn-sm btn-dark text-white" href="javascript:;"><i class="fas fa fa-file"></i> View</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <div class="section-title mb-4">
+                                <h3 class="title">DATA PENGADAAN JASA KONTRUKSI</h3>
+                                <p class="mb-0">Data Tender Pengadaan Barang Yang Ada Pada E-procurement JMTO.</p>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-striped table-bordered table_berita" style="font-style: italic;font-size:10px;color:black">
+                                            <thead class="thead-inverse bg-dark text-white">
+                                                <tr>
+                                                    <th>No <i class="fa fa-list-ol" aria-hidden="true"></i></th>
+                                                    <th style="width:400px">Nama Paket <i class="fa fa-database" aria-hidden="true"></i></th>
+                                                    <th>Hps <i class="fa fa-usd" aria-hidden="true"></i></th>
+                                                    <th>Akhir Pendaftaran <i class="fa fa-calendar" aria-hidden="true"></i></th>
+                                                    <th>Persyaratan <i class="fa fa-files-o" aria-hidden="true"></i></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td scope="row">1</td>
+                                                    <td>Jasa Pemborongan Pekerjaan Pemeliharaan Periodik Scrapping Filling Overlay (SFO) Pada Ruas Jalan Tol Bali - Mandara Tahun 2023</td>
+                                                    <td>Rp 16.610.361.900,00</td>
+                                                    <td>10-May-2023 12:00</td>
+                                                    <td><a class="btn btn-sm btn-dark text-white" href="javascript:;"><i class="fas fa fa-file"></i> View</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-design" role="tabpanel" aria-labelledby="nav-design-tab">
+                            <div class="section-title mb-4">
+                                <h3 class="title">DATA PENGADAAN JASALAINYA</h3>
+                                <p class="mb-0">Data Tender Pengadaan Barang Yang Ada Pada E-procurement JMTO.</p>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-striped table-bordered table_berita" style="font-style: italic;font-size:10px;color:black">
+                                            <thead class="thead-inverse bg-dark text-white">
+                                                <tr>
+                                                    <th>No <i class="fa fa-list-ol" aria-hidden="true"></i></th>
+                                                    <th style="width:400px">Nama Paket <i class="fa fa-database" aria-hidden="true"></i></th>
+                                                    <th>Hps <i class="fa fa-usd" aria-hidden="true"></i></th>
+                                                    <th>Akhir Pendaftaran <i class="fa fa-calendar" aria-hidden="true"></i></th>
+                                                    <th>Persyaratan <i class="fa fa-files-o" aria-hidden="true"></i></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td scope="row">1</td>
+                                                    <td>Jasa Pemborongan Pekerjaan Pemeliharaan Periodik Scrapping Filling Overlay (SFO) Pada Ruas Jalan Tol Bali - Mandara Tahun 2023</td>
+                                                    <td>Rp 16.610.361.900,00</td>
+                                                    <td>10-May-2023 12:00</td>
+                                                    <td><a class="btn btn-sm btn-dark text-white" href="javascript:;"><i class="fas fa fa-file"></i> View</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    tabs -->
+
+
+    <!--=================================
+    Action box -->
+    <section>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 text-center">
+                <!-- Section Title START -->
+                <div class="section-title">
+                    <h2>LOKASI <i class="fa fa-map-marker" aria-hidden="true"></i></h2>
+                    <p>Lokasi Kami</p>
+                </div>
+                <!-- Section Title END -->
+            </div>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1015243.0397777373!2d106.87879!3d-6.290899!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f29c898a114b%3A0xbdc38eee360b6262!2sJasa%20Marga!5e0!3m2!1sen!2sid!4v1685887740907!5m2!1sen!2sid" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+    <!--=================================
+    Action box -->
+    <!--=================================
+    Footer-->
+    <footer class="space-pt bg-overlay-black-90 bg-holder footer">
+        <div class="container">
+            <div class="row pb-5 pb-lg-6 mb-lg-3">
+                <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0 pr-lg-5">
+                    <a href="index.html"><img class="img-fluid mb-3 footer-logo" src="<?= base_url() ?>assets/img/jmto_logo.png" alt=""></a>
+                    <p class="text-white">JMTO merupakan kelompok usaha PT Jasa Marga (Persero) Tbk dengan komposisi saham 99,9 persen dimiliki oleh PT Jasa Marga (Persero) Tbk dan 0,1 persen dimiliki oleh Induk Koperasi Karyawan Jasa Marga. Kegiatan Usaha JMTO meliputi Layanan Pengoperasian, ETC dan Layanan IT</p>
+                    <h5 class="text-white mb-2 mb-sm-4">(021) 22984722</h5>
+                    <div class="social-icon social-icon-style-02">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-phone"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-2 mb-4 mb-lg-0">
+                    <h5 class="text-white mb-2 mb-sm-4"> Pengadaan</h5>
+                    <div class="footer-link">
+                        <ul class="list-unstyled mb-0">
+                            <li><a class="text-white" href="#">Pengadaan Barang</a></li>
+                            <li><a class="text-white" href="#">Pengadaan Jasa Lain</a></li>
+                            <li><a class="text-white" href="#">Pengadaan Jasa Pemborongan</a></li>
+                            <li><a class="text-white" href="#">Pengadaan Konsultansi</a></li>
+                            <li><a class="text-white" href="#">Pengadaan Kontruksi</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-2 mb-4 mb-sm-0">
+                    <h5 class="text-white mb-2 mb-sm-4">Alamat Kami</h5>
+                    <p class="text-white">Gedung Cabang Jagorawi Lt. 4
+                        Plaza Tol Taman Mini Indonesia Indah
+                        Jakarta, 13550 Indonesia
+                        Telp. (021) 22984722</p>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <h5 class="text-white mb-2 mb-sm-4">Link Terkait</h5>
+                    <p class="text-white">Helped thousands of clients to find the right property for their needs.</p>
+                    <div class="footer-link">
+                        <ul class="list-unstyled mb-0">
+                            <li><a class="text-white" href="#">Corporate Internal Media (CIM)</a></li>
+                            <li><a class="text-white" href="#">Electronic Operational Performance Appraisal (EOPA)</a></li>
+                            <li><a class="text-white" href="#">Jasa Marga Livestreaming</a></li>
+                            <li><a class="text-white" href="#">Privacy Policy</a></li>
+                            <li><a class="text-white" href="#">JMTO Internal Web Mail</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom bg-dark py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 text-center">
+                        <p class="mb-0 text-white">Â©PT Jasamarga Tollroad Operator. 2023 <a href="#"></a> Privacy & Policy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--=================================
+    Footer-->
+
+    <!--=================================
+    Back To Top-->
+    <div id="back-to-top" class="back-to-top">up</div>
+    <!--=================================
+    Back To Top-->
+
+    <!--=================================
+    Javascript -->
+
+    <!-- JS Global Compulsory (Do not remove)-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>/assets/plugins-lte/datatables/jquery.dataTables.min.js"></script>
+    <script src="https://themes.potenzaglobalsolutions.com/html/academic/js/popper/popper.min.js"></script>
+    <script src="https://themes.potenzaglobalsolutions.com/html/academic/js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Page JS Implementing Plugins (Remove the plugin script here if site does not use that feature)-->
+    <script src="https://themes.potenzaglobalsolutions.com/html/academic/js/jquery.appear.js"></script>
+    <script src="https://themes.potenzaglobalsolutions.com/html/academic/js/counter/jquery.countTo.js"></script>
+    <script src="https://themes.potenzaglobalsolutions.com/html/academic/js/owl-carousel/owl.carousel.min.js"></script>
+    <script src="https://themes.potenzaglobalsolutions.com/html/academic/js/swiper/swiper.min.js"></script>
+    <script src="https://themes.potenzaglobalsolutions.com/html/academic/js/swiperanimation/SwiperAnimation.min.js"></script>
+    <script src="https://themes.potenzaglobalsolutions.com/html/academic/js/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="https://themes.potenzaglobalsolutions.com/html/academic/js/shuffle/shuffle.min.js"></script>
+    <script src="https://themes.potenzaglobalsolutions.com/html/academic/js/jarallax/jarallax.min.js"></script>
+    <script src="https://themes.potenzaglobalsolutions.com/html/academic/js/jarallax/jarallax-video.min.js"></script>
+
+    <!-- Template Scripts (Do not remove)-->
+    <script src="https://themes.potenzaglobalsolutions.com/html/academic/js/custom.js"></script>
+
 </body>
+
+<script>
+    $(document).ready(function() {
+        $('.table_berita').DataTable({
+		info: true,
+    		ordering: true,
+    		paging: false
+	});
+    });
+</script>
+<script>
+    $('.jarallax').jarallax({
+        videoVolume: 1000,
+        onInit: function() {
+            var self = this;
+            var video = self.video;
+            video.unmute();
+        }
+    });
+
+    function hidupkan() {
+        $('.jarallax').jarallax({
+            videoVolume: 1000,
+            onInit: function() {
+                var self = this;
+                var video = self.video;
+                video.unmute();
+            }
+        });
+        $('#video1').hide()
+        $('#video2').show()
+    }
+
+    function matikan() {
+        location.reload('<?= base_url() ?>')
+    }
+</script>
 
 </html>

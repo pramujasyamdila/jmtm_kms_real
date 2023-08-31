@@ -889,8 +889,8 @@
                                                                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                                                                     </button>
                                                                                                                     <div class="dropdown-menu" role="menu">
-                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_2_addendum(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'simpan',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a>
-                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_2_addendum(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'edit',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-edit"></i></a>
+                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_addendum(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'hapus',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus Turunan"><i class="fas fa-trash"></i></a>
+                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_2_addendum(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'edit',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit Turunan"><i class="fas fa-edit"></i></a>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </td>
@@ -963,14 +963,14 @@
             <div class="modal-body">
                 <form action="javascript:;" id="form_tambah_addendum_hps_penyedia_kontrak" method="post">
                     <!-- hps_penyedia_1 -->
-                    <input type="text" name="id_detail_sub_program_penyedia_jasa">
-                    <input type="text" name="id_detail_program_penyedia_jasa">
-                    <input type="text" name="id_hps_penyedia_kontrak_1">
-                    <input type="text" name="id_hps_penyedia_kontrak_2">
-                    <input type="text" name="id_hps_penyedia_kontrak_3">
-                    <input type="text" name="id_hps_penyedia_kontrak_4">
-                    <input type="text" name="id_hps_penyedia_kontrak_5">
-                    <input type="text" name="type_add">
+                    <input type="hidden" name="id_detail_sub_program_penyedia_jasa">
+                    <input type="hidden" name="id_detail_program_penyedia_jasa">
+                    <input type="hidden" name="id_hps_penyedia_kontrak_1">
+                    <input type="hidden" name="id_hps_penyedia_kontrak_2">
+                    <input type="hidden" name="id_hps_penyedia_kontrak_3">
+                    <input type="hidden" name="id_hps_penyedia_kontrak_4">
+                    <input type="hidden" name="id_hps_penyedia_kontrak_5">
+                    <input type="hidden" name="type_add">
                     <!--  -->
                     <div class="form-group">
                         <label for="">No Hps</label>

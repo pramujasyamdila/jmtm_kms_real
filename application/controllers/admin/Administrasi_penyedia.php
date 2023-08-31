@@ -2334,6 +2334,8 @@ class Administrasi_penyedia extends CI_Controller
         }
         $data = [
             'id_hps_penyedia_kontrak_1' => $id_hps_penyedia_kontrak_1,
+            'id_detail_sub_program_penyedia_jasa' => $this->input->post('id_detail_sub_program_penyedia_jasa'),
+            'id_detail_program_penyedia_jasa' => $this->input->post('id_detail_program_penyedia_jasa'),
             'no_urut' =>  $no_urut['no_urut'] . '.' . $count,
             'no_hps_addendum_' . $add . '' => $no_hps,
             'uraian_hps_addendum_' . $add . '' => $uraian_hps,
