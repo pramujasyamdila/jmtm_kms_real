@@ -949,21 +949,17 @@
         })
     }
 
-    function pilih_tahun_rekap(id_detail_program_penyedia_jasa) {
-        var tahun_anggaran_rekap = $('[name="tahun_anggaran_rekap"]').val();
+    pilih_tahun_rekap()
+    function pilih_tahun_rekap() {
+        var id_program_ku = $('[name="id_program_ku"]').val();
         $.ajax({
             method: "POST",
             url: "<?= base_url('admin/Administrasi_penyedia/update_tahun_anggaran_rekap') ?>",
             data: {
-                id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
-                tahun_anggaran_rekap: tahun_anggaran_rekap
+                id_detail_program_penyedia_jasa: id_program_ku,
             },
             dataType: "JSON",
             success: function(response) {
-                if (response == 'success') {
-                    message('success', 'Tahun Anggaran Rekap Berhasil Di Tambah!', 'Berhasil')
-                    location.reload()
-                }
             }
         })
     }

@@ -4277,16 +4277,18 @@ class Administrasi_penyedia extends CI_Controller
     {
         $id_detail_program_penyedia_jasa =  $this->input->post('id_detail_program_penyedia_jasa');
         $result_sub_program = $this->Data_kontrak_model->result_sub_program($id_detail_program_penyedia_jasa);
-        $tahun_anggaran_rekap =  $this->input->post('tahun_anggaran_rekap');
-        foreach ($result_sub_program as $key => $value) {
-            $data = [
-                'id_detail_program_penyedia_jasa' => $value['id_detail_program_penyedia_jasa'],
-                'id_detail_sub_program_penyedia_jasa' => $value['id_detail_sub_program_penyedia_jasa'],
-                'tahun_anggaran' => $tahun_anggaran_rekap,
-            ];
-            $this->Data_kontrak_model->create_tbl_rekap_hps($data);
+        $result_rekap = $this->Data_kontrak_model->cek_rekap($id_detail_program_penyedia_jasa);
+        if ($result_rekap) {
+            $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+        } else {
+            foreach ($result_sub_program as $key => $value) {
+                $data = [
+                    'id_detail_program_penyedia_jasa' => $value['id_detail_program_penyedia_jasa'],
+                    'id_detail_sub_program_penyedia_jasa' => $value['id_detail_sub_program_penyedia_jasa'],
+                ];
+                $this->Data_kontrak_model->create_tbl_rekap_hps($data);
+            }
+            $this->output->set_content_type('application/json')->set_output(json_encode('success'));
         }
-
-        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 }

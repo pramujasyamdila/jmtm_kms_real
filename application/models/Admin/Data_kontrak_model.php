@@ -1134,6 +1134,16 @@ class Data_kontrak_model extends CI_Model
         return $query->result_array();
     }
 
+    public function get_addendum_by_result_mata_anggaran($id_kontrak)
+    {
+        $this->db->select('*');
+        $this->db->from('table_adendum');
+        $this->db->where('table_adendum.id_kontrak', $id_kontrak);
+        $this->db->where('table_adendum.no_adendum', 'kontrak_awal');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 
 
     public function hapus_addendum($id_adendum)
@@ -6744,5 +6754,15 @@ class Data_kontrak_model extends CI_Model
         $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
         $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_sub_program_penyedia_jasa', $id_detail_sub_program_penyedia_jasa);
         return $this->db->count_all_results();
+    }
+
+
+    public function cek_rekap($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_rekap_hps');
+        $this->db->where('tbl_rekap_hps.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $query = $this->db->get();
+        return $query->result_array();
     }
 }

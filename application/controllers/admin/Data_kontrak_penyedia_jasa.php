@@ -285,7 +285,7 @@ class Data_kontrak_penyedia_jasa extends CI_Controller
     {
         // $data['title'] = 'Dashboard';
         $data['adendum'] = $this->Data_kontrak_model->get_addendum_by_id($id_kontrak);
-        $data['adendum_result'] = $this->Data_kontrak_model->get_addendum_by_result($id_kontrak);
+        $data['adendum_result'] = $this->Data_kontrak_model->get_addendum_by_result_mata_anggaran($id_kontrak);
         $data['result_add'] = $this->Data_kontrak_model->get_addendum_by_result($id_kontrak);
         // $data['adendum_trakhir'] = $this->Data_kontrak_model->get_max_addendum_by_id($id_program);
 

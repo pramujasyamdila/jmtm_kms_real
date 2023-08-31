@@ -5,7 +5,7 @@
   position: fixed; top:50px;  padding-bottom: -10px;">
             <b style="margin-left: auto; font-weight:1000" class="text-black">(<?= $nama_kontrak['nama_kontrak'] ?>) (<?= $nama_kontrak['tahun_anggaran'] ?>) - Lembar Kerja - Pra Pengadaan</b>
         </nav>
-
+        <input type="hidden" name="id_program_ku" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>">
         <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
 background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
             <h6>MODUL 2 - PRA PENGADAAN</h6>
@@ -21,13 +21,13 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
         <div class="card" style="margin-top: -20px; padding: 10px;">
             <div class="container-fluid">
                 <div class="form-group">
-                    <label for="">Tahun Anggaran</label>
+                    <!-- <label for="">Tahun Anggaran</label>
                     <select name="tahun_anggaran_rekap" style="width: 200px;" onchange="pilih_tahun_rekap('<?= $row_program['id_detail_program_penyedia_jasa'] ?>')" class="form-control" id="">
                         <?php $i = 0;
                         for ($i = 20; $i <= 30; $i++) {  ?>
                             <option value="20<?= $i ?>">20<?= $i ?></option>
                         <?php  } ?>
-                    </select>
+                    </select> -->
                     <br>
                     <ul class="nav nav-tabs" id="myTab">
                         <?php foreach ($result_sub_program as $key => $value) { ?>
@@ -35,6 +35,9 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                 <a style="background-color:#193B53;" class="nav-link text-white" href="#kirun<?= $value['id_detail_sub_program_penyedia_jasa'] ?>"><?= $value['nama_program_mata_anggaran'] ?></a>
                             </li>
                         <?php  } ?>
+                        <li>
+                            <a style="background-color:#193B53;" class="nav-link text-white" href="#rekap">Penjelasan Rekap</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -120,7 +123,6 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         </div>
                     </div>
                     <div class="tab-pane fade show" id="kirun<?= $value['id_detail_sub_program_penyedia_jasa'] ?>">
-
                         <br>
                         <div class="card-header" style="margin-top:-50px">
                             <h4> DKH <?= $value['nama_program_mata_anggaran'] ?></h4>
@@ -280,40 +282,6 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                             </table>
                         </div>
 
-                        <br>
-                        <div class="card">
-                            <div class="card-header bg-warning text-white">
-                                PENJELASAN REKAP
-                            </div>
-                            <div class="card-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Mata Anggaran</th>
-                                            <th>Tahun Anggaran</th>
-                                            <th>Subtotal (Sebelum PPN)</th>
-                                            <th>PPN</th>
-                                            <th>Subtotal (Setelah PPN)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $nomor = 1;
-                                        foreach ($result_rekap_hps as $key => $value) { ?>
-                                            <tr>
-                                                <td><?= $nomor++ ?></td>
-                                                <td><?= $value['nama_program_mata_anggaran'] ?></td>
-                                                <td><?= $value['tahun_anggaran'] ?></td>
-                                                <td><?= "Rp " . number_format($value['total_sebelum_ppn'], 2, ',', '.') ?></td>
-                                                <td><?= "Rp " . number_format($value['ppn'], 2, ',', '.') ?></td>
-                                                <td><?= "Rp " . number_format($value['total_setelah_ppn'], 2, ',', '.') ?></td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
                         <!-- Modal -->
                     </div>
                     <div class="modal fade" data-backdrop="false" id="modal_urutan2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -347,190 +315,230 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         </div>
                     </div>
                 <?php  } ?>
-                <!-- Modal -->
-                <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_1" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                <div class="tab-pane fade show" id="rekap">
+                    <br>
+                    <div class="card-header" style="margin-top:-50px">
+                        <h4> PENEJELASAN REKAP</h4>
+                    </div>
+                    <div class="card-body">
+                        <br>
+                        <div class="card">
+                            <div class="card-header bg-warning text-white">
+                                PENJELASAN REKAP
                             </div>
-                            <div class="modal-body">
-                                <center>
-                                    <div>
-                                        <label for="">Download Format</label> <br>
-                                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_1_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
-                                    </div>
-                                </center>
-                                <center>
-                                    <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
-                                </center>
-                                <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_1') ?>
-                                <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
-                                <input type="hidden" name="id_detail_sub_program_penyedia_jasa">
-                                <input type="hidden" name="id_kontrak" value="<?= $row_program['id_kontrak'] ?>">
-                                <div class="input-group">
-                                    <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
-                                    <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Mata Anggaran</th>
+                                            <th>Subtotal (Sebelum PPN)</th>
+                                            <th>PPN</th>
+                                            <th>Subtotal (Setelah PPN)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $nomor = 1;
+                                        foreach ($result_rekap_hps as $key => $value) { ?>
+                                            <tr>
+                                                <td><?= $nomor++ ?></td>
+                                                <td><?= $value['nama_program_mata_anggaran'] ?></td>
+                                                <td><?= "Rp " . number_format($value['total_sebelum_ppn'], 2, ',', '.') ?></td>
+                                                <td><?= "Rp " . number_format($value['ppn'], 2, ',', '.') ?></td>
+                                                <td><?= "Rp " . number_format($value['total_setelah_ppn'], 2, ',', '.') ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_1" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <?= form_close(); ?>
+                                <div class="modal-body">
+                                    <center>
+                                        <div>
+                                            <label for="">Download Format</label> <br>
+                                            <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_1_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+                                        </div>
+                                    </center>
+                                    <center>
+                                        <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
+                                    </center>
+                                    <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_1') ?>
+                                    <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
+                                    <input type="hidden" name="id_detail_sub_program_penyedia_jasa">
+                                    <input type="hidden" name="id_kontrak" value="<?= $row_program['id_kontrak'] ?>">
+                                    <div class="input-group">
+                                        <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                                        <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                                    </div>
+                                    <?= form_close(); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- hps penyedia 2 -->
-                <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <center>
-                                    <div>
-                                        <label for="">Download Format</label> <br>
-                                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_2_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
-                                    </div>
-                                </center>
-                                <center>
-                                    <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
-                                </center>
-                                <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_2') ?>
-                                <input type="text" name="id_hps_penyedia_1">
-                                <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
-                                <div class="input-group">
-                                    <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
-                                    <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                    <!-- hps penyedia 2 -->
+                    <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <?= form_close(); ?>
+                                <div class="modal-body">
+                                    <center>
+                                        <div>
+                                            <label for="">Download Format</label> <br>
+                                            <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_2_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+                                        </div>
+                                    </center>
+                                    <center>
+                                        <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
+                                    </center>
+                                    <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_2') ?>
+                                    <input type="text" name="id_hps_penyedia_1">
+                                    <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
+                                    <div class="input-group">
+                                        <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                                        <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                                    </div>
+                                    <?= form_close(); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-                <!-- hps penyedia 3 -->
-                <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_3" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <center>
-                                    <div>
-                                        <label for="">Download Format</label> <br>
-                                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_3_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
-                                    </div>
-                                </center>
-                                <center>
-                                    <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
-                                </center>
-                                <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_3') ?>
-                                <input type="text" name="id_hps_penyedia_2">
-                                <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
-                                <div class="input-group">
-                                    <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
-                                    <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                    <!-- hps penyedia 3 -->
+                    <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_3" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <?= form_close(); ?>
+                                <div class="modal-body">
+                                    <center>
+                                        <div>
+                                            <label for="">Download Format</label> <br>
+                                            <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_3_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+                                        </div>
+                                    </center>
+                                    <center>
+                                        <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
+                                    </center>
+                                    <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_3') ?>
+                                    <input type="text" name="id_hps_penyedia_2">
+                                    <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
+                                    <div class="input-group">
+                                        <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                                        <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                                    </div>
+                                    <?= form_close(); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_4" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <center>
-                                    <div>
-                                        <label for="">Download Format</label> <br>
-                                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_4_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
-                                    </div>
-                                </center>
-                                <center>
-                                    <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
-                                </center>
-                                <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_4') ?>
-                                <input type="text" name="id_hps_penyedia_3">
-                                <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
-                                <div class="input-group">
-                                    <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
-                                    <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                    <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_4" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <?= form_close(); ?>
+                                <div class="modal-body">
+                                    <center>
+                                        <div>
+                                            <label for="">Download Format</label> <br>
+                                            <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_4_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+                                        </div>
+                                    </center>
+                                    <center>
+                                        <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
+                                    </center>
+                                    <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_4') ?>
+                                    <input type="text" name="id_hps_penyedia_3">
+                                    <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
+                                    <div class="input-group">
+                                        <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                                        <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                                    </div>
+                                    <?= form_close(); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_5" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <center>
-                                    <div>
-                                        <label for="">Download Format</label> <br>
-                                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_5_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
-                                    </div>
-                                </center>
-                                <center>
-                                    <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
-                                </center>
-                                <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_5') ?>
-                                <input type="text" name="id_hps_penyedia_4">
-                                <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
-                                <div class="input-group">
-                                    <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
-                                    <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                    <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_5" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <?= form_close(); ?>
+                                <div class="modal-body">
+                                    <center>
+                                        <div>
+                                            <label for="">Download Format</label> <br>
+                                            <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_5_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+                                        </div>
+                                    </center>
+                                    <center>
+                                        <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
+                                    </center>
+                                    <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_5') ?>
+                                    <input type="text" name="id_hps_penyedia_4">
+                                    <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
+                                    <div class="input-group">
+                                        <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                                        <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                                    </div>
+                                    <?= form_close(); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="content-wrapper">
+                <br><br>
+                <?php
+                $total_hps = 0;
+                ?>
+                <!-- Content Header (Page header) -->
+                <input type="hidden" name="id_detail_program_penyedia_jasa" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>">
+                <section class="content" style="margin-top: -20px">
+                    <div class="container-fluid">
+
+
+
+                    </div>
+
+
+            </div>
         </div>
-        <div class="content-wrapper">
-            <br><br>
-            <?php
-            $total_hps = 0;
-            ?>
-            <!-- Content Header (Page header) -->
-            <input type="hidden" name="id_detail_program_penyedia_jasa" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>">
-            <section class="content" style="margin-top: -20px">
-                <div class="container-fluid">
-
-
-
-                </div>
-
-
-        </div>
-</div>
-<!-- /.col -->
+        <!-- /.col -->
 </div>
 </section>
 </div>

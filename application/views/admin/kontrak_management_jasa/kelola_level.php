@@ -227,17 +227,17 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                 $romawi_add = 'Kontrak Awal';
                                                                             }
                                                                             ?>
-                                                                            <th class="tg-i25s table-warning text-center text-white" style="width: 150px; background-color: #193B53;"><i class="fa fa-list" aria-hidden="true"></i> <?= $romawi_add ?>
+                                                                            <!-- <th class="tg-i25s table-warning text-center text-white" style="width: 150px; background-color: #193B53;"><i class="fa fa-list" aria-hidden="true"></i> <?= $romawi_add ?>
                                                                                 <hr>
                                                                                 <i class="fa fa-calendar" aria-hidden="true"></i> <?= $value['tanggal'] ?>
-                                                                            </th>
-                                                                            <th class="tg-i25s table-secondary text-center text-white" style="width: 130px; background-color: #193B53;"><i class="fa fa-key" aria-hidden="true"></i> Aksi <?= $romawi_add ?></th>
+                                                                            </th> -->
+                                                                            <th class="tg-i25s table-secondary text-center text-white" style="width: 130px; background-color: #193B53;"><i class="fa fa-key" aria-hidden="true"></i> Aksi </th>
                                                                         <?php   } ?>
                                                                     <?php } else { ?>
-                                                                        <th class="tg-i25s table-warning text-center text-white" style="width: 150px; background-color: #193B53;"><i class="fa fa-list" aria-hidden="true"></i> Kontrak Awal
+                                                                        <!-- <th class="tg-i25s table-warning text-center text-white" style="width: 150px; background-color: #193B53;"><i class="fa fa-list" aria-hidden="true"></i> Kontrak Awal
                                                                             <hr>
                                                                             <?= $row_kontrak['tahun_kontrak'] ?>
-                                                                        </th>
+                                                                        </th> -->
                                                                         <th class="tg-i25s table-secondary text-center text-white" style="width: 130px; background-color: #193B53;"><i class="fa fa-key" aria-hidden="true"></i> Aksi</th>
                                                                     <?php  }  ?>
                                                                 </tr>
@@ -342,7 +342,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                             $cek_add = 30;
                                                                             $nilai = 'nilai_add_XXX';
                                                                         } else {
-                                                                            $cek_add = 1;
+                                                                            $cek_add = 0;
                                                                             $nilai = 'nilai_kontrak_awal';
                                                                         }
                                                                         ?>
@@ -351,8 +351,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                         $hasil_ppn_total = $hitung_persen_total_ppn;
                                                                         $hasil_setelah_ppn = $row_kontrak[$nilai] + $hasil_ppn_total;
                                                                         ?>
-                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($hasil_setelah_ppn, 2, ',', '.') ?> (PPN 11%)
-                                                                        </td>
+                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($hasil_setelah_ppn, 2, ',', '.') ?> (PPN 11%)
+                                                                        </td> -->
                                                                         <td class="tg-0lax">
                                                                             <?php if ($row_kontrak[$nilai] == null || $row_kontrak[$nilai] == 0) { ?>
                                                                             <?php } else { ?>
@@ -364,7 +364,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                     <?php
                                                                     $nilai = 'nilai_kontrak_awal';
                                                                     ?>
-                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($row_kontrak[$nilai], 2, ',', '.') ?>
+                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($row_kontrak[$nilai], 2, ',', '.') ?> -->
 
                                                                     </td>
                                                                     <td class="tg-0lax">
@@ -597,8 +597,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         $update_reusable = 'update_nilai_level_2_capex';
                                                                                     }
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_capex[$nilai], 2, ',', '.') ?>
-                                                                                    </td>
+                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_capex[$nilai], 2, ',', '.') ?>
+                                                                                    </td> -->
                                                                                     <td class="tg-0lax">
                                                                                         <?php if ($value_capex[$nilai] == null || $value_capex[$nilai] == 0) { ?>
                                                                                             <?php if ($kondisi_detail_capex) { ?>
@@ -629,8 +629,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                 $nilai = 'nilai_capex';
                                                                                 $update_reusable = 'update_nilai_level_2_capex';
                                                                                 ?>
-                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_capex[$nilai], 2, ',', '.') ?>
-                                                                                </td>
+                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_capex[$nilai], 2, ',', '.') ?>
+                                                                                </td> -->
                                                                                 <td class="tg-0lax">
                                                                                     <?php if ($value_capex[$nilai] == null || $value_capex[$nilai] == 0) { ?>
                                                                                         <?php if ($kondisi_detail_capex) { ?>
@@ -885,16 +885,14 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 
                                                                                             $cek_add = 30;
                                                                                         } else {
-
                                                                                             $cek_add = 0;
                                                                                             $nilai = 'nilai_detail_capex';
                                                                                             $update_reusable = 'update_nilai_level_3_capex';
                                                                                         }
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex[$nilai], 2, ',', '.') ?>
-                                                                                    </td>
+                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex[$nilai], 2, ',', '.') ?>
+                                                                                    </td> -->
                                                                                     <td class="tg-0lax">
-
                                                                                         <?php if ($value_detail_capex[$nilai] == null || $value_detail_capex[$nilai] == 0) { ?>
                                                                                             <?php if ($kondisi_capex_detail_1) { ?>
                                                                                             <?php    } else { ?>
@@ -935,8 +933,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                     $nilai = 'nilai_detail_capex';
                                                                                     $update_reusable = 'update_nilai_level_3_capex';
                                                                                 ?>
-                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex[$nilai], 2, ',', '.') ?>
-                                                                                </td>
+                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex[$nilai], 2, ',', '.') ?>
+                                                                                </td> -->
                                                                                 <td class="tg-0lax">
                                                                                     <?php if ($value_detail_capex[$nilai] == null || $value_detail_capex[$nilai] == 0) { ?>
                                                                                         <?php if ($kondisi_capex_detail_1) { ?>
@@ -1177,13 +1175,13 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                 $nilai = 'nilai_capex_detail_1_add_XXX';
                                                                                                 $update_reusable = 'update_nilai_level_4_capex_add_30';
                                                                                             } else {
-                                                                                                $cek_add = 3;
+                                                                                                $cek_add = 0;
                                                                                                 $nilai = 'nilai_capex_detail_1';
                                                                                                 $update_reusable = 'update_nilai_level_4_capex';
                                                                                             }
                                                                                         ?>
-                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_1[$nilai], 2, ',', '.') ?>
-                                                                                        </td>
+                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_1[$nilai], 2, ',', '.') ?>
+                                                                                        </td> -->
                                                                                         <td class="tg-0lax">
                                                                                             <?php $this->db->select('*');
                                                                                             $this->db->from('tbl_list_mata_anggran');
@@ -1195,13 +1193,11 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                 <?php if ($kondisi_capex_detail_1) { ?>
 
                                                                                                 <?php    } else { ?>
-
                                                                                                     <?php if ($checking_capex_detail_1) { ?>
                                                                                                         <a onclick="modal_level_4_capex(<?= $value_detail_capex_1['id_detail_capex_1'] ?>,'hapus_list_anggaran',<?= $cek_add ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Terpilih"><i class="fas fa-check"></i></a>
                                                                                                     <?php    } else { ?>
                                                                                                         <a onclick="modal_level_4_capex(<?= $value_detail_capex_1['id_detail_capex_1'] ?>,'<?= $update_reusable ?>')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Terpilih"><i class="fas fa-times"></i></a>
                                                                                                     <?php   }  ?>
-
                                                                                                 <?php   }  ?>
                                                                                             <?php } else { ?>
                                                                                                 <?php if ($kondisi_capex_detail_1) { ?>
@@ -1222,8 +1218,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         $nilai = 'nilai_capex_detail_1';
                                                                                         $update_reusable = 'update_nilai_level_4_capex';
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_1[$nilai], 2, ',', '.') ?>
-                                                                                    </td>
+                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_1[$nilai], 2, ',', '.') ?>
+                                                                                    </td> -->
                                                                                     <td class="tg-0lax">
                                                                                         <?php if ($value_detail_capex_1[$nilai] == null || $value_detail_capex_1[$nilai] == 0) { ?>
                                                                                             <?php if ($kondisi_capex_detail_1) { ?>
@@ -1329,7 +1325,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         $kondisi_capex_detail_2 = $this->db->get()->result_array() ?>
                                                                                <tr class="text-danger" style="font-size:12px;font-weight: 400;">
                                                                                     <td class="tg-0lax">
-                                                                                        <?= $value_detail_capex_2['no_urut_2_capex'] ?> </td>
+                                                                                        <?= $value_detail_capex_2['no_urut_2_capex'] ?></td>
                                                                                     </td>
                                                                                     <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp; <?= $value_detail_capex_2['nama_uraian_2_capex'] ?></td>
                                                                                     <?php if ($adendum_result) { ?>
@@ -1459,12 +1455,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                     $nilai = 'nilai_capex_detail_2_add_XXX';
                                                                                                     $update_reusable = 'update_nilai_level_5_capex_add_30';
                                                                                                 } else {
-                                                                                                    $cek_add = 3;
+                                                                                                    $cek_add = 0;
                                                                                                     $nilai = 'nilai_capex_detail_2';
                                                                                                     $update_reusable = 'update_nilai_level_5_capex';
                                                                                                 }
                                                                                             ?>
-                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_2[$nilai], 2, ',', '.') ?>
+                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_2[$nilai], 2, ',', '.') ?> -->
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <?php $this->db->select('*');
@@ -1477,7 +1473,6 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                     <?php if ($kondisi_capex_detail_2) { ?>
 
                                                                                                     <?php    } else { ?>
-
                                                                                                         <?php if ($checking_capex_detail_2) { ?>
                                                                                                             <a onclick="modal_level_5_capex(<?= $value_detail_capex_2['id_detail_capex_2'] ?>,'hapus_list_anggaran',<?= $cek_add ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Terpilih"><i class="fas fa-check"></i></a>
                                                                                                         <?php    } else { ?>
@@ -1504,8 +1499,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                             $nilai = 'nilai_capex_detail_2';
                                                                                             $update_reusable = 'update_nilai_level_5_capex';
                                                                                         ?>
-                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_2[$nilai], 2, ',', '.') ?>
-                                                                                        </td>
+                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_2[$nilai], 2, ',', '.') ?>
+                                                                                        </td> -->
                                                                                         <td class="tg-0lax">
                                                                                             <?php if ($value_detail_capex_2[$nilai] == null || $value_detail_capex_2[$nilai] == 0) { ?>
                                                                                                 <?php if ($kondisi_capex_detail_2) { ?>
@@ -1745,12 +1740,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                         $nilai = 'nilai_capex_detail_3_add_XXX';
                                                                                                         $update_reusable = 'update_nilai_level_6_capex_add_30';
                                                                                                     } else {
-                                                                                                        $cek_add = 3;
+                                                                                                        $cek_add = 0;
                                                                                                         $nilai = 'nilai_capex_detail_3';
                                                                                                         $update_reusable = 'update_nilai_level_6_capex';
                                                                                                     }
                                                                                                 ?>
-                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_3[$nilai], 2, ',', '.') ?>
+                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_3[$nilai], 2, ',', '.') ?> -->
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
                                                                                                     <?php $this->db->select('*');
@@ -1790,7 +1785,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                 $nilai = 'nilai_capex_detail_3';
                                                                                                 $update_reusable = 'update_nilai_level_6_capex';
                                                                                             ?>
-                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_3[$nilai], 2, ',', '.') ?>
+                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_3[$nilai], 2, ',', '.') ?> -->
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <?php if ($value_detail_capex_3[$nilai] == null || $value_detail_capex_3[$nilai] == 0) { ?>
@@ -2037,12 +2032,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                             $nilai = 'nilai_capex_detail_4_add_XXX';
                                                                                                             $update_reusable = 'update_nilai_level_7_capex_add_30';
                                                                                                         } else {
-                                                                                                            $cek_add = 3;
+                                                                                                            $cek_add = 0;
                                                                                                             $nilai = 'nilai_capex_detail_4';
                                                                                                             $update_reusable = 'update_nilai_level_7_capex';
                                                                                                         }
                                                                                                     ?>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_4[$nilai], 2, ',', '.') ?>
+                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_4[$nilai], 2, ',', '.') ?> -->
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <?php $this->db->select('*');
@@ -2082,7 +2077,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                     $nilai = 'nilai_capex_detail_4';
                                                                                                     $update_reusable = 'update_nilai_level_7_capex';
                                                                                                 ?>
-                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_4[$nilai], 2, ',', '.') ?>
+                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_4[$nilai], 2, ',', '.') ?> -->
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
                                                                                                     <?php if ($value_detail_capex_4[$nilai] == null || $value_detail_capex_4[$nilai] == 0) { ?>
@@ -2327,12 +2322,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                 $nilai = 'nilai_capex_detail_5_add_XXX';
                                                                                                                 $update_reusable = 'update_nilai_level_8_capex_add_30';
                                                                                                             } else {
-                                                                                                                $cek_add = 3;
+                                                                                                                $cek_add = 0;
                                                                                                                 $nilai = 'nilai_capex_detail_5';
                                                                                                                 $update_reusable = 'update_nilai_level_8_capex';
                                                                                                             }
                                                                                                         ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_5[$nilai], 2, ',', '.') ?>
+                                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_5[$nilai], 2, ',', '.') ?> -->
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <?php $this->db->select('*');
@@ -2372,7 +2367,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                         $nilai = 'nilai_capex_detail_5';
                                                                                                         $update_reusable = 'update_nilai_level_8_capex';
                                                                                                     ?>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_5[$nilai], 2, ',', '.') ?>
+                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_5[$nilai], 2, ',', '.') ?> -->
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <?php if ($value_detail_capex_5[$nilai] == null || $value_detail_capex_5[$nilai] == 0) { ?>
@@ -2618,12 +2613,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                     $nilai = 'nilai_capex_detail_6_add_XXX';
                                                                                                                     $update_reusable = 'update_nilai_level_9_capex_add_30';
                                                                                                                 } else {
-                                                                                                                    $cek_add = 3;
+                                                                                                                    $cek_add = 0;
                                                                                                                     $nilai = 'nilai_capex_detail_6';
                                                                                                                     $update_reusable = 'update_nilai_level_9_capex';
                                                                                                                 }
                                                                                                             ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_6[$nilai], 2, ',', '.') ?>
+                                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_6[$nilai], 2, ',', '.') ?> -->
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <?php $this->db->select('*');
@@ -2663,7 +2658,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                             $nilai = 'nilai_capex_detail_6';
                                                                                                             $update_reusable = 'update_nilai_level_9_capex';
                                                                                                         ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_6[$nilai], 2, ',', '.') ?>
+                                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_6[$nilai], 2, ',', '.') ?> -->
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <?php if ($value_detail_capex_6[$nilai] == null || $value_detail_capex_6[$nilai] == 0) { ?>
@@ -2907,12 +2902,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                         $nilai = 'nilai_capex_detail_7_add_XXX';
                                                                                                                         $update_reusable = 'update_nilai_level_10_capex_add_30';
                                                                                                                     } else {
-                                                                                                                        $cek_add = 3;
+                                                                                                                        $cek_add = 0;
                                                                                                                         $nilai = 'nilai_capex_detail_7';
                                                                                                                         $update_reusable = 'update_nilai_level_10_capex';
                                                                                                                     }
                                                                                                                 ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_7[$nilai], 2, ',', '.') ?>
+                                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_7[$nilai], 2, ',', '.') ?> -->
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
                                                                                                                     <?php $this->db->select('*');
@@ -2952,7 +2947,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                 $nilai = 'nilai_capex_detail_7';
                                                                                                                 $update_reusable = 'update_nilai_level_10_capex';
                                                                                                             ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_7[$nilai], 2, ',', '.') ?>
+                                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_7[$nilai], 2, ',', '.') ?> -->
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <?php if ($value_detail_capex_7[$nilai] == null || $value_detail_capex_7[$nilai] == 0) { ?>
@@ -3195,12 +3190,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                             $nilai = 'nilai_capex_detail_8_add_XXX';
                                                                                                                             $update_reusable = 'update_nilai_level_11_capex_add_30';
                                                                                                                         } else {
-                                                                                                                            $cek_add = 3;
+                                                                                                                            $cek_add = 0;
                                                                                                                             $nilai = 'nilai_capex_detail_8';
                                                                                                                             $update_reusable = 'update_nilai_level_11_capex';
                                                                                                                         }
                                                                                                                     ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?>
+                                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                     </td>
                                                                                                                     <td class="tg-0lax">
                                                                                                                         <?php $this->db->select('*');
@@ -3240,7 +3235,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                     $nilai = 'nilai_capex_detail_8';
                                                                                                                     $update_reusable = 'update_nilai_level_11_capex';
                                                                                                                 ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?>
+                                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
                                                                                                                     <?php if ($value_detail_capex_8[$nilai] == null || $value_detail_capex_8[$nilai] == 0) { ?>
@@ -3482,12 +3477,13 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                                 $nilai = 'nilai_capex_detail_8_add_XXX';
                                                                                                                                 $update_reusable = 'update_nilai_level_11_capex_add_30';
                                                                                                                             } else {
-                                                                                                                                $cek_add = 3;
+                                                                                                                                $cek_add = 0;
+                                                                                                                                // $cek_add = 0;
                                                                                                                                 $nilai = 'nilai_capex_detail_8';
                                                                                                                                 $update_reusable = 'update_nilai_level_11_capex';
                                                                                                                             }
                                                                                                                         ?>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?>
+                                                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                         </td>
                                                                                                                         <td class="tg-0lax">
                                                                                                                             <?php $this->db->select('*');
@@ -3526,7 +3522,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                         $nilai = 'nilai_capex_detail_8';
                                                                                                                         $update_reusable = 'update_nilai_level_11_capex';
                                                                                                                     ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?>
+                                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_capex_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                     </td>
                                                                                                                     <td class="tg-0lax">
                                                                                                                         <?php if ($value_detail_capex_8[$nilai] == null || $value_detail_capex_8[$nilai] == 0) { ?>
@@ -3781,8 +3777,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         $update_reusable = 'update_nilai_level_2_opex';
                                                                                     }
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_opex[$nilai], 2, ',', '.') ?>
-                                                                                    </td>
+                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_opex[$nilai], 2, ',', '.') ?>
+                                                                                    </td> -->
                                                                                     <td class="tg-0lax">
                                                                                         <?php if ($value_opex[$nilai] == null || $value_opex[$nilai] == 0) { ?>
                                                                                             <?php if ($kondisi_detail_opex) { ?>
@@ -3813,8 +3809,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                 $nilai = 'nilai_opex';
                                                                                 $update_reusable = 'update_nilai_level_2_opex';
                                                                                 ?>
-                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_opex[$nilai], 2, ',', '.') ?>
-                                                                                </td>
+                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_opex[$nilai], 2, ',', '.') ?>
+                                                                                </td> -->
                                                                                 <td class="tg-0lax">
                                                                                     <?php if ($value_opex[$nilai] == null || $value_opex[$nilai] == 0) { ?>
                                                                                         <?php if ($kondisi_detail_opex) { ?>
@@ -3932,7 +3928,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                             $nilai = 'nilai_detail_opex_add_III';
                                                                                             $update_reusable = 'update_nilai_level_3_opex_add_3';
 
-                                                                                            $cek_add = 3;
+                                                                                            $cek_add = 0;
                                                                                         } else if ($value['no_adendum'] == 4) {
                                                                                             $nilai = 'nilai_detail_opex_add_IV';
                                                                                             $update_reusable = 'update_nilai_level_3_opex_add_4';
@@ -4075,8 +4071,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                             $update_reusable = 'update_nilai_level_3_opex';
                                                                                         }
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex[$nilai], 2, ',', '.') ?>
-                                                                                    </td>
+                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex[$nilai], 2, ',', '.') ?>
+                                                                                    </td> -->
                                                                                     <td class="tg-0lax">
 
                                                                                         <?php if ($value_detail_opex[$nilai] == null || $value_detail_opex[$nilai] == 0) { ?>
@@ -4119,8 +4115,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                     $nilai = 'nilai_detail_opex';
                                                                                     $update_reusable = 'update_nilai_level_3_opex';
                                                                                 ?>
-                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex[$nilai], 2, ',', '.') ?>
-                                                                                </td>
+                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex[$nilai], 2, ',', '.') ?>
+                                                                                </td> -->
                                                                                 <td class="tg-0lax">
                                                                                     <?php if ($value_detail_opex[$nilai] == null || $value_detail_opex[$nilai] == 0) { ?>
                                                                                         <?php if ($kondisi_opex_detail_1) { ?>
@@ -4249,7 +4245,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                 $nilai = 'nilai_opex_detail_1_add_II';
                                                                                                 $update_reusable = 'update_nilai_level_4_opex_add_2';
                                                                                             } else if ($value['no_adendum'] == 3) {
-                                                                                                $cek_add = 3;
+                                                                                                $cek_add = 0;
                                                                                                 $nilai = 'nilai_opex_detail_1_add_III';
                                                                                                 $update_reusable = 'update_nilai_level_4_opex_add_3';
                                                                                             } else if ($value['no_adendum'] == 4) {
@@ -4361,13 +4357,13 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                 $nilai = 'nilai_opex_detail_1_add_XXX';
                                                                                                 $update_reusable = 'update_nilai_level_4_opex_add_30';
                                                                                             } else {
-                                                                                                $cek_add = 3;
+                                                                                                $cek_add = 0;
                                                                                                 $nilai = 'nilai_opex_detail_1';
                                                                                                 $update_reusable = 'update_nilai_level_4_opex';
                                                                                             }
                                                                                         ?>
-                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_1[$nilai], 2, ',', '.') ?>
-                                                                                        </td>
+                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_1[$nilai], 2, ',', '.') ?>
+                                                                                        </td> -->
                                                                                         <td class="tg-0lax">
                                                                                             <?php $this->db->select('*');
                                                                                             $this->db->from('tbl_list_mata_anggran');
@@ -4406,8 +4402,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         $nilai = 'nilai_opex_detail_1';
                                                                                         $update_reusable = 'update_nilai_level_4_opex';
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_1[$nilai], 2, ',', '.') ?>
-                                                                                    </td>
+                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_1[$nilai], 2, ',', '.') ?>
+                                                                                    </td> -->
                                                                                     <td class="tg-0lax">
                                                                                         <?php if ($value_detail_opex_1[$nilai] == null || $value_detail_opex_1[$nilai] == 0) { ?>
                                                                                             <?php if ($kondisi_opex_detail_1) { ?>
@@ -4644,12 +4640,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                     $nilai = 'nilai_opex_detail_2_add_XXX';
                                                                                                     $update_reusable = 'update_nilai_level_5_opex_add_30';
                                                                                                 } else {
-                                                                                                    $cek_add = 3;
+                                                                                                    $cek_add = 0;
                                                                                                     $nilai = 'nilai_opex_detail_2';
                                                                                                     $update_reusable = 'update_nilai_level_5_opex';
                                                                                                 }
                                                                                             ?>
-                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_2[$nilai], 2, ',', '.') ?>
+                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_2[$nilai], 2, ',', '.') ?> -->
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <?php $this->db->select('*');
@@ -4689,8 +4685,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                             $nilai = 'nilai_opex_detail_2';
                                                                                             $update_reusable = 'update_nilai_level_5_opex';
                                                                                         ?>
-                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_2[$nilai], 2, ',', '.') ?>
-                                                                                        </td>
+                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_2[$nilai], 2, ',', '.') ?>
+                                                                                        </td> -->
                                                                                         <td class="tg-0lax">
                                                                                             <?php if ($value_detail_opex_2[$nilai] == null || $value_detail_opex_2[$nilai] == 0) { ?>
                                                                                                 <?php if ($kondisi_opex_detail_2) { ?>
@@ -4930,12 +4926,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                         $nilai = 'nilai_opex_detail_3_add_XXX';
                                                                                                         $update_reusable = 'update_nilai_level_6_opex_add_30';
                                                                                                     } else {
-                                                                                                        $cek_add = 3;
+                                                                                                        $cek_add = 0;
                                                                                                         $nilai = 'nilai_opex_detail_3';
                                                                                                         $update_reusable = 'update_nilai_level_6_opex';
                                                                                                     }
                                                                                                 ?>
-                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_3[$nilai], 2, ',', '.') ?>
+                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_3[$nilai], 2, ',', '.') ?> -->
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
                                                                                                     <?php $this->db->select('*');
@@ -4975,7 +4971,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                 $nilai = 'nilai_opex_detail_3';
                                                                                                 $update_reusable = 'update_nilai_level_6_opex';
                                                                                             ?>
-                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_3[$nilai], 2, ',', '.') ?>
+                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_3[$nilai], 2, ',', '.') ?> -->
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <?php if ($value_detail_opex_3[$nilai] == null || $value_detail_opex_3[$nilai] == 0) { ?>
@@ -5222,12 +5218,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                             $nilai = 'nilai_opex_detail_4_add_XXX';
                                                                                                             $update_reusable = 'update_nilai_level_7_opex_add_30';
                                                                                                         } else {
-                                                                                                            $cek_add = 3;
+                                                                                                            $cek_add = 0;
                                                                                                             $nilai = 'nilai_opex_detail_4';
                                                                                                             $update_reusable = 'update_nilai_level_7_opex';
                                                                                                         }
                                                                                                     ?>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_4[$nilai], 2, ',', '.') ?>
+                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_4[$nilai], 2, ',', '.') ?> -->
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <?php $this->db->select('*');
@@ -5267,7 +5263,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                     $nilai = 'nilai_opex_detail_4';
                                                                                                     $update_reusable = 'update_nilai_level_7_opex';
                                                                                                 ?>
-                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_4[$nilai], 2, ',', '.') ?>
+                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_4[$nilai], 2, ',', '.') ?> -->
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
                                                                                                     <?php if ($value_detail_opex_4[$nilai] == null || $value_detail_opex_4[$nilai] == 0) { ?>
@@ -5512,12 +5508,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                 $nilai = 'nilai_opex_detail_5_add_XXX';
                                                                                                                 $update_reusable = 'update_nilai_level_8_opex_add_30';
                                                                                                             } else {
-                                                                                                                $cek_add = 3;
+                                                                                                                $cek_add = 0;
                                                                                                                 $nilai = 'nilai_opex_detail_5';
                                                                                                                 $update_reusable = 'update_nilai_level_8_opex';
                                                                                                             }
                                                                                                         ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_5[$nilai], 2, ',', '.') ?>
+                                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_5[$nilai], 2, ',', '.') ?> -->
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <?php $this->db->select('*');
@@ -5557,7 +5553,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                         $nilai = 'nilai_opex_detail_5';
                                                                                                         $update_reusable = 'update_nilai_level_8_opex';
                                                                                                     ?>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_5[$nilai], 2, ',', '.') ?>
+                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_5[$nilai], 2, ',', '.') ?> -->
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <?php if ($value_detail_opex_5[$nilai] == null || $value_detail_opex_5[$nilai] == 0) { ?>
@@ -5803,12 +5799,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                     $nilai = 'nilai_opex_detail_6_add_XXX';
                                                                                                                     $update_reusable = 'update_nilai_level_9_opex_add_30';
                                                                                                                 } else {
-                                                                                                                    $cek_add = 3;
+                                                                                                                    $cek_add = 0;
                                                                                                                     $nilai = 'nilai_opex_detail_6';
                                                                                                                     $update_reusable = 'update_nilai_level_9_opex';
                                                                                                                 }
                                                                                                             ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_6[$nilai], 2, ',', '.') ?>
+                                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_6[$nilai], 2, ',', '.') ?> -->
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <?php $this->db->select('*');
@@ -5848,7 +5844,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                             $nilai = 'nilai_opex_detail_6';
                                                                                                             $update_reusable = 'update_nilai_level_9_opex';
                                                                                                         ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_6[$nilai], 2, ',', '.') ?>
+                                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_6[$nilai], 2, ',', '.') ?> -->
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <?php if ($value_detail_opex_6[$nilai] == null || $value_detail_opex_6[$nilai] == 0) { ?>
@@ -6092,12 +6088,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                         $nilai = 'nilai_opex_detail_7_add_XXX';
                                                                                                                         $update_reusable = 'update_nilai_level_10_opex_add_30';
                                                                                                                     } else {
-                                                                                                                        $cek_add = 3;
+                                                                                                                        $cek_add = 0;
                                                                                                                         $nilai = 'nilai_opex_detail_7';
                                                                                                                         $update_reusable = 'update_nilai_level_10_opex';
                                                                                                                     }
                                                                                                                 ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_7[$nilai], 2, ',', '.') ?>
+                                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_7[$nilai], 2, ',', '.') ?> -->
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
                                                                                                                     <?php $this->db->select('*');
@@ -6137,7 +6133,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                 $nilai = 'nilai_opex_detail_7';
                                                                                                                 $update_reusable = 'update_nilai_level_10_opex';
                                                                                                             ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_7[$nilai], 2, ',', '.') ?>
+                                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_7[$nilai], 2, ',', '.') ?> -->
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <?php if ($value_detail_opex_7[$nilai] == null || $value_detail_opex_7[$nilai] == 0) { ?>
@@ -6380,12 +6376,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                             $nilai = 'nilai_opex_detail_8_add_XXX';
                                                                                                                             $update_reusable = 'update_nilai_level_11_opex_add_30';
                                                                                                                         } else {
-                                                                                                                            $cek_add = 3;
+                                                                                                                            $cek_add = 0;
                                                                                                                             $nilai = 'nilai_opex_detail_8';
                                                                                                                             $update_reusable = 'update_nilai_level_11_opex';
                                                                                                                         }
                                                                                                                     ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_8[$nilai], 2, ',', '.') ?>
+                                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                     </td>
                                                                                                                     <td class="tg-0lax">
                                                                                                                         <?php $this->db->select('*');
@@ -6425,7 +6421,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                     $nilai = 'nilai_opex_detail_8';
                                                                                                                     $update_reusable = 'update_nilai_level_11_opex';
                                                                                                                 ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_8[$nilai], 2, ',', '.') ?>
+                                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
                                                                                                                     <?php if ($value_detail_opex_8[$nilai] == null || $value_detail_opex_8[$nilai] == 0) { ?>
@@ -6667,12 +6663,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                                 $nilai = 'nilai_opex_detail_8_add_XXX';
                                                                                                                                 $update_reusable = 'update_nilai_level_11_opex_add_30';
                                                                                                                             } else {
-                                                                                                                                $cek_add = 3;
+                                                                                                                                $cek_add = 0;
                                                                                                                                 $nilai = 'nilai_opex_detail_8';
                                                                                                                                 $update_reusable = 'update_nilai_level_11_opex';
                                                                                                                             }
                                                                                                                         ?>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_8[$nilai], 2, ',', '.') ?>
+                                                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                         </td>
                                                                                                                         <td class="tg-0lax">
                                                                                                                             <?php $this->db->select('*');
@@ -6711,7 +6707,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                         $nilai = 'nilai_opex_detail_8';
                                                                                                                         $update_reusable = 'update_nilai_level_11_opex';
                                                                                                                     ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_8[$nilai], 2, ',', '.') ?>
+                                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_opex_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                     </td>
                                                                                                                     <td class="tg-0lax">
                                                                                                                         <?php if ($value_detail_opex_8[$nilai] == null || $value_detail_opex_8[$nilai] == 0) { ?>
@@ -6822,6 +6818,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                     $this->db->select('*');
                                                                     $this->db->from('tbl_bua');
                                                                     $this->db->where('tbl_bua.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                    $this->db->order_by('no_urut','ASC');
                                                                     $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
                                                                     $query_result_bua = $this->db->get() ?>
                                                                     <?php
@@ -6832,11 +6829,11 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                         $this->db->from('tbl_bua_detail');
                                                                         $this->db->where('tbl_bua_detail.id_bua', $id_bua);
                                                                         $kondisi_detail_bua = $this->db->get()->result_array() ?>
-                                                                        <tr class="text-white" style="font-family: RNSSanz-Black;font-size:16px;font-weight:300;background-color: #1c4e80;">
-                                                                            <td style="font-family: RNSSanz-Medium;font-size:13px;"class="tg-0lax">
+                                                                        <tr class="text-white"  style="font-family: RNSSanz-Black;font-size:16px;font-weight:300;background-color: #1c4e80;">
+                                                                            <td class="tg-0lax"  style="font-family: RNSSanz-Medium;font-size:13px;"class="tg-0lax">
                                                                                 1.3
                                                                             </td>
-                                                                            <td class="tg-0lax" style="font-family: RNSSanz-Medium;font-size:13px;" class="tg-0lax">&nbsp;&nbsp; BUA</td>
+                                                                            <td class="tg-0lax"  style="font-family: RNSSanz-Medium;font-size:13px;"class="tg-0lax">&nbsp;&nbsp; BUA</td>
                                                                             <?php if ($adendum_result) { ?>
                                                                                 <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                     <?php
@@ -6966,8 +6963,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         $update_reusable = 'update_nilai_level_2_bua';
                                                                                     }
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_bua[$nilai], 2, ',', '.') ?>
-                                                                                    </td>
+                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_bua[$nilai], 2, ',', '.') ?>
+                                                                                    </td> -->
                                                                                     <td class="tg-0lax">
                                                                                         <?php if ($value_bua[$nilai] == null || $value_bua[$nilai] == 0) { ?>
                                                                                             <?php if ($kondisi_detail_bua) { ?>
@@ -6987,7 +6984,17 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         <?php } else { ?>
                                                                                             <?php if ($kondisi_detail_bua) { ?>
                                                                                             <?php    } else { ?>
-                                                                                                <a onclick="modal_level_2_bua(<?= $value_bua['id_bua'] ?>,'<?= $update_reusable ?>')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Terpilih"><i class="fas fa-times"></i></a>
+                                                                                                <?php $this->db->select('*');
+                                                                                                $this->db->from('tbl_list_mata_anggran');
+                                                                                                $this->db->where('tbl_list_mata_anggran.id_checking', $id_bua);
+                                                                                                $this->db->where('tbl_list_mata_anggran.no_add', $cek_add);
+                                                                                                $this->db->where('tbl_list_mata_anggran.nama_mata_anggaran', $value_bua['nama_uraian']);
+                                                                                                $checking_bua_detail = $this->db->get()->result_array() ?>
+                                                                                                <?php if ($checking_bua_detail) { ?>
+                                                                                                    <a onclick="modal_level_2_bua(<?= $value_bua['id_bua'] ?>,'hapus_list_anggaran',<?= $cek_add ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Terpilih"><i class="fas fa-check"></i></a>
+                                                                                                <?php    } else { ?>
+                                                                                                    <a onclick="modal_level_2_bua(<?= $value_bua['id_bua'] ?>,'<?= $update_reusable ?>')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Terpilih"><i class="fas fa-times"></i></a>
+                                                                                                <?php   }  ?>
                                                                                             <?php   }  ?>
                                                                                         <?php    } ?>
                                                                                     </td>
@@ -6998,7 +7005,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                 $nilai = 'nilai_bua';
                                                                                 $update_reusable = 'update_nilai_level_2_bua';
                                                                                 ?>
-                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_bua[$nilai], 2, ',', '.') ?>
+                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_bua[$nilai], 2, ',', '.') ?> -->
                                                                                 </td>
                                                                                 <td class="tg-0lax">
                                                                                     <?php if ($value_bua[$nilai] == null || $value_bua[$nilai] == 0) { ?>
@@ -7260,8 +7267,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                             $update_reusable = 'update_nilai_level_3_bua';
                                                                                         }
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua[$nilai], 2, ',', '.') ?>
-                                                                                    </td>
+                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua[$nilai], 2, ',', '.') ?>
+                                                                                    </td> -->
                                                                                     <td class="tg-0lax">
 
                                                                                         <?php if ($value_detail_bua[$nilai] == null || $value_detail_bua[$nilai] == 0) { ?>
@@ -7304,8 +7311,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                     $nilai = 'nilai_detail_bua';
                                                                                     $update_reusable = 'update_nilai_level_3_bua';
                                                                                 ?>
-                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua[$nilai], 2, ',', '.') ?>
-                                                                                </td>
+                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua[$nilai], 2, ',', '.') ?>
+                                                                                </td> -->
                                                                                 <td class="tg-0lax">
                                                                                     <?php if ($value_detail_bua[$nilai] == null || $value_detail_bua[$nilai] == 0) { ?>
                                                                                         <?php if ($kondisi_bua_detail_1) { ?>
@@ -7546,13 +7553,13 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                 $nilai = 'nilai_bua_detail_1_add_XXX';
                                                                                                 $update_reusable = 'update_nilai_level_4_bua_add_30';
                                                                                             } else {
-                                                                                                $cek_add = 3;
+                                                                                                $cek_add = 0;
                                                                                                 $nilai = 'nilai_bua_detail_1';
                                                                                                 $update_reusable = 'update_nilai_level_4_bua';
                                                                                             }
                                                                                         ?>
-                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_1[$nilai], 2, ',', '.') ?>
-                                                                                        </td>
+                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_1[$nilai], 2, ',', '.') ?>
+                                                                                        </td> -->
                                                                                         <td class="tg-0lax">
                                                                                             <?php $this->db->select('*');
                                                                                             $this->db->from('tbl_list_mata_anggran');
@@ -7591,8 +7598,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         $nilai = 'nilai_bua_detail_1';
                                                                                         $update_reusable = 'update_nilai_level_4_bua';
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_1[$nilai], 2, ',', '.') ?>
-                                                                                    </td>
+                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_1[$nilai], 2, ',', '.') ?>
+                                                                                    </td> -->
                                                                                     <td class="tg-0lax">
                                                                                         <?php if ($value_detail_bua_1[$nilai] == null || $value_detail_bua_1[$nilai] == 0) { ?>
                                                                                             <?php if ($kondisi_bua_detail_1) { ?>
@@ -7828,12 +7835,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                     $nilai = 'nilai_bua_detail_2_add_XXX';
                                                                                                     $update_reusable = 'update_nilai_level_5_bua_add_30';
                                                                                                 } else {
-                                                                                                    $cek_add = 3;
+                                                                                                    $cek_add = 0;
                                                                                                     $nilai = 'nilai_bua_detail_2';
                                                                                                     $update_reusable = 'update_nilai_level_5_bua';
                                                                                                 }
                                                                                             ?>
-                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_2[$nilai], 2, ',', '.') ?>
+                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_2[$nilai], 2, ',', '.') ?> -->
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <?php $this->db->select('*');
@@ -7873,8 +7880,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                             $nilai = 'nilai_bua_detail_2';
                                                                                             $update_reusable = 'update_nilai_level_5_bua';
                                                                                         ?>
-                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_2[$nilai], 2, ',', '.') ?>
-                                                                                        </td>
+                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_2[$nilai], 2, ',', '.') ?>
+                                                                                        </td> -->
                                                                                         <td class="tg-0lax">
                                                                                             <?php if ($value_detail_bua_2[$nilai] == null || $value_detail_bua_2[$nilai] == 0) { ?>
                                                                                                 <?php if ($kondisi_bua_detail_2) { ?>
@@ -8114,12 +8121,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                         $nilai = 'nilai_bua_detail_3_add_XXX';
                                                                                                         $update_reusable = 'update_nilai_level_6_bua_add_30';
                                                                                                     } else {
-                                                                                                        $cek_add = 3;
+                                                                                                        $cek_add = 0;
                                                                                                         $nilai = 'nilai_bua_detail_3';
                                                                                                         $update_reusable = 'update_nilai_level_6_bua';
                                                                                                     }
                                                                                                 ?>
-                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_3[$nilai], 2, ',', '.') ?>
+                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_3[$nilai], 2, ',', '.') ?> -->
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
                                                                                                     <?php $this->db->select('*');
@@ -8159,7 +8166,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                 $nilai = 'nilai_bua_detail_3';
                                                                                                 $update_reusable = 'update_nilai_level_6_bua';
                                                                                             ?>
-                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_3[$nilai], 2, ',', '.') ?>
+                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_3[$nilai], 2, ',', '.') ?> -->
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <?php if ($value_detail_bua_3[$nilai] == null || $value_detail_bua_3[$nilai] == 0) { ?>
@@ -8411,7 +8418,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                             $update_reusable = 'update_nilai_level_7_bua';
                                                                                                         }
                                                                                                     ?>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_4[$nilai], 2, ',', '.') ?>
+                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_4[$nilai], 2, ',', '.') ?> -->
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <?php $this->db->select('*');
@@ -8451,7 +8458,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                     $nilai = 'nilai_bua_detail_4';
                                                                                                     $update_reusable = 'update_nilai_level_7_bua';
                                                                                                 ?>
-                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_4[$nilai], 2, ',', '.') ?>
+                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_4[$nilai], 2, ',', '.') ?> -->
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
                                                                                                     <?php if ($value_detail_bua_4[$nilai] == null || $value_detail_bua_4[$nilai] == 0) { ?>
@@ -8696,12 +8703,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                 $nilai = 'nilai_bua_detail_5_add_XXX';
                                                                                                                 $update_reusable = 'update_nilai_level_8_bua_add_30';
                                                                                                             } else {
-                                                                                                                $cek_add = 3;
+                                                                                                                $cek_add = 0;
                                                                                                                 $nilai = 'nilai_bua_detail_5';
                                                                                                                 $update_reusable = 'update_nilai_level_8_bua';
                                                                                                             }
                                                                                                         ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_5[$nilai], 2, ',', '.') ?>
+                                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_5[$nilai], 2, ',', '.') ?> -->
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <?php $this->db->select('*');
@@ -8741,7 +8748,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                         $nilai = 'nilai_bua_detail_5';
                                                                                                         $update_reusable = 'update_nilai_level_8_bua';
                                                                                                     ?>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_5[$nilai], 2, ',', '.') ?>
+                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_5[$nilai], 2, ',', '.') ?> -->
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <?php if ($value_detail_bua_5[$nilai] == null || $value_detail_bua_5[$nilai] == 0) { ?>
@@ -8844,7 +8851,6 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                     $this->db->select('*');
                                                                                                     $this->db->from('tbl_detail_bua_6');
                                                                                                     $this->db->where('tbl_detail_bua_6.id_detail_bua_5', $id_detail_bua_5);
-                                                                                                    $this->db->order_by('no_urut_6_bua','ASC');
                                                                                                     $this->db->order_by('CAST(no_urut_6_bua AS DECIMAL(10,6)) ASC');
                                                                                                     $query_result_detail_bua_6 = $this->db->get() ?>
                                                                                             <?php
@@ -8988,12 +8994,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                     $nilai = 'nilai_bua_detail_6_add_XXX';
                                                                                                                     $update_reusable = 'update_nilai_level_9_bua_add_30';
                                                                                                                 } else {
-                                                                                                                    $cek_add = 3;
+                                                                                                                    $cek_add = 0;
                                                                                                                     $nilai = 'nilai_bua_detail_6';
                                                                                                                     $update_reusable = 'update_nilai_level_9_bua';
                                                                                                                 }
                                                                                                             ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_6[$nilai], 2, ',', '.') ?>
+                                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_6[$nilai], 2, ',', '.') ?> -->
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <?php $this->db->select('*');
@@ -9033,7 +9039,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                             $nilai = 'nilai_bua_detail_6';
                                                                                                             $update_reusable = 'update_nilai_level_9_bua';
                                                                                                         ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_6[$nilai], 2, ',', '.') ?>
+                                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_6[$nilai], 2, ',', '.') ?> -->
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <?php if ($value_detail_bua_6[$nilai] == null || $value_detail_bua_6[$nilai] == 0) { ?>
@@ -9282,7 +9288,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                         $update_reusable = 'update_nilai_level_10_bua';
                                                                                                                     }
                                                                                                                 ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_7[$nilai], 2, ',', '.') ?>
+                                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_7[$nilai], 2, ',', '.') ?> -->
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
                                                                                                                     <?php $this->db->select('*');
@@ -9322,7 +9328,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                 $nilai = 'nilai_bua_detail_7';
                                                                                                                 $update_reusable = 'update_nilai_level_10_bua';
                                                                                                             ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_7[$nilai], 2, ',', '.') ?>
+                                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_7[$nilai], 2, ',', '.') ?> -->
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <?php if ($value_detail_bua_7[$nilai] == null || $value_detail_bua_7[$nilai] == 0) { ?>
@@ -9570,7 +9576,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                             $update_reusable = 'update_nilai_level_11_bua';
                                                                                                                         }
                                                                                                                     ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_8[$nilai], 2, ',', '.') ?>
+                                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                     </td>
                                                                                                                     <td class="tg-0lax">
                                                                                                                         <?php $this->db->select('*');
@@ -9610,7 +9616,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                     $nilai = 'nilai_bua_detail_8';
                                                                                                                     $update_reusable = 'update_nilai_level_11_bua';
                                                                                                                 ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_8[$nilai], 2, ',', '.') ?>
+                                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
                                                                                                                     <?php if ($value_detail_bua_8[$nilai] == null || $value_detail_bua_8[$nilai] == 0) { ?>
@@ -9857,7 +9863,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                                 $update_reusable = 'update_nilai_level_11_bua';
                                                                                                                             }
                                                                                                                         ?>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_8[$nilai], 2, ',', '.') ?>
+                                                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                         </td>
                                                                                                                         <td class="tg-0lax">
                                                                                                                             <?php $this->db->select('*');
@@ -9896,7 +9902,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                         $nilai = 'nilai_bua_detail_8';
                                                                                                                         $update_reusable = 'update_nilai_level_11_bua';
                                                                                                                     ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_8[$nilai], 2, ',', '.') ?>
+                                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_bua_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                     </td>
                                                                                                                     <td class="tg-0lax">
                                                                                                                         <?php if ($value_detail_bua_8[$nilai] == null || $value_detail_bua_8[$nilai] == 0) { ?>
@@ -10154,8 +10160,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         $update_reusable = 'update_nilai_level_2_sdm';
                                                                                     }
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_sdm[$nilai], 2, ',', '.') ?>
-                                                                                    </td>
+                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_sdm[$nilai], 2, ',', '.') ?>
+                                                                                    </td> -->
                                                                                     <td class="tg-0lax">
                                                                                         <?php if ($value_sdm[$nilai] == null || $value_sdm[$nilai] == 0) { ?>
                                                                                             <?php if ($kondisi_detail_sdm) { ?>
@@ -10175,7 +10181,17 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         <?php } else { ?>
                                                                                             <?php if ($kondisi_detail_sdm) { ?>
                                                                                             <?php    } else { ?>
-                                                                                                <a onclick="modal_level_2_sdm(<?= $value_sdm['id_sdm'] ?>,'<?= $update_reusable ?>')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Terpilih"><i class="fas fa-times"></i></a>
+                                                                                                <?php $this->db->select('*');
+                                                                                                $this->db->from('tbl_list_mata_anggran');
+                                                                                                $this->db->where('tbl_list_mata_anggran.id_checking', $id_sdm);
+                                                                                                $this->db->where('tbl_list_mata_anggran.no_add', $cek_add);
+                                                                                                $this->db->where('tbl_list_mata_anggran.nama_mata_anggaran', $value_sdm['nama_uraian']);
+                                                                                                $checking_sdm_detail = $this->db->get()->result_array() ?>
+                                                                                                <?php if ($checking_sdm_detail) { ?>
+                                                                                                    <a onclick="modal_level_2_sdm(<?= $value_sdm['id_sdm'] ?>,'hapus_list_anggaran',<?= $cek_add ?>)" class="btn btn-sm btn-success" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Terpilih"><i class="fas fa-check"></i></a>
+                                                                                                <?php    } else { ?>
+                                                                                                    <a onclick="modal_level_2_sdm(<?= $value_sdm['id_sdm'] ?>,'<?= $update_reusable ?>')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Terpilih"><i class="fas fa-times"></i></a>
+                                                                                                <?php   }  ?>
                                                                                             <?php   }  ?>
                                                                                         <?php    } ?>
                                                                                     </td>
@@ -10186,7 +10202,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                 $nilai = 'nilai_sdm';
                                                                                 $update_reusable = 'update_nilai_level_2_sdm';
                                                                                 ?>
-                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_sdm[$nilai], 2, ',', '.') ?>
+                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_sdm[$nilai], 2, ',', '.') ?> -->
                                                                                 </td>
                                                                                 <td class="tg-0lax">
                                                                                     <?php if ($value_sdm[$nilai] == null || $value_sdm[$nilai] == 0) { ?>
@@ -10448,8 +10464,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                             $update_reusable = 'update_nilai_level_3_sdm';
                                                                                         }
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm[$nilai], 2, ',', '.') ?>
-                                                                                    </td>
+                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm[$nilai], 2, ',', '.') ?>
+                                                                                    </td> -->
                                                                                     <td class="tg-0lax">
 
                                                                                         <?php if ($value_detail_sdm[$nilai] == null || $value_detail_sdm[$nilai] == 0) { ?>
@@ -10492,8 +10508,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                     $nilai = 'nilai_detail_sdm';
                                                                                     $update_reusable = 'update_nilai_level_3_sdm';
                                                                                 ?>
-                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm[$nilai], 2, ',', '.') ?>
-                                                                                </td>
+                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm[$nilai], 2, ',', '.') ?>
+                                                                                </td> -->
                                                                                 <td class="tg-0lax">
                                                                                     <?php if ($value_detail_sdm[$nilai] == null || $value_detail_sdm[$nilai] == 0) { ?>
                                                                                         <?php if ($kondisi_sdm_detail_1) { ?>
@@ -10734,13 +10750,13 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                 $nilai = 'nilai_sdm_detail_1_add_XXX';
                                                                                                 $update_reusable = 'update_nilai_level_4_sdm_add_30';
                                                                                             } else {
-                                                                                                $cek_add = 3;
+                                                                                                $cek_add = 0;
                                                                                                 $nilai = 'nilai_sdm_detail_1';
                                                                                                 $update_reusable = 'update_nilai_level_4_sdm';
                                                                                             }
                                                                                         ?>
-                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_1[$nilai], 2, ',', '.') ?>
-                                                                                        </td>
+                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_1[$nilai], 2, ',', '.') ?>
+                                                                                        </td> -->
                                                                                         <td class="tg-0lax">
                                                                                             <?php $this->db->select('*');
                                                                                             $this->db->from('tbl_list_mata_anggran');
@@ -10779,8 +10795,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         $nilai = 'nilai_sdm_detail_1';
                                                                                         $update_reusable = 'update_nilai_level_4_sdm';
                                                                                     ?>
-                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_1[$nilai], 2, ',', '.') ?>
-                                                                                    </td>
+                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_1[$nilai], 2, ',', '.') ?>
+                                                                                    </td> -->
                                                                                     <td class="tg-0lax">
                                                                                         <?php if ($value_detail_sdm_1[$nilai] == null || $value_detail_sdm_1[$nilai] == 0) { ?>
                                                                                             <?php if ($kondisi_sdm_detail_1) { ?>
@@ -11016,12 +11032,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                     $nilai = 'nilai_sdm_detail_2_add_XXX';
                                                                                                     $update_reusable = 'update_nilai_level_5_sdm_add_30';
                                                                                                 } else {
-                                                                                                    $cek_add = 3;
+                                                                                                    $cek_add = 0;
                                                                                                     $nilai = 'nilai_sdm_detail_2';
                                                                                                     $update_reusable = 'update_nilai_level_5_sdm';
                                                                                                 }
                                                                                             ?>
-                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_2[$nilai], 2, ',', '.') ?>
+                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_2[$nilai], 2, ',', '.') ?> -->
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <?php $this->db->select('*');
@@ -11061,8 +11077,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                             $nilai = 'nilai_sdm_detail_2';
                                                                                             $update_reusable = 'update_nilai_level_5_sdm';
                                                                                         ?>
-                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_2[$nilai], 2, ',', '.') ?>
-                                                                                        </td>
+                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_2[$nilai], 2, ',', '.') ?>
+                                                                                        </td> -->
                                                                                         <td class="tg-0lax">
                                                                                             <?php if ($value_detail_sdm_2[$nilai] == null || $value_detail_sdm_2[$nilai] == 0) { ?>
                                                                                                 <?php if ($kondisi_sdm_detail_2) { ?>
@@ -11302,12 +11318,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                         $nilai = 'nilai_sdm_detail_3_add_XXX';
                                                                                                         $update_reusable = 'update_nilai_level_6_sdm_add_30';
                                                                                                     } else {
-                                                                                                        $cek_add = 3;
+                                                                                                        $cek_add = 0;
                                                                                                         $nilai = 'nilai_sdm_detail_3';
                                                                                                         $update_reusable = 'update_nilai_level_6_sdm';
                                                                                                     }
                                                                                                 ?>
-                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_3[$nilai], 2, ',', '.') ?>
+                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_3[$nilai], 2, ',', '.') ?> -->
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
                                                                                                     <?php $this->db->select('*');
@@ -11347,7 +11363,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                 $nilai = 'nilai_sdm_detail_3';
                                                                                                 $update_reusable = 'update_nilai_level_6_sdm';
                                                                                             ?>
-                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_3[$nilai], 2, ',', '.') ?>
+                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_3[$nilai], 2, ',', '.') ?> -->
                                                                                             </td>
                                                                                             <td class="tg-0lax">
                                                                                                 <?php if ($value_detail_sdm_3[$nilai] == null || $value_detail_sdm_3[$nilai] == 0) { ?>
@@ -11599,7 +11615,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                             $update_reusable = 'update_nilai_level_7_sdm';
                                                                                                         }
                                                                                                     ?>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_4[$nilai], 2, ',', '.') ?>
+                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_4[$nilai], 2, ',', '.') ?> -->
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <?php $this->db->select('*');
@@ -11639,7 +11655,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                     $nilai = 'nilai_sdm_detail_4';
                                                                                                     $update_reusable = 'update_nilai_level_7_sdm';
                                                                                                 ?>
-                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_4[$nilai], 2, ',', '.') ?>
+                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_4[$nilai], 2, ',', '.') ?> -->
                                                                                                 </td>
                                                                                                 <td class="tg-0lax">
                                                                                                     <?php if ($value_detail_sdm_4[$nilai] == null || $value_detail_sdm_4[$nilai] == 0) { ?>
@@ -11884,12 +11900,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                 $nilai = 'nilai_sdm_detail_5_add_XXX';
                                                                                                                 $update_reusable = 'update_nilai_level_8_sdm_add_30';
                                                                                                             } else {
-                                                                                                                $cek_add = 3;
+                                                                                                                $cek_add = 0;
                                                                                                                 $nilai = 'nilai_sdm_detail_5';
                                                                                                                 $update_reusable = 'update_nilai_level_8_sdm';
                                                                                                             }
                                                                                                         ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_5[$nilai], 2, ',', '.') ?>
+                                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_5[$nilai], 2, ',', '.') ?> -->
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <?php $this->db->select('*');
@@ -11929,7 +11945,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                         $nilai = 'nilai_sdm_detail_5';
                                                                                                         $update_reusable = 'update_nilai_level_8_sdm';
                                                                                                     ?>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_5[$nilai], 2, ',', '.') ?>
+                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_5[$nilai], 2, ',', '.') ?> -->
                                                                                                     </td>
                                                                                                     <td class="tg-0lax">
                                                                                                         <?php if ($value_detail_sdm_5[$nilai] == null || $value_detail_sdm_5[$nilai] == 0) { ?>
@@ -12175,12 +12191,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                     $nilai = 'nilai_sdm_detail_6_add_XXX';
                                                                                                                     $update_reusable = 'update_nilai_level_9_sdm_add_30';
                                                                                                                 } else {
-                                                                                                                    $cek_add = 3;
+                                                                                                                    $cek_add = 0;
                                                                                                                     $nilai = 'nilai_sdm_detail_6';
                                                                                                                     $update_reusable = 'update_nilai_level_9_sdm';
                                                                                                                 }
                                                                                                             ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_6[$nilai], 2, ',', '.') ?>
+                                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_6[$nilai], 2, ',', '.') ?> -->
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <?php $this->db->select('*');
@@ -12220,7 +12236,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                             $nilai = 'nilai_sdm_detail_6';
                                                                                                             $update_reusable = 'update_nilai_level_9_sdm';
                                                                                                         ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_6[$nilai], 2, ',', '.') ?>
+                                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_6[$nilai], 2, ',', '.') ?> -->
                                                                                                         </td>
                                                                                                         <td class="tg-0lax">
                                                                                                             <?php if ($value_detail_sdm_6[$nilai] == null || $value_detail_sdm_6[$nilai] == 0) { ?>
@@ -12469,7 +12485,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                         $update_reusable = 'update_nilai_level_10_sdm';
                                                                                                                     }
                                                                                                                 ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_7[$nilai], 2, ',', '.') ?>
+                                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_7[$nilai], 2, ',', '.') ?> -->
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
                                                                                                                     <?php $this->db->select('*');
@@ -12509,7 +12525,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                 $nilai = 'nilai_sdm_detail_7';
                                                                                                                 $update_reusable = 'update_nilai_level_10_sdm';
                                                                                                             ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_7[$nilai], 2, ',', '.') ?>
+                                                                                                            <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_7[$nilai], 2, ',', '.') ?> -->
                                                                                                             </td>
                                                                                                             <td class="tg-0lax">
                                                                                                                 <?php if ($value_detail_sdm_7[$nilai] == null || $value_detail_sdm_7[$nilai] == 0) { ?>
@@ -12757,7 +12773,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                             $update_reusable = 'update_nilai_level_11_sdm';
                                                                                                                         }
                                                                                                                     ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_8[$nilai], 2, ',', '.') ?>
+                                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                     </td>
                                                                                                                     <td class="tg-0lax">
                                                                                                                         <?php $this->db->select('*');
@@ -12797,7 +12813,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                     $nilai = 'nilai_sdm_detail_8';
                                                                                                                     $update_reusable = 'update_nilai_level_11_sdm';
                                                                                                                 ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_8[$nilai], 2, ',', '.') ?>
+                                                                                                                <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                 </td>
                                                                                                                 <td class="tg-0lax">
                                                                                                                     <?php if ($value_detail_sdm_8[$nilai] == null || $value_detail_sdm_8[$nilai] == 0) { ?>
@@ -13044,7 +13060,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                                 $update_reusable = 'update_nilai_level_11_sdm';
                                                                                                                             }
                                                                                                                         ?>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_8[$nilai], 2, ',', '.') ?>
+                                                                                                                        <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                         </td>
                                                                                                                         <td class="tg-0lax">
                                                                                                                             <?php $this->db->select('*');
@@ -13083,7 +13099,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                         $nilai = 'nilai_sdm_detail_8';
                                                                                                                         $update_reusable = 'update_nilai_level_11_sdm';
                                                                                                                     ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_8[$nilai], 2, ',', '.') ?>
+                                                                                                                    <!-- <td class="tg-0lax"> <?= "Rp " . number_format($value_detail_sdm_8[$nilai], 2, ',', '.') ?> -->
                                                                                                                     </td>
                                                                                                                     <td class="tg-0lax">
                                                                                                                         <?php if ($value_detail_sdm_8[$nilai] == null || $value_detail_sdm_8[$nilai] == 0) { ?>
