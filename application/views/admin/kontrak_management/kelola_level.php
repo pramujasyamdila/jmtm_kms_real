@@ -283,10 +283,20 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
         </div>
 
         <div class="card" style="margin-top: -18px; padding: 20px">
-            <h6>SUBTOTAL (SEBELUM PPN)</h6>
-            <h6>SUBTOTAL (Dibulatkan) -> Diinput Oleh User</h6>
-            <h6>PPN -> Diinput Oleh User, 10%, 11% -> Agar di Round ;0 (Tanpa Koma)</h6>
-            <h6>TOTAL(SETELAH PPN) -> SubTotal (Dibulatkan) + PPN</h6>
+            <h6>SUBTOTAL (SEBELUM PPN) = <?= number_format($hasil_setelah_ppn, 2, ',', '.')  ?></h6>
+            <h6>SUBTOTAL (Dibulatkan) = <input type="text" value="<?= number_format($row_kontrak['sub_total'], 2, ',', '.') ?>" name="sub_total" onkeyup="sub_total()"> - <input disabled type="text" name="sub_total_rp"></h6>
+            <h6>PPN = <select name="ppn" onchange="sub_total()">
+                    <?php if ($row_kontrak['ppn'] == 10) { ?>
+                        <option value="10" selected>10%</option>
+                        <option value="11">11%</option>
+                    <?php } else { ?>
+                        <option value="10">10%</option>
+                        <option value="11" selected>11%</option>
+                    <?php }  ?>
+
+                </select></h6>
+            <h6>TOTAL PPN = <input type="text" name="setelah_ppn" value="<?= number_format($row_kontrak['total_ppn'], 2, ',', '.') ?>"> - <input disabled type="text" name="setelah_ppn_rp"></h6>
+            <h6>TOTAL(SETELAH PPN) -> <input type="text" name="grand_total" value="<?= number_format($row_kontrak['setelah_ppn'], 2, ',', '.') ?>"> - <input disabled type="text" name="grand_total_rp"></h6>
         </div>
 
         <div class="card" style="margin-top: -18px; padding: 20px">

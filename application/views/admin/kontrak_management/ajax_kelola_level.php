@@ -1210,3 +1210,33 @@
         });
     });
 </script>
+
+<!-- subtotal -->
+<script>
+    function sub_total() {
+        var sub_total = $('[name="sub_total"]').val()
+        var ppn = $('[name="ppn"]').val()
+        console.log(ppn);
+        var total = sub_total * ppn / 100
+        var grand_total = parseFloat(total) + parseFloat(sub_total)
+        $('[name="setelah_ppn"]').val(total)
+        $('[name="grand_total"]').val(grand_total)
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('admin/data_kontrak/input_total/') ?>",
+            dataType: "JSON",
+            data: {
+                sub_total: sub_total,
+                ppn: ppn,
+                total: total,
+                grand_total: grand_total,
+                id_kontrak: <?= $row_kontrak['id_kontrak'] ?>
+            },
+            success: function(response) {
+                $('[name="sub_total_rp"]').val(response.sub_total)
+                $('[name="setelah_ppn_rp"]').val(response.total_ppn)
+                $('[name="grand_total_rp"]').val(response.setelah_ppn)
+            }
+        })
+    }
+</script>

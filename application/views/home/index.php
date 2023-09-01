@@ -26,7 +26,7 @@
             </nav>
 
 
-            <div class="card popin" style="margin-top: 60px; padding: 20px; color:white; ">
+            <div class="card popin" style="margin-top: 30px; padding: 20px; color:white; background-image: url('assets/image/bg.PNG'); ">
                 <h2>Selamat datang di Aplikasi Digitalisasi Proses Kerja Kontrak Manajemen
                     Modul Lembar Kerja untuk Kontrak Manajemen <br>
                     <?= $kontrak['nama_kontrak'] ?> - <?= $kontrak['tahun_anggaran'] ?>
