@@ -14,7 +14,7 @@
         height: 50px;
     }
 </style>
-<div class="main-content" style="font-family: 'RNSSanz-Light'">
+<div class="main-content" style="font-family: 'RNSSanz-Bold'">
     <section class="section">
         <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
   position: fixed; top:50px;  padding-bottom: -10px;">
