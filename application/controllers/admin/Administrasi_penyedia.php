@@ -2919,6 +2919,7 @@ class Administrasi_penyedia extends CI_Controller
         $id_detail_program_penyedia_jasa =  $this->input->post('id_detail_program_penyedia_jasa');
         $id_detail_sub_program_penyedia_jasa =  $this->input->post('id_detail_sub_program_penyedia_jasa');
         $type_add =  $this->input->post('type_add');
+
         if ($type_add == 0) {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_1');
@@ -2973,11 +2974,18 @@ class Administrasi_penyedia extends CI_Controller
                     }
                 }
             }
+            $row_sub_program = $this->Data_kontrak_model->get_sub_program_penyedia_jasa($id_detail_sub_program_penyedia_jasa);
+            if ($type_add == 0) {
+                $total_ppn =  ($row_sub_program['ppn_hps_kontrak_awal'] * $total_hps_penyedia_kontrak_1) / 100;
+            } else {
+                $total_ppn =  ($row_sub_program['ppn_hps_kontrak_addendum_'] . $type_add * $total_hps_penyedia_kontrak_1) / 100;
+            }
+            $total_setalah_ppn = $total_ppn + $total_hps_penyedia_kontrak_1;
             $where = [
                 'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa
             ];
             $data = [
-                'nilai_sub_kontrak_penyedia' =>  $total_hps_penyedia_kontrak_1,
+                'nilai_sub_kontrak_penyedia' =>  $total_setalah_ppn,
             ];
             $this->Data_kontrak_model->update_rup_ke_sub_detail_program_penyedia_jasa($where, $data);
             $this->db->select('*');
@@ -2995,7 +3003,6 @@ class Administrasi_penyedia extends CI_Controller
                 'total_kontrak' => $total_sub_nilai_kontrak
             ];
             $this->Data_kontrak_model->update_rup($where_sub, $data_update_sub);
-            $this->output->set_content_type('application/json')->set_output(json_encode('success'));
         } else {
             $this->db->select('*');
             $this->db->from('tbl_hps_penyedia_kontrak_1');
@@ -3046,11 +3053,19 @@ class Administrasi_penyedia extends CI_Controller
                     }
                 }
             }
+            $row_sub_program = $this->Data_kontrak_model->get_sub_program_penyedia_jasa($id_detail_sub_program_penyedia_jasa);
+            if ($type_add == 0) {
+                $total_ppn =  ($row_sub_program['ppn_hps_kontrak_awal'] * $total_hps_penyedia_kontrak_1) / 100;
+            } else {
+                $total_ppn =  ($row_sub_program['ppn_hps_kontrak_addendum_'] . $type_add * $total_hps_penyedia_kontrak_1) / 100;
+            }
+            $total_setalah_ppn = $total_ppn + $total_hps_penyedia_kontrak_1;
+
             $where = [
                 'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa
             ];
             $data = [
-                'nilai_sub_kontrak_penyedia_addendum_' . $type_add . '' =>  $total_hps_penyedia_kontrak_1,
+                'nilai_sub_kontrak_penyedia_addendum_' . $type_add . '' =>  $total_setalah_ppn,
             ];
             $this->Data_kontrak_model->update_rup_ke_sub_detail_program_penyedia_jasa($where, $data);
             $this->db->select('*');
@@ -3068,8 +3083,39 @@ class Administrasi_penyedia extends CI_Controller
                 'total_kontrak_addendum_' . $type_add . '' => $total_sub_nilai_kontrak
             ];
             $this->Data_kontrak_model->update_rup($where_sub, $data_update_sub);
-            $this->output->set_content_type('application/json')->set_output(json_encode('success'));
         }
+        $cek_jika_sudah_ada_rekap = $this->Data_kontrak_model->cek_rekap_sudah_ada($id_detail_program_penyedia_jasa, $id_detail_sub_program_penyedia_jasa, $type_add);
+        $row_sub_program = $this->Data_kontrak_model->get_sub_program_penyedia_jasa($id_detail_sub_program_penyedia_jasa);
+        if ($type_add == 0) {
+            $total_ppn =  ($row_sub_program['ppn_hps_kontrak_awal'] * $total_hps_penyedia_kontrak_1) / 100;
+        } else {
+            $total_ppn =  ($row_sub_program['ppn_hps_kontrak_addendum_'] . $type_add * $total_hps_penyedia_kontrak_1) / 100;
+        }
+        $total_setalah_ppn = $total_ppn + $total_hps_penyedia_kontrak_1;
+        if ($cek_jika_sudah_ada_rekap) {
+            $where_rekap_kontrak = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
+                'no_addendum' => $type_add
+            ];
+            $data_rekap_kontrak = [
+                'ppn' => $total_ppn,
+                'total_sebelum_ppn' => $total_hps_penyedia_kontrak_1,
+                'total_setelah_ppn' => $total_setalah_ppn
+            ];
+            $this->Data_kontrak_model->update_ke_tbl_rekap_hps_kontrak($where_rekap_kontrak, $data_rekap_kontrak);
+        } else {
+            $data_rekap_kontrak = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
+                'ppn' => $total_ppn,
+                'total_sebelum_ppn' => $total_hps_penyedia_kontrak_1,
+                'total_setelah_ppn' => $total_setalah_ppn,
+                'no_addendum' => $type_add
+            ];
+            $this->Data_kontrak_model->create_tbl_rekap_hps_kontrak($data_rekap_kontrak);
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 
     public function update_papenkon()
@@ -4268,6 +4314,36 @@ class Administrasi_penyedia extends CI_Controller
         ];
         $data = [
             'ppn_hps' => $ppn_hps,
+        ];
+        $this->Data_kontrak_model->update_rup_ke_sub_detail_program_penyedia_jasa($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+
+    public function update_ppn_sub_detail_program_kontrak_awal()
+    {
+        $id_detail_sub_program_penyedia_jasa =  $this->input->post('id_detail_sub_program_penyedia_jasa');
+        $ppn_hps =  $this->input->post('ppn_hps');
+        $where = [
+            'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa
+        ];
+        $data = [
+            'ppn_hps_kontrak_awal' => $ppn_hps,
+        ];
+        $this->Data_kontrak_model->update_rup_ke_sub_detail_program_penyedia_jasa($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+    public function update_ppn_sub_detail_program_kontrak_addendum()
+    {
+        $id_detail_sub_program_penyedia_jasa =  $this->input->post('id_detail_sub_program_penyedia_jasa');
+        $no_addendum =  $this->input->post('no_addendum');
+        $ppn_hps =  $this->input->post('ppn_hps');
+        $where = [
+            'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa
+        ];
+        $data = [
+            'ppn_hps_kontrak_addendum_' . $no_addendum => $ppn_hps,
         ];
         $this->Data_kontrak_model->update_rup_ke_sub_detail_program_penyedia_jasa($where, $data);
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));

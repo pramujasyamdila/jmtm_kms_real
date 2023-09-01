@@ -6756,13 +6756,36 @@ class Data_kontrak_model extends CI_Model
         return $this->db->count_all_results();
     }
 
-
-    public function cek_rekap($id_detail_program_penyedia_jasa)
+    
+    public function cek_rekap_kontrak_awal($id_detail_program_penyedia_jasa)
     {
         $this->db->select('*');
-        $this->db->from('tbl_rekap_hps');
-        $this->db->where('tbl_rekap_hps.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->from('tbl_rekap_kontrak');
+        $this->db->join('tbl_sub_detail_program_penyedia_jasa', 'tbl_sub_detail_program_penyedia_jasa.id_detail_sub_program_penyedia_jasa = tbl_rekap_kontrak.id_detail_sub_program_penyedia_jasa', 'left');
+        $this->db->where('tbl_rekap_kontrak.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('tbl_rekap_kontrak.no_addendum', 0);
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+    public function cek_rekap_sudah_ada ($id_detail_program_penyedia_jasa, $id_detail_sub_program_penyedia_jasa, $type_add) {
+        $this->db->select('*');
+        $this->db->from('tbl_rekap_kontrak');
+        $this->db->where('tbl_rekap_kontrak.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('tbl_rekap_kontrak.id_detail_sub_program_penyedia_jasa', $id_detail_sub_program_penyedia_jasa);
+        $this->db->where('tbl_rekap_kontrak.no_addendum', $type_add);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function create_tbl_rekap_hps_kontrak($data)
+    {
+        $this->db->insert('tbl_rekap_kontrak', $data);
+        return $this->db->affected_rows();
+    }
+    public function update_ke_tbl_rekap_hps_kontrak($where, $data)
+    {
+        $this->db->update('tbl_rekap_kontrak', $data, $where);
+        return $this->db->affected_rows();
     }
 }

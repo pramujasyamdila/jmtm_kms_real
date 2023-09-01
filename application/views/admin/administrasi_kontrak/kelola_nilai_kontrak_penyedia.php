@@ -260,47 +260,52 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <br>
-                                                                <div class="card">
-                                                                    <div class="card-header bg-warning text-white">
-                                                                        PENJELASAN REKAP
-                                                                    </div>
-                                                                    <div class="card-body">
-                                                                        <table class="table">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th>No</th>
-                                                                                    <th>Mata Anggaran</th>
-                                                                                    <th>Tahun Anggaran</th>
-                                                                                    <th>Subtotal (Sebelum PPN)</th>
-                                                                                    <th>PPN</th>
-                                                                                    <th>Subtotal (Setelah PPN)</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                <?php $nomor = 1;
-                                                                                foreach ($result_rekap_hps as $key => $value) { ?>
-                                                                                    <tr>
-                                                                                        <td><?= $nomor++ ?></td>
-                                                                                        <td><?= $value['nama_program_mata_anggaran'] ?></td>
-                                                                                        <td><?= $value['tahun_anggaran'] ?></td>
-                                                                                        <td><?= "Rp " . number_format($value['total_sebelum_ppn'], 2, ',', '.') ?></td>
-                                                                                        <td><?= "Rp " . number_format($value['ppn'], 2, ',', '.') ?></td>
-                                                                                        <td><?= "Rp " . number_format($value['total_setelah_ppn'], 2, ',', '.') ?></td>
-                                                                                    </tr>
-                                                                                <?php } ?>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
                                                                 <ul class="nav nav-tabs" id="myTab">
                                                                     <?php foreach ($result_sub_program as $key => $value) { ?>
                                                                         <li>
                                                                             <a class="nav-link  text-white" href="#kirun<?= $value['id_detail_sub_program_penyedia_jasa'] ?> " style="background-color: #193B53;"><?= $value['nama_program_mata_anggaran'] ?></a>
                                                                         </li>
                                                                     <?php  } ?>
+                                                                    <li>
+                                                                        <a class="nav-link  text-white" href="#rekap_hps_awal" style="background-color: #193B53;">Rekap Penjelasan</a>
+                                                                    </li>
                                                                 </ul>
                                                                 <div class="tab-content mt-3">
+                                                                    <div class="tab-pane fade show" id="rekap_hps_awal">
+                                                                        <div class="content">
+                                                                            <br>
+                                                                            <div class="card">
+                                                                                <div class="card-header bg-warning text-white">
+                                                                                    PENJELASAN REKAP KONTRAK AWAL
+                                                                                </div>
+                                                                                <div class="card-body">
+                                                                                    <table class="table">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th>No</th>
+                                                                                                <th>Mata Anggaran</th>
+                                                                                                <th>Subtotal (Sebelum PPN)</th>
+                                                                                                <th>PPN</th>
+                                                                                                <th>Subtotal (Setelah PPN)</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <?php $nomor = 1;
+                                                                                            foreach ($result_rekap_hps as $key => $value) { ?>
+                                                                                                <tr>
+                                                                                                    <td><?= $nomor++ ?></td>
+                                                                                                    <td><?= $value['nama_program_mata_anggaran'] ?></td>
+                                                                                                    <td><?= "Rp " . number_format($value['total_sebelum_ppn'], 2, ',', '.') ?></td>
+                                                                                                    <td><?= "Rp " . number_format($value['ppn'], 2, ',', '.') ?></td>
+                                                                                                    <td><?= "Rp " . number_format($value['total_setelah_ppn'], 2, ',', '.') ?></td>
+                                                                                                </tr>
+                                                                                            <?php } ?>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                     <?php foreach ($result_sub_program as $key => $value) { ?>
                                                                         <div class="tab-pane fade show" id="kirun<?= $value['id_detail_sub_program_penyedia_jasa'] ?>">
                                                                             <div class="content">
@@ -337,10 +342,11 @@
                                                                                                 $this->db->order_by('no_urut', 'ASC');
                                                                                                 $query_tbl_hps_penyedia_1 = $this->db->get() ?>
                                                                                                 <?php
+                                                                                                $no = 1;
+                                                                                                $total_hps_penyedia_1 = 0;
                                                                                                 foreach ($query_tbl_hps_penyedia_1->result_array() as $key => $value_hps_penyedia_1) { ?>
                                                                                                     <?php
-                                                                                                    $id_hps_penyedia_1 = $value_hps_penyedia_1['id_hps_penyedia_1'];
-                                                                                                    if ($value_hps_penyedia_1['total_harga' . $field_addendum]) {
+                                                                                                    if ($value_hps_penyedia_1['total_harga']) {
                                                                                                         $total_hps_penyedia_1 +=  $value_hps_penyedia_1['total_harga'];
                                                                                                     } else {
                                                                                                         $total_hps_penyedia_1 +=  0;
@@ -373,16 +379,49 @@
                                                                                             <tfoot>
                                                                                                 <tr>
                                                                                                     <td colspan="2">
-
+                                                                                                        <label for="" style="font-size: 12px;">SUBTOTAL (SEBELUM PPN Rp.)</label>
                                                                                                     </td>
-                                                                                                    <td colspan="3"></td>
+                                                                                                    <td colspan="4"></td>
                                                                                                     <?php                                                                       ?>
                                                                                                     <td>
-
+                                                                                                        <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_1, 2, ',', '.') ?>
+                                                                                                        </label>
                                                                                                     </td>
+                                                                                                    <td colspan="4"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td colspan="2">
+                                                                                                        <label for="" style="font-size: 12px;">PPN(<?= $value['ppn_hps'] ?>%)
+                                                                                                            <!-- <select name="ppn_hps<?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="pilih_ppn_sub_program('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')">
+                                                                                                                <option selected value="<?= $value['ppn_hps'] ?>">--Pilih PPN--</option>
+                                                                                                                <option value="10">10%</option>
+                                                                                                                <option value="11">11%</option>
+                                                                                                                <option value="12">12%</option>
+                                                                                                            </select> -->
+                                                                                                        </label>
+                                                                                                    </td>
+                                                                                                    <td colspan="4"></td>
+                                                                                                    <?php
+                                                                                                    $total_ppn = ($value['ppn_hps'] * $total_hps_penyedia_1) / 100;
+                                                                                                    $total_setelah_ppn = $total_ppn + $total_hps_penyedia_1;
+                                                                                                    ?>
                                                                                                     <td>
-
+                                                                                                        <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
+                                                                                                        </label>
                                                                                                     </td>
+                                                                                                    <td colspan="4"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td colspan="2">
+                                                                                                        <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
+                                                                                                    </td>
+                                                                                                    <td colspan="4"></td>
+                                                                                                    <?php                                                                       ?>
+                                                                                                    <td>
+                                                                                                        <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
+                                                                                                        </label>
+                                                                                                    </td>
+                                                                                                    <td colspan="3"></td>
                                                                                                 </tr>
                                                                                             </tfoot>
                                                                                         </table>
@@ -419,11 +458,49 @@
                                                                 <ul class="nav nav-tabs" id="myTabKontrak" style="margin-top: 50px;">
                                                                     <?php foreach ($result_sub_program as $key => $value) { ?>
                                                                         <li>
-                                                                            <a class="nav-link bg-primary text-white" href="#kirun_kontrak<?= $value['id_detail_sub_program_penyedia_jasa'] ?>"><?= $value['nama_program_mata_anggaran'] ?></a>
+                                                                            <a style="background-color: #193B53;" class="nav-link text-white" href="#kirun_kontrak<?= $value['id_detail_sub_program_penyedia_jasa'] ?>"><?= $value['nama_program_mata_anggaran'] ?></a>
                                                                         </li>
                                                                     <?php  } ?>
+                                                                    <li>
+                                                                        <a class="nav-link  text-white" href="#rekap_kontrak_awal" style="background-color: #193B53;">Rekap Penjelasan</a>
+                                                                    </li>
                                                                 </ul>
                                                                 <div class="tab-content mt-3">
+                                                                    <div class="tab-pane fade show" id="rekap_kontrak_awal">
+                                                                        <div class="content">
+                                                                            <br>
+                                                                            <div class="card">
+                                                                                <div class="card-header bg-warning text-white">
+                                                                                    PENJELASAN REKAP
+                                                                                </div>
+                                                                                <div class="card-body">
+                                                                                    <table class="table">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th>No</th>
+                                                                                                <th>Mata Anggaran</th>
+                                                                                                <th>Subtotal (Sebelum PPN)</th>
+                                                                                                <th>PPN</th>
+                                                                                                <th>Subtotal (Setelah PPN)</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <?php $nomor = 1;
+                                                                                            foreach ($cek_rekap_kontrak_awal as $key => $value) { ?>
+                                                                                                <tr>
+                                                                                                    <td><?= $nomor++ ?></td>
+                                                                                                    <td><?= $value['nama_program_mata_anggaran'] ?></td>
+                                                                                                    <td><?= "Rp " . number_format($value['total_sebelum_ppn'], 2, ',', '.') ?></td>
+                                                                                                    <td><?= "Rp " . number_format($value['ppn'], 2, ',', '.') ?></td>
+                                                                                                    <td><?= "Rp " . number_format($value['total_setelah_ppn'], 2, ',', '.') ?></td>
+                                                                                                </tr>
+                                                                                            <?php } ?>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                     <?php foreach ($result_sub_program as $key => $value) { ?>
                                                                         <div class="modal fade" data-backdrop="false" id="modal_tambah_dkh" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                                                             <div class="modal-dialog" role="document">
@@ -545,6 +622,7 @@
                                                                                                 $query_tbl_hps_penyedia_kontrak_1 = $this->db->get() ?>
                                                                                                 <?php
                                                                                                 $nomor = 1;
+                                                                                                $total_hps_penyedia_kontrak_1 = 0;
                                                                                                 foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) { ?>
                                                                                                     <?php
                                                                                                     $id_refrence_hps_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
@@ -593,15 +671,7 @@
 
                                                                                                                 </div>
                                                                                                             </div>
-                                                                                                            <!-- <div class="btn-group">
-                                                                                                                <button type="button" class="btn btn-default">Action</button>
-                                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                                                    <span class="sr-only">Toggle Dropdown</span>
-                                                                                                                </button>
-                                                                                                                <div class="dropdown-menu" role="menu">
-                                                                                                                    <a onclick="modal_hps_penyedia_kontrak_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit Turunan"><i class="fas fa-edit"></i></a>
-                                                                                                                </div>
-                                                                                                            </div> -->
+
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                 <?php } ?>
@@ -609,15 +679,54 @@
                                                                                             <tfoot>
                                                                                                 <tr>
                                                                                                     <td colspan="2">
-                                                                                                        <!-- <label for="" style="font-size: 10px;">GRAND TOTAL (Rp.)</label> -->
+                                                                                                        <label for="" style="font-size: 12px;">SUBTOTAL (SEBELUM PPN Rp.)</label>
                                                                                                     </td>
-                                                                                                    <td colspan="3"></td>
+                                                                                                    <td colspan="4"></td>
                                                                                                     <?php                                                                       ?>
                                                                                                     <td>
-                                                                                                        <!-- <label style="font-size: 10px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_kontrak_1 + $total_hps_penyedia_kontrak_2, 2, ',', '.') ?> 
-                                                                            </label> -->
+                                                                                                        <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_kontrak_1, 2, ',', '.') ?>
+                                                                                                        </label>
                                                                                                     </td>
+                                                                                                    <td colspan="3"></td>
+                                                                                                    <td>
+
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
                                                                                                     <td colspan="2">
+                                                                                                        <label for="" style="font-size: 12px;">PPN(<?= $value['ppn_hps_kontrak_awal'] ?>%)<select name="ppn_hps_kontrak_awal<?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="Pilih_ppn_kontrak_awal('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')">
+                                                                                                                <option selected value="<?= $value['ppn_hps_kontrak_awal'] ?>">--Pilih PPN--</option>
+                                                                                                                <option value="10">10%</option>
+                                                                                                                <option value="11">11%</option>
+                                                                                                                <option value="12">12%</option>
+                                                                                                            </select></label>
+                                                                                                    </td>
+                                                                                                    <td colspan="4"></td>
+                                                                                                    <?php
+                                                                                                    $total_ppn = ($value['ppn_hps_kontrak_awal'] * $total_hps_penyedia_kontrak_1) / 100;
+                                                                                                    $total_setelah_ppn = $total_ppn + $total_hps_penyedia_kontrak_1;
+                                                                                                    ?>
+                                                                                                    <td>
+                                                                                                        <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
+                                                                                                        </label>
+                                                                                                    </td>
+                                                                                                    <td colspan="3"></td>
+                                                                                                    <td>
+
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td colspan="2">
+                                                                                                        <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
+                                                                                                    </td>
+                                                                                                    <td colspan="4"></td>
+                                                                                                    <?php                                                                       ?>
+                                                                                                    <td>
+                                                                                                        <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
+                                                                                                        </label>
+                                                                                                    </td>
+                                                                                                    <td colspan="3"></td>
+                                                                                                    <td>
                                                                                                         <a href="javascript:;" onclick="Update_nilai_ke_sub_program_kontrak(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,0)" class="btn btn-sm btn-primary" style="font-size: 12px;"><i class="fas fa fa-save"></i> Simpan Dan Update</a>
                                                                                                     </td>
                                                                                                 </tr>
@@ -786,11 +895,49 @@
                                                                         ?>
                                                                         <?php foreach ($result_sub_program_tambahan_anggaran->result_array() as $key => $value) { ?>
                                                                             <li>
-                                                                                <a class="nav-link bg-primary text-white" href="#kirun_addendum<?= $value_addendum['no_addendum'] ?><?= $value['id_detail_sub_program_penyedia_jasa'] ?>"><?= $value['nama_program_mata_anggaran'] ?></a>
+                                                                                <a class="nav-link text-white" style="background-color: #193B53;" href="#kirun_addendum<?= $value_addendum['no_addendum'] ?><?= $value['id_detail_sub_program_penyedia_jasa'] ?>"><?= $value['nama_program_mata_anggaran'] ?></a>
                                                                             </li>
                                                                         <?php  } ?>
+                                                                        <li>
+                                                                            <a class="nav-link  text-white" href="#rekap_addendum<?= $value_addendum['no_addendum'] ?>" style="background-color: #193B53;">Rekap Penjelasan</a>
+                                                                        </li>
                                                                     </ul>
                                                                     <div class="tab-content mt-3">
+                                                                        <div class="tab-pane fade show" id="rekap_addendum<?= $value_addendum['no_addendum'] ?>">
+                                                                            <div class="content">
+                                                                                <br>
+                                                                                <div class="card">
+                                                                                    <div class="card-header bg-warning text-white">
+                                                                                        PENJELASAN REKAP ADDENDUM <?= $value_addendum['no_addendum'] ?>
+                                                                                    </div>
+                                                                                    <div class="card-body">
+                                                                                        <table class="table">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th>No</th>
+                                                                                                    <th>Mata Anggaran</th>
+                                                                                                    <th>Subtotal (Sebelum PPN)</th>
+                                                                                                    <th>PPN</th>
+                                                                                                    <th>Subtotal (Setelah PPN)</th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <?php $nomor = 1;
+                                                                                                foreach ($result_rekap_hps as $key => $value) { ?>
+                                                                                                    <tr>
+                                                                                                        <td><?= $nomor++ ?></td>
+                                                                                                        <td><?= $value['nama_program_mata_anggaran'] ?></td>
+                                                                                                        <td><?= "Rp " . number_format($value['total_sebelum_ppn'], 2, ',', '.') ?></td>
+                                                                                                        <td><?= "Rp " . number_format($value['ppn'], 2, ',', '.') ?></td>
+                                                                                                        <td><?= "Rp " . number_format($value['total_setelah_ppn'], 2, ',', '.') ?></td>
+                                                                                                    </tr>
+                                                                                                <?php } ?>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                         <?php foreach ($result_sub_program_tambahan_anggaran->result_array() as $key => $value) { ?>
                                                                             <div class="tab-pane fade show" id="kirun_addendum<?= $value_addendum['no_addendum'] ?><?= $value['id_detail_sub_program_penyedia_jasa'] ?>">
                                                                                 <input type="hidden" name="type_add_update" value="<?= $value_addendum['no_addendum'] ?>">
@@ -836,15 +983,15 @@
                                                                                                     $this->db->order_by('no_urut', 'ASC');
                                                                                                     $query_tbl_hps_penyedia_kontrak_1 = $this->db->get() ?>
                                                                                                     <?php $nomorku = 1;
+                                                                                                    $total_hps_addendum = 0;
                                                                                                     foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) { ?>
-
                                                                                                         <?php
                                                                                                         $id_refrence_hps_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
                                                                                                         $id_detail_sub_program_penyedia_jasa = $value_hps_penyedia_kontrak_1['id_detail_sub_program_penyedia_jasa'];
                                                                                                         if ($value_hps_penyedia_kontrak_1['total_harga' . $field_addendum]) {
-                                                                                                            $total_hps_penyedia_kontrak_addendum_1 +=  $value_hps_penyedia_kontrak_1['total_harga' . $field_addendum];
+                                                                                                            $total_hps_addendum +=  $value_hps_penyedia_kontrak_1['total_harga' . $field_addendum];
                                                                                                         } else {
-                                                                                                            $total_hps_penyedia_kontrak_addendum_1 +=  0;
+                                                                                                            $total_hps_addendum +=  0;
                                                                                                         }
                                                                                                         if ($value_hps_penyedia_kontrak_1['volume_hps'] < $value_hps_penyedia_kontrak_1['volume_hps' . $field_addendum]) {
                                                                                                             $keterangan_volume = '<label for="" class="badge badge-success">Volumen Bertambah</label>';
@@ -900,15 +1047,54 @@
                                                                                                 <tfoot>
                                                                                                     <tr>
                                                                                                         <td colspan="2">
-                                                                                                            <!-- <label for="" style="font-size: 10px;">GRAND TOTAL (Rp.)</label> -->
+                                                                                                            <label for="" style="font-size: 12px;">SUBTOTAL (SEBELUM PPN Rp.)</label>
                                                                                                         </td>
-                                                                                                        <td colspan="3"></td>
+                                                                                                        <td colspan="4"></td>
                                                                                                         <?php                                                                       ?>
                                                                                                         <td>
-                                                                                                            <!-- <label style="font-size: 10px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_kontrak_1 + $total_hps_penyedia_kontrak_2, 2, ',', '.') ?> 
-                                                                            </label> -->
+                                                                                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_addendum, 2, ',', '.') ?>
+                                                                                                            </label>
                                                                                                         </td>
-                                                                                                        <td colspan="3">
+                                                                                                        <td colspan="3"></td>
+                                                                                                        <td>
+
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td colspan="2">
+                                                                                                            <label for="" style="font-size: 12px;">PPN(<?= $value['ppn_hps_kontrak_addendum_' . $value_addendum['no_addendum']] ?>%)<select name="ppn_hps_kontrak_addendum_<?= $value_addendum['no_addendum'] ?><?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="Pilih_ppn_kontrak_addendum(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,<?= $value_addendum['no_addendum'] ?>)">
+                                                                                                                    <option selected value="<?= $value['ppn_hps_kontrak_addendum_' . $value_addendum['no_addendum']] ?>">--Pilih PPN--</option>
+                                                                                                                    <option value="10">10%</option>
+                                                                                                                    <option value="11">11%</option>
+                                                                                                                    <option value="12">12%</option>
+                                                                                                                </select></label>
+                                                                                                        </td>
+                                                                                                        <td colspan="4"></td>
+                                                                                                        <?php
+                                                                                                        $total_ppn = ($value['ppn_hps_kontrak_addendum_' . $value_addendum['no_addendum']] * $total_hps_addendum) / 100;
+                                                                                                        $total_setelah_ppn = $total_ppn + $total_hps_addendum;
+                                                                                                        ?>
+                                                                                                        <td>
+                                                                                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
+                                                                                                            </label>
+                                                                                                        </td>
+                                                                                                        <td colspan="3"></td>
+                                                                                                        <td>
+
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td colspan="2">
+                                                                                                            <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
+                                                                                                        </td>
+                                                                                                        <td colspan="4"></td>
+                                                                                                        <?php                                                                       ?>
+                                                                                                        <td>
+                                                                                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
+                                                                                                            </label>
+                                                                                                        </td>
+                                                                                                        <td colspan="3"></td>
+                                                                                                        <td>
                                                                                                             <a href="javascript:;" onclick="Update_nilai_ke_sub_program_addendum(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-primary"><i class="fas fa fa-save"></i> Simpan Dan Update</a>
                                                                                                         </td>
                                                                                                     </tr>

@@ -460,6 +460,7 @@ class Administrasi_kontrak extends CI_Controller
         $data['active_kontrak'] = 'active';
         $data['menu_open_kontrak'] = 'menu-open';
         $data['result_rekap_hps']  = $this->Data_kontrak_model->result_rekap_hps($id_detail_program_penyedia_jasa);
+        $data['cek_rekap_kontrak_awal']  = $this->Data_kontrak_model->cek_rekap_kontrak_awal($id_detail_program_penyedia_jasa);
         $data['row_program_kontrak_detail']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
         $data['result_sub_program']  = $this->Data_kontrak_model->get_sub_program($id_detail_program_penyedia_jasa);
         $data['adendum_result'] = $this->Data_kontrak_model->get_addendum_by_result_penyedia_kontrak($id_detail_program_penyedia_jasa);
@@ -750,5 +751,25 @@ class Administrasi_kontrak extends CI_Controller
         ];
         $this->Data_kontrak_model->update_tbl_hps_penyedia_kontrak_1($data, $id_where_hps_penyedia_kontrak_1);
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+
+    public function insert_rekap_kontrak_awal()
+    {
+        $id_detail_program_penyedia_jasa =  $this->input->post('id_detail_program_penyedia_jasa');
+        $result_sub_program = $this->Data_kontrak_model->result_sub_program($id_detail_program_penyedia_jasa);
+        $result_rekap = $this->Data_kontrak_model->cek_rekap($id_detail_program_penyedia_jasa);
+        if ($result_rekap) {
+            $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+        } else {
+            foreach ($result_sub_program as $key => $value) {
+                $data = [
+                    'id_detail_program_penyedia_jasa' => $value['id_detail_program_penyedia_jasa'],
+                    'id_detail_sub_program_penyedia_jasa' => $value['id_detail_sub_program_penyedia_jasa'],
+                ];
+                $this->Data_kontrak_model->create_tbl_rekap_hps($data);
+            }
+            $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+        }
     }
 }

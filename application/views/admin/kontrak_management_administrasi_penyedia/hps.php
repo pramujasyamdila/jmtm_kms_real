@@ -530,9 +530,6 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                 <input type="hidden" name="id_detail_program_penyedia_jasa" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>">
                 <section class="content" style="margin-top: -20px">
                     <div class="container-fluid">
-
-
-
                     </div>
 
 
