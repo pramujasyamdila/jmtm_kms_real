@@ -36,6 +36,36 @@ class Data_kontrak extends CI_Controller
         $this->load->view('admin/kontrak_management/ajax');
     }
 
+    function input_total()
+    {
+        $sub_total = $this->input->post('sub_total');
+        $ppn = $this->input->post('ppn');
+        $total_ppn = $this->input->post('total');
+        $setelah_ppn = $this->input->post('grand_total');
+
+        $id_kontrak = $this->input->post('id_kontrak');
+
+        $data = [
+            'sub_total' => $sub_total,
+            'ppn' => $ppn,
+            'total_ppn' => $total_ppn,
+            'setelah_ppn' => $setelah_ppn
+        ];
+
+        $where = [
+            'id_kontrak' =>  $id_kontrak
+        ];
+
+        $output = [
+            'sub_total' => 'Rp. ' . number_format($sub_total, 2, ',', '.'),
+            'ppn' =>'Rp. ' .  number_format($ppn, 2, ',', '.'),
+            'total_ppn' => 'Rp. ' . number_format($total_ppn, 2, ',', '.'),
+            'setelah_ppn' => 'Rp. ' . number_format($setelah_ppn, 2, ',', '.'),
+        ];
+        $this->Data_kontrak_model->update($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode($output));
+    }
+
     public function get_data()
     {
         $get_pegawai = $this->Auth_model->get_pegawai();
@@ -260,8 +290,7 @@ class Data_kontrak extends CI_Controller
                 ];
                 $this->Data_kontrak_model->tambah_ke_tbl_sdm($data);
                 // ke add
-                if ($this->input->post('no_adendum_post_kontrak') == 'Kontrak Awal') {
-                } else {
+                if ($this->input->post('no_adendum_post_kontrak') == 'Kontrak Awal') { } else {
                     $data = [
                         'no_adendum' => $this->input->post('no_adendum_post_kontrak'),
                         'tanggal' => $this->input->post('tanggal_adendum_post_kontrak'),
@@ -1704,8 +1733,7 @@ class Data_kontrak extends CI_Controller
                 } else if ($cek_no_add == 30) {
                     $this->load->view('tidak_ada_add/add_XXX', $data_ke_logic);
                     $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else {
-                }
+                } else { }
             }
         }
     }
@@ -7240,8 +7268,7 @@ class Data_kontrak extends CI_Controller
             ];
             $this->Data_kontrak_model->update_urutan_detail_capex_5($where, $data);
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-        } else {
-        }
+        } else { }
     }
 
     //opex
@@ -7309,8 +7336,7 @@ class Data_kontrak extends CI_Controller
             ];
             $this->Data_kontrak_model->update_urutan_detail_opex_5($where, $data);
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-        } else {
-        }
+        } else { }
     }
 
     //bua
@@ -7378,8 +7404,7 @@ class Data_kontrak extends CI_Controller
             ];
             $this->Data_kontrak_model->update_urutan_detail_bua_5($where, $data);
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-        } else {
-        }
+        } else { }
     }
 
     //sdm
@@ -7447,8 +7472,7 @@ class Data_kontrak extends CI_Controller
             ];
             $this->Data_kontrak_model->update_urutan_detail_sdm_5($where, $data);
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-        } else {
-        }
+        } else { }
     }
     public function update_ppn_kontrak_addendum()
     {

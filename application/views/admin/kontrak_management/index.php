@@ -1,4 +1,10 @@
 <!-- Content Wrapper. Contains page content -->
+<style>
+    h2,
+    h6 {
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
 <div class="main-content">
     <section class="section">
         <!-- <div class="section-header">
