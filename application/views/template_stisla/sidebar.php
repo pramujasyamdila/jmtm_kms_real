@@ -22,7 +22,7 @@
                 <li class="dropdown">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Modul 1 : Kontrak Management</span></a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="<?= base_url('admin/data_kontrak') ?>"><i class="fa fa-tasks" aria-hidden="true"></i><span>Management Kontrak</span></a></li>
+                        <li><a class="nav-link" href="<?= base_url('admin/data_kontrak/kelola_level/' . $session) ?>"><i class="fa fa-tasks" aria-hidden="true"></i><span>Management Kontrak</span></a></li>
                         <li><a class="nav-link" href="<?= base_url('admin/data_kontrak_penyedia_jasa/kelola_level/' . $session) ?>"><i class="fa fa-tags" aria-hidden="true"></i><span>Mata Anggaran</span></a></li>
                     </ul>
 

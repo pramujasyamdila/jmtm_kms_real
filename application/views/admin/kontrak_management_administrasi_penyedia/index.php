@@ -63,8 +63,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                     <th class="tg-0pky text-center text-white" style="font-size: 12px;">No</th>
                                     <th class="tg-0pky text-center text-white" style="font-size: 12px;width:300px !important;border: 1px solid #ccc;" rowspan="1">Uraian Pekerjaan</th>
                                     <th class="tg-0pky text-center text-white" style="font-size: 12px;">Jenis Pengadaan</th>
-                                    <th class="tg-0pky text-center text-white" style="font-size: 12px;">Nilai Pagu</th>
-                                    <th class="tg-0pky text-center text-white" style="font-size: 12px;">Nilai Hps</th>
+                                    <th class="tg-0pky text-center text-white" style="font-size: 12px;">Nilai Pagu (Setelah PPN)</th>
+                                    <th class="tg-0pky text-center text-white" style="font-size: 12px;">Nilai Hps (Setelah PPN)</th>
                                     <th class="tg-0pky text-center text-white" style="font-size: 12px;">Aksi</th>
                                 </tr>
                             </thead>

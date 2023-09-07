@@ -263,12 +263,12 @@
                                                                 <ul class="nav nav-tabs" id="myTab">
                                                                     <?php foreach ($result_sub_program as $key => $value) { ?>
                                                                         <li>
+                                                                            <a class="nav-link  text-white" href="#rekap_hps_awal" style="background-color: #193B53;">Rekap Penjelasan</a>
+                                                                        </li>
+                                                                        <li>
                                                                             <a class="nav-link  text-white" href="#kirun<?= $value['id_detail_sub_program_penyedia_jasa'] ?> " style="background-color: #193B53;"><?= $value['nama_program_mata_anggaran'] ?></a>
                                                                         </li>
                                                                     <?php  } ?>
-                                                                    <li>
-                                                                        <a class="nav-link  text-white" href="#rekap_hps_awal" style="background-color: #193B53;">Rekap Penjelasan</a>
-                                                                    </li>
                                                                 </ul>
                                                                 <div class="tab-content mt-3">
                                                                     <div class="tab-pane fade show" id="rekap_hps_awal">
@@ -456,14 +456,14 @@
                                                                     </div>
                                                                 </div>
                                                                 <ul class="nav nav-tabs" id="myTabKontrak" style="margin-top: 50px;">
+                                                                    <li>
+                                                                        <a class="nav-link  text-white" href="#rekap_kontrak_awal" style="background-color: #193B53;">Rekap Penjelasan</a>
+                                                                    </li>
                                                                     <?php foreach ($result_sub_program as $key => $value) { ?>
                                                                         <li>
                                                                             <a style="background-color: #193B53;" class="nav-link text-white" href="#kirun_kontrak<?= $value['id_detail_sub_program_penyedia_jasa'] ?>"><?= $value['nama_program_mata_anggaran'] ?></a>
                                                                         </li>
                                                                     <?php  } ?>
-                                                                    <li>
-                                                                        <a class="nav-link  text-white" href="#rekap_kontrak_awal" style="background-color: #193B53;">Rekap Penjelasan</a>
-                                                                    </li>
                                                                 </ul>
                                                                 <div class="tab-content mt-3">
                                                                     <div class="tab-pane fade show" id="rekap_kontrak_awal">
@@ -520,7 +520,7 @@
                                                                                             <!--  -->
                                                                                             <div class="form-group">
                                                                                                 <label for="">No Mata Anggaran</label>
-                                                                                                <input type="text" name="no_hps" required class="form-control form-control-sm" placeholder="No Hps">
+                                                                                                <input type="text" name="no_hps" required class="form-control form-control-sm" placeholder="No Mata Anggaran">
                                                                                             </div>
                                                                                             <div class="form-group">
                                                                                                 <label for="">Uraian</label>
@@ -893,14 +893,14 @@
                                                                         $this->db->where_in('tbl_sub_detail_program_penyedia_jasa.addendum_ke', [$field_addendum, 'kosong']);
                                                                         $result_sub_program_tambahan_anggaran = $this->db->get();
                                                                         ?>
+                                                                        <li>
+                                                                            <a class="nav-link  text-white" href="#rekap_addendum<?= $value_addendum['no_addendum'] ?>" style="background-color: #193B53;">Rekap Penjelasan</a>
+                                                                        </li>
                                                                         <?php foreach ($result_sub_program_tambahan_anggaran->result_array() as $key => $value) { ?>
                                                                             <li>
                                                                                 <a class="nav-link text-white" style="background-color: #193B53;" href="#kirun_addendum<?= $value_addendum['no_addendum'] ?><?= $value['id_detail_sub_program_penyedia_jasa'] ?>"><?= $value['nama_program_mata_anggaran'] ?></a>
                                                                             </li>
                                                                         <?php  } ?>
-                                                                        <li>
-                                                                            <a class="nav-link  text-white" href="#rekap_addendum<?= $value_addendum['no_addendum'] ?>" style="background-color: #193B53;">Rekap Penjelasan</a>
-                                                                        </li>
                                                                     </ul>
                                                                     <div class="tab-content mt-3">
                                                                         <div class="tab-pane fade show" id="rekap_addendum<?= $value_addendum['no_addendum'] ?>">
@@ -923,7 +923,28 @@
                                                                                             </thead>
                                                                                             <tbody>
                                                                                                 <?php $nomor = 1;
-                                                                                                foreach ($result_rekap_hps as $key => $value) { ?>
+                                                                                                if ($value_addendum['no_addendum'] == 1) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_1;
+                                                                                                } else if ($value_addendum['no_addendum'] == 2) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_2;
+                                                                                                } else if ($value_addendum['no_addendum'] == 3) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_3;
+                                                                                                } else if ($value_addendum['no_addendum'] == 4) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_4;
+                                                                                                } else if ($value_addendum['no_addendum'] == 5) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_5;
+                                                                                                } else if ($value_addendum['no_addendum'] == 6) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_6;
+                                                                                                } else if ($value_addendum['no_addendum'] == 7) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_7;
+                                                                                                } else if ($value_addendum['no_addendum'] == 8) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_8;
+                                                                                                } else if ($value_addendum['no_addendum'] == 9) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_9;
+                                                                                                } else if ($value_addendum['no_addendum'] == 10) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_10;
+                                                                                                }
+                                                                                                foreach ($result_rekap_addendum as $key => $value) { ?>
                                                                                                     <tr>
                                                                                                         <td><?= $nomor++ ?></td>
                                                                                                         <td><?= $value['nama_program_mata_anggaran'] ?></td>
@@ -1159,8 +1180,8 @@
                     <input type="hidden" name="type_add">
                     <!--  -->
                     <div class="form-group">
-                        <label for="">No Hps</label>
-                        <input type="text" name="no_hps" class="form-control form-control-sm" placeholder="No Hps">
+                        <label for="">No Mata Anggaran</label>
+                        <input type="text" name="no_hps" class="form-control form-control-sm" placeholder="No Mata Anggaran">
                     </div>
                     <div class="form-group">
                         <label for="">Uraian</label>

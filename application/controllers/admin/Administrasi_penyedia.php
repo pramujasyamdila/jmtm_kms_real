@@ -936,21 +936,6 @@ class Administrasi_penyedia extends CI_Controller
                 'jumlah_harga_tkdn' => $hasil_jumlah_harga_tkdn,
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_1($data);
-            // $insert_id = $this->db->insert_id();
-            // $data_nilai_kontrak = [
-            //     'id_detail_program_penyedia_jasa' => $id_where_detail_program,
-            //     'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
-            //     'no_urut' => 1 . '.' . $count,
-            //     'uraian_hps' => $uraian_hps,
-            //     'no_hps' => $no_hps,
-            //     'satuan_hps' => $satuan_hps,
-            //     'volume_hps' => $volume_hps,
-            //     'harga_satuan_hps' => $harga_satuan,
-            //     'total_harga' => $total_harga,
-            //     'id_refrence_hps' => $insert_id,
-            //     'item_baru' => 'kosong'
-            // ];
-            // $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_1($data_nilai_kontrak);
         } else {
             $data = [
                 'id_detail_program_penyedia_jasa' => $id_where_detail_program,
@@ -967,21 +952,6 @@ class Administrasi_penyedia extends CI_Controller
                 'jumlah_harga_tkdn' => $hasil_jumlah_harga_tkdn,
             ];
             $this->Data_kontrak_model->create_tbl_hps_penyedia_1($data);
-            // $insert_id = $this->db->insert_id();
-            // $data_nilai_kontrak = [
-            //     'id_detail_program_penyedia_jasa' => $id_where_detail_program,
-            //     'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
-            //     'no_urut' => 1 . '.' . $count,
-            //     'uraian_hps' => $uraian_hps,
-            //     'no_hps' => $no_hps,
-            //     'satuan_hps' => $satuan_hps,
-            //     'volume_hps' => $volume_hps,
-            //     'harga_satuan_hps' => $harga_satuan,
-            //     'total_harga' => $total_harga,
-            //     'id_refrence_hps' => $insert_id,
-            //     'item_baru' => 'kosong'
-            // ];
-            // $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_1($data_nilai_kontrak);
         }
         $this->db->select('*');
         $this->db->from('tbl_hps_penyedia_1');
@@ -998,7 +968,7 @@ class Administrasi_penyedia extends CI_Controller
         ];
         $data_update = [
             'nilai_hps' => $total,
-            'nilai_sub_kontrak_penyedia' => $total
+            // 'nilai_sub_kontrak_penyedia' => $total
         ];
         $this->Data_kontrak_model->update_rup_ke_sub_detail_program_penyedia_jasa($where, $data_update);
         $id_where_detail_program = $id_detail_program_penyedia_jasa['id_detail_program_penyedia_jasa'];
@@ -1017,7 +987,7 @@ class Administrasi_penyedia extends CI_Controller
         ];
         $data_update_sub = [
             'total_hps_mata_anggaran' => $total_sub,
-            'total_kontrak' => $total_sub_nilai_kontrak
+            // 'total_kontrak' => $total_sub_nilai_kontrak
         ];
         $this->Data_kontrak_model->update_rup($where_sub, $data_update_sub);
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
@@ -2978,7 +2948,7 @@ class Administrasi_penyedia extends CI_Controller
             if ($type_add == 0) {
                 $total_ppn =  ($row_sub_program['ppn_hps_kontrak_awal'] * $total_hps_penyedia_kontrak_1) / 100;
             } else {
-                $total_ppn =  ($row_sub_program['ppn_hps_kontrak_addendum_'] . $type_add * $total_hps_penyedia_kontrak_1) / 100;
+                $total_ppn =  ($row_sub_program['ppn_hps_kontrak_addendum_' . $type_add] * $total_hps_penyedia_kontrak_1) / 100;
             }
             $total_setalah_ppn = $total_ppn + $total_hps_penyedia_kontrak_1;
             $where = [
@@ -3057,7 +3027,7 @@ class Administrasi_penyedia extends CI_Controller
             if ($type_add == 0) {
                 $total_ppn =  ($row_sub_program['ppn_hps_kontrak_awal'] * $total_hps_penyedia_kontrak_1) / 100;
             } else {
-                $total_ppn =  ($row_sub_program['ppn_hps_kontrak_addendum_'] . $type_add * $total_hps_penyedia_kontrak_1) / 100;
+                $total_ppn =  ($row_sub_program['ppn_hps_kontrak_addendum_' . $type_add] * $total_hps_penyedia_kontrak_1) / 100;
             }
             $total_setalah_ppn = $total_ppn + $total_hps_penyedia_kontrak_1;
 
@@ -3089,7 +3059,7 @@ class Administrasi_penyedia extends CI_Controller
         if ($type_add == 0) {
             $total_ppn =  ($row_sub_program['ppn_hps_kontrak_awal'] * $total_hps_penyedia_kontrak_1) / 100;
         } else {
-            $total_ppn =  ($row_sub_program['ppn_hps_kontrak_addendum_'] . $type_add * $total_hps_penyedia_kontrak_1) / 100;
+            $total_ppn =  ($row_sub_program['ppn_hps_kontrak_addendum_' . $type_add] * $total_hps_penyedia_kontrak_1) / 100;
         }
         $total_setalah_ppn = $total_ppn + $total_hps_penyedia_kontrak_1;
         if ($cek_jika_sudah_ada_rekap) {
@@ -4353,7 +4323,7 @@ class Administrasi_penyedia extends CI_Controller
     {
         $id_detail_program_penyedia_jasa =  $this->input->post('id_detail_program_penyedia_jasa');
         $result_sub_program = $this->Data_kontrak_model->result_sub_program($id_detail_program_penyedia_jasa);
-        $result_rekap = $this->Data_kontrak_model->cek_rekap($id_detail_program_penyedia_jasa);
+        $result_rekap = $this->Data_kontrak_model->result_rekap_hps($id_detail_program_penyedia_jasa);
         if ($result_rekap) {
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
         } else {

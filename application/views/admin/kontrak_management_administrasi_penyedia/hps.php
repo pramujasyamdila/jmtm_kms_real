@@ -30,14 +30,14 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                     </select> -->
                     <br>
                     <ul class="nav nav-tabs" id="myTab">
+                        <li>
+                            <a style="background-color:#193B53;" class="nav-link text-white" href="#rekap">Penjelasan Rekap</a>
+                        </li>
                         <?php foreach ($result_sub_program as $key => $value) { ?>
                             <li>
                                 <a style="background-color:#193B53;" class="nav-link text-white" href="#kirun<?= $value['id_detail_sub_program_penyedia_jasa'] ?>"><?= $value['nama_program_mata_anggaran'] ?></a>
                             </li>
                         <?php  } ?>
-                        <li>
-                            <a style="background-color:#193B53;" class="nav-link text-white" href="#rekap">Penjelasan Rekap</a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -132,157 +132,192 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                             </div>
                         </div>
                         <div class="card-body">
-                            <table id="table_data" class="table table-bordered table-striped">
-                                <thead style="background-color:#193B53;font-family: RNSSanz-Black;text-transform: uppercase;" class="thead-inverse">
-                                    <tr>
-                                        <th class="text-white">No</th>
-                                        <th class="text-white">Nomor Mata Pembayaran</th>
-                                        <th class="text-white">Uraian</th>
-                                        <th class="text-white">Satuan</th>
-                                        <th class="text-white">Kuantitas</th>
-                                        <th class="text-white">Harga Satuan</th>
-                                        <th class="text-white">Jumlah Harga</th>
-                                        <th class="text-white">TKDN</th>
-                                        <th class="text-white">Harga Satuan TKDN</th>
-                                        <th class="text-white">Jumlah Harga TKDN</th>
-                                        <th class="text-white">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody style="font-size: 12px;">
-                                    <?php
-                                    $this->db->select('*');
-                                    $this->db->from('tbl_hps_penyedia_1');
-                                    $this->db->where('tbl_hps_penyedia_1.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
-                                    $this->db->where('tbl_hps_penyedia_1.id_detail_sub_program_penyedia_jasa', $value['id_detail_sub_program_penyedia_jasa']);
-                                    $this->db->order_by('id_hps_penyedia_1', 'DESC');
-                                    $query_tbl_hps_penyedia_1 = $this->db->get() ?>
-                                    <?php
-                                    $no = 1;
-                                    $total_hps_penyedia_1 = 0;
-                                    foreach ($query_tbl_hps_penyedia_1->result_array() as $key => $value_hps_penyedia_1) { ?>
+                            <div style="overflow-x: auto;">
+                                <table id="table_data" class="table table-bordered table-striped">
+                                    <thead style="background-color:#193B53;font-family: RNSSanz-Black;text-transform: uppercase;" class="thead-inverse">
+                                        <tr>
+                                            <th class="text-white">No</th>
+                                            <th class="text-white">Nomor Mata Pembayaran</th>
+                                            <th class="text-white">Uraian</th>
+                                            <th class="text-white">Satuan</th>
+                                            <th class="text-white">Kuantitas</th>
+                                            <th class="text-white">Harga Satuan</th>
+                                            <th class="text-white">Jumlah Harga</th>
+                                            <th class="text-white">TKDN</th>
+                                            <th class="text-white">Harga Satuan TKDN</th>
+                                            <th class="text-white">Jumlah Harga TKDN</th>
+                                            <th class="text-white">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="font-size: 12px;">
                                         <?php
-                                        $id_hps_penyedia_1 = $value_hps_penyedia_1['id_hps_penyedia_1'];
                                         $this->db->select('*');
-                                        $this->db->from('tbl_hps_penyedia_2');
-                                        $this->db->where('tbl_hps_penyedia_2.id_hps_penyedia_1', $value_hps_penyedia_1['id_hps_penyedia_1']);
-                                        $query_cek_tbl_hps_penyedia_2 = $this->db->get()->result_array();
-                                        if ($value_hps_penyedia_1['total_harga']) {
-                                            $total_hps_penyedia_1 +=  $value_hps_penyedia_1['total_harga'];
-                                        } else {
-                                            $total_hps_penyedia_1 +=  0;
-                                        }
-                                        ?>
-                                        <tr class="text-black">
-                                            <td> &nbsp;<?= $no++ ?></td>
-                                            <td><?= $value_hps_penyedia_1['no_hps'] ?></td>
-                                            <td><?= $value_hps_penyedia_1['uraian_hps'] ?></td>
-                                            <td><?= $value_hps_penyedia_1['satuan_hps'] ?></td>
-                                            <td><?= $value_hps_penyedia_1['volume_hps'] ?></td>
-                                            <?php if ($value_hps_penyedia_1['harga_satuan_hps']) { ?>
-                                                <td><?= "Rp " . number_format($value_hps_penyedia_1['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                            <?php  } else { ?>
-                                                <td></td>
-                                            <?php }
+                                        $this->db->from('tbl_hps_penyedia_1');
+                                        $this->db->where('tbl_hps_penyedia_1.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                        $this->db->where('tbl_hps_penyedia_1.id_detail_sub_program_penyedia_jasa', $value['id_detail_sub_program_penyedia_jasa']);
+                                        $this->db->order_by('id_hps_penyedia_1', 'ASC');
+                                        $query_tbl_hps_penyedia_1 = $this->db->get() ?>
+                                        <?php
+                                        $no = 1;
+                                        $total_hps_penyedia_1 = 0;
+                                        foreach ($query_tbl_hps_penyedia_1->result_array() as $key => $value_hps_penyedia_1) { ?>
+                                            <?php
+                                            $id_hps_penyedia_1 = $value_hps_penyedia_1['id_hps_penyedia_1'];
+                                            $this->db->select('*');
+                                            $this->db->from('tbl_hps_penyedia_2');
+                                            $this->db->where('tbl_hps_penyedia_2.id_hps_penyedia_1', $value_hps_penyedia_1['id_hps_penyedia_1']);
+                                            $query_cek_tbl_hps_penyedia_2 = $this->db->get()->result_array();
+                                            if ($value_hps_penyedia_1['total_harga']) {
+                                                $total_hps_penyedia_1 +=  $value_hps_penyedia_1['total_harga'];
+                                            } else {
+                                                $total_hps_penyedia_1 +=  0;
+                                            }
                                             ?>
-                                            <?php if ($value_hps_penyedia_1['total_harga']) { ?>
-                                                <td><?= "Rp " . number_format($value_hps_penyedia_1['total_harga'], 2, ',', '.') ?></td>
-                                            <?php  } else { ?>
-                                                <td></td>
-                                            <?php }
-                                            ?>
-                                            <td><?= $value_hps_penyedia_1['tkdn'] ?>%</td>
-                                            <td><?= "Rp " . number_format($value_hps_penyedia_1['harga_satuan_tkdn'], 2, ',', '.') ?></td>
-                                            <td><?= "Rp " . number_format($value_hps_penyedia_1['jumlah_harga_tkdn'], 2, ',', '.') ?></td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                        <span class="sr-only">Toggle Dropdown</span>
-                                                    </button>
-                                                    <div class="dropdown-menu" role="menu">
-                                                        <?php if ($query_cek_tbl_hps_penyedia_2) { ?>
-                                                            <!-- <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a> -->
-                                                            <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)"> <i class="fas fa fa-file"></i></a>
-                                                            <a title="Pindahkan Urutan" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-info" href="javascript:;" onclick="pindah_urutan_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
-                                                        <?php   } else { ?>
-                                                            <?php if ($value_hps_penyedia_1['total_harga']) { ?>
-                                                                <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
-                                                                <a title="Pindahkan Urutan" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-info" href="javascript:;" onclick="pindah_urutan_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
-                                                            <?php  } else { ?>
+                                            <tr class="text-black">
+                                                <td> &nbsp;<?= $no++ ?></td>
+                                                <td><?= $value_hps_penyedia_1['no_hps'] ?></td>
+                                                <td><?= $value_hps_penyedia_1['uraian_hps'] ?></td>
+                                                <td><?= $value_hps_penyedia_1['satuan_hps'] ?></td>
+                                                <td><?= number_format($value_hps_penyedia_1['volume_hps'], 2, ',', '.')  ?></td>
+                                                <?php if ($value_hps_penyedia_1['harga_satuan_hps']) { ?>
+                                                    <td><?= "Rp " . number_format($value_hps_penyedia_1['harga_satuan_hps'], 2, ',', '.') ?></td>
+                                                <?php  } else { ?>
+                                                    <td></td>
+                                                <?php }
+                                                ?>
+                                                <?php if ($value_hps_penyedia_1['total_harga']) { ?>
+                                                    <td><?= "Rp " . number_format($value_hps_penyedia_1['total_harga'], 2, ',', '.') ?></td>
+                                                <?php  } else { ?>
+                                                    <td></td>
+                                                <?php }
+                                                ?>
+                                                <td><?= number_format($value_hps_penyedia_1['tkdn'], 2, ',', '.')  ?>%</td>
+                                                <td><?= "Rp " . number_format($value_hps_penyedia_1['harga_satuan_tkdn'], 2, ',', '.') ?></td>
+                                                <td><?= "Rp " . number_format($value_hps_penyedia_1['jumlah_harga_tkdn'], 2, ',', '.') ?></td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                            <span class="sr-only">Toggle Dropdown</span>
+                                                        </button>
+                                                        <div class="dropdown-menu" role="menu">
+                                                            <?php if ($query_cek_tbl_hps_penyedia_2) { ?>
                                                                 <!-- <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a> -->
                                                                 <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)"> <i class="fas fa fa-file"></i></a>
-                                                                <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
                                                                 <a title="Pindahkan Urutan" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-info" href="javascript:;" onclick="pindah_urutan_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
-                                                            <?php } ?>
-                                                        <?php  } ?>
+                                                            <?php   } else { ?>
+                                                                <?php if ($value_hps_penyedia_1['total_harga']) { ?>
+                                                                    <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                                                                    <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
+                                                                    <a title="Pindahkan Urutan" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-info" href="javascript:;" onclick="pindah_urutan_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
+                                                                <?php  } else { ?>
+                                                                    <!-- <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a> -->
+                                                                    <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)"> <i class="fas fa fa-file"></i></a>
+                                                                    <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                                                                    <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
+                                                                    <a title="Pindahkan Urutan" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-info" href="javascript:;" onclick="pindah_urutan_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
+                                                                <?php } ?>
+                                                            <?php  } ?>
 
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="2">
+                                                <label for="" style="font-size: 12px;">SUBTOTAL (SEBELUM PPN Rp.)</label>
+                                            </td>
+                                            <td colspan="4"></td>
+                                            <?php                                                                       ?>
+                                            <td>
+                                                <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_1, 2, ',', '.') ?>
+                                                </label>
+                                            </td>
+                                            <td colspan="3"></td>
+                                            <td>
+
                                             </td>
                                         </tr>
-                                    <?php } ?>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="2">
-                                            <label for="" style="font-size: 12px;">SUBTOTAL (SEBELUM PPN Rp.)</label>
-                                        </td>
-                                        <td colspan="4"></td>
-                                        <?php                                                                       ?>
-                                        <td>
-                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_1, 2, ',', '.') ?>
-                                            </label>
-                                        </td>
-                                        <td colspan="3"></td>
-                                        <td>
+                                        <tr>
+                                            <td colspan="2">
+                                                <label for="" style="font-size: 12px;">PPN(<?= $value['ppn_hps'] ?>%)<?= $value['id_detail_sub_program_penyedia_jasa'] ?> <select name="ppn_hps<?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="pilih_ppn_sub_program('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')">
+                                                        <option selected value="<?= $value['ppn_hps'] ?>">--Pilih PPN--</option>
+                                                        <option value="10">10%</option>
+                                                        <option value="11">11%</option>
+                                                        <option value="12">12%</option>
+                                                    </select></label>
+                                            </td>
+                                            <td colspan="4"></td>
+                                            <?php
+                                            $total_ppn = ($value['ppn_hps'] * $total_hps_penyedia_1) / 100;
+                                            $total_setelah_ppn = $total_ppn + $total_hps_penyedia_1;
+                                            ?>
+                                            <td>
+                                                <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
+                                                </label>
+                                            </td>
+                                            <td colspan="3"></td>
+                                            <td>
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <label for="" style="font-size: 12px;">PPN(<?= $value['ppn_hps'] ?>%)<?= $value['id_detail_sub_program_penyedia_jasa'] ?> <select name="ppn_hps<?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="pilih_ppn_sub_program('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')">
-                                                    <option selected value="<?= $value['ppn_hps'] ?>">--Pilih PPN--</option>
-                                                    <option value="10">10%</option>
-                                                    <option value="11">11%</option>
-                                                    <option value="12">12%</option>
-                                                </select></label>
-                                        </td>
-                                        <td colspan="4"></td>
-                                        <?php
-                                        $total_ppn = ($value['ppn_hps'] * $total_hps_penyedia_1) / 100;
-                                        $total_setelah_ppn = $total_ppn + $total_hps_penyedia_1;
-                                        ?>
-                                        <td>
-                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
-                                            </label>
-                                        </td>
-                                        <td colspan="3"></td>
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
-                                        </td>
-                                        <td colspan="4"></td>
-                                        <?php                                                                       ?>
-                                        <td>
-                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
-                                            </label>
-                                        </td>
-                                        <td colspan="3"></td>
-                                        <td>
-                                            <a href="javascript:;" onclick="Update_nilai_ke_sub_program('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')" class="btn btn-sm btn-success"> <i class="fas fa fa-save"></i> Simpan Dan Update</a>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
+                                            </td>
+                                            <td colspan="4"></td>
+                                            <?php                                                                       ?>
+                                            <td>
+                                                <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
+                                                </label>
+                                            </td>
+                                            <td colspan="3"></td>
+                                            <td>
+                                                <a href="javascript:;" onclick="Update_nilai_ke_sub_program('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')" class="btn btn-sm btn-success"> <i class="fas fa fa-save"></i> Simpan Dan Update</a>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
 
                         <!-- Modal -->
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_1" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <center>
+                                        <div>
+                                            <label for="">Download Format</label> <br>
+                                            <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_1_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+                                        </div>
+                                    </center>
+                                    <center>
+                                        <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
+                                    </center>
+                                    <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_1') ?>
+                                    <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
+                                    <input type="hidden" name="id_detail_sub_program_penyedia_jasa">
+                                    <input type="hidden" name="id_kontrak" value="<?= $row_program['id_kontrak'] ?>">
+                                    <div class="input-group">
+                                        <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                                        <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                                    </div>
+                                    <?= form_close(); ?>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal fade" data-backdrop="false" id="modal_urutan2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
@@ -354,170 +389,6 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         </div>
 
                         <!-- Modal -->
-                    </div>
-                    <!-- Modal -->
-                    <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_1" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <center>
-                                        <div>
-                                            <label for="">Download Format</label> <br>
-                                            <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_1_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
-                                        </div>
-                                    </center>
-                                    <center>
-                                        <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
-                                    </center>
-                                    <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_1') ?>
-                                    <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
-                                    <input type="hidden" name="id_detail_sub_program_penyedia_jasa">
-                                    <input type="hidden" name="id_kontrak" value="<?= $row_program['id_kontrak'] ?>">
-                                    <div class="input-group">
-                                        <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
-                                        <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
-                                    </div>
-                                    <?= form_close(); ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- hps penyedia 2 -->
-                    <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <center>
-                                        <div>
-                                            <label for="">Download Format</label> <br>
-                                            <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_2_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
-                                        </div>
-                                    </center>
-                                    <center>
-                                        <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
-                                    </center>
-                                    <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_2') ?>
-                                    <input type="text" name="id_hps_penyedia_1">
-                                    <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
-                                    <div class="input-group">
-                                        <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
-                                        <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
-                                    </div>
-                                    <?= form_close(); ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- hps penyedia 3 -->
-                    <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_3" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <center>
-                                        <div>
-                                            <label for="">Download Format</label> <br>
-                                            <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_3_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
-                                        </div>
-                                    </center>
-                                    <center>
-                                        <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
-                                    </center>
-                                    <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_3') ?>
-                                    <input type="text" name="id_hps_penyedia_2">
-                                    <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
-                                    <div class="input-group">
-                                        <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
-                                        <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
-                                    </div>
-                                    <?= form_close(); ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_4" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <center>
-                                        <div>
-                                            <label for="">Download Format</label> <br>
-                                            <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_4_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
-                                        </div>
-                                    </center>
-                                    <center>
-                                        <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
-                                    </center>
-                                    <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_4') ?>
-                                    <input type="text" name="id_hps_penyedia_3">
-                                    <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
-                                    <div class="input-group">
-                                        <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
-                                        <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
-                                    </div>
-                                    <?= form_close(); ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_5" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <center>
-                                        <div>
-                                            <label for="">Download Format</label> <br>
-                                            <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_5_hps.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
-                                        </div>
-                                    </center>
-                                    <center>
-                                        <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
-                                    </center>
-                                    <?= form_open_multipart('excelisasi_kontrak_hps/Upload_excel_hps/upload_excel_hps_penyedia_5') ?>
-                                    <input type="text" name="id_hps_penyedia_4">
-                                    <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
-                                    <div class="input-group">
-                                        <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
-                                        <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
-                                    </div>
-                                    <?= form_close(); ?>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

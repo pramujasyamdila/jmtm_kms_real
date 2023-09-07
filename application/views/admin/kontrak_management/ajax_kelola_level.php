@@ -1210,3 +1210,31 @@
         });
     });
 </script>
+
+<script>
+    function pilih_ppn_kontrak(no_addendum) {
+        if (no_addendum == 'kontrak_awal') {
+            var data_addendum = 0;
+        } else {
+            var data_addendum = no_addendum;
+        }
+        var ppn_kontrak_addendum = $('[name="ppn_kontrak_addendum_' + data_addendum + '"]').val();
+        var id_kontrak = $('[name="id_kontrak"]').val();
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/data_kontrak/update_ppn_kontrak_addendum') ?>",
+            data: {
+                id_kontrak: id_kontrak,
+                data_addendum: data_addendum,
+                ppn_kontrak_addendum: ppn_kontrak_addendum
+            },
+            dataType: "JSON",
+            success: function(response) {
+                if (response == 'success') {
+                    message('success', 'PPN Berhasil Di Update!', 'Berhasil')
+                    location.reload()
+                }
+            }
+        })
+    }
+</script>
