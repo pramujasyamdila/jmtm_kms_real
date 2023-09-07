@@ -1,10 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
-<style>
-    h2,
-    h6 {
-        font-family: 'Poppins', sans-serif;
-    }
-</style>
+
 <div class="main-content">
     <section class="section">
         <!-- <div class="section-header">
@@ -21,8 +16,8 @@
 
         <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
 background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
-            <h6>MODUL 1 - MODUL KONTRAK MANAJEMEN</h6>
-            <label for="">Modul ini digunakan dalam membuat Data Terkait Informasi Kontrak Manajemen yang sudah ada</label>
+            <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 1 - MODUL KONTRAK MANAJEMEN </b></h4>
+            <h6 style="font-family: 'Poppins', sans-serif;">Modul ini digunakan dalam membuat Data Terkait Informasi Kontrak Manajemen yang sudah ada</h6>
 
         </div>
         <div class="card" style="margin-top: -20px; padding-bottom: 10px; padding-top: 2px">
