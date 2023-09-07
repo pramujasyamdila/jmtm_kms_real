@@ -1211,31 +1211,29 @@
     });
 </script>
 
-<!-- subtotal -->
 <script>
-    function sub_total() {
-        var sub_total = $('[name="sub_total"]').val()
-        var ppn = $('[name="ppn"]').val()
-        console.log(ppn);
-        var total = sub_total * ppn / 100
-        var grand_total = parseFloat(total) + parseFloat(sub_total)
-        $('[name="setelah_ppn"]').val(total)
-        $('[name="grand_total"]').val(grand_total)
+    function pilih_ppn_kontrak(no_addendum) {
+        if (no_addendum == 'kontrak_awal') {
+            var data_addendum = 0;
+        } else {
+            var data_addendum = no_addendum;
+        }
+        var ppn_kontrak_addendum = $('[name="ppn_kontrak_addendum_' + data_addendum + '"]').val();
+        var id_kontrak = $('[name="id_kontrak"]').val();
         $.ajax({
-            type: "POST",
-            url: "<?= base_url('admin/data_kontrak/input_total/') ?>",
-            dataType: "JSON",
+            method: "POST",
+            url: "<?= base_url('admin/data_kontrak/update_ppn_kontrak_addendum') ?>",
             data: {
-                sub_total: sub_total,
-                ppn: ppn,
-                total: total,
-                grand_total: grand_total,
-                id_kontrak: <?= $row_kontrak['id_kontrak'] ?>
+                id_kontrak: id_kontrak,
+                data_addendum: data_addendum,
+                ppn_kontrak_addendum: ppn_kontrak_addendum
             },
+            dataType: "JSON",
             success: function(response) {
-                $('[name="sub_total_rp"]').val(response.sub_total)
-                $('[name="setelah_ppn_rp"]').val(response.total_ppn)
-                $('[name="grand_total_rp"]').val(response.setelah_ppn)
+                if (response == 'success') {
+                    message('success', 'PPN Berhasil Di Update!', 'Berhasil')
+                    location.reload()
+                }
             }
         })
     }

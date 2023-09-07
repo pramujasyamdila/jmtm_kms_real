@@ -263,12 +263,12 @@
                                                                 <ul class="nav nav-tabs" id="myTab">
                                                                     <?php foreach ($result_sub_program as $key => $value) { ?>
                                                                         <li>
+                                                                            <a class="nav-link  text-white" href="#rekap_hps_awal" style="background-color: #193B53;">Rekap Penjelasan</a>
+                                                                        </li>
+                                                                        <li>
                                                                             <a class="nav-link  text-white" href="#kirun<?= $value['id_detail_sub_program_penyedia_jasa'] ?> " style="background-color: #193B53;"><?= $value['nama_program_mata_anggaran'] ?></a>
                                                                         </li>
                                                                     <?php  } ?>
-                                                                    <li>
-                                                                        <a class="nav-link  text-white" href="#rekap_hps_awal" style="background-color: #193B53;">Rekap Penjelasan</a>
-                                                                    </li>
                                                                 </ul>
                                                                 <div class="tab-content mt-3">
                                                                     <div class="tab-pane fade show" id="rekap_hps_awal">
@@ -318,113 +318,115 @@
 
                                                                                     </div>
                                                                                     <div class="card-body">
-                                                                                        <table class="table table-bordered table-striped" style="font-family: RNSSanz-Black;text-transform: uppercase;">
-                                                                                            <thead style="font-size: 12px;" class="thead-inverse bg-primary">
-                                                                                                <tr style="background-color: #193B53;">
-                                                                                                    <th class="text-white">No</th>
-                                                                                                    <th class="text-white">Nomor Mata Pembayaran</th>
-                                                                                                    <th class="text-white">Uraian</th>
-                                                                                                    <th class="text-white">Satuan</th>
-                                                                                                    <th class="text-white">Kuantitas</th>
-                                                                                                    <th class="text-white">Harga Satuan</th>
-                                                                                                    <th class="text-white">Jumlah Harga</th>
-                                                                                                    <th class="text-white">TKDN</th>
-                                                                                                    <th class="text-white">Harga Satuan TKDN</th>
-                                                                                                    <th class="text-white">Jumlah Harga TKDN</th>
-                                                                                                </tr>
-                                                                                            </thead>
-                                                                                            <tbody style="font-size: 10px;">
-                                                                                                <?php
-                                                                                                $this->db->select('*');
-                                                                                                $this->db->from('tbl_hps_penyedia_1');
-                                                                                                $this->db->where('tbl_hps_penyedia_1.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
-                                                                                                $this->db->where('tbl_hps_penyedia_1.id_detail_sub_program_penyedia_jasa', $value['id_detail_sub_program_penyedia_jasa']);
-                                                                                                $this->db->order_by('no_urut', 'ASC');
-                                                                                                $query_tbl_hps_penyedia_1 = $this->db->get() ?>
-                                                                                                <?php
-                                                                                                $no = 1;
-                                                                                                $total_hps_penyedia_1 = 0;
-                                                                                                foreach ($query_tbl_hps_penyedia_1->result_array() as $key => $value_hps_penyedia_1) { ?>
-                                                                                                    <?php
-                                                                                                    if ($value_hps_penyedia_1['total_harga']) {
-                                                                                                        $total_hps_penyedia_1 +=  $value_hps_penyedia_1['total_harga'];
-                                                                                                    } else {
-                                                                                                        $total_hps_penyedia_1 +=  0;
-                                                                                                    }
-                                                                                                    ?>
-                                                                                                    <tr>
-                                                                                                        <td> &nbsp;<?= $no++ ?></td>
-                                                                                                        <td><?= $value_hps_penyedia_1['no_hps'] ?></td>
-                                                                                                        <td><?= $value_hps_penyedia_1['uraian_hps'] ?></td>
-                                                                                                        <td><?= $value_hps_penyedia_1['satuan_hps'] ?></td>
-                                                                                                        <td><?= $value_hps_penyedia_1['volume_hps'] ?></td>
-                                                                                                        <?php if ($value_hps_penyedia_1['harga_satuan_hps']) { ?>
-                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_1['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                                                                                        <?php  } else { ?>
-                                                                                                            <td></td>
-                                                                                                        <?php }
-                                                                                                        ?>
-                                                                                                        <?php if ($value_hps_penyedia_1['total_harga']) { ?>
-                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_1['total_harga'], 2, ',', '.') ?></td>
-                                                                                                        <?php  } else { ?>
-                                                                                                            <td></td>
-                                                                                                        <?php }
-                                                                                                        ?>
-                                                                                                        <td><?= $value_hps_penyedia_1['tkdn'] ?>%</td>
-                                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_1['harga_satuan_tkdn'], 2, ',', '.') ?></td>
-                                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_1['jumlah_harga_tkdn'], 2, ',', '.') ?></td>
+                                                                                        <div style="overflow-x: auto;">
+                                                                                            <table class="table table-bordered table-striped" style="font-family: RNSSanz-Black;text-transform: uppercase;">
+                                                                                                <thead style="font-size: 12px;" class="thead-inverse bg-primary">
+                                                                                                    <tr style="background-color: #193B53;">
+                                                                                                        <th class="text-white">No</th>
+                                                                                                        <th class="text-white">Nomor Mata Pembayaran</th>
+                                                                                                        <th class="text-white">Uraian</th>
+                                                                                                        <th class="text-white">Satuan</th>
+                                                                                                        <th class="text-white">Kuantitas</th>
+                                                                                                        <th class="text-white">Harga Satuan</th>
+                                                                                                        <th class="text-white">Jumlah Harga</th>
+                                                                                                        <th class="text-white">TKDN</th>
+                                                                                                        <th class="text-white">Harga Satuan TKDN</th>
+                                                                                                        <th class="text-white">Jumlah Harga TKDN</th>
                                                                                                     </tr>
-                                                                                                <?php } ?>
-                                                                                            </tbody>
-                                                                                            <tfoot>
-                                                                                                <tr>
-                                                                                                    <td colspan="2">
-                                                                                                        <label for="" style="font-size: 12px;">SUBTOTAL (SEBELUM PPN Rp.)</label>
-                                                                                                    </td>
-                                                                                                    <td colspan="4"></td>
-                                                                                                    <?php                                                                       ?>
-                                                                                                    <td>
-                                                                                                        <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_1, 2, ',', '.') ?>
-                                                                                                        </label>
-                                                                                                    </td>
-                                                                                                    <td colspan="4"></td>
-                                                                                                </tr>
-                                                                                                <tr>
-                                                                                                    <td colspan="2">
-                                                                                                        <label for="" style="font-size: 12px;">PPN(<?= $value['ppn_hps'] ?>%)
-                                                                                                            <!-- <select name="ppn_hps<?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="pilih_ppn_sub_program('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')">
+                                                                                                </thead>
+                                                                                                <tbody style="font-size: 10px;">
+                                                                                                    <?php
+                                                                                                    $this->db->select('*');
+                                                                                                    $this->db->from('tbl_hps_penyedia_1');
+                                                                                                    $this->db->where('tbl_hps_penyedia_1.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                                                                                    $this->db->where('tbl_hps_penyedia_1.id_detail_sub_program_penyedia_jasa', $value['id_detail_sub_program_penyedia_jasa']);
+                                                                                                    $this->db->order_by('no_urut', 'ASC');
+                                                                                                    $query_tbl_hps_penyedia_1 = $this->db->get() ?>
+                                                                                                    <?php
+                                                                                                    $no = 1;
+                                                                                                    $total_hps_penyedia_1 = 0;
+                                                                                                    foreach ($query_tbl_hps_penyedia_1->result_array() as $key => $value_hps_penyedia_1) { ?>
+                                                                                                        <?php
+                                                                                                        if ($value_hps_penyedia_1['total_harga']) {
+                                                                                                            $total_hps_penyedia_1 +=  $value_hps_penyedia_1['total_harga'];
+                                                                                                        } else {
+                                                                                                            $total_hps_penyedia_1 +=  0;
+                                                                                                        }
+                                                                                                        ?>
+                                                                                                        <tr>
+                                                                                                            <td> &nbsp;<?= $no++ ?></td>
+                                                                                                            <td><?= $value_hps_penyedia_1['no_hps'] ?></td>
+                                                                                                            <td><?= $value_hps_penyedia_1['uraian_hps'] ?></td>
+                                                                                                            <td><?= $value_hps_penyedia_1['satuan_hps'] ?></td>
+                                                                                                            <td><?= $value_hps_penyedia_1['volume_hps'] ?></td>
+                                                                                                            <?php if ($value_hps_penyedia_1['harga_satuan_hps']) { ?>
+                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_1['harga_satuan_hps'], 2, ',', '.') ?></td>
+                                                                                                            <?php  } else { ?>
+                                                                                                                <td></td>
+                                                                                                            <?php }
+                                                                                                            ?>
+                                                                                                            <?php if ($value_hps_penyedia_1['total_harga']) { ?>
+                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_1['total_harga'], 2, ',', '.') ?></td>
+                                                                                                            <?php  } else { ?>
+                                                                                                                <td></td>
+                                                                                                            <?php }
+                                                                                                            ?>
+                                                                                                            <td><?= $value_hps_penyedia_1['tkdn'] ?>%</td>
+                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_1['harga_satuan_tkdn'], 2, ',', '.') ?></td>
+                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_1['jumlah_harga_tkdn'], 2, ',', '.') ?></td>
+                                                                                                        </tr>
+                                                                                                    <?php } ?>
+                                                                                                </tbody>
+                                                                                                <tfoot>
+                                                                                                    <tr>
+                                                                                                        <td colspan="2">
+                                                                                                            <label for="" style="font-size: 12px;">SUBTOTAL (SEBELUM PPN Rp.)</label>
+                                                                                                        </td>
+                                                                                                        <td colspan="4"></td>
+                                                                                                        <?php                                                                       ?>
+                                                                                                        <td>
+                                                                                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_1, 2, ',', '.') ?>
+                                                                                                            </label>
+                                                                                                        </td>
+                                                                                                        <td colspan="4"></td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td colspan="2">
+                                                                                                            <label for="" style="font-size: 12px;">PPN(<?= $value['ppn_hps'] ?>%)
+                                                                                                                <!-- <select name="ppn_hps<?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="pilih_ppn_sub_program('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')">
                                                                                                                 <option selected value="<?= $value['ppn_hps'] ?>">--Pilih PPN--</option>
                                                                                                                 <option value="10">10%</option>
                                                                                                                 <option value="11">11%</option>
                                                                                                                 <option value="12">12%</option>
                                                                                                             </select> -->
-                                                                                                        </label>
-                                                                                                    </td>
-                                                                                                    <td colspan="4"></td>
-                                                                                                    <?php
-                                                                                                    $total_ppn = ($value['ppn_hps'] * $total_hps_penyedia_1) / 100;
-                                                                                                    $total_setelah_ppn = $total_ppn + $total_hps_penyedia_1;
-                                                                                                    ?>
-                                                                                                    <td>
-                                                                                                        <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
-                                                                                                        </label>
-                                                                                                    </td>
-                                                                                                    <td colspan="4"></td>
-                                                                                                </tr>
-                                                                                                <tr>
-                                                                                                    <td colspan="2">
-                                                                                                        <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
-                                                                                                    </td>
-                                                                                                    <td colspan="4"></td>
-                                                                                                    <?php                                                                       ?>
-                                                                                                    <td>
-                                                                                                        <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
-                                                                                                        </label>
-                                                                                                    </td>
-                                                                                                    <td colspan="3"></td>
-                                                                                                </tr>
-                                                                                            </tfoot>
-                                                                                        </table>
+                                                                                                            </label>
+                                                                                                        </td>
+                                                                                                        <td colspan="4"></td>
+                                                                                                        <?php
+                                                                                                        $total_ppn = ($value['ppn_hps'] * $total_hps_penyedia_1) / 100;
+                                                                                                        $total_setelah_ppn = $total_ppn + $total_hps_penyedia_1;
+                                                                                                        ?>
+                                                                                                        <td>
+                                                                                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
+                                                                                                            </label>
+                                                                                                        </td>
+                                                                                                        <td colspan="4"></td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td colspan="2">
+                                                                                                            <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
+                                                                                                        </td>
+                                                                                                        <td colspan="4"></td>
+                                                                                                        <?php                                                                       ?>
+                                                                                                        <td>
+                                                                                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
+                                                                                                            </label>
+                                                                                                        </td>
+                                                                                                        <td colspan="3"></td>
+                                                                                                    </tr>
+                                                                                                </tfoot>
+                                                                                            </table>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <br>
@@ -456,14 +458,14 @@
                                                                     </div>
                                                                 </div>
                                                                 <ul class="nav nav-tabs" id="myTabKontrak" style="margin-top: 50px;">
+                                                                    <li>
+                                                                        <a class="nav-link  text-white" href="#rekap_kontrak_awal" style="background-color: #193B53;">Rekap Penjelasan</a>
+                                                                    </li>
                                                                     <?php foreach ($result_sub_program as $key => $value) { ?>
                                                                         <li>
                                                                             <a style="background-color: #193B53;" class="nav-link text-white" href="#kirun_kontrak<?= $value['id_detail_sub_program_penyedia_jasa'] ?>"><?= $value['nama_program_mata_anggaran'] ?></a>
                                                                         </li>
                                                                     <?php  } ?>
-                                                                    <li>
-                                                                        <a class="nav-link  text-white" href="#rekap_kontrak_awal" style="background-color: #193B53;">Rekap Penjelasan</a>
-                                                                    </li>
                                                                 </ul>
                                                                 <div class="tab-content mt-3">
                                                                     <div class="tab-pane fade show" id="rekap_kontrak_awal">
@@ -520,7 +522,7 @@
                                                                                             <!--  -->
                                                                                             <div class="form-group">
                                                                                                 <label for="">No Mata Anggaran</label>
-                                                                                                <input type="text" name="no_hps" required class="form-control form-control-sm" placeholder="No Hps">
+                                                                                                <input type="text" name="no_hps" required class="form-control form-control-sm" placeholder="No Mata Anggaran">
                                                                                             </div>
                                                                                             <div class="form-group">
                                                                                                 <label for="">Uraian</label>
@@ -595,143 +597,145 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="card-body">
-                                                                                        <table class="table table-bordered table-striped">
-                                                                                            <thead style="font-size: 12px;" class="thead-inverse bg-primary">
-                                                                                                <tr>
-                                                                                                    <th class="text-white">No</th>
-                                                                                                    <th class="text-white">No Mata Anggaran</th>
-                                                                                                    <th class="text-white">Uraian</th>
-                                                                                                    <th class="text-white">Satuan</th>
-                                                                                                    <th class="text-white">Kuantitas</th>
-                                                                                                    <th class="text-white">Harga Satuan</th>
-                                                                                                    <th class="text-white">Jumlah Harga</th>
-                                                                                                    <th class="text-white">TKDN</th>
-                                                                                                    <th class="text-white">Harga Satuan TKDN</th>
-                                                                                                    <th class="text-white">Jumlah Harga TKDN</th>
-                                                                                                    <th class="text-white">Action</th>
-                                                                                                </tr>
-                                                                                            </thead>
-                                                                                            <tbody style="font-size: 10px;">
-                                                                                                <?php
-                                                                                                $this->db->select('*');
-                                                                                                $this->db->from('tbl_hps_penyedia_kontrak_1');
-                                                                                                $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
-                                                                                                $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_sub_program_penyedia_jasa', $value['id_detail_sub_program_penyedia_jasa']);
-                                                                                                $this->db->where('tbl_hps_penyedia_kontrak_1.item_baru', 'kosong');
-                                                                                                $this->db->order_by('no_urut', 'ASC');
-                                                                                                $query_tbl_hps_penyedia_kontrak_1 = $this->db->get() ?>
-                                                                                                <?php
-                                                                                                $nomor = 1;
-                                                                                                $total_hps_penyedia_kontrak_1 = 0;
-                                                                                                foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) { ?>
-                                                                                                    <?php
-                                                                                                    $id_refrence_hps_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
-                                                                                                    if ($value_hps_penyedia_kontrak_1['total_harga']) {
-                                                                                                        $total_hps_penyedia_kontrak_1 +=  $value_hps_penyedia_kontrak_1['total_harga'];
-                                                                                                    } else {
-                                                                                                        $total_hps_penyedia_kontrak_1 +=  0;
-                                                                                                    }
-                                                                                                    ?>
+                                                                                        <div style="overflow-x: auto;">
+                                                                                            <table class="table table-bordered table-striped">
+                                                                                                <thead style="font-size: 12px;" class="thead-inverse bg-primary">
                                                                                                     <tr>
-                                                                                                        <td> &nbsp;<?= $nomor++ ?></td>
-                                                                                                        <td><?= $value_hps_penyedia_kontrak_1['no_hps'] ?></td>
-                                                                                                        <td><?= $value_hps_penyedia_kontrak_1['uraian_hps'] ?></td>
-                                                                                                        <td><?= $value_hps_penyedia_kontrak_1['satuan_hps'] ?></td>
-                                                                                                        <td><?= $value_hps_penyedia_kontrak_1['volume_hps'] ?></td>
-                                                                                                        <?php if ($value_hps_penyedia_kontrak_1['harga_satuan_hps']) { ?>
-                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_hps'], 2, ',', '.') ?></td>
-                                                                                                        <?php  } else { ?>
-                                                                                                            <td></td>
-                                                                                                        <?php }
+                                                                                                        <th class="text-white">No</th>
+                                                                                                        <th class="text-white">No Mata Anggaran</th>
+                                                                                                        <th class="text-white">Uraian</th>
+                                                                                                        <th class="text-white">Satuan</th>
+                                                                                                        <th class="text-white">Kuantitas</th>
+                                                                                                        <th class="text-white">Harga Satuan</th>
+                                                                                                        <th class="text-white">Jumlah Harga</th>
+                                                                                                        <th class="text-white">TKDN</th>
+                                                                                                        <th class="text-white">Harga Satuan TKDN</th>
+                                                                                                        <th class="text-white">Jumlah Harga TKDN</th>
+                                                                                                        <th class="text-white">Action</th>
+                                                                                                    </tr>
+                                                                                                </thead>
+                                                                                                <tbody style="font-size: 10px;">
+                                                                                                    <?php
+                                                                                                    $this->db->select('*');
+                                                                                                    $this->db->from('tbl_hps_penyedia_kontrak_1');
+                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_sub_program_penyedia_jasa', $value['id_detail_sub_program_penyedia_jasa']);
+                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_1.item_baru', 'kosong');
+                                                                                                    $this->db->order_by('no_urut', 'ASC');
+                                                                                                    $query_tbl_hps_penyedia_kontrak_1 = $this->db->get() ?>
+                                                                                                    <?php
+                                                                                                    $nomor = 1;
+                                                                                                    $total_hps_penyedia_kontrak_1 = 0;
+                                                                                                    foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) { ?>
+                                                                                                        <?php
+                                                                                                        $id_refrence_hps_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
+                                                                                                        if ($value_hps_penyedia_kontrak_1['total_harga']) {
+                                                                                                            $total_hps_penyedia_kontrak_1 +=  $value_hps_penyedia_kontrak_1['total_harga'];
+                                                                                                        } else {
+                                                                                                            $total_hps_penyedia_kontrak_1 +=  0;
+                                                                                                        }
                                                                                                         ?>
-                                                                                                        <?php if ($value_hps_penyedia_kontrak_1['total_harga']) { ?>
-                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['total_harga'], 2, ',', '.') ?></td>
-                                                                                                        <?php  } else { ?>
-                                                                                                            <td></td>
-                                                                                                        <?php }
-                                                                                                        ?>
-                                                                                                        <td><?= $value_hps_penyedia_kontrak_1['tkdn'] ?>%</td>
-                                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_tkdn'], 2, ',', '.') ?></td>
-                                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['jumlah_harga_tkdn'], 2, ',', '.') ?></td>
-                                                                                                        <td>
-                                                                                                            <div class="btn-group">
-                                                                                                                <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                                                                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                                                    <span class="sr-only">Toggle Dropdown</span>
-                                                                                                                </button>
-                                                                                                                <div class="dropdown-menu" role="menu">
-                                                                                                                    <?php if ($value_hps_penyedia_kontrak_1['total_harga']) { ?>
-                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
-                                                                                                                    <?php  } else { ?>
-                                                                                                                        <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>)"> <i class="fas fa fa-file"></i></a>
-                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
-                                                                                                                    <?php } ?>
+                                                                                                        <tr>
+                                                                                                            <td> &nbsp;<?= $nomor++ ?></td>
+                                                                                                            <td><?= $value_hps_penyedia_kontrak_1['no_hps'] ?></td>
+                                                                                                            <td><?= $value_hps_penyedia_kontrak_1['uraian_hps'] ?></td>
+                                                                                                            <td><?= $value_hps_penyedia_kontrak_1['satuan_hps'] ?></td>
+                                                                                                            <td><?= $value_hps_penyedia_kontrak_1['volume_hps'] ?></td>
+                                                                                                            <?php if ($value_hps_penyedia_kontrak_1['harga_satuan_hps']) { ?>
+                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_hps'], 2, ',', '.') ?></td>
+                                                                                                            <?php  } else { ?>
+                                                                                                                <td></td>
+                                                                                                            <?php }
+                                                                                                            ?>
+                                                                                                            <?php if ($value_hps_penyedia_kontrak_1['total_harga']) { ?>
+                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['total_harga'], 2, ',', '.') ?></td>
+                                                                                                            <?php  } else { ?>
+                                                                                                                <td></td>
+                                                                                                            <?php }
+                                                                                                            ?>
+                                                                                                            <td><?= $value_hps_penyedia_kontrak_1['tkdn'] ?>%</td>
+                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_tkdn'], 2, ',', '.') ?></td>
+                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['jumlah_harga_tkdn'], 2, ',', '.') ?></td>
+                                                                                                            <td>
+                                                                                                                <div class="btn-group">
+                                                                                                                    <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                                                                                    </button>
+                                                                                                                    <div class="dropdown-menu" role="menu">
+                                                                                                                        <?php if ($value_hps_penyedia_kontrak_1['total_harga']) { ?>
+                                                                                                                            <a onclick="modal_hps_penyedia_kontrak_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                                                                                                                            <a onclick="modal_hps_penyedia_kontrak_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
+                                                                                                                        <?php  } else { ?>
+                                                                                                                            <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>)"> <i class="fas fa fa-file"></i></a>
+                                                                                                                            <a onclick="modal_hps_penyedia_kontrak_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                                                                                                                            <a onclick="modal_hps_penyedia_kontrak_2(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
+                                                                                                                        <?php } ?>
 
+                                                                                                                    </div>
                                                                                                                 </div>
-                                                                                                            </div>
+
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    <?php } ?>
+                                                                                                </tbody>
+                                                                                                <tfoot>
+                                                                                                    <tr>
+                                                                                                        <td colspan="2">
+                                                                                                            <label for="" style="font-size: 12px;">SUBTOTAL (SEBELUM PPN Rp.)</label>
+                                                                                                        </td>
+                                                                                                        <td colspan="4"></td>
+                                                                                                        <?php                                                                       ?>
+                                                                                                        <td>
+                                                                                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_kontrak_1, 2, ',', '.') ?>
+                                                                                                            </label>
+                                                                                                        </td>
+                                                                                                        <td colspan="3"></td>
+                                                                                                        <td>
 
                                                                                                         </td>
                                                                                                     </tr>
-                                                                                                <?php } ?>
-                                                                                            </tbody>
-                                                                                            <tfoot>
-                                                                                                <tr>
-                                                                                                    <td colspan="2">
-                                                                                                        <label for="" style="font-size: 12px;">SUBTOTAL (SEBELUM PPN Rp.)</label>
-                                                                                                    </td>
-                                                                                                    <td colspan="4"></td>
-                                                                                                    <?php                                                                       ?>
-                                                                                                    <td>
-                                                                                                        <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_kontrak_1, 2, ',', '.') ?>
-                                                                                                        </label>
-                                                                                                    </td>
-                                                                                                    <td colspan="3"></td>
-                                                                                                    <td>
+                                                                                                    <tr>
+                                                                                                        <td colspan="2">
+                                                                                                            <label for="" style="font-size: 12px;">PPN(<?= $value['ppn_hps_kontrak_awal'] ?>%)<select name="ppn_hps_kontrak_awal<?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="Pilih_ppn_kontrak_awal('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')">
+                                                                                                                    <option selected value="<?= $value['ppn_hps_kontrak_awal'] ?>">--Pilih PPN--</option>
+                                                                                                                    <option value="10">10%</option>
+                                                                                                                    <option value="11">11%</option>
+                                                                                                                    <option value="12">12%</option>
+                                                                                                                </select></label>
+                                                                                                        </td>
+                                                                                                        <td colspan="4"></td>
+                                                                                                        <?php
+                                                                                                        $total_ppn = ($value['ppn_hps_kontrak_awal'] * $total_hps_penyedia_kontrak_1) / 100;
+                                                                                                        $total_setelah_ppn = $total_ppn + $total_hps_penyedia_kontrak_1;
+                                                                                                        ?>
+                                                                                                        <td>
+                                                                                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
+                                                                                                            </label>
+                                                                                                        </td>
+                                                                                                        <td colspan="3"></td>
+                                                                                                        <td>
 
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                                <tr>
-                                                                                                    <td colspan="2">
-                                                                                                        <label for="" style="font-size: 12px;">PPN(<?= $value['ppn_hps_kontrak_awal'] ?>%)<select name="ppn_hps_kontrak_awal<?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="Pilih_ppn_kontrak_awal('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')">
-                                                                                                                <option selected value="<?= $value['ppn_hps_kontrak_awal'] ?>">--Pilih PPN--</option>
-                                                                                                                <option value="10">10%</option>
-                                                                                                                <option value="11">11%</option>
-                                                                                                                <option value="12">12%</option>
-                                                                                                            </select></label>
-                                                                                                    </td>
-                                                                                                    <td colspan="4"></td>
-                                                                                                    <?php
-                                                                                                    $total_ppn = ($value['ppn_hps_kontrak_awal'] * $total_hps_penyedia_kontrak_1) / 100;
-                                                                                                    $total_setelah_ppn = $total_ppn + $total_hps_penyedia_kontrak_1;
-                                                                                                    ?>
-                                                                                                    <td>
-                                                                                                        <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
-                                                                                                        </label>
-                                                                                                    </td>
-                                                                                                    <td colspan="3"></td>
-                                                                                                    <td>
-
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                                <tr>
-                                                                                                    <td colspan="2">
-                                                                                                        <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
-                                                                                                    </td>
-                                                                                                    <td colspan="4"></td>
-                                                                                                    <?php                                                                       ?>
-                                                                                                    <td>
-                                                                                                        <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
-                                                                                                        </label>
-                                                                                                    </td>
-                                                                                                    <td colspan="3"></td>
-                                                                                                    <td>
-                                                                                                        <a href="javascript:;" onclick="Update_nilai_ke_sub_program_kontrak(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,0)" class="btn btn-sm btn-primary" style="font-size: 12px;"><i class="fas fa fa-save"></i> Simpan Dan Update</a>
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </tfoot>
-                                                                                        </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td colspan="2">
+                                                                                                            <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
+                                                                                                        </td>
+                                                                                                        <td colspan="4"></td>
+                                                                                                        <?php                                                                       ?>
+                                                                                                        <td>
+                                                                                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
+                                                                                                            </label>
+                                                                                                        </td>
+                                                                                                        <td colspan="3"></td>
+                                                                                                        <td>
+                                                                                                            <a href="javascript:;" onclick="Update_nilai_ke_sub_program_kontrak(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,0)" class="btn btn-sm btn-primary" style="font-size: 12px;"><i class="fas fa fa-save"></i> Simpan Dan Update</a>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </tfoot>
+                                                                                            </table>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <br>
@@ -893,14 +897,14 @@
                                                                         $this->db->where_in('tbl_sub_detail_program_penyedia_jasa.addendum_ke', [$field_addendum, 'kosong']);
                                                                         $result_sub_program_tambahan_anggaran = $this->db->get();
                                                                         ?>
+                                                                        <li>
+                                                                            <a class="nav-link  text-white" href="#rekap_addendum<?= $value_addendum['no_addendum'] ?>" style="background-color: #193B53;">Rekap Penjelasan</a>
+                                                                        </li>
                                                                         <?php foreach ($result_sub_program_tambahan_anggaran->result_array() as $key => $value) { ?>
                                                                             <li>
                                                                                 <a class="nav-link text-white" style="background-color: #193B53;" href="#kirun_addendum<?= $value_addendum['no_addendum'] ?><?= $value['id_detail_sub_program_penyedia_jasa'] ?>"><?= $value['nama_program_mata_anggaran'] ?></a>
                                                                             </li>
                                                                         <?php  } ?>
-                                                                        <li>
-                                                                            <a class="nav-link  text-white" href="#rekap_addendum<?= $value_addendum['no_addendum'] ?>" style="background-color: #193B53;">Rekap Penjelasan</a>
-                                                                        </li>
                                                                     </ul>
                                                                     <div class="tab-content mt-3">
                                                                         <div class="tab-pane fade show" id="rekap_addendum<?= $value_addendum['no_addendum'] ?>">
@@ -923,7 +927,28 @@
                                                                                             </thead>
                                                                                             <tbody>
                                                                                                 <?php $nomor = 1;
-                                                                                                foreach ($result_rekap_hps as $key => $value) { ?>
+                                                                                                if ($value_addendum['no_addendum'] == 1) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_1;
+                                                                                                } else if ($value_addendum['no_addendum'] == 2) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_2;
+                                                                                                } else if ($value_addendum['no_addendum'] == 3) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_3;
+                                                                                                } else if ($value_addendum['no_addendum'] == 4) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_4;
+                                                                                                } else if ($value_addendum['no_addendum'] == 5) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_5;
+                                                                                                } else if ($value_addendum['no_addendum'] == 6) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_6;
+                                                                                                } else if ($value_addendum['no_addendum'] == 7) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_7;
+                                                                                                } else if ($value_addendum['no_addendum'] == 8) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_8;
+                                                                                                } else if ($value_addendum['no_addendum'] == 9) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_9;
+                                                                                                } else if ($value_addendum['no_addendum'] == 10) {
+                                                                                                    $result_rekap_addendum = $result_rekap_hps_addendum_10;
+                                                                                                }
+                                                                                                foreach ($result_rekap_addendum as $key => $value) { ?>
                                                                                                     <tr>
                                                                                                         <td><?= $nomor++ ?></td>
                                                                                                         <td><?= $value['nama_program_mata_anggaran'] ?></td>
@@ -956,150 +981,152 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="card-body">
-                                                                                            <table class="table table-bordered table-striped">
-                                                                                                <thead style="font-size: 12px;color:white" class="thead-inverse bg-primary text-white">
-                                                                                                    <tr>
-                                                                                                        <th class="text-white">No</th>
-                                                                                                        <th class="text-white">No Mata Anggaran</th>
-                                                                                                        <th class="text-white">Uraian</th>
-                                                                                                        <th class="text-white">Satuan</th>
-                                                                                                        <th class="text-white">Kuantitas</th>
-                                                                                                        <th class="text-white">Harga Satuan</th>
-                                                                                                        <th class="text-white">Jumlah Harga</th>
-                                                                                                        <th class="text-white">TKDN</th>
-                                                                                                        <th class="text-white">Harga Satuan TKDN</th>
-                                                                                                        <th class="text-white">Jumlah Harga TKDN</th>
-                                                                                                        <th class="text-white">Keterangan</th>
-                                                                                                        <th class="text-white">Action</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody style="font-size: 10px;">
-                                                                                                    <?php
-                                                                                                    $this->db->select('*');
-                                                                                                    $this->db->from('tbl_hps_penyedia_kontrak_1');
-                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
-                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_sub_program_penyedia_jasa', $value['id_detail_sub_program_penyedia_jasa']);
-                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_1.uraian_hps' . $field_addendum . '!=', NULL);
-                                                                                                    $this->db->order_by('no_urut', 'ASC');
-                                                                                                    $query_tbl_hps_penyedia_kontrak_1 = $this->db->get() ?>
-                                                                                                    <?php $nomorku = 1;
-                                                                                                    $total_hps_addendum = 0;
-                                                                                                    foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) { ?>
-                                                                                                        <?php
-                                                                                                        $id_refrence_hps_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
-                                                                                                        $id_detail_sub_program_penyedia_jasa = $value_hps_penyedia_kontrak_1['id_detail_sub_program_penyedia_jasa'];
-                                                                                                        if ($value_hps_penyedia_kontrak_1['total_harga' . $field_addendum]) {
-                                                                                                            $total_hps_addendum +=  $value_hps_penyedia_kontrak_1['total_harga' . $field_addendum];
-                                                                                                        } else {
-                                                                                                            $total_hps_addendum +=  0;
-                                                                                                        }
-                                                                                                        if ($value_hps_penyedia_kontrak_1['volume_hps'] < $value_hps_penyedia_kontrak_1['volume_hps' . $field_addendum]) {
-                                                                                                            $keterangan_volume = '<label for="" class="badge badge-success">Volumen Bertambah</label>';
-                                                                                                        } else if ($value_hps_penyedia_kontrak_1['volume_hps'] == $value_hps_penyedia_kontrak_1['volume_hps' . $field_addendum]) {
-                                                                                                            $keterangan_volume = '';
-                                                                                                        } else {
-                                                                                                            $keterangan_volume = '<label for="" class="badge badge-warning">Volumen Berkurang</label>';
-                                                                                                        }
-                                                                                                        if ($value_hps_penyedia_kontrak_1['harga_satuan_hps'] < $value_hps_penyedia_kontrak_1['harga_satuan_hps' . $field_addendum]) {
-                                                                                                            $timpang = '<a title="Mengalami Timpang Harga" style="font-size:8px;" class="badge badge-sm badge-info"><i class="fas fa fa-info"></i></a>';
-                                                                                                        } else {
-                                                                                                            $timpang = '';
-                                                                                                        }
-                                                                                                        ?>
-
+                                                                                            <div style="overflow-x: auto;">
+                                                                                                <table class="table table-bordered table-striped">
+                                                                                                    <thead style="font-size: 12px;color:white" class="thead-inverse bg-primary text-white">
                                                                                                         <tr>
-                                                                                                            <td> &nbsp;<?= $nomorku++ ?></td>
-                                                                                                            <td><?= $value_hps_penyedia_kontrak_1['no_hps' . $field_addendum] ?></td>
-                                                                                                            <td><?= $value_hps_penyedia_kontrak_1['uraian_hps' . $field_addendum] ?></td>
-                                                                                                            <td><?= $value_hps_penyedia_kontrak_1['satuan_hps' . $field_addendum] ?></td>
-                                                                                                            <td><?= $value_hps_penyedia_kontrak_1['volume_hps' . $field_addendum] ?></td>
-                                                                                                            <?php if ($value_hps_penyedia_kontrak_1['harga_satuan_hps' . $field_addendum]) { ?>
-                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_hps' . $field_addendum], 2, ',', '.') ?></td>
-                                                                                                            <?php  } else { ?>
-                                                                                                                <td></td>
-                                                                                                            <?php }
+                                                                                                            <th class="text-white">No</th>
+                                                                                                            <th class="text-white">No Mata Anggaran</th>
+                                                                                                            <th class="text-white">Uraian</th>
+                                                                                                            <th class="text-white">Satuan</th>
+                                                                                                            <th class="text-white">Kuantitas</th>
+                                                                                                            <th class="text-white">Harga Satuan</th>
+                                                                                                            <th class="text-white">Jumlah Harga</th>
+                                                                                                            <th class="text-white">TKDN</th>
+                                                                                                            <th class="text-white">Harga Satuan TKDN</th>
+                                                                                                            <th class="text-white">Jumlah Harga TKDN</th>
+                                                                                                            <th class="text-white">Keterangan</th>
+                                                                                                            <th class="text-white">Action</th>
+                                                                                                        </tr>
+                                                                                                    </thead>
+                                                                                                    <tbody style="font-size: 10px;">
+                                                                                                        <?php
+                                                                                                        $this->db->select('*');
+                                                                                                        $this->db->from('tbl_hps_penyedia_kontrak_1');
+                                                                                                        $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                                                                                        $this->db->where('tbl_hps_penyedia_kontrak_1.id_detail_sub_program_penyedia_jasa', $value['id_detail_sub_program_penyedia_jasa']);
+                                                                                                        $this->db->where('tbl_hps_penyedia_kontrak_1.uraian_hps' . $field_addendum . '!=', NULL);
+                                                                                                        $this->db->order_by('no_urut', 'ASC');
+                                                                                                        $query_tbl_hps_penyedia_kontrak_1 = $this->db->get() ?>
+                                                                                                        <?php $nomorku = 1;
+                                                                                                        $total_hps_addendum = 0;
+                                                                                                        foreach ($query_tbl_hps_penyedia_kontrak_1->result_array() as $key => $value_hps_penyedia_kontrak_1) { ?>
+                                                                                                            <?php
+                                                                                                            $id_refrence_hps_hps_penyedia_kontrak_1 = $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'];
+                                                                                                            $id_detail_sub_program_penyedia_jasa = $value_hps_penyedia_kontrak_1['id_detail_sub_program_penyedia_jasa'];
+                                                                                                            if ($value_hps_penyedia_kontrak_1['total_harga' . $field_addendum]) {
+                                                                                                                $total_hps_addendum +=  $value_hps_penyedia_kontrak_1['total_harga' . $field_addendum];
+                                                                                                            } else {
+                                                                                                                $total_hps_addendum +=  0;
+                                                                                                            }
+                                                                                                            if ($value_hps_penyedia_kontrak_1['volume_hps'] < $value_hps_penyedia_kontrak_1['volume_hps' . $field_addendum]) {
+                                                                                                                $keterangan_volume = '<label for="" class="badge badge-success">Volumen Bertambah</label>';
+                                                                                                            } else if ($value_hps_penyedia_kontrak_1['volume_hps'] == $value_hps_penyedia_kontrak_1['volume_hps' . $field_addendum]) {
+                                                                                                                $keterangan_volume = '';
+                                                                                                            } else {
+                                                                                                                $keterangan_volume = '<label for="" class="badge badge-warning">Volumen Berkurang</label>';
+                                                                                                            }
+                                                                                                            if ($value_hps_penyedia_kontrak_1['harga_satuan_hps'] < $value_hps_penyedia_kontrak_1['harga_satuan_hps' . $field_addendum]) {
+                                                                                                                $timpang = '<a title="Mengalami Timpang Harga" style="font-size:8px;" class="badge badge-sm badge-info"><i class="fas fa fa-info"></i></a>';
+                                                                                                            } else {
+                                                                                                                $timpang = '';
+                                                                                                            }
                                                                                                             ?>
-                                                                                                            <?php if ($value_hps_penyedia_kontrak_1['total_harga' . $field_addendum]) { ?>
-                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['total_harga' . $field_addendum], 2, ',', '.') ?></td>
-                                                                                                            <?php  } else { ?>
-                                                                                                                <td></td>
-                                                                                                            <?php }
-                                                                                                            ?>
-                                                                                                            <td><?= $value_hps_penyedia_kontrak_1['tkdn' . $field_addendum] ?>%</td>
-                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_tkdn' . $field_addendum], 2, ',', '.') ?></td>
-                                                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['jumlah_harga_tkdn' . $field_addendum], 2, ',', '.') ?></td>
-                                                                                                            <td><?= $keterangan_volume ?></td>
-                                                                                                            <td>
-                                                                                                                <div class="btn-group">
-                                                                                                                    <button type="button" class="btn btn-default">Action</button>
-                                                                                                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                                                        <span class="sr-only">Toggle Dropdown</span>
-                                                                                                                    </button>
-                                                                                                                    <div class="dropdown-menu" role="menu">
-                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_addendum(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'hapus',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus Turunan"><i class="fas fa-trash"></i></a>
-                                                                                                                        <a onclick="modal_hps_penyedia_kontrak_2_addendum(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'edit',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit Turunan"><i class="fas fa-edit"></i></a>
+
+                                                                                                            <tr>
+                                                                                                                <td> &nbsp;<?= $nomorku++ ?></td>
+                                                                                                                <td><?= $value_hps_penyedia_kontrak_1['no_hps' . $field_addendum] ?></td>
+                                                                                                                <td><?= $value_hps_penyedia_kontrak_1['uraian_hps' . $field_addendum] ?></td>
+                                                                                                                <td><?= $value_hps_penyedia_kontrak_1['satuan_hps' . $field_addendum] ?></td>
+                                                                                                                <td><?= $value_hps_penyedia_kontrak_1['volume_hps' . $field_addendum] ?></td>
+                                                                                                                <?php if ($value_hps_penyedia_kontrak_1['harga_satuan_hps' . $field_addendum]) { ?>
+                                                                                                                    <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_hps' . $field_addendum], 2, ',', '.') ?></td>
+                                                                                                                <?php  } else { ?>
+                                                                                                                    <td></td>
+                                                                                                                <?php }
+                                                                                                                ?>
+                                                                                                                <?php if ($value_hps_penyedia_kontrak_1['total_harga' . $field_addendum]) { ?>
+                                                                                                                    <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['total_harga' . $field_addendum], 2, ',', '.') ?></td>
+                                                                                                                <?php  } else { ?>
+                                                                                                                    <td></td>
+                                                                                                                <?php }
+                                                                                                                ?>
+                                                                                                                <td><?= $value_hps_penyedia_kontrak_1['tkdn' . $field_addendum] ?>%</td>
+                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_tkdn' . $field_addendum], 2, ',', '.') ?></td>
+                                                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['jumlah_harga_tkdn' . $field_addendum], 2, ',', '.') ?></td>
+                                                                                                                <td><?= $keterangan_volume ?></td>
+                                                                                                                <td>
+                                                                                                                    <div class="btn-group">
+                                                                                                                        <button type="button" class="btn btn-default">Action</button>
+                                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                                                                                            <span class="sr-only">Toggle Dropdown</span>
+                                                                                                                        </button>
+                                                                                                                        <div class="dropdown-menu" role="menu">
+                                                                                                                            <a onclick="modal_hps_penyedia_kontrak_addendum(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'hapus',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus Turunan"><i class="fas fa-trash"></i></a>
+                                                                                                                            <a onclick="modal_hps_penyedia_kontrak_2_addendum(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'edit',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit Turunan"><i class="fas fa-edit"></i></a>
+                                                                                                                        </div>
                                                                                                                     </div>
-                                                                                                                </div>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        <?php } ?>
+                                                                                                    </tbody>
+                                                                                                    <tfoot>
+                                                                                                        <tr>
+                                                                                                            <td colspan="2">
+                                                                                                                <label for="" style="font-size: 12px;">SUBTOTAL (SEBELUM PPN Rp.)</label>
+                                                                                                            </td>
+                                                                                                            <td colspan="4"></td>
+                                                                                                            <?php                                                                       ?>
+                                                                                                            <td>
+                                                                                                                <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_addendum, 2, ',', '.') ?>
+                                                                                                                </label>
+                                                                                                            </td>
+                                                                                                            <td colspan="3"></td>
+                                                                                                            <td>
+
                                                                                                             </td>
                                                                                                         </tr>
-                                                                                                    <?php } ?>
-                                                                                                </tbody>
-                                                                                                <tfoot>
-                                                                                                    <tr>
-                                                                                                        <td colspan="2">
-                                                                                                            <label for="" style="font-size: 12px;">SUBTOTAL (SEBELUM PPN Rp.)</label>
-                                                                                                        </td>
-                                                                                                        <td colspan="4"></td>
-                                                                                                        <?php                                                                       ?>
-                                                                                                        <td>
-                                                                                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_addendum, 2, ',', '.') ?>
-                                                                                                            </label>
-                                                                                                        </td>
-                                                                                                        <td colspan="3"></td>
-                                                                                                        <td>
+                                                                                                        <tr>
+                                                                                                            <td colspan="2">
+                                                                                                                <label for="" style="font-size: 12px;">PPN(<?= $value['ppn_hps_kontrak_addendum_' . $value_addendum['no_addendum']] ?>%)<select name="ppn_hps_kontrak_addendum_<?= $value_addendum['no_addendum'] ?><?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="Pilih_ppn_kontrak_addendum(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,<?= $value_addendum['no_addendum'] ?>)">
+                                                                                                                        <option selected value="<?= $value['ppn_hps_kontrak_addendum_' . $value_addendum['no_addendum']] ?>">--Pilih PPN--</option>
+                                                                                                                        <option value="10">10%</option>
+                                                                                                                        <option value="11">11%</option>
+                                                                                                                        <option value="12">12%</option>
+                                                                                                                    </select></label>
+                                                                                                            </td>
+                                                                                                            <td colspan="4"></td>
+                                                                                                            <?php
+                                                                                                            $total_ppn = ($value['ppn_hps_kontrak_addendum_' . $value_addendum['no_addendum']] * $total_hps_addendum) / 100;
+                                                                                                            $total_setelah_ppn = $total_ppn + $total_hps_addendum;
+                                                                                                            ?>
+                                                                                                            <td>
+                                                                                                                <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
+                                                                                                                </label>
+                                                                                                            </td>
+                                                                                                            <td colspan="3"></td>
+                                                                                                            <td>
 
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td colspan="2">
-                                                                                                            <label for="" style="font-size: 12px;">PPN(<?= $value['ppn_hps_kontrak_addendum_' . $value_addendum['no_addendum']] ?>%)<select name="ppn_hps_kontrak_addendum_<?= $value_addendum['no_addendum'] ?><?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="Pilih_ppn_kontrak_addendum(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,<?= $value_addendum['no_addendum'] ?>)">
-                                                                                                                    <option selected value="<?= $value['ppn_hps_kontrak_addendum_' . $value_addendum['no_addendum']] ?>">--Pilih PPN--</option>
-                                                                                                                    <option value="10">10%</option>
-                                                                                                                    <option value="11">11%</option>
-                                                                                                                    <option value="12">12%</option>
-                                                                                                                </select></label>
-                                                                                                        </td>
-                                                                                                        <td colspan="4"></td>
-                                                                                                        <?php
-                                                                                                        $total_ppn = ($value['ppn_hps_kontrak_addendum_' . $value_addendum['no_addendum']] * $total_hps_addendum) / 100;
-                                                                                                        $total_setelah_ppn = $total_ppn + $total_hps_addendum;
-                                                                                                        ?>
-                                                                                                        <td>
-                                                                                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
-                                                                                                            </label>
-                                                                                                        </td>
-                                                                                                        <td colspan="3"></td>
-                                                                                                        <td>
-
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td colspan="2">
-                                                                                                            <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
-                                                                                                        </td>
-                                                                                                        <td colspan="4"></td>
-                                                                                                        <?php                                                                       ?>
-                                                                                                        <td>
-                                                                                                            <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
-                                                                                                            </label>
-                                                                                                        </td>
-                                                                                                        <td colspan="3"></td>
-                                                                                                        <td>
-                                                                                                            <a href="javascript:;" onclick="Update_nilai_ke_sub_program_addendum(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-primary"><i class="fas fa fa-save"></i> Simpan Dan Update</a>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </tfoot>
-                                                                                            </table>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td colspan="2">
+                                                                                                                <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
+                                                                                                            </td>
+                                                                                                            <td colspan="4"></td>
+                                                                                                            <?php                                                                       ?>
+                                                                                                            <td>
+                                                                                                                <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
+                                                                                                                </label>
+                                                                                                            </td>
+                                                                                                            <td colspan="3"></td>
+                                                                                                            <td>
+                                                                                                                <a href="javascript:;" onclick="Update_nilai_ke_sub_program_addendum(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-primary"><i class="fas fa fa-save"></i> Simpan Dan Update</a>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </tfoot>
+                                                                                                </table>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                     <br>
@@ -1159,8 +1186,8 @@
                     <input type="hidden" name="type_add">
                     <!--  -->
                     <div class="form-group">
-                        <label for="">No Hps</label>
-                        <input type="text" name="no_hps" class="form-control form-control-sm" placeholder="No Hps">
+                        <label for="">No Mata Anggaran</label>
+                        <input type="text" name="no_hps" class="form-control form-control-sm" placeholder="No Mata Anggaran">
                     </div>
                     <div class="form-group">
                         <label for="">Uraian</label>

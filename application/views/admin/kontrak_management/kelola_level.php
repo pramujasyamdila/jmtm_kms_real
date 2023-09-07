@@ -205,8 +205,9 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                     $hitung_persen_total_ppn = ($row_kontrak[$nilai] * 11) / 100;
                                     $hasil_ppn_total = $hitung_persen_total_ppn;
                                     $hasil_setelah_ppn = $row_kontrak[$nilai] + $hasil_ppn_total;
+                                    // seblom ppn
                                     ?>
-                                    <td class="tg-0lax"> <?= number_format($hasil_setelah_ppn, 2, ',', '.') ?>
+                                    <td class="tg-0lax"> <?= number_format($row_kontrak[$nilai], 2, ',', '.') ?>
                                     </td>
                                     <td class="tg-0lax">
                                         <?php if ($row_kontrak[$nilai] == null || $row_kontrak[$nilai] == 0) { ?>
@@ -278,26 +279,324 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         <?php $this->load->view('management_kontrak_batas/batas_sdm'); ?>
 
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>SUBTOTAL (SEBELUM PPN)</th>
+                            <?php if (!$adendum_result) { ?>
+                                <th></th>
+                                <th>Rp.4000.00</th>
+                            <?php } else { ?>
+                                <?php foreach ($adendum_result as $key => $value) { ?>
+                                    <?php
+                                    if ($value['no_adendum'] == 1) {
+                                        $nilai = 'nilai_add_I';
+                                    } else if ($value['no_adendum'] == 2) {
+                                        $nilai = 'nilai_add_II';
+                                    } else if ($value['no_adendum'] == 3) {
+                                        $nilai = 'nilai_add_III';
+                                    } else if ($value['no_adendum'] == 4) {
+                                        $nilai = 'nilai_add_IV';
+                                    } else if ($value['no_adendum'] == 5) {
+                                        $nilai = 'nilai_add_V';
+                                    } else if ($value['no_adendum'] == 6) {
+                                        $nilai = 'nilai_add_VI';
+                                    } else if ($value['no_adendum'] == 7) {
+                                        $nilai = 'nilai_add_VII';
+                                    } else if ($value['no_adendum'] == 8) {
+                                        $nilai = 'nilai_add_VIII';
+                                    } else if ($value['no_adendum'] == 9) {
+                                        $nilai = 'nilai_add_IX';
+                                    } else if ($value['no_adendum'] == 10) {
+                                        $nilai = 'nilai_add_X';
+                                    } else if ($value['no_adendum'] == 11) {
+                                        $nilai = 'nilai_add_XI';
+                                    } else if ($value['no_adendum'] == 12) {
+                                        $nilai = 'nilai_add_XII';
+                                    } else if ($value['no_adendum'] == 13) {
+                                        $nilai = 'nilai_add_XIII';
+                                    } else if ($value['no_adendum'] == 14) {
+                                        $nilai = 'nilai_add_XIV';
+                                    } else if ($value['no_adendum'] == 15) {
+                                        $nilai = 'nilai_add_XV';
+                                    } else if ($value['no_adendum'] == 16) {
+                                        $nilai = 'nilai_add_XVI';
+                                    } else if ($value['no_adendum'] == 17) {
+                                        $nilai = 'nilai_add_XVII';
+                                    } else if ($value['no_adendum'] == 18) {
+                                        $nilai = 'nilai_add_XVIII';
+                                    } else if ($value['no_adendum'] == 19) {
+                                        $nilai = 'nilai_add_XIX';
+                                    } else if ($value['no_adendum'] == 20) {
+                                        $nilai = 'nilai_add_XX';
+                                    } else if ($value['no_adendum'] == 21) {
+                                        $nilai = 'nilai_add_XXI';
+                                    } else if ($value['no_adendum'] == 22) {
+                                        $nilai = 'nilai_add_XXII';
+                                    } else if ($value['no_adendum'] == 23) {
+                                        $nilai = 'nilai_add_XXIII';
+                                    } else if ($value['no_adendum'] == 24) {
+                                        $nilai = 'nilai_add_XXIV';
+                                    } else if ($value['no_adendum'] == 25) {
+                                        $nilai = 'nilai_add_XXV';
+                                    } else if ($value['no_adendum'] == 26) {
+                                        $nilai = 'nilai_add_XXVI';
+                                    } else if ($value['no_adendum'] == 27) {
+                                        $nilai = 'nilai_add_XXVII';
+                                    } else if ($value['no_adendum'] == 28) {
+                                        $nilai = 'nilai_add_XXVIII';
+                                    } else if ($value['no_adendum'] == 29) {
+                                        $nilai = 'nilai_add_XXIX';
+                                    } else if ($value['no_adendum'] == 30) {
+                                        $nilai = 'nilai_add_XXX';
+                                    } else {
+                                        $nilai = 'nilai_kontrak_awal';
+                                    }
+                                    ?>
+                                    <?php
+                                    $hitung_persen_total_ppn = ($row_kontrak[$nilai] * 11) / 100;
+                                    $hasil_ppn_total = $hitung_persen_total_ppn;
+                                    $hasil_setelah_ppn = $row_kontrak[$nilai] + $hasil_ppn_total;
+                                    // seblom ppn
+                                    ?>
+                                    <th></th>
+                                    <th><?php if ($row_kontrak[$nilai] == NULL || $row_kontrak[$nilai] == 0) { ?>
+                                            Rp <?= number_format($row_kontrak[$nilai], 2, ',', '.') ?>
+                                        <?php  } else { ?>
+                                            Rp <?= number_format($row_kontrak[$nilai], 2, ',', '.') ?>
+                                        <?php  } ?>
+                                    </th>
+                                <?php } ?>
+                            <?php } ?>
+                        </tr>
+                        <tr>
+                            <th>PPN -> Diinput Oleh User, 10%, 11%</th>
+                            <?php if (!$adendum_result) { ?>
+                                <?php
+                                $hitung_persen_total_ppn = ($row_kontrak['nilai_kontrak_awal'] * $row_kontrak['ppn_kontrak_addendum_0']) / 100;
+                                $hasil_ppn_total = $hitung_persen_total_ppn;
+                                // seblom ppn
+                                ?>
+                                <th></th>
+                                <th>Rp <?= number_format($hasil_ppn_total, 2, ',', '.') ?>(
+                                    <select name="ppn_kontrak_addendum_0" onchange="pilih_ppn_kontrak('0')">
+                                        <option value="<?= $row_kontrak['ppn_kontrak_addendum_0'] ?>"><?= $row_kontrak['ppn_kontrak_addendum_0'] ?>%</option>
+                                        <option value="10">10%</option>
+                                        <option value="11">11%</option>
+                                        <option value="12">12%</option>
+                                    </select> )
+                                </th>
+                            <?php } else { ?>
+                                <?php foreach ($adendum_result as $key => $value) { ?>
+                                    <th></th>
+                                    <th>
+                                        <?php if ($value['no_adendum'] == 'kontrak_awal') { ?>
+                                            <?php
+                                            $hitung_persen_total_ppn = ($row_kontrak['nilai_kontrak_awal'] * $row_kontrak['ppn_kontrak_addendum_0']) / 100;
+                                            $hasil_ppn_total = $hitung_persen_total_ppn;
+                                            // seblom ppn
+                                            ?>
+                                            Rp <?= number_format($hasil_ppn_total, 2, ',', '.') ?>
+                                            ( <select name="ppn_kontrak_addendum_0" onchange="pilih_ppn_kontrak('<?= $value['no_adendum'] ?>')">
+                                                <option value="<?= $row_kontrak['ppn_kontrak_addendum_0'] ?>"><?= $row_kontrak['ppn_kontrak_addendum_0'] ?>%</option>
+                                                <option value="10">10%</option>
+                                                <option value="11">11%</option>
+                                                <option value="12">12%</option>
+                                            </select> )
+                                        <?php } else { ?>
+                                            <?php
+                                            if ($value['no_adendum'] == 1) {
+                                                $nilai = 'nilai_add_I';
+                                            } else if ($value['no_adendum'] == 2) {
+                                                $nilai = 'nilai_add_II';
+                                            } else if ($value['no_adendum'] == 3) {
+                                                $nilai = 'nilai_add_III';
+                                            } else if ($value['no_adendum'] == 4) {
+                                                $nilai = 'nilai_add_IV';
+                                            } else if ($value['no_adendum'] == 5) {
+                                                $nilai = 'nilai_add_V';
+                                            } else if ($value['no_adendum'] == 6) {
+                                                $nilai = 'nilai_add_VI';
+                                            } else if ($value['no_adendum'] == 7) {
+                                                $nilai = 'nilai_add_VII';
+                                            } else if ($value['no_adendum'] == 8) {
+                                                $nilai = 'nilai_add_VIII';
+                                            } else if ($value['no_adendum'] == 9) {
+                                                $nilai = 'nilai_add_IX';
+                                            } else if ($value['no_adendum'] == 10) {
+                                                $nilai = 'nilai_add_X';
+                                            } else if ($value['no_adendum'] == 11) {
+                                                $nilai = 'nilai_add_XI';
+                                            } else if ($value['no_adendum'] == 12) {
+                                                $nilai = 'nilai_add_XII';
+                                            } else if ($value['no_adendum'] == 13) {
+                                                $nilai = 'nilai_add_XIII';
+                                            } else if ($value['no_adendum'] == 14) {
+                                                $nilai = 'nilai_add_XIV';
+                                            } else if ($value['no_adendum'] == 15) {
+                                                $nilai = 'nilai_add_XV';
+                                            } else if ($value['no_adendum'] == 16) {
+                                                $nilai = 'nilai_add_XVI';
+                                            } else if ($value['no_adendum'] == 17) {
+                                                $nilai = 'nilai_add_XVII';
+                                            } else if ($value['no_adendum'] == 18) {
+                                                $nilai = 'nilai_add_XVIII';
+                                            } else if ($value['no_adendum'] == 19) {
+                                                $nilai = 'nilai_add_XIX';
+                                            } else if ($value['no_adendum'] == 20) {
+                                                $nilai = 'nilai_add_XX';
+                                            } else if ($value['no_adendum'] == 21) {
+                                                $nilai = 'nilai_add_XXI';
+                                            } else if ($value['no_adendum'] == 22) {
+                                                $nilai = 'nilai_add_XXII';
+                                            } else if ($value['no_adendum'] == 23) {
+                                                $nilai = 'nilai_add_XXIII';
+                                            } else if ($value['no_adendum'] == 24) {
+                                                $nilai = 'nilai_add_XXIV';
+                                            } else if ($value['no_adendum'] == 25) {
+                                                $nilai = 'nilai_add_XXV';
+                                            } else if ($value['no_adendum'] == 26) {
+                                                $nilai = 'nilai_add_XXVI';
+                                            } else if ($value['no_adendum'] == 27) {
+                                                $nilai = 'nilai_add_XXVII';
+                                            } else if ($value['no_adendum'] == 28) {
+                                                $nilai = 'nilai_add_XXVIII';
+                                            } else if ($value['no_adendum'] == 29) {
+                                                $nilai = 'nilai_add_XXIX';
+                                            } else if ($value['no_adendum'] == 30) {
+                                                $nilai = 'nilai_add_XXX';
+                                            } else {
+                                                $nilai = 'nilai_kontrak_awal';
+                                            }
+
+                                            $hitung_persen_total_ppn = ($row_kontrak[$nilai] * $row_kontrak['ppn_kontrak_addendum_' . $value['no_adendum']]) / 100;
+                                            $hasil_ppn_total = $hitung_persen_total_ppn;
+                                            $hasil_setelah_ppn = $row_kontrak[$nilai] + $hasil_ppn_total;
+                                            // seblom ppn
+                                            ?>
+                                            Rp <?= number_format($hasil_ppn_total, 2, ',', '.') ?>
+                                            ( <select name="ppn_kontrak_addendum_<?= $value['no_adendum'] ?>" onchange="pilih_ppn_kontrak('<?= $value['no_adendum'] ?>')">
+                                                <option value="<?= $row_kontrak['ppn_kontrak_addendum_' . $value['no_adendum']] ?>"><?= $row_kontrak['ppn_kontrak_addendum_' . $value['no_adendum']] ?>%</option>
+                                                <option value="10">10%</option>
+                                                <option value="11">11%</option>
+                                                <option value="12">12%</option>
+                                            </select> )
+                                        <?php  }
+                                        ?>
+                                    <?php } ?>
+                                <?php } ?>
+                        </tr>
+
+                        <tr>
+                            <th>TOTAL(SETELAH PPN) -> SubTotal (Dibulatkan) + PPN</th>
+                            <?php if (!$adendum_result) { ?>
+                                <?php
+                                $hitung_persen_total_ppn = ($row_kontrak['nilai_kontrak_awal'] * $row_kontrak['ppn_kontrak_addendum_0']) / 100;
+                                $hasil_ppn_total = $hitung_persen_total_ppn;
+                                $hasil_setelah_ppn = $row_kontrak['nilai_kontrak_awal'] + $hasil_ppn_total;
+                                // seblom ppn
+                                ?>
+                                <th></th>
+                                <th>Rp <?= number_format($hasil_setelah_ppn, 2, ',', '.') ?>
+                                </th>
+                            <?php } else { ?>
+                                <?php foreach ($adendum_result as $key => $value) { ?>
+                                    <th></th>
+                                    <th>
+                                        <?php if ($value['no_adendum'] == 'kontrak_awal') { ?>
+                                            <?php
+                                            $hitung_persen_total_ppn = ($row_kontrak['nilai_kontrak_awal'] * $row_kontrak['ppn_kontrak_addendum_0']) / 100;
+                                            $hasil_ppn_total = $hitung_persen_total_ppn;
+                                            $hasil_setelah_ppn = $row_kontrak['nilai_kontrak_awal'] + $hasil_ppn_total;
+                                            // seblom ppn
+                                            ?>
+                                            Rp <?= number_format($hasil_setelah_ppn, 2, ',', '.') ?>
+                                        <?php } else { ?>
+                                            <?php
+                                            if ($value['no_adendum'] == 1) {
+                                                $nilai = 'nilai_add_I';
+                                            } else if ($value['no_adendum'] == 2) {
+                                                $nilai = 'nilai_add_II';
+                                            } else if ($value['no_adendum'] == 3) {
+                                                $nilai = 'nilai_add_III';
+                                            } else if ($value['no_adendum'] == 4) {
+                                                $nilai = 'nilai_add_IV';
+                                            } else if ($value['no_adendum'] == 5) {
+                                                $nilai = 'nilai_add_V';
+                                            } else if ($value['no_adendum'] == 6) {
+                                                $nilai = 'nilai_add_VI';
+                                            } else if ($value['no_adendum'] == 7) {
+                                                $nilai = 'nilai_add_VII';
+                                            } else if ($value['no_adendum'] == 8) {
+                                                $nilai = 'nilai_add_VIII';
+                                            } else if ($value['no_adendum'] == 9) {
+                                                $nilai = 'nilai_add_IX';
+                                            } else if ($value['no_adendum'] == 10) {
+                                                $nilai = 'nilai_add_X';
+                                            } else if ($value['no_adendum'] == 11) {
+                                                $nilai = 'nilai_add_XI';
+                                            } else if ($value['no_adendum'] == 12) {
+                                                $nilai = 'nilai_add_XII';
+                                            } else if ($value['no_adendum'] == 13) {
+                                                $nilai = 'nilai_add_XIII';
+                                            } else if ($value['no_adendum'] == 14) {
+                                                $nilai = 'nilai_add_XIV';
+                                            } else if ($value['no_adendum'] == 15) {
+                                                $nilai = 'nilai_add_XV';
+                                            } else if ($value['no_adendum'] == 16) {
+                                                $nilai = 'nilai_add_XVI';
+                                            } else if ($value['no_adendum'] == 17) {
+                                                $nilai = 'nilai_add_XVII';
+                                            } else if ($value['no_adendum'] == 18) {
+                                                $nilai = 'nilai_add_XVIII';
+                                            } else if ($value['no_adendum'] == 19) {
+                                                $nilai = 'nilai_add_XIX';
+                                            } else if ($value['no_adendum'] == 20) {
+                                                $nilai = 'nilai_add_XX';
+                                            } else if ($value['no_adendum'] == 21) {
+                                                $nilai = 'nilai_add_XXI';
+                                            } else if ($value['no_adendum'] == 22) {
+                                                $nilai = 'nilai_add_XXII';
+                                            } else if ($value['no_adendum'] == 23) {
+                                                $nilai = 'nilai_add_XXIII';
+                                            } else if ($value['no_adendum'] == 24) {
+                                                $nilai = 'nilai_add_XXIV';
+                                            } else if ($value['no_adendum'] == 25) {
+                                                $nilai = 'nilai_add_XXV';
+                                            } else if ($value['no_adendum'] == 26) {
+                                                $nilai = 'nilai_add_XXVI';
+                                            } else if ($value['no_adendum'] == 27) {
+                                                $nilai = 'nilai_add_XXVII';
+                                            } else if ($value['no_adendum'] == 28) {
+                                                $nilai = 'nilai_add_XXVIII';
+                                            } else if ($value['no_adendum'] == 29) {
+                                                $nilai = 'nilai_add_XXIX';
+                                            } else if ($value['no_adendum'] == 30) {
+                                                $nilai = 'nilai_add_XXX';
+                                            } else {
+                                                $nilai = 'nilai_kontrak_awal';
+                                            }
+
+                                            $hitung_persen_total_ppn = ($row_kontrak[$nilai] * $row_kontrak['ppn_kontrak_addendum_' . $value['no_adendum']]) / 100;
+                                            $hasil_ppn_total = $hitung_persen_total_ppn;
+                                            $hasil_setelah_ppn = $row_kontrak[$nilai] + $hasil_ppn_total;
+                                            // seblom ppn
+                                            ?>
+                                            Rp <?= number_format($hasil_setelah_ppn, 2, ',', '.') ?>
+                                        <?php  }
+                                        ?>
+                                    <?php } ?>
+                                <?php } ?>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
 
-        <div class="card" style="margin-top: -18px; padding: 20px">
-            <h6>SUBTOTAL (SEBELUM PPN) = <?= number_format($hasil_setelah_ppn, 2, ',', '.')  ?></h6>
-            <h6>SUBTOTAL (Dibulatkan) = <input type="text" value="<?= number_format($row_kontrak['sub_total'], 2, ',', '.') ?>" name="sub_total" onkeyup="sub_total()"> - <input disabled type="text" name="sub_total_rp"></h6>
-            <h6>PPN = <select name="ppn" onchange="sub_total()">
-                    <?php if ($row_kontrak['ppn'] == 10) { ?>
-                        <option value="10" selected>10%</option>
-                        <option value="11">11%</option>
-                    <?php } else { ?>
-                        <option value="10">10%</option>
-                        <option value="11" selected>11%</option>
-                    <?php }  ?>
-
-                </select></h6>
-            <h6>TOTAL PPN = <input type="text" name="setelah_ppn" value="<?= number_format($row_kontrak['total_ppn'], 2, ',', '.') ?>"> - <input disabled type="text" name="setelah_ppn_rp"></h6>
-            <h6>TOTAL(SETELAH PPN) -> <input type="text" name="grand_total" value="<?= number_format($row_kontrak['setelah_ppn'], 2, ',', '.') ?>"> - <input disabled type="text" name="grand_total_rp"></h6>
-        </div>
+        <!-- <div class="card" style="margin-top: -18px; padding: 20px">
+            <h6>SUBTOTAL (SEBELUM PPN)</h6>
+            <h6>PPN -> Diinput Oleh User, 10%, 11% -> Agar di Round ;0 (Tanpa Koma)</h6>
+            <h6>TOTAL(SETELAH PPN) -> SubTotal (Dibulatkan) + PPN</h6>
+        </div> -->
 
         <div class="card" style="margin-top: -18px; padding: 20px">
             <h6>*Pastikan Nilai Nominal hanya diisi pada Turunan Terakhir</h6>

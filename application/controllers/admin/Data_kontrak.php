@@ -7474,4 +7474,18 @@ class Data_kontrak extends CI_Controller
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
         } else { }
     }
+    public function update_ppn_kontrak_addendum()
+    {
+        $id_kontrak =  $this->input->post('id_kontrak');
+        $data_addendum =  $this->input->post('data_addendum');
+        $ppn_kontrak_addendum =  $this->input->post('ppn_kontrak_addendum');
+        $where = [
+            'id_kontrak' => $id_kontrak
+        ];
+        $data = [
+            'ppn_kontrak_addendum_' . $data_addendum => $ppn_kontrak_addendum,
+        ];
+        $this->Data_kontrak_model->update_kontrak($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
 }

@@ -464,6 +464,16 @@ class Administrasi_kontrak extends CI_Controller
         $data['row_program_kontrak_detail']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
         $data['result_sub_program']  = $this->Data_kontrak_model->get_sub_program($id_detail_program_penyedia_jasa);
         $data['adendum_result'] = $this->Data_kontrak_model->get_addendum_by_result_penyedia_kontrak($id_detail_program_penyedia_jasa);
+        $data['result_rekap_hps_addendum_1']  = $this->Data_kontrak_model->cek_rekap_kontrak_addendum_1($id_detail_program_penyedia_jasa);
+        $data['result_rekap_hps_addendum_2']  = $this->Data_kontrak_model->cek_rekap_kontrak_addendum_2($id_detail_program_penyedia_jasa);
+        $data['result_rekap_hps_addendum_3']  = $this->Data_kontrak_model->cek_rekap_kontrak_addendum_3($id_detail_program_penyedia_jasa);
+        $data['result_rekap_hps_addendum_4']  = $this->Data_kontrak_model->cek_rekap_kontrak_addendum_4($id_detail_program_penyedia_jasa);
+        $data['result_rekap_hps_addendum_5']  = $this->Data_kontrak_model->cek_rekap_kontrak_addendum_5($id_detail_program_penyedia_jasa);
+        $data['result_rekap_hps_addendum_6']  = $this->Data_kontrak_model->cek_rekap_kontrak_addendum_6($id_detail_program_penyedia_jasa);
+        $data['result_rekap_hps_addendum_7']  = $this->Data_kontrak_model->cek_rekap_kontrak_addendum_7($id_detail_program_penyedia_jasa);
+        $data['result_rekap_hps_addendum_8']  = $this->Data_kontrak_model->cek_rekap_kontrak_addendum_8($id_detail_program_penyedia_jasa);
+        $data['result_rekap_hps_addendum_9']  = $this->Data_kontrak_model->cek_rekap_kontrak_addendum_9($id_detail_program_penyedia_jasa);
+        $data['result_rekap_hps_addendum_10']  = $this->Data_kontrak_model->cek_rekap_kontrak_addendum_10($id_detail_program_penyedia_jasa);
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('admin/administrasi_kontrak/kelola_nilai_kontrak_penyedia', $data);
