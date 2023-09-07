@@ -1,5 +1,6 @@
 <!-- Content Wrapper. Contains page content -->
 <!-- Content Wrapper. Contains page content -->
+
 <div class="main-content">
     <section class="section">
         <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
@@ -8,9 +9,8 @@
         </nav>
         <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
 background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
-            <h6>LEMBAR KERJA</h6>
-            <label for="">Pilih Kontrak Manajemen yang diinginkan untuk difokuskan ke dalam Lembar Kerja</label>
-
+            <h4 style="font-family: 'Poppins', sans-serif;"><b>LEMBAR KERJA</b></h4>
+            <h6 style="font-family: 'Poppins', sans-serif;"><b>Pilih Kontrak Manajemen yang diinginkan untuk difokuskan ke dalam Lembar Kerja</b></h6>
         </div>
         <div class="card" style="margin-top: -20px; padding-bottom: 15px; padding-top: 15px">
             <div class="row">

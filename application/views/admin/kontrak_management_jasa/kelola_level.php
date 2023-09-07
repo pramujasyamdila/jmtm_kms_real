@@ -29,12 +29,12 @@
 
         <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
 background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
-            <h6>MODUL 1 - MATA ANGGARAN</h6>
-            <label for="">Modul ini bertujuan untuk memilih mata anggaran yang akan dibuat menjadi suatu Program Pekerjaan</label>
+            <h4 style="font-family: 'Poppins', sans-serif;"><b>MODUL 1 - MATA ANGGARAN</b> </h4>
+            <h6 style="font-family: 'Poppins', sans-serif;"><b>Modul ini bertujuan untuk memilih mata anggaran yang akan dibuat menjadi suatu Program Pekerjaan</b></h6>
         </div>
         <div class="card" style="margin-top: -25px; padding: 20px;background: rgb(36,93,120);
 background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
-            <label for="">Tekan tombol silang (x) hingga menjadi ceklist (v), Jika seluruh mata anggaran yang diinginkan telah dipilih maka Tekan tombol Buat Program</label>
+            <h4 style="font-family: 'Poppins', sans-serif;"><b> Tekan tombol silang (x) hingga menjadi ceklist (v), Jika seluruh mata anggaran yang diinginkan telah dipilih maka Tekan tombol Buat Program</b></h4>
         </div>
         <div class="card" style="margin-top: -20px; padding-bottom: -20px; padding-top: 2px;padding-left:20px;padding-right:20px">
         <div class="row">

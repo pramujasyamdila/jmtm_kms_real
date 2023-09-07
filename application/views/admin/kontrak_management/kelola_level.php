@@ -23,8 +23,8 @@
 
         <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
 background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
-            <h6>MODUL 1 - MODUL KELOLA LEVEL KONTRAK MANAJEMEN</h6>
-            <label for="">Modul ini digunakan dalam menyusun Mata Anggaran di dalam Kontrak Manajemen</label>
+            <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 1 - MODUL KELOLA LEVEL KONTRAK MANAJEMEN</b></h4>
+            <h6 style="font-family: 'Poppins', sans-serif;"><b> Modul ini digunakan dalam menyusun Mata Anggaran di dalam Kontrak Manajemen </b></h6>
 
         </div>
 

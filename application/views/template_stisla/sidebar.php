@@ -22,7 +22,11 @@
                 <li class="dropdown">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Modul 1 : Kontrak Management</span></a>
                     <ul class="dropdown-menu">
+<<<<<<< HEAD
+                        <!-- <li><a class="nav-link" href="<?= base_url('admin/data_kontrak') ?>"><i class="fa fa-tasks" aria-hidden="true"></i><span>Management Kontrak</span></a></li> -->
+=======
                         <li><a class="nav-link" href="<?= base_url('admin/data_kontrak/kelola_level/' . $session) ?>"><i class="fa fa-tasks" aria-hidden="true"></i><span>Management Kontrak</span></a></li>
+>>>>>>> aa7aa2c35b3eeaa64fef51898c49ce52cdf25813
                         <li><a class="nav-link" href="<?= base_url('admin/data_kontrak_penyedia_jasa/kelola_level/' . $session) ?>"><i class="fa fa-tags" aria-hidden="true"></i><span>Mata Anggaran</span></a></li>
                     </ul>
 
@@ -84,6 +88,19 @@
                     </ul>
                 </li>
                 <li><a class="nav-link" href="<?= base_url('admin/lembar_kerja') ?>"><i class="fa fa-tasks" aria-hidden="true"></i><span>Lembar Kerja</span></a></li>
+<<<<<<< HEAD
+                <!-- <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Modul 1 Kontrak Manajemen</span></a>
+                                                                                                                                                                <li><a class="nav-link" href="<?= base_url('admin/data_kontrak') ?>"><i class="fa fa-tasks" aria-hidden="true"></i><span>Management Kontrak</span></a></li>
+                                                                                                                                                                <li><a class="nav-link" href="<?= base_url('admin/data_kontrak_penyedia_jasa') ?>"><i class="fa fa-tags" aria-hidden="true"></i><span>Mata Anggaran</span></a></li>
+                                                                                                                                                                <li class="menu-header text-modul" style="font-size: 16px;">MODUL Lembar Kerja</li>
+                                                                                                                                                                <li><a class="nav-link" href="<?= base_url('admin/lembar_kerja') ?>"><i class="fa fa-tasks" aria-hidden="true"></i><span>Lembar Kerja</span></a></li> -->
+                <!-- <li class="menu-header">Administrasi Penyedia</li>
+                                                                                                                                                                                                                    <li><a class="nav-link" href="<?= base_url('admin/administrasi_penyedia') ?>"><i class="fa fa-indent" aria-hidden="true"></i><span>Pra Pengadaan</span></a></li>
+                                                                                                                                                                                                                    <li><a class="nav-link" href="<?= base_url('administrasi_kontrak/administrasi_kontrak/pasca_pengadaan') ?>"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Pasca Pengadaan</span></a></li>
+                                                                                                                                                                                                                    <li class="menu-header">Administrasi Taggihan</li> -->
+                <!-- <li><a class="nav-link" href="<?= base_url('administrasi_kontrak/administrasi_kontrak') ?>"><i class="fa fa-credit-card" aria-hidden="true"></i><span>Administrasi Tagihan</span></a></li> -->
+=======
+>>>>>>> aa7aa2c35b3eeaa64fef51898c49ce52cdf25813
                 <li class="menu-header text-modul">MODUL 4 <br> <label for="" style="font-size: 14x;">Analisis Data</label> </li>
                 <li class="dropdown">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Modul 4 ANALISIS DATA</span></a>
@@ -94,6 +111,14 @@
                         <li><a class="nav-link" href="<?= base_url('rekapitulasi') ?>"><i class="fa fa-file" aria-hidden="true"></i><span>Rekapitulasi Berkas </span></a></li>
                     </ul>
                 </li>
+<<<<<<< HEAD
+
+                <!-- <li><a class="nav-link" href="<?= base_url('admin/analisa_tagihan') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Analisa Tagihan</span></a></li>
+                                                                                                                                        <li><a class="nav-link" href="<?= base_url('traking_hps/traking_hps') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Tracking Harga Satuan</span></a></li>
+                                                                                                                                        <li><a class="nav-link" href="<?= base_url('laporan_kinerja') ?>"><i class="fa fa-file" aria-hidden="true"></i><span>Laporan Kinerja</span></a></li>
+                                                                                                                                        <li><a class="nav-link" href="<?= base_url('rekapitulasi') ?>"><i class="fa fa-file" aria-hidden="true"></i><span>Rekapitulasi Berkas </span></a></li> -->
+=======
+>>>>>>> aa7aa2c35b3eeaa64fef51898c49ce52cdf25813
             </ul>
             <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
                 <a href="<?= base_url('auth/logout') ?>" class="btn btn-primary btn-lg btn-block btn-icon-split" style="background-color: #302B63;">

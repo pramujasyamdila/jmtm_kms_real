@@ -8,15 +8,17 @@
         <input type="hidden" name="id_program_ku" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>">
         <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
 background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
-            <h6>MODUL 2 - PRA PENGADAAN</h6>
-            <h6 for="">Nama Pekerjaan : <?= $row_program['nama_pekerjaan_program_mata_anggaran'] ?></h6>
+            <h4 style="font-family: 'Poppins', sans-serif;"><b>MODUL 2 - PRA PENGADAAN</b></h4>
+            <h6 style="font-family: 'Poppins', sans-serif;">Nama Pekerjaan : <?= $row_program['nama_pekerjaan_program_mata_anggaran'] ?></h6>
         </div>
         <div class="card" style="margin-top: -20px; padding: 10px;background: rgb(36,93,120);
 background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
-            <h6 for="">
-                Note! <br>
-                Setelah Anda Selesai Membuat DKH Harap Lakukan Validasi Dengan Menklik Tombol Simpan Dan Update Yang Berada Pada Bawah Table
-            </h6>
+            <h5 style="font-family: 'Poppins', sans-serif;">
+                <b>
+                    Note! <br>
+                    Setelah Anda Selesai Membuat DKH Harap Lakukan Validasi Dengan Menklik Tombol Simpan Dan Update Yang Berada Pada Bawah Table
+                </b>
+            </h5>
         </div>
         <div class="card" style="margin-top: -20px; padding: 10px;">
             <div class="container-fluid">
@@ -25,7 +27,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                     <select name="tahun_anggaran_rekap" style="width: 200px;" onchange="pilih_tahun_rekap('<?= $row_program['id_detail_program_penyedia_jasa'] ?>')" class="form-control" id="">
                         <?php $i = 0;
                         for ($i = 20; $i <= 30; $i++) {  ?>
-                            <option value="20<?= $i ?>">20<?= $i ?></option>
+                                                <option value="20<?= $i ?>">20<?= $i ?></option>
                         <?php  } ?>
                     </select> -->
                     <br>
