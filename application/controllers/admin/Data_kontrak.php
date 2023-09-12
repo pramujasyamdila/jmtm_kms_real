@@ -58,7 +58,7 @@ class Data_kontrak extends CI_Controller
 
         $output = [
             'sub_total' => 'Rp. ' . number_format($sub_total, 2, ',', '.'),
-            'ppn' =>'Rp. ' .  number_format($ppn, 2, ',', '.'),
+            'ppn' => 'Rp. ' .  number_format($ppn, 2, ',', '.'),
             'total_ppn' => 'Rp. ' . number_format($total_ppn, 2, ',', '.'),
             'setelah_ppn' => 'Rp. ' . number_format($setelah_ppn, 2, ',', '.'),
         ];
@@ -290,7 +290,14 @@ class Data_kontrak extends CI_Controller
                 ];
                 $this->Data_kontrak_model->tambah_ke_tbl_sdm($data);
                 // ke add
-                if ($this->input->post('no_adendum_post_kontrak') == 'Kontrak Awal') { } else {
+                if ($this->input->post('no_adendum_post_kontrak') == 'Kontrak Awal') {
+                    $data = [
+                        'no_adendum' => 'kontrak_awal',
+                        'tanggal' => $this->input->post('tanggal_adendum_post_kontrak'),
+                        'id_kontrak' => $id_kontrak,
+                    ];
+                    $this->Data_kontrak_model->add_addendum($data);
+                } else {
                     $data = [
                         'no_adendum' => $this->input->post('no_adendum_post_kontrak'),
                         'tanggal' => $this->input->post('tanggal_adendum_post_kontrak'),
