@@ -106,6 +106,12 @@ class M_analisis extends CI_Model
         $this->db->from('tbl_detail_program_penyedia_jasa');
         $this->db->where('nama_penyedia !=', NULL);
         $this->db->group_by('tbl_detail_program_penyedia_jasa.nama_penyedia');
+    }
+    function get_kontrak()
+    {
+        $this->db->select('*');
+        $this->db->from('mst_kontrak');
+        $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -140,6 +146,13 @@ class M_analisis extends CI_Model
         foreach ($result_mc as $key => $value) {
             $this->db->where('tbl_rapot_dummy.catatan_rapot', $value['status_terakhir']);
         }
+    }
+    function get_pekerjaan()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_detail_program_penyedia_jasa');
+        $this->db->join('mst_kontrak', 'tbl_detail_program_penyedia_jasa.id_kontrak = mst_kontrak.id_kontrak');
+        $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -234,4 +247,22 @@ class M_analisis extends CI_Model
     }
 
     // END TRACKER ALL
+    function count_pekerjaan()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_detail_program_penyedia_jasa');
+        $this->db->join('mst_kontrak', 'tbl_detail_program_penyedia_jasa.id_kontrak = mst_kontrak.id_kontrak');
+        $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area');
+        return $this->db->count_all_results();
+    }
+
+    function get_mc()
+    {
+        $this->db->select('*');
+        $this->db->from('mst_kontrak');
+        $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
+        $this->db->join('tbl_mc', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_mc.id_detail_program_penyedia_jasa');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }
