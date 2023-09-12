@@ -97,4 +97,43 @@ class M_analisis extends CI_Model
         $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
         return $this->db->count_all_results();
     }
+
+    function get_kontrak()
+    {
+        $this->db->select('*');
+        $this->db->from('mst_kontrak');
+        $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    function get_pekerjaan()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_detail_program_penyedia_jasa');
+        $this->db->join('mst_kontrak', 'tbl_detail_program_penyedia_jasa.id_kontrak = mst_kontrak.id_kontrak');
+        $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+
+    function count_pekerjaan()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_detail_program_penyedia_jasa');
+        $this->db->join('mst_kontrak', 'tbl_detail_program_penyedia_jasa.id_kontrak = mst_kontrak.id_kontrak');
+        $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area');
+        return $this->db->count_all_results();
+    }
+
+    function get_mc()
+    {
+        $this->db->select('*');
+        $this->db->from('mst_kontrak');
+        $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
+        $this->db->join('tbl_mc', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_mc.id_detail_program_penyedia_jasa');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }
