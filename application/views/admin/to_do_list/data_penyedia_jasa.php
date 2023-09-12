@@ -56,10 +56,23 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                     <tbody>
                         <?php $i = 1;
                         foreach ($data_pekerjaan as $key => $value) { ?>
+                            <?php
+                            $this->db->select('*');
+                            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                            $this->db->limit(1);
+                            $this->db->order_by('no_addendum', 'DESC');
+                            $row_addendum = $this->db->get();
+                            $danang = $row_addendum->row_array();
+                            ?>
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td><?= $value['nama_penyedia'] ?></td>
-                                <td></td>
+                                <?php if ($value['total_kontrak_addendum_' . $danang['no_addendum']] == NULL) { ?>
+                                    <td>Rp.0</td>
+                                <?php   } else { ?>
+                                    <td><?= "Rp " . number_format($value['total_kontrak_addendum_' . $danang['no_addendum']], 2, ',', '.') ?></td>
+                                <?php  } ?>
                             </tr>
                         <?php  } ?>
 
