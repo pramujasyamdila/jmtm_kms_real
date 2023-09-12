@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     Filte_add()
     // sweetalert
     function message(icon, text, title) {
@@ -116,4 +116,105 @@
             theme: 'bootstrap4'
         })
     })
+</script> -->
+
+<script>
+    function message(icon, text, title) {
+        Swal.fire({
+            title: title,
+            text: text,
+            icon: icon,
+        });
+    }
+    var tbl_uraian_hps = $('#tbl_uraian_hps');
+    $(document).ready(function() {
+        function fill_datatable_hps(cari_uraian_hps = '') {
+            tbl_uraian_hps.DataTable({
+                "responsive": false,
+                "autoWidth": false,
+                "processing": true,
+                "serverSide": true,
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'pdf', 'print'
+                ],
+                "order": [],
+                "ajax": {
+                    "url": "<?= base_url('traking_hps/traking_hps/get_uraian_hps') ?>",
+                    "type": "POST",
+                    data: {
+                        cari_uraian_hps: cari_uraian_hps
+                    }
+                },
+                "columnDefs": [{
+                    "target": [-1],
+                    "orderable": false
+                }],
+                "oLanguage": {
+                    "sSearch": "Pencarian : ",
+                    "sEmptyTable": "Data Tidak Tersedia",
+                    "sLoadingRecords": "Silahkan Tunggu - loading...",
+                    "sLengthMenu": "Menampilkan &nbsp;  _MENU_  &nbsp;   Data",
+                    "sZeroRecords": "Tidak Ada DataYang Di Cari",
+                },
+            });
+        }
+        $('#filter_hps').click(function() {
+            var cari_uraian_hps = $('#cari_uraian_hps').val();
+            if (cari_uraian_hps != '') {
+                tbl_uraian_hps.DataTable().destroy();
+                fill_datatable_hps(cari_uraian_hps);
+            } else {
+                message('No. Kontrak Belum Di isi!', 'warning', 'Gagal Mendapatkan Data!')
+            }
+        })
+
+    });
+
+    // hps_kontrak
+
+    var tbl_uraian_hps_kontrak = $('#tbl_uraian_hps_kontrak');
+    $(document).ready(function() {
+        function fill_datatable_hps_kontrak(cari_uraian_hps_kontrak = '') {
+            tbl_uraian_hps_kontrak.DataTable({
+                "responsive": false,
+                "autoWidth": false,
+                "processing": true,
+                "serverSide": true,
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'pdf', 'print'
+                ],
+                "order": [],
+                "ajax": {
+                    "url": "<?= base_url('traking_hps/traking_hps/get_uraian_hps_kontrak') ?>",
+                    "type": "POST",
+                    data: {
+                        cari_uraian_hps_kontrak: cari_uraian_hps_kontrak
+                    }
+                },
+                "columnDefs": [{
+                    "target": [-1],
+                    "orderable": false
+                }],
+                "oLanguage": {
+                    "sSearch": "Pencarian : ",
+                    "sEmptyTable": "Data Tidak Tersedia",
+                    "sLoadingRecords": "Silahkan Tunggu - loading...",
+                    "sLengthMenu": "Menampilkan &nbsp;  _MENU_  &nbsp;   Data",
+                    "sZeroRecords": "Tidak Ada DataYang Di Cari",
+                },
+            });
+        }
+        $('#filter_hps_kontrak').click(function() {
+            var cari_uraian_hps_kontrak = $('#cari_uraian_hps_kontrak').val();
+            if (cari_uraian_hps_kontrak != '') {
+                tbl_uraian_hps_kontrak.DataTable().destroy();
+                fill_datatable_hps_kontrak(cari_uraian_hps_kontrak);
+            } else {
+                message('No. Kontrak Belum Di isi!', 'warning', 'Gagal Mendapatkan Data!')
+            }
+        })
+
+    });
 </script>
