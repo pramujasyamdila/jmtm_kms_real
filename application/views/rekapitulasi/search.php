@@ -1,10 +1,18 @@
 <div class="main-content">
     <section class="section">
-        <div class="section-header">
-            <h1>Rangkuman Berkas</h1>
-            <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="#">Rangkuman Berkas</a></div>
-            </div>
+
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
+  position: fixed; top:50px;  padding-bottom: -10px;">
+            <b style="margin-left: auto; font-weight:1000" class="text-black">Modul 4 : <b class="card-title">REKAPITULASI RANGKUMAN BERKAS <?= $this->session->userdata('nama_departemen'); ?>-<?= $this->session->userdata('nama_sub_area') ?></b></b>
+        </nav>
+
+
+        <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
+background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
+            <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 4 - REKAPITULASI BERKAS </b></h4>
+            <h6 style="font-family: 'Poppins', sans-serif;">Modul ini bertujuan untuk melihat Rekapitulasi Berkas Tagihan Penyedia Jasa yang masuk ke dalam Aplikasi Kontrak Manajemen
+
+            </h6>
         </div>
         <input type="hidden" name="tahun_filter">
         <div class="section-body">
@@ -215,62 +223,62 @@
                                                         foreach ($get_program as $key => $value) { ?>
                                                             <?php
                                                             $data_mc = $this->Data_kontrak_model->get_mc_by_id($value['id_detail_program_penyedia_jasa']);
-                                                            
-                                                           ?>
+
+                                                            ?>
                                                             <?php foreach ($data_mc as $key => $value2) { ?>
                                                                 <?php if ($value2['pic'] == 'Vendor') { ?>
-                                                                <tr>
-                                                                    <td>
-                                                                        <?= $i++; ?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <?= $i++; ?>
 
-                                                                    </td>
-                                                                    <td><?= $value['nama_sub_area'] ?></td>
-                                                                    <td><?= $value['nama_penyedia'] ?></td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?= $value2['no_mc'] ?>
-                                                                        <?php } else { ?>
-                                                                            Tidak ada MC
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td><?= $value2['uraian'] ?></td>
-                                                                    <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
+                                                                        </td>
+                                                                        <td><?= $value['nama_sub_area'] ?></td>
+                                                                        <td><?= $value['nama_penyedia'] ?></td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?= $value2['no_mc'] ?>
+                                                                            <?php } else { ?>
+                                                                                Tidak ada MC
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td><?= $value2['uraian'] ?></td>
+                                                                        <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
 
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            Rp. <?= number_format($value2['setelah_ppn'], 2, ',', '.');  ?>
-                                                                        <?php } else { ?>
-                                                                            Tidak ada Tagihan
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?= date('d-m-Y', strtotime($value2['tanggal_rapot'])) ?>
-                                                                        <?php } else { ?>
-                                                                            Belum Ada Berkas
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?php if ($value2['keterangan_traking'] != NULL) { ?>
-                                                                                <?= $value2['keterangan_traking'] ?>
-                                                                            <?php  } else { ?>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                Rp. <?= number_format($value2['setelah_ppn'], 2, ',', '.');  ?>
+                                                                            <?php } else { ?>
+                                                                                Tidak ada Tagihan
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?= date('d-m-Y', strtotime($value2['tanggal_rapot'])) ?>
+                                                                            <?php } else { ?>
+                                                                                Belum Ada Berkas
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?php if ($value2['keterangan_traking'] != NULL) { ?>
+                                                                                    <?= $value2['keterangan_traking'] ?>
+                                                                                <?php  } else { ?>
+                                                                                    Tidak Ada Keterangan Revisi
+                                                                                <?php } ?>
+
+                                                                            <?php } else { ?>
                                                                                 Tidak Ada Keterangan Revisi
-                                                                            <?php } ?>
-
-                                                                        <?php } else { ?>
-                                                                            Tidak Ada Keterangan Revisi
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                </tr>
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                    </tr>
                                                                 <?php  } else { ?>
-                                                                   
+
                                                                 <?php } ?>
-                                                            
+
                                                             <?php } ?>
                                                         <?php  } ?>
                                                     </tbody>
@@ -306,58 +314,58 @@
                                                             ?>
                                                             <?php foreach ($data_mc_area as $key => $value2) { ?>
                                                                 <?php if ($value2['pic'] == 'Area') { ?>
-                                                                <tr>
-                                                                    <td>
-                                                                        <?= $i++; ?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <?= $i++; ?>
 
-                                                                    </td>
-                                                                    <td><?= $value['nama_sub_area'] ?></td>
-                                                                    <td><?= $value['nama_penyedia'] ?></td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?= $value2['no_mc'] ?>
-                                                                        <?php } else { ?>
-                                                                            Tidak ada MC
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td><?= $value2['uraian'] ?></td>
-                                                                    <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
+                                                                        </td>
+                                                                        <td><?= $value['nama_sub_area'] ?></td>
+                                                                        <td><?= $value['nama_penyedia'] ?></td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?= $value2['no_mc'] ?>
+                                                                            <?php } else { ?>
+                                                                                Tidak ada MC
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td><?= $value2['uraian'] ?></td>
+                                                                        <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
 
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            Rp. <?= number_format($value2['setelah_ppn'], 2, ',', '.');  ?>
-                                                                        <?php } else { ?>
-                                                                            Tidak ada Tagihan
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?= date('d-m-Y', strtotime($value2['tanggal_rapot'])) ?>
-                                                                        <?php } else { ?>
-                                                                            Belum Ada Berkas
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?php if ($value2['keterangan_traking'] != NULL) { ?>
-                                                                                <?= $value2['keterangan_traking'] ?>
-                                                                            <?php  } else { ?>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                Rp. <?= number_format($value2['setelah_ppn'], 2, ',', '.');  ?>
+                                                                            <?php } else { ?>
+                                                                                Tidak ada Tagihan
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?= date('d-m-Y', strtotime($value2['tanggal_rapot'])) ?>
+                                                                            <?php } else { ?>
+                                                                                Belum Ada Berkas
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?php if ($value2['keterangan_traking'] != NULL) { ?>
+                                                                                    <?= $value2['keterangan_traking'] ?>
+                                                                                <?php  } else { ?>
+                                                                                    Tidak Ada Keterangan Revisi
+                                                                                <?php } ?>
+
+                                                                            <?php } else { ?>
                                                                                 Tidak Ada Keterangan Revisi
-                                                                            <?php } ?>
-
-                                                                        <?php } else { ?>
-                                                                            Tidak Ada Keterangan Revisi
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                </tr>
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                    </tr>
                                                                 <?php  } else { ?>
-                                                                   
+
                                                                 <?php } ?>
-                                                            
+
                                                             <?php } ?>
                                                         <?php  } ?>
                                                     </tbody>
@@ -391,60 +399,60 @@
                                                             <?php
                                                             $data_mc_pusat = $this->Data_kontrak_model->get_mc_by_id($value['id_detail_program_penyedia_jasa']);
                                                             ?>
-                                                             <?php foreach ($data_mc_pusat as $key => $value2) { ?>
+                                                            <?php foreach ($data_mc_pusat as $key => $value2) { ?>
                                                                 <?php if ($value2['pic'] == 'Pusat') { ?>
-                                                                <tr>
-                                                                    <td>
-                                                                        <?= $i++; ?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <?= $i++; ?>
 
-                                                                    </td>
-                                                                    <td><?= $value['nama_sub_area'] ?></td>
-                                                                    <td><?= $value['nama_penyedia'] ?></td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?= $value2['no_mc'] ?>
-                                                                        <?php } else { ?>
-                                                                            Tidak ada MC
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td><?= $value2['uraian'] ?></td>
-                                                                    <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
+                                                                        </td>
+                                                                        <td><?= $value['nama_sub_area'] ?></td>
+                                                                        <td><?= $value['nama_penyedia'] ?></td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?= $value2['no_mc'] ?>
+                                                                            <?php } else { ?>
+                                                                                Tidak ada MC
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td><?= $value2['uraian'] ?></td>
+                                                                        <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
 
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            Rp. <?= number_format($value2['setelah_ppn'], 2, ',', '.');  ?>
-                                                                        <?php } else { ?>
-                                                                            Tidak ada Tagihan
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?= date('d-m-Y', strtotime($value2['tanggal_rapot'])) ?>
-                                                                        <?php } else { ?>
-                                                                            Belum Ada Berkas
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?php if ($value2['keterangan_traking'] != NULL) { ?>
-                                                                                <?= $value2['keterangan_traking'] ?>
-                                                                            <?php  } else { ?>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                Rp. <?= number_format($value2['setelah_ppn'], 2, ',', '.');  ?>
+                                                                            <?php } else { ?>
+                                                                                Tidak ada Tagihan
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?= date('d-m-Y', strtotime($value2['tanggal_rapot'])) ?>
+                                                                            <?php } else { ?>
+                                                                                Belum Ada Berkas
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?php if ($value2['keterangan_traking'] != NULL) { ?>
+                                                                                    <?= $value2['keterangan_traking'] ?>
+                                                                                <?php  } else { ?>
+                                                                                    Tidak Ada Keterangan Revisi
+                                                                                <?php } ?>
+
+                                                                            <?php } else { ?>
                                                                                 Tidak Ada Keterangan Revisi
-                                                                            <?php } ?>
-
-                                                                        <?php } else { ?>
-                                                                            Tidak Ada Keterangan Revisi
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                </tr>
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                    </tr>
                                                                 <?php  } else { ?>
-                                                                   
+
                                                                 <?php } ?>
-                                                            
+
                                                             <?php } ?>
                                                         <?php  } ?>
                                                     </tbody>
@@ -480,58 +488,58 @@
                                                             ?>
                                                             <?php foreach ($data_mc_finance as $key => $value2) { ?>
                                                                 <?php if ($value2['uraian'] == 'Diterima Finance') { ?>
-                                                                <tr>
-                                                                    <td>
-                                                                        <?= $i++; ?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <?= $i++; ?>
 
-                                                                    </td>
-                                                                    <td><?= $value['nama_sub_area'] ?></td>
-                                                                    <td><?= $value['nama_penyedia'] ?></td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?= $value2['no_mc'] ?>
-                                                                        <?php } else { ?>
-                                                                            Tidak ada MC
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td><?= $value2['uraian'] ?></td>
-                                                                    <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
+                                                                        </td>
+                                                                        <td><?= $value['nama_sub_area'] ?></td>
+                                                                        <td><?= $value['nama_penyedia'] ?></td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?= $value2['no_mc'] ?>
+                                                                            <?php } else { ?>
+                                                                                Tidak ada MC
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td><?= $value2['uraian'] ?></td>
+                                                                        <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
 
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            Rp. <?= number_format($value2['setelah_ppn'], 2, ',', '.');  ?>
-                                                                        <?php } else { ?>
-                                                                            Tidak ada Tagihan
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?= date('d-m-Y', strtotime($value2['tanggal_rapot'])) ?>
-                                                                        <?php } else { ?>
-                                                                            Belum Ada Berkas
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?php if ($value2['keterangan_traking'] != NULL) { ?>
-                                                                                <?= $value2['keterangan_traking'] ?>
-                                                                            <?php  } else { ?>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                Rp. <?= number_format($value2['setelah_ppn'], 2, ',', '.');  ?>
+                                                                            <?php } else { ?>
+                                                                                Tidak ada Tagihan
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?= date('d-m-Y', strtotime($value2['tanggal_rapot'])) ?>
+                                                                            <?php } else { ?>
+                                                                                Belum Ada Berkas
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?php if ($value2['keterangan_traking'] != NULL) { ?>
+                                                                                    <?= $value2['keterangan_traking'] ?>
+                                                                                <?php  } else { ?>
+                                                                                    Tidak Ada Keterangan Revisi
+                                                                                <?php } ?>
+
+                                                                            <?php } else { ?>
                                                                                 Tidak Ada Keterangan Revisi
-                                                                            <?php } ?>
-
-                                                                        <?php } else { ?>
-                                                                            Tidak Ada Keterangan Revisi
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                </tr>
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                    </tr>
                                                                 <?php  } else { ?>
-                                                                   
+
                                                                 <?php } ?>
-                                                            
+
                                                             <?php } ?>
                                                         <?php  } ?>
                                                     </tbody>
@@ -568,58 +576,58 @@
                                                             ?>
                                                             <?php foreach ($data_mc_finance2 as $key => $value2) { ?>
                                                                 <?php if ($value2['uraian'] == 'Pencairan') { ?>
-                                                                <tr>
-                                                                    <td>
-                                                                        <?= $i++; ?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <?= $i++; ?>
 
-                                                                    </td>
-                                                                    <td><?= $value['nama_sub_area'] ?></td>
-                                                                    <td><?= $value['nama_penyedia'] ?></td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?= $value2['no_mc'] ?>
-                                                                        <?php } else { ?>
-                                                                            Tidak ada MC
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td><?= $value2['uraian'] ?></td>
-                                                                    <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
+                                                                        </td>
+                                                                        <td><?= $value['nama_sub_area'] ?></td>
+                                                                        <td><?= $value['nama_penyedia'] ?></td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?= $value2['no_mc'] ?>
+                                                                            <?php } else { ?>
+                                                                                Tidak ada MC
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td><?= $value2['uraian'] ?></td>
+                                                                        <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
 
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            Rp. <?= number_format($value2['setelah_ppn'], 2, ',', '.');  ?>
-                                                                        <?php } else { ?>
-                                                                            Tidak ada Tagihan
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?= date('d-m-Y', strtotime($value2['tanggal_rapot'])) ?>
-                                                                        <?php } else { ?>
-                                                                            Belum Ada Berkas
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php if ($value2) { ?>
-                                                                            <?php if ($value2['keterangan_traking'] != NULL) { ?>
-                                                                                <?= $value2['keterangan_traking'] ?>
-                                                                            <?php  } else { ?>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                Rp. <?= number_format($value2['setelah_ppn'], 2, ',', '.');  ?>
+                                                                            <?php } else { ?>
+                                                                                Tidak ada Tagihan
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?= date('d-m-Y', strtotime($value2['tanggal_rapot'])) ?>
+                                                                            <?php } else { ?>
+                                                                                Belum Ada Berkas
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php if ($value2) { ?>
+                                                                                <?php if ($value2['keterangan_traking'] != NULL) { ?>
+                                                                                    <?= $value2['keterangan_traking'] ?>
+                                                                                <?php  } else { ?>
+                                                                                    Tidak Ada Keterangan Revisi
+                                                                                <?php } ?>
+
+                                                                            <?php } else { ?>
                                                                                 Tidak Ada Keterangan Revisi
-                                                                            <?php } ?>
-
-                                                                        <?php } else { ?>
-                                                                            Tidak Ada Keterangan Revisi
-                                                                        <?php    }
-                                                                        ?>
-                                                                    </td>
-                                                                </tr>
+                                                                            <?php    }
+                                                                            ?>
+                                                                        </td>
+                                                                    </tr>
                                                                 <?php  } else { ?>
-                                                                   
+
                                                                 <?php } ?>
-                                                            
+
                                                             <?php } ?>
                                                         <?php  } ?>
                                                     </tbody>
