@@ -106,6 +106,8 @@ class M_analisis extends CI_Model
         $this->db->from('tbl_detail_program_penyedia_jasa');
         $this->db->where('nama_penyedia !=', NULL);
         $this->db->group_by('tbl_detail_program_penyedia_jasa.nama_penyedia');
+        $query = $this->db->get();
+        return $query->result_array();
     }
     function get_kontrak()
     {
@@ -146,6 +148,8 @@ class M_analisis extends CI_Model
         foreach ($result_mc as $key => $value) {
             $this->db->where('tbl_rapot_dummy.catatan_rapot', $value['status_terakhir']);
         }
+        $query = $this->db->get();
+        return $query->result_array();
     }
     function get_pekerjaan()
     {

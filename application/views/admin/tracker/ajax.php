@@ -54,15 +54,15 @@
                     type: "POST",
                     url: "<?= base_url('admin/tracker/by_id_detail_program_penyedia_jasa_nama_penyedia') ?>",
                     dataType: "JSON",
-                    data:{
-                        cari_nama_penyedia:cari_nama_penyedia
+                    data: {
+                        cari_nama_penyedia: cari_nama_penyedia
                     },
                     success: function(response) {
                         $('.nama_vendor_all').html(cari_nama_penyedia);
-                        $('.average_vendor_all').html(response['average_mc_all'].avg_vendor);
-                        $('.average_area_all').html(response['average_mc_all'].avg_area);
-                        $('.average_pusat_all').html(response['average_mc_all'].avg_pusat);
-                        $('.average_finance_all').html(response['average_mc_all'].avg_finance);
+                        $('.average_vendor_all').html(Math.floor(response['average_mc_all'].avg_vendor));
+                        $('.average_area_all').html(Math.floor(response['average_mc_all'].avg_area));
+                        $('.average_pusat_all').html(Math.floor(response['average_mc_all'].avg_pusat));
+                        $('.average_finance_all').html(Math.floor(response['average_mc_all'].avg_finance));
                     }
                 });
             } else {
@@ -99,10 +99,10 @@
                         '</tr>';
                 }
                 $('.result_mc').html(html);
-                $('.average_vendor').html(response['average_mc'].avg_vendor);
-                $('.average_area').html(response['average_mc'].avg_area);
-                $('.average_pusat').html(response['average_mc'].avg_pusat);
-                $('.average_finance').html(response['average_mc'].avg_finance);
+                $('.average_vendor').html(Math.floor(response['average_mc'].avg_vendor));
+                $('.average_area').html(Math.floor(response['average_mc'].avg_area));
+                $('.average_pusat').html(Math.floor(response['average_mc'].avg_pusat));
+                $('.average_finance').html(Math.floor(response['average_mc'].avg_finance));
                 $('.nama_penyedia').html(response['row_program'].nama_penyedia);
                 $('.nama_pekerjaan').html(response['row_program'].nama_pekerjaan_program_mata_anggaran);
             }
