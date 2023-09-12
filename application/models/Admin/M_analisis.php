@@ -269,4 +269,164 @@ class M_analisis extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    // INI UNTUK MENCARI HPS 
+    function result_hps_uraian()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_hps_penyedia_1');
+        $this->db->where('tbl_hps_penyedia_1.uraian_hps !=', NULL);
+        $this->db->group_by('tbl_hps_penyedia_1.uraian_hps');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    function result_hps_uraian_kontrak()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_hps_penyedia_kontrak_1');
+        $this->db->where('tbl_hps_penyedia_kontrak_1.uraian_hps !=', NULL);
+        $this->db->group_by('tbl_hps_penyedia_kontrak_1.uraian_hps');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    var $tbl_hps = 'tbl_hps_penyedia_1';
+    var $order_hps = array('id_hps_penyedia_1', 'id_hps_penyedia_1', 'id_hps_penyedia_1');
+    var $colum_hps = array('id_hps_penyedia_1', 'id_hps_penyedia_1', 'id_hps_penyedia_1');
+
+    private function _get_data_query_hps_penyedia_jasa()
+    {
+        $i = 0;
+        $this->db->select('*');
+        $this->db->from($this->tbl_hps);
+        $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_hps_penyedia_1.id_detail_program_penyedia_jasa = tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+        $this->db->join('mst_departemen', 'tbl_detail_program_penyedia_jasa.id_departemen = mst_departemen.id_departemen', 'left');
+        $this->db->join('mst_area', 'tbl_detail_program_penyedia_jasa.id_area = mst_area.id_area', 'left');
+        $this->db->join('mst_sub_area', 'tbl_detail_program_penyedia_jasa.id_sub_area = mst_sub_area.id_sub_area', 'left');
+        $this->db->join('mst_kontrak', 'tbl_detail_program_penyedia_jasa.id_kontrak = mst_kontrak.id_kontrak', 'left');
+        if (isset($_POST['cari_uraian_hps']) && $_POST['cari_uraian_hps'] != '') {
+            $this->db->where('tbl_hps_penyedia_1.uraian_hps', $_POST['cari_uraian_hps']);
+        }
+        foreach ($this->colum_hps as $item) // looping awal
+        {
+            if ($_POST['search']['value']) // jika datatable mengirimkan pencarian dengan metode POST
+            {
+
+                if ($i === 0) // looping awal
+                {
+                    $this->db->group_start();
+                    $this->db->like($item, $_POST['search']['value']);
+                } else {
+                    $this->db->or_like(
+                        $item,
+                        $_POST['search']['value']
+                    );
+                }
+
+                if (count($this->colum_hps) - 1 == $i)
+                    $this->db->group_end();
+            }
+            $i++;
+        }
+
+        if (isset($_POST['order'])) {
+            $this->db->order_by($this->order_hps[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        } else {
+            $this->db->order_by('tbl_hps_penyedia_1.id_detail_program_penyedia_jasa', 'DESC');
+        }
+    }
+
+    public function getdatatbl_hps()
+    {
+        $this->_get_data_query_hps_penyedia_jasa();
+        if ($_POST['length'] != -1) {
+            $this->db->limit($_POST['length'], $_POST['start']);
+        }
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function count_filtered_data_hps()
+    {
+        $this->_get_data_query_hps_penyedia_jasa();
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function count_all_data_hps()
+    {
+        $this->_get_data_query_hps_penyedia_jasa();
+        return $this->db->count_all_results();
+    }
+
+
+    var $tbl_hps_kontrak = 'tbl_hps_penyedia_kontrak_1';
+    var $order_hps_kontrak = array('id_hps_penyedia_kontrak_1', 'id_hps_penyedia_kontrak_1', 'id_hps_penyedia_kontrak_1');
+    var $colum_hps_kontrak = array('id_hps_penyedia_kontrak_1', 'id_hps_penyedia_kontrak_1', 'id_hps_penyedia_kontrak_1');
+
+    private function _get_data_query_hps_penyedia_kontrak_jasa()
+    {
+        $i = 0;
+        $this->db->select('*');
+        $this->db->from($this->tbl_hps_kontrak);
+        $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa = tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+        $this->db->join('mst_departemen', 'tbl_detail_program_penyedia_jasa.id_departemen = mst_departemen.id_departemen', 'left');
+        $this->db->join('mst_area', 'tbl_detail_program_penyedia_jasa.id_area = mst_area.id_area', 'left');
+        $this->db->join('mst_sub_area', 'tbl_detail_program_penyedia_jasa.id_sub_area = mst_sub_area.id_sub_area', 'left');
+        $this->db->join('mst_kontrak', 'tbl_detail_program_penyedia_jasa.id_kontrak = mst_kontrak.id_kontrak', 'left');
+        if (isset($_POST['cari_uraian_hps_kontrak']) && $_POST['cari_uraian_hps_kontrak'] != '') {
+            $this->db->where('tbl_hps_penyedia_kontrak_1.uraian_hps', $_POST['cari_uraian_hps_kontrak']);
+        }
+        foreach ($this->colum_hps_kontrak as $item) // looping awal
+        {
+            if ($_POST['search']['value']) // jika datatable mengirimkan pencarian dengan metode POST
+            {
+
+                if ($i === 0) // looping awal
+                {
+                    $this->db->group_start();
+                    $this->db->like($item, $_POST['search']['value']);
+                } else {
+                    $this->db->or_like(
+                        $item,
+                        $_POST['search']['value']
+                    );
+                }
+
+                if (count($this->colum_hps_kontrak) - 1 == $i)
+                    $this->db->group_end();
+            }
+            $i++;
+        }
+
+        if (isset($_POST['order'])) {
+            $this->db->order_by($this->order_hps_kontrak[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        } else {
+            $this->db->order_by('tbl_hps_penyedia_kontrak_1.id_detail_program_penyedia_jasa', 'DESC');
+        }
+    }
+
+    public function getdatatbl_hps_kontrak()
+    {
+        $this->_get_data_query_hps_penyedia_kontrak_jasa();
+        if ($_POST['length'] != -1) {
+            $this->db->limit($_POST['length'], $_POST['start']);
+        }
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function count_filtered_data_hps_kontrak()
+    {
+        $this->_get_data_query_hps_penyedia_kontrak_jasa();
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function count_all_data_hps_kontrak()
+    {
+        $this->_get_data_query_hps_penyedia_kontrak_jasa();
+        return $this->db->count_all_results();
+    }
 }
