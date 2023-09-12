@@ -77,7 +77,7 @@
                                                                 <td>2</td>
                                                                 <td>Nota Dinas Permohonan Pembayaran</td>
                                                                 <td></td>
-                                                                <td><a href="" class="btn btn-block btn-sm btn-outline-primary"><i class="fas fa fa-database"></i> Keloa Format Dokumen</a></td>
+                                                                <<td><a href="javascript:;" onclick="ModalDokumen('file_nota_dinas_pembayaran','NOTA_DINAS')" class="btn btn-block btn-sm btn-outline-primary"><i class="fas fa fa-database"></i> Keloa Format Dokumen</a></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>3</td>

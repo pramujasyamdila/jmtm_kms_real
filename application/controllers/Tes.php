@@ -33,8 +33,19 @@ class Tes extends CI_Controller
                 foreach ($sheet->getRowIterator() as $row) {
                     if ($numRow > 0) {
                         $data = array(
-                            'kode_kbli' => $row->getCellAtIndex(0),
-                            'nama_kbli' => $row->getCellAtIndex(1),
+                            'kecamatan' => $row->getCellAtIndex(0),
+                            'kelurahan' => $row->getCellAtIndex(1),
+                            'nkk' => $row->getCellAtIndex(2),
+                            'nik' => $row->getCellAtIndex(3),
+                            'nama' => $row->getCellAtIndex(4),
+                            'tempat_lahir' => $row->getCellAtIndex(5),
+                            'tanggal' => $row->getCellAtIndex(6),
+                            'sts_kawin' => $row->getCellAtIndex(7),
+                            'kelamin' => $row->getCellAtIndex(8),
+                            'alamat' => $row->getCellAtIndex(9),
+                            'rt' => $row->getCellAtIndex(10),
+                            'rw' => $row->getCellAtIndex(11),
+                            'tps' => $row->getCellAtIndex(12),
                         );
                         $this->Data_excelisasi_model->insert_kualifikasi($data);
                     }

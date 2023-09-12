@@ -88,7 +88,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="nav-link" href="<?= base_url('admin/to_do_list') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Check To Do List</span></a></li>
                         <li><a class="nav-link" href="<?= base_url('admin/analisa_tagihan') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Data Penyedia Jasa</span></a></li>
-                        <li><a class="nav-link" href="<?= base_url('admin/analisa_tagihan') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Tracker</span></a></li>
+                        <li><a class="nav-link" href="<?= base_url('admin/tracker') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Tracker</span></a></li>
                         <li><a class="nav-link" href="<?= base_url('admin/analisa_tagihan') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Rekap Berkas</span></a></li>
                         <li><a class="nav-link" href="<?= base_url('admin/analisa_tagihan') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Analisa Harga Tagihan</span></a></li>
                         <li><a class="nav-link" href="<?= base_url('admin/analisa_tagihan') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Analisa Tagihan</span></a></li>

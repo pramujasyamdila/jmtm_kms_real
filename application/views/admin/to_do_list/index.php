@@ -8,14 +8,14 @@
 
         <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
 background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
-            <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 1 - CHECKLIST DAN TO DO LIST </b></h4>
+            <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 4 - CHECKLIST DAN TO DO LIST </b></h4>
             <h6 style="font-family: 'Poppins', sans-serif;">Modul ini bertujuan untuk melihat aktivitas yang telah dikerjakan dan belum di kerjakan dalam Aplikasi Kontrak Manajemen
             </h6>
 
         </div>
 
         <div class="card" style="margin-top: -20px; padding-bottom: 10px; padding-top: 10px; padding-left: 20px">
-            <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 1 - DOKUMEN KONTRAK MANAJEMEN </b></h4>
+            <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 4 - CHECKLIST DAN TO DO LIST </b></h4>
             <div class="row" style="padding-left:90px">
                 <div class="col-md-4">
                     <div class="card bg-success" style="margin-top: 20px; padding-bottom: 10px; padding-top: 10px; padding-left: 20px; border-radius:10px">

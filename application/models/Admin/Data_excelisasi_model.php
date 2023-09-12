@@ -22,7 +22,7 @@ class Data_excelisasi_model extends CI_Model
     {
         $jumlah = count($data);
         if ($jumlah > 0) {
-            $this->db->replace('tbl_kbli', $data);
+            $this->db->replace('c_calon_pemilih', $data);
             // $this->db->replace('tbl_sbu', $data);
         }
     }
