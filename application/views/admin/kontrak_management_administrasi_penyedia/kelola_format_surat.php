@@ -25,14 +25,14 @@
                             <div class="col-sm-12">
                                 <div class="card card-outline card-warning">
                                     <div class="card-header">
-                                    <h5><i class="fa fa-book"></i> Kelola Surat Kontrak</h5>
+                                        <h5><i class="fa fa-book"></i> Kelola Surat Kontrak</h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="container-fluid">
-                                            <div>
+                                            <div class="row" style="width: 100%;background-color: #302B63;font-family: RNSSanz-ExtraBold;padding:20px;border-radius:20px">
                                                 <div class="row col-md-4">
-                                                    <label for="">PILIH FLOW DOKUMEN</label>
-                                                    <select name="flow_pra_dokumen_kontrak" onchange="Pilih_flow()" class="form-control" id="">
+                                                    <label for="" class="text-white">PILIH FLOW DOKUMEN</label>
+                                                    <select name="flow_pra_dokumen_kontrak" class="form-control" id="">
                                                         <?php if ($row_program['flow_pra_dokumen_kontrak'] == null) { ?>
                                                             <option value="">-- Pilih Flow --</option>
                                                         <?php    } else { ?>
@@ -45,8 +45,12 @@
                                                         <option value="Flow 2">Flow 2 Dirut</option>
                                                     </select>
                                                 </div>
+                                                <div class="col-md-3">
+                                                    <a href="javascript:;" onclick="Pilih_flow()" style="margin-top: 30px;" class="btn btn-success"> <i class="fas fa fa-save"></i> Simpan Flow Dokumen</a>
+                                                </div>
                                             </div>
                                             <br>
+
                                             <div class="card card-primary card-tabs">
                                                 <div class="card-header p-0 pt-1">
                                                     <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
@@ -54,7 +58,13 @@
                                                             <h3 class="card-title"><i class="fas fa fa-envelope"></i></h3>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Ijin Prinsip</a>
+                                                            <a class="nav-link active" id="custom-tabs-two-persuratan-tab" data-toggle="pill" href="#custom-tabs-two-persuratan" role="tab" aria-controls="custom-tabs-two-persuratan" aria-selected="true">Persuratan</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" id="custom-tabs-two-masterdata-tab" data-toggle="pill" href="#custom-tabs-two-masterdata" role="tab" aria-controls="custom-tabs-two-masterdata" aria-selected="true">Masterdata</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Ijin Prinsip</a>
                                                         </li>
                                                         <li class="nav-item">
                                                             <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Persetujuan Hps</a>
@@ -73,7 +83,7 @@
                                                 <div class="card-body">
                                                     <div class="tab-content" id="custom-tabs-two-tabContent">
                                                         <!-- PIP -->
-                                                        <div class="tab-pane fade show active" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
+                                                        <div class="tab-pane fade" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
                                                             <div class="card card-outline card-primary">
                                                                 <div class="card-header">
                                                                     <h3 class="card-title">
@@ -457,6 +467,238 @@
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="tab-pane fade show active" id="custom-tabs-two-persuratan" role="tabpanel" aria-labelledby="custom-tabs-two-persuratan-tab">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="card card-outline card-info">
+                                                                        <div class="card-header">
+                                                                            <h3 class="card-title">
+                                                                                Master Persuratan
+                                                                            </h3>
+                                                                        </div>
+                                                                        <style>
+                                                                            .wrapper1,
+                                                                            .wrapper2 {
+                                                                                width: 300px;
+                                                                                overflow-x: scroll;
+                                                                                overflow-y: hidden;
+                                                                            }
+
+                                                                            .wrapper1 {
+                                                                                height: 20px;
+                                                                            }
+
+                                                                            .wrapper2 {
+                                                                                height: 200px;
+                                                                            }
+
+                                                                            .div1 {
+                                                                                width: 1000px;
+                                                                                height: 20px;
+                                                                            }
+
+                                                                            .div2 {
+                                                                                width: 1000px;
+                                                                                height: 200px;
+                                                                                overflow: auto;
+                                                                            }
+
+                                                                            .tableFixHead {
+                                                                                font-family: 'RNSSanz-ExtraBold';
+                                                                                overflow: auto;
+                                                                                height: 100px;
+
+                                                                            }
+
+                                                                            .tableFixHead thead th {
+                                                                                background-color: #302B63;
+                                                                                font-family: 'RNSSanz-ExtraBold';
+                                                                                color: 'white';
+                                                                                position: sticky;
+                                                                                top: 0;
+                                                                            }
+
+                                                                            #customers {
+                                                                                font-family: Arial, Helvetica, sans-serif;
+                                                                                border-collapse: collapse;
+                                                                                width: 100%;
+                                                                            }
+
+                                                                            #customers td,
+                                                                            #customers th {
+                                                                                border: 1px solid #ddd;
+                                                                                padding: 8px;
+                                                                            }
+
+                                                                            #customers tr:nth-child(even) {
+                                                                                background-color: #f2f2f2;
+                                                                            }
+
+                                                                            #customers tr:hover {
+                                                                                background-color: #ddd;
+                                                                            }
+
+                                                                            #customers th {
+                                                                                padding-top: 2px;
+                                                                                padding-bottom: 2px;
+                                                                                text-align: left;
+                                                                                background-color: #302B63;
+                                                                                color: white;
+                                                                            }
+                                                                        </style>
+                                                                        <div class="card-body">
+                                                                            <div class="container">
+                                                                                <div class="row">
+                                                                                    <div onscroll='scroller("scroller", "scrollme")' style="overflow:scroll; height: 10;overflow-y: hidden;" id=scroller>
+                                                                                        <img src="" height=1 width=2066 style="width:2066px;">
+                                                                                    </div>
+                                                                                    <div onscroll='scroller("scrollme", "scroller")' style="overflow:scroll; height:500px" id="scrollme">
+                                                                                        <table id="customers" class="tableFixHead" style="font-size: 14px;">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th class="text-white">No</th>
+                                                                                                    <th class="text-white" style="width: 200px;">Nama Persuratan</th>
+                                                                                                    <th class="text-white">Nomor Surat</th>
+                                                                                                    <th class="text-white">Tanggal Surat</th>
+                                                                                                    <th class="text-white">Dari Nama</th>
+                                                                                                    <th class="text-white">Jabatan</th>
+                                                                                                    <th class="text-white">Ke Nama</th>
+                                                                                                    <th class="text-white">Jabatan</th>
+                                                                                                    <th class="text-white">Informasi</th>
+                                                                                                    <th class="text-white">View</th>
+                                                                                                    <th class="text-white">Download Word/Pdf</th>
+                                                                                                </tr>
+
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td scope="row">1</td>
+                                                                                                    <td>Permohonan Ip Ca Ke Gm</td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_pip_ca_ke_gm')" name="no_surat_pip_ca_ke_gm" placeholder="No Surat"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_pip_ca_ke_gm')" name="tgl_surat_pip_ca_ke_gm" placeholder="Tanggal Surat"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_pip_ca_ke_gm')" name="pengirim_pip_ca_ke_gm" placeholder="Dari Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_pip_ca_ke_gm')" name="jabatan_pengirim_pip_ca_ke_gm" placeholder="Dari Nama Jabatan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_pip_ca_ke_gm')" name="penerima_pip_ca_ke_gm" placeholder="Ke Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_pip_ca_ke_gm')" name="jabatan_penerima_pip_ca_ke_gm" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td scope="row">2</td>
+                                                                                                    <td>Permohonan Ip Gm Ke Dirops</td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_pip_gm_ke_dirops')" name="no_surat_pip_gm_ke_dirops" placeholder="No Surat"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_pip_gm_ke_dirops')" name="tgl_surat_pip_gm_ke_dirops" placeholder="Tanggal Surat"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_pip_gm_ke_dirops')" name="pengirim_pip_gm_ke_dirops" placeholder="Dari Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_pip_gm_ke_dirops')" name="jabatan_pengirim_pip_gm_ke_dirops" placeholder="Dari Nama Jabatan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_pip_gm_ke_dirops')" name="penerima_pip_gm_ke_dirops" placeholder="Ke Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_pip_gm_ke_dirops')" name="jabatan_penerima_pip_gm_ke_dirops" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td scope="row">3</td>
+                                                                                                    <td>Permohonan Ip Dirops Ke Dirut</td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_pip_dirops_ke_dirut')" name="no_surat_pip_dirops_ke_dirut" placeholder="No Surat"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_pip_dirops_ke_dirut')" name="tgl_surat_pip_dirops_ke_dirut" placeholder="Tanggal Surat"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_pip_dirops_ke_dirut')" name="pengirim_pip_dirops_ke_dirut" placeholder="Dari Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_pip_dirops_ke_dirut')" name="jabatan_pengirim_pip_dirops_ke_dirut" placeholder="Dari Nama Jabatan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_pip_dirops_ke_dirut')" name="penerima_pip_dirops_ke_dirut" placeholder="Ke Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_pip_dirops_ke_dirut')" name="jabatan_penerima_pip_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td scope="row">4</td>
+                                                                                                    <td>Persetujuan Ip Dirops Ke Dirut</td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_persetujuan_pip_dirops_ke_dirut')" name="no_surat_persetujuan_pip_dirops_ke_dirut" placeholder="No Surat"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_persetujuan_pip_dirops_ke_dirut')" name="tgl_surat_persetujuan_pip_dirops_ke_dirut" placeholder="Tanggal Surat"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_pengirim_pip_dirops_ke_dirut')" name="persetujuan_pengirim_pip_dirops_ke_dirut" placeholder="Dari Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_pengirim_pip_dirops_ke_dirut')" name="persetujuan_jabatan_pengirim_pip_dirops_ke_dirut" placeholder="Dari Nama Jabatan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_penerima_pip_dirops_ke_dirut')" name="persetujuan_penerima_pip_dirops_ke_dirut" placeholder="Ke Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_penerima_pip_dirops_ke_dirut')" name="persetujuan_jabatan_penerima_pip_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td scope="row">5</td>
+                                                                                                    <td>Permohonan HPS Ca Ke Gm</td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_hps_ca_ke_gm')" name="no_surat_hps_ca_ke_gm" placeholder="No Surat"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_hps_ca_ke_gm')" name="tgl_surat_hps_ca_ke_gm" placeholder="Tanggal Surat"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_hps_ca_ke_gm')" name="pengirim_hps_ca_ke_gm" placeholder="Dari Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_hps_ca_ke_gm')" name="jabatan_pengirim_hps_ca_ke_gm" placeholder="Dari Nama Jabatan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_hps_ca_ke_gm')" name="penerima_hps_ca_ke_gm" placeholder="Ke Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_hps_ca_ke_gm')" name="jabatan_penerima_hps_ca_ke_gm" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td scope="row">6</td>
+                                                                                                    <td>Permohonan HPS Gm Ke Dirops</td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_hps_gm_ke_dirops')" name="no_surat_hps_gm_ke_dirops" placeholder="No Surat"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_hps_gm_ke_dirops')" name="tgl_surat_hps_gm_ke_dirops" placeholder="Tanggal Surat"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_hps_gm_ke_dirops')" name="pengirim_hps_gm_ke_dirops" placeholder="Dari Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_hps_gm_ke_dirops')" name="jabatan_pengirim_hps_gm_ke_dirops" placeholder="Dari Nama Jabatan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_hps_gm_ke_dirops')" name="penerima_hps_gm_ke_dirops" placeholder="Ke Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_hps_gm_ke_dirops')" name="jabatan_penerima_hps_gm_ke_dirops" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td scope="row">7</td>
+                                                                                                    <td>Permohonan HPS Dirops Ke Dirut</td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_hps_dirops_ke_dirut')" name="no_surat_hps_dirops_ke_dirut" placeholder="No Surat"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_hps_dirops_ke_dirut')" name="tgl_surat_hps_dirops_ke_dirut" placeholder="Tanggal Surat"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_hps_dirops_ke_dirut')" name="pengirim_hps_dirops_ke_dirut" placeholder="Dari Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_hps_dirops_ke_dirut')" name="jabatan_pengirim_hps_dirops_ke_dirut" placeholder="Dari Nama Jabatan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_hps_dirops_ke_dirut')" name="penerima_hps_dirops_ke_dirut" placeholder="Ke Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_hps_dirops_ke_dirut')" name="jabatan_penerima_hps_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td scope="row">8</td>
+                                                                                                    <td>Persetujuan HPS Dirops Ke Dirut</td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_persetujuan_hps_dirops_ke_dirut')" name="no_surat_persetujuan_hps_dirops_ke_dirut" placeholder="No Surat"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_persetujuan_hps_dirops_ke_dirut')" name="tgl_surat_persetujuan_hps_dirops_ke_dirut" placeholder="Tanggal Surat"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_pengirim_hps_dirops_ke_dirut')" name="persetujuan_pengirim_hps_dirops_ke_dirut" placeholder="Dari Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_pengirim_hps_dirops_ke_dirut')" name="persetujuan_jabatan_pengirim_hps_dirops_ke_dirut" placeholder="Dari Nama Jabatan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_penerima_hps_dirops_ke_dirut')" name="persetujuan_penerima_hps_dirops_ke_dirut" placeholder="Ke Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_penerima_hps_dirops_ke_dirut')" name="persetujuan_jabatan_penerima_hps_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td scope="row">9</td>
+                                                                                                    <td>Nota Dinas Permohonan Pengadaan</td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_nota')" name="no_surat_nota" placeholder="No Surat"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_nota')" name="tgl_surat_nota" placeholder="Tanggal Surat"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_nota_dinas')" name="pengirim_nota_dinas" placeholder="Dari Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_nota_dinas')" name="jabatan_pengirim_nota_dinas" placeholder="Dari Nama Jabatan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_nota_dinas')" name="penerima_nota_dinas" placeholder="Ke Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_nota_dinas')" name="jabatan_penerima_nota_dinas" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                    <td></td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
