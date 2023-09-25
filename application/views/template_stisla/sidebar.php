@@ -87,9 +87,10 @@
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Modul 4 ANALISIS DATA</span></a>
                     <ul class="dropdown-menu">
                         <li><a class="nav-link" href="<?= base_url('admin/to_do_list') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Check To Do List</span></a></li>
-                        <li><a class="nav-link" href="<?= base_url('admin/analisa_tagihan') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Data Penyedia Jasa</span></a></li>
+                        <li><a class="nav-link" href="<?= base_url('admin/data_penyedia_jasa') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Data Penyedia Jasa</span></a></li>
                         <li><a class="nav-link" href="<?= base_url('admin/tracker') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Tracker</span></a></li>
-                        <li><a class="nav-link" href="<?= base_url('admin/analisa_tagihan') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Rekap Berkas</span></a></li>
+                        <li><a class="nav-link" href="<?= base_url('admin/analisa_tagihan') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Analisa Tagihan</span></a></li>
+                        <li><a class="nav-link" href="<?= base_url('traking_hps/traking_hps') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span> Harga Satuan</span></a></li>
                         <li><a class="nav-link" href="<?= base_url('traking_hps/traking_hps') ?>"><i class="fa fa-tag" aria-hidden="true"></i><span>Analisa Harga Satuan</span></a></li>
                         <li><a class="nav-link" href="<?= base_url('laporan_kinerja') ?>"><i class="fa fa-file" aria-hidden="true"></i><span>Laporan Kinerja</span></a></li>
                         <li><a class="nav-link" href="<?= base_url('rekapitulasi') ?>"><i class="fa fa-file" aria-hidden="true"></i><span>Rekapitulasi Berkas </span></a></li>

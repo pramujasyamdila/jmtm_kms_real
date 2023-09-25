@@ -17,18 +17,14 @@ class Data_kontrak_model extends CI_Model
         $this->db->where('mst_kontrak.sts_delete', '');
         if (isset($_POST['id_departemen'])) {
             $this->db->like('mst_kontrak.id_departemen', $_POST['id_departemen']);
-        } else {
-        }
+        } else { }
         if (isset($_POST['id_area'])) {
             $this->db->like('mst_kontrak.id_area', $_POST['id_area']);
-        } else {
-        }
+        } else { }
         if (isset($_POST['id_sub_area'])) {
             $this->db->like('mst_kontrak.id_sub_area', $_POST['id_sub_area']);
-        } else {
-        }
-        if ($id_departemen == 4) {
-        } else {
+        } else { }
+        if ($id_departemen == 4) { } else {
             if ($id_departemen && $id_area == 0 && $id_sub_area == 0) {
                 $this->db->where('mst_kontrak.id_departemen', $id_departemen);
             } else if ($id_departemen && $id_area && $id_sub_area == 0) {
@@ -95,18 +91,14 @@ class Data_kontrak_model extends CI_Model
         $this->db->where('mst_kontrak.sts_delete', '');
         if (isset($_POST['id_departemen'])) {
             $this->db->like('mst_kontrak.id_departemen', $_POST['id_departemen']);
-        } else {
-        }
+        } else { }
         if (isset($_POST['id_area'])) {
             $this->db->like('mst_kontrak.id_area', $_POST['id_area']);
-        } else {
-        }
+        } else { }
         if (isset($_POST['id_sub_area'])) {
             $this->db->like('mst_kontrak.id_sub_area', $_POST['id_sub_area']);
-        } else {
-        }
-        if ($id_departemen == 4) {
-        } else {
+        } else { }
+        if ($id_departemen == 4) { } else {
             if ($id_departemen && $id_area == 0 && $id_sub_area == 0) {
                 $this->db->where('mst_kontrak.id_departemen', $id_departemen);
                 $this->db->where('mst_kontrak.id_area', $id_area);
@@ -1343,8 +1335,7 @@ class Data_kontrak_model extends CI_Model
                 $this->db->or_like('nama_area', $keyword);
                 $this->db->or_like('nama_departemen', $keyword);
                 $this->db->or_like('nama_sub_area', $keyword);
-            } else {
-            }
+            } else { }
         } else {
             if ($keyword) {
                 $this->db->like('nama_pekerjaan_program_mata_anggaran', $keyword);
@@ -1354,8 +1345,7 @@ class Data_kontrak_model extends CI_Model
                 $this->db->or_like('nama_area', $keyword);
                 $this->db->or_like('nama_departemen', $keyword);
                 $this->db->or_like('nama_sub_area', $keyword);
-            } else {
-            }
+            } else { }
             if ($id_departemen && $id_area == 0 && $id_sub_area == 0) {
                 $this->db->where('mst_kontrak.id_departemen', $id_departemen);
             } else if ($id_departemen && $id_area && $id_sub_area == 0) {
@@ -6635,9 +6625,9 @@ class Data_kontrak_model extends CI_Model
         $this->db->join('mst_area', 'mst_kontrak.id_area = mst_area.id_area', 'left');
         $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area', 'left');
         $this->db->where('mst_kontrak.sts_delete', '');
-        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $id_departemen);
-        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $id_area);
-        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $sub_area);
+        // $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $id_departemen);
+        // $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $id_area);
+        // $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $sub_area);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -6649,8 +6639,10 @@ class Data_kontrak_model extends CI_Model
         $this->db->join('tbl_rapot_dummy', 'tbl_mc.id_mc = tbl_rapot_dummy.id_mc', 'left');
         $this->db->where('tbl_mc.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
         // $this->db->group_by('tbl_mc.id_detail_program_penyedia_jasa');
+        $this->db->where('tbl_rapot_dummy.pic', 'Vendor');
         $this->db->order_by('tbl_rapot_dummy.tanggal_rapot', 'desc');
-        $this->db->limit(1);
+        $this->db->group_by('tbl_mc.no_mc');
+        // $this->db->limit(1);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -6719,8 +6711,7 @@ class Data_kontrak_model extends CI_Model
         $this->db->join('mst_area', 'mst_kontrak.id_area = mst_area.id_area', 'left');
         $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area', 'left');
         $this->db->where('mst_kontrak.sts_delete', '');
-        if ($id_departemen == 4) {
-        } else {
+        if ($id_departemen == 4) { } else {
             if ($id_departemen && $id_area == 0 && $id_sub_area == 0) {
                 $this->db->where('mst_kontrak.id_departemen', $id_departemen);
             } else if ($id_departemen && $id_area && $id_sub_area == 0) {
