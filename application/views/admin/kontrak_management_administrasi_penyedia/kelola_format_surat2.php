@@ -63,7 +63,7 @@
                                                         <li class="nav-item">
                                                             <a class="nav-link" id="custom-tabs-two-persuratan-tab" data-toggle="pill" href="#custom-tabs-two-persuratan" role="tab" aria-controls="custom-tabs-two-persuratan" aria-selected="true">Persuratan</a>
                                                         </li>
-                                                        <li class="nav-item">
+                                                        <!-- <li class="nav-item">
                                                             <a class="nav-link" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Ijin Prinsip</a>
                                                         </li>
                                                         <li class="nav-item">
@@ -71,7 +71,7 @@
                                                         </li>
                                                         <li class="nav-item">
                                                             <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill" href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">Nota Dinas</a>
-                                                        </li>
+                                                        </li> -->
                                                         <li class="nav-item">
                                                             <a class="nav-link" onclick="Update()" id="custom-tabs-two-surat-tab" data-toggle="pill" href="#custom-tabs-two-surat" role="tab" aria-controls="custom-tabs-two-surat" aria-selected="false">Upload Surat</a>
                                                         </li>
@@ -949,8 +949,8 @@
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_pip_ca_ke_gm')" name="jabatan_pengirim_pip_ca_ke_gm" placeholder="Dari Nama Jabatan"></td>
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_pip_ca_ke_gm')" name="penerima_pip_ca_ke_gm" placeholder="Ke Nama"></td>
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_pip_ca_ke_gm')" name="jabatan_penerima_pip_ca_ke_gm" placeholder="Ke Nama Jabatan"></td>
-                                                                                                    <td></td>
-                                                                                                    <td></td>
+                                                                                                    <td><label for="" title="Struktur Organisasi" class="badge badge-info"><i class="fa fa-info-circle" aria-hidden="true"></i></label></td>
+                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip1/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                                     <td></td>
                                                                                                 </tr>
                                                                                                 <tr>
@@ -963,7 +963,7 @@
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_pip_gm_ke_dirops')" name="penerima_pip_gm_ke_dirops" placeholder="Ke Nama"></td>
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_pip_gm_ke_dirops')" name="jabatan_penerima_pip_gm_ke_dirops" placeholder="Ke Nama Jabatan"></td>
                                                                                                     <td></td>
-                                                                                                    <td></td>
+                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip2/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                                     <td></td>
                                                                                                 </tr>
                                                                                                 <tr>
@@ -976,7 +976,7 @@
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_pip_dirops_ke_dirut')" name="penerima_pip_dirops_ke_dirut" placeholder="Ke Nama"></td>
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_pip_dirops_ke_dirut')" name="jabatan_penerima_pip_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
                                                                                                     <td></td>
-                                                                                                    <td></td>
+                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip3/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                                     <td></td>
                                                                                                 </tr>
                                                                                                 <tr>
@@ -989,7 +989,7 @@
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_penerima_pip_dirops_ke_dirut')" name="persetujuan_penerima_pip_dirops_ke_dirut" placeholder="Ke Nama"></td>
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_penerima_pip_dirops_ke_dirut')" name="persetujuan_jabatan_penerima_pip_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
                                                                                                     <td></td>
-                                                                                                    <td></td>
+                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip_persetujuan/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                                     <td></td>
                                                                                                 </tr>
                                                                                                 <tr>
@@ -1002,7 +1002,7 @@
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_hps_ca_ke_gm')" name="penerima_hps_ca_ke_gm" placeholder="Ke Nama"></td>
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_hps_ca_ke_gm')" name="jabatan_penerima_hps_ca_ke_gm" placeholder="Ke Nama Jabatan"></td>
                                                                                                     <td></td>
-                                                                                                    <td></td>
+                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps1/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                                     <td></td>
                                                                                                 </tr>
                                                                                                 <tr>
@@ -1015,7 +1015,7 @@
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_hps_gm_ke_dirops')" name="penerima_hps_gm_ke_dirops" placeholder="Ke Nama"></td>
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_hps_gm_ke_dirops')" name="jabatan_penerima_hps_gm_ke_dirops" placeholder="Ke Nama Jabatan"></td>
                                                                                                     <td></td>
-                                                                                                    <td></td>
+                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps2/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                                     <td></td>
                                                                                                 </tr>
                                                                                                 <tr>
@@ -1028,7 +1028,7 @@
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_hps_dirops_ke_dirut')" name="penerima_hps_dirops_ke_dirut" placeholder="Ke Nama"></td>
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_hps_dirops_ke_dirut')" name="jabatan_penerima_hps_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
                                                                                                     <td></td>
-                                                                                                    <td></td>
+                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps3/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                                     <td></td>
                                                                                                 </tr>
                                                                                                 <tr>
@@ -1041,7 +1041,7 @@
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_penerima_hps_dirops_ke_dirut')" name="persetujuan_penerima_hps_dirops_ke_dirut" placeholder="Ke Nama"></td>
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_penerima_hps_dirops_ke_dirut')" name="persetujuan_jabatan_penerima_hps_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
                                                                                                     <td></td>
-                                                                                                    <td></td>
+                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps_persetujuan/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                                     <td></td>
                                                                                                 </tr>
                                                                                                 <tr>
@@ -1054,7 +1054,7 @@
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_nota_dinas')" name="penerima_nota_dinas" placeholder="Ke Nama"></td>
                                                                                                     <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_nota_dinas')" name="jabatan_penerima_nota_dinas" placeholder="Ke Nama Jabatan"></td>
                                                                                                     <td></td>
-                                                                                                    <td></td>
+                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_nota_dinas/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                                     <td></td>
                                                                                                 </tr>
                                                                                             </tbody>

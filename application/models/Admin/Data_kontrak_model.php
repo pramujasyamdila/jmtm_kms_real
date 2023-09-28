@@ -6625,9 +6625,9 @@ class Data_kontrak_model extends CI_Model
         $this->db->join('mst_area', 'mst_kontrak.id_area = mst_area.id_area', 'left');
         $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area', 'left');
         $this->db->where('mst_kontrak.sts_delete', '');
-        // $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $id_departemen);
-        // $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $id_area);
-        // $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $sub_area);
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $id_departemen);
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $id_area);
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $sub_area);
         $query = $this->db->get();
         return $query->result_array();
     }

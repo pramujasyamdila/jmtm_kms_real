@@ -3092,8 +3092,7 @@ class Administrasi_penyedia extends CI_Controller
     {
         $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
         $papenkon = $this->input->post('papenkon');
-        if ($papenkon == null) {
-        } else {
+        if ($papenkon == null) { } else {
             $where_sub = [
                 'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa
             ];
@@ -3725,8 +3724,7 @@ class Administrasi_penyedia extends CI_Controller
                 'lampiran_smk' => $lampiran_smk,
             ];
             $this->Data_kontrak_model->update_rup($where, $data);
-        } else {
-        }
+        } else { }
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
     // UNTUK UPDATE SURAT
@@ -3820,6 +3818,7 @@ class Administrasi_penyedia extends CI_Controller
     }
 
     // formating pdf
+    // formating pip
     public function cetak_pip1($id_detail_program_penyedia_jasa)
     {
         $data['id_detail_program_penyedia_jasa'] = $id_detail_program_penyedia_jasa;
@@ -3831,6 +3830,7 @@ class Administrasi_penyedia extends CI_Controller
         $count_multi_yeras = $this->Data_kontrak_model->count_multi_yeras($id_detail_program_penyedia_jasa);
         $get_row_addendum_administrasi_terakhir = $this->Data_kontrak_model->get_row_addendum_administrasi_terakhir($id_detail_program_penyedia_jasa);
         $total_kontrak_addendum = $row_detail['total_kontrak_addendum_' . $get_row_addendum_administrasi_terakhir['no_addendum']];
+        $result_sub_program = $this->Data_kontrak_model->result_sub_program($id_detail_program_penyedia_jasa);
         $data = [
             'row_program_detail' => $row_detail,
             'data_spm' => $data_spm,
@@ -3839,11 +3839,11 @@ class Administrasi_penyedia extends CI_Controller
             'data_teknis' => $data_teknis,
             'count_multi_yeras' => $count_multi_yeras,
             'row_administrasi_addedum' => $get_row_addendum_administrasi_terakhir,
-            'total_kontrak_addendum' => $total_kontrak_addendum
+            'total_kontrak_addendum' => $total_kontrak_addendum,
+            'result_sub_program' => $result_sub_program
         ];
         $this->load->view('admin/print/cetak_pip1', $data);
     }
-
 
     public function cetak_pip2($id_detail_program_penyedia_jasa)
     {
@@ -3856,6 +3856,7 @@ class Administrasi_penyedia extends CI_Controller
         $count_multi_yeras = $this->Data_kontrak_model->count_multi_yeras($id_detail_program_penyedia_jasa);
         $get_row_addendum_administrasi_terakhir = $this->Data_kontrak_model->get_row_addendum_administrasi_terakhir($id_detail_program_penyedia_jasa);
         $total_kontrak_addendum = $row_detail['total_kontrak_addendum_' . $get_row_addendum_administrasi_terakhir['no_addendum']];
+        $result_sub_program = $this->Data_kontrak_model->result_sub_program($id_detail_program_penyedia_jasa);
         $data = [
             'row_program_detail' => $row_detail,
             'data_spm' => $data_spm,
@@ -3864,12 +3865,13 @@ class Administrasi_penyedia extends CI_Controller
             'data_teknis' => $data_teknis,
             'count_multi_yeras' => $count_multi_yeras,
             'row_administrasi_addedum' => $get_row_addendum_administrasi_terakhir,
-            'total_kontrak_addendum' => $total_kontrak_addendum
+            'total_kontrak_addendum' => $total_kontrak_addendum,
+            'result_sub_program' => $result_sub_program,
         ];
         $this->load->view('admin/print/cetak_pip2', $data);
     }
 
-    public function cetak_pip_persejutuan($id_detail_program_penyedia_jasa)
+    public function cetak_pip3($id_detail_program_penyedia_jasa)
     {
         $data['id_detail_program_penyedia_jasa'] = $id_detail_program_penyedia_jasa;
         $row_detail = $this->Data_kontrak_model->getByid_detail_program_penyedia_jasa($id_detail_program_penyedia_jasa);
@@ -3880,6 +3882,7 @@ class Administrasi_penyedia extends CI_Controller
         $count_multi_yeras = $this->Data_kontrak_model->count_multi_yeras($id_detail_program_penyedia_jasa);
         $get_row_addendum_administrasi_terakhir = $this->Data_kontrak_model->get_row_addendum_administrasi_terakhir($id_detail_program_penyedia_jasa);
         $total_kontrak_addendum = $row_detail['total_kontrak_addendum_' . $get_row_addendum_administrasi_terakhir['no_addendum']];
+        $result_sub_program = $this->Data_kontrak_model->result_sub_program($id_detail_program_penyedia_jasa);
         $data = [
             'row_program_detail' => $row_detail,
             'data_spm' => $data_spm,
@@ -3888,10 +3891,176 @@ class Administrasi_penyedia extends CI_Controller
             'data_teknis' => $data_teknis,
             'count_multi_yeras' => $count_multi_yeras,
             'row_administrasi_addedum' => $get_row_addendum_administrasi_terakhir,
-            'total_kontrak_addendum' => $total_kontrak_addendum
+            'total_kontrak_addendum' => $total_kontrak_addendum,
+            'result_sub_program' => $result_sub_program,
+        ];
+        $this->load->view('admin/print/cetak_pip3', $data);
+    }
+
+    public function cetak_pip_persetujuan($id_detail_program_penyedia_jasa)
+    {
+        $data['id_detail_program_penyedia_jasa'] = $id_detail_program_penyedia_jasa;
+        $row_detail = $this->Data_kontrak_model->getByid_detail_program_penyedia_jasa($id_detail_program_penyedia_jasa);
+        $data_spm = $this->Data_kontrak_model->get_result_detail_smp($id_detail_program_penyedia_jasa);
+        $data_multi_years = $this->Data_kontrak_model->get_result_detail_multiyears($id_detail_program_penyedia_jasa);
+        $data_administrasi = $this->Data_kontrak_model->get_result_detail_administrasi($id_detail_program_penyedia_jasa);
+        $data_teknis = $this->Data_kontrak_model->get_result_detail_teknis($id_detail_program_penyedia_jasa);
+        $count_multi_yeras = $this->Data_kontrak_model->count_multi_yeras($id_detail_program_penyedia_jasa);
+        $get_row_addendum_administrasi_terakhir = $this->Data_kontrak_model->get_row_addendum_administrasi_terakhir($id_detail_program_penyedia_jasa);
+        $total_kontrak_addendum = $row_detail['total_kontrak_addendum_' . $get_row_addendum_administrasi_terakhir['no_addendum']];
+        $result_sub_program = $this->Data_kontrak_model->result_sub_program($id_detail_program_penyedia_jasa);
+        $data = [
+            'row_program_detail' => $row_detail,
+            'data_spm' => $data_spm,
+            'data_multi_years' => $data_multi_years,
+            'data_administrasi' => $data_administrasi,
+            'data_teknis' => $data_teknis,
+            'count_multi_yeras' => $count_multi_yeras,
+            'row_administrasi_addedum' => $get_row_addendum_administrasi_terakhir,
+            'total_kontrak_addendum' => $total_kontrak_addendum,
+            'result_sub_program' => $result_sub_program
         ];
         $this->load->view('admin/print/cetak_pip_persetujuan', $data);
     }
+
+    // end formating pip
+
+    // formating hps
+    public function cetak_hps1($id_detail_program_penyedia_jasa)
+    {
+        $data['id_detail_program_penyedia_jasa'] = $id_detail_program_penyedia_jasa;
+        $row_detail = $this->Data_kontrak_model->getByid_detail_program_penyedia_jasa($id_detail_program_penyedia_jasa);
+        $data_spm = $this->Data_kontrak_model->get_result_detail_smp($id_detail_program_penyedia_jasa);
+        $data_multi_years = $this->Data_kontrak_model->get_result_detail_multiyears($id_detail_program_penyedia_jasa);
+        $data_administrasi = $this->Data_kontrak_model->get_result_detail_administrasi($id_detail_program_penyedia_jasa);
+        $data_teknis = $this->Data_kontrak_model->get_result_detail_teknis($id_detail_program_penyedia_jasa);
+        $count_multi_yeras = $this->Data_kontrak_model->count_multi_yeras($id_detail_program_penyedia_jasa);
+        $get_row_addendum_administrasi_terakhir = $this->Data_kontrak_model->get_row_addendum_administrasi_terakhir($id_detail_program_penyedia_jasa);
+        $total_kontrak_addendum = $row_detail['total_kontrak_addendum_' . $get_row_addendum_administrasi_terakhir['no_addendum']];
+        $result_sub_program = $this->Data_kontrak_model->result_sub_program($id_detail_program_penyedia_jasa);
+        $data = [
+            'row_program_detail' => $row_detail,
+            'data_spm' => $data_spm,
+            'data_multi_years' => $data_multi_years,
+            'data_administrasi' => $data_administrasi,
+            'data_teknis' => $data_teknis,
+            'count_multi_yeras' => $count_multi_yeras,
+            'row_administrasi_addedum' => $get_row_addendum_administrasi_terakhir,
+            'total_kontrak_addendum' => $total_kontrak_addendum,
+            'result_sub_program' => $result_sub_program
+        ];
+        $this->load->view('admin/print/cetak_hps1', $data);
+    }
+
+    public function cetak_hps2($id_detail_program_penyedia_jasa)
+    {
+        $data['id_detail_program_penyedia_jasa'] = $id_detail_program_penyedia_jasa;
+        $row_detail = $this->Data_kontrak_model->getByid_detail_program_penyedia_jasa($id_detail_program_penyedia_jasa);
+        $data_spm = $this->Data_kontrak_model->get_result_detail_smp($id_detail_program_penyedia_jasa);
+        $data_multi_years = $this->Data_kontrak_model->get_result_detail_multiyears($id_detail_program_penyedia_jasa);
+        $data_administrasi = $this->Data_kontrak_model->get_result_detail_administrasi($id_detail_program_penyedia_jasa);
+        $data_teknis = $this->Data_kontrak_model->get_result_detail_teknis($id_detail_program_penyedia_jasa);
+        $count_multi_yeras = $this->Data_kontrak_model->count_multi_yeras($id_detail_program_penyedia_jasa);
+        $get_row_addendum_administrasi_terakhir = $this->Data_kontrak_model->get_row_addendum_administrasi_terakhir($id_detail_program_penyedia_jasa);
+        $total_kontrak_addendum = $row_detail['total_kontrak_addendum_' . $get_row_addendum_administrasi_terakhir['no_addendum']];
+        $result_sub_program = $this->Data_kontrak_model->result_sub_program($id_detail_program_penyedia_jasa);
+        $data = [
+            'row_program_detail' => $row_detail,
+            'data_spm' => $data_spm,
+            'data_multi_years' => $data_multi_years,
+            'data_administrasi' => $data_administrasi,
+            'data_teknis' => $data_teknis,
+            'count_multi_yeras' => $count_multi_yeras,
+            'row_administrasi_addedum' => $get_row_addendum_administrasi_terakhir,
+            'total_kontrak_addendum' => $total_kontrak_addendum,
+            'result_sub_program' => $result_sub_program
+        ];
+        $this->load->view('admin/print/cetak_hps2', $data);
+    }
+
+    public function cetak_hps3($id_detail_program_penyedia_jasa)
+    {
+        $data['id_detail_program_penyedia_jasa'] = $id_detail_program_penyedia_jasa;
+        $row_detail = $this->Data_kontrak_model->getByid_detail_program_penyedia_jasa($id_detail_program_penyedia_jasa);
+        $data_spm = $this->Data_kontrak_model->get_result_detail_smp($id_detail_program_penyedia_jasa);
+        $data_multi_years = $this->Data_kontrak_model->get_result_detail_multiyears($id_detail_program_penyedia_jasa);
+        $data_administrasi = $this->Data_kontrak_model->get_result_detail_administrasi($id_detail_program_penyedia_jasa);
+        $data_teknis = $this->Data_kontrak_model->get_result_detail_teknis($id_detail_program_penyedia_jasa);
+        $count_multi_yeras = $this->Data_kontrak_model->count_multi_yeras($id_detail_program_penyedia_jasa);
+        $get_row_addendum_administrasi_terakhir = $this->Data_kontrak_model->get_row_addendum_administrasi_terakhir($id_detail_program_penyedia_jasa);
+        $total_kontrak_addendum = $row_detail['total_kontrak_addendum_' . $get_row_addendum_administrasi_terakhir['no_addendum']];
+        $result_sub_program = $this->Data_kontrak_model->result_sub_program($id_detail_program_penyedia_jasa);
+        $data = [
+            'row_program_detail' => $row_detail,
+            'data_spm' => $data_spm,
+            'data_multi_years' => $data_multi_years,
+            'data_administrasi' => $data_administrasi,
+            'data_teknis' => $data_teknis,
+            'count_multi_yeras' => $count_multi_yeras,
+            'row_administrasi_addedum' => $get_row_addendum_administrasi_terakhir,
+            'total_kontrak_addendum' => $total_kontrak_addendum,
+            'result_sub_program' => $result_sub_program
+        ];
+        $this->load->view('admin/print/cetak_hps3', $data);
+    }
+
+    public function cetak_hps_persetujuan($id_detail_program_penyedia_jasa)
+    {
+        $data['id_detail_program_penyedia_jasa'] = $id_detail_program_penyedia_jasa;
+        $row_detail = $this->Data_kontrak_model->getByid_detail_program_penyedia_jasa($id_detail_program_penyedia_jasa);
+        $data_spm = $this->Data_kontrak_model->get_result_detail_smp($id_detail_program_penyedia_jasa);
+        $data_multi_years = $this->Data_kontrak_model->get_result_detail_multiyears($id_detail_program_penyedia_jasa);
+        $data_administrasi = $this->Data_kontrak_model->get_result_detail_administrasi($id_detail_program_penyedia_jasa);
+        $data_teknis = $this->Data_kontrak_model->get_result_detail_teknis($id_detail_program_penyedia_jasa);
+        $count_multi_yeras = $this->Data_kontrak_model->count_multi_yeras($id_detail_program_penyedia_jasa);
+        $get_row_addendum_administrasi_terakhir = $this->Data_kontrak_model->get_row_addendum_administrasi_terakhir($id_detail_program_penyedia_jasa);
+        $total_kontrak_addendum = $row_detail['total_kontrak_addendum_' . $get_row_addendum_administrasi_terakhir['no_addendum']];
+        $result_sub_program = $this->Data_kontrak_model->result_sub_program($id_detail_program_penyedia_jasa);
+        $data = [
+            'row_program_detail' => $row_detail,
+            'data_spm' => $data_spm,
+            'data_multi_years' => $data_multi_years,
+            'data_administrasi' => $data_administrasi,
+            'data_teknis' => $data_teknis,
+            'count_multi_yeras' => $count_multi_yeras,
+            'row_administrasi_addedum' => $get_row_addendum_administrasi_terakhir,
+            'total_kontrak_addendum' => $total_kontrak_addendum,
+            'result_sub_program' => $result_sub_program
+        ];
+        $this->load->view('admin/print/cetak_hps_persetujuan', $data);
+    }
+    // end formating hps
+
+    // nota dinas
+
+    public function cetak_nota_dinas($id_detail_program_penyedia_jasa)
+    {
+        $data['id_detail_program_penyedia_jasa'] = $id_detail_program_penyedia_jasa;
+        $row_detail = $this->Data_kontrak_model->getByid_detail_program_penyedia_jasa($id_detail_program_penyedia_jasa);
+        $data_spm = $this->Data_kontrak_model->get_result_detail_smp($id_detail_program_penyedia_jasa);
+        $data_multi_years = $this->Data_kontrak_model->get_result_detail_multiyears($id_detail_program_penyedia_jasa);
+        $data_administrasi = $this->Data_kontrak_model->get_result_detail_administrasi($id_detail_program_penyedia_jasa);
+        $data_teknis = $this->Data_kontrak_model->get_result_detail_teknis($id_detail_program_penyedia_jasa);
+        $count_multi_yeras = $this->Data_kontrak_model->count_multi_yeras($id_detail_program_penyedia_jasa);
+        $get_row_addendum_administrasi_terakhir = $this->Data_kontrak_model->get_row_addendum_administrasi_terakhir($id_detail_program_penyedia_jasa);
+        $total_kontrak_addendum = $row_detail['total_kontrak_addendum_' . $get_row_addendum_administrasi_terakhir['no_addendum']];
+        $result_sub_program = $this->Data_kontrak_model->result_sub_program($id_detail_program_penyedia_jasa);
+        $data = [
+            'row_program_detail' => $row_detail,
+            'data_spm' => $data_spm,
+            'data_multi_years' => $data_multi_years,
+            'data_administrasi' => $data_administrasi,
+            'data_teknis' => $data_teknis,
+            'count_multi_yeras' => $count_multi_yeras,
+            'row_administrasi_addedum' => $get_row_addendum_administrasi_terakhir,
+            'total_kontrak_addendum' => $total_kontrak_addendum,
+            'result_sub_program' => $result_sub_program
+        ];
+        $this->load->view('admin/print/cetak_nota_dinas', $data);
+    }
+    // end nota dinas
+
+    // end formating pdf
 
     public function generate_upload_surat()
     {
@@ -3899,8 +4068,7 @@ class Administrasi_penyedia extends CI_Controller
         $row_program  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
         $flow = $row_program['flow_pra_dokumen_kontrak'];
         $cek_tbl_monitoring = $this->Data_kontrak_model->cek_tbl_monitoring($id_detail_program_penyedia_jasa, $flow);
-        if ($cek_tbl_monitoring) {
-        } else {
+        if ($cek_tbl_monitoring) { } else {
             if ($flow == 'Flow 1') {
                 $this->Data_kontrak_model->delete_flow_2($id_detail_program_penyedia_jasa);
             } else {
@@ -4067,8 +4235,7 @@ class Administrasi_penyedia extends CI_Controller
     {
         $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
         $cek_tbl_dokumen_surat_pasca = $this->Data_kontrak_model->cek_tbl_dokumen_surat_pasca($id_detail_program_penyedia_jasa);
-        if ($cek_tbl_dokumen_surat_pasca) {
-        } else {
+        if ($cek_tbl_dokumen_surat_pasca) { } else {
             $data_1 = [
                 'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                 'nama_file' => 'Gunning',
@@ -4270,8 +4437,7 @@ class Administrasi_penyedia extends CI_Controller
             ];
             $this->Data_kontrak_model->update_urutan_detail_capex_5($where, $data);
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-        } else {
-        }
+        } else { }
     }
 
     public function get_detail_sub_program($id_detail_sub_program_penyedia_jasa)

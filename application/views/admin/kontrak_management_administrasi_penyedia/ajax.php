@@ -1388,7 +1388,10 @@
             dataType: "JSON",
             success: function(response) {
                 if (response == 'success') {
-                    Kelola_surat()
+                    setTimeout(() => {
+                        Kelola_surat()
+                    }, 5000);
+
                 }
             }
         })
@@ -1419,7 +1422,9 @@
             dataType: "JSON",
             success: function(response) {
                 if (response == 'success') {
-                    Kelola_surat()
+                    setTimeout(() => {
+                        Kelola_surat()
+                    }, 5000);
                 }
             }
         })
@@ -2150,7 +2155,7 @@
 </script>
 
 <script>
-        function copy_administrasi_text() {
+    function copy_administrasi_text() {
         // Get the text field
         var copyText = document.getElementById("administrasi_text");
 
@@ -2164,6 +2169,7 @@
         // Alert the copied text
         alert("Copied the text: " + copyText.value);
     }
+
     function copy_teknis_text() {
         // Get the text field
         var copyText = document.getElementById("teknis_text");

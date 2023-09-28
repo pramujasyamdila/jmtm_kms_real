@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Persetujuan Izin Prinsip DIROPS ke GM</title>
+    <title>Persetujuan Izin Prinsip DIRUT ke DIROPS</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,13 +17,14 @@
 
 <body style="font-size: 13px;">
     <div class="container">
+        <!-- <a target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip1/' . $row_program['id_detail_program_penyedia_jasa']) ?>" class="btn btn-sm btn-primary">Cetak <i class="fa fa-print"></i></a> -->
         <div class="row">
             <div class="col-md-6">
                 <img src="https://jmtm.co.id/assets/img_jmtm/logo.png" alt="" width="300px" style="margin-top:50px">
             </div>
         </div><br><br>
-        <input type="hidden" name="type_pip_number" value="3">
-        <input type="hidden" name="id_detail_program_penyedia_jasa">
+        <input type="hidden" name="type_pip_number" value="1">
+        <input type="hidden" name="id_detail_program_penyedia_jasa" value="<?= $id_detail_program_penyedia_jasa ?>">
         <div class="row">
             <div class="col-md-1">
                 <label for="" style="margin-right: auto;">Nomor</label>
@@ -32,14 +33,15 @@
                 <label for="" style="margin-right: auto;"> :</label>
             </div>
             <div class="col-md-4">
-                <label for="" style="margin-left: -90px;"><?= $row_program_detail['no_surat_pip_dirops_ke_dirut'] ?></label>
+                <label for="" style="margin-left: -90px;"><?= $row_program_detail['no_surat_persetujuan_pip_dirops_ke_dirut'] ?></label>
             </div>
             <div class="col-md-2">
             </div>
             <div class="col-md-2">
             </div>
             <div class="col-md-2">
-                <label for="" style="margin-left: -90px;"><?= $row_program_detail['tgl_surat_pip_dirops_ke_dirut'] ?></label>
+                <label><?= $row_program_detail['tgl_surat_persetujuan_pip_dirops_ke_dirut'] ?></label>
+
             </div>
         </div>
         <div class="row">
@@ -50,7 +52,7 @@
                 <label for="" style="margin-right: auto;"> :</label>
             </div>
             <div class="col-md-4">
-                <input type="text" class="" style="margin-left: -80px;" name="lampiran_pip_dirops_ke_dirut" placeholder="Lampiran">
+                <label for="" style="margin-left: -90px;">Lampiran : 1 (Satu) Berkas</label>
             </div>
             <div class="col-md-2">
             </div>
@@ -64,15 +66,15 @@
                 <label for="" style="margin-right: auto;">Perihal</label>
             </div>
             <div class="col-md-11">
-                <label for="" style="margin-left: auto;">:
-                    <b> Pengajuan Permohonan Izin Prinsip Pengadaan <input type="text" name="jenis_pengadaan"> <b for="" class="nama_pekerjaan"></b></b>
+                <label for="" style="margin-left: auto;">
+                    : <b> Persetujuan Izin Prinsip Pengadaan <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label> </b></b>
                 </label>
             </div>
         </div>
         <div class="mt-5">
             Yth.
             <br>
-            <b> Direktur Utama</b> <br>
+            <b> <label for=""><?= $row_program_detail['nama_departemen'] ?></label> Direktur Operasional</b> <br>
             PT Jasamarga Tollroad Maintenance <br>
             Gedung C PT Jasa Marga (Persero) Tbk, Lt.1 <br>
             Plaza Tol Taman Mini Indonesia Indah, Jakarta 13550
@@ -83,8 +85,8 @@
             <div class="row">
                 <div class="col-md-12">
                     Sehubungan deengan akan dilaksanakannya <b>Pengadaan <b for="" class="jenis_pengadaan"></b>
-                        <b for="" class="nama_pekerjaan"></b></b>, bersama ini kami mengajukan permohonan izin
-                    prinsip pengadaan pekerjaan dimaksud dengan penjelasan sebagai berikut :
+                        <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label>, bersama ini kami mengajukan Persetujuan izin
+                        prinsip pengadaan pekerjaan dimaksud dengan penjelasan sebagai berikut :
                 </div>
             </div>
         </div>
@@ -97,7 +99,7 @@
                     <label for="">1. Lokasi Pekerjaan</label>
                 </div>
                 <div class="col-md-10">
-                    <label for="">: Ruas Jalan Tol <label for="" class="nama_area"></label></label>
+                    <label for="">: Ruas Jalan Tol <label><?= $row_program_detail['nama_area'] ?></label></label>
                 </div>
             </div>
             <div class="row">
@@ -106,13 +108,10 @@
                 </div>
                 <div class="col-md-10">
                     <label for="">: Pemenuhan Standar Pelayanan Minimal (SPM) Subtansi Pelayanan
-                        <select name="id_spm" onchange="pilih_spm()">
-                            <option value="">-- Pilih SPM --</option>
-                            <?php foreach ($get_spm as $key => $value) { ?>
-                                <option value="<?= $value['id_spm'] ?>"><?= $value['nama_spm'] ?></option>
-                            <?php } ?>
-                        </select><br>
-                        <div class="result_spm"></div>
+                        <!-- <br> -->
+                        <?php foreach ($data_spm as $key => $value) { ?>
+                            <label for=""><?= $value['nama_spm'] ?></label>,
+                        <?php } ?>
                     </label>
                 </div>
             </div>
@@ -127,12 +126,12 @@
                     <label for="">1. Pekerjaan</label>
                 </div>
                 <div class="col-md-9">
-                    <label for="">: <b for="" class="nama_pekerjaan"></b></label>
+                    <label for="">: <b> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label> </b></label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label for="">2. Pagu Biaya</label>
+                    <label for="">2. Pagu Biaya RKAP</label>
                 </div>
                 <div class="col-md-9">
                     <?php
@@ -175,7 +174,18 @@
                         return $hasil;
                     }
                     ?>
-                    <label for="">: <input type="text" name="pagu_biaya" id="pagu_biaya"> - <input type="text" id="tanpa-rupiah2" name="pagu_biaya" disabled> termasuk PPN 11%</label>
+                    <?php
+                    $total_pagu = 0;
+                    $total_hps = 0;
+                    ?>
+                    <?php foreach ($result_sub_program as $key => $value) { ?>
+
+                        <?php
+                        $total_pagu += $value['nilai_program_mata_anggran'];
+                        $total_hps += $value['nilai_hps'];
+                        ?>
+                    <?php  } ?>
+                    <label for="">: <b><?= number_format($total_pagu, 2, ',', '.'); ?> </b> (<?= terbilang($total_pagu) ?>) termasuk PPN 11%</label>
                 </div>
             </div>
             <div class="row">
@@ -185,8 +195,8 @@
                 <div class="col-md-9">
                     <input type="hidden" name="perkiraan_biaya_pip">
                     <label for="">:
-                        <b class="total_hps_mata_anggaran"></b>
-                        ( <b class="terbilang_hps"></b> ) termasuk PPN 11%</label>
+                        <!-- <b class="total_hps_mata_anggaran"></b> -->
+                        <b class="terbilang_hps"> <?= number_format($total_hps, 2, ',', '.'); ?></b> (<?= terbilang($total_hps) ?>) termasuk PPN 11%</label>
                 </div>
             </div>
             <div class="row">
@@ -384,14 +394,14 @@
                     <label for="">4. Waktu Pelaksanaan</label>
                 </div>
                 <div class="col-md-9">
-                    <label for="">: <input type="text" name="waktu_pelaksanaan_pip"> Hari kalender</label>
+                    <label for="">: <?= $row_program_detail['waktu_pelaksanaan_pip'] ?> (<?= terbilang($row_program_detail['waktu_pelaksanaan_pip']) ?>) Hari kalender</label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
                     <label for="">5. Waktu Pemeliharaan</label>
                 </div>
-                <div class="col-md-9"><label for="">: <input type="text" name="waktu_pemeliharaan_pip">Hari kalender</label>
+                <div class="col-md-9"><label for="">: <?= $row_program_detail['waktu_pemeliharaan_pip'] ?> (<?= terbilang($row_program_detail['waktu_pemeliharaan_pip']) ?>) Hari kalender</label>
                 </div>
             </div>
             <div class="row">
@@ -399,7 +409,7 @@
                     <label for="">6. Metode Pengadaan</label>
                 </div>
                 <div class="col-md-9">
-                    <label for="">: <b for="" class="jenis_pengadaan"></b></label>
+                    <label for="">: <?= $row_program_detail['metode_pengadaan_sk'] ?> dengan Pra/Pasca Kualifikasi secara Elektronik (E-Procurement)</label>
                 </div>
             </div>
             <div class="row">
@@ -407,77 +417,41 @@
                     <label for="">7. Pembebanan Biaya</label>
                 </div>
                 <div class="col-md-9">
-                    <label for="">: RKAP CAPEX PT Jasamarga Tollroad Maintenance Area <label for="" class="nama_area"></label></label>
-                    <select name="sts_tahun_pembebanan" onchange="pilih_sts_tahun()" id="">
-                        <option value="">-- Pilih --</option>
-                        <option value="single_years">Single Years</option>
-                        <option value="multi_years">Multi Years</option>
-                    </select>
+                    <label for="">: Mata Anggaran <?= $row_program_detail['jenis_anggaran'] ?> PT Jasamarga Tollroad Maintenance Area <?= $row_program_detail['nama_area']  ?></label>
+                    <!-- <label for="">:
+                        <?php if ($row_program_detail['sts_tahun_pembebanan'] == 'single_years') { ?>
+                                                                                                                                                    <label for="">Single Years</label>
+                        <?php } else { ?>
+                                                                                                                                                    <label for="">Multi Years</label>
+                        <?php } ?>
+                    </label>
                     <br>
-                    <div id="pilih_tahun">
-                        <select name="tahun_multiyers" onchange="add_multi_years()">
-                            <option value="">-- Pilih --</option>
-                            <?php $i = 0;
-                            for ($i = 1; $i <= 30; $i++) {  ?>
-                                <option class="p-2" value="202<?= $i ?>">202<?= $i ?></option>
-                            <?php  } ?>
-                        </select>
-                    </div>
-                    <div class="result_multiyears"></div>
+                    <?php if ($row_program_detail['sts_tahun_pembebanan'] == 'single_years') { ?>
+
+                    <?php } else { ?>
+                                                                                                                                                <?php foreach ($data_multi_years as $key => $value) { ?>
+                                                                                                                                                                                                                                                                            <label for=""><?= $value['tahun_multiyers'] ?></label>,
+                                                                                                                                                <?php } ?>
+                    <?php } ?> -->
+
                 </div>
             </div>
         </div>
         <br>
-        <center class="mt-4">
-            <b>III. ALASAN METODE PEMILIHAN PENYEDIA JASA</b>
+        <br>
+        Menunjuk permohonan Saudara tersebut di atas dan memperhatikan ketentuan-ketentuan yang berlaku, maka dengan ini kami :
+        <br><br>
+        <br>
+        <center>
+            <h5><b>MENYETUJUI / TIDAK MENYETUJUI</b></h5>
         </center>
         <br>
-        <div class="row">
-            <div class="col-md-3">
-                <label for=""><b>1. Alasan Administrasi</b></label>
-            </div>
-        </div>
+        <br>
+        Permohonan Saudara untuk melaksanakan Pengadaan <?= $row_program_detail['jenis_pengadaan'] ?> <?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?> dengan berpedoman pada peraturan dan ketentuan yang berlaku.
 
-        <div style="margin-left: 40px;">
-            <div class="row">
-                <div class="col-md-6">
-                    <textarea name="nama_alasan_administrasi" id="" style="width:100%" rows="2"></textarea>
-                </div>
-                <div class="col-md-6" style="margin-top: 10px;">
-                    <label for=""><a href="javascript:;" class="btn btn-primary btn-sm" onclick="Simpan_alasan('administrasi')">Simpan</a></label>
-                </div>
-            </div>
-            <div id="alasan_administrasi"></div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <img class="mt-5" src="<?= base_url('assets/image/jmtm.png') ?>" alt="" width="350px">
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-md-3">
-                <label for=""><b>2. Alasan Teknis</b></label>
-            </div>
-        </div>
-        <div style="margin-left: 40px;">
-            <div class="row">
-                <div class="col-md-6">
-                    <textarea name="nama_alasan_teknis" id="" style="width:100%" rows="2"></textarea>
-                </div>
-                <div class="col-md-6" style="margin-top: 10px;">
-                    <label for=""><a href="javascript:;" class="btn btn-primary btn-sm" onclick="Simpan_alasan('teknis')">Simpan</a></label>
-                </div>
-            </div>
-            <div id="alasan_teknis"></div>
-        </div>
-        <br>
-        <br>
-        <br>
-        Demikian disampaikan, atas perhatian dan persetujuan Bapak, kami ucapkan Terima kasih.
-        <br><br>
+
+        Demikian kami sampaikan, untuk dapat dilaksanakan dengan baik dan penuh tanggung jawab.
+
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4"></div>
@@ -486,19 +460,14 @@
                     <br>
                     <br>
                     <br><br><br><br>
-                    <h5><input type="text" name="nama_dirops_ke_dirut"></h5>
-                    <div style="background-color:black;width:100%;height:3px">
-
-                    </div>
-                    <h5>Direktur Operasional
+                    <h5> <u style="text-transform: capitalize;"><?= $row_program_detail['persetujuan_pengirim_pip_dirops_ke_dirut'] ?></u></h5>
+                    <h5>Direktur Utama
                     </h5>
 
                 </center>
             </div>
         </div>
         <br><br>
-
-
     </div>
 
 
@@ -736,7 +705,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        window.print();
+        // window.print();
 
 
         Kelola_surat()

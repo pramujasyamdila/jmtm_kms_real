@@ -52,7 +52,7 @@
                 <label for="" style="margin-right: auto;"> :</label>
             </div>
             <div class="col-md-4">
-                <label for="" style="margin-left: -90px;"><?= $row_program_detail['lampiran_pip_ca_ke_gm'] ?></label>
+                <label for="" style="margin-left: -90px;">Lampiran : 1 (Satu) Berkas</label>
             </div>
             <div class="col-md-2">
             </div>
@@ -67,7 +67,7 @@
             </div>
             <div class="col-md-11">
                 <label for="" style="margin-left: auto;">
-                    : <b>Pengajuan Permohonan Izin Prinsip Pengadaan <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label> </b></b>
+                    : <b> Permohonan Izin Prinsip Pengadaan <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label> </b></b>
                 </label>
             </div>
         </div>
@@ -131,7 +131,7 @@
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label for="">2. Pagu Biaya</label>
+                    <label for="">2. Pagu Biaya RKAP</label>
                 </div>
                 <div class="col-md-9">
                     <?php
@@ -174,7 +174,18 @@
                         return $hasil;
                     }
                     ?>
-                    <label for="">: <input type="text" name="pagu_biaya" id="pagu_biaya"> - <input type="text" id="tanpa-rupiah2" name="pagu_biaya" disabled> termasuk PPN 11%</label>
+                    <?php
+                    $total_pagu = 0;
+                    $total_hps = 0;
+                    ?>
+                    <?php foreach ($result_sub_program as $key => $value) { ?>
+
+                        <?php
+                        $total_pagu += $value['nilai_program_mata_anggran'];
+                        $total_hps += $value['nilai_hps'];
+                        ?>
+                    <?php  } ?>
+                    <label for="">: <b><?= number_format($total_pagu, 2, ',', '.'); ?> </b> (<?= terbilang($total_pagu) ?>) termasuk PPN 11%</label>
                 </div>
             </div>
             <div class="row">
@@ -184,8 +195,8 @@
                 <div class="col-md-9">
                     <input type="hidden" name="perkiraan_biaya_pip">
                     <label for="">:
-                        <b class="total_hps_mata_anggaran"></b>
-                        ( <b class="terbilang_hps"></b> ) termasuk PPN 11%</label>
+                        <!-- <b class="total_hps_mata_anggaran"></b> -->
+                        <b class="terbilang_hps"> <?= number_format($total_hps, 2, ',', '.'); ?></b> (<?= terbilang($total_hps) ?>) termasuk PPN 11%</label>
                 </div>
             </div>
             <div class="row">
@@ -383,14 +394,14 @@
                     <label for="">4. Waktu Pelaksanaan</label>
                 </div>
                 <div class="col-md-9">
-                    <label for="">: <?= $row_program_detail['waktu_pelaksanaan_pip'] ?> Hari kalender</label>
+                    <label for="">: <?= $row_program_detail['waktu_pelaksanaan_pip'] ?> (<?= terbilang($row_program_detail['waktu_pelaksanaan_pip']) ?>) Hari kalender</label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
                     <label for="">5. Waktu Pemeliharaan</label>
                 </div>
-                <div class="col-md-9"><label for="">: <?= $row_program_detail['waktu_pemeliharaan_pip'] ?> Hari kalender</label>
+                <div class="col-md-9"><label for="">: <?= $row_program_detail['waktu_pemeliharaan_pip'] ?> (<?= terbilang($row_program_detail['waktu_pemeliharaan_pip']) ?>) Hari kalender</label>
                 </div>
             </div>
             <div class="row">
@@ -398,7 +409,7 @@
                     <label for="">6. Metode Pengadaan</label>
                 </div>
                 <div class="col-md-9">
-                    <label for="">: <?= $row_program_detail['jenis_pengadaan'] ?></label>
+                    <label for="">: <?= $row_program_detail['metode_pengadaan_sk'] ?> dengan Pra/Pasca Kualifikasi secara Elektronik (E-Procurement)</label>
                 </div>
             </div>
             <div class="row">
@@ -406,22 +417,22 @@
                     <label for="">7. Pembebanan Biaya</label>
                 </div>
                 <div class="col-md-9">
-                    <label for="">: RKAP CAPEX PT Jasamarga Tollroad Maintenance Area <label for="" class="nama_area"></label></label>
-                    <label for="">:
+                    <label for="">: Mata Anggaran <?= $row_program_detail['jenis_anggaran'] ?> PT Jasamarga Tollroad Maintenance Area <?= $row_program_detail['nama_area']  ?></label>
+                    <!-- <label for="">:
                         <?php if ($row_program_detail['sts_tahun_pembebanan'] == 'single_years') { ?>
-                            <label for="">Single Years</label>
+                                                                        <label for="">Single Years</label>
                         <?php } else { ?>
-                            <label for="">Multi Years</label>
+                                                                        <label for="">Multi Years</label>
                         <?php } ?>
                     </label>
                     <br>
                     <?php if ($row_program_detail['sts_tahun_pembebanan'] == 'single_years') { ?>
 
                     <?php } else { ?>
-                        <?php foreach ($data_multi_years as $key => $value) { ?>
-                            <label for=""><?= $value['tahun_multiyers'] ?></label>,
-                        <?php } ?>
-                    <?php } ?>
+                                                                    <?php foreach ($data_multi_years as $key => $value) { ?>
+                                                                                                                    <label for=""><?= $value['tahun_multiyers'] ?></label>,
+                                                                    <?php } ?>
+                    <?php } ?> -->
 
                 </div>
             </div>
@@ -478,7 +489,7 @@
                     <br>
                     <br>
                     <br><br><br><br>
-                    <h5> <u style="text-transform: capitalize;"><?= $row_program_detail['nama_ca_ke_gm'] ?></u></h5>
+                    <h5> <u style="text-transform: capitalize;"><?= $row_program_detail['pengirim_pip_ca_ke_gm'] ?></u></h5>
                     <h5>Coordinator Area
                     </h5>
 
@@ -723,7 +734,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        window.print();
+        // window.print();
 
 
         Kelola_surat()

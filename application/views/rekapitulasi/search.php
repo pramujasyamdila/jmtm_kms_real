@@ -14,6 +14,234 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 
             </h6>
         </div>
+
+        <div class="card">
+            <form action="<?= base_url('rekapitulasi/search') ?>" method="post">
+                <div class="row">
+                    <?php if ($id_departemen == 4) { ?>
+                        <div class="col-md-6">
+                            <select name="id_departemen" onchange="get_area1()" class="form-control id_departemen">
+                                <option value="">--Pilih Operasi--</option>
+                                <?php foreach ($get_departemen_all as $key => $value) { ?>
+                                    <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
+                                <?php  } ?>
+                            </select>
+                            <select name="id_area" id="get_area" onchange="get_sub_area1()" class="form-control id_area">
+                                <option value="">--Pilih Area--</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+
+                            <select name="id_sub_area" id="get_sub_area" class="form-control id_sub_area">
+                                <option value="">--Pilih Sub Area--</option>
+                            </select>
+                            <button type="submit" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</button>
+                        </div>
+
+                    <?php } else { ?>
+                        <?php if ($id_departemen && $id_area == 0 && $id_sub_area == 0) { ?>
+                            <div class="col-md-6">
+                                <select name="id_departemen" onchange="get_area2()" class="form-control">
+                                    <option value="">--Pilih Area--</option>
+                                    <?php foreach ($get_departemen as $key => $value) { ?>
+                                        <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
+                                    <?php  } ?>
+                                </select>
+                                <select name="id_area" id="get_area" onchange="get_sub_area2()" class="form-control">
+                                    <option value="">--Pilih Area--</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select name="id_sub_area" id="get_sub_area" class="form-control">
+                                    <option value="">--Pilih Sub Area--</option>
+                                </select>
+                                <button type="submit" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</button>
+                            </div>
+                        <?php  } else if ($id_departemen && $id_area && $id_sub_area == 0) { ?>
+                            <div class="col-md-6">
+                                <select name="id_departemen" class="form-control">
+                                    <option value="">--Pilih Operasi--</option>
+                                    <?php foreach ($get_departemen as $key => $value) { ?>
+                                        <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
+                                    <?php  } ?>
+                                </select>
+                                <select name="id_area" class="form-control" onchange="get_sub_area3()">
+                                    <option value="">--Pilih Area--</option>
+                                    <?php foreach ($get_area as $key => $value) { ?>
+                                        <option value="<?= $value['id_area'] ?>"><?= $value['nama_area'] ?></option>
+                                    <?php  } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select name="id_sub_area" id="get_sub_area" class="form-control">
+                                    <option value="">--Pilih Sub Area--</option>
+                                </select>
+                                <button type="submit" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</button>
+                            </div>
+
+
+                        <?php  } else if ($id_departemen && $id_area && $id_sub_area) { ?>
+                            <div class="col-md-6">
+                                <select name="id_departemen" class="form-control">
+                                    <option value="<?= $this->session->userdata('id_departemen') ?>"><?= $this->session->userdata('nama_departemen') ?></option>
+                                    <?php foreach ($get_departemen as $key => $value) { ?>
+                                        <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
+                                    <?php  } ?>
+                                </select>
+                                <select name="id_area" class="form-control">
+                                    <option value="<?= $this->session->userdata('id_area') ?>"><?= $this->session->userdata('nama_area') ?></option>
+                                    <?php foreach ($get_area as $key => $value) { ?>
+                                        <option value="<?= $value['id_area'] ?>"><?= $value['nama_area'] ?></option>
+                                    <?php  } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select name="id_sub_area" id="get_sub_area" class="form-control">
+                                    <option value="<?= $this->session->userdata('id_sub_area') ?>"><?= $this->session->userdata('nama_sub_area') ?></option>
+                                    <?php foreach ($get_sub_area as $key => $value) { ?>
+                                        <option value="<?= $value['id_sub_area'] ?>"><?= $value['nama_sub_area'] ?></option>
+                                    <?php  } ?>
+                                </select>
+                                <button type="submit" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</button>
+                            </div>
+
+
+                        <?php } else { ?>
+                        <?php } ?>
+                    <?php } ?>
+                </div>
+            </form>
+        </div>
+
+        <div class="card" style="margin-top: 20px; padding: 20px;margin-top:-20px;font-family: 'Poppins', sans-serif;">
+            <center>
+                <div class="row" style="margin-left: 90px;">
+                    <div class="col-md-2">
+                        <a class="btn text-white" style="width: 150px;height:50px;font-size:20px;background-color: #302B63;">VENDOR</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn text-white" style="width: 150px;height:50px;font-size:20px;background-color: #302B63">AREA</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn text-white" style="width: 150px;height:50px;font-size:20px;background-color: #302B63">PUSAT</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn text-white" style="width: 150px;height:50px;font-size:20px;background-color: #302B63">FINANCE</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="btn text-white" style="height:50px;font-size:20px;background-color: #302B63">FINANCE PENCAIRAN</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row" style="margin-left: 90px;">
+                    <div class="col-md-2">
+                        <a class="btn text-white bg-danger" style="width: 150px;height:50px;font-size:20px;">
+                            <?php $i = 1;
+                            $total = array();
+                            foreach ($get_program as $key => $value) { ?>
+                                <?php
+                                $data_mc = $this->Data_kontrak_model->get_mc_by_id($value['id_detail_program_penyedia_jasa']);
+
+                                ?>
+                                <?php foreach ($data_mc as $key => $value2) { ?>
+                                    <?php if ($value2['pic'] == 'Vendor') { ?>
+
+                                        <?php $total[] = $i++; ?>
+
+                                    <?php  } else { ?>
+
+                                    <?php } ?>
+
+                                <?php } ?>
+
+                            <?php  } ?>
+                            <?= count($total) ?>
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn text-white bg-warning" style="width: 150px;height:50px;font-size:20px;">
+                            <?php $i = 1;
+                            $total = array();
+                            foreach ($get_program as $key => $value) { ?>
+                                <?php
+                                $data_mc_area = $this->Data_kontrak_model->get_mc_by_id($value['id_detail_program_penyedia_jasa']);
+                                ?>
+                                <?php foreach ($data_mc_area as $key => $value2) { ?>
+                                    <?php if ($value2['pic'] == 'Area') { ?>
+                                        <?php $total[] = $i++; ?>
+                                    <?php  } else { ?>
+
+                                    <?php } ?>
+
+                                <?php } ?>
+                            <?php  } ?>
+                            <?= count($total) ?>
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn text-white bg-success" style="width: 150px;height:50px;font-size:20px;">
+                            <?php $i = 1;
+                            $total = array();
+                            foreach ($get_program as $key => $value) { ?>
+                                <?php
+                                $data_mc_pusat = $this->Data_kontrak_model->get_mc_by_id($value['id_detail_program_penyedia_jasa']);
+                                ?>
+                                <?php foreach ($data_mc_pusat as $key => $value2) { ?>
+                                    <?php if ($value2['pic'] == 'Pusat') { ?>
+                                        <?php $total[] = $i++; ?>
+                                    <?php  } else { ?>
+
+                                    <?php } ?>
+
+                                <?php } ?>
+                            <?php  } ?>
+                            <?= count($total) ?>
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn text-white bg-success" style="width: 150px;height:50px;font-size:20px;">
+                            <?php $i = 1;
+                            $total = array();
+                            foreach ($get_program as $key => $value) { ?>
+                                <?php
+                                $data_mc_finance = $this->Data_kontrak_model->get_mc_by_id($value['id_detail_program_penyedia_jasa']);
+                                ?>
+                                <?php foreach ($data_mc_finance as $key => $value2) { ?>
+                                    <?php if ($value2['uraian'] == 'Diterima Finance') { ?>
+                                        <?php $total[] = $i++; ?>
+                                    <?php  } else { ?>
+
+                                    <?php } ?>
+
+                                <?php } ?>
+                            <?php  } ?>
+                            <?= count($total) ?>
+                        </a>
+                    </div>
+                    <div class=" col-md-3">
+                        <a class="btn text-white bg-success" style="width: 250px;height:50px;font-size:20px;">
+                            <?php $i = 1;
+                            $total = array();
+                            foreach ($get_program as $key => $value) { ?>
+                                <?php
+                                $data_mc_finance2 = $this->Data_kontrak_model->get_mc_by_id5($value['id_detail_program_penyedia_jasa']);
+                                ?>
+                                <?php foreach ($data_mc_finance2 as $key => $value2) { ?>
+                                    <?php if ($value2['uraian'] == 'Pencairan') { ?>
+                                        <?php $total[] = $i++; ?>
+                                    <?php  } else { ?>
+
+                                    <?php } ?>
+
+                                <?php } ?>
+                            <?php  } ?>
+                            <?= count($total) ?>
+                        </a>
+                    </div>
+                </div>
+            </center>
+        </div>
+
         <input type="hidden" name="tahun_filter">
         <div class="section-body">
             <div class="row">
@@ -29,168 +257,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                     <h6> <i class="fa fa-search-plus" aria-hidden="true"></i> FILTER AREA BERKAS</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="<?= base_url('rekapitulasi/search') ?>" method="post">
-                                        <div class="row">
-                                            <?php if ($id_departemen == 4) { ?>
-                                                <div class="col-md-10">
-                                                    <table class="table table-bordered table-striped">
-                                                        <thead class="text-center">
-                                                            <tr>
-                                                                <th>Osperasi</th>
-                                                                <th>Area</th>
-                                                                <th>Sub Area</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody class="text-center">
-                                                            <tr>
-                                                                <td>
-                                                                    <select name="id_departemen" onchange="get_area1()" class="form-control id_departemen">
-                                                                        <option value="">--Pilih Operasi--</option>
-                                                                        <?php foreach ($get_departemen_all as $key => $value) { ?>
-                                                                            <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
-                                                                        <?php  } ?>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <select name="id_area" id="get_area" onchange="get_sub_area1()" class="form-control id_area">
-                                                                        <option value="">--Pilih Area--</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <select name="id_sub_area" id="get_sub_area" class="form-control id_sub_area">
-                                                                        <option value="">--Pilih Sub Area--</option>
-                                                                    </select>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <!-- <div class="table" id="insert-lokasi"></div> -->
-                                                </div>
-                                            <?php } else { ?>
-                                                <?php if ($id_departemen && $id_area == 0 && $id_sub_area == 0) { ?>
-                                                    <div class="col-md-10">
-                                                        <table class="table table-bordered table-striped">
-                                                            <thead class="text-center">
-                                                                <tr>
-                                                                    <th>Operasi</th>
-                                                                    <th>Area</th>
-                                                                    <th>Sub Area</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody class="text-center">
-                                                                <tr>
-                                                                    <td>
-                                                                        <select name="id_departemen" onchange="get_area2()" class="form-control">
-                                                                            <option value="">--Pilih Area--</option>
-                                                                            <?php foreach ($get_departemen as $key => $value) { ?>
-                                                                                <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
-                                                                            <?php  } ?>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select name="id_area" id="get_area" onchange="get_sub_area2()" class="form-control">
-                                                                            <option value="">--Pilih Area--</option>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select name="id_sub_area" id="get_sub_area" class="form-control">
-                                                                            <option value="">--Pilih Sub Area--</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <!-- <div class="table" id="insert-lokasi"></div> -->
-                                                    </div>
 
-                                                <?php  } else if ($id_departemen && $id_area && $id_sub_area == 0) { ?>
-                                                    <div class="col-md-10">
-                                                        <table class="table table-bordered table-striped">
-                                                            <thead class="text-center">
-                                                                <tr>
-                                                                    <th>Operasi</th>
-                                                                    <th>Area</th>
-                                                                    <th>Sub Area</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody class="text-center">
-                                                                <tr>
-                                                                    <td>
-                                                                        <select name="id_departemen" class="form-control">
-                                                                            <option value="">--Pilih Operasi--</option>
-                                                                            <?php foreach ($get_departemen as $key => $value) { ?>
-                                                                                <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
-                                                                            <?php  } ?>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select name="id_area" class="form-control" onchange="get_sub_area3()">
-                                                                            <option value="">--Pilih Area--</option>
-                                                                            <?php foreach ($get_area as $key => $value) { ?>
-                                                                                <option value="<?= $value['id_area'] ?>"><?= $value['nama_area'] ?></option>
-                                                                            <?php  } ?>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select name="id_sub_area" id="get_sub_area" class="form-control">
-                                                                            <option value="">--Pilih Sub Area--</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <!-- <div class="table" id="insert-lokasi"></div> -->
-                                                    </div>
-
-                                                <?php  } else if ($id_departemen && $id_area && $id_sub_area) { ?>
-                                                    <div class="col-md-10">
-                                                        <table class="table table-bordered table-striped">
-                                                            <thead class="text-center bg-warning text-white">
-                                                                <tr>
-                                                                    <th class="text-white">Operasi</th>
-                                                                    <th class="text-white">Area</th>
-                                                                    <th class="text-white">Sub Area</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody class="text-center">
-                                                                <tr>
-                                                                    <td>
-                                                                        <select name="id_departemen" class="form-control">
-                                                                            <option value="<?= $this->session->userdata('id_departemen') ?>"><?= $this->session->userdata('nama_departemen') ?></option>
-                                                                            <?php foreach ($get_departemen as $key => $value) { ?>
-                                                                                <option value="<?= $value['id_departemen'] ?>"><?= $value['nama_departemen'] ?></option>
-                                                                            <?php  } ?>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select name="id_area" class="form-control">
-                                                                            <option value="<?= $this->session->userdata('id_area') ?>"><?= $this->session->userdata('nama_area') ?></option>
-                                                                            <?php foreach ($get_area as $key => $value) { ?>
-                                                                                <option value="<?= $value['id_area'] ?>"><?= $value['nama_area'] ?></option>
-                                                                            <?php  } ?>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select name="id_sub_area" id="get_sub_area" class="form-control">
-                                                                            <option value="<?= $this->session->userdata('id_sub_area') ?>"><?= $this->session->userdata('nama_sub_area') ?></option>
-                                                                            <?php foreach ($get_sub_area as $key => $value) { ?>
-                                                                                <option value="<?= $value['id_sub_area'] ?>"><?= $value['nama_sub_area'] ?></option>
-                                                                            <?php  } ?>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <!-- <div class="table" id="insert-lokasi"></div> -->
-                                                    </div>
-                                                <?php } else { ?>
-                                                <?php } ?>
-                                            <?php } ?>
-                                            <div class="col-md-2 mt-5">
-                                                <button type="submit" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</button>
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
 
                                 <div class="card card-primary card-outline">
