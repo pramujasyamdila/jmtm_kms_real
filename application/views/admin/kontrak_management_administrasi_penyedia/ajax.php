@@ -328,7 +328,7 @@
 
     function terbilang(angka) {
 
-        var bilne = ["", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas"];
+        var bilne = ["", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebelas"];
 
         if (angka < 12) {
 
@@ -336,39 +336,39 @@
 
         } else if (angka < 20) {
 
-            return terbilang(angka - 10) + " belas";
+            return terbilang(angka - 10) + " Belas";
 
         } else if (angka < 100) {
 
-            return terbilang(Math.floor(parseInt(angka) / 10)) + " puluh " + terbilang(parseInt(angka) % 10);
+            return terbilang(Math.floor(parseInt(angka) / 10)) + " Puluh " + terbilang(parseInt(angka) % 10);
 
         } else if (angka < 200) {
 
-            return "seratus " + terbilang(parseInt(angka) - 100);
+            return "Seratus " + terbilang(parseInt(angka) - 100);
 
         } else if (angka < 1000) {
 
-            return terbilang(Math.floor(parseInt(angka) / 100)) + " ratus " + terbilang(parseInt(angka) % 100);
+            return terbilang(Math.floor(parseInt(angka) / 100)) + " Ratus " + terbilang(parseInt(angka) % 100);
 
         } else if (angka < 2000) {
 
-            return "seribu " + terbilang(parseInt(angka) - 1000);
+            return "Seribu " + terbilang(parseInt(angka) - 1000);
 
         } else if (angka < 1000000) {
 
-            return terbilang(Math.floor(parseInt(angka) / 1000)) + " ribu " + terbilang(parseInt(angka) % 1000);
+            return terbilang(Math.floor(parseInt(angka) / 1000)) + " Ribu " + terbilang(parseInt(angka) % 1000);
 
         } else if (angka < 1000000000) {
 
-            return terbilang(Math.floor(parseInt(angka) / 1000000)) + " juta " + terbilang(parseInt(angka) % 1000000);
+            return terbilang(Math.floor(parseInt(angka) / 1000000)) + " Juta " + terbilang(parseInt(angka) % 1000000);
 
         } else if (angka < 1000000000000) {
 
-            return terbilang(Math.floor(parseInt(angka) / 1000000000)) + " milyar " + terbilang(parseInt(angka) % 1000000000);
+            return terbilang(Math.floor(parseInt(angka) / 1000000000)) + " Milyar " + terbilang(parseInt(angka) % 1000000000);
 
         } else if (angka < 1000000000000000) {
 
-            return terbilang(Math.floor(parseInt(angka) / 1000000000000)) + " trilyun " + terbilang(parseInt(angka) % 1000000000000);
+            return terbilang(Math.floor(parseInt(angka) / 1000000000000)) + " Trilyun " + terbilang(parseInt(angka) % 1000000000000);
 
         }
 
@@ -675,6 +675,262 @@
         });
     }
 
+    // function Kelola_surat() {
+    //     var id = $('[name="id_detail_program_penyedia_jasa"]').val();
+    //     $.ajax({
+    //         type: "GET",
+    //         url: "<?= base_url('admin/administrasi_penyedia/byid_detail_program_penyedia_jasa/'); ?>" + id,
+    //         dataType: "JSON",
+    //         success: function(response) {
+    //             // if (response['row_program_detail'].sts_tahun_pembebanan == 'single_years') {
+    //             //     $('#multi_years_jika_ada').css('display', 'none')
+    //             // } else {
+    //             //     $('#multi_years_jika_ada').css('display', 'block')
+    //             // }
+    //             // $('[name="id_detail_program_penyedia_jasa"]').val(response['row_program_detail'].id_detail_program_penyedia_jasa);
+    //             // $('.nama_pekerjaan').html(response['row_program_detail'].nama_pekerjaan_program_mata_anggaran);
+    //             // $('.nama_area').html(response['row_program_detail'].nama_area);
+    //             // $('.nama_departemen').html(response['row_program_detail'].nama_departemen);
+    //             // $('.jenis_pengadaan').html(response['row_program_detail'].jenis_pengadaan);
+    //             // $('.waktu_pelaksanaan_pip').html(response['row_program_detail'].waktu_pelaksanaan_pip);
+    //             // $('.waktu_pemeliharaan_pip').html(response['row_program_detail'].waktu_pemeliharaan_pip);
+    //             // $('.terbilang_waktu_pemeliharaan_pip').html(terbilang(response['row_program_detail'].waktu_pemeliharaan_pip));
+    //             // $('.terbilang_waktu_pelaksanaan_pip').html(terbilang(response['row_program_detail'].waktu_pelaksanaan_pip));
+    //             // var nilai_total_multi_years = response['row_program_detail'].total_hps_mata_anggaran * response['count_multi_yeras'];
+    //             // $('.total_hps_mata_anggaran').html('Rp. ' + nilai_total_multi_years.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00');
+    //             // $('[name="pagu_biaya"]').val(response['row_program_detail'].pagu_biaya);
+    //             // $('[name="jenis_pengadaan"]').val(response['row_program_detail'].jenis_pengadaan);
+    //             // $('[name="nama_pekerjaan_pip"]').val(response['row_program_detail'].nama_pekerjaan_pip);
+
+    //             // $('[name="lokasi_pekerjaan_pip"]').val(response['row_program_detail'].lokasi_pekerjaan_pip);
+    //             // $('[name="sasaran_pekerjaan_pip"]').val(response['row_program_detail'].sasaran_pekerjaan_pip);
+    //             // $('[name="biaya_rkap_pip"]').val(response['row_program_detail'].biaya_rkap_pip);
+    //             // $('[name="perkiraan_biaya_pip"]').val(response['row_program_detail'].perkiraan_biaya_pip);
+    //             // $('[name="waktu_pelaksanaan_pip"]').val(response['row_program_detail'].waktu_pelaksanaan_pip);
+    //             // $('[name="waktu_pemeliharaan_pip"]').val(response['row_program_detail'].waktu_pemeliharaan_pip);
+    //             // $('[name="pembebanan_biaya"]').val(response['row_program_detail'].pembebanan_biaya);
+    //             // $('[name="format_persetujuan_pip"]').val(response['row_program_detail'].format_persetujuan_pip);
+    //             // $('[name="format_persetujuan_hps"]').val(response['row_program_detail'].format_persetujuan_hps);
+    //             // $('[name="no_surat_nota"]').val(response['row_program_detail'].no_surat_nota);
+    //             // $('[name="tgl_surat_nota"]').val(response['row_program_detail'].tgl_surat_nota);
+    //             // $('[name="format_persetujuan_nota"]').val(response['row_program_detail'].format_persetujuan_nota);
+    //             // $('[name="total_hps_mata_anggaran"]').val(response['row_program_detail'].total_hps_mata_anggaran);
+    //             // $('.total_hps_pure').html('Rp. ' + response['row_program_detail'].total_hps_mata_anggaran.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00');
+    //             // $('.terbilang_total_hps_pure').html(terbilang(response['row_program_detail'].total_hps_mata_anggaran));
+    //             // $('.terbilang_hps').html(terbilang(nilai_total_multi_years));
+    //             // $('[name="perkiraan_biaya_pip"]').val(nilai_total_multi_years);
+    //             // $('[name="sts_tahun_pembebanan"]').val(response['row_program_detail'].sts_tahun_pembebanan);
+    //             // PIP
+    //             // pengirim_pip_ca_ke_gm
+    //             $('[name="pengirim_pip_ca_ke_gm"]').val(response['row_program_detail'].pengirim_pip_ca_ke_gm);
+    //             // penerima_pip_ca_ke_gm
+    //             $('[name="penerima_pip_ca_ke_gm"]').val(response['row_program_detail'].penerima_pip_ca_ke_gm);
+    //             // jabatan_pengirim_pip_ca_ke_gm
+    //             $('[name="jabatan_pengirim_pip_ca_ke_gm"]').val(response['row_program_detail'].jabatan_pengirim_pip_ca_ke_gm);
+    //             // jabatan_penerima_pip_ca_ke_gm
+    //             $('[name="jabatan_penerima_pip_ca_ke_gm"]').val(response['row_program_detail'].jabatan_penerima_pip_ca_ke_gm);
+    //             // pengirim_pip_gm_ke_dirops
+    //             $('[name="pengirim_pip_gm_ke_dirops"]').val(response['row_program_detail'].pengirim_pip_gm_ke_dirops);
+    //             // penerima_pip_gm_ke_dirops
+    //             $('[name="penerima_pip_gm_ke_dirops"]').val(response['row_program_detail'].penerima_pip_gm_ke_dirops);
+    //             // jabatan_pengirim_pip_gm_ke_dirops
+    //             $('[name="jabatan_pengirim_pip_gm_ke_dirops"]').val(response['row_program_detail'].jabatan_pengirim_pip_gm_ke_dirops);
+    //             // jabatan_penerima_pip_gm_ke_dirops
+    //             $('[name="jabatan_penerima_pip_gm_ke_dirops"]').val(response['row_program_detail'].jabatan_penerima_pip_gm_ke_dirops);
+    //             // pengirim_pip_dirops_ke_dirut
+    //             $('[name="pengirim_pip_dirops_ke_dirut"]').val(response['row_program_detail'].pengirim_pip_dirops_ke_dirut);
+    //             // penerima_pip_dirops_ke_dirut
+    //             $('[name="penerima_pip_dirops_ke_dirut"]').val(response['row_program_detail'].penerima_pip_dirops_ke_dirut);
+    //             // jabatan_pengirim_pip_dirops_ke_dirut
+    //             $('[name="jabatan_pengirim_pip_dirops_ke_dirut"]').val(response['row_program_detail'].jabatan_pengirim_pip_dirops_ke_dirut);
+    //             // jabatan_penerima_pip_dirops_ke_dirut
+    //             $('[name="jabatan_penerima_pip_dirops_ke_dirut"]').val(response['row_program_detail'].jabatan_penerima_pip_dirops_ke_dirut);
+    //             // persetujuan_pengirim_pip_dirops_ke_dirut
+    //             $('[name="persetujuan_pengirim_pip_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_pengirim_pip_dirops_ke_dirut);
+    //             // persetujuan_penerima_pip_dirops_ke_dirut
+    //             $('[name="persetujuan_penerima_pip_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_penerima_pip_dirops_ke_dirut);
+    //             // persetujuan_jabatan_pengirim_pip_dirops_ke_dirut
+    //             $('[name="persetujuan_jabatan_pengirim_pip_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_jabatan_pengirim_pip_dirops_ke_dirut);
+    //             // persetujuan_jabatan_penerima_pip_dirops_ke_dirut
+    //             $('[name="persetujuan_jabatan_penerima_pip_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_jabatan_penerima_pip_dirops_ke_dirut);
+
+
+    //             // HPS
+    //             // pengirim_hps_ca_ke_gm
+    //             $('[name="pengirim_hps_ca_ke_gm"]').val(response['row_program_detail'].pengirim_hps_ca_ke_gm);
+    //             // penerima_hps_ca_ke_gm
+    //             $('[name="penerima_hps_ca_ke_gm"]').val(response['row_program_detail'].penerima_hps_ca_ke_gm);
+    //             // jabatan_pengirim_hps_ca_ke_gm
+    //             $('[name="jabatan_pengirim_hps_ca_ke_gm"]').val(response['row_program_detail'].jabatan_pengirim_hps_ca_ke_gm);
+    //             // jabatan_penerima_hps_ca_ke_gm
+    //             $('[name="jabatan_penerima_hps_ca_ke_gm"]').val(response['row_program_detail'].jabatan_penerima_hps_ca_ke_gm);
+    //             // pengirim_hps_gm_ke_dirops
+    //             $('[name="pengirim_hps_gm_ke_dirops"]').val(response['row_program_detail'].pengirim_hps_gm_ke_dirops);
+    //             // penerima_hps_gm_ke_dirops
+    //             $('[name="penerima_hps_gm_ke_dirops"]').val(response['row_program_detail'].penerima_hps_gm_ke_dirops);
+    //             // jabatan_pengirim_hps_gm_ke_dirops
+    //             $('[name="jabatan_pengirim_hps_gm_ke_dirops"]').val(response['row_program_detail'].jabatan_pengirim_hps_gm_ke_dirops);
+    //             // jabatan_penerima_hps_gm_ke_dirops
+    //             $('[name="jabatan_penerima_hps_gm_ke_dirops"]').val(response['row_program_detail'].jabatan_penerima_hps_gm_ke_dirops);
+    //             // pengirim_hps_dirops_ke_dirut
+    //             $('[name="pengirim_hps_dirops_ke_dirut"]').val(response['row_program_detail'].pengirim_hps_dirops_ke_dirut);
+    //             // penerima_hps_dirops_ke_dirut
+    //             $('[name="penerima_hps_dirops_ke_dirut"]').val(response['row_program_detail'].penerima_hps_dirops_ke_dirut);
+    //             // jabatan_pengirim_hps_dirops_ke_dirut
+    //             $('[name="jabatan_pengirim_hps_dirops_ke_dirut"]').val(response['row_program_detail'].jabatan_pengirim_hps_dirops_ke_dirut);
+    //             // jabatan_penerima_hps_dirops_ke_dirut
+    //             $('[name="jabatan_penerima_hps_dirops_ke_dirut"]').val(response['row_program_detail'].jabatan_penerima_hps_dirops_ke_dirut);
+    //             // persetujuan_pengirim_hps_dirops_ke_dirut
+    //             $('[name="persetujuan_pengirim_hps_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_pengirim_hps_dirops_ke_dirut);
+    //             // persetujuan_penerima_hps_dirops_ke_dirut
+    //             $('[name="persetujuan_penerima_hps_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_penerima_hps_dirops_ke_dirut);
+    //             // persetujuan_jabatan_pengirim_hps_dirops_ke_dirut
+    //             $('[name="persetujuan_jabatan_pengirim_hps_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_jabatan_pengirim_hps_dirops_ke_dirut);
+    //             // persetujuan_jabatan_penerima_hps_dirops_ke_dirut
+    //             $('[name="persetujuan_jabatan_penerima_hps_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_jabatan_penerima_hps_dirops_ke_dirut);
+
+    //             // format nomor tanggal surat PIP
+    //             // no_surat_pip_ca_ke_gm
+    //             $('[name="no_surat_pip_ca_ke_gm"]').val(response['row_program_detail'].no_surat_pip_ca_ke_gm);
+    //             // no_surat_pip_gm_ke_dirops
+    //             $('[name="no_surat_pip_gm_ke_dirops"]').val(response['row_program_detail'].no_surat_pip_gm_ke_dirops);
+    //             // no_surat_pip_dirops_ke_dirut
+    //             $('[name="no_surat_pip_dirops_ke_dirut"]').val(response['row_program_detail'].no_surat_pip_dirops_ke_dirut);
+    //             // no_surat_persetujuan_pip_dirops_ke_dirut
+    //             $('[name="no_surat_persetujuan_pip_dirops_ke_dirut"]').val(response['row_program_detail'].no_surat_persetujuan_pip_dirops_ke_dirut);
+    //             // lampiran_pip_ca_ke_gm
+    //             $('[name="lampiran_pip_ca_ke_gm"]').val(response['row_program_detail'].lampiran_pip_ca_ke_gm);
+    //             // lampiran_pip_gm_ke_dirops
+    //             $('[name="lampiran_pip_gm_ke_dirops"]').val(response['row_program_detail'].lampiran_pip_gm_ke_dirops);
+    //             // lampiran_pip_dirops_ke_dirut
+    //             $('[name="lampiran_pip_dirops_ke_dirut"]').val(response['row_program_detail'].lampiran_pip_dirops_ke_dirut);
+    //             // lampiran_persetujuan_pip_dirops_ke_dirut
+    //             $('[name="lampiran_persetujuan_pip_dirops_ke_dirut"]').val(response['row_program_detail'].lampiran_persetujuan_pip_dirops_ke_dirut);
+    //             // tgl_surat_pip_ca_ke_gm
+    //             $('[name="tgl_surat_pip_ca_ke_gm"]').val(response['row_program_detail'].tgl_surat_pip_ca_ke_gm);
+    //             // tgl_surat_pip_gm_ke_dirops
+    //             $('[name="tgl_surat_pip_gm_ke_dirops"]').val(response['row_program_detail'].tgl_surat_pip_gm_ke_dirops);
+    //             // tgl_surat_pip_dirops_ke_dirut
+    //             $('[name="tgl_surat_pip_dirops_ke_dirut"]').val(response['row_program_detail'].tgl_surat_pip_dirops_ke_dirut);
+    //             // tgl_surat_persetujuan_pip_dirops_ke_dirut
+    //             $('[name="tgl_surat_persetujuan_pip_dirops_ke_dirut"]').val(response['row_program_detail'].tgl_surat_persetujuan_pip_dirops_ke_dirut);
+
+    //             // format nomor tanggal surat HPS
+    //             // no_surat_hps_ca_ke_gm
+    //             $('[name="no_surat_hps_ca_ke_gm"]').val(response['row_program_detail'].no_surat_hps_ca_ke_gm);
+    //             // no_surat_hps_gm_ke_dirops
+    //             $('[name="no_surat_hps_gm_ke_dirops"]').val(response['row_program_detail'].no_surat_hps_gm_ke_dirops);
+    //             // no_surat_hps_dirops_ke_dirut
+    //             $('[name="no_surat_hps_dirops_ke_dirut"]').val(response['row_program_detail'].no_surat_hps_dirops_ke_dirut);
+    //             // no_surat_persetujuan_hps_dirops_ke_dirut
+    //             $('[name="no_surat_persetujuan_hps_dirops_ke_dirut"]').val(response['row_program_detail'].no_surat_persetujuan_hps_dirops_ke_dirut);
+    //             // lampiran_hps_ca_ke_gm
+    //             $('[name="lampiran_hps_ca_ke_gm"]').val(response['row_program_detail'].lampiran_hps_ca_ke_gm);
+    //             // lampiran_hps_gm_ke_dirops
+    //             $('[name="lampiran_hps_gm_ke_dirops"]').val(response['row_program_detail'].lampiran_hps_gm_ke_dirops);
+    //             // lampiran_hps_dirops_ke_dirut
+    //             $('[name="lampiran_hps_dirops_ke_dirut"]').val(response['row_program_detail'].lampiran_hps_dirops_ke_dirut);
+    //             // lampiran_persetujuan_hps_dirops_ke_dirut
+    //             $('[name="lampiran_persetujuan_hps_dirops_ke_dirut"]').val(response['row_program_detail'].lampiran_persetujuan_hps_dirops_ke_dirut);
+    //             // tgl_surat_hps_ca_ke_gm
+    //             $('[name="tgl_surat_hps_ca_ke_gm"]').val(response['row_program_detail'].tgl_surat_hps_ca_ke_gm);
+    //             // tgl_surat_hps_gm_ke_dirops
+    //             $('[name="tgl_surat_hps_gm_ke_dirops"]').val(response['row_program_detail'].tgl_surat_hps_gm_ke_dirops);
+    //             // tgl_surat_hps_dirops_ke_dirut
+    //             $('[name="tgl_surat_hps_dirops_ke_dirut"]').val(response['row_program_detail'].tgl_surat_hps_dirops_ke_dirut);
+    //             // tgl_surat_persetujuan_hps_dirops_ke_dirut
+    //             $('[name="tgl_surat_persetujuan_hps_dirops_ke_dirut"]').val(response['row_program_detail'].tgl_surat_persetujuan_hps_dirops_ke_dirut);
+
+    //             // nota dinas
+    //             // no_surat_nota
+    //             $('[name="no_surat_nota"]').val(response['row_program_detail'].no_surat_nota);
+    //             // lampiran_nota
+    //             $('[name="lampiran_nota"]').val(response['row_program_detail'].lampiran_nota);
+    //             // tgl_surat_nota
+    //             $('[name="tgl_surat_nota"]').val(response['row_program_detail'].tgl_surat_nota);
+    //             // pengirim_nota_dinas
+    //             $('[name="pengirim_nota_dinas"]').val(response['row_program_detail'].pengirim_nota_dinas);
+    //             // penerima_nota_dinas
+    //             $('[name="penerima_nota_dinas"]').val(response['row_program_detail'].penerima_nota_dinas);
+    //             // jabatan_pengirim_nota_dinas
+    //             $('[name="jabatan_pengirim_nota_dinas"]').val(response['row_program_detail'].jabatan_pengirim_nota_dinas);
+    //             // jabatan_penerima_nota_dinas
+    //             $('[name="jabatan_penerima_nota_dinas"]').val(response['row_program_detail'].jabatan_penerima_nota_dinas);
+
+    //             // gunning
+    //             $('[name="no_surat_gunning"]').val(response['row_program_detail'].no_surat_gunning);
+    //             $('[name="tanggal_gunning"]').val(response['row_program_detail'].tanggal_gunning);
+    //             $('[name="lampiran_gunning"]').val(response['row_program_detail'].lampiran_gunning);
+    //             $('[name="tkdn_gunning"]').val(response['row_program_detail'].tkdn_gunning);
+
+    //             // loi
+    //             $('[name="no_surat_loi"]').val(response['row_program_detail'].no_surat_loi);
+    //             $('[name="tanggal_loi"]').val(response['row_program_detail'].tanggal_loi);
+    //             $('[name="lampiran_loi"]').val(response['row_program_detail'].lampiran_loi);
+    //             $('[name="no_surat_penunjukan_loi"]').val(response['row_program_detail'].no_surat_penunjukan_loi);
+
+    //             // sho
+    //             $('[name="no_surat_sho"]').val(response['row_program_detail'].no_surat_sho);
+    //             $('[name="tanggal_sho"]').val(response['row_program_detail'].tanggal_sho);
+
+    //             // smk
+    //             $('[name="no_surat_smk"]').val(response['row_program_detail'].no_surat_smk);
+    //             $('[name="tanggal_smk"]').val(response['row_program_detail'].tanggal_smk);
+    //             $('[name="lampiran_smk"]').val(response['row_program_detail'].lampiran_smk);
+
+    //             // ttd_pra
+    //             $('[name="nama_dirops_pra"]').val(response['row_program_detail'].nama_dirops_pra);
+    //             $('[name="nama_dirut_pra"]').val(response['row_program_detail'].nama_dirut_pra);
+
+    //             // no_kontrak
+    //             $('[name="no_kontrak_penyedia"]').val(response['row_program_detail'].no_kontrak_penyedia);
+    //             $('[name="tanggal_kontrak_program"]').val(response['row_program_detail'].tanggal_kontrak_program);
+    //             $('[name="tahun_kontrak_program"]').val(response['row_program_detail'].tahun_kontrak_program);
+
+
+    //             // hps hps
+    //             var html = '';
+    //             var i;
+    //             for (i = 0; i < response['data_spm'].length; i++) {
+    //                 $hps = response['data_spm'][i].hps;
+    //                 html += '<a href="javascript:;" onclick="hapus_spm(' + response['data_spm'][i].id_spm + ')" class="text-dark"> ' + response['data_spm'][i].nama_spm + ', <i class="text-danger fas fa fa-trash"></i></a>';
+    //             }
+    //             $('.result_spm').html(html);
+
+    //             var html2 = '';
+    //             var j;
+    //             for (j = 0; j < response['data_multi_years'].length; j++) {
+    //                 html2 += '<a href="javascript:;" onclick="hapus_multi_years(' + response['data_multi_years'][j].id_multi_years + ')" class="text-dark"> ' + response['data_multi_years'][j].tahun_multiyers + ', <i class="text-danger fas fa fa-trash"></i></a>';
+    //             }
+    //             $('.result_multiyears').html(html2);
+
+    //             var html3 = '';
+    //             var x;
+    //             for (x = 0; x < response['data_teknis'].length; x++) {
+    //                 html3 += '<div class="row"><div class="col-md-1">2.' + [x + 1] + '</div>' +
+    //                     '<div class="col-md-11" style="margin-left: -40px;">' +
+    //                     '<b>' + response['data_teknis'][x].nama_alasan + '</b>' +
+    //                     '&nbsp;<a href="javascript:;" onclick="hapus_teknis(' + response['data_teknis'][x].id_alasan_teknis + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a>' +
+    //                     '</div>' +
+    //                     '</div>';
+    //             }
+    //             $('#alasan_teknis').html(html3);
+
+    //             var html4 = '';
+    //             var o;
+    //             for (o = 0; o < response['data_administrasi'].length; o++) {
+    //                 html4 += '<div class="row"><div class="col-md-1">1.' + [o + 1] + '</div>' +
+    //                     '<div class="col-md-11" style="margin-left: -40px;">' +
+    //                     '<b>' + response['data_administrasi'][o].nama_alasan + '</b>' +
+    //                     '&nbsp;<a href="javascript:;" onclick="hapus_administrasi(' + response['data_administrasi'][o].id_alasan_administrasi + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a>' +
+    //                     '</div>' +
+    //                     '</div>';
+    //             }
+    //             $('#alasan_administrasi').html(html4);
+    //         }
+    //     })
+    // }
+
     function Kelola_surat() {
         var id = $('[name="id_detail_program_penyedia_jasa"]').val();
         $.ajax({
@@ -682,128 +938,212 @@
             url: "<?= base_url('admin/administrasi_penyedia/byid_detail_program_penyedia_jasa/'); ?>" + id,
             dataType: "JSON",
             success: function(response) {
-                if (response['row_program_detail'].sts_tahun_pembebanan == 'single_years') {
-                    $('#multi_years_jika_ada').css('display', 'none')
-                } else {
-                    $('#multi_years_jika_ada').css('display', 'block')
-                }
-                $('[name="id_detail_program_penyedia_jasa"]').val(response['row_program_detail'].id_detail_program_penyedia_jasa);
-                $('.nama_pekerjaan').html(response['row_program_detail'].nama_pekerjaan_program_mata_anggaran);
-                $('.nama_area').html(response['row_program_detail'].nama_area);
-                $('.nama_departemen').html(response['row_program_detail'].nama_departemen);
-                $('.jenis_pengadaan').html(response['row_program_detail'].jenis_pengadaan);
-                $('.waktu_pelaksanaan_pip').html(response['row_program_detail'].waktu_pelaksanaan_pip);
-                $('.waktu_pemeliharaan_pip').html(response['row_program_detail'].waktu_pemeliharaan_pip);
-                $('.terbilang_waktu_pemeliharaan_pip').html(terbilang(response['row_program_detail'].waktu_pemeliharaan_pip));
-                $('.terbilang_waktu_pelaksanaan_pip').html(terbilang(response['row_program_detail'].waktu_pelaksanaan_pip));
-                var nilai_total_multi_years = response['row_program_detail'].total_hps_mata_anggaran * response['count_multi_yeras'];
-                $('.total_hps_mata_anggaran').html('Rp. ' + nilai_total_multi_years.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00');
-                $('[name="pagu_biaya"]').val(response['row_program_detail'].pagu_biaya);
+                $('[name="jenis_anggaran"]').val(response['row_program_detail'].jenis_anggaran);
                 $('[name="jenis_pengadaan"]').val(response['row_program_detail'].jenis_pengadaan);
-                $('[name="nama_pekerjaan_pip"]').val(response['row_program_detail'].nama_pekerjaan_pip);
-
-                $('[name="lokasi_pekerjaan_pip"]').val(response['row_program_detail'].lokasi_pekerjaan_pip);
-                $('[name="sasaran_pekerjaan_pip"]').val(response['row_program_detail'].sasaran_pekerjaan_pip);
-                $('[name="biaya_rkap_pip"]').val(response['row_program_detail'].biaya_rkap_pip);
-                $('[name="perkiraan_biaya_pip"]').val(response['row_program_detail'].perkiraan_biaya_pip);
+                $('[name="jenis_pengadaan_sk"]').val(response['row_program_detail'].jenis_pengadaan_sk);
+                $('[name="metode_pengadaan_sk"]').val(response['row_program_detail'].metode_pengadaan_sk);
+                $('[name="metode_pengadaan_sk2"]').val(response['row_program_detail'].metode_pengadaan_sk);
+                if (response['row_program_detail'].jenis_pengadaan_sk == 'Penyedia Jasa Konsultansi') {
+                    $('.jika_dipilih_barang').css('display', 'none')
+                    $('.jika_dipilih_jasa').css('display', 'block')
+                } else if (response['row_program_detail'].jenis_pengadaan_sk == 'Penyedia Barang/Jasa') {
+                    $('.jika_dipilih_jasa').css('display', 'none')
+                    $('.jika_dipilih_barang').css('display', 'block')
+                } else {
+                    $('.jika_dipilih_jasa').css('display', 'none')
+                    $('.jika_dipilih_barang').css('display', 'none')
+                }
+                $('[name="sts_tahun_pembebanan"]').val(response['row_program_detail'].sts_tahun_pembebanan);
+                if (response['row_program_detail'].sts_tahun_pembebanan) {
+                    $('.pilih_tahun_pembebanan').css('display', 'block')
+                } else {
+                    $('.pilih_tahun_pembebanan').css('display', 'none')
+                }
                 $('[name="waktu_pelaksanaan_pip"]').val(response['row_program_detail'].waktu_pelaksanaan_pip);
                 $('[name="waktu_pemeliharaan_pip"]').val(response['row_program_detail'].waktu_pemeliharaan_pip);
-                $('[name="pembebanan_biaya"]').val(response['row_program_detail'].pembebanan_biaya);
-                $('[name="format_persetujuan_pip"]').val(response['row_program_detail'].format_persetujuan_pip);
-                $('[name="format_persetujuan_hps"]').val(response['row_program_detail'].format_persetujuan_hps);
-                $('[name="no_surat_nota"]').val(response['row_program_detail'].no_surat_nota);
-                $('[name="tgl_surat_nota"]').val(response['row_program_detail'].tgl_surat_nota);
-                $('[name="format_persetujuan_nota"]').val(response['row_program_detail'].format_persetujuan_nota);
-                $('[name="total_hps_mata_anggaran"]').val(response['row_program_detail'].total_hps_mata_anggaran);
-                $('.total_hps_pure').html('Rp. ' + response['row_program_detail'].total_hps_mata_anggaran.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00');
-                $('.terbilang_total_hps_pure').html(terbilang(response['row_program_detail'].total_hps_mata_anggaran));
-                $('.terbilang_hps').html(terbilang(nilai_total_multi_years));
-                $('[name="perkiraan_biaya_pip"]').val(nilai_total_multi_years);
-                $('[name="sts_tahun_pembebanan"]').val(response['row_program_detail'].sts_tahun_pembebanan);
-
-                // // ttd
-                // $('[name="nama_ca_ke_gm"]').val(response['row_program_detail'].nama_ca_ke_gm);
-                // $('[name="nama_gm_ke_dirops"]').val(response['row_program_detail'].nama_gm_ke_dirops);
-                // $('[name="nama_dirops_ke_dirut"]').val(response['row_program_detail'].nama_dirops_ke_dirut);
-
-                // // persetujuan_pip
-                // $('[name="no_surat_persetujuan_pip_dirops_ke_dirut"]').val(response['row_program_detail'].no_surat_persetujuan_pip_dirops_ke_dirut);
-                // $('[name="tgl_surat_persetujuan_pip_dirops_ke_dirut"]').val(response['row_program_detail'].tgl_surat_persetujuan_pip_dirops_ke_dirut);
-                // $('[name="nama_persetujuan_pip_dirops_ke_dirut"]').val(response['row_program_detail'].nama_persetujuan_pip_dirops_ke_dirut);
-
-                // // pip
-                // $('[name="lampiran_pip_ca_ke_gm"]').val(response['row_program_detail'].lampiran_pip_ca_ke_gm);
-                // $('[name="no_surat_pip_ca_ke_gm"]').val(response['row_program_detail'].no_surat_pip_ca_ke_gm);
-                // $('[name="tgl_surat_pip_ca_ke_gm"]').val(response['row_program_detail'].tgl_surat_pip_ca_ke_gm);
-
-                // $('[name="lampiran_pip_gm_ke_dirops"]').val(response['row_program_detail'].lampiran_pip_gm_ke_dirops);
-                // $('[name="no_surat_pip_gm_ke_dirops"]').val(response['row_program_detail'].no_surat_pip_gm_ke_dirops);
-                // $('[name="tgl_surat_pip_gm_ke_dirops"]').val(response['row_program_detail'].tgl_surat_pip_gm_ke_dirops);
-
-                // $('[name="lampiran_pip_dirops_ke_dirut"]').val(response['row_program_detail'].lampiran_pip_dirops_ke_dirut);
-                // $('[name="no_surat_pip_dirops_ke_dirut"]').val(response['row_program_detail'].no_surat_pip_dirops_ke_dirut);
-                // $('[name="tgl_surat_pip_dirops_ke_dirut"]').val(response['row_program_detail'].tgl_surat_pip_dirops_ke_dirut);
-
-                // // hps
-                // // ttd
-                // $('[name="nama_hps_ca_ke_gm"]').val(response['row_program_detail'].nama_hps_ca_ke_gm);
-                // $('[name="nama_hps_gm_ke_dirops"]').val(response['row_program_detail'].nama_hps_gm_ke_dirops);
-                // $('[name="nama_hps_dirops_ke_dirut"]').val(response['row_program_detail'].nama_hps_dirops_ke_dirut);
-                // // persetujuan_hps
-                // $('[name="no_surat_persetujuan_hps_dirops_ke_dirut"]').val(response['row_program_detail'].no_surat_persetujuan_hps_dirops_ke_dirut);
-                // $('[name="tgl_surat_persetujuan_hps_dirops_ke_dirut"]').val(response['row_program_detail'].tgl_surat_persetujuan_hps_dirops_ke_dirut);
-                // $('[name="nama_persetujuan_hps_dirops_ke_dirut"]').val(response['row_program_detail'].nama_persetujuan_hps_dirops_ke_dirut);
-
-                // $('[name="no_surat_hps_ca_ke_gm"]').val(response['row_program_detail'].no_surat_hps_ca_ke_gm);
-                // $('[name="tgl_surat_hps_ca_ke_gm"]').val(response['row_program_detail'].tgl_surat_hps_ca_ke_gm);
-                // $('[name="lampiran_hps_ca_ke_gm"]').val(response['row_program_detail'].lampiran_hps_ca_ke_gm);
-
-                // $('[name="no_surat_hps_gm_ke_dirops"]').val(response['row_program_detail'].no_surat_hps_gm_ke_dirops);
-                // $('[name="tgl_surat_hps_gm_ke_dirops"]').val(response['row_program_detail'].tgl_surat_hps_gm_ke_dirops);
-                // $('[name="lampiran_hps_gm_ke_dirops"]').val(response['row_program_detail'].lampiran_hps_gm_ke_dirops);
-
-                // $('[name="no_surat_hps_dirops_ke_dirut"]').val(response['row_program_detail'].no_surat_hps_dirops_ke_dirut);
-                // $('[name="tgl_surat_hps_dirops_ke_dirut"]').val(response['row_program_detail'].tgl_surat_hps_dirops_ke_dirut);
-                // $('[name="lampiran_hps_dirops_ke_dirut"]').val(response['row_program_detail'].lampiran_hps_dirops_ke_dirut);
-
-                // // nota dinas
-                // $('[name="nama_nota_dinas"]').val(response['row_program_detail'].nama_nota_dinas);
-                // $('[name="no_surat_nota"]').val(response['row_program_detail'].no_surat_nota);
-                // $('[name="tgl_surat_nota"]').val(response['row_program_detail'].tgl_surat_nota);
-                // $('[name="lampiran_nota"]').val(response['row_program_detail'].lampiran_nota);
-
-                // gunning
-                $('[name="no_surat_gunning"]').val(response['row_program_detail'].no_surat_gunning);
-                $('[name="tanggal_gunning"]').val(response['row_program_detail'].tanggal_gunning);
-                $('[name="lampiran_gunning"]').val(response['row_program_detail'].lampiran_gunning);
-                $('[name="tkdn_gunning"]').val(response['row_program_detail'].tkdn_gunning);
-
-                // loi
-                $('[name="no_surat_loi"]').val(response['row_program_detail'].no_surat_loi);
-                $('[name="tanggal_loi"]').val(response['row_program_detail'].tanggal_loi);
-                $('[name="lampiran_loi"]').val(response['row_program_detail'].lampiran_loi);
-                $('[name="no_surat_penunjukan_loi"]').val(response['row_program_detail'].no_surat_penunjukan_loi);
-
-                // sho
-                $('[name="no_surat_sho"]').val(response['row_program_detail'].no_surat_sho);
-                $('[name="tanggal_sho"]').val(response['row_program_detail'].tanggal_sho);
-
-                // smk
-                $('[name="no_surat_smk"]').val(response['row_program_detail'].no_surat_smk);
-                $('[name="tanggal_smk"]').val(response['row_program_detail'].tanggal_smk);
-                $('[name="lampiran_smk"]').val(response['row_program_detail'].lampiran_smk);
-
-                // ttd_pra
-                $('[name="nama_dirops_pra"]').val(response['row_program_detail'].nama_dirops_pra);
-                $('[name="nama_dirut_pra"]').val(response['row_program_detail'].nama_dirut_pra);
-
-                // no_kontrak
-                $('[name="no_kontrak_penyedia"]').val(response['row_program_detail'].no_kontrak_penyedia);
-                $('[name="tanggal_kontrak_program"]').val(response['row_program_detail'].tanggal_kontrak_program);
-                $('[name="tahun_kontrak_program"]').val(response['row_program_detail'].tahun_kontrak_program);
+                $('.terbilang_waktu_pelaksanaan_pip').html(terbilang(response['row_program_detail'].waktu_pelaksanaan_pip) + ' Hari Kalender');
+                $('.terbilang_waktu_pemeliharaan_pip').html(terbilang(response['row_program_detail'].waktu_pemeliharaan_pip) + ' Hari Kalender');
+                // pengirim_pip_ca_ke_gm
+                $('[name="pengirim_pip_ca_ke_gm"]').val(response['row_program_detail'].pengirim_pip_ca_ke_gm);
+                // penerima_pip_ca_ke_gm
+                $('[name="penerima_pip_ca_ke_gm"]').val(response['row_program_detail'].penerima_pip_ca_ke_gm);
+                // jabatan_pengirim_pip_ca_ke_gm
+                $('[name="jabatan_pengirim_pip_ca_ke_gm"]').val(response['row_program_detail'].jabatan_pengirim_pip_ca_ke_gm);
+                // jabatan_penerima_pip_ca_ke_gm
+                $('[name="jabatan_penerima_pip_ca_ke_gm"]').val(response['row_program_detail'].jabatan_penerima_pip_ca_ke_gm);
+                // pengirim_pip_gm_ke_dirops
+                $('[name="pengirim_pip_gm_ke_dirops"]').val(response['row_program_detail'].pengirim_pip_gm_ke_dirops);
+                // penerima_pip_gm_ke_dirops
+                $('[name="penerima_pip_gm_ke_dirops"]').val(response['row_program_detail'].penerima_pip_gm_ke_dirops);
+                // jabatan_pengirim_pip_gm_ke_dirops
+                $('[name="jabatan_pengirim_pip_gm_ke_dirops"]').val(response['row_program_detail'].jabatan_pengirim_pip_gm_ke_dirops);
+                // jabatan_penerima_pip_gm_ke_dirops
+                $('[name="jabatan_penerima_pip_gm_ke_dirops"]').val(response['row_program_detail'].jabatan_penerima_pip_gm_ke_dirops);
+                // pengirim_pip_dirops_ke_dirut
+                $('[name="pengirim_pip_dirops_ke_dirut"]').val(response['row_program_detail'].pengirim_pip_dirops_ke_dirut);
+                // penerima_pip_dirops_ke_dirut
+                $('[name="penerima_pip_dirops_ke_dirut"]').val(response['row_program_detail'].penerima_pip_dirops_ke_dirut);
+                // jabatan_pengirim_pip_dirops_ke_dirut
+                $('[name="jabatan_pengirim_pip_dirops_ke_dirut"]').val(response['row_program_detail'].jabatan_pengirim_pip_dirops_ke_dirut);
+                // jabatan_penerima_pip_dirops_ke_dirut
+                $('[name="jabatan_penerima_pip_dirops_ke_dirut"]').val(response['row_program_detail'].jabatan_penerima_pip_dirops_ke_dirut);
+                // persetujuan_pengirim_pip_dirops_ke_dirut
+                $('[name="persetujuan_pengirim_pip_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_pengirim_pip_dirops_ke_dirut);
+                // persetujuan_penerima_pip_dirops_ke_dirut
+                $('[name="persetujuan_penerima_pip_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_penerima_pip_dirops_ke_dirut);
+                // persetujuan_jabatan_pengirim_pip_dirops_ke_dirut
+                $('[name="persetujuan_jabatan_pengirim_pip_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_jabatan_pengirim_pip_dirops_ke_dirut);
+                // persetujuan_jabatan_penerima_pip_dirops_ke_dirut
+                $('[name="persetujuan_jabatan_penerima_pip_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_jabatan_penerima_pip_dirops_ke_dirut);
 
 
-                // hps hps
+                // HPS
+                // pengirim_hps_ca_ke_gm
+                $('[name="pengirim_hps_ca_ke_gm"]').val(response['row_program_detail'].pengirim_hps_ca_ke_gm);
+                // penerima_hps_ca_ke_gm
+                $('[name="penerima_hps_ca_ke_gm"]').val(response['row_program_detail'].penerima_hps_ca_ke_gm);
+                // jabatan_pengirim_hps_ca_ke_gm
+                $('[name="jabatan_pengirim_hps_ca_ke_gm"]').val(response['row_program_detail'].jabatan_pengirim_hps_ca_ke_gm);
+                // jabatan_penerima_hps_ca_ke_gm
+                $('[name="jabatan_penerima_hps_ca_ke_gm"]').val(response['row_program_detail'].jabatan_penerima_hps_ca_ke_gm);
+                // pengirim_hps_gm_ke_dirops
+                $('[name="pengirim_hps_gm_ke_dirops"]').val(response['row_program_detail'].pengirim_hps_gm_ke_dirops);
+                // penerima_hps_gm_ke_dirops
+                $('[name="penerima_hps_gm_ke_dirops"]').val(response['row_program_detail'].penerima_hps_gm_ke_dirops);
+                // jabatan_pengirim_hps_gm_ke_dirops
+                $('[name="jabatan_pengirim_hps_gm_ke_dirops"]').val(response['row_program_detail'].jabatan_pengirim_hps_gm_ke_dirops);
+                // jabatan_penerima_hps_gm_ke_dirops
+                $('[name="jabatan_penerima_hps_gm_ke_dirops"]').val(response['row_program_detail'].jabatan_penerima_hps_gm_ke_dirops);
+                // pengirim_hps_dirops_ke_dirut
+                $('[name="pengirim_hps_dirops_ke_dirut"]').val(response['row_program_detail'].pengirim_hps_dirops_ke_dirut);
+                // penerima_hps_dirops_ke_dirut
+                $('[name="penerima_hps_dirops_ke_dirut"]').val(response['row_program_detail'].penerima_hps_dirops_ke_dirut);
+                // jabatan_pengirim_hps_dirops_ke_dirut
+                $('[name="jabatan_pengirim_hps_dirops_ke_dirut"]').val(response['row_program_detail'].jabatan_pengirim_hps_dirops_ke_dirut);
+                // jabatan_penerima_hps_dirops_ke_dirut
+                $('[name="jabatan_penerima_hps_dirops_ke_dirut"]').val(response['row_program_detail'].jabatan_penerima_hps_dirops_ke_dirut);
+                // persetujuan_pengirim_hps_dirops_ke_dirut
+                $('[name="persetujuan_pengirim_hps_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_pengirim_hps_dirops_ke_dirut);
+                // persetujuan_penerima_hps_dirops_ke_dirut
+                $('[name="persetujuan_penerima_hps_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_penerima_hps_dirops_ke_dirut);
+                // persetujuan_jabatan_pengirim_hps_dirops_ke_dirut
+                $('[name="persetujuan_jabatan_pengirim_hps_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_jabatan_pengirim_hps_dirops_ke_dirut);
+                // persetujuan_jabatan_penerima_hps_dirops_ke_dirut
+                $('[name="persetujuan_jabatan_penerima_hps_dirops_ke_dirut"]').val(response['row_program_detail'].persetujuan_jabatan_penerima_hps_dirops_ke_dirut);
+
+                // format nomor tanggal surat PIP
+                // no_surat_pip_ca_ke_gm
+                $('[name="no_surat_pip_ca_ke_gm"]').val(response['row_program_detail'].no_surat_pip_ca_ke_gm);
+                // no_surat_pip_gm_ke_dirops
+                $('[name="no_surat_pip_gm_ke_dirops"]').val(response['row_program_detail'].no_surat_pip_gm_ke_dirops);
+                // no_surat_pip_dirops_ke_dirut
+                $('[name="no_surat_pip_dirops_ke_dirut"]').val(response['row_program_detail'].no_surat_pip_dirops_ke_dirut);
+                // no_surat_persetujuan_pip_dirops_ke_dirut
+                $('[name="no_surat_persetujuan_pip_dirops_ke_dirut"]').val(response['row_program_detail'].no_surat_persetujuan_pip_dirops_ke_dirut);
+                // lampiran_pip_ca_ke_gm
+                $('[name="lampiran_pip_ca_ke_gm"]').val(response['row_program_detail'].lampiran_pip_ca_ke_gm);
+                // lampiran_pip_gm_ke_dirops
+                $('[name="lampiran_pip_gm_ke_dirops"]').val(response['row_program_detail'].lampiran_pip_gm_ke_dirops);
+                // lampiran_pip_dirops_ke_dirut
+                $('[name="lampiran_pip_dirops_ke_dirut"]').val(response['row_program_detail'].lampiran_pip_dirops_ke_dirut);
+                // lampiran_persetujuan_pip_dirops_ke_dirut
+                $('[name="lampiran_persetujuan_pip_dirops_ke_dirut"]').val(response['row_program_detail'].lampiran_persetujuan_pip_dirops_ke_dirut);
+                // tgl_surat_pip_ca_ke_gm
+                $('[name="tgl_surat_pip_ca_ke_gm"]').val(response['row_program_detail'].tgl_surat_pip_ca_ke_gm);
+                // tgl_surat_pip_gm_ke_dirops
+                $('[name="tgl_surat_pip_gm_ke_dirops"]').val(response['row_program_detail'].tgl_surat_pip_gm_ke_dirops);
+                // tgl_surat_pip_dirops_ke_dirut
+                $('[name="tgl_surat_pip_dirops_ke_dirut"]').val(response['row_program_detail'].tgl_surat_pip_dirops_ke_dirut);
+                // tgl_surat_persetujuan_pip_dirops_ke_dirut
+                $('[name="tgl_surat_persetujuan_pip_dirops_ke_dirut"]').val(response['row_program_detail'].tgl_surat_persetujuan_pip_dirops_ke_dirut);
+
+                // format nomor tanggal surat HPS
+                // no_surat_hps_ca_ke_gm
+                $('[name="no_surat_hps_ca_ke_gm"]').val(response['row_program_detail'].no_surat_hps_ca_ke_gm);
+                // no_surat_hps_gm_ke_dirops
+                $('[name="no_surat_hps_gm_ke_dirops"]').val(response['row_program_detail'].no_surat_hps_gm_ke_dirops);
+                // no_surat_hps_dirops_ke_dirut
+                $('[name="no_surat_hps_dirops_ke_dirut"]').val(response['row_program_detail'].no_surat_hps_dirops_ke_dirut);
+                // no_surat_persetujuan_hps_dirops_ke_dirut
+                $('[name="no_surat_persetujuan_hps_dirops_ke_dirut"]').val(response['row_program_detail'].no_surat_persetujuan_hps_dirops_ke_dirut);
+                // lampiran_hps_ca_ke_gm
+                $('[name="lampiran_hps_ca_ke_gm"]').val(response['row_program_detail'].lampiran_hps_ca_ke_gm);
+                // lampiran_hps_gm_ke_dirops
+                $('[name="lampiran_hps_gm_ke_dirops"]').val(response['row_program_detail'].lampiran_hps_gm_ke_dirops);
+                // lampiran_hps_dirops_ke_dirut
+                $('[name="lampiran_hps_dirops_ke_dirut"]').val(response['row_program_detail'].lampiran_hps_dirops_ke_dirut);
+                // lampiran_persetujuan_hps_dirops_ke_dirut
+                $('[name="lampiran_persetujuan_hps_dirops_ke_dirut"]').val(response['row_program_detail'].lampiran_persetujuan_hps_dirops_ke_dirut);
+                // tgl_surat_hps_ca_ke_gm
+                $('[name="tgl_surat_hps_ca_ke_gm"]').val(response['row_program_detail'].tgl_surat_hps_ca_ke_gm);
+                // tgl_surat_hps_gm_ke_dirops
+                $('[name="tgl_surat_hps_gm_ke_dirops"]').val(response['row_program_detail'].tgl_surat_hps_gm_ke_dirops);
+                // tgl_surat_hps_dirops_ke_dirut
+                $('[name="tgl_surat_hps_dirops_ke_dirut"]').val(response['row_program_detail'].tgl_surat_hps_dirops_ke_dirut);
+                // tgl_surat_persetujuan_hps_dirops_ke_dirut
+                $('[name="tgl_surat_persetujuan_hps_dirops_ke_dirut"]').val(response['row_program_detail'].tgl_surat_persetujuan_hps_dirops_ke_dirut);
+
+                // nota dinas
+                // no_surat_nota_dinas
+                $('[name="no_surat_nota_dinas"]').val(response['row_program_detail'].no_surat_nota_dinas);
+                // lampiran_nota_dinas
+                $('[name="lampiran_nota_dinas"]').val(response['row_program_detail'].lampiran_nota_dinas);
+                // tgl_surat_nota_dinas
+                $('[name="tgl_surat_nota_dinas"]').val(response['row_program_detail'].tgl_surat_nota_dinas);
+                // pengirim_nota_dinas
+                $('[name="pengirim_nota_dinas"]').val(response['row_program_detail'].pengirim_nota_dinas);
+                // penerima_nota_dinas
+                $('[name="penerima_nota_dinas"]').val(response['row_program_detail'].penerima_nota_dinas);
+                // jabatan_pengirim_nota_dinas
+                $('[name="jabatan_pengirim_nota_dinas"]').val(response['row_program_detail'].jabatan_pengirim_nota_dinas);
+                // jabatan_penerima_nota_dinas
+                $('[name="jabatan_penerima_nota_dinas"]').val(response['row_program_detail'].jabatan_penerima_nota_dinas);
+
+                // // gunning
+                // $('[name="no_surat_gunning"]').val(response['row_program_detail'].no_surat_gunning);
+                // $('[name="tanggal_gunning"]').val(response['row_program_detail'].tanggal_gunning);
+                // $('[name="lampiran_gunning"]').val(response['row_program_detail'].lampiran_gunning);
+                // $('[name="tkdn_gunning"]').val(response['row_program_detail'].tkdn_gunning);
+
+                // // loi
+                // $('[name="no_surat_loi"]').val(response['row_program_detail'].no_surat_loi);
+                // $('[name="tanggal_loi"]').val(response['row_program_detail'].tanggal_loi);
+                // $('[name="lampiran_loi"]').val(response['row_program_detail'].lampiran_loi);
+                // $('[name="no_surat_penunjukan_loi"]').val(response['row_program_detail'].no_surat_penunjukan_loi);
+
+                // // sho
+                // $('[name="no_surat_sho"]').val(response['row_program_detail'].no_surat_sho);
+                // $('[name="tanggal_sho"]').val(response['row_program_detail'].tanggal_sho);
+
+                // // smk
+                // $('[name="no_surat_smk"]').val(response['row_program_detail'].no_surat_smk);
+                // $('[name="tanggal_smk"]').val(response['row_program_detail'].tanggal_smk);
+                // $('[name="lampiran_smk"]').val(response['row_program_detail'].lampiran_smk);
+
+                // // ttd_pra
+                // $('[name="nama_dirops_pra"]').val(response['row_program_detail'].nama_dirops_pra);
+                // $('[name="nama_dirut_pra"]').val(response['row_program_detail'].nama_dirut_pra);
+
+                // // no_kontrak
+                // $('[name="no_kontrak_penyedia"]').val(response['row_program_detail'].no_kontrak_penyedia);
+                // $('[name="tanggal_kontrak_program"]').val(response['row_program_detail'].tanggal_kontrak_program);
+                // $('[name="tahun_kontrak_program"]').val(response['row_program_detail'].tahun_kontrak_program);
+
+                // ini unutk logic spm
+                // status_spm
+                $('[name="status_spm"]').val(response['row_program_detail'].status_spm);
+                // ket_non_spm
+                $('[name="ket_non_spm"]').val(response['row_program_detail'].ket_non_spm);
+                if (response['row_program_detail'].status_spm == 'NON SPM') {
+                    $('.jika_dipilih_spm').css('display', 'none')
+                    $('.jika_dipilih_non_spm').css('display', 'block')
+                } else if (response['row_program_detail'].status_spm == 'SPM') {
+                    $('.jika_dipilih_non_spm').css('display', 'none')
+                    $('.jika_dipilih_spm').css('display', 'block')
+                } else {
+                    $('.jika_dipilih_non_spm').css('display', 'none')
+                    $('.jika_dipilih_spm').css('display', 'none')
+                }
                 var html = '';
                 var i;
                 for (i = 0; i < response['data_spm'].length; i++) {
@@ -822,24 +1162,18 @@
                 var html3 = '';
                 var x;
                 for (x = 0; x < response['data_teknis'].length; x++) {
-                    html3 += '<div class="row"><div class="col-md-1">2.' + [x + 1] + '</div>' +
-                        '<div class="col-md-11" style="margin-left: -40px;">' +
-                        '<b>' + response['data_teknis'][x].nama_alasan + '</b>' +
-                        '&nbsp;<a href="javascript:;" onclick="hapus_teknis(' + response['data_teknis'][x].id_alasan_teknis + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a>' +
-                        '</div>' +
-                        '</div>';
+                    html3 +=
+                        '<b>2.' + [x + 1] + ' ' + response['data_teknis'][x].nama_alasan + '</b>' +
+                        '&nbsp;<a href="javascript:;" onclick="hapus_teknis(' + response['data_teknis'][x].id_alasan_teknis + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a><br>';
                 }
                 $('#alasan_teknis').html(html3);
 
                 var html4 = '';
                 var o;
                 for (o = 0; o < response['data_administrasi'].length; o++) {
-                    html4 += '<div class="row"><div class="col-md-1">1.' + [o + 1] + '</div>' +
-                        '<div class="col-md-11" style="margin-left: -40px;">' +
-                        '<b>' + response['data_administrasi'][o].nama_alasan + '</b>' +
-                        '&nbsp;<a href="javascript:;" onclick="hapus_administrasi(' + response['data_administrasi'][o].id_alasan_administrasi + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a>' +
-                        '</div>' +
-                        '</div>';
+                    html4 +=
+                        '<b>1.' + [o + 1] + ' ' + response['data_administrasi'][o].nama_alasan + '</b>' +
+                        '&nbsp;<a href="javascript:;" onclick="hapus_administrasi(' + response['data_administrasi'][o].id_alasan_administrasi + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a><br>';
                 }
                 $('#alasan_administrasi').html(html4);
             }
@@ -1061,6 +1395,7 @@
     }
 
     var arescrolling = 0;
+
     function scroller(from, to) {
         if (arescrolling) return; // avoid potential recursion/inefficiency
         arescrolling = 1;
@@ -1090,6 +1425,8 @@
         })
     }
 </script>
+
+
 <script>
     function Simpan_semua_surat(type) {
         var type_pip_number = $('[name="type_pip_number"]').val();
@@ -1716,4 +2053,129 @@
             ]
         });
     });
+</script>
+
+<script>
+    function pilih_status_spm(type) {
+        var type_post_name = $('[name="' + type + '"]').val();
+        var id_detail_program_penyedia_jasa = $('[name="id_detail_program_penyedia_jasa"]').val();
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/administrasi_penyedia/simpan_master_persuratan') ?>",
+            data: {
+                type: type,
+                type_post_name: type_post_name,
+                id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
+            },
+            dataType: "JSON",
+            success: function(response) {
+                Kelola_surat()
+            }
+        })
+    }
+
+    function pilih_status_non_spm(type) {
+        var type_post_name = $('[name="' + type + '"]').val();
+        var id_detail_program_penyedia_jasa = $('[name="id_detail_program_penyedia_jasa"]').val();
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/administrasi_penyedia/simpan_master_persuratan') ?>",
+            data: {
+                type: type,
+                type_post_name: type_post_name,
+                id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
+            },
+            dataType: "JSON",
+            success: function(response) {
+                setTimeout(() => {
+                    Kelola_surat()
+                }, 5000);
+            }
+        })
+    }
+
+    function pilih_jenis_pengadaan(type) {
+        var type_post_name = $('[name="' + type + '"]').val();
+        var id_detail_program_penyedia_jasa = $('[name="id_detail_program_penyedia_jasa"]').val();
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/administrasi_penyedia/simpan_master_persuratan') ?>",
+            data: {
+                type: type,
+                type_post_name: type_post_name,
+                id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
+            },
+            dataType: "JSON",
+            success: function(response) {
+                Kelola_surat()
+            }
+        })
+    }
+
+    function pilih_metode_pengadaan(type) {
+        var type_post_name = $('[name="' + type + '"]').val();
+        var id_detail_program_penyedia_jasa = $('[name="id_detail_program_penyedia_jasa"]').val();
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/administrasi_penyedia/simpan_master_persuratan') ?>",
+            data: {
+                type: type,
+                type_post_name: type_post_name,
+                id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
+            },
+            dataType: "JSON",
+            success: function(response) {
+                Kelola_surat()
+            }
+        })
+    }
+
+    function pilih_jenis_anggaran(type) {
+        var type_post_name = $('[name="' + type + '"]').val();
+        var id_detail_program_penyedia_jasa = $('[name="id_detail_program_penyedia_jasa"]').val();
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/administrasi_penyedia/simpan_master_persuratan') ?>",
+            data: {
+                type: type,
+                type_post_name: type_post_name,
+                id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
+            },
+            dataType: "JSON",
+            success: function(response) {
+                Kelola_surat()
+            }
+        })
+    }
+</script>
+
+<script>
+        function copy_administrasi_text() {
+        // Get the text field
+        var copyText = document.getElementById("administrasi_text");
+
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
+
+        // Alert the copied text
+        alert("Copied the text: " + copyText.value);
+    }
+    function copy_teknis_text() {
+        // Get the text field
+        var copyText = document.getElementById("teknis_text");
+
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
+
+        // Alert the copied text
+        alert("Copied the text: " + copyText.value);
+    }
 </script>

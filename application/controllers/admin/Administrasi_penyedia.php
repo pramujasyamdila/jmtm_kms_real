@@ -3478,10 +3478,17 @@ class Administrasi_penyedia extends CI_Controller
         $where = [
             'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa
         ];
-        $data = [
-            $type => $type_post_name,
-        ];
+        if ($type == 'metode_pengadaan_sk2') {
+            $data = [
+                'metode_pengadaan_sk' => $type_post_name,
+            ];
+        } else {
+            $data = [
+                $type => $type_post_name,
+            ];
+        }
         $this->Data_kontrak_model->update_rup($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 
 
