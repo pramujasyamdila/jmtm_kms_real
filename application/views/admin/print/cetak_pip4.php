@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Permohonan Izin Prinsip GM ke DIROPS</title>
+    <title>Persetujuan Izin Prinsip Pengadaan DIROPS ke DIRUT</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,14 +33,14 @@
                 <label for="" style="margin-right: auto;"> :</label>
             </div>
             <div class="col-md-4">
-                <label for="" style="margin-left: -90px;"><?= $row_program_detail['no_surat_pip_gm_ke_dirops'] ?></label>
+                <label for="" style="margin-left: -90px;"><?= $row_program_detail['no_surat_pip_ca_ke_gm'] ?></label>
             </div>
             <div class="col-md-2">
             </div>
             <div class="col-md-2">
             </div>
             <div class="col-md-2">
-                <label><?= $row_program_detail['tgl_surat_pip_gm_ke_dirops'] ?></label>
+                <label><?= $row_program_detail['tgl_surat_pip_ca_ke_gm'] ?></label>
 
             </div>
         </div>
@@ -67,14 +67,14 @@
             </div>
             <div class="col-md-11">
                 <label for="" style="margin-left: auto;">
-                    : <b> Permohonan Izin Prinsip Pengadaan <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label> </b></b>
+                    : <b> Persetujuan Izin Prinsip Pengadaan <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label> </b></b>
                 </label>
             </div>
         </div>
         <div class="mt-5">
             Yth.
             <br>
-            <b> <label for=""><?= $row_program_detail['nama_departemen'] ?></label> Direktur Operasional</b> <br>
+            <b> <label for=""><?= $row_program_detail['nama_departemen'] ?></label> Direktur Utama</b> <br>
             PT Jasamarga Tollroad Maintenance <br>
             Gedung C PT Jasa Marga (Persero) Tbk, Lt.1 <br>
             Plaza Tol Taman Mini Indonesia Indah, Jakarta 13550
@@ -420,18 +420,18 @@
                     <label for="">: Mata Anggaran <?= $row_program_detail['jenis_anggaran'] ?> PT Jasamarga Tollroad Maintenance Area <?= $row_program_detail['nama_area']  ?></label>
                     <!-- <label for="">:
                         <?php if ($row_program_detail['sts_tahun_pembebanan'] == 'single_years') { ?>
-                                                                                                        <label for="">Single Years</label>
+                                                                                                                                    <label for="">Single Years</label>
                         <?php } else { ?>
-                                                                                                        <label for="">Multi Years</label>
+                                                                                                                                    <label for="">Multi Years</label>
                         <?php } ?>
                     </label>
                     <br>
                     <?php if ($row_program_detail['sts_tahun_pembebanan'] == 'single_years') { ?>
 
                     <?php } else { ?>
-                                                                                                    <?php foreach ($data_multi_years as $key => $value) { ?>
-                                                                                                                                                                                    <label for=""><?= $value['tahun_multiyers'] ?></label>,
-                                                                                                    <?php } ?>
+                                                                                                                                <?php foreach ($data_multi_years as $key => $value) { ?>
+                                                                                                                                                                                                                                            <label for=""><?= $value['tahun_multiyers'] ?></label>,
+                                                                                                                                <?php } ?>
                     <?php } ?> -->
 
                 </div>
@@ -489,8 +489,8 @@
                     <br>
                     <br>
                     <br><br><br><br>
-                    <h5> <u style="text-transform: capitalize;"><?= $row_program_detail['pengirim_pip_gm_ke_dirops'] ?></u></h5>
-                    <h5>General Manager
+                    <h5> <u style="text-transform: capitalize;"><?= $row_program_detail['pengirim_pip_dirops_ke_dirut'] ?></u></h5>
+                    <h5>Direktur Utama
                     </h5>
 
                 </center>
@@ -786,7 +786,7 @@
                     $('[name="sts_tahun_pembebanan"]').val(response['row_program_detail'].sts_tahun_pembebanan);
 
                     // ttd
-                    $('[name="nama_gm_ke_dirops"]').val(response['row_program_detail'].nama_gm_ke_dirops);
+                    $('[name="nama_ca_ke_gm"]').val(response['row_program_detail'].nama_ca_ke_gm);
                     $('[name="nama_gm_ke_dirops"]').val(response['row_program_detail'].nama_gm_ke_dirops);
                     $('[name="nama_dirops_ke_dirut"]').val(response['row_program_detail'].nama_dirops_ke_dirut);
 
@@ -796,9 +796,9 @@
                     $('[name="nama_persetujuan_pip_dirops_ke_dirut"]').val(response['row_program_detail'].nama_persetujuan_pip_dirops_ke_dirut);
 
                     // pip
-                    $('[name="lampiran_pip_gm_ke_dirops"]').val(response['row_program_detail'].lampiran_pip_gm_ke_dirops);
-                    $('[name="no_surat_pip_gm_ke_dirops"]').val(response['row_program_detail'].no_surat_pip_gm_ke_dirops);
-                    $('[name="tgl_surat_pip_gm_ke_dirops"]').val(response['row_program_detail'].tgl_surat_pip_gm_ke_dirops);
+                    $('[name="lampiran_pip_ca_ke_gm"]').val(response['row_program_detail'].lampiran_pip_ca_ke_gm);
+                    $('[name="no_surat_pip_ca_ke_gm"]').val(response['row_program_detail'].no_surat_pip_ca_ke_gm);
+                    $('[name="tgl_surat_pip_ca_ke_gm"]').val(response['row_program_detail'].tgl_surat_pip_ca_ke_gm);
 
                     $('[name="lampiran_pip_gm_ke_dirops"]').val(response['row_program_detail'].lampiran_pip_gm_ke_dirops);
                     $('[name="no_surat_pip_gm_ke_dirops"]').val(response['row_program_detail'].no_surat_pip_gm_ke_dirops);
@@ -810,7 +810,7 @@
 
                     // hps
                     // ttd
-                    $('[name="nama_hps_gm_ke_dirops"]').val(response['row_program_detail'].nama_hps_gm_ke_dirops);
+                    $('[name="nama_hps_ca_ke_gm"]').val(response['row_program_detail'].nama_hps_ca_ke_gm);
                     $('[name="nama_hps_gm_ke_dirops"]').val(response['row_program_detail'].nama_hps_gm_ke_dirops);
                     $('[name="nama_hps_dirops_ke_dirut"]').val(response['row_program_detail'].nama_hps_dirops_ke_dirut);
                     // persetujuan_hps
@@ -818,9 +818,9 @@
                     $('[name="tgl_surat_persetujuan_hps_dirops_ke_dirut"]').val(response['row_program_detail'].tgl_surat_persetujuan_hps_dirops_ke_dirut);
                     $('[name="nama_persetujuan_hps_dirops_ke_dirut"]').val(response['row_program_detail'].nama_persetujuan_hps_dirops_ke_dirut);
 
-                    $('[name="no_surat_hps_gm_ke_dirops"]').val(response['row_program_detail'].no_surat_hps_gm_ke_dirops);
-                    $('[name="tgl_surat_hps_gm_ke_dirops"]').val(response['row_program_detail'].tgl_surat_hps_gm_ke_dirops);
-                    $('[name="lampiran_hps_gm_ke_dirops"]').val(response['row_program_detail'].lampiran_hps_gm_ke_dirops);
+                    $('[name="no_surat_hps_ca_ke_gm"]').val(response['row_program_detail'].no_surat_hps_ca_ke_gm);
+                    $('[name="tgl_surat_hps_ca_ke_gm"]').val(response['row_program_detail'].tgl_surat_hps_ca_ke_gm);
+                    $('[name="lampiran_hps_ca_ke_gm"]').val(response['row_program_detail'].lampiran_hps_ca_ke_gm);
 
                     $('[name="no_surat_hps_gm_ke_dirops"]').val(response['row_program_detail'].no_surat_hps_gm_ke_dirops);
                     $('[name="tgl_surat_hps_gm_ke_dirops"]').val(response['row_program_detail'].tgl_surat_hps_gm_ke_dirops);
