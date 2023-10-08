@@ -8,10 +8,13 @@
     }
 
 
-    function byid(id_dok_mc, nama_dok) {
+    function byid(id_dok_mc, nama_dok, id_detail_program_penyedia_jasa, no_urut_dok) {
         $('#modal_upload').modal('show')
         $('#nama_dok').text(nama_dok)
         $('[name="id_dok_mc"]').val(id_dok_mc)
+        $('[name="nama_dok"]').val(nama_dok)
+        $('[name="id_detail_program_penyedia_jasa"]').val(id_detail_program_penyedia_jasa)
+        $('[name="no_urut_dok"]').val(no_urut_dok)
     }
 
     load_table_dok_mc()
@@ -84,8 +87,7 @@
                         var tgl_periksa = response[i]['tgl_periksa']
                     }
 
-                    var aksi = '<br><a href="javascript:;" onclick="byid(\'' + response[i]['id_dok_mc'] + '\'' + ',' + '\'' + response[i]['nama_dok'] + '\')" class="btn btn-block btn-sm btn-outline-primary"><i class="fas fa fa-database"></i> Upload Dokumen</a>' + '<a href="javascript:;" onclick="tidak_diperlukan(\'' + response[i]['id_dok_mc'] + '\'' + ',' + '\'' + response[i]['nama_dok'] + '\')" class="btn btn-block btn-sm btn-outline-danger"><i class="fas fa fa-times"></i> Tidak Diperlukan</a><br>'
-
+                    var aksi = '<br><a href="javascript:;" onclick="byid(\'' + response[i]['id_dok_mc'] + '\'' + ',' + '\'' + response[i]['nama_dok'] + '\'' + ',' + '\'' + response[i]['id_detail_program_penyedia_jasa'] + '\'' + ',' + '\'' + response[i]['no_urut_dok'] + '\')" class="btn btn-block btn-sm btn-outline-primary"><i class="fas fa fa-database"></i> Upload Dokumen</a>' + '<a href="javascript:;" onclick="tidak_diperlukan(\'' + response[i]['id_dok_mc'] + '\'' + ',' + '\'' + response[i]['nama_dok'] + '\')" class="btn btn-block btn-sm btn-outline-danger"><i class="fas fa fa-times"></i> Tidak Diperlukan</a><br>'
                     html +=
                         '<tr>' +
                         '<td>' + response[i]['no_urut_dok'] + '</td>' +

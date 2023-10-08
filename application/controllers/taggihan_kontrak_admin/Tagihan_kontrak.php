@@ -5449,6 +5449,9 @@ class Tagihan_kontrak extends CI_Controller
     {
         $id_dok_mc = $this->input->post('id_dok_mc');
         $nama_pegawai = $this->session->userdata('nama_pegawai');
+        $nama_dok = $this->input->post('nama_dok');
+        $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
+        $no_urut_dok = $this->input->post('no_urut_dok');
         $config['upload_path'] = './file_dokumen_mc/';
         $config['allowed_types'] = '*';
         $config['max_size'] = 0;
@@ -5457,15 +5460,30 @@ class Tagihan_kontrak extends CI_Controller
 
         if ($this->upload->do_upload('file_dokumen_mc')) {
             $fileData = $this->upload->data();
-            $data = [
-                'tgl_upload' => date('Y-m-d'),
-                'file_mc' => $fileData['file_name'],
-                'user_uploaded' => $nama_pegawai
-            ];
-            $where = [
-                'id_dok_mc' => $id_dok_mc
-            ];
-            $this->Tagihan_kontrak_model->update_dok_mc($data, $where);
+            if ($no_urut_dok >= 12) {
+                $data = [
+                    'tgl_upload' => date('Y-m-d'),
+                    'file_mc' => $fileData['file_name'],
+                    'user_uploaded' => $nama_pegawai
+                ];
+                $where = [
+                    'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                    'nama_dok' => $nama_dok
+                ];
+                $this->Tagihan_kontrak_model->update_dok_mc($data, $where);
+            } else {
+                $data = [
+                    'tgl_upload' => date('Y-m-d'),
+                    'file_mc' => $fileData['file_name'],
+                    'user_uploaded' => $nama_pegawai
+                ];
+                $where = [
+                    'id_dok_mc' => $id_dok_mc
+                ];
+                $this->Tagihan_kontrak_model->update_dok_mc($data, $where);
+            }
+
+
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
         }
     }

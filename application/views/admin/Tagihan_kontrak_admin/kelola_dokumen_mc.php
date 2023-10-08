@@ -118,6 +118,9 @@
                     <div class="container-fluid">
                         <center>
                             <input type="hidden" name="id_dok_mc">
+                            <input type="hidden" name="nama_dok">
+                            <input type="hidden" name="no_urut_dok">
+                            <input type="hidden" name="id_detail_program_penyedia_jasa">
                             <div class="input-group-append">
                                 <input type="file" id="file_mc" class="file_dokumen_mc form-control" name="file_dokumen_mc" />
                             </div>
