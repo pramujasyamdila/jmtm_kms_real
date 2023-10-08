@@ -683,7 +683,6 @@
                                                                                                         <p>10/11/12%</p>
                                                                                                     <td></td>
                                                                                                 </tr>
-
                                                                                                 <tr>
                                                                                                     <td>8</td>
                                                                                                     <td scope="row">Waktu Pelaksanaan</td>
