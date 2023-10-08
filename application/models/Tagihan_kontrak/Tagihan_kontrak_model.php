@@ -447,4 +447,44 @@ class Tagihan_kontrak_model extends CI_Model
         $this->db->insert('tbl_detail_program_penyedia_jasa', $data);
         return $this->db->affected_rows();
     }
+
+    public function get_mc($id_mc)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_mc');
+        $this->db->where('id_mc', $id_mc);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+    public function get_dok_mc_result($id_mc)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dok_mc');
+        $this->db->where('id_mc', $id_mc);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function genrate_dok($data)
+    {
+        $this->db->insert('tbl_dok_mc', $data);
+        return $this->db->affected_rows();
+    }
+
+    public function cek_genrate($id_mc, $id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dok_mc');
+        $this->db->where('id_mc', $id_mc);
+        $this->db->where('id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+    public function update_dok_mc($data, $where)
+    {
+        $this->db->where($where);
+        $this->db->update('tbl_dok_mc', $data);
+    }
 }
