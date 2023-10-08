@@ -26,7 +26,7 @@
                             <div class="col-sm-12">
                                 <div class="card card-outline card-warning">
                                     <div class="card-header">
-                                    <h5><i class="fa fa-book"></i> Kelola Surat Kontrak</h5>
+                                        <h5><i class="fa fa-book"></i> Kelola Surat Kontrak</h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="container-fluid">
@@ -37,16 +37,10 @@
                                                             <h3 class="card-title"><i class="fas fa fa-envelope"></i></h3>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link active" id="custom-tabs-two-gunning-tab" data-toggle="pill" href="#custom-tabs-two-gunning" role="tab" aria-controls="custom-tabs-two-gunning" aria-selected="true">Gunning</a>
+                                                            <a class="nav-link active" id="custom-tabs-two-masterdata-tab" data-toggle="pill" href="#custom-tabs-two-masterdata" role="tab" aria-controls="custom-tabs-two-masterdata" aria-selected="true">Masterdata</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" id="custom-tabs-two-loi-tab" data-toggle="pill" href="#custom-tabs-two-loi" role="tab" aria-controls="custom-tabs-two-loi" aria-selected="false">LOI</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" id="custom-tabs-two-sho-tab" data-toggle="pill" href="#custom-tabs-two-sho" role="tab" aria-controls="custom-tabs-two-sho" aria-selected="false">SHO</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" id="custom-tabs-two-spmk-tab" data-toggle="pill" href="#custom-tabs-two-spmk" role="tab" aria-controls="custom-tabs-two-spmk" aria-selected="false">SPMK</a>
+                                                            <a class="nav-link" id="custom-tabs-two-persuratan-tab" data-toggle="pill" href="#custom-tabs-two-persuratan" role="tab" aria-controls="custom-tabs-two-persuratan" aria-selected="true">Persuratan</a>
                                                         </li>
                                                         <li class="nav-item">
                                                             <a class="nav-link" id="custom-tabs-two-kontrak-tab" data-toggle="pill" href="#custom-tabs-two-kontrak" role="tab" aria-controls="custom-tabs-two-kontrak" aria-selected="false">Kontrak</a>
@@ -58,325 +52,180 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="tab-content" id="custom-tabs-two-tabContent">
-                                                        <div class="tab-pane active" id="custom-tabs-two-gunning" role="tabpanel" aria-labelledby="custom-tabs-two-gunning-tab">
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="card card-outline card-info">
-                                                                        <div class="card-header">
-                                                                            <h5 class="card-title">
-                                                                                GUNNING
-                                                                            </h5>
-                                                                        </div>
-                                                                        <div class="card-body">
-                                                                            <div class="container">
-                                                                                <div class="row">
-                                                                                    <div class="col-md-6">
-                                                                                        <img src="https://jmtm.co.id/assets/img_jmtm/logo.png" alt="" width="300px" style="margin-top:50px">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-5">
-                                                                                    </div>
-                                                                                    <div class="col-md-4">
-                                                                                        <h5>GUNNING</h5>
-                                                                                    </div>
-                                                                                    <div class="col-md-3">
-
-                                                                                    </div>
-                                                                                </div>
-
-
-
-                                                                                <div class="row mt-5">
-                                                                                    <div class="col-md-1">
-                                                                                        Nomor
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <label>: <input type="text" name="no_surat_gunning"></label>
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-                                                                                        <input type="date" name="tanggal_gunning">
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="row">
-                                                                                    <div class="col-md-1">
-                                                                                        Lampiran
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <label>: <input type="text" name="lampiran_gunning"> </label>
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="row">
-                                                                                    <div class="col-md-1">
-                                                                                        Perihal
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <label>: Surat Penunjukan Penyedia Jasa Pemborongan (Gunning) <b for="" class="jenis_pengadaan"></b> <b for="" class="nama_pekerjaan"></b> </label>
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="mt-5">
-                                                                                    Yth.Direktur
-                                                                                    <br>
-                                                                                    <b> <?= $row_program['nama_penyedia'] ?></b> <br>
-                                                                                    {alamat Penyedia} Jl. Surapati No. 5, Bandung
-                                                                                    Jawa Barat
-
-                                                                                </div>
-
-                                                                                <div class="row mt-3">
-                                                                                    <div class="mt-2">
-                                                                                        <label>Berdasarkan Pengumuman Pemenang oleh Panitia Pengadaan <b class="jenis_pengadaan"></b> Pekerjaan di atas, nomor: 11/PAN/SFO REKON PALIKANCI/II/2023, tanggal: 16 Februari 2023, kami tetapkan perusahaan Saudara, <b class="nama_penyedia"></b> sebagai pelaksana pekerjaan tersebut, dengan penjelasan sebagai berikut:
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-3">
-                                                                                        Harga Penawaran setelah Koreksi
-                                                                                    </div>
-                                                                                    <div class="col-md-9">
-                                                                                        <label for="">: <label for="" class="total_hps_pure"></label> (<b class="terbilang_total_hps_pure"></b>)</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-3">
-                                                                                        Tingkat Komponen Dalam Negeri (TKDN)
-                                                                                    </div>
-                                                                                    <div class="col-md-9">
-                                                                                        <label for="">: <input type="number" name="tkdn_gunning"> %</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-3">
-                                                                                        Jangka Waktu Pelaksanaan
-                                                                                    </div>
-                                                                                    <div class="col-md-9">
-                                                                                        <label for="">: <label for="" class="waktu_pemeliharaan_pip"></label> (<b class="terbilang_waktu_pemeliharaan_pip"></b> Hari)</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-3">
-                                                                                        Jangka Waktu Pemeliharaan
-                                                                                    </div>
-                                                                                    <div class="col-md-9">
-                                                                                        <label for="">: <label for="" class="waktu_pelaksanaan_pip"></label> (<b class="terbilang_waktu_pelaksanaan_pip"></b> Hari)</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row mt-3">
-                                                                                    <div class="mt-2">
-                                                                                        <label>
-                                                                                            Sehubungan dengan hal tersebut, <?= $row_program['nama_penyedia'] ?> dimohon agar menyerahkan Jaminan Pelaksanaan sebesar 5% (lima perseratus) dari nilai kontrak dengan masa berlaku sejak ditandatanganinya Kontrak sampai dengan Serah Terima Sementara (Provisional Hand Over) ditambah 60 (enam puluh) hari kalender dan dapat diperpanjang bila diperlukan, sebagai syarat ditandatanganinya Kontrak.
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="mt-2">
-                                                                                        <label>
-                                                                                            Pelaksanaan pekerjaan di lapangan dapat dimulai setelah diterbitkannya Surat Perintah Mulai Kerja (SPMK) dari PT Jasamarga Tollroad Maintenance.
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="mt-2">
-                                                                                        <label>
-                                                                                            Demikian disampaikan, atas perhatian Saudara, kami ucapkan terima kasih.
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <br><br><br>
-                                                                                <div class="row">
-                                                                                    <di class="col-md-9">
-
-                                                                                    </di>
-                                                                                    <div class="col-md-3">
-                                                                                        <center>
-                                                                                            PT JASAMARGA TOLLROAD MAINTENANCE
-                                                                                            <br>
-                                                                                            <br>
-                                                                                            <br><br><br><br>
-                                                                                            <h5> <input type="text" name="nama_dirops_pra"></h5>
-                                                                                            <div style="background-color:black;width:100%;height:2px">
-
-                                                                                            </div>
-                                                                                            <h5>Direktur Operasi
-                                                                                            </h5>
-                                                                                        </center>
-                                                                                    </div>
-                                                                                </div><br>
-                                                                                <div>
-                                                                                    <a href="javascript:;" onclick="Simpan_semua_surat('gunning')" class="btn btn-sm btn-success">Simpan Gunning</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-pane" id="custom-tabs-two-loi" role="tabpanel" aria-labelledby="custom-tabs-two-loi-tab">
+                                                        <div class="tab-pane fade show active" id="custom-tabs-two-masterdata" role="tabpanel" aria-labelledby="custom-tabs-two-masterdata-tab">
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="card card-outline card-info">
                                                                         <div class="card-header">
                                                                             <h3 class="card-title">
-                                                                                Surat Pernyataan Kehendak (Letter of Intent)
+                                                                                Masterdata
                                                                             </h3>
                                                                         </div>
+                                                                        <style>
+                                                                            .wrapper1,
+                                                                            .wrapper2 {
+                                                                                width: 300px;
+                                                                                overflow-x: scroll;
+                                                                                overflow-y: hidden;
+                                                                            }
+
+                                                                            .wrapper1 {
+                                                                                height: 20px;
+                                                                            }
+
+                                                                            .wrapper2 {
+                                                                                height: 200px;
+                                                                            }
+
+                                                                            .div1 {
+                                                                                width: 1000px;
+                                                                                height: 20px;
+                                                                            }
+
+                                                                            .div2 {
+                                                                                width: 1000px;
+                                                                                height: 200px;
+                                                                                overflow: auto;
+                                                                            }
+
+                                                                            .tableFixHead {
+                                                                                font-family: 'RNSSanz-ExtraBold';
+                                                                                overflow: auto;
+                                                                                height: 100px;
+
+                                                                            }
+
+                                                                            .tableFixHead thead th {
+                                                                                background-color: #302B63;
+                                                                                font-family: 'RNSSanz-ExtraBold';
+                                                                                color: 'white';
+                                                                                position: sticky;
+                                                                                top: 0;
+                                                                            }
+
+                                                                            #customers {
+                                                                                font-family: Arial, Helvetica, sans-serif;
+                                                                                border-collapse: collapse;
+                                                                                width: 100%;
+                                                                            }
+
+                                                                            #customers td,
+                                                                            #customers th {
+                                                                                border: 1px solid #ddd;
+                                                                                padding: 8px;
+                                                                            }
+
+                                                                            #customers tr:nth-child(even) {
+                                                                                background-color: #f2f2f2;
+                                                                            }
+
+                                                                            #customers tr:hover {
+                                                                                background-color: #ddd;
+                                                                            }
+
+                                                                            #customers th {
+                                                                                padding-top: 2px;
+                                                                                padding-bottom: 2px;
+                                                                                text-align: left;
+                                                                                background-color: #302B63;
+                                                                                color: white;
+                                                                            }
+                                                                        </style>
                                                                         <div class="card-body">
                                                                             <div class="container">
                                                                                 <div class="row">
-                                                                                    <div class="col-md-6">
-                                                                                        <img src="https://jmtm.co.id/assets/img_jmtm/logo.png" alt="" width="300px" style="margin-top:50px">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-3">
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <h5>Surat Pernyataan Kehendak (Letter of Intent)</h5>
-                                                                                    </div>
-                                                                                    <div class="col-md-3">
+                                                                                    <table id="customers" class="tableFixHead" style="font-size: 14px;">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th>No</th>
+                                                                                                <th>Uraian</th>
+                                                                                                <th>Uraian Otomatisasi</th>
+                                                                                                <th>Keterangan</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td>1</td>
+                                                                                                <td scope="row">TKDN %</td>
+                                                                                                <td>
+                                                                                                    <input type="number" onkeyup="isi_master_pra('tkdn_pra')" name="tkdn_pra" placeholder="TKDN %.." class="form-control">
+                                                                                                </td>
+                                                                                                <td></td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>2</td>
+                                                                                                <td scope="row">
+                                                                                                    Nilai Kontrak <br>
+                                                                                                    Terbilang
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <div class="form-group" style="margin-bottom:-2px">
+                                                                                                        <div class="input-group colorpickerinput">
+                                                                                                            <input type="number" onkeyup="isi_master_pra('harga_penawaran_terkoreksi')" placeholder="Harga Penawaran Terkoreksi..." name="harga_penawaran_terkoreksi" class="form-control">
+                                                                                                            <div class="input-group-append">
+                                                                                                                <div class="input-group-text">
+                                                                                                                    <label for="" class="rupiah_harga_penawaran"></label>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <label for="" class="terbilang_rupiah_harga_penawaran"></label>
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td></td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>3</td>
+                                                                                                <td scope="row">Jaminan Pelaksanaan</td>
+                                                                                                <td>
+                                                                                                    <select class="form-control" name="status_jaminan_gunning" onchange="status_jaminan_gunning('status_jaminan_gunning')" id="">
+                                                                                                        <option value="">-- Pilih Jaminan Pelaksanaan --</option>
+                                                                                                        <option value="Perlu Jaminan Pelaksanan">Perlu Jaminan Pelaksanan</option>
+                                                                                                        <option value="Tidak Perlu Jaminan Pelaksanan">Tidak Perlu Jaminan Pelaksanan</option>
+                                                                                                    </select>
+                                                                                                    <div class="jika_jaminan">
+                                                                                                        <div class="form-group" style="margin-bottom:-2px">
+                                                                                                            <input type="number" onkeyup="isi_master_pra('persentase_jaminan_gunning')" name="persentase_jaminan_gunning" placeholder="Persentase Jaminan Pelaksanaan" class="form-control">
+                                                                                                            <div class="input-group colorpickerinput">
+                                                                                                                <input type="number" onkeyup="isi_master_pra('masa_berlaku_persentase_jaminan_gunning')" placeholder="Masa Berlaku Jaminan Pelaksanaan..." name="masa_berlaku_persentase_jaminan_gunning" class="form-control">
+                                                                                                                <div class="input-group-append">
+                                                                                                                    <div class="input-group-text">
+                                                                                                                        <label for=""> Hari Kalender</label>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="jika_tidak_jaminan">
 
-                                                                                    </div>
-                                                                                </div>
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td></td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>4</td>
+                                                                                                <td scope="row">Syarat Ketentuan (Letter of Intent) </td>
+                                                                                                <td>
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-9">
+                                                                                                            <textarea class="form-control" name="ketentuan"></textarea>
+                                                                                                        </div>
+                                                                                                        <div class="col-md-2" style="margin-top: 10px;">
+                                                                                                            <label for=""><a href="javascript:;" class="btn btn-primary btn-sm" onclick="Simpan_ketentuan('ketentuan')">Simpan</a></label>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <br>
+                                                                                                    <div id="ketentuan"></div>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <!-- Button trigger modal -->
+                                                                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_copy_ketentuan">
+                                                                                                        <i class="fa fa-clipboard"></i> Contoh & Copy
+                                                                                                    </button>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
 
-
-
-                                                                                <div class="row mt-5">
-                                                                                    <div class="col-md-1">
-                                                                                        Nomor
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <label>: <input type="text" name="no_surat_loi"></label>
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-                                                                                        <input type="date" name="tanggal_loi">
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="row">
-                                                                                    <div class="col-md-1">
-                                                                                        Lampiran
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <label>: <input type="text" name="lampiran_loi"> </label>
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="row">
-                                                                                    <div class="col-md-1">
-                                                                                        Hal
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <label>: Surat Pernyataan Kehendak (Letter of Intent) <b for="" class="jenis_pengadaan"></b> <b for="" class="nama_pekerjaan"></b> </label>
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="mt-5">
-                                                                                    Yth.Direktur
-                                                                                    <br>
-                                                                                    <b> <?= $row_program['nama_penyedia'] ?></b> <br>
-                                                                                    {alamat Penyedia} Jl. Surapati No. 5, Bandung
-                                                                                    Jawa Barat
-
-                                                                                </div>
-
-                                                                                <div class="row mt-3">
-                                                                                    <div class="mt-2">
-                                                                                        <label>Sehubungan dengan pelaksanaan <b class="nama_pekerjaan"></b> dan berdasarkan Surat
-                                                                                            Penunjukan Penyedia Jasa pekerjaan dimaksud, nomor: <input type="text" name="no_surat_gunning">, sambil menunggu proses penandatanganan kontrak serta dengan pertimbangan
-                                                                                            bahwa pekerjaan tersebut merupakan program yang harus segera dilaksanakan, dengan ini kami
-                                                                                            terbitkan Surat Pernyataan Kehendak (Letter of Intent) agar Saudara dapat memulai pelaksanaan
-                                                                                            pekerjaan tersebut, dengan ketentuan sebagai berikut:
-
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-1">
-                                                                                        1.
-                                                                                    </div>
-                                                                                    <div class="col-md-11">
-                                                                                        <label for="">Lingkup pekerjaan yang dapat dimulai terlebih dahulu meliputi pekerjaan persiapan, diantaranya
-                                                                                            mobilisasi personil, peralatan, material, laboratorium serta koordinasi dengan pihak-pihak terkait.</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-1">
-                                                                                        2.
-                                                                                    </div>
-                                                                                    <div class="col-md-11">
-                                                                                        <label for="">Pekerjaan tersebut harus dilaksanakan sesuai dengan persyaratan pelaksanaan pekerjaan
-                                                                                            (syarat-syarat umum, administrasi, spesifikasi maupun gambar rencana) yang telah ditetapkan
-                                                                                            dalam Dokumen Pengadaan.</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="mt-2">
-                                                                                        <label>
-                                                                                            Demikian surat ini kami disampaikan untuk dapat digunakan sesuai dengan peraturan dan ketentuan
-                                                                                            yang berlaku.
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="mt-2">
-                                                                                        <label>
-                                                                                            Demikian disampaikan, atas perhatian dan kerja sama yang baik, kami ucapkan terima kasih.
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <br><br><br>
-                                                                                <div class="row">
-                                                                                    <di class="col-md-9">
-
-                                                                                    </di>
-                                                                                    <div class="col-md-3">
-                                                                                        <center>
-                                                                                            PT JASAMARGA TOLLROAD MAINTENANCE
-                                                                                            <br>
-                                                                                            <br>
-                                                                                            <br><br><br><br>
-                                                                                            <h5> <input type="text" name="nama_dirops_pra"></h5>
-                                                                                            <div style="background-color:black;width:100%;height:2px">
-
-                                                                                            </div>
-                                                                                            <h5>Direktur Operasi
-                                                                                            </h5>
-                                                                                        </center>
-                                                                                    </div>
-                                                                                </div><br>
-                                                                                <div>
-                                                                                    <a href="javascript:;" onclick="Simpan_semua_surat('loi')" class="btn btn-sm btn-success">Simpan Gunning</a>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -384,375 +233,295 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="tab-pane" id="custom-tabs-two-sho" role="tabpanel" aria-labelledby="custom-tabs-two-sho-tab">
+
+                                                        <div class="tab-pane fade show" id="custom-tabs-two-persuratan" role="tabpanel" aria-labelledby="custom-tabs-two-persuratan-tab">
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="card card-outline card-info">
                                                                         <div class="card-header">
                                                                             <h3 class="card-title">
-                                                                                Surat Pernyataan Kehendak (Letter of Intent)
+                                                                                Master Persuratan
                                                                             </h3>
                                                                         </div>
+                                                                        <style>
+                                                                            .wrapper1,
+                                                                            .wrapper2 {
+                                                                                width: 300px;
+                                                                                overflow-x: scroll;
+                                                                                overflow-y: hidden;
+                                                                            }
+
+                                                                            .wrapper1 {
+                                                                                height: 20px;
+                                                                            }
+
+                                                                            .wrapper2 {
+                                                                                height: 200px;
+                                                                            }
+
+                                                                            .div1 {
+                                                                                width: 1000px;
+                                                                                height: 20px;
+                                                                            }
+
+                                                                            .div2 {
+                                                                                width: 1000px;
+                                                                                height: 200px;
+                                                                                overflow: auto;
+                                                                            }
+
+                                                                            .tableFixHead {
+                                                                                font-family: 'RNSSanz-ExtraBold';
+                                                                                overflow: auto;
+                                                                                height: 100px;
+
+                                                                            }
+
+                                                                            .tableFixHead thead th {
+                                                                                background-color: #302B63;
+                                                                                font-family: 'RNSSanz-ExtraBold';
+                                                                                color: 'white';
+                                                                                position: sticky;
+                                                                                top: 0;
+                                                                            }
+
+                                                                            #customers {
+                                                                                font-family: Arial, Helvetica, sans-serif;
+                                                                                border-collapse: collapse;
+                                                                                width: 100%;
+                                                                            }
+
+                                                                            #customers td,
+                                                                            #customers th {
+                                                                                border: 1px solid #ddd;
+                                                                                padding: 8px;
+                                                                            }
+
+                                                                            #customers tr:nth-child(even) {
+                                                                                background-color: #f2f2f2;
+                                                                            }
+
+                                                                            #customers tr:hover {
+                                                                                background-color: #ddd;
+                                                                            }
+
+                                                                            #customers th {
+                                                                                padding-top: 2px;
+                                                                                padding-bottom: 2px;
+                                                                                text-align: left;
+                                                                                background-color: #302B63;
+                                                                                color: white;
+                                                                            }
+
+                                                                            #customers2 {
+                                                                                font-family: Arial, Helvetica, sans-serif;
+                                                                                border-collapse: collapse;
+                                                                                width: 100%;
+                                                                            }
+
+                                                                            #customers2 td,
+                                                                            #customers2 th {
+                                                                                border: 1px solid #ddd;
+                                                                                padding: 8px;
+                                                                            }
+
+                                                                            #customers2 tr:nth-child(even) {
+                                                                                background-color: #f2f2f2;
+                                                                            }
+
+                                                                            #customers2 tr:hover {
+                                                                                background-color: #ddd;
+                                                                            }
+
+                                                                            #customers2 th {
+                                                                                padding-top: 2px;
+                                                                                padding-bottom: 2px;
+                                                                                text-align: left;
+                                                                                background-color: #302B63;
+                                                                                color: white;
+                                                                            }
+                                                                        </style>
                                                                         <div class="card-body">
                                                                             <div class="container">
                                                                                 <div class="row">
-                                                                                    <div class="col-md-6">
-                                                                                        <img src="https://jmtm.co.id/assets/img_jmtm/logo.png" alt="" width="300px" style="margin-top:50px">
+                                                                                    <div onscroll='scroller("scroller", "scrollme")' style="overflow:scroll; height: 10;overflow-y: hidden;" id=scroller>
+                                                                                        <img src="" height=1 width=2066 style="width:2066px;">
                                                                                     </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-3">
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
+                                                                                    <div onscroll='scroller("scrollme", "scroller")' style="overflow:scroll; height:500px" id="scrollme">
+                                                                                        <br>
+                                                                                        <hr>
                                                                                         <center>
-                                                                                            <h5>BERITA ACARA
-                                                                                                SERAH TERIMA LAHAN (SHO)
-                                                                                                <label for="" class="nama_pekerjaan"></label>
-                                                                                            </h5>
+                                                                                            <h4>MASTER PERSURATAN GUNNING</h4>
                                                                                         </center>
+                                                                                        <br>
+                                                                                        <table id="customers" class="tableFixHead" style="font-size: 14px;">
+                                                                                            <thead class="text-center">
+                                                                                                <tr>
+                                                                                                    <th class="text-white">No</th>
+                                                                                                    <th class="text-white" style="width: 200px;">Nama Persuratan</th>
+                                                                                                    <th class="text-white">No Surat</th>
+                                                                                                    <th class="text-white">Tgl Surat</th>
+                                                                                                    <th class="text-white">No Surat Pengumuman Pemenang</th>
+                                                                                                    <th class="text-white">Tgl Surat Pengumuman Pemenang</th>
+                                                                                                    <th class="text-white">No Surat Penetapan Pemenang</th>
+                                                                                                    <th class="text-white">Tgl Surat Penetapan Pemenang</th>
+                                                                                                    <th class="text-white">Dari Nama Penetapan</th>
+                                                                                                    <th class="text-white">Dari Nama</th>
+                                                                                                    <th class="text-white">Jabatan</th>
+                                                                                                    <th class="text-white">Ke Nama</th>
+                                                                                                    <th class="text-white">Jabatan</th>
+                                                                                                    <th class="text-white">Informasi</th>
+                                                                                                    <th class="text-white">View</th>
+                                                                                                    <th class="text-white">Download Word/Pdf</th>
+                                                                                                </tr>
 
-                                                                                    </div>
-                                                                                    <div class="col-md-3">
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td scope="row">1</td>
+                                                                                                    <td>GUNNING</td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_gunning')" value="<?= $row_program['no_surat_gunning'] ?>" name="no_surat_gunning" placeholder="No Surat"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tanggal_gunning')" value="<?= $row_program['tanggal_gunning'] ?>" name="tanggal_gunning" placeholder="Tanggal Surat"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_pengumuman_gunning')" value="<?= $row_program['no_surat_pengumuman_gunning'] ?>" name="no_surat_pengumuman_gunning" placeholder="No Surat Penetapan"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tanggal_surat_pengumuman_gunning')" value="<?= $row_program['tanggal_surat_pengumuman_gunning'] ?>" name="tanggal_surat_pengumuman_gunning" placeholder="Tanggal Surat Penetapan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_penetapan_gunning')" value="<?= $row_program['no_surat_penetapan_gunning'] ?>" name="no_surat_penetapan_gunning" placeholder="No Surat Penetapan"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tanggal_surat_penetapan_gunning')" value="<?= $row_program['tanggal_surat_penetapan_gunning'] ?>" name="tanggal_surat_penetapan_gunning" placeholder="Tanggal Surat Penetapan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('nama_penetapan_dari')" value="<?= $row_program['nama_penetapan_dari'] ?>" name="nama_penetapan_dari" placeholder="Penetapan Pemenang Dari"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_gunning')" value="<?= $row_program['pengirim_gunning'] ?>" name="pengirim_gunning" placeholder="Dari Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_gunning')" value="<?= $row_program['jabatan_pengirim_gunning'] ?>" name="jabatan_pengirim_gunning" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_gunning')" value="<?= $row_program['penerima_gunning'] ?>" name="penerima_gunning" placeholder="Ke Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_gunning')" value="<?= $row_program['jabatan_penerima_gunning'] ?>" name="jabatan_penerima_gunning" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td><label for="" title="Struktur Organisasi" class="badge badge-info"><i class="fa fa-info-circle" aria-hidden="true"></i></label></td>
+                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_gunning/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
+                                                                                                    <td></td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
 
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div style="background-color:black;width:100%;height:2px">
-                                                                                </div>
-                                                                                <br>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-                                                                                        NO SURAT
-                                                                                    </div>
-                                                                                    <div class="col-md-4">
-                                                                                        : <input type="text" name="no_surat_sho">
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-                                                                                        TANGGAL
-                                                                                    </div>
-                                                                                    <div class="col-md-4">
-                                                                                        : <input type="text" name="tanggal_sho">
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row mt-3">
-                                                                                    <div class="mt-2">
-                                                                                        <label>Pada hari ini Selasa, tanggal Dua Puluh Delapan, bulan Maret tahun Dua ribu dua puluh tiga (28-03-2023), kami yang bertanda tangan di bawah ini:
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-1">
-                                                                                        I.
-                                                                                    </div>
-                                                                                    <div class="col-md-11">
-                                                                                        <label for="">Adhi Kristiawan, Direktur Operasi PT Jasamarga Tollroad Maintenance, yang berkedudukan di Jakarta Timur, dalam hal ini bertindak untuk jabatannya sebagaimana tersebut di atas dan karenanya berdasarkan Keputusan Direksi Nomor: 130/DIR-I/KPTS/2022 tanggal 1 November 2022 tentang Pedoman Pengadaan Barang dan Jasa di Lingkungan PT Jasamarga Tollroad Maintenance, serta berdasarkan Surat Keputusan Direksi PT Jasa Marga (Persero) Tbk, Nomor : 276/AA.P-6a/2022, tanggal 30 November 2022, tentang mutasi dan penempatan karyawan, dengan demikian mewakili dan bertindak sedemikian untuk dan atas nama PT Jasamarga Tollroad Maintenance selaku Pengguna Jasa, untuk selanjutnya disebut “Pihak Pertama”.</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-1">
-                                                                                        II.
-                                                                                    </div>
-                                                                                    <div class="col-md-11">
-                                                                                        <label for="">Devara Juwono HS , Direktur Utama <b class="nama_penyedia"></b> yang {alamat Penyedia},dalam hal ini bertindak untuk jabatannya selaku Direktur Utama dan karenanya berdasarkan Anggaran Dasar Terakhir dibuat Oleh Ny. Herawati Anwar Efendi, S.H.,dengan Akta Nomor : 09 Tahun 2020 dan telah mendapat pengesahan dari Menteri Kehakiman dan Hak Azasi Manusia Republik Indonesia Nomo : C-07400HT.01.01 Tahun 2001 tanggal 04 September 2001 dan perubahannya, dengan demikian mewakili dan bertindak untuk dan atas nama serta sah mewakili <b class="nama_penyedia"></b> selaku Penyedia Jasa, untuk selanjutnya disebut “Pihak Kedua”.</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="mt-2">
-                                                                                        <label>
-                                                                                            Berdasarkan Kontrak <b class="jenis_pengadaan"></b> <b class="nama_pekerjaan"></b>, Nomor <?= $row_program['no_kontrak'] ?> tanggal <?= $row_program['tahun_kontrak'] ?>, Pihak Pertama dan Pihak Kedua telah setuju dan sepakat untuk mengadakan Serah Terima Lahan dengan ketentuan-ketentuan sebagai berikut :
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-3">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="mt-2">
-                                                                                            <center>
-                                                                                                <table class="table table-bordered">
-                                                                                                    <thead style="width:300px">
-                                                                                                        <tr class="text-center">
-                                                                                                            <th>PARAF PIHAK PERTAMA</th>
-                                                                                                            <th>PARAF PIHAK KEDUA</th>
-                                                                                                        </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody>
-                                                                                                        <tr>
-                                                                                                            <td style="height:100px"></td>
-                                                                                                            <td style="height:100px"></td>
-                                                                                                        </tr>
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </center>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-3">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <center>
-                                                                                    <div>
-                                                                                        <b>Pasal 1</b>
-                                                                                    </div>
-                                                                                </center>
-                                                                                <div>
-                                                                                    <p>Pihak Pertama menyerahkan kepada Pihak Kedua, dan Pihak Kedua menyatakan menerima dengan baik dari Pihak Pertama lahan yang akan dipergunakan untuk pelaksanaan <b class="nama_pekerjaan"></b> sebagaimana tercantum pada Dokumen Kontrak.</p>
-                                                                                </div>
-
-                                                                                <center>
-                                                                                    <div>
-                                                                                        <b>Pasal 2</b>
-                                                                                    </div>
-                                                                                </center>
-                                                                                <div>
-                                                                                    <p>Lahan sebagaimana dimaksud dalam Pasal 1 pemanfaatannya hanya diperuntukkan bagi Pelaksanaan <b class="nama_pekerjaan"></b> serta fasilitas lainnya yang diperlukan sesuai peraturan yang berlaku.</p>
-                                                                                </div>
-
-                                                                                <center>
-                                                                                    <div>
-                                                                                        <b>Pasal 3</b>
-                                                                                    </div>
-                                                                                </center>
-                                                                                <div>
-                                                                                    <p>Setiap perubahan yang terjadi akibat pelaksanaan pekerjaan terhadap bangunan utilitas dan atau utilitas yang terletak di dalam, sepanjang melintas di atas atau di bawah lahan sebagaimana dimaksud pada Pasal 1 harus terlebih dahulu mendapatkan persetujuan Pihak Pertama.</p>
-                                                                                </div>
-
-                                                                                <center>
-                                                                                    <div>
-                                                                                        <b>Pasal 4</b>
-                                                                                    </div>
-                                                                                </center>
-                                                                                <div>
-                                                                                    <p>Dengan ditandatanganinya Berita Acara Serah Terima Lahan (Site Hand Over) ini, maka segala tanggung jawab yang ada terhadap pemanfaatan lahan sebagaimana dimaksud Pasal 1 menjadi tanggung jawab Pihak Kedua</p>
-                                                                                </div>
-
-                                                                                <center>
-                                                                                    <div>
-                                                                                        <b>Pasal 5</b>
-                                                                                    </div>
-                                                                                </center>
-                                                                                <div>
-                                                                                    <p>Berita Acara Serah Terima Lahan (Site Hand Over) ini ditandatangani oleh Pihak Pertama dan Pihak Kedua pada tanggal tersebut diatas, dalam rangkap 2 (dua) dan diberi meterai serta masing-masing mempunyai kekuatan hukum yang sama.</p>
-                                                                                </div>
-                                                                                <br><br><br>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-3">
+                                                                                        <br>
+                                                                                        <hr>
                                                                                         <center>
-                                                                                            Pihak Kedua <br>
-                                                                                            <?= $row_program['nama_penyedia'] ?>
-                                                                                            <br>
-                                                                                            <br>
-                                                                                            <br><br><br><br>
-                                                                                            <h5> <input type="text" name="nama_dirut_pra"></h5>
-                                                                                            <div style="background-color:black;width:100%;height:2px">
-
-                                                                                            </div>
-                                                                                            <h5>Direktur Utama
-                                                                                            </h5>
+                                                                                            <h4>MASTER PERSURATAN LOI</h4>
                                                                                         </center>
-                                                                                    </div>
-                                                                                    <di class="col-md-6">
+                                                                                        <br>
+                                                                                        <table id="customers2" class="tableFixHead" style="font-size: 14px;">
+                                                                                            <thead class="text-center">
+                                                                                                <tr>
+                                                                                                    <th class="text-white">No</th>
+                                                                                                    <th class="text-white" style="width: 200px;">Nama Persuratan</th>
+                                                                                                    <th class="text-white">No Surat</th>
+                                                                                                    <th class="text-white">Tgl Surat</th>
+                                                                                                    <th class="text-white">No Surat Penunjukan</th>
+                                                                                                    <th class="text-white">Tgl Surat Penunjukan</th>
+                                                                                                    <th class="text-white">Dari Nama</th>
+                                                                                                    <th class="text-white">Jabatan</th>
+                                                                                                    <th class="text-white">Ke Nama</th>
+                                                                                                    <th class="text-white">Jabatan</th>
+                                                                                                    <th class="text-white">Informasi</th>
+                                                                                                    <th class="text-white">View</th>
+                                                                                                    <th class="text-white">Download Word/Pdf</th>
+                                                                                                </tr>
 
-                                                                                    </di>
-                                                                                    <div class="col-md-3">
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td scope="row">2</td>
+                                                                                                    <td>LOI</td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_loi')" value="<?= $row_program['no_surat_loi'] ?>" name="no_surat_loi" placeholder="No Surat"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tanggal_loi')" value="<?= $row_program['tanggal_loi'] ?>" name="tanggal_loi" placeholder="Tanggal Surat"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_penunjukan_loi')" value="<?= $row_program['no_surat_penunjukan_loi'] ?>" name="no_surat_penunjukan_loi" placeholder="No Surat Penunjukan"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tanggal_surat_penunjukan_loi')" value="<?= $row_program['tanggal_surat_penunjukan_loi'] ?>" name="tanggal_surat_penunjukan_loi" placeholder="Tanggal Surat Penunjukan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_loi')" value="<?= $row_program['pengirim_loi'] ?>" name="pengirim_loi" placeholder="Dari Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_loi')" value="<?= $row_program['jabatan_pengirim_loi'] ?>" name="jabatan_pengirim_loi" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_loi')" value="<?= $row_program['penerima_loi'] ?>" name="penerima_loi" placeholder="Ke Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_loi')" value="<?= $row_program['jabatan_penerima_loi'] ?>" name="jabatan_penerima_loi" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td><label for="" title="Struktur Organisasi" class="badge badge-info"><i class="fa fa-info-circle" aria-hidden="true"></i></label></td>
+                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_loi/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
+                                                                                                    <td></td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+
+                                                                                        <br>
+                                                                                        <hr>
                                                                                         <center>
-                                                                                            Pihak Pertama
-                                                                                            <br>
-                                                                                            PT JASAMARGA TOLLROAD MAINTENANCE
-                                                                                            <br>
-                                                                                            <br>
-                                                                                            <br><br><br><br>
-                                                                                            <h5> <input type="text" name="nama_dirops_pra"></h5>
-                                                                                            <div style="background-color:black;width:100%;height:2px">
-
-                                                                                            </div>
-                                                                                            <h5>Direktur Operasi
-                                                                                            </h5>
+                                                                                            <h4>MASTER PERSURATAN SHO</h4>
                                                                                         </center>
-                                                                                    </div>
-                                                                                </div><br>
-                                                                                <div>
-                                                                                    <a href="javascript:;" onclick="Simpan_semua_surat('sho')" class="btn btn-sm btn-success">Simpan SHO</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-pane" id="custom-tabs-two-spmk" role="tabpanel" aria-labelledby="custom-tabs-two-spmk-tab">
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="card card-outline card-info">
-                                                                        <div class="card-header">
-                                                                            <h5 class="card-title">
-                                                                                SPMK
-                                                                            </h5>
-                                                                        </div>
-                                                                        <div class="card-body">
-                                                                            <div class="container">
-                                                                                <div class="row">
-                                                                                    <div class="col-md-6">
-                                                                                        <img src="https://jmtm.co.id/assets/img_jmtm/logo.png" alt="" width="300px" style="margin-top:50px">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-4">
-                                                                                    </div>
-                                                                                    <div class="col-md-4">
-                                                                                        <h5>Surat Perintah Mulai Kerja (SPMK)</h5>
-                                                                                    </div>
-                                                                                    <div class="col-md-4">
+                                                                                        <br>
+                                                                                        <table id="customers2" class="tableFixHead" style="font-size: 14px;">
+                                                                                            <thead class="text-center">
+                                                                                                <tr>
+                                                                                                    <th class="text-white">No</th>
+                                                                                                    <th class="text-white" style="width: 200px;">Nama Persuratan</th>
+                                                                                                    <th class="text-white">No Surat</th>
+                                                                                                    <th class="text-white">Tgl Surat</th>
+                                                                                                    <th class="text-white">Dari Nama</th>
+                                                                                                    <th class="text-white">Jabatan</th>
+                                                                                                    <th class="text-white">Ke Nama</th>
+                                                                                                    <th class="text-white">Jabatan</th>
+                                                                                                    <th class="text-white">Informasi</th>
+                                                                                                    <th class="text-white">View</th>
+                                                                                                    <th class="text-white">Download Word/Pdf</th>
+                                                                                                </tr>
 
-                                                                                    </div>
-                                                                                </div>
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td scope="row">3</td>
+                                                                                                    <td>SHO</td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_sho')" value="<?= $row_program['no_surat_sho'] ?>" name="no_surat_sho" placeholder="No Surat"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tanggal_sho')" value="<?= $row_program['tanggal_sho'] ?>" name="tanggal_sho" placeholder="Tanggal Surat"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_sho')" value="<?= $row_program['pengirim_sho'] ?>" name="pengirim_sho" placeholder="Dari Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_sho')" value="<?= $row_program['jabatan_pengirim_sho'] ?>" name="jabatan_pengirim_sho" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_sho')" value="<?= $row_program['penerima_sho'] ?>" name="penerima_sho" placeholder="Ke Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_sho')" value="<?= $row_program['jabatan_penerima_sho'] ?>" name="jabatan_penerima_sho" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td><label for="" title="Struktur Organisasi" class="badge badge-info"><i class="fa fa-info-circle" aria-hidden="true"></i></label></td>
+                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_sho/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
+                                                                                                    <td></td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
 
-                                                                                <div class="row mt-5">
-                                                                                    <div class="col-md-1">
-                                                                                        Nomor
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <label>: <input type="text" name="no_surat_smk"></label>
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-                                                                                        <input type="date" name="tanggal_smk">
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="row">
-                                                                                    <div class="col-md-1">
-                                                                                        Lampiran
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <label>: <input type="text" name="lampiran_smk"> </label>
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="row">
-                                                                                    <div class="col-md-1">
-                                                                                        Perihal
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <label>: Surat Perintah Mulai Kerja (Notice to Proceed) <b for="" class="jenis_pengadaan"></b> <b for="" class="nama_pekerjaan"></b> </label>
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                    <div class="col-md-2">
-
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="mt-5">
-                                                                                    Yth.Direktur
-                                                                                    <br>
-                                                                                    <b> <?= $row_program['nama_penyedia'] ?></b> <br>
-                                                                                    {alamat Penyedia} Jl. Surapati No. 5, Bandung
-                                                                                    Jawa Barat
-
-                                                                                </div>
-
-                                                                                <div class="row mt-3">
-                                                                                    <div class="mt-2">
-                                                                                        <label>Sehubungan dengan pelaksanaan pekerjaan Jasa Pemborongan <b class="nama_pekerjaan"></b> berdasarkan Kontrak Nomor : <?= $row_program['no_kontrak'] ?> <?= $row_program['tahun_kontrak'] ?>, bersama ini kami instruksikan kepada Saudara untuk dapat segera memulai pelaksanaan pekerjaan dimaksud sesuai dengan ketentuan sebagai berikut :
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-3">
-                                                                                        Harga Penawaran setelah Koreksi
-                                                                                    </div>
-                                                                                    <div class="col-md-9">
-                                                                                        <label for="">: <label for="" class="total_hps_pure"></label> (<b class="terbilang_total_hps_pure"></b>)</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-3">
-                                                                                        Tingkat Komponen Dalam Negeri (TKDN)
-                                                                                    </div>
-                                                                                    <div class="col-md-9">
-                                                                                        <label for="">: <input type="number" name="tkdn_gunning"> %</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-3">
-                                                                                        Jangka Waktu Pelaksanaan
-                                                                                    </div>
-                                                                                    <div class="col-md-9">
-                                                                                        <label for="">: <label for="" class="waktu_pemeliharaan_pip"></label> (<b class="terbilang_waktu_pemeliharaan_pip"></b> Hari)</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-3">
-                                                                                        Jangka Waktu Pemeliharaan
-                                                                                    </div>
-                                                                                    <div class="col-md-9">
-                                                                                        <label for="">: <label for="" class="waktu_pelaksanaan_pip"></label> (<b class="terbilang_waktu_pelaksanaan_pip"></b> Hari)</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row mt-3">
-                                                                                    <div class="mt-2">
-                                                                                        <label>
-                                                                                            Pekerjaan dimaksud harus dilaksanakan sesuai dengan syarat-syarat pelaksanaan Pekerjaan (sesuai dengan Dokumen Kontrak beserta lampirannya).
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="mt-2">
-                                                                                        <label>
-                                                                                            Demikian Surat Perintah Mulai Kerja (Notice to Proceed) ini kami sampaikan untuk dilaksanakan sebagaimana mestinya, atas perhatian Saudara diucapkan terima kasih.
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <br><br><br>
-                                                                                <div class="row">
-                                                                                    <di class="col-md-9">
-
-                                                                                    </di>
-                                                                                    <div class="col-md-3">
+                                                                                        <br>
+                                                                                        <hr>
                                                                                         <center>
-                                                                                            PT JASAMARGA TOLLROAD MAINTENANCE
-                                                                                            <br>
-                                                                                            <br>
-                                                                                            <br><br><br><br>
-                                                                                            <h5> <input type="text" name="nama_dirops_pra"></h5>
-                                                                                            <div style="background-color:black;width:100%;height:2px">
-
-                                                                                            </div>
-                                                                                            <h5>Direktur Operasi
-                                                                                            </h5>
+                                                                                            <h4>MASTER PERSURATAN SPMK</h4>
                                                                                         </center>
+                                                                                        <br>
+                                                                                        <table id="customers2" class="tableFixHead" style="font-size: 14px;">
+                                                                                            <thead class="text-center">
+                                                                                                <tr>
+                                                                                                    <th class="text-white">No</th>
+                                                                                                    <th class="text-white" style="width: 200px;">Nama Persuratan</th>
+                                                                                                    <th class="text-white">No Surat</th>
+                                                                                                    <th class="text-white">Tgl Surat</th>
+                                                                                                    <th class="text-white">Dari Nama</th>
+                                                                                                    <th class="text-white">Jabatan</th>
+                                                                                                    <th class="text-white">Ke Nama</th>
+                                                                                                    <th class="text-white">Jabatan</th>
+                                                                                                    <th class="text-white">Informasi</th>
+                                                                                                    <th class="text-white">View</th>
+                                                                                                    <th class="text-white">Download Word/Pdf</th>
+                                                                                                </tr>
+
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td scope="row">4</td>
+                                                                                                    <td>SPMK</td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_spmk')" value="<?= $row_program['no_surat_spmk'] ?>" name="no_surat_spmk" placeholder="No Surat"></td>
+                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tanggal_spmk')" value="<?= $row_program['tanggal_spmk'] ?>" name="tanggal_spmk" placeholder="Tanggal Surat"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_spmk')" value="<?= $row_program['pengirim_spmk'] ?>" name="pengirim_spmk" placeholder="Dari Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_spmk')" value="<?= $row_program['jabatan_pengirim_spmk'] ?>" name="jabatan_pengirim_spmk" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_spmk')" value="<?= $row_program['penerima_spmk'] ?>" name="penerima_spmk" placeholder="Ke Nama"></td>
+                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_spmk')" value="<?= $row_program['jabatan_penerima_spmk'] ?>" name="jabatan_penerima_spmk" placeholder="Ke Nama Jabatan"></td>
+                                                                                                    <td><label for="" title="Struktur Organisasi" class="badge badge-info"><i class="fa fa-info-circle" aria-hidden="true"></i></label></td>
+                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_spmk/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
+                                                                                                    <td></td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
                                                                                     </div>
-                                                                                </div><br>
-                                                                                <div>
-                                                                                    <a href="javascript:;" onclick="Simpan_semua_surat('smk')" class="btn btn-sm btn-success">Simpan Spmk</a>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1087,6 +856,31 @@
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal_copy_ketentuan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">COPY PENGISIAN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>1. Lingkup pekerjaan yang dapat dimulai terlebih dahulu meliputi pekerjaan persiapan, diantaranya mobilisasi personil, peralatan, material, laboratorium serta koordinasi dengan pihak-pihak terkait.
+                </p>
+                <p>
+                    2. Pekerjaan tersebut harus dilaksanakan sesuai dengan persyaratan pelaksanaan pekerjaan (syarat-syarat umum, administrasi, spesifikasi maupun gambar rencana) yang telah ditetapkan dalam Dokumen Pengadaan.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>

@@ -17,14 +17,18 @@ class Data_kontrak_model extends CI_Model
         $this->db->where('mst_kontrak.sts_delete', '');
         if (isset($_POST['id_departemen'])) {
             $this->db->like('mst_kontrak.id_departemen', $_POST['id_departemen']);
-        } else { }
+        } else {
+        }
         if (isset($_POST['id_area'])) {
             $this->db->like('mst_kontrak.id_area', $_POST['id_area']);
-        } else { }
+        } else {
+        }
         if (isset($_POST['id_sub_area'])) {
             $this->db->like('mst_kontrak.id_sub_area', $_POST['id_sub_area']);
-        } else { }
-        if ($id_departemen == 4) { } else {
+        } else {
+        }
+        if ($id_departemen == 4) {
+        } else {
             if ($id_departemen && $id_area == 0 && $id_sub_area == 0) {
                 $this->db->where('mst_kontrak.id_departemen', $id_departemen);
             } else if ($id_departemen && $id_area && $id_sub_area == 0) {
@@ -91,14 +95,18 @@ class Data_kontrak_model extends CI_Model
         $this->db->where('mst_kontrak.sts_delete', '');
         if (isset($_POST['id_departemen'])) {
             $this->db->like('mst_kontrak.id_departemen', $_POST['id_departemen']);
-        } else { }
+        } else {
+        }
         if (isset($_POST['id_area'])) {
             $this->db->like('mst_kontrak.id_area', $_POST['id_area']);
-        } else { }
+        } else {
+        }
         if (isset($_POST['id_sub_area'])) {
             $this->db->like('mst_kontrak.id_sub_area', $_POST['id_sub_area']);
-        } else { }
-        if ($id_departemen == 4) { } else {
+        } else {
+        }
+        if ($id_departemen == 4) {
+        } else {
             if ($id_departemen && $id_area == 0 && $id_sub_area == 0) {
                 $this->db->where('mst_kontrak.id_departemen', $id_departemen);
                 $this->db->where('mst_kontrak.id_area', $id_area);
@@ -1335,7 +1343,8 @@ class Data_kontrak_model extends CI_Model
                 $this->db->or_like('nama_area', $keyword);
                 $this->db->or_like('nama_departemen', $keyword);
                 $this->db->or_like('nama_sub_area', $keyword);
-            } else { }
+            } else {
+            }
         } else {
             if ($keyword) {
                 $this->db->like('nama_pekerjaan_program_mata_anggaran', $keyword);
@@ -1345,7 +1354,8 @@ class Data_kontrak_model extends CI_Model
                 $this->db->or_like('nama_area', $keyword);
                 $this->db->or_like('nama_departemen', $keyword);
                 $this->db->or_like('nama_sub_area', $keyword);
-            } else { }
+            } else {
+            }
             if ($id_departemen && $id_area == 0 && $id_sub_area == 0) {
                 $this->db->where('mst_kontrak.id_departemen', $id_departemen);
             } else if ($id_departemen && $id_area && $id_sub_area == 0) {
@@ -6711,7 +6721,8 @@ class Data_kontrak_model extends CI_Model
         $this->db->join('mst_area', 'mst_kontrak.id_area = mst_area.id_area', 'left');
         $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area', 'left');
         $this->db->where('mst_kontrak.sts_delete', '');
-        if ($id_departemen == 4) { } else {
+        if ($id_departemen == 4) {
+        } else {
             if ($id_departemen && $id_area == 0 && $id_sub_area == 0) {
                 $this->db->where('mst_kontrak.id_departemen', $id_departemen);
             } else if ($id_departemen && $id_area && $id_sub_area == 0) {
@@ -6898,5 +6909,84 @@ class Data_kontrak_model extends CI_Model
         $this->db->where('tbl_rekap_kontrak.no_addendum', $type_add);
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+    public function get_penyedia()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_vendor_identitas_prusahaan');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function get_row_penyedia($id_identitas_prusahaan)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_vendor_identitas_prusahaan');
+        $this->db->where('tbl_vendor_identitas_prusahaan.id_identitas_prusahaan', $id_identitas_prusahaan);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+    public function add_ke_tbl_ketentuan($data)
+    {
+        $this->db->insert('tbl_ketentuan', $data);
+        return $this->db->affected_rows();
+    }
+
+    public function get_result_tbl_ketentuan($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_ketentuan');
+        $this->db->where('tbl_ketentuan.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    public function delete_ke_tbl_ketentuan($id_ketentuan)
+    {
+        $this->db->delete('tbl_ketentuan', ['id_ketentuan' => $id_ketentuan]);
+        return $this->db->affected_rows();
+    }
+
+    // tbl_flow_papenkon
+    public function add_ke_tbl_flow_papenkon($data)
+    {
+        $this->db->insert('tbl_flow_papenkon', $data);
+        return $this->db->affected_rows();
+    }
+
+    public function cek_flow_papenkon($id_detail_program_penyedia_jasa, $addendum_flow, $flow_papenkon)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_flow_papenkon');
+        $this->db->where('tbl_flow_papenkon.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('tbl_flow_papenkon.addendum_flow', $addendum_flow);
+        $this->db->where('tbl_flow_papenkon.flow_papenkon', $flow_papenkon);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function update_flow($where, $data)
+    {
+        $this->db->update('tbl_flow_papenkon', $data, $where);
+        return $this->db->affected_rows();
+    }
+
+    public function update_flow_tambahan($where, $data)
+    {
+        $this->db->update('tbl_tambahan_flow_papenkon', $data, $where);
+        return $this->db->affected_rows();
+    }
+
+    public function delete_flow_tambahan($id_flow_papenkon_tambahan)
+    {
+        $this->db->delete('tbl_tambahan_flow_papenkon', ['id_flow_papenkon_tambahan' => $id_flow_papenkon_tambahan]);
+        return $this->db->affected_rows();
+    }
+
+    public function add_ke_tbl_flow_papenkon_tambahan($data)
+    {
+        $this->db->insert('tbl_tambahan_flow_papenkon', $data);
+        return $this->db->affected_rows();
     }
 }

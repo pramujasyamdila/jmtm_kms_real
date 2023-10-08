@@ -815,6 +815,8 @@ class Administrasi_penyedia extends CI_Controller
         $result_tbl_dokumen_surat_pasca_sho = $this->Data_kontrak_model->cek_tbl_monitoring_sho($id_detail_program_penyedia_jasa);
         $result_tbl_dokumen_surat_pasca_spmk = $this->Data_kontrak_model->cek_tbl_monitoring_spmk($id_detail_program_penyedia_jasa);
 
+        $data_ketentuan = $this->Data_kontrak_model->get_result_tbl_ketentuan($id_detail_program_penyedia_jasa);
+
         $data = [
             'row_program_detail' => $row_detail,
             'data_spm' => $data_spm,
@@ -831,7 +833,8 @@ class Administrasi_penyedia extends CI_Controller
             'result_tbl_dokumen_surat_pasca_gunning' => $result_tbl_dokumen_surat_pasca_gunning,
             'result_tbl_dokumen_surat_pasca_loi' => $result_tbl_dokumen_surat_pasca_loi,
             'result_tbl_dokumen_surat_pasca_sho' => $result_tbl_dokumen_surat_pasca_sho,
-            'result_tbl_dokumen_surat_pasca_spmk' => $result_tbl_dokumen_surat_pasca_spmk
+            'result_tbl_dokumen_surat_pasca_spmk' => $result_tbl_dokumen_surat_pasca_spmk,
+            'data_ketentuan' => $data_ketentuan,
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
@@ -3092,7 +3095,8 @@ class Administrasi_penyedia extends CI_Controller
     {
         $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
         $papenkon = $this->input->post('papenkon');
-        if ($papenkon == null) { } else {
+        if ($papenkon == null) {
+        } else {
             $where_sub = [
                 'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa
             ];
@@ -3336,6 +3340,28 @@ class Administrasi_penyedia extends CI_Controller
         }
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
+
+    public function add_ketentuan()
+    {
+        $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
+        $ketentuan = $this->input->post('ketentuan');
+        $data = [
+            'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+            'ketentuan' => $ketentuan
+        ];
+        $this->Data_kontrak_model->add_ke_tbl_ketentuan($data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+
+    public function delete_ketentuan()
+    {
+        $id = $this->input->post('id');
+        $this->Data_kontrak_model->delete_ke_tbl_ketentuan($id);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+
     public function kelola_format_surat_pasca($id_detail_program_penyedia_jasa)
     {
         $keyword = $this->input->post('keyword');
@@ -3724,7 +3750,8 @@ class Administrasi_penyedia extends CI_Controller
                 'lampiran_smk' => $lampiran_smk,
             ];
             $this->Data_kontrak_model->update_rup($where, $data);
-        } else { }
+        } else {
+        }
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
     // UNTUK UPDATE SURAT
@@ -4068,7 +4095,8 @@ class Administrasi_penyedia extends CI_Controller
         $row_program  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
         $flow = $row_program['flow_pra_dokumen_kontrak'];
         $cek_tbl_monitoring = $this->Data_kontrak_model->cek_tbl_monitoring($id_detail_program_penyedia_jasa, $flow);
-        if ($cek_tbl_monitoring) { } else {
+        if ($cek_tbl_monitoring) {
+        } else {
             if ($flow == 'Flow 1') {
                 $this->Data_kontrak_model->delete_flow_2($id_detail_program_penyedia_jasa);
             } else {
@@ -4235,7 +4263,8 @@ class Administrasi_penyedia extends CI_Controller
     {
         $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
         $cek_tbl_dokumen_surat_pasca = $this->Data_kontrak_model->cek_tbl_dokumen_surat_pasca($id_detail_program_penyedia_jasa);
-        if ($cek_tbl_dokumen_surat_pasca) { } else {
+        if ($cek_tbl_dokumen_surat_pasca) {
+        } else {
             $data_1 = [
                 'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                 'nama_file' => 'Gunning',
@@ -4437,7 +4466,8 @@ class Administrasi_penyedia extends CI_Controller
             ];
             $this->Data_kontrak_model->update_urutan_detail_capex_5($where, $data);
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-        } else { }
+        } else {
+        }
     }
 
     public function get_detail_sub_program($id_detail_sub_program_penyedia_jasa)

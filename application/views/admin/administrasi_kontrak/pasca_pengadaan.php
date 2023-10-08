@@ -237,8 +237,14 @@
                                                                                                 <span class="input-group-text">
                                                                                                     <i class="far fa-user"> </i>
                                                                                                 </span>
+                                                                                                <select name="id_identitas_prusahaan" class="form-control select2">
+                                                                                                    <option value="">-- Pilih Penyedia --</option>
+                                                                                                <?php foreach ($get_penyedia as $key => $value) { ?>
+                                                                                                    <option value="<?= $value['id_identitas_prusahaan']?>"><?= $value['nama_usaha']?></option>
+                                                                                                <?php  } ?>
+                                                                                            </select>
                                                                                             </div>
-                                                                                            <input type="text" class="form-control" name="nama_penyedia" placeholder="Nama Penyedia">
+                                                                                         
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>

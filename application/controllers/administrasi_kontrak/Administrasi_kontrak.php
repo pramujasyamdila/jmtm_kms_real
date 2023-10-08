@@ -131,6 +131,7 @@ class Administrasi_kontrak extends CI_Controller
         $id_sub_area = $row_kontrak['id_sub_area'];
         $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
+        $data['get_penyedia'] = $this->Data_kontrak_model->get_penyedia();
         $data['id_kontrak'] = $id_kontrak;
         $data['nama_kontrak'] = $row_kontrak['nama_kontrak'];
         $this->load->view('template_stisla/header');
@@ -281,12 +282,14 @@ class Administrasi_kontrak extends CI_Controller
     public function simpan_penyedia()
     {
         $id_detail_program_penyedia_jasa =  $this->input->post('id_detail_program_penyedia_jasa');
-        $nama_penyedia =  $this->input->post('nama_penyedia');
+        $id_identitas_prusahaan =  $this->input->post('id_identitas_prusahaan');
+        $row_penyedia = $this->Data_kontrak_model->get_row_penyedia($id_identitas_prusahaan);
         $where = [
             'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
         ];
         $data = [
-            'nama_penyedia' => $nama_penyedia,
+            'id_identitas_prusahaan' => $id_identitas_prusahaan,
+            'nama_penyedia' => $row_penyedia['nama_usaha'],
         ];
         $this->Data_kontrak_model->update_rup($where, $data);
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
@@ -781,5 +784,554 @@ class Administrasi_kontrak extends CI_Controller
             }
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
         }
+    }
+
+    function simpan_master_pepenkon()
+    {
+        $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
+        $nama_1_tingkat_pengguna_jasa_papenkon = $this->input->post('nama_1_tingkat_pengguna_jasa_papenkon');
+        $jabatan_1_tingkat_pengguna_jasa_papenkon = $this->input->post('jabatan_1_tingkat_pengguna_jasa_papenkon');
+        $nama_pengguna_jasa_papenkon = $this->input->post('nama_pengguna_jasa_papenkon');
+        $jabatan_pengguna_jasa_papenkon = $this->input->post('jabatan_pengguna_jasa_papenkon');
+        $nama_penyedia_jasa_papenkon = $this->input->post('nama_penyedia_jasa_papenkon');
+        $jabatan_penyedia_jasa_papenkon = $this->input->post('jabatan_penyedia_jasa_papenkon');
+        $nama_wakil_pengguna_jasa_papenkon = $this->input->post('nama_wakil_pengguna_jasa_papenkon');
+        $jabatan_wakil_pengguna_jasa_papenkon = $this->input->post('jabatan_wakil_pengguna_jasa_papenkon');
+        $nama_wakil_penyedia_jasa_papenkon = $this->input->post('nama_wakil_penyedia_jasa_papenkon');
+        $jabatan_wakil_penyedia_jasa_papenkon = $this->input->post('jabatan_wakil_penyedia_jasa_papenkon');
+        $nama_ketua_jasa_papenkon = $this->input->post('nama_ketua_jasa_papenkon');
+        $jabatan_ketua_jasa_papenkon = $this->input->post('jabatan_ketua_jasa_papenkon');
+        $where = [
+            'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa
+        ];
+        $data = [
+            'nama_ketua_jasa_papenkon' => $nama_ketua_jasa_papenkon,
+            'jabatan_ketua_jasa_papenkon' => $jabatan_ketua_jasa_papenkon,
+            'nama_1_tingkat_pengguna_jasa_papenkon' => $nama_1_tingkat_pengguna_jasa_papenkon,
+            'jabatan_1_tingkat_pengguna_jasa_papenkon' => $jabatan_1_tingkat_pengguna_jasa_papenkon,
+            'nama_pengguna_jasa_papenkon' => $nama_pengguna_jasa_papenkon,
+            'jabatan_pengguna_jasa_papenkon' => $jabatan_pengguna_jasa_papenkon,
+            'nama_penyedia_jasa_papenkon' => $nama_penyedia_jasa_papenkon,
+            'jabatan_penyedia_jasa_papenkon' => $jabatan_penyedia_jasa_papenkon,
+            'nama_wakil_pengguna_jasa_papenkon' => $nama_wakil_pengguna_jasa_papenkon,
+            'jabatan_wakil_pengguna_jasa_papenkon' => $jabatan_wakil_pengguna_jasa_papenkon,
+            'nama_wakil_penyedia_jasa_papenkon' => $nama_wakil_penyedia_jasa_papenkon,
+            'jabatan_wakil_penyedia_jasa_papenkon' => $jabatan_wakil_penyedia_jasa_papenkon,
+        ];
+        $this->Data_kontrak_model->update_rup($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+    function simpan_flow_papenkon()
+    {
+        $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
+        $row_program = $this->Administrasi_kontrak_model->get_by_program_penyedia($id_detail_program_penyedia_jasa);
+        $addendum_flow = $this->input->post('addendum_flow');
+        $flow_papenkon = $this->input->post('flow_papenkon');
+        $cek_flow_sudah_ada = $this->Data_kontrak_model->cek_flow_papenkon($id_detail_program_penyedia_jasa, $addendum_flow, $flow_papenkon);
+        if ($flow_papenkon == 'TANPA PAPENKON DAN < 30% PENAMBAHAN NILAI ADDENDUM DARI KONTRAK AWAL') {
+            // 1.Permohonan Ijin Prinsip
+            $data_1 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Permohonan Ijin Prinsip',
+                'nama_dari' => $row_program['nama_wakil_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_wakil_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_pengguna_jasa_papenkon'],
+            ];
+            // 2.Persetujuan Ijin Prinsip
+            $data_2 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Persetujuan Ijin Prinsip',
+                'nama_dari' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_wakil_pengguna_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_wakil_pengguna_jasa_papenkon'],
+            ];
+            // 3.Undangan Evaluasi dan Negosiasi
+            $data_3 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Undangan Evaluasi dan Negosiasi',
+                'nama_dari' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_penyedia_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_penyedia_jasa_papenkon'],
+            ];
+            // 4.BA Evaluasi dan Negosiasi
+            $data_4 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'BA Evaluasi dan Negosiasi',
+                'nama_dari' => 'Pengguna dan Penyedia Jasa',
+                'jabatan_dari' => NULL,
+                'nama_ke' => 'Pengguna dan Penyedia Jasa',
+                'jabatan_ke' => NULL,
+            ];
+            // 5.Addendum Kontrak
+            $data_5 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Addendum Kontrak',
+                'nama_dari' => 'Pengguna dan Penyedia Jasa',
+                'jabatan_dari' => NULL,
+                'nama_ke' => 'Pengguna dan Penyedia Jasa',
+                'jabatan_ke' => NULL,
+            ];
+        } else  if ($flow_papenkon == 'TANPA PAPENKON DAN > 30% PENAMBAHAN NILAI ADDENDUM DARI KONTRAK AWAL') {
+            // 1.Permohonan Ijin Prinsip
+            $data_1 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Permohonan Ijin Prinsip',
+                'nama_dari' => $row_program['nama_wakil_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_wakil_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_pengguna_jasa_papenkon'],
+            ];
+            // 6.Saran Teknis
+            $data_6 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Saran Teknis',
+                'nama_dari' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_1_tingkat_pengguna_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_1_tingkat_pengguna_jasa_papenkon'],
+            ];
+            // 2.Persetujuan Ijin Prinsip
+            $data_2 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Persetujuan Ijin Prinsip',
+                'nama_dari' => NULL,
+                'jabatan_dari' => NULL,
+                'nama_ke' => NULL,
+                'jabatan_ke' => NULL,
+            ];
+            // 3.Undangan Evaluasi dan Negosiasi
+            $data_3 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Undangan Evaluasi dan Negosiasi',
+                'nama_dari' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_penyedia_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_penyedia_jasa_papenkon'],
+            ];
+            // 4.BA Evaluasi dan Negosiasi
+            $data_4 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'BA Evaluasi dan Negosiasi',
+                'nama_dari' => 'Pengguna dan Penyedia Jasa',
+                'jabatan_dari' => NULL,
+                'nama_ke' => 'Pengguna dan Penyedia Jasa',
+                'jabatan_ke' => NULL,
+            ];
+            // 5.Addendum Kontrak
+            $data_5 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Addendum Kontrak',
+                'nama_dari' => 'Pengguna dan Penyedia Jasa',
+                'jabatan_dari' => NULL,
+                'nama_ke' => 'Pengguna dan Penyedia Jasa',
+                'jabatan_ke' => NULL,
+            ];
+        } else  if ($flow_papenkon == 'DENGAN PAPENKON DAN < 30% PENAMBAHAN NILAI ADDENDUM DARI KONTRAK AWAL') {
+            // 1.Permohonan Ijin Prinsip
+            $data_1 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Permohonan Ijin Prinsip',
+                'nama_dari' => $row_program['nama_wakil_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_wakil_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_pengguna_jasa_papenkon'],
+            ];
+            // 2.Persetujuan Ijin Prinsip
+            $data_2 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Persetujuan Ijin Prinsip',
+                'nama_dari' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_penyedia_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_penyedia_jasa_papenkon'],
+            ];
+            // 7.Undangan Permohonan ke Papenkon
+            $data_7 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Undangan Permohonan ke Papenkon',
+                'nama_dari' => $row_program['nama_wakil_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_wakil_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_ketua_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_ketua_jasa_papenkon'],
+            ];
+
+            // 8.Undangan Evaluasi dan Negosiasi Papenkon
+            $data_8 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Undangan Evaluasi dan Negosiasi Papenkon',
+                'nama_dari' => $row_program['nama_ketua_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_ketua_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_penyedia_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_penyedia_jasa_papenkon'],
+            ];
+
+            // 9.BA Evaluasi dan Negosiasi Papenkon
+            $data_9 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'BA Evaluasi dan Negosiasi Papenkon',
+                'nama_dari' => 'Papenkon dan Penyedia Jasa',
+                'jabatan_dari' => NULL,
+                'nama_ke' => 'Papenkon dan Penyedia Jasa',
+                'jabatan_ke' =>  NULL,
+            ];
+            // 10.Permohonan Persetujuan BA Papenkon
+            $data_10 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Permohonan Persetujuan BA Papenkon',
+                'nama_dari' => $row_program['nama_ketua_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_ketua_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_pengguna_jasa_papenkon'],
+            ];
+            // 11.Persetujuan BA Papenkon
+            $data_11 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Persetujuan BA Papenkon',
+                'nama_dari' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_ketua_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_ketua_jasa_papenkon'],
+            ];
+            // 5.Addendum Kontrak
+            $data_5 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Addendum Kontrak',
+                'nama_dari' => 'Pengguna dan Penyedia Jasa',
+                'jabatan_dari' => NULL,
+                'nama_ke' => 'Pengguna dan Penyedia Jasa',
+                'jabatan_ke' => NULL,
+            ];
+        } else  if ($flow_papenkon == 'DENGAN PAPENKON DAN > 30% PENAMBAHAN NILAI ADDENDUM DARI KONTRAK AWAL') {
+            // 1.Permohonan Ijin Prinsip
+            $data_1 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Permohonan Ijin Prinsip',
+                'nama_dari' => $row_program['nama_wakil_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_wakil_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_pengguna_jasa_papenkon'],
+            ];
+
+            // 6.Saran Teknis
+            $data_6 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Saran Teknis',
+                'nama_dari' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_1_tingkat_pengguna_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_1_tingkat_pengguna_jasa_papenkon'],
+            ];
+
+            // 2.Persetujuan Ijin Prinsip
+            $data_2 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Persetujuan Ijin Prinsip',
+                'nama_dari' => $row_program['nama_wakil_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_wakil_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_pengguna_jasa_papenkon'],
+            ];
+
+            // 7.Undangan Permohonan ke Papenkon
+            $data_7 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Undangan Permohonan ke Papenkon',
+                'nama_dari' => $row_program['nama_wakil_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_wakil_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_ketua_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_ketua_jasa_papenkon'],
+            ];
+
+            // 8.Undangan Evaluasi dan Negosiasi Papenkon
+            $data_8 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Undangan Evaluasi dan Negosiasi Papenkon',
+                'nama_dari' => $row_program['nama_ketua_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_ketua_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_penyedia_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_penyedia_jasa_papenkon'],
+            ];
+            // 9.BA Evaluasi dan Negosiasi Papenkon
+            $data_9 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'BA Evaluasi dan Negosiasi Papenkon',
+                'nama_dari' => 'Papenkon dan Penyedia Jasa',
+                'jabatan_dari' => NULL,
+                'nama_ke' => 'Papenkon dan Penyedia Jasa',
+                'jabatan_ke' => NULL,
+            ];
+            // 10.Permohonan Persetujuan BA Papenkon
+            $data_10 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Permohonan Persetujuan BA Papenkon',
+                'nama_dari' => $row_program['nama_ketua_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_ketua_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_pengguna_jasa_papenkon'],
+            ];
+            // 11.Persetujuan BA Papenkon
+            $data_11 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Persetujuan BA Papenkon',
+                'nama_dari' => $row_program['nama_pengguna_jasa_papenkon'],
+                'jabatan_dari' => $row_program['jabatan_pengguna_jasa_papenkon'],
+                'nama_ke' => $row_program['nama_ketua_jasa_papenkon'],
+                'jabatan_ke' => $row_program['jabatan_ketua_jasa_papenkon'],
+            ];
+
+            // 5.Addendum Kontrak
+            $data_5 = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow' => $addendum_flow,
+                'flow_papenkon' => $flow_papenkon,
+                'nama_uraian' => 'Addendum Kontrak',
+                'nama_dari' => 'Pengguna dan Penyedia Jasa',
+                'jabatan_dari' => NULL,
+                'nama_ke' => 'Pengguna dan Penyedia Jasa',
+                'jabatan_ke' => NULL,
+            ];
+        } else {
+        }
+        $where = [
+            'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+        ];
+        $upload = [
+            'flow_papenkon_addendum_' . $addendum_flow . '' => $flow_papenkon,
+        ];
+        $this->Data_kontrak_model->update_rup($where, $upload);
+        if ($cek_flow_sudah_ada) {
+            $this->output->set_content_type('application/json')->set_output(json_encode('sudah_ada'));
+        } else {
+            if ($flow_papenkon == 'TANPA PAPENKON DAN < 30% PENAMBAHAN NILAI ADDENDUM DARI KONTRAK AWAL') {
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_1);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_2);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_3);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_4);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_5);
+                $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+            } else  if ($flow_papenkon == 'TANPA PAPENKON DAN > 30% PENAMBAHAN NILAI ADDENDUM DARI KONTRAK AWAL') {
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_1);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_6);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_2);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_3);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_4);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_5);
+                $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+            } else  if ($flow_papenkon == 'DENGAN PAPENKON DAN < 30% PENAMBAHAN NILAI ADDENDUM DARI KONTRAK AWAL') {
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_1);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_2);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_7);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_8);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_9);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_10);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_11);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_5);
+                $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+            } else  if ($flow_papenkon == 'DENGAN PAPENKON DAN > 30% PENAMBAHAN NILAI ADDENDUM DARI KONTRAK AWAL') {
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_1);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_6);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_2);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_7);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_8);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_9);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_10);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_11);
+                $this->Data_kontrak_model->add_ke_tbl_flow_papenkon($data_5);
+                $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+            } else {
+            }
+        }
+    }
+
+
+    public function udpate_flow()
+    {
+        $id_flow_papenkon = $this->input->post('id_flow_papenkon');
+        $post_data = $this->input->post('post_data');
+        $type = $this->input->post('type');
+        $where = [
+            'id_flow_papenkon' => $id_flow_papenkon
+        ];
+        $data = [
+            $type => $post_data
+        ];
+        $this->Data_kontrak_model->update_flow($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+    public function udpate_flow_tambahan()
+    {
+        $id_flow_papenkon_tambahan = $this->input->post('id_flow_papenkon_tambahan');
+        $post_data = $this->input->post('post_data');
+        $type = $this->input->post('type');
+        $where = [
+            'id_flow_papenkon_tambahan' => $id_flow_papenkon_tambahan
+        ];
+        $data = [
+            $type => $post_data
+        ];
+        $this->Data_kontrak_model->update_flow_tambahan($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+
+    public function update_tanggal_surat_flow()
+    {
+        $id_flow_papenkon = $this->input->post('id_flow_papenkon');
+        $tanggal = $this->input->post('tanggal_surat');
+        $where = [
+            'id_flow_papenkon' => $id_flow_papenkon
+        ];
+        $data = [
+            'tanggal' => $tanggal
+        ];
+        $this->Data_kontrak_model->update_flow($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+    public function update_tanggal_surat_flow_tambahan()
+    {
+        $id_flow_papenkon_tambahan = $this->input->post('id_flow_papenkon_tambahan');
+        $tanggal_tambahan = $this->input->post('tanggal_surat_tambahan');
+        $where = [
+            'id_flow_papenkon_tambahan' => $id_flow_papenkon_tambahan
+        ];
+        $data = [
+            'tanggal_tambahan' => $tanggal_tambahan
+        ];
+        $this->Data_kontrak_model->update_flow_tambahan($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+    public function update_dokumen_papenkon()
+    {
+        $id_flow_papenkon = $this->input->post('id_flow_papenkon_upload');
+        $config['upload_path'] = './file_dokumen_papenkon/';
+        $config['allowed_types'] = 'pdf';
+        $config['max_size'] = 0;
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('file_dokumen')) {
+            $fileData = $this->upload->data();
+            $upload = [
+                'status_upload' => 1,
+                'file_dokumen' => $fileData['file_name'],
+            ];
+            $where = [
+                'id_flow_papenkon' => $id_flow_papenkon
+            ];
+            $this->Data_kontrak_model->update_flow($where, $upload);
+            $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+        } else {
+            $this->session->set_flashdata('error', $this->upload->display_errors());
+            redirect(base_url('upload'));
+        }
+    }
+
+    public function update_dokumen_papenkon_tambahan()
+    {
+        $id_flow_papenkon_tambahan = $this->input->post('id_flow_papenkon_tambahan_upload');
+        $config['upload_path'] = './file_dokumen_papenkon/';
+        $config['allowed_types'] = 'pdf';
+        $config['max_size'] = 0;
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('file_dokumen_tambahan')) {
+            $fileData = $this->upload->data();
+            $upload = [
+                'status_upload_tambahan' => 1,
+                'file_dokumen_tambahan' => $fileData['file_name'],
+            ];
+            $where = [
+                'id_flow_papenkon_tambahan' => $id_flow_papenkon_tambahan
+            ];
+            $this->Data_kontrak_model->update_flow_tambahan($where, $upload);
+            $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+        } else {
+            $this->session->set_flashdata('error', $this->upload->display_errors());
+            redirect(base_url('upload'));
+        }
+    }
+
+    public function delete_flow_tambahan($id_flow_papenkon_tambahan)
+    {
+        $this->Data_kontrak_model->delete_flow_tambahan($id_flow_papenkon_tambahan);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+    function simpan_flow_papenkon_tambahan()
+    {
+        $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa_tambah_data');
+        $addendum_flow_tambahan = $this->input->post('addendum_flow_tambahan_tambah_data');
+        $flow_papenkon_tambahan = $this->input->post('flow_papenkon_tambahan_tambah_data');
+        $jumlah_row = $this->input->post('jumlah_row');
+        for ($i = 0; $i < $jumlah_row; $i++) {
+            $data = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'addendum_flow_tambahan' => $addendum_flow_tambahan,
+                'flow_papenkon_tambahan' => $flow_papenkon_tambahan,
+            ];
+            $this->Data_kontrak_model->add_ke_tbl_flow_papenkon_tambahan($data);
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 }

@@ -508,7 +508,6 @@
             }
         })
     }
-
     function Question_hps_penyedia_1(id_hps_penyedia_kontrak_1, uraian_hps) {
         Swal.fire({
             title: "Apakah Anda Yakin!?",
@@ -1542,5 +1541,554 @@
                 }
             }
         })
+    }
+</script>
+
+<script>
+    Kelola_surat()
+
+    function Kelola_surat() {
+        var id = $('[name="id_detail_program_penyedia_jasa_update"]').val();
+        $.ajax({
+            type: "GET",
+            url: "<?= base_url('admin/administrasi_penyedia/byid_detail_program_penyedia_jasa/'); ?>" + id,
+            dataType: "JSON",
+            success: function(response) {
+                $('[name="nama_1_tingkat_pengguna_jasa_papenkon"]').val(response['row_program_detail'].nama_1_tingkat_pengguna_jasa_papenkon);
+                $('[name="jabatan_1_tingkat_pengguna_jasa_papenkon"]').val(response['row_program_detail'].jabatan_1_tingkat_pengguna_jasa_papenkon);
+                $('[name="nama_pengguna_jasa_papenkon"]').val(response['row_program_detail'].nama_pengguna_jasa_papenkon);
+                $('[name="jabatan_pengguna_jasa_papenkon"]').val(response['row_program_detail'].jabatan_pengguna_jasa_papenkon);
+                $('[name="nama_penyedia_jasa_papenkon"]').val(response['row_program_detail'].nama_penyedia_jasa_papenkon);
+                $('[name="jabatan_penyedia_jasa_papenkon"]').val(response['row_program_detail'].jabatan_penyedia_jasa_papenkon);
+                $('[name="nama_wakil_pengguna_jasa_papenkon"]').val(response['row_program_detail'].nama_wakil_pengguna_jasa_papenkon);
+                $('[name="jabatan_wakil_pengguna_jasa_papenkon"]').val(response['row_program_detail'].jabatan_wakil_pengguna_jasa_papenkon);
+                $('[name="nama_wakil_penyedia_jasa_papenkon"]').val(response['row_program_detail'].nama_wakil_penyedia_jasa_papenkon);
+                $('[name="jabatan_wakil_penyedia_jasa_papenkon"]').val(response['row_program_detail'].jabatan_wakil_penyedia_jasa_papenkon);
+                $('[name="nama_ketua_jasa_papenkon"]').val(response['row_program_detail'].nama_ketua_jasa_papenkon);
+                $('[name="jabatan_ketua_jasa_papenkon"]').val(response['row_program_detail'].jabatan_ketua_jasa_papenkon);
+            }
+        })
+    }
+
+    function simpan_master_pepenkon() {
+        var id_detail_program_penyedia_jasa = $('[name="id_detail_program_penyedia_jasa_update"]').val();
+        var nama_1_tingkat_pengguna_jasa_papenkon = $('[name="nama_1_tingkat_pengguna_jasa_papenkon"]').val();
+        var jabatan_1_tingkat_pengguna_jasa_papenkon = $('[name="jabatan_1_tingkat_pengguna_jasa_papenkon"]').val();
+        var nama_pengguna_jasa_papenkon = $('[name="nama_pengguna_jasa_papenkon"]').val();
+        var jabatan_pengguna_jasa_papenkon = $('[name="jabatan_pengguna_jasa_papenkon"]').val();
+        var nama_penyedia_jasa_papenkon = $('[name="nama_penyedia_jasa_papenkon"]').val();
+        var jabatan_penyedia_jasa_papenkon = $('[name="jabatan_penyedia_jasa_papenkon"]').val();
+        var nama_wakil_pengguna_jasa_papenkon = $('[name="nama_wakil_pengguna_jasa_papenkon"]').val();
+        var jabatan_wakil_pengguna_jasa_papenkon = $('[name="jabatan_wakil_pengguna_jasa_papenkon"]').val();
+        var nama_wakil_penyedia_jasa_papenkon = $('[name="nama_wakil_penyedia_jasa_papenkon"]').val();
+        var jabatan_wakil_penyedia_jasa_papenkon = $('[name="jabatan_wakil_penyedia_jasa_papenkon"]').val();
+        var nama_ketua_jasa_papenkon = $('[name="nama_ketua_jasa_papenkon"]').val();
+        var jabatan_ketua_jasa_papenkon = $('[name="jabatan_ketua_jasa_papenkon"]').val();
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('administrasi_kontrak/administrasi_kontrak/simpan_master_pepenkon') ?>",
+            data: {
+                id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
+                nama_ketua_jasa_papenkon: nama_ketua_jasa_papenkon,
+                jabatan_ketua_jasa_papenkon: jabatan_ketua_jasa_papenkon,
+                nama_1_tingkat_pengguna_jasa_papenkon: nama_1_tingkat_pengguna_jasa_papenkon,
+                jabatan_1_tingkat_pengguna_jasa_papenkon: jabatan_1_tingkat_pengguna_jasa_papenkon,
+                nama_pengguna_jasa_papenkon: nama_pengguna_jasa_papenkon,
+                jabatan_pengguna_jasa_papenkon: jabatan_pengguna_jasa_papenkon,
+                nama_penyedia_jasa_papenkon: nama_penyedia_jasa_papenkon,
+                jabatan_penyedia_jasa_papenkon: jabatan_penyedia_jasa_papenkon,
+                nama_wakil_pengguna_jasa_papenkon: nama_wakil_pengguna_jasa_papenkon,
+                jabatan_wakil_pengguna_jasa_papenkon: jabatan_wakil_pengguna_jasa_papenkon,
+                nama_wakil_penyedia_jasa_papenkon: nama_wakil_penyedia_jasa_papenkon,
+                jabatan_wakil_penyedia_jasa_papenkon: jabatan_wakil_penyedia_jasa_papenkon
+            },
+            dataType: "JSON",
+            success: function(response) {
+                if (response == 'success') {
+                    message('success', 'Master Berhasil Di Update!', 'Berhasil')
+                    Kelola_surat()
+                }
+            }
+        })
+    }
+
+    function simpan_flow_papenkon() {
+        var id_detail_program_penyedia_jasa = $('[name="id_detail_program_penyedia_jasa_update"]').val();
+        var addendum_flow = $('[name="addendum_flow"]').val();
+        var flow_papenkon = $('[name="flow_papenkon"]').val();
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('administrasi_kontrak/administrasi_kontrak/simpan_flow_papenkon') ?>",
+            data: {
+                id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
+                flow_papenkon: flow_papenkon,
+                addendum_flow: addendum_flow,
+            },
+            dataType: "JSON",
+            success: function(response) {
+                if (response == 'success') {
+                    message('success', 'Flow Berhasil Digenerate!', 'Berhasil')
+                    location.reload()
+                } else {
+                    message('success', 'Flow Ini Sudah Pernah Anda Generate!', 'Berhasil')
+                    location.reload()
+                }
+            }
+        })
+    }
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('.no_surat').keyup(function() {
+            var id_flow_papenkon = $(this).data('no_surat_id');
+            var post_data = $(this).val();
+            var type = 'no_surat';
+            // Kirim permintaan Ajax saat pengguna mengetik
+            $.ajax({
+                url: '<?= base_url('administrasi_kontrak/administrasi_kontrak/udpate_flow') ?>',
+                type: 'POST',
+                data: {
+                    id_flow_papenkon: id_flow_papenkon,
+                    post_data: post_data,
+                    type: type
+                },
+                success: function(response) {
+
+                },
+                error: function() {
+                    // Handle error (jika diperlukan)
+                }
+            });
+        });
+
+        $('.nama_dari').keyup(function() {
+            var id_flow_papenkon = $(this).data('nama_dari_id');
+            var post_data = $(this).val();
+            var type = 'nama_dari';
+            // Kirim permintaan Ajax saat pengguna mengetik
+            $.ajax({
+                url: '<?= base_url('administrasi_kontrak/administrasi_kontrak/udpate_flow') ?>',
+                type: 'POST',
+                data: {
+                    id_flow_papenkon: id_flow_papenkon,
+                    post_data: post_data,
+                    type: type
+                },
+                success: function(response) {
+
+                },
+                error: function() {
+                    // Handle error (jika diperlukan)
+                }
+            });
+        });
+
+        $('.nama_ke').keyup(function() {
+            var id_flow_papenkon = $(this).data('nama_ke_id');
+            var post_data = $(this).val();
+            var type = 'nama_ke';
+            // Kirim permintaan Ajax saat pengguna mengetik
+            $.ajax({
+                url: '<?= base_url('administrasi_kontrak/administrasi_kontrak/udpate_flow') ?>',
+                type: 'POST',
+                data: {
+                    id_flow_papenkon: id_flow_papenkon,
+                    post_data: post_data,
+                    type: type
+                },
+                success: function(response) {
+
+                },
+                error: function() {
+                    // Handle error (jika diperlukan)
+                }
+            });
+        });
+
+        $('.jabatan_dari').keyup(function() {
+            var id_flow_papenkon = $(this).data('jabatan_dari_id');
+            var post_data = $(this).val();
+            var type = 'jabatan_dari';
+            // Kirim permintaan Ajax saat pengguna mengetik
+            $.ajax({
+                url: '<?= base_url('administrasi_kontrak/administrasi_kontrak/udpate_flow') ?>',
+                type: 'POST',
+                data: {
+                    id_flow_papenkon: id_flow_papenkon,
+                    post_data: post_data,
+                    type: type
+                },
+                success: function(response) {
+
+                },
+                error: function() {
+                    // Handle error (jika diperlukan)
+                }
+            });
+        });
+
+        $('.jabatan_ke').keyup(function() {
+            var id_flow_papenkon = $(this).data('jabatan_ke_id');
+            var post_data = $(this).val();
+            var type = 'jabatan_ke';
+            // Kirim permintaan Ajax saat pengguna mengetik
+            $.ajax({
+                url: '<?= base_url('administrasi_kontrak/administrasi_kontrak/udpate_flow') ?>',
+                type: 'POST',
+                data: {
+                    id_flow_papenkon: id_flow_papenkon,
+                    post_data: post_data,
+                    type: type
+                },
+                success: function(response) {
+
+                },
+                error: function() {
+                    // Handle error (jika diperlukan)
+                }
+            });
+        });
+
+        $('.tanggal_surat').change(function() {
+            var id_flow_papenkon = $(this).data('tanggal_surat_id');
+            var tanggal_surat = $(this).val();
+            // Kirim permintaan Ajax saat pengguna mengetik
+            $.ajax({
+                url: '<?= base_url('administrasi_kontrak/administrasi_kontrak/update_tanggal_surat_flow') ?>',
+                type: 'POST',
+                data: {
+                    id_flow_papenkon: id_flow_papenkon,
+                    tanggal_surat: tanggal_surat
+                },
+                success: function(response) {
+
+                },
+                error: function() {
+                    // Handle error (jika diperlukan)
+                }
+            });
+        });
+    });
+
+    var modal_upload_surat_papenkon = $('#modal_upload_surat_papenkon');
+    var form_upload_surat_papenkon = $('#form_upload_surat_papenkon');
+
+    function modal_upload_surat_papenkon_ku(id_flow_papenkon, nama_uraian) {
+        modal_upload_surat_papenkon.modal('show');
+        $('[name="id_flow_papenkon_upload"]').val(id_flow_papenkon);
+        $('[name="nama_uraian_upload"]').val(nama_uraian);
+    }
+
+    form_upload_surat_papenkon.on('submit', function(e) {
+        e.preventDefault();
+        if ($('.file_dokumen').val() == '') {
+            $('#error_file').show();
+            setTimeout(function() {
+                $('#error_file').hide();
+            }, 4000);
+        } else {
+            $.ajax({
+                url: "<?= base_url('administrasi_kontrak/administrasi_kontrak/update_dokumen_papenkon') ?>",
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    $('#upload').attr('disabled', 'disabled');
+                    $('#process').css('display', 'block');
+                    $('#sedang_dikirim').show();
+                },
+                success: function(response) {
+                    var percentage = 0;
+                    var timer = setInterval(function() {
+                        percentage = percentage + 20;
+                        progres_upload_papenkon(percentage, timer);
+                    }, 1000);
+                }
+            });
+        }
+    });
+
+    function progres_upload_papenkon(percentage, timer) {
+        $('.progress-bar').css('width', percentage + '%');
+        if (percentage > 100) {
+            clearInterval(timer);
+            $('#form_upload_surat_papenkon')[0].reset();
+            $('#process').css('display', 'none');
+            $('#sedang_dikirim').show();
+            $('.progress-bar').css('width', percentage + '%');
+            $('#upload').attr('disabled', false);
+            message('success', 'Surat Berhasil Di Upload!', 'Berhasil')
+            location.reload()
+        }
+    }
+
+
+    // TAMBAHAN
+
+    $('.no_surat_tambahan').keyup(function() {
+        var id_flow_papenkon_tambahan = $(this).data('no_surat_id_tambahan');
+        var post_data = $(this).val();
+        var type = 'no_surat_tambahan';
+        // Kirim permintaan Ajax saat pengguna mengetik
+        $.ajax({
+            url: '<?= base_url('administrasi_kontrak/administrasi_kontrak/udpate_flow_tambahan') ?>',
+            type: 'POST',
+            data: {
+                id_flow_papenkon_tambahan: id_flow_papenkon_tambahan,
+                post_data: post_data,
+                type: type
+            },
+            success: function(response) {
+
+            },
+            error: function() {
+                // Handle error (jika diperlukan)
+            }
+        });
+    });
+
+    $('.nama_dari_tambahan').keyup(function() {
+        var id_flow_papenkon_tambahan = $(this).data('nama_dari_id_tambahan');
+        var post_data = $(this).val();
+        var type = 'nama_dari_tambahan';
+        // Kirim permintaan Ajax saat pengguna mengetik
+        $.ajax({
+            url: '<?= base_url('administrasi_kontrak/administrasi_kontrak/udpate_flow_tambahan') ?>',
+            type: 'POST',
+            data: {
+                id_flow_papenkon_tambahan: id_flow_papenkon_tambahan,
+                post_data: post_data,
+                type: type
+            },
+            success: function(response) {
+
+            },
+            error: function() {
+                // Handle error (jika diperlukan)
+            }
+        });
+    });
+
+    $('.nama_ke_tambahan').keyup(function() {
+        var id_flow_papenkon_tambahan = $(this).data('nama_ke_id_tambahan');
+        var post_data = $(this).val();
+        var type = 'nama_ke_tambahan';
+        // Kirim permintaan Ajax saat pengguna mengetik
+        $.ajax({
+            url: '<?= base_url('administrasi_kontrak/administrasi_kontrak/udpate_flow_tambahan') ?>',
+            type: 'POST',
+            data: {
+                id_flow_papenkon_tambahan: id_flow_papenkon_tambahan,
+                post_data: post_data,
+                type: type
+            },
+            success: function(response) {
+
+            },
+            error: function() {
+                // Handle error (jika diperlukan)
+            }
+        });
+    });
+
+    $('.jabatan_dari_tambahan').keyup(function() {
+        var id_flow_papenkon_tambahan = $(this).data('jabatan_dari_id_tambahan');
+        var post_data = $(this).val();
+        var type = 'jabatan_dari_tambahan';
+        // Kirim permintaan Ajax saat pengguna mengetik
+        $.ajax({
+            url: '<?= base_url('administrasi_kontrak/administrasi_kontrak/udpate_flow_tambahan') ?>',
+            type: 'POST',
+            data: {
+                id_flow_papenkon_tambahan: id_flow_papenkon_tambahan,
+                post_data: post_data,
+                type: type
+            },
+            success: function(response) {
+
+            },
+            error: function() {
+                // Handle error (jika diperlukan)
+            }
+        });
+    });
+
+    $('.jabatan_ke_tambahan').keyup(function() {
+        var id_flow_papenkon_tambahan = $(this).data('jabatan_ke_id_tambahan');
+        var post_data = $(this).val();
+        var type = 'jabatan_ke_tambahan';
+        // Kirim permintaan Ajax saat pengguna mengetik
+        $.ajax({
+            url: '<?= base_url('administrasi_kontrak/administrasi_kontrak/udpate_flow_tambahan') ?>',
+            type: 'POST',
+            data: {
+                id_flow_papenkon_tambahan: id_flow_papenkon_tambahan,
+                post_data: post_data,
+                type: type
+            },
+            success: function(response) {
+
+            },
+            error: function() {
+                // Handle error (jika diperlukan)
+            }
+        });
+    });
+
+    $('.nama_uraian_tambahan').keyup(function() {
+        var id_flow_papenkon_tambahan = $(this).data('nama_uraian_id_tambahan');
+        var post_data = $(this).val();
+        var type = 'nama_uraian_tambahan';
+        // Kirim permintaan Ajax saat pengguna mengetik
+        $.ajax({
+            url: '<?= base_url('administrasi_kontrak/administrasi_kontrak/udpate_flow_tambahan') ?>',
+            type: 'POST',
+            data: {
+                id_flow_papenkon_tambahan: id_flow_papenkon_tambahan,
+                post_data: post_data,
+                type: type
+            },
+            success: function(response) {
+
+            },
+            error: function() {
+                // Handle error (jika diperlukan)
+            }
+        });
+    });
+
+    $('.tanggal_surat_tambahan').change(function() {
+        var id_flow_papenkon_tambahan = $(this).data('tanggal_surat_id_tambahan');
+        var tanggal_surat_tambahan = $(this).val();
+        // Kirim permintaan Ajax saat pengguna mengetik
+        $.ajax({
+            url: '<?= base_url('administrasi_kontrak/administrasi_kontrak/update_tanggal_surat_flow_tambahan') ?>',
+            type: 'POST',
+            data: {
+                id_flow_papenkon_tambahan: id_flow_papenkon_tambahan,
+                tanggal_surat_tambahan: tanggal_surat_tambahan
+            },
+            success: function(response) {
+
+            },
+            error: function() {
+                // Handle error (jika diperlukan)
+            }
+        });
+    });
+
+    var modal_upload_surat_papenkon_tambahan = $('#modal_upload_surat_papenkon_tambahan');
+    var form_upload_surat_papenkon_tambahan = $('#form_upload_surat_papenkon_tambahan');
+
+    function modal_upload_surat_papenkon_ku_tambahan(id_flow_papenkon_tambahan, nama_uraian_tambahan) {
+        modal_upload_surat_papenkon_tambahan.modal('show');
+        $('[name="id_flow_papenkon_tambahan_upload"]').val(id_flow_papenkon_tambahan);
+        $('[name="nama_uraian_upload_tambahan"]').val(nama_uraian_tambahan);
+    }
+
+    form_upload_surat_papenkon_tambahan.on('submit', function(e) {
+        e.preventDefault();
+        if ($('.file_dokumen_tambahan').val() == '') {
+            $('#error_file_tambahan').show();
+            setTimeout(function() {
+                $('#error_file_tambahan').hide();
+            }, 4000);
+        } else {
+            $.ajax({
+                url: "<?= base_url('administrasi_kontrak/administrasi_kontrak/update_dokumen_papenkon_tambahan') ?>",
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    $('#upload_tambahan').attr('disabled', 'disabled');
+                    $('#process_tambahan').css('display', 'block');
+                    $('#sedang_dikirim_tambahan').show();
+                },
+                success: function(response) {
+                    var percentage = 0;
+                    var timer = setInterval(function() {
+                        percentage = percentage + 20;
+                        progres_upload_papenkon_tambahan(percentage, timer);
+                    }, 1000);
+                }
+            });
+        }
+    });
+
+    function progres_upload_papenkon_tambahan(percentage, timer) {
+        $('.progress-bar').css('width', percentage + '%');
+        if (percentage > 100) {
+            clearInterval(timer);
+            $('#form_upload_surat_papenkon_tambahan')[0].reset();
+            $('#process_tambahan').css('display', 'none');
+            $('#sedang_dikirim_tambahan').show();
+            $('.progress-bar').css('width', percentage + '%');
+            $('#upload_tambahan').attr('disabled', false);
+            message('success', 'Surat Berhasil Di Upload!', 'Berhasil')
+            location.reload()
+        }
+    }
+
+    function modal_tambah_papenkon_tambahan(addendum_flow_tambahan_tambah_data, flow_papenkon_tambahan_tambah_data) {
+        var modal_tambahan_papenkon = $('#modal_tambahan_papenkon');
+        modal_tambahan_papenkon.modal('show');
+        $('[name="addendum_flow_tambahan_tambah_data"]').val(addendum_flow_tambahan_tambah_data);
+        $('[name="flow_papenkon_tambahan_tambah_data"]').val(flow_papenkon_tambahan_tambah_data);
+    }
+
+    function buat_tambahan_row() {
+        var id_detail_program_penyedia_jasa_tambah_data = $('[name="id_detail_program_penyedia_jasa_tambah_data"]').val();
+        var addendum_flow_tambahan_tambah_data = $('[name="addendum_flow_tambahan_tambah_data"]').val();
+        var flow_papenkon_tambahan_tambah_data = $('[name="flow_papenkon_tambahan_tambah_data"]').val();
+        var jumlah_row = $('[name="jumlah_row"]').val();
+        $.ajax({
+            url: '<?= base_url('administrasi_kontrak/administrasi_kontrak/simpan_flow_papenkon_tambahan') ?>',
+            type: 'POST',
+            data: {
+                id_detail_program_penyedia_jasa_tambah_data: id_detail_program_penyedia_jasa_tambah_data,
+                addendum_flow_tambahan_tambah_data: addendum_flow_tambahan_tambah_data,
+                flow_papenkon_tambahan_tambah_data: flow_papenkon_tambahan_tambah_data,
+                jumlah_row: jumlah_row
+            },
+            success: function(response) {
+                message('success', 'Berhasil Menambah Rows!', 'Berhasil')
+                location.reload()
+            },
+            error: function() {
+                // Handle error (jika diperlukan)
+            }
+        });
+    }
+
+    function hapus_surat_tambahan(id_flow_papenkon_tambahan, Uraian) {
+        Swal.fire({
+            title: "Apakah Anda Yakin!?",
+            text: "Menghapus" + Uraian + " Ini ?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('administrasi_kontrak/administrasi_kontrak/delete_flow_tambahan/') ?>" + id_flow_papenkon_tambahan,
+                    dataType: "JSON",
+                    data: {
+                        id_flow_papenkon_tambahan: id_flow_papenkon_tambahan,
+                    },
+                    success: function(response) {
+                        if (response == 'success') {
+                            message('success', 'Baris Ini Berhasil Di Hapus!', 'Berhasil')
+                            location.reload()
+                        }
+                    }
+                })
+            }
+        });
     }
 </script>
