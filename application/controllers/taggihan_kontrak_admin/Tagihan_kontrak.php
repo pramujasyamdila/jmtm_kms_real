@@ -272,55 +272,45 @@ class Tagihan_kontrak extends CI_Controller
         $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
         // var_dump($data_mc[1]['id_mc']);
         // die;
-        if (!isset($data_mc[1])) {
-        } else {
+        if (!isset($data_mc[1])) { } else {
             $id_mc1 = $data_mc[1]['id_mc'];
             $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
         }
 
-        if (!isset($data_mc[2])) {
-        } else {
+        if (!isset($data_mc[2])) { } else {
             $id_mc2 = $data_mc[2]['id_mc'];
             $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
         }
-        if (!isset($data_mc[3])) {
-        } else {
+        if (!isset($data_mc[3])) { } else {
             $id_mc3 = $data_mc[3]['id_mc'];
             $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
         }
 
-        if (!isset($data_mc[4])) {
-        } else {
+        if (!isset($data_mc[4])) { } else {
             $id_mc4 = $data_mc[4]['id_mc'];
             $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
         }
-        if (!isset($data_mc[5])) {
-        } else {
+        if (!isset($data_mc[5])) { } else {
             $id_mc5 = $data_mc[5]['id_mc'];
             $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
         }
-        if (!isset($data_mc[6])) {
-        } else {
+        if (!isset($data_mc[6])) { } else {
             $id_mc6 = $data_mc[6]['id_mc'];
             $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
         }
-        if (!isset($data_mc[7])) {
-        } else {
+        if (!isset($data_mc[7])) { } else {
             $id_mc7 = $data_mc[7]['id_mc'];
             $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
         }
-        if (!isset($data_mc[8])) {
-        } else {
+        if (!isset($data_mc[8])) { } else {
             $id_mc8 = $data_mc[8]['id_mc'];
             $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
         }
-        if (!isset($data_mc[9])) {
-        } else {
+        if (!isset($data_mc[9])) { } else {
             $id_mc9 = $data_mc[9]['id_mc'];
             $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
         }
-        if (!isset($data_mc[10])) {
-        } else {
+        if (!isset($data_mc[10])) { } else {
             $id_mc10 = $data_mc[10]['id_mc'];
             $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
         }
@@ -335,8 +325,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
             $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
             $mc_real1 = $data_arrayku1['id_mc'];
-        } else {
-        }
+        } else { }
         if (isset($data_mc[2])) {
             $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
             $updateAray2 = [
@@ -469,8 +458,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
             $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
             $mc_real10 = $data_arrayku10['id_mc'];
-        } else {
-        }
+        } else { }
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
     public function edit_mc()
@@ -583,55 +571,45 @@ class Tagihan_kontrak extends CI_Controller
                 $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
                 // var_dump($data_mc[1]['id_mc']);
                 // die;
-                if (!isset($data_mc[1])) {
-                } else {
+                if (!isset($data_mc[1])) { } else {
                     $id_mc1 = $data_mc[1]['id_mc'];
                     $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
                 }
 
-                if (!isset($data_mc[2])) {
-                } else {
+                if (!isset($data_mc[2])) { } else {
                     $id_mc2 = $data_mc[2]['id_mc'];
                     $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
                 }
-                if (!isset($data_mc[3])) {
-                } else {
+                if (!isset($data_mc[3])) { } else {
                     $id_mc3 = $data_mc[3]['id_mc'];
                     $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
                 }
 
-                if (!isset($data_mc[4])) {
-                } else {
+                if (!isset($data_mc[4])) { } else {
                     $id_mc4 = $data_mc[4]['id_mc'];
                     $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
                 }
-                if (!isset($data_mc[5])) {
-                } else {
+                if (!isset($data_mc[5])) { } else {
                     $id_mc5 = $data_mc[5]['id_mc'];
                     $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
                 }
-                if (!isset($data_mc[6])) {
-                } else {
+                if (!isset($data_mc[6])) { } else {
                     $id_mc6 = $data_mc[6]['id_mc'];
                     $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
                 }
-                if (!isset($data_mc[7])) {
-                } else {
+                if (!isset($data_mc[7])) { } else {
                     $id_mc7 = $data_mc[7]['id_mc'];
                     $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
                 }
-                if (!isset($data_mc[8])) {
-                } else {
+                if (!isset($data_mc[8])) { } else {
                     $id_mc8 = $data_mc[8]['id_mc'];
                     $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
                 }
-                if (!isset($data_mc[9])) {
-                } else {
+                if (!isset($data_mc[9])) { } else {
                     $id_mc9 = $data_mc[9]['id_mc'];
                     $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
                 }
-                if (!isset($data_mc[10])) {
-                } else {
+                if (!isset($data_mc[10])) { } else {
                     $id_mc10 = $data_mc[10]['id_mc'];
                     $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
                 }
@@ -645,8 +623,7 @@ class Tagihan_kontrak extends CI_Controller
                     ];
                     $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
                     $mc_real1 = $data_arrayku1['id_mc'];
-                } else {
-                }
+                } else { }
                 if (isset($data_mc[2])) {
                     $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
                     $updateAray2 = [
@@ -779,8 +756,7 @@ class Tagihan_kontrak extends CI_Controller
                     ];
                     $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
                     $mc_real10 = $data_arrayku10['id_mc'];
-                } else {
-                }
+                } else { }
             } else {
                 $data = [
                     'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
@@ -809,55 +785,45 @@ class Tagihan_kontrak extends CI_Controller
                 $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
                 // var_dump($data_mc[1]['id_mc']);
                 // die;
-                if (!isset($data_mc[1])) {
-                } else {
+                if (!isset($data_mc[1])) { } else {
                     $id_mc1 = $data_mc[1]['id_mc'];
                     $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
                 }
 
-                if (!isset($data_mc[2])) {
-                } else {
+                if (!isset($data_mc[2])) { } else {
                     $id_mc2 = $data_mc[2]['id_mc'];
                     $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
                 }
-                if (!isset($data_mc[3])) {
-                } else {
+                if (!isset($data_mc[3])) { } else {
                     $id_mc3 = $data_mc[3]['id_mc'];
                     $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
                 }
 
-                if (!isset($data_mc[4])) {
-                } else {
+                if (!isset($data_mc[4])) { } else {
                     $id_mc4 = $data_mc[4]['id_mc'];
                     $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
                 }
-                if (!isset($data_mc[5])) {
-                } else {
+                if (!isset($data_mc[5])) { } else {
                     $id_mc5 = $data_mc[5]['id_mc'];
                     $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
                 }
-                if (!isset($data_mc[6])) {
-                } else {
+                if (!isset($data_mc[6])) { } else {
                     $id_mc6 = $data_mc[6]['id_mc'];
                     $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
                 }
-                if (!isset($data_mc[7])) {
-                } else {
+                if (!isset($data_mc[7])) { } else {
                     $id_mc7 = $data_mc[7]['id_mc'];
                     $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
                 }
-                if (!isset($data_mc[8])) {
-                } else {
+                if (!isset($data_mc[8])) { } else {
                     $id_mc8 = $data_mc[8]['id_mc'];
                     $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
                 }
-                if (!isset($data_mc[9])) {
-                } else {
+                if (!isset($data_mc[9])) { } else {
                     $id_mc9 = $data_mc[9]['id_mc'];
                     $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
                 }
-                if (!isset($data_mc[10])) {
-                } else {
+                if (!isset($data_mc[10])) { } else {
                     $id_mc10 = $data_mc[10]['id_mc'];
                     $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
                 }
@@ -872,8 +838,7 @@ class Tagihan_kontrak extends CI_Controller
                     ];
                     $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
                     $mc_real1 = $data_arrayku1['id_mc'];
-                } else {
-                }
+                } else { }
                 if (isset($data_mc[2])) {
                     $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
                     $updateAray2 = [
@@ -1006,8 +971,7 @@ class Tagihan_kontrak extends CI_Controller
                     ];
                     $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
                     $mc_real10 = $data_arrayku10['id_mc'];
-                } else {
-                }
+                } else { }
             }
         }
 
@@ -1059,55 +1023,45 @@ class Tagihan_kontrak extends CI_Controller
             $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
             // var_dump($data_mc[1]['id_mc']);
             // die;
-            if (!isset($data_mc[1])) {
-            } else {
+            if (!isset($data_mc[1])) { } else {
                 $id_mc1 = $data_mc[1]['id_mc'];
                 $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
             }
 
-            if (!isset($data_mc[2])) {
-            } else {
+            if (!isset($data_mc[2])) { } else {
                 $id_mc2 = $data_mc[2]['id_mc'];
                 $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
             }
-            if (!isset($data_mc[3])) {
-            } else {
+            if (!isset($data_mc[3])) { } else {
                 $id_mc3 = $data_mc[3]['id_mc'];
                 $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
             }
 
-            if (!isset($data_mc[4])) {
-            } else {
+            if (!isset($data_mc[4])) { } else {
                 $id_mc4 = $data_mc[4]['id_mc'];
                 $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
             }
-            if (!isset($data_mc[5])) {
-            } else {
+            if (!isset($data_mc[5])) { } else {
                 $id_mc5 = $data_mc[5]['id_mc'];
                 $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
             }
-            if (!isset($data_mc[6])) {
-            } else {
+            if (!isset($data_mc[6])) { } else {
                 $id_mc6 = $data_mc[6]['id_mc'];
                 $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
             }
-            if (!isset($data_mc[7])) {
-            } else {
+            if (!isset($data_mc[7])) { } else {
                 $id_mc7 = $data_mc[7]['id_mc'];
                 $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
             }
-            if (!isset($data_mc[8])) {
-            } else {
+            if (!isset($data_mc[8])) { } else {
                 $id_mc8 = $data_mc[8]['id_mc'];
                 $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
             }
-            if (!isset($data_mc[9])) {
-            } else {
+            if (!isset($data_mc[9])) { } else {
                 $id_mc9 = $data_mc[9]['id_mc'];
                 $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
             }
-            if (!isset($data_mc[10])) {
-            } else {
+            if (!isset($data_mc[10])) { } else {
                 $id_mc10 = $data_mc[10]['id_mc'];
                 $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
             }
@@ -1122,8 +1076,7 @@ class Tagihan_kontrak extends CI_Controller
                 ];
                 $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
                 $mc_real1 = $data_arrayku1['id_mc'];
-            } else {
-            }
+            } else { }
             if (isset($data_mc[2])) {
                 $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
                 $updateAray2 = [
@@ -1256,8 +1209,7 @@ class Tagihan_kontrak extends CI_Controller
                 ];
                 $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
                 $mc_real10 = $data_arrayku10['id_mc'];
-            } else {
-            }
+            } else { }
             // array_bulan_ini
         }
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
@@ -1369,7 +1321,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
         } else {
             $kontrak_sebelum_edit = $mc_row['id_detail_program_penyedia_jasa'];
-            $no_mc_sebelum_edit = (int)$mc_row['no_mc'] - 1;
+            $no_mc_sebelum_edit = (int) $mc_row['no_mc'] - 1;
             $data_mc_sebelum_row_edit = $this->Taggihan_kontrak_admin_model->get_last_edit($kontrak_sebelum_edit, $no_mc_sebelum_edit);
             $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
             $data = [
@@ -2341,7 +2293,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
         } else {
             $kontrak_sebelum_edit = $mc_row['id_detail_program_penyedia_jasa'];
-            $no_mc_sebelum_edit = (int)$mc_row['no_mc'] - 1;
+            $no_mc_sebelum_edit = (int) $mc_row['no_mc'] - 1;
             $data_mc_sebelum_row_edit = $this->Taggihan_kontrak_admin_model->get_last_edit($kontrak_sebelum_edit, $no_mc_sebelum_edit);
             $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
             $data = [
@@ -3608,7 +3560,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
         } else {
             $kontrak_sebelum_edit = $mc_row['id_detail_program_penyedia_jasa'];
-            $no_mc_sebelum_edit = (int)$mc_row['no_mc'] - 1;
+            $no_mc_sebelum_edit = (int) $mc_row['no_mc'] - 1;
             $data_mc_sebelum_row_edit = $this->Taggihan_kontrak_admin_model->get_last_edit($kontrak_sebelum_edit, $no_mc_sebelum_edit);
             $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
             $data = [
@@ -3757,7 +3709,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
         } else {
             $kontrak_sebelum_edit = $mc_row['id_detail_program_penyedia_jasa'];
-            $no_mc_sebelum_edit = (int)$mc_row['no_mc'] - 1;
+            $no_mc_sebelum_edit = (int) $mc_row['no_mc'] - 1;
             $data_mc_sebelum_row_edit = $this->Taggihan_kontrak_admin_model->get_last_edit($kontrak_sebelum_edit, $no_mc_sebelum_edit);
             $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
             $data = [
@@ -3866,8 +3818,7 @@ class Tagihan_kontrak extends CI_Controller
             $where = [
                 'id_mc' => $id_mc
             ];
-        } else {
-        }
+        } else { }
 
         $data = [
             'id_mc' => $id_mc,
@@ -4052,7 +4003,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
         } else {
             $kontrak_sebelum_edit = $mc_row['id_detail_program_penyedia_jasa'];
-            $no_mc_sebelum_edit = (int)$mc_row['no_mc'] - 1;
+            $no_mc_sebelum_edit = (int) $mc_row['no_mc'] - 1;
             $data_mc_sebelum_row_edit = $this->Taggihan_kontrak_admin_model->get_last_edit($kontrak_sebelum_edit, $no_mc_sebelum_edit);
             $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
             $data = [
@@ -4200,7 +4151,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
         } else {
             $kontrak_sebelum_edit = $mc_row['id_detail_program_penyedia_jasa'];
-            $no_mc_sebelum_edit = (int)$mc_row['no_mc'] - 1;
+            $no_mc_sebelum_edit = (int) $mc_row['no_mc'] - 1;
             $data_mc_sebelum_row_edit = $this->Taggihan_kontrak_admin_model->get_last_edit($kontrak_sebelum_edit, $no_mc_sebelum_edit);
             $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
             $data = [
@@ -4348,7 +4299,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
         } else {
             $kontrak_sebelum_edit = $mc_row['id_detail_program_penyedia_jasa'];
-            $no_mc_sebelum_edit = (int)$mc_row['no_mc'] - 1;
+            $no_mc_sebelum_edit = (int) $mc_row['no_mc'] - 1;
             $data_mc_sebelum_row_edit = $this->Taggihan_kontrak_admin_model->get_last_edit($kontrak_sebelum_edit, $no_mc_sebelum_edit);
             $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
             $data = [
@@ -4496,7 +4447,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
         } else {
             $kontrak_sebelum_edit = $mc_row['id_detail_program_penyedia_jasa'];
-            $no_mc_sebelum_edit = (int)$mc_row['no_mc'] - 1;
+            $no_mc_sebelum_edit = (int) $mc_row['no_mc'] - 1;
             $data_mc_sebelum_row_edit = $this->Taggihan_kontrak_admin_model->get_last_edit($kontrak_sebelum_edit, $no_mc_sebelum_edit);
             $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
             $data = [
@@ -4643,7 +4594,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
         } else {
             $kontrak_sebelum_edit = $mc_row['id_detail_program_penyedia_jasa'];
-            $no_mc_sebelum_edit = (int)$mc_row['no_mc'] - 1;
+            $no_mc_sebelum_edit = (int) $mc_row['no_mc'] - 1;
             $data_mc_sebelum_row_edit = $this->Taggihan_kontrak_admin_model->get_last_edit($kontrak_sebelum_edit, $no_mc_sebelum_edit);
             $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
             $data = [
@@ -4791,7 +4742,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
         } else {
             $kontrak_sebelum_edit = $mc_row['id_detail_program_penyedia_jasa'];
-            $no_mc_sebelum_edit = (int)$mc_row['no_mc'] - 1;
+            $no_mc_sebelum_edit = (int) $mc_row['no_mc'] - 1;
             $data_mc_sebelum_row_edit = $this->Taggihan_kontrak_admin_model->get_last_edit($kontrak_sebelum_edit, $no_mc_sebelum_edit);
             $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
             $data = [
@@ -4939,7 +4890,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
         } else {
             $kontrak_sebelum_edit = $mc_row['id_detail_program_penyedia_jasa'];
-            $no_mc_sebelum_edit = (int)$mc_row['no_mc'] - 1;
+            $no_mc_sebelum_edit = (int) $mc_row['no_mc'] - 1;
             $data_mc_sebelum_row_edit = $this->Taggihan_kontrak_admin_model->get_last_edit($kontrak_sebelum_edit, $no_mc_sebelum_edit);
             $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
             $data = [
@@ -5013,8 +4964,7 @@ class Tagihan_kontrak extends CI_Controller
             } else  if ($type == 'file_spmk_mc') {
                 $row[] = $angga->nama_file_spmk_mc;
                 $row[] = '<a href=' . base_url('/file_dokumen_mc' . '/' . $angga->file_spmk_mc) . '>' . '<img width="30px" src=' . base_url('assets/pdf.png') . ' >' . '</a>';
-            } else {
-            }
+            } else { }
             $data[] = $row;
         }
         $output = array(
@@ -5164,8 +5114,7 @@ class Tagihan_kontrak extends CI_Controller
                 $this->session->set_flashdata('error', $this->upload->display_errors());
                 redirect(base_url('upload'));
             }
-        } else {
-        }
+        } else { }
     }
 
     public function upload_excel()
@@ -5211,12 +5160,12 @@ class Tagihan_kontrak extends CI_Controller
                         if ($inisial_add == 'kontrak_awal') {
                             $data = array(
                                 'volume_hps' => $row->getCellAtIndex(6),
-                                'total_harga' => (float)$count_6 * (float)$count_7,
+                                'total_harga' => (float) $count_6 * (float) $count_7,
                             );
                         } else {
                             $data = array(
                                 'volume_hps' . $inisial_add  => $row->getCellAtIndex(6),
-                                'total_harga' . $inisial_add => (float)$count_6 * (float)$count_7,
+                                'total_harga' . $inisial_add => (float) $count_6 * (float) $count_7,
                             );
                         }
                         if ($row->getCellAtIndex(0) == 'level 1') {
@@ -5247,5 +5196,323 @@ class Tagihan_kontrak extends CI_Controller
         } else {
             echo "Error : " . $this->upload->display_errors();
         }
+    }
+
+
+    // dok mc
+
+    public function get_Data_dok_mc($id_mc)
+    {
+        $get_mc = $this->Tagihan_kontrak_model->get_dok_mc_result($id_mc);
+        $this->output->set_content_type('application/json')->set_output(json_encode($get_mc));
+    }
+
+    public function dokumen_mc($id_mc)
+    {
+        $data['title'] = 'Dashboard';
+        $data['id_mc'] = $id_mc;
+        $get_mc = $this->Tagihan_kontrak_model->get_mc($id_mc);
+
+        $cek_genrate = $this->Tagihan_kontrak_model->cek_genrate($id_mc, $get_mc['id_detail_program_penyedia_jasa']);
+
+        if ($cek_genrate) { } else {
+
+            $data1 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => 1,
+                'nama_dok' => 'Checklist',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data1);
+
+            $data2 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => 2,
+                'nama_dok' => 'Nota Dinas Permohonan Pembayaran',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data2);
+
+            $data3 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => 3,
+                'nama_dok' => 'Sertifikat Pembayaran',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data3);
+
+            $data4 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => 4,
+                'nama_dok' => 'Surat Permohonan Pembayaran',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data4);
+
+            $data5 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => 5,
+                'nama_dok' => 'Kwitansi Pembayaran',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data5);
+
+
+            $data6 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => 6,
+                'nama_dok' => 'Faktur Pajak dan E-NOFA',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data6);
+
+
+            $data7 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => 7,
+                'nama_dok' => 'Surat Permohonan Pemeriksaan Pekerjaan dan Serah Terima Pekerjaan',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data7);
+
+            $data8 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => 8,
+                'nama_dok' => 'Berita Acara Pemeriksaan Pekerjaan',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data8);
+
+            $data9 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => 9,
+                'nama_dok' => 'Acara Serah Terima Pekerjaan/BA PHO',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data9);
+
+            $data10 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => 10,
+                'nama_dok' => 'BA Progress Fisik 100%',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data10);
+
+            $data11 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => 11,
+                'nama_dok' => 'Monthly Certificate',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data11);
+
+            $data111 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '11.1',
+                'nama_dok' => 'Cover MC',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data111);
+
+
+            $data112 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '11.2',
+                'nama_dok' => 'MC',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data112);
+
+            $data113 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '11.3',
+                'nama_dok' => 'Keterangan Jaminan',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data113);
+
+            $data114 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '11.4',
+                'nama_dok' => 'Rekap MC',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data114);
+
+
+            $data115 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '11.5',
+                'nama_dok' => 'Rekap Progres Fisik',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data115);
+
+            $data116 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '11.6',
+                'nama_dok' => 'Rekap Progres',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data116);
+
+            $data117 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '11.7',
+                'nama_dok' => 'Progres Pembayaran',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data117);
+
+            $data118 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '11.8',
+                'nama_dok' => 'Detail Progress Pembayaran',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data118);
+
+            $data12 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '12',
+                'nama_dok' => 'Referensi Bank',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data12);
+
+            $data13 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '13',
+                'nama_dok' => 'KTP',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data13);
+
+            $data14 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '14',
+                'nama_dok' => 'NPWP',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data14);
+
+            $data15 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '15',
+                'nama_dok' => 'Surat Pengukuhan Pengusahan Kena Pajak (Copy)',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data15);
+
+            $data16 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '16',
+                'nama_dok' => 'SBU dan SIUJK / SIUP',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data16);
+
+            $data17 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '17',
+                'nama_dok' => 'Kontrak Jasa Pemborongan',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data17);
+
+            $data18 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '18',
+                'nama_dok' => 'Addendum',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data18);
+
+            $data19 = [
+                'id_mc' => $id_mc,
+                'id_detail_program_penyedia_jasa' => $get_mc['id_detail_program_penyedia_jasa'],
+                'no_urut_dok' => '19',
+                'nama_dok' => 'SPMK',
+            ];
+            $this->Tagihan_kontrak_model->genrate_dok($data19);
+        }
+
+        $this->load->view('template_stisla/header');
+        $this->load->view('template_stisla/sidebar');
+        $this->load->view('admin/Tagihan_kontrak_admin/kelola_dokumen_mc', $data);
+        $this->load->view('template_stisla/footer');
+        $this->load->view('admin/Tagihan_kontrak_admin/ajax_dokumen_mc');
+    }
+
+    public function upload_file_dok_mc()
+    {
+        $id_dok_mc = $this->input->post('id_dok_mc');
+        $nama_pegawai = $this->session->userdata('nama_pegawai');
+        $config['upload_path'] = './file_dokumen_mc/';
+        $config['allowed_types'] = '*';
+        $config['max_size'] = 0;
+        // $config['encrypt_name'] = TRUE;
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('file_dokumen_mc')) {
+            $fileData = $this->upload->data();
+            $data = [
+                'tgl_upload' => date('Y-m-d'),
+                'file_mc' => $fileData['file_name'],
+                'user_uploaded' => $nama_pegawai
+            ];
+            $where = [
+                'id_dok_mc' => $id_dok_mc
+            ];
+            $this->Tagihan_kontrak_model->update_dok_mc($data, $where);
+            $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+        }
+    }
+
+    public function tidak_diperlukan($id_dok_mc)
+    {
+        $nama_pegawai = $this->session->userdata('nama_pegawai');
+        $data = [
+            'tgl_upload' => date('Y-m-d'),
+            'status_tidak_butuh' => 1,
+            'file_mc' => '-',
+            'user_uploaded' => $nama_pegawai
+        ];
+        $where = [
+            'id_dok_mc' => $id_dok_mc
+        ];
+        $this->Tagihan_kontrak_model->update_dok_mc($data, $where);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+    public function validation($id_dok_mc)
+    {
+        $nama_pegawai = $this->session->userdata('nama_pegawai');
+        $data = [
+            'tgl_periksa' => date('Y-m-d'),
+            'status_verif' => 1,
+        ];
+        $where = [
+            'id_dok_mc' => $id_dok_mc
+        ];
+        $this->Tagihan_kontrak_model->update_dok_mc($data, $where);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+    public function tidak_valid()
+    {
+        $nama_pegawai = $this->session->userdata('nama_pegawai');
+        $id_dok_mc = $this->input->post('id_dok_mc');
+        $data = [
+            'tgl_periksa' => date('Y-m-d'),
+            'status_verif' => 2,
+            'keterangan' => $this->input->post('keterangan')
+        ];
+        $where = [
+            'id_dok_mc' => $id_dok_mc
+        ];
+        $this->Tagihan_kontrak_model->update_dok_mc($data, $where);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 }
