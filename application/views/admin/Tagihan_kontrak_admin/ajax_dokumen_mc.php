@@ -9,7 +9,7 @@
 
 
     function byid(id_dok_mc, nama_dok) {
-        $('.modal_upload').modal('show')
+        $('#modal_upload').modal('show')
         $('#nama_dok').text(nama_dok)
         $('[name="id_dok_mc"]').val(id_dok_mc)
     }
