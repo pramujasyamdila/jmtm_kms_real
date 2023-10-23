@@ -185,7 +185,7 @@
                         }
 
                         // logika potongan
-                        var total_potongan = parseInt(nilai_retensi) + parseInt(response['get_detail_taggihan'][i].nilai_uang_muka);
+                        var total_potongan = parseInt(nilai_retensi) + parseInt(response['get_detail_taggihan'][i].nilai_uang_muka) + parseInt(response['get_detail_taggihan'][i].denda);
 
                         html +=
                             '<tr style="font-size:12px">' + nama_pekerjaan_program_mata_anggaran + '' +

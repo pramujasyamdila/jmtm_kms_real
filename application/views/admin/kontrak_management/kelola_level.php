@@ -273,10 +273,14 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         <?php $this->load->view('management_kontrak_batas/batas_capex'); ?>
                         <!-- BATAS OPEX -->
                         <?php $this->load->view('management_kontrak_batas/batas_opex'); ?>
-                        <!-- BATAS BUA -->
-                        <?php $this->load->view('management_kontrak_batas/batas_bua'); ?>
-                        <!-- BATAS SDM -->
-                        <?php $this->load->view('management_kontrak_batas/batas_sdm'); ?>
+                        <?php if ($row_kontrak['jenis_kontrak'] == 'Unit Price') { ?>
+
+                        <?php    } else { ?>
+                            <!-- BATAS BUA -->
+                            <?php $this->load->view('management_kontrak_batas/batas_bua'); ?>
+                            <!-- BATAS SDM -->
+                            <?php $this->load->view('management_kontrak_batas/batas_sdm'); ?>
+                        <?php   } ?>
 
                     </tbody>
                     <tfoot>

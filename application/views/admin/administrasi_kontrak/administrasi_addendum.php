@@ -251,7 +251,7 @@
 
                                                                     ?>
                                                                     <li class="nav-item">
-                                                                        <a class="nav-link" onclick="generate_flow()" id="custom-tabs-two-<?= $value['no_addendum'] ?>-tab" data-toggle="pill" href="#custom-tabs-two-<?= $value['no_addendum'] ?>" role="tab" aria-controls="custom-tabs-two-<?= $value['no_addendum'] ?>" aria-selected="true"><?= $romawi_add ?></a>
+                                                                        <a class="nav-link" id="custom-tabs-two-<?= $value['no_addendum'] ?>-tab" data-toggle="pill" href="#custom-tabs-two-<?= $value['no_addendum'] ?>" role="tab" aria-controls="custom-tabs-two-<?= $value['no_addendum'] ?>" aria-selected="true"><?= $romawi_add ?></a>
                                                                     </li>
                                                                 <?php   } ?>
 
@@ -356,9 +356,8 @@
                                                                     <div class="tab-pane fade show" id="custom-tabs-two-<?= $value_addendum['no_addendum'] ?>" role="tabpanel" aria-labelledby="custom-tabs-two-<?= $value_addendum['no_addendum'] ?>-tab">
                                                                         <div class="row">
                                                                             <div class="form-group">
-                                                                                <input type="hidden" name="addendum_flow" value="<?= $value_addendum['no_addendum'] ?>">
                                                                                 <label for="">Pilih Flow</label>
-                                                                                <select name="flow_papenkon" class="form-control" id="">
+                                                                                <select name="flow_papenkon_<?= $value_addendum['no_addendum'] ?>" class="form-control" id="">
                                                                                     <option value="">-- Pilih Flow --</option>
                                                                                     <option value="TANPA PAPENKON DAN < 30% PENAMBAHAN NILAI ADDENDUM DARI KONTRAK AWAL">TANPA PAPENKON DAN < 30% PENAMBAHAN NILAI ADDENDUM DARI KONTRAK AWAL</option>
                                                                                     <option value="TANPA PAPENKON DAN > 30% PENAMBAHAN NILAI ADDENDUM DARI KONTRAK AWAL">TANPA PAPENKON DAN > 30% PENAMBAHAN NILAI ADDENDUM DARI KONTRAK AWAL</option>
@@ -371,7 +370,7 @@
 
                                                                                 </div>
                                                                                 <div class="col-md-2">
-                                                                                    <a href="javascript:;" style="margin-top: 40px;" class="btn btn-success btn-sm" onclick="simpan_flow_papenkon()"> Simpan Flow</a>
+                                                                                    <a href="javascript:;" style="margin-top: 40px;" class="btn btn-success btn-sm" onclick="simpan_flow_papenkon(<?= $value_addendum['no_addendum'] ?>)"> Simpan Flow</a>
                                                                                 </div>
                                                                                 <div class="col-md-5">
                                                                                 </div>

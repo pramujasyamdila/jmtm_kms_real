@@ -271,6 +271,15 @@ div.dt-filter-spacer {
                                                                                     $query_result_capex = $this->db->get() ?>
                                                                                     <?php
                                                                                     foreach ($query_result_capex->result_array() as $value_capex) { ?>
+                                                                                     <?php
+                                                                                    // capex
+                                                                                    $this->db->select('*');
+                                                                                    $this->db->from('table_adendum');
+                                                                                    $this->db->where('table_adendum.id_kontrak', $value_capex['id_kontrak']);
+                                                                                    $this->db->limit(1);
+                                                                                    $this->db->order_by('id_kontrak','DESC');
+                                                                                    $ambil_adddendum_trakhir = $this->db->get()->row_array() ?>
+                                                                                    
                                                                                       <?php $id_capex = $value_capex['id_capex'];   ?>
                                                                                       <?php $nama_uraian_capex = $value_capex['nama_uraian']; ?>
                                                                                       <tr class="bg-warning" style="color:black">
@@ -281,7 +290,8 @@ div.dt-filter-spacer {
                                                                                           </div>
                                                                                         </td>
                                                                                         <td class="tg-0pky"></td>
-                                                                                        <td class="tg-0pky"><?= "Rp " . number_format($value_capex['nilai_capex'], 2, ',', '.') ?></td>
+                                                                                        <?php?>
+                                                                                        <td class="tg-0pky"><?= "Rp " . number_format($value_capex['nilai_capex_add_I'], 2, ',', '.') ?></td>
                                                                                         <td class="tg-0pky"></td>
                                                                                         <td class="tg-0pky"></td>
                                                                                         <td class="tg-0pky"></td>
@@ -427,7 +437,7 @@ div.dt-filter-spacer {
                                                                                             </div>
                                                                                           </td>
                                                                                           <td class="tg-0pky"></td>
-                                                                                          <td class="tg-0pky"><?= "Rp " . number_format($value_capex_detail['nilai_detail_capex'], 2, ',', '.') ?></td>
+                                                                                          <td class="tg-0pky"><?= "Rp " . number_format($value_capex_detail['nilai_detail_capex_add_I'], 2, ',', '.') ?></td>
                                                                                           <td class="tg-0pky"></td>
                                                                                           <td class="tg-0pky"></td>
                                                                                           <td class="tg-0pky"></td>

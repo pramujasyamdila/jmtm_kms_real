@@ -136,7 +136,7 @@ class Data_kontrak extends CI_Controller
                             Aksi
                          </button>
                          <div class="dropdown-menu">
-                         <a  href="javascript:;" class=" btn btn-warning btn-sm" onClick="byid(' . "'" . $rs->id_kontrak . "','kelola_level_unit_price'" . ')"><i class="fa fa-file-contract"></i> Kelola Level</a>
+                         <a  href="javascript:;" class=" btn btn-warning btn-sm" onClick="byid(' . "'" . $rs->id_kontrak . "','kelola_level'" . ')"><i class="fa fa-file-contract"></i> Kelola Level</a>
                          <a  href="javascript:;" class=" btn btn-danger btn-sm" onClick="byid(' . "'" . $rs->id_kontrak . "','hapus'" . ')"><i class="fas fa fa-trash"></i> Hapus</a>
                          </div>
                          </div>';
@@ -147,7 +147,7 @@ class Data_kontrak extends CI_Controller
                             Aksi
                          </button>
                          <div class="dropdown-menu">
-                         <a "href="javascript:;" class=" btn btn-warning btn-sm" onClick="byid(' . "'" . $rs->id_kontrak . "','kelola_level_unit_price'" . ')"><i class="fa fa-file-contract"></i> Kelola Level</a>
+                         <a "href="javascript:;" class=" btn btn-warning btn-sm" onClick="byid(' . "'" . $rs->id_kontrak . "','kelola_level'" . ')"><i class="fa fa-file-contract"></i> Kelola Level</a>
                          <a  href="javascript:;" class=" btn btn-danger btn-sm" onClick="byid(' . "'" . $rs->id_kontrak . "','hapus'" . ')"><i class="fas fa fa-trash"></i> Hapus</a>
                          </div>
                          </div>';
@@ -220,63 +220,65 @@ class Data_kontrak extends CI_Controller
         if ($cek_no_kontrak_sudah_ada) {
             $this->output->set_content_type('application/json')->set_output(json_encode('sudah_ada'));
         } else {
+            // if ($this->input->post('jenis_kontrak') == 'Unit Price') {
+            //     $data_kontrak = [
+            //         'nama_kontrak' => $this->input->post('nama_kontrak'),
+            //         'tahun_kontrak' =>  $this->input->post('tahun_kontrak'),
+            //         'id_departemen' => $this->input->post('id_departemen2'),
+            //         'id_area' => $this->input->post('id_area2'),
+            //         'id_sub_area' => $this->input->post('id_sub_area2'),
+            //         'no_kontrak' => $this->input->post('no_kontrak'),
+            //         'jenis_kontrak' => $this->input->post('jenis_kontrak'),
+            //         'status' => 1,
+            //         'tahun_anggaran' => $this->input->post('tahun_anggaran')
+            //     ];
+            //     $this->Data_kontrak_model->add($data_kontrak);
+            //     $id_kontrak = $this->db->insert_id();
+            //     $buat_no_urut = $this->Data_kontrak_model->cek_no_urut_tbl_unit_price($id_kontrak);
+            //     $count = $buat_no_urut + 1;
+            //     if ($buat_no_urut == 0) {
+            //         $data = [
+            //             'nama_uraian' => $this->input->post('nama_kontrak'),
+            //             'no_urut' => $count,
+            //             'id_kontrak' => $id_kontrak,
+            //         ];
+            //         $this->Data_kontrak_model->tambah_ke_tbl_unit_price($data);
+            //     } else {
+            //         $data = [
+            //             'nama_uraian' => $this->input->post('nama_kontrak'),
+            //             'no_urut' => $count,
+            //             'id_kontrak' => $id_kontrak,
+            //         ];
+            //         $this->Data_kontrak_model->tambah_ke_tbl_unit_price($data);
+            //     }
+            // } else {
+            $data_kontrak = [
+                'nama_kontrak' => $this->input->post('nama_kontrak'),
+                'tahun_kontrak' =>  $this->input->post('tahun_kontrak'),
+                'id_departemen' => $this->input->post('id_departemen2'),
+                'id_area' => $this->input->post('id_area2'),
+                'id_sub_area' => $this->input->post('id_sub_area2'),
+                'no_kontrak' => $this->input->post('no_kontrak'),
+                'jenis_kontrak' => $this->input->post('jenis_kontrak'),
+                'status' => 1,
+                'tahun_anggaran' => $this->input->post('tahun_anggaran')
+            ];
+            $this->Data_kontrak_model->add($data_kontrak);
+            $id_kontrak = $this->db->insert_id();
+            $data = [
+                'nama_uraian' => 'Capex',
+                'no_urut' => 1.1,
+                'id_kontrak' => $id_kontrak,
+            ];
+            $this->Data_kontrak_model->tambah_ke_tbl_capex($data);
+            $data = [
+                'nama_uraian' => 'Opex',
+                'no_urut' => 1.2,
+                'id_kontrak' => $id_kontrak,
+            ];
+            $this->Data_kontrak_model->tambah_ke_tbl_opex($data);
             if ($this->input->post('jenis_kontrak') == 'Unit Price') {
-                $data_kontrak = [
-                    'nama_kontrak' => $this->input->post('nama_kontrak'),
-                    'tahun_kontrak' =>  $this->input->post('tahun_kontrak'),
-                    'id_departemen' => $this->input->post('id_departemen2'),
-                    'id_area' => $this->input->post('id_area2'),
-                    'id_sub_area' => $this->input->post('id_sub_area2'),
-                    'no_kontrak' => $this->input->post('no_kontrak'),
-                    'jenis_kontrak' => $this->input->post('jenis_kontrak'),
-                    'status' => 1,
-                    'tahun_anggaran' => $this->input->post('tahun_anggaran')
-                ];
-                $this->Data_kontrak_model->add($data_kontrak);
-                $id_kontrak = $this->db->insert_id();
-                $buat_no_urut = $this->Data_kontrak_model->cek_no_urut_tbl_unit_price($id_kontrak);
-                $count = $buat_no_urut + 1;
-                if ($buat_no_urut == 0) {
-                    $data = [
-                        'nama_uraian' => $this->input->post('nama_kontrak'),
-                        'no_urut' => $count,
-                        'id_kontrak' => $id_kontrak,
-                    ];
-                    $this->Data_kontrak_model->tambah_ke_tbl_unit_price($data);
-                } else {
-                    $data = [
-                        'nama_uraian' => $this->input->post('nama_kontrak'),
-                        'no_urut' => $count,
-                        'id_kontrak' => $id_kontrak,
-                    ];
-                    $this->Data_kontrak_model->tambah_ke_tbl_unit_price($data);
-                }
             } else {
-                $data_kontrak = [
-                    'nama_kontrak' => $this->input->post('nama_kontrak'),
-                    'tahun_kontrak' =>  $this->input->post('tahun_kontrak'),
-                    'id_departemen' => $this->input->post('id_departemen2'),
-                    'id_area' => $this->input->post('id_area2'),
-                    'id_sub_area' => $this->input->post('id_sub_area2'),
-                    'no_kontrak' => $this->input->post('no_kontrak'),
-                    'jenis_kontrak' => $this->input->post('jenis_kontrak'),
-                    'status' => 1,
-                    'tahun_anggaran' => $this->input->post('tahun_anggaran')
-                ];
-                $this->Data_kontrak_model->add($data_kontrak);
-                $id_kontrak = $this->db->insert_id();
-                $data = [
-                    'nama_uraian' => 'Capex',
-                    'no_urut' => 1.1,
-                    'id_kontrak' => $id_kontrak,
-                ];
-                $this->Data_kontrak_model->tambah_ke_tbl_capex($data);
-                $data = [
-                    'nama_uraian' => 'Opex',
-                    'no_urut' => 1.2,
-                    'id_kontrak' => $id_kontrak,
-                ];
-                $this->Data_kontrak_model->tambah_ke_tbl_opex($data);
                 $data = [
                     'nama_uraian' => 'Bua',
                     'no_urut' => 1.3,
@@ -290,31 +292,31 @@ class Data_kontrak extends CI_Controller
                 ];
                 $this->Data_kontrak_model->tambah_ke_tbl_sdm($data);
                 // ke add
-                if ($this->input->post('no_adendum_post_kontrak') == 'Kontrak Awal') {
-                    $data = [
-                        'no_adendum' => 'kontrak_awal',
-                        'tanggal' => $this->input->post('tanggal_adendum_post_kontrak'),
-                        'id_kontrak' => $id_kontrak,
-                    ];
-                    $this->Data_kontrak_model->add_addendum($data);
-                } else {
-                    $data = [
-                        'no_adendum' => $this->input->post('no_adendum_post_kontrak'),
-                        'tanggal' => $this->input->post('tanggal_adendum_post_kontrak'),
-                        'id_kontrak' => $id_kontrak,
-                    ];
-                    $this->Data_kontrak_model->add_addendum($data);
-                    $id_addendum = $this->db->insert_id();
-                    $whwre = [
-                        'id_kontrak' => $id_kontrak
-                    ];
-                    $update = [
-                        'id_adendum' => $id_addendum,
-                        'add_ke' => $this->input->post('no_adendum_post_kontrak'),
-                        'tanggal_add' => $this->input->post('tanggal_adendum_post_kontrak'),
-                    ];
-                    $this->Data_kontrak_model->update_kontrak($whwre, $update);
-                }
+            }
+            if ($this->input->post('no_adendum_post_kontrak') == 'Kontrak Awal') {
+                $data = [
+                    'no_adendum' => 'kontrak_awal',
+                    'tanggal' => $this->input->post('tanggal_adendum_post_kontrak'),
+                    'id_kontrak' => $id_kontrak,
+                ];
+                $this->Data_kontrak_model->add_addendum($data);
+            } else {
+                $data = [
+                    'no_adendum' => $this->input->post('no_adendum_post_kontrak'),
+                    'tanggal' => $this->input->post('tanggal_adendum_post_kontrak'),
+                    'id_kontrak' => $id_kontrak,
+                ];
+                $this->Data_kontrak_model->add_addendum($data);
+                $id_addendum = $this->db->insert_id();
+                $whwre = [
+                    'id_kontrak' => $id_kontrak
+                ];
+                $update = [
+                    'id_adendum' => $id_addendum,
+                    'add_ke' => $this->input->post('no_adendum_post_kontrak'),
+                    'tanggal_add' => $this->input->post('tanggal_adendum_post_kontrak'),
+                ];
+                $this->Data_kontrak_model->update_kontrak($whwre, $update);
             }
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
         }
@@ -1740,7 +1742,8 @@ class Data_kontrak extends CI_Controller
                 } else if ($cek_no_add == 30) {
                     $this->load->view('tidak_ada_add/add_XXX', $data_ke_logic);
                     $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else { }
+                } else {
+                }
             }
         }
     }
@@ -7275,7 +7278,8 @@ class Data_kontrak extends CI_Controller
             ];
             $this->Data_kontrak_model->update_urutan_detail_capex_5($where, $data);
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-        } else { }
+        } else {
+        }
     }
 
     //opex
@@ -7343,7 +7347,8 @@ class Data_kontrak extends CI_Controller
             ];
             $this->Data_kontrak_model->update_urutan_detail_opex_5($where, $data);
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-        } else { }
+        } else {
+        }
     }
 
     //bua
@@ -7411,7 +7416,8 @@ class Data_kontrak extends CI_Controller
             ];
             $this->Data_kontrak_model->update_urutan_detail_bua_5($where, $data);
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-        } else { }
+        } else {
+        }
     }
 
     //sdm
@@ -7479,7 +7485,8 @@ class Data_kontrak extends CI_Controller
             ];
             $this->Data_kontrak_model->update_urutan_detail_sdm_5($where, $data);
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-        } else { }
+        } else {
+        }
     }
     public function update_ppn_kontrak_addendum()
     {

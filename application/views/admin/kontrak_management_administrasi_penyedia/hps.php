@@ -23,13 +23,6 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
         <div class="card" style="margin-top: -20px; padding: 10px;">
             <div class="container-fluid">
                 <div class="form-group">
-                    <!-- <label for="">Tahun Anggaran</label>
-                    <select name="tahun_anggaran_rekap" style="width: 200px;" onchange="pilih_tahun_rekap('<?= $row_program['id_detail_program_penyedia_jasa'] ?>')" class="form-control" id="">
-                        <?php $i = 0;
-                        for ($i = 20; $i <= 30; $i++) {  ?>
-                                                <option value="20<?= $i ?>">20<?= $i ?></option>
-                        <?php  } ?>
-                    </select> -->
                     <br>
                     <ul class="nav nav-tabs" id="myTab">
                         <li>
@@ -130,7 +123,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                             <h4> DKH <?= $value['nama_program_mata_anggaran'] ?></h4>
                             <div class="card-header-action">
                                 <a class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"> <i class="fas fa fa-file"></i> Buat Uraian Dengan Excel</a>
-                                <a class="btn btn-sm btn-info" href="javascript:;" onclick="tambah_uraian(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"><i class="fas fa fa-plus"></i> Buat Uraian</a>
+                                <a class="btn btn-sm btn-danger" href="javascript:;" onclick="clear_data_hps(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>)"><i class="fas fa fa-trash"></i> Clear Table</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -148,8 +141,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                             <th class="text-white">TKDN</th>
                                             <th class="text-white">Harga Satuan TKDN</th>
                                             <th class="text-white">Jumlah Harga TKDN</th>
-                                            <th class="text-white">Action</th>
-                                        </tr>
+\                                        </tr>
                                     </thead>
                                     <tbody style="font-size: 12px;">
                                         <?php
@@ -196,34 +188,6 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                 <td><?= number_format($value_hps_penyedia_1['tkdn'], 2, ',', '.')  ?>%</td>
                                                 <td><?= "Rp " . number_format($value_hps_penyedia_1['harga_satuan_tkdn'], 2, ',', '.') ?></td>
                                                 <td><?= "Rp " . number_format($value_hps_penyedia_1['jumlah_harga_tkdn'], 2, ',', '.') ?></td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
-                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                            <span class="sr-only">Toggle Dropdown</span>
-                                                        </button>
-                                                        <div class="dropdown-menu" role="menu">
-                                                            <?php if ($query_cek_tbl_hps_penyedia_2) { ?>
-                                                                <!-- <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a> -->
-                                                                <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)"> <i class="fas fa fa-file"></i></a>
-                                                                <a title="Pindahkan Urutan" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-info" href="javascript:;" onclick="pindah_urutan_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
-                                                            <?php   } else { ?>
-                                                                <?php if ($value_hps_penyedia_1['total_harga']) { ?>
-                                                                    <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                    <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
-                                                                    <a title="Pindahkan Urutan" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-info" href="javascript:;" onclick="pindah_urutan_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
-                                                                <?php  } else { ?>
-                                                                    <!-- <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)" class="btn btn-sm btn-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Tambah Turunan"><i class="fas fa-plus"></i></a> -->
-                                                                    <a title="Import Excel" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)"> <i class="fas fa fa-file"></i></a>
-                                                                    <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>,'edit')" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                                    <a onclick="modal_hps_penyedia_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>,'hapus')" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></a>
-                                                                    <a title="Pindahkan Urutan" data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-info" href="javascript:;" onclick="pindah_urutan_2(<?= $value_hps_penyedia_1['id_hps_penyedia_1'] ?>)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
-                                                                <?php } ?>
-                                                            <?php  } ?>
-
-                                                        </div>
-                                                    </div>
-                                                </td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -261,22 +225,17 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                 <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
                                                 </label>
                                             </td>
-                                            <td colspan="3"></td>
-                                            <td>
-
-                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
                                                 <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
                                             </td>
-                                            <td colspan="4"></td>
+                                            <td colspan="3"></td>
                                             <?php                                                                       ?>
                                             <td>
                                                 <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
                                                 </label>
                                             </td>
-                                            <td colspan="3"></td>
                                             <td>
                                                 <a href="javascript:;" onclick="Update_nilai_ke_sub_program('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')" class="btn btn-sm btn-success"> <i class="fas fa fa-save"></i> Simpan Dan Update</a>
                                             </td>

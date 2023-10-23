@@ -628,6 +628,7 @@
             modal_upload_dokumen_pasca.modal('hide');
             Result_Dokumen()
             Result_Dokumen_Pasca()
+            location.reload()
         }
     }
 
@@ -642,6 +643,7 @@
             $('#upload').attr('disabled', false);
             message('success', 'Surat Berhasil Di Upload!', 'Berhasil');
             modal_upload_dokumen_pasca.modal('hide');
+            location.reload()
             Result_Dokumen_Pasca()
         }
     }
@@ -1443,7 +1445,7 @@
                 success: function(response) {
                     $('[name="flow_pra_dokumen_kontrak"]').val(response['row_program'].flow_pra_dokumen_kontrak);
                     message('success', 'Berhasil!', 'Flow Berhasil Diupdate');
-
+                    Update();
                     window.location.href = ''
                 }
             })
@@ -2006,4 +2008,19 @@
         // Alert the copied text
         alert("Copied the text: " + copyText.value);
     }
+</script>
+<script>
+function Edit_flow() {
+    $('#flow_button').css('display', 'block')
+    $('#flow_button_edit_batal').css('display', 'block')
+    $('#flow_button_disabled').css('display', 'none')
+    $('#flow_button_edit').css('display', 'none')
+}
+
+function Edit_flow_batal() {
+    $('#flow_button').css('display', 'none')
+    $('#flow_button_edit_batal').css('display', 'none')
+    $('#flow_button_disabled').css('display', 'block')
+    $('#flow_button_edit').css('display', 'block')
+}
 </script>

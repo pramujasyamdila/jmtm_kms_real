@@ -508,6 +508,7 @@
             }
         })
     }
+
     function Question_hps_penyedia_1(id_hps_penyedia_kontrak_1, uraian_hps) {
         Swal.fire({
             title: "Apakah Anda Yakin!?",
@@ -1612,10 +1613,9 @@
         })
     }
 
-    function simpan_flow_papenkon() {
+    function simpan_flow_papenkon(addendum_flow) {
         var id_detail_program_penyedia_jasa = $('[name="id_detail_program_penyedia_jasa_update"]').val();
-        var addendum_flow = $('[name="addendum_flow"]').val();
-        var flow_papenkon = $('[name="flow_papenkon"]').val();
+        var flow_papenkon = $('[name="flow_papenkon_' + addendum_flow + '"]').val();
         $.ajax({
             method: "POST",
             url: "<?= base_url('administrasi_kontrak/administrasi_kontrak/simpan_flow_papenkon') ?>",
