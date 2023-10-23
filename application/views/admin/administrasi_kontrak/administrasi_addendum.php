@@ -482,13 +482,6 @@
                                                                                                 <thead>
                                                                                                     <tr>
                                                                                                         <th>No</th>
-                                                                                                        <th>Uraian</th>
-                                                                                                        <th>No Surat</th>
-                                                                                                        <th>Tanggal Surat</th>
-                                                                                                        <th>Nama Dari</th>
-                                                                                                        <th>Jabatan Dari</th>
-                                                                                                        <th>Nama Ke</th>
-                                                                                                        <th>Jabatan Ke</th>
                                                                                                         <th>Download</th>
                                                                                                         <th>Upload</th>
                                                                                                         <th>Hapus</th>
@@ -507,13 +500,6 @@
                                                                                                     foreach ($result_flow->result_array() as $value_flow) { ?>
                                                                                                         <tr>
                                                                                                             <td><?= $no++ ?></td>
-                                                                                                            <td><input style="width: 200px;" type="text" name="nama_uraian_tambahan" data-nama_uraian_id_tambahan="<?= $value_flow['id_flow_papenkon_tambahan'] ?>" class="nama_uraian_tambahan form-control" placeholder="Nama Uraian" value="<?= $value_flow['nama_uraian_tambahan'] ?>"></td>
-                                                                                                            <td><input style="width: 200px;" type="text" name="no_surat_tambahan" data-no_surat_id_tambahan="<?= $value_flow['id_flow_papenkon_tambahan'] ?>" class="no_surat_tambahan form-control" placeholder="No Surat" value="<?= $value_flow['no_surat_tambahan'] ?>"></td>
-                                                                                                            <td><input type="date" style="width: 200px;" name="tanggal_surat_tambahan" data-tanggal_surat_id_tambahan="<?= $value_flow['id_flow_papenkon_tambahan'] ?>" class="tanggal_surat_tambahan form-control" value="<?= $value_flow['tanggal_tambahan'] ?>"></td>
-                                                                                                            <td><input type="text" style="width: 200px;" name="nama_dari_tambahan" data-nama_dari_id_tambahan="<?= $value_flow['id_flow_papenkon_tambahan'] ?>" class="nama_dari_tambahan form-control" placeholder="Nama Dari" value="<?= $value_flow['nama_dari_tambahan'] ?>"></td>
-                                                                                                            <td><input type="text" style="width: 200px;" name="jabatan_dari_tambahan" data-jabatan_dari_id_tambahan="<?= $value_flow['id_flow_papenkon_tambahan'] ?>" class="jabatan_dari_tambahan form-control" placeholder="Jabatan Dari" value="<?= $value_flow['jabatan_dari_tambahan'] ?>"></td>
-                                                                                                            <td><input type="text" style="width: 200px;" name="nama_ke_tambahan" data-nama_ke_id_tambahan="<?= $value_flow['id_flow_papenkon_tambahan'] ?>" class="nama_ke_tambahan form-control" placeholder="Nama Ke" value="<?= $value_flow['nama_ke_tambahan'] ?>"></td>
-                                                                                                            <td><input type="text" style="width: 200px;" name="jabatan_ke_tambahan" data-jabatan_ke_id_tambahan="<?= $value_flow['id_flow_papenkon_tambahan'] ?>" class="jabatan_ke_tambahan form-control" placeholder="Jabatan Ke" value="<?= $value_flow['jabatan_ke_tambahan'] ?>"></td>
                                                                                                             <td>
                                                                                                                 <?php if ($value_flow['status_upload_tambahan'] == 1) { ?>
                                                                                                                     <a target="_blank" href="<?= base_url('file_dokumen_papenkon/' . $value_flow['file_dokumen_tambahan']) ?>" class="badge badge-block badge-sm badge-success">Download</a>
@@ -613,7 +599,7 @@
                                 <button class="input-group-text attach_btn btn-grad100" type="button" id="loadFileXml" value="loadXml" onclick="document.getElementById('file').click();"><i class="fas fa-paperclip"></i></button>
                                 <input type="file" style="display:none;" id="file" class="file_dokumen_tambahan" name="file_dokumen_tambahan" />
                             </div>
-                            <input type="text" name="nama_uraian_upload_tambahan" readonly class="form-control" placeholder="Nama File....">
+                            <input type="text" name="nama_uraian_upload_tambahan" class="form-control" placeholder="Nama File....">
                             <div class="input-group-append">
                                 <button type="submit" id="upload_tambahan" name="upload_tambahan" class="input-group-text  btn-grad100"><i class="fas fa-upload"></i></button>
                             </div>
