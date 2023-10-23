@@ -2010,17 +2010,70 @@
     }
 </script>
 <script>
-function Edit_flow() {
-    $('#flow_button').css('display', 'block')
-    $('#flow_button_edit_batal').css('display', 'block')
-    $('#flow_button_disabled').css('display', 'none')
-    $('#flow_button_edit').css('display', 'none')
-}
+    function Edit_flow() {
+        $('#flow_button').css('display', 'block')
+        $('#flow_button_edit_batal').css('display', 'block')
+        $('#flow_button_disabled').css('display', 'none')
+        $('#flow_button_edit').css('display', 'none')
+    }
 
-function Edit_flow_batal() {
-    $('#flow_button').css('display', 'none')
-    $('#flow_button_edit_batal').css('display', 'none')
-    $('#flow_button_disabled').css('display', 'block')
-    $('#flow_button_edit').css('display', 'block')
-}
+    function Edit_flow_batal() {
+        $('#flow_button').css('display', 'none')
+        $('#flow_button_edit_batal').css('display', 'none')
+        $('#flow_button_disabled').css('display', 'block')
+        $('#flow_button_edit').css('display', 'block')
+    }
+</script>
+
+<script>
+    function update_no_kontrak() {
+        var no_kontrak_penyedia = $('[name="no_kontrak_penyedia"]').val()
+        var id_detail_program_penyedia_jasa_danang = $('[name="id_detail_program_penyedia_jasa_danang"]').val()
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/administrasi_penyedia/simpan_no_kontrak_penyedia') ?>",
+            data: {
+                no_kontrak_penyedia: no_kontrak_penyedia,
+                id_detail_program_penyedia_jasa_danang: id_detail_program_penyedia_jasa_danang
+            },
+            dataType: "JSON",
+            success: function(response) {
+
+            }
+        })
+    }
+
+    function update_tanggal_kontrak_program() {
+        var tanggal_kontrak_program = $('[name="tanggal_kontrak_program"]').val()
+        var id_detail_program_penyedia_jasa_danang = $('[name="id_detail_program_penyedia_jasa_danang"]').val()
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/administrasi_penyedia/simpan_tanggal_kontrak_program') ?>",
+            data: {
+                tanggal_kontrak_program: tanggal_kontrak_program,
+                id_detail_program_penyedia_jasa_danang: id_detail_program_penyedia_jasa_danang
+            },
+            dataType: "JSON",
+            success: function(response) {
+
+            }
+        })
+    }
+
+    function update_tahun_kontrak_program() {
+        var tahun_kontrak_program = $('[name="tahun_kontrak_program"]').val()
+        var id_detail_program_penyedia_jasa_danang = $('[name="id_detail_program_penyedia_jasa_danang"]').val()
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('admin/administrasi_penyedia/simpan_tahun_kontrak_program') ?>",
+            data: {
+                tahun_kontrak_program: tahun_kontrak_program,
+                id_detail_program_penyedia_jasa_danang: id_detail_program_penyedia_jasa_danang
+            },
+            dataType: "JSON",
+            success: function(response) {
+
+            }
+        })
+    }
 </script>

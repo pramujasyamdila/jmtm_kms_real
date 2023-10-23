@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Persetujuan Izin Prinsip DIRUT ke DIROPS</title>
+    <title>Gunning | <?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +14,87 @@
 
 
 </head>
+<?php
+function penyebut($nilai)
+{
+    $nilai = abs($nilai);
+    $huruf = array("", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebelas");
+    $temp = "";
+    if ($nilai < 12) {
+        $temp = " " . $huruf[$nilai];
+    } else if ($nilai < 20) {
+        $temp = penyebut($nilai - 10) . " Belas";
+    } else if ($nilai < 100) {
+        $temp = penyebut($nilai / 10) . " Puluh" . penyebut($nilai % 10);
+    } else if ($nilai < 200) {
+        $temp = " Seratus" . penyebut($nilai - 100);
+    } else if ($nilai < 1000) {
+        $temp = penyebut($nilai / 100) . " Ratus" . penyebut($nilai % 100);
+    } else if ($nilai < 2000) {
+        $temp = " Seribu" . penyebut($nilai - 1000);
+    } else if ($nilai < 1000000) {
+        $temp = penyebut($nilai / 1000) . " Ribu" . penyebut($nilai % 1000);
+    } else if ($nilai < 1000000000) {
+        $temp = penyebut($nilai / 1000000) . " Juta" . penyebut($nilai % 1000000);
+    } else if ($nilai < 1000000000000) {
+        $temp = penyebut($nilai / 1000000000) . " Milyar" . penyebut(fmod($nilai, 1000000000));
+    } else if ($nilai < 1000000000000000) {
+        $temp = penyebut($nilai / 1000000000000) . " Trilyun" . penyebut(fmod($nilai, 1000000000000));
+    }
+    return $temp;
+}
+
+function terbilang($nilai)
+{
+    if ($nilai < 0) {
+        $hasil = "minus " . trim(penyebut($nilai));
+    } else {
+        $hasil = trim(penyebut($nilai));
+    }
+    return $hasil;
+}
+?>
+<?php function  getBulan($bln)
+{
+    switch ($bln) {
+        case  1:
+            return  "Januari";
+            break;
+        case  2:
+            return  "Februari";
+            break;
+        case  3:
+            return  "Maret";
+            break;
+        case  4:
+            return  "April";
+            break;
+        case  5:
+            return  "Mei";
+            break;
+        case  6:
+            return  "Juni";
+            break;
+        case  7:
+            return  "Juli";
+            break;
+        case  8:
+            return  "Agustus";
+            break;
+        case  9:
+            return  "September";
+            break;
+        case  10:
+            return  "Oktober";
+            break;
+        case  11:
+            return  "November";
+            break;
+        case  12:
+            return  "Desember";
+            break;
+    }
+} ?>
 
 <body style="font-size: 13px;">
     <div class="container">
@@ -74,8 +155,8 @@
         <div class="mt-5">
             Yth.
             <br>
-            <b> <label for=""><?= $row_program_detail['nama_departemen'] ?></label> Direktur Operasional</b> <br>
-            PT Jasamarga Tollroad Maintenance <br>
+            <b> Direktur </b> <br>
+            PT <?= $row_program_detail['nama_penyedia'] ?> <br>
             Gedung C PT Jasa Marga (Persero) Tbk, Lt.1 <br>
             Plaza Tol Taman Mini Indonesia Indah, Jakarta 13550
 
@@ -84,389 +165,108 @@
         <div class="mt-4">
             <div class="row">
                 <div class="col-md-12">
-                    Sehubungan deengan akan dilaksanakannya <b>Pengadaan <b for="" class="jenis_pengadaan"></b>
-                        <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label>, bersama ini kami mengajukan Persetujuan izin
-                        prinsip pengadaan pekerjaan dimaksud dengan penjelasan sebagai berikut :
-                </div>
-            </div>
-        </div>
-        <center class="mt-4">
-            <b>I. KETERANGAN PEKERJAAN</b>
-        </center>
-        <div class="mt-3">
-            <div class="row">
-                <div class="col-md-2">
-                    <label for="">1. Lokasi Pekerjaan</label>
-                </div>
-                <div class="col-md-10">
-                    <label for="">: Ruas Jalan Tol <label><?= $row_program_detail['nama_area'] ?></label></label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <label for="">2. Sasaran Pekerjaan</label>
-                </div>
-                <div class="col-md-10">
-                    <label for="">: Pemenuhan Standar Pelayanan Minimal (SPM) Subtansi Pelayanan
-                        <!-- <br> -->
-                        <?php foreach ($data_spm as $key => $value) { ?>
-                            <label for=""><?= $value['nama_spm'] ?></label>,
-                        <?php } ?>
-                    </label>
+                    Berdasarkan pengumuman pemenang oleh Panitia Pengadaan Barang/Jasa untuk pekerjaan di atas, nomor: <?= $row_program_detail['no_surat_pengumuman_gunning'] ?> tanggal <?= date('d', strtotime($row_program_detail['tanggal_surat_pengumuman_gunning'])) ?> <?php $bulan = date('m', strtotime($row_program_detail['tanggal_surat_pengumuman_gunning'])); ?> <?= getBulan($bulan) ?> <?= date('Y', strtotime($row_program_detail['tanggal_surat_pengumuman_gunning'])) ?> dan Penetapan Pemenang dari <?= $row_program_detail['nama_penetapan_dari'] ?> PT Jasamarga Tollroad Maintenance, nomor: <?= $row_program_detail['no_surat_penetapan_gunning'] ?> tanggal <?= date('d', strtotime($row_program_detail['tanggal_surat_penetapan_gunning'])) ?> <?php $bulan = date('m', strtotime($row_program_detail['tanggal_surat_penetapan_gunning'])); ?> <?= getBulan($bulan) ?> <?= date('Y', strtotime($row_program_detail['tanggal_surat_penetapan_gunning'])) ?>, dengan ini kami tetapkan perusahaan Saudara, <?= $row_program_detail['nama_penyedia'] ?> sebagai pelaksana pekerjaan tersebut, dengan penjelasan sebagai berikut:
                 </div>
             </div>
         </div>
 
-        <center class="mt-4">
-            <b>II. KETERANGAN PEMBIAYAAN</b>
-        </center>
         <div class="mt-3">
             <div class="row">
-                <div class="col-md-3">
-                    <label for="">1. Pekerjaan</label>
+                <div class="col-md-4">
+                    <label for="">Nilai Kontrak</label>
                 </div>
-                <div class="col-md-9">
-                    <label for="">: <b> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label> </b></label>
+                <div class="col-md-8">
+                    <label for="">: <b> <label for="">Rp. <?= number_format($row_program_detail['harga_penawaran_terkoreksi'], 2, ",", ".");  ?> </label> </b>(Termasuk PPN 11/12%)</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="">Terbilang</label>
+                </div>
+                <div class="col-md-8">
+                    <label for="">: <?= terbilang($row_program_detail['harga_penawaran_terkoreksi']) ?></label>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
-                    <label for="">2. Pagu Biaya RKAP</label>
+                <div class="col-md-4">
+                    <label for="">Tingkat Komponen Dalam Negeri (TKDN)</label>
                 </div>
-                <div class="col-md-9">
-                    <?php
-                    function penyebut($nilai)
-                    {
-                        $nilai = abs($nilai);
-                        $huruf = array("", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebelas");
-                        $temp = "";
-                        if ($nilai < 12) {
-                            $temp = " " . $huruf[$nilai];
-                        } else if ($nilai < 20) {
-                            $temp = penyebut($nilai - 10) . " Belas";
-                        } else if ($nilai < 100) {
-                            $temp = penyebut($nilai / 10) . " Puluh" . penyebut($nilai % 10);
-                        } else if ($nilai < 200) {
-                            $temp = " Seratus" . penyebut($nilai - 100);
-                        } else if ($nilai < 1000) {
-                            $temp = penyebut($nilai / 100) . " Ratus" . penyebut($nilai % 100);
-                        } else if ($nilai < 2000) {
-                            $temp = " Seribu" . penyebut($nilai - 1000);
-                        } else if ($nilai < 1000000) {
-                            $temp = penyebut($nilai / 1000) . " Ribu" . penyebut($nilai % 1000);
-                        } else if ($nilai < 1000000000) {
-                            $temp = penyebut($nilai / 1000000) . " Juta" . penyebut($nilai % 1000000);
-                        } else if ($nilai < 1000000000000) {
-                            $temp = penyebut($nilai / 1000000000) . " Milyar" . penyebut(fmod($nilai, 1000000000));
-                        } else if ($nilai < 1000000000000000) {
-                            $temp = penyebut($nilai / 1000000000000) . " Trilyun" . penyebut(fmod($nilai, 1000000000000));
-                        }
-                        return $temp;
-                    }
-
-                    function terbilang($nilai)
-                    {
-                        if ($nilai < 0) {
-                            $hasil = "minus " . trim(penyebut($nilai));
-                        } else {
-                            $hasil = trim(penyebut($nilai));
-                        }
-                        return $hasil;
-                    }
-                    ?>
-                    <?php
-                    $total_pagu = 0;
-                    $total_hps = 0;
-                    ?>
-                    <?php foreach ($result_sub_program as $key => $value) { ?>
-
-                        <?php
-                        $total_pagu += $value['nilai_program_mata_anggran'];
-                        $total_hps += $value['nilai_hps'];
-                        ?>
-                    <?php  } ?>
-                    <label for="">: <b><?= number_format($total_pagu, 2, ',', '.'); ?> </b> (<?= terbilang($total_pagu) ?>) termasuk PPN 11%</label>
+                <div class="col-md-8">
+                    <label for="">: <?= $row_program_detail['tkdn_pra'] ?> %</label>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
-                    <label for="">3. Perkiraan Biaya</label>
+                <div class="col-md-4">
+                    <label for="">Jangka Waktu Pelaksanaan</label>
                 </div>
-                <div class="col-md-9">
-                    <input type="hidden" name="perkiraan_biaya_pip">
-                    <label for="">:
-                        <!-- <b class="total_hps_mata_anggaran"></b> -->
-                        <b class="terbilang_hps"> <?= number_format($total_hps, 2, ',', '.'); ?></b> (<?= terbilang($total_hps) ?>) termasuk PPN 11%</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                </div>
-                <div class="col-md-9" style="display: none;" id="multi_years_jika_ada">
-                    <div class="card card-outline card-primary">
-                        <div class="card-header">
-                            RINCIAN MULTIYERS
-                            <div class="card-tools">
-                                TOTAL RINCIAN MULTIYEARS : <b class="total_hps_mata_anggaran"></b>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <ul class="nav nav-tabs" id="myTab">
-                                <?php foreach ($result_sub_program as $key => $value) { ?>
-                                    <li>
-                                        <a class="ml-3 nav-link bg-primary" href="#kirun<?= $value['id_detail_sub_program_penyedia_jasa'] ?>"><?= $value['nama_program_mata_anggaran'] ?></a>
-                                    </li>
-                                <?php  } ?>
-                            </ul>
-                            <div class="tab-content">
-                                <?php foreach ($result_sub_program as $key => $value) { ?>
-                                    <div class="tab-pane fade show" id="kirun<?= $value['id_detail_sub_program_penyedia_jasa'] ?>">
-                                        <div class="content">
-                                            <br>
-                                            <div class="card card-outline card-primary">
-                                                <div class="card-body">
-                                                    <table class="table table-bordered table-striped">
-                                                        <thead style="font-size: 12px;" class="thead-inverse bg-primary">
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>No Hps</th>
-                                                                <th>Uraian</th>
-                                                                <th>Total Harga</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody style="font-size: 10px;">
-                                                            <?php
-                                                            $this->db->select('*');
-                                                            $this->db->from('tbl_hps_penyedia_1');
-                                                            $this->db->where('tbl_hps_penyedia_1.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
-                                                            $this->db->where('tbl_hps_penyedia_1.id_detail_sub_program_penyedia_jasa', $value['id_detail_sub_program_penyedia_jasa']);
-                                                            $query_tbl_hps_penyedia_1 = $this->db->get() ?>
-                                                            <?php
-                                                            foreach ($query_tbl_hps_penyedia_1->result_array() as $key => $value_hps_penyedia_1) { ?>
-                                                                <?php
-                                                                $id_hps_penyedia_1 = $value_hps_penyedia_1['id_hps_penyedia_1'];
-                                                                if ($value_hps_penyedia_1['total_harga']) {
-                                                                    $total_hps_penyedia_1 +=  $value_hps_penyedia_1['total_harga'];
-                                                                } else {
-                                                                    $total_hps_penyedia_1 +=  0;
-                                                                }
-                                                                ?>
-                                                                <tr>
-                                                                    <td> &nbsp;<?= $value_hps_penyedia_1['no_urut'] ?></td>
-                                                                    <td><?= $value_hps_penyedia_1['no_hps'] ?></td>
-                                                                    <td><?= $value_hps_penyedia_1['uraian_hps'] ?></td>
-                                                                    <?php if ($value_hps_penyedia_1['total_harga']) { ?>
-                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_1['total_harga'], 2, ',', '.') ?></td>
-                                                                    <?php  } else { ?>
-                                                                        <td></td>
-                                                                    <?php }
-                                                                    ?>
-                                                                </tr>
-                                                                <?php
-                                                                $this->db->select('*');
-                                                                $this->db->from('tbl_hps_penyedia_2');
-                                                                $this->db->where('tbl_hps_penyedia_2.id_hps_penyedia_1', $id_hps_penyedia_1);
-                                                                $query_tbl_hps_penyedia_2 = $this->db->get() ?>
-                                                                <?php
-                                                                foreach ($query_tbl_hps_penyedia_2->result_array() as $key => $value_hps_penyedia_2) { ?>
-                                                                    <?php
-                                                                    $id_hps_penyedia_2 = $value_hps_penyedia_2['id_hps_penyedia_2'];
-                                                                    if ($value_hps_penyedia_2['total_harga']) {
-                                                                        $total_hps_penyedia_2 +=  $value_hps_penyedia_2['total_harga'];
-                                                                    } else {
-                                                                        $total_hps_penyedia_2 +=  0;
-                                                                    }
-                                                                    ?>
-                                                                    <tr>
-                                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_2['no_urut'] ?></td>
-                                                                        <td><?= $value_hps_penyedia_2['no_hps'] ?></td>
-                                                                        <td><?= $value_hps_penyedia_2['uraian_hps'] ?></td>
-                                                                        <?php if ($value_hps_penyedia_2['total_harga']) { ?>
-                                                                            <td><?= "Rp " . number_format($value_hps_penyedia_2['total_harga'], 2, ',', '.') ?></td>
-                                                                        <?php  } else { ?>
-                                                                            <td></td>
-                                                                        <?php }
-                                                                        ?>
-                                                                    </tr>
-                                                                    <?php
-                                                                    $this->db->select('*');
-                                                                    $this->db->from('tbl_hps_penyedia_3');
-                                                                    $this->db->where('tbl_hps_penyedia_3.id_hps_penyedia_2', $id_hps_penyedia_2);
-                                                                    $query_tbl_hps_penyedia_3 = $this->db->get() ?>
-                                                                    <?php
-                                                                    foreach ($query_tbl_hps_penyedia_3->result_array() as $key => $value_hps_penyedia_3) { ?>
-                                                                        <?php
-                                                                        $id_hps_penyedia_3 = $value_hps_penyedia_3['id_hps_penyedia_3'];
-                                                                        if ($value_hps_penyedia_3['total_harga']) {
-                                                                            $total_hps_penyedia_3 +=  $value_hps_penyedia_3['total_harga'];
-                                                                        } else {
-                                                                            $total_hps_penyedia_3 +=  0;
-                                                                        }
-                                                                        ?>
-                                                                        <tr>
-                                                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_3['no_urut'] ?></td>
-                                                                            <td><?= $value_hps_penyedia_3['no_hps'] ?></td>
-                                                                            <td><?= $value_hps_penyedia_3['uraian_hps'] ?></td>
-                                                                            <?php if ($value_hps_penyedia_3['total_harga']) { ?>
-                                                                                <td><?= "Rp " . number_format($value_hps_penyedia_3['total_harga'], 2, ',', '.') ?></td>
-                                                                            <?php  } else { ?>
-                                                                                <td></td>
-                                                                            <?php }
-                                                                            ?>
-
-                                                                        </tr>
-                                                                        <?php
-                                                                        $this->db->select('*');
-                                                                        $this->db->from('tbl_hps_penyedia_4');
-                                                                        $this->db->where('tbl_hps_penyedia_4.id_hps_penyedia_3', $id_hps_penyedia_3);
-                                                                        $query_tbl_hps_penyedia_4 = $this->db->get() ?>
-                                                                        <?php
-                                                                        foreach ($query_tbl_hps_penyedia_4->result_array() as $key => $value_hps_penyedia_4) { ?>
-                                                                            <?php
-                                                                            $id_hps_penyedia_4 = $value_hps_penyedia_4['id_hps_penyedia_4'];
-                                                                            if ($value_hps_penyedia_4['total_harga']) {
-                                                                                $total_hps_penyedia_4 +=  $value_hps_penyedia_4['total_harga'];
-                                                                            } else {
-                                                                                $total_hps_penyedia_4 +=  0;
-                                                                            }
-                                                                            ?>
-                                                                            <tr>
-                                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_4['no_urut'] ?></td>
-                                                                                <td><?= $value_hps_penyedia_4['no_hps'] ?></td>
-                                                                                <td><?= $value_hps_penyedia_4['uraian_hps'] ?></td>
-                                                                                <?php if ($value_hps_penyedia_4['total_harga']) { ?>
-                                                                                    <td><?= "Rp " . number_format($value_hps_penyedia_4['total_harga'], 2, ',', '.') ?></td>
-                                                                                <?php  } else { ?>
-                                                                                    <td></td>
-                                                                                <?php }
-                                                                                ?>
-
-                                                                            </tr>
-                                                                            <?php
-                                                                            $this->db->select('*');
-                                                                            $this->db->from('tbl_hps_penyedia_5');
-                                                                            $this->db->where('tbl_hps_penyedia_5.id_hps_penyedia_4', $id_hps_penyedia_4);
-                                                                            $query_tbl_hps_penyedia_5 = $this->db->get() ?>
-                                                                            <?php
-                                                                            foreach ($query_tbl_hps_penyedia_5->result_array() as $key => $value_hps_penyedia_5) { ?>
-                                                                                <?php
-                                                                                $id_hps_penyedia_5 = $value_hps_penyedia_5['id_hps_penyedia_5'];
-                                                                                if ($value_hps_penyedia_5['total_harga']) {
-                                                                                    $total_hps_penyedia_5 +=  $value_hps_penyedia_5['total_harga'];
-                                                                                } else {
-                                                                                    $total_hps_penyedia_5 +=  0;
-                                                                                }
-                                                                                ?>
-                                                                                <tr>
-                                                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $value_hps_penyedia_5['no_urut'] ?></td>
-                                                                                    <td><?= $value_hps_penyedia_5['no_hps'] ?></td>
-                                                                                    <td><?= $value_hps_penyedia_5['uraian_hps'] ?></td>
-                                                                                    <?php if ($value_hps_penyedia_5['total_harga']) { ?>
-                                                                                        <td><?= "Rp " . number_format($value_hps_penyedia_5['total_harga'], 2, ',', '.') ?></td>
-                                                                                    <?php  } else { ?>
-                                                                                        <td></td>
-                                                                                    <?php }
-                                                                                    ?>
-
-                                                                                </tr>
-                                                                            <?php } ?>
-                                                                        <?php } ?>
-                                                                    <?php } ?>
-                                                                <?php } ?>
-                                                            <?php } ?>
-                                                        </tbody>
-                                                        <tfoot>
-                                                        </tfoot>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <br>
-                                        </div>
-                                    </div>
-                                <?php  } ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <label for="">4. Waktu Pelaksanaan</label>
-                </div>
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <label for="">: <?= $row_program_detail['waktu_pelaksanaan_pip'] ?> (<?= terbilang($row_program_detail['waktu_pelaksanaan_pip']) ?>) Hari kalender</label>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
-                    <label for="">5. Waktu Pemeliharaan</label>
+                <div class="col-md-4">
+                    <label for="">Jangka Waktu Pemeliharaan</label>
                 </div>
-                <div class="col-md-9"><label for="">: <?= $row_program_detail['waktu_pemeliharaan_pip'] ?> (<?= terbilang($row_program_detail['waktu_pemeliharaan_pip']) ?>) Hari kalender</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <label for="">6. Metode Pengadaan</label>
-                </div>
-                <div class="col-md-9">
-                    <label for="">: <?= $row_program_detail['metode_pengadaan_sk'] ?> dengan Pra/Pasca Kualifikasi secara Elektronik (E-Procurement)</label>
+                <div class="col-md-8"><label for="">: <?= $row_program_detail['waktu_pemeliharaan_pip'] ?> (<?= terbilang($row_program_detail['waktu_pemeliharaan_pip']) ?>) Hari kalender</label>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <label for="">7. Pembebanan Biaya</label>
+        </div>
+        <?php if ($row_program_detail['status_jaminan_gunning'] == 'Perlu Jaminan Pelaksanan') { ?>
+            <div class="mt-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        Sehubungan dengan hal tersebut di atas, sebagai syarat ditandatanginya kontrak agar Saudara segera menyerahkan Jaminan Pelaksanaan sebesar <?= $row_program_detail['persentase_jaminan_gunning']  ?>% (<?= terbilang($row_program_detail['persentase_jaminan_gunning']) ?> Perseratus) dari nilai kontrak yang tersebut di atas dengan masa berlaku <?= $row_program_detail['waktu_pelaksanaan_pip'] ?> (<?= terbilang($row_program_detail['waktu_pelaksanaan_pip']) ?>) hari kalender sejak ditandatanganinya kontrak sampai dengan Serah Terima Sementara Pekerjaan ditambah <?= $row_program_detail['masa_berlaku_persentase_jaminan_gunning'] ?> (<?= terbilang($row_program_detail['masa_berlaku_persentase_jaminan_gunning']) ?>) hari kalender yang diterbitkan oleh Bank Devisa.
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    <label for="">: Mata Anggaran <?= $row_program_detail['jenis_anggaran'] ?> PT Jasamarga Tollroad Maintenance Area <?= $row_program_detail['nama_area']  ?></label>
-                    <!-- <label for="">:
-                        <?php if ($row_program_detail['sts_tahun_pembebanan'] == 'single_years') { ?>
-                                                                                                                                                    <label for="">Single Years</label>
-                        <?php } else { ?>
-                                                                                                                                                    <label for="">Multi Years</label>
-                        <?php } ?>
-                    </label>
-                    <br>
-                    <?php if ($row_program_detail['sts_tahun_pembebanan'] == 'single_years') { ?>
+                <div class="row">
+                    <div class="col-md-12 mt-3">
+                        Masa berlaku jaminan dapat diperpanjang apabila diperlukan dan pelaksanaan pekerjaan di lapangan dapat dimulai setelah diterbitkannya Surat Perintah Mulai Kerja (SPMK).
+                    </div>
+                </div>
+            </div>
+        <?php } else { ?>
+        <?php } ?>
+        <div class="mt-2">
+            <div class="row">
+                <div class="col-md-12">
+                    Demikian disampaikan, atas perhatian Saudara, kami ucapkan terima kasih.
+                </div>
+            </div>
+        </div>
+        <div class="mt-4">
+            <div class="row">
+                <div class="col-md-6">
 
-                    <?php } else { ?>
-                                                                                                                                                <?php foreach ($data_multi_years as $key => $value) { ?>
-                                                                                                                                                                                                                                                                            <label for=""><?= $value['tahun_multiyers'] ?></label>,
-                                                                                                                                                <?php } ?>
-                    <?php } ?> -->
+                </div>
+                <div class="col-md-6">
+                    <center>
+                        PT Jasamarga Tollroad Maintenance
+                        <br>
+                        <br>
+                        <br>
+                        Adhi Kristiawan
+                        <br>
+                        Direktur Operasi
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4">
+            <div class="row">
+                <div class="col-md-6">
+                    Tembusan, Yth.:
+                    <br>
+                    1. Operation 2 General Manager;
+                    <br>
+                    2. Coordinator Area Jakarta-Cikampek.
+                </div>
+                <div class="col-md-6">
 
                 </div>
             </div>
         </div>
-        <br>
-        <br>
-        Menunjuk permohonan Saudara tersebut di atas dan memperhatikan ketentuan-ketentuan yang berlaku, maka dengan ini kami :
-        <br><br>
-        <br>
-        <center>
-            <h5><b>MENYETUJUI / TIDAK MENYETUJUI</b></h5>
-        </center>
-        <br>
-        <br>
-        Permohonan Saudara untuk melaksanakan Pengadaan <?= $row_program_detail['jenis_pengadaan'] ?> <?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?> dengan berpedoman pada peraturan dan ketentuan yang berlaku.
 
-
-        Demikian kami sampaikan, untuk dapat dilaksanakan dengan baik dan penuh tanggung jawab.
-
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <center>
-                    <br>
-                    <br>
-                    <br><br><br><br>
-                    <h5> <u style="text-transform: capitalize;"><?= $row_program_detail['persetujuan_pengirim_pip_dirops_ke_dirut'] ?></u></h5>
-                    <h5>Direktur Utama
-                    </h5>
-
-                </center>
-            </div>
-        </div>
         <br><br>
     </div>
 

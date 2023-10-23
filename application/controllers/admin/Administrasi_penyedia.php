@@ -3095,8 +3095,7 @@ class Administrasi_penyedia extends CI_Controller
     {
         $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
         $papenkon = $this->input->post('papenkon');
-        if ($papenkon == null) {
-        } else {
+        if ($papenkon == null) { } else {
             $where_sub = [
                 'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa
             ];
@@ -3381,7 +3380,7 @@ class Administrasi_penyedia extends CI_Controller
         $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
         $get_flow = $this->db->query("SELECT flow_pra_dokumen_kontrak FROM tbl_detail_program_penyedia_jasa WHERE id_detail_program_penyedia_jasa = $id_detail_program_penyedia_jasa")->row();
-        
+
         $data['dokumen_flow_1']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
 
         $this->load->view('template_stisla/header');
@@ -3751,8 +3750,7 @@ class Administrasi_penyedia extends CI_Controller
                 'lampiran_smk' => $lampiran_smk,
             ];
             $this->Data_kontrak_model->update_rup($where, $data);
-        } else {
-        }
+        } else { }
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
     // UNTUK UPDATE SURAT
@@ -4096,8 +4094,7 @@ class Administrasi_penyedia extends CI_Controller
         $row_program  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
         $flow = $row_program['flow_pra_dokumen_kontrak'];
         $cek_tbl_monitoring = $this->Data_kontrak_model->cek_tbl_monitoring($id_detail_program_penyedia_jasa, $flow);
-        if ($cek_tbl_monitoring) {
-        } else {
+        if ($cek_tbl_monitoring) { } else {
             if ($flow == 'Flow 1') {
                 $this->Data_kontrak_model->delete_flow_2($id_detail_program_penyedia_jasa);
             } else {
@@ -4264,8 +4261,7 @@ class Administrasi_penyedia extends CI_Controller
     {
         $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
         $cek_tbl_dokumen_surat_pasca = $this->Data_kontrak_model->cek_tbl_dokumen_surat_pasca($id_detail_program_penyedia_jasa);
-        if ($cek_tbl_dokumen_surat_pasca) {
-        } else {
+        if ($cek_tbl_dokumen_surat_pasca) { } else {
             $data_1 = [
                 'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                 'nama_file' => 'Gunning',
@@ -4467,8 +4463,7 @@ class Administrasi_penyedia extends CI_Controller
             ];
             $this->Data_kontrak_model->update_urutan_detail_capex_5($where, $data);
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-        } else {
-        }
+        } else { }
     }
 
     public function get_detail_sub_program($id_detail_sub_program_penyedia_jasa)
@@ -4586,4 +4581,46 @@ class Administrasi_penyedia extends CI_Controller
     }
 
 
+    public function simpan_no_kontrak_penyedia()
+    {
+        $no_kontrak_penyedia = $this->input->post('no_kontrak_penyedia');
+        $id_detail_program_penyedia_jasa =  $this->input->post('id_detail_program_penyedia_jasa_danang');
+        $where = [
+            'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+        ];
+        $data = [
+            'no_kontrak_penyedia' => $no_kontrak_penyedia,
+        ];
+        $this->Data_kontrak_model->update_rup($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+    public function simpan_tanggal_kontrak_program()
+    {
+        $tanggal_kontrak_program = $this->input->post('tanggal_kontrak_program');
+        $id_detail_program_penyedia_jasa =  $this->input->post('id_detail_program_penyedia_jasa_danang');
+        $where = [
+            'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+        ];
+        $data = [
+            'tanggal_kontrak_program' => $tanggal_kontrak_program,
+        ];
+        $this->Data_kontrak_model->update_rup($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+
+    public function simpan_tahun_kontrak_program()
+    {
+        $tahun_kontrak_program = $this->input->post('tahun_kontrak_program');
+        $id_detail_program_penyedia_jasa =  $this->input->post('id_detail_program_penyedia_jasa_danang');
+        $where = [
+            'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+        ];
+        $data = [
+            'tahun_kontrak_program' => $tahun_kontrak_program,
+        ];
+        $this->Data_kontrak_model->update_rup($where, $data);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
 }

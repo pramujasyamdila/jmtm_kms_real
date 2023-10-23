@@ -154,6 +154,12 @@
                                                                                             </tr>
                                                                                             <tr>
                                                                                                 <td>2</td>
+                                                                                                <td>Nama Pekerjaan</td>
+                                                                                                <td><?= $row_program['nama_pekerjaan_program_mata_anggaran'] ?></td>
+                                                                                                <td><i class="fa fa-info-circle text-info" aria-hidden="true" title="Nama Pekerjaan Diambil Dari Pra Pengadaan"></i></td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>3</td>
                                                                                                 <td scope="row">
                                                                                                     Nilai Kontrak <br>
                                                                                                     Terbilang
@@ -174,7 +180,7 @@
                                                                                                 <td></td>
                                                                                             </tr>
                                                                                             <tr>
-                                                                                                <td>3</td>
+                                                                                                <td>4</td>
                                                                                                 <td scope="row">Jaminan Pelaksanaan</td>
                                                                                                 <td>
                                                                                                     <select class="form-control" name="status_jaminan_gunning" onchange="status_jaminan_gunning('status_jaminan_gunning')" id="">
@@ -202,7 +208,7 @@
                                                                                                 <td></td>
                                                                                             </tr>
                                                                                             <tr>
-                                                                                                <td>4</td>
+                                                                                                <td>5</td>
                                                                                                 <td scope="row">Syarat Ketentuan (Letter of Intent) </td>
                                                                                                 <td>
                                                                                                     <div class="row">
@@ -342,12 +348,92 @@
                                                                             }
                                                                         </style>
                                                                         <div class="card-body">
+                                                                            <input type="hidden" name="id_detail_program_penyedia_jasa_danang" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>">
                                                                             <div class="container">
                                                                                 <div class="row">
                                                                                     <div onscroll='scroller("scroller", "scrollme")' style="overflow:scroll; height: 10;overflow-y: hidden;" id=scroller>
                                                                                         <img src="" height=1 width=2066 style="width:2066px;">
                                                                                     </div>
                                                                                     <div onscroll='scroller("scrollme", "scroller")' style="overflow:scroll; height:500px" id="scrollme">
+                                                                                        <hr>
+                                                                                        <center>
+                                                                                            <h4>UPLOAD KONTRAK</h4>
+                                                                                        </center>
+                                                                                        <br>
+                                                                                        <table id="customers2" class="tableFixHead" style="font-size: 14px;">
+                                                                                            <thead class="text-center">
+                                                                                                <tr>
+                                                                                                    <th class="text-white">No Kontrak</th>
+                                                                                                    <th class="text-white">Tanggal Kontrak</th>
+                                                                                                    <th class="text-white">Tahun Kontrak</th>
+                                                                                                    <th class="text-white">Upload Kontrak</th>
+                                                                                                    <th class="text-white">Download Word/Pdf</th>
+                                                                                                </tr>
+
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td>
+                                                                                                        <div class="input-group ">
+                                                                                                            <div class="input-group-prepend">
+                                                                                                                <span class="input-group-text">
+                                                                                                                    <i class="far fa-file"> </i>
+                                                                                                                </span>
+                                                                                                            </div>
+                                                                                                            <input type="text" onkeyup="update_no_kontrak()" class="form-control" name="no_kontrak_penyedia" placeholder="No Kontrak" value="<?= $row_program['no_kontrak_penyedia'] ?>">
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <div class="input-group ">
+                                                                                                            <div class="input-group-prepend">
+                                                                                                                <span class="input-group-text">
+                                                                                                                    <i class="far fa-file"> </i>
+                                                                                                                </span>
+                                                                                                            </div>
+                                                                                                            <input type="date" onchange="update_tanggal_kontrak_program()" class="form-control" name="tanggal_kontrak_program" placeholder="No Kontrak" value="<?= $row_program['tanggal_kontrak_program'] ?>">
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <select name="tahun_kontrak_program" onchange="update_tahun_kontrak_program()" class="form-control">
+                                                                                                            <?php if (!$row_program['tahun_kontrak_program']) { ?>
+                                                                                                                <option value="">--Pilih--</option>
+                                                                                                            <?php } else { ?>
+                                                                                                                <option value="<?= $row_program['tahun_kontrak_program'] ?>"><?= $row_program['tahun_kontrak_program'] ?></option>
+                                                                                                            <?php   }
+                                                                                                            ?>
+                                                                                                            <option value="2020">2020</option>
+                                                                                                            <option value="2021">2021</option>
+                                                                                                            <option value="2022">2022</option>
+                                                                                                            <option value="2023">2023</option>
+                                                                                                            <option value="2024">2024</option>
+                                                                                                            <option value="2025">2025</option>
+                                                                                                            <option value="2026">2026</option>
+                                                                                                            <option value="2027">2027</option>
+                                                                                                            <option value="2028">2028</option>
+                                                                                                            <option value="2029">2029</option>
+                                                                                                        </select>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <a href="javascript:;" class="btn btn-sm btn-danger" onclick="upload_kontrak_hps('1')">Upload</a>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <?php
+                                                                                                        $this->db->select('*');
+                                                                                                        $this->db->from('tbl_dokumen_kontrak_hps');
+                                                                                                        $this->db->where('id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                                                                        $query_dok_kontrak = $this->db->get()->row_array();
+                                                                                                        ?>
+                                                                                                        <?php if (!$query_dok_kontrak) { ?>
+                                                                                                            <span class="badge badge-warning badge-sm">Belum Upload Kontrak!</span>
+                                                                                                        <?php } else { ?>
+                                                                                                            <a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('file_kontrak/' . $query_dok_kontrak['nama_file']) ?>"> <i class="fas fa fa-file"></i> Lihat Kontrak</a>
+                                                                                                        <?php  } ?>
+
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+
                                                                                         <br>
                                                                                         <hr>
                                                                                         <center>
@@ -563,7 +649,7 @@
                                                                                                 </div>
                                                                                                 <div class="col-md-4">
                                                                                                     <label for="">Tanggal Kontrak</label>
-                                                                                                    <div class="input-group mb-4">
+                                                                                                    <div class="input-group">
                                                                                                         <div class="input-group-prepend">
                                                                                                             <span class="input-group-text">
                                                                                                                 <i class="far fa-file"> </i>
@@ -833,7 +919,7 @@
                     <div class="container-fluid">
                         <center>
                             <input type="hidden" name="sts_dokumen">
-                            <input type="hidden" name="id_detail_program_penyedia_jasa">
+                            <input type="hidden" name="id_detail_program_penyedia_jasa" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>">
                             <input type="file" name="nama_file" class="form-control">
                             <div style="display: none;" id="error_file1" class="alert alert-danger" role="alert">
                                 ANDA BELUM MENGISI FILE !!!
