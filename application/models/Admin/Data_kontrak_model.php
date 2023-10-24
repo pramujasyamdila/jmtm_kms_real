@@ -6989,4 +6989,11 @@ class Data_kontrak_model extends CI_Model
         $this->db->insert('tbl_tambahan_flow_papenkon', $data);
         return $this->db->affected_rows();
     }
+
+
+    public function clear_table_hps($where)
+    {
+        $this->db->delete('tbl_hps_penyedia_1', $where);
+        return $this->db->affected_rows();
+    }
 }

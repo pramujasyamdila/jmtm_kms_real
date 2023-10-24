@@ -4585,5 +4585,15 @@ class Administrasi_penyedia extends CI_Controller
         $this->load->view('admin/print/cetak_gunning', $data);
     }
 
+    public function clear_table_hps()
+    {
+        $id_detail_sub_program_penyedia_jasa =  $this->input->post('id_detail_sub_program_penyedia_jasa');
+        $where = [
+            'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
+        ];
+        $this->Data_kontrak_model->clear_table_hps($where);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
 
 }

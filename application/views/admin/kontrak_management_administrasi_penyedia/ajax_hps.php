@@ -963,4 +963,44 @@
             }
         })
     }
+
+    
+
+    function clear_data_hps(id_detail_sub_program_penyedia_jasa) {
+        Swal.fire({
+            title: 'Anda Yakin Ingin Menclear Data Table Ini ? ',
+            text: 'Table Hps',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Batal!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('admin/Administrasi_penyedia/clear_table_hps/') ?>",
+                    data: {
+                        id_detail_sub_program_penyedia_jasa: id_detail_sub_program_penyedia_jasa,
+                    },
+                    dataType: "JSON",
+                    success: function(response) {
+                        if (response == 'success') {
+                            Swal.fire(
+                                'Berhasil!',
+                                'Data Berhasil Di Clear!',
+                                'success'
+                            )
+                            location.reload()
+                        }
+                    }
+                })
+
+            }
+        })
+    }
+
+
+
 </script>
