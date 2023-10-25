@@ -6341,6 +6341,16 @@ class Data_kontrak_model extends CI_Model
         return $query->result_array();
     }
 
+    public function get_sub_program_by_id_kontrak_mata_anggran($id_detail_program_penyedia_jasa, $addendun_ke)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+        $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('tbl_sub_detail_program_penyedia_jasa.addendum_ke', $addendun_ke);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function get_row_periode($id_laporan_periode)
     {
         $this->db->select('*');
@@ -6994,6 +7004,12 @@ class Data_kontrak_model extends CI_Model
     public function clear_table_hps($where)
     {
         $this->db->delete('tbl_hps_penyedia_1', $where);
+        return $this->db->affected_rows();
+    }
+
+    public function clear_table_hps_penyedia_kontrak_1($where)
+    {
+        $this->db->delete('tbl_hps_penyedia_kontrak_1', $where);
         return $this->db->affected_rows();
     }
 }

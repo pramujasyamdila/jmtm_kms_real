@@ -2091,4 +2091,95 @@
             }
         });
     }
+
+    var modal_excel_hps_penyedia_kontrak_1 = $('#modal_excel_hps_penyedia_kontrak_1');
+
+    function tambah_uraian_excel(id_detail_sub_program_penyedia_jasa) {
+        modal_excel_hps_penyedia_kontrak_1.modal('show');
+        $('[name="id_detail_sub_program_penyedia_jasa"]').val(id_detail_sub_program_penyedia_jasa);
+    }
+
+    function clear_table_hps_penyedia_kontrak_1(id_detail_sub_program_penyedia_jasa) {
+        Swal.fire({
+            title: 'Anda Yakin Ingin Menclear Data Table Ini ? ',
+            text: 'Table Hps',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Batal!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('administrasi_kontrak/administrasi_kontrak/clear_table_hps_penyedia_kontrak_1') ?>",
+                    data: {
+                        id_detail_sub_program_penyedia_jasa: id_detail_sub_program_penyedia_jasa,
+                    },
+                    dataType: "JSON",
+                    success: function(response) {
+                        if (response == 'success') {
+                            Swal.fire(
+                                'Berhasil!',
+                                'Data Berhasil Di Clear!',
+                                'success'
+                            )
+                            location.reload()
+                        }
+                    }
+                })
+
+            }
+        })
+    }
+
+
+
+    var modal_excel_addendum_hps_penyedia_kontrak_1 = $('#modal_excel_addendum_hps_penyedia_kontrak_1');
+
+    function tambah_uraian_excel_addendum(id_detail_sub_program_penyedia_jasa, addendum) {
+        modal_excel_addendum_hps_penyedia_kontrak_1.modal('show');
+        $('[name="id_detail_sub_program_penyedia_jasa"]').val(id_detail_sub_program_penyedia_jasa);
+        $('[name="addendum_excel"]').val(addendum);
+    }
+
+
+
+
+    function clear_table_hps_addendum_penyedia_kontrak_1(id_detail_sub_program_penyedia_jasa, add) {
+        Swal.fire({
+            title: 'Anda Yakin Ingin Menclear Data Table Ini ? ',
+            text: 'Table Hps',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Batal!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('administrasi_kontrak/administrasi_kontrak/clear_table_hps_penyedia_kontrak_addendum_1') ?>",
+                    data: {
+                        id_detail_sub_program_penyedia_jasa: id_detail_sub_program_penyedia_jasa,
+                        add: add
+                    },
+                    dataType: "JSON",
+                    success: function(response) {
+                        if (response == 'success') {
+                            Swal.fire(
+                                'Berhasil!',
+                                'Data Berhasil Di Clear!',
+                                'success'
+                            )
+                            location.reload()
+                        }
+                    }
+                })
+
+            }
+        })
+    }
 </script>

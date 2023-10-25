@@ -1334,4 +1334,26 @@ class Administrasi_kontrak extends CI_Controller
         }
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
+
+    public function clear_table_hps_penyedia_kontrak_1()
+    {
+        $id_detail_sub_program_penyedia_jasa =  $this->input->post('id_detail_sub_program_penyedia_jasa');
+        $where = [
+            'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
+            'item_baru' => 'kosong',
+        ];
+        $this->Data_kontrak_model->clear_table_hps_penyedia_kontrak_1($where);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+    public function clear_table_hps_penyedia_kontrak_addendum_1()
+    {
+        $id_detail_sub_program_penyedia_jasa =  $this->input->post('id_detail_sub_program_penyedia_jasa');
+        $add =  $this->input->post('add');
+        $where = [
+            'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
+            'item_baru' => '_addendum_' . $add . '',
+        ];
+        $this->Data_kontrak_model->clear_table_hps_penyedia_kontrak_1($where);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
 }

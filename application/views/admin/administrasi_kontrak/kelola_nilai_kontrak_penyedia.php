@@ -260,10 +260,10 @@
                                                                     </div>
                                                                 </div>
                                                                 <ul class="nav nav-tabs" id="myTab">
+                                                                    <li>
+                                                                        <a class="nav-link  text-white" href="#rekap_hps_awal" style="background-color: #193B53;">Rekap Penjelasan</a>
+                                                                    </li>
                                                                     <?php foreach ($result_sub_program as $key => $value) { ?>
-                                                                        <li>
-                                                                            <a class="nav-link  text-white" href="#rekap_hps_awal" style="background-color: #193B53;">Rekap Penjelasan</a>
-                                                                        </li>
                                                                         <li>
                                                                             <a class="nav-link  text-white" href="#kirun<?= $value['id_detail_sub_program_penyedia_jasa'] ?> " style="background-color: #193B53;"><?= $value['nama_program_mata_anggaran'] ?></a>
                                                                         </li>
@@ -591,7 +591,7 @@
                                                                                         <div class="col-md-4">
                                                                                             <div class="card-header-action">
                                                                                                 <a class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,'excel')"> <i class="fas fa fa-file"></i> Buat Uraian Dengan Excel</a>
-                                                                                                <a class="btn btn-sm btn-info" href="javascript:;" onclick="tambah_uraian(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,'biasa')"><i class="fas fa fa-plus"></i> Buat Uraian</a>
+                                                                                                <a class="btn btn-sm btn-danger" href="javascript:;" onclick="clear_table_hps_penyedia_kontrak_1(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,'biasa')"><i class="fas fa fa-trash"></i> Clear Table</a>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -610,7 +610,6 @@
                                                                                                         <th class="text-white">TKDN</th>
                                                                                                         <th class="text-white">Harga Satuan TKDN</th>
                                                                                                         <th class="text-white">Jumlah Harga TKDN</th>
-                                                                                                        <th class="text-white">Action</th>
                                                                                                     </tr>
                                                                                                 </thead>
                                                                                                 <tbody style="font-size: 10px;">
@@ -655,8 +654,8 @@
                                                                                                             <td><?= $value_hps_penyedia_kontrak_1['tkdn'] ?>%</td>
                                                                                                             <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_tkdn'], 2, ',', '.') ?></td>
                                                                                                             <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['jumlah_harga_tkdn'], 2, ',', '.') ?></td>
-                                                                                                            <td>
-                                                                                                                <div class="btn-group">
+                                                                                                            <!-- <td> -->
+                                                                                                                <!-- <div class="btn-group">
                                                                                                                     <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
                                                                                                                     <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                         <span class="sr-only">Toggle Dropdown</span>
@@ -672,9 +671,9 @@
                                                                                                                         <?php } ?>
 
                                                                                                                     </div>
-                                                                                                                </div>
+                                                                                                                </div> -->
 
-                                                                                                            </td>
+                                                                                                            <!-- </td> -->
                                                                                                         </tr>
                                                                                                     <?php } ?>
                                                                                                 </tbody>
@@ -689,7 +688,7 @@
                                                                                                             <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_kontrak_1, 2, ',', '.') ?>
                                                                                                             </label>
                                                                                                         </td>
-                                                                                                        <td colspan="3"></td>
+                                                                                                        
                                                                                                         <td>
 
                                                                                                         </td>
@@ -712,7 +711,7 @@
                                                                                                             <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
                                                                                                             </label>
                                                                                                         </td>
-                                                                                                        <td colspan="3"></td>
+                                                                                                        
                                                                                                         <td>
 
                                                                                                         </td>
@@ -727,7 +726,7 @@
                                                                                                             <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
                                                                                                             </label>
                                                                                                         </td>
-                                                                                                        <td colspan="3"></td>
+                                                                                                        
                                                                                                         <td>
                                                                                                             <a href="javascript:;" onclick="Update_nilai_ke_sub_program_kontrak(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,0)" class="btn btn-sm btn-primary" style="font-size: 12px;"><i class="fas fa fa-save"></i> Simpan Dan Update</a>
                                                                                                         </td>
@@ -975,8 +974,8 @@
                                                                                             </i>
                                                                                             <div class="col-md-7"></div>
                                                                                             <div class="card-header-action">
-                                                                                                <a class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,'excel_addendum',<?= $value_addendum['no_addendum'] ?>)"> <i class="fas fa fa-file"></i> Buat Uraian Dengan Excel</a>
-                                                                                                <a class="btn btn-sm btn-info" href="javascript:;" onclick="tambah_uraian(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,'biasa_addendum',<?= $value_addendum['no_addendum'] ?>)"><i class="fas fa fa-plus"></i> Buat Uraian</a>
+                                                                                                <a class="btn btn-sm btn-success" href="javascript:;" onclick="tambah_uraian_excel_addendum(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,<?= $value_addendum['no_addendum'] ?>)"> <i class="fas fa fa-file"></i> Buat Uraian Dengan Excel</a>
+                                                                                                <a class="btn btn-sm btn-danger" href="javascript:;" onclick="clear_table_hps_addendum_penyedia_kontrak_1(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,<?= $value_addendum['no_addendum'] ?>)"><i class="fas fa fa-trash"></i> Clear Table</a>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="card-body">
@@ -995,7 +994,6 @@
                                                                                                             <th class="text-white">Harga Satuan TKDN</th>
                                                                                                             <th class="text-white">Jumlah Harga TKDN</th>
                                                                                                             <th class="text-white">Keterangan</th>
-                                                                                                            <th class="text-white">Action</th>
                                                                                                         </tr>
                                                                                                     </thead>
                                                                                                     <tbody style="font-size: 10px;">
@@ -1054,7 +1052,7 @@
                                                                                                                 <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_tkdn' . $field_addendum], 2, ',', '.') ?></td>
                                                                                                                 <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['jumlah_harga_tkdn' . $field_addendum], 2, ',', '.') ?></td>
                                                                                                                 <td><?= $keterangan_volume ?></td>
-                                                                                                                <td>
+                                                                                                                <!-- <td>
                                                                                                                     <div class="btn-group">
                                                                                                                         <button type="button" class="btn btn-default">Action</button>
                                                                                                                         <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
@@ -1065,7 +1063,7 @@
                                                                                                                             <a onclick="modal_hps_penyedia_kontrak_2_addendum(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'edit',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit Turunan"><i class="fas fa-edit"></i></a>
                                                                                                                         </div>
                                                                                                                     </div>
-                                                                                                                </td>
+                                                                                                                </td> -->
                                                                                                             </tr>
                                                                                                         <?php } ?>
                                                                                                     </tbody>
@@ -1228,6 +1226,76 @@
                 <button type="button" style="display: none;" class="btn btn-primary" id="simpan_1_addendum" onclick="save_hps_penyedia_kontrak_1_addendum('simpan')">Save</button>
                 <!-- edit -->
                 <button type="button" style="display: none;" class="btn btn-primary" id="edit_1_addendum" onclick="save_hps_penyedia_kontrak_1_addendum('edit')">Update1</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" data-backdrop="false" id="modal_excel_hps_penyedia_kontrak_1" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Buat Uraian Dengan Excel</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <div>
+                        <label for="">Download Format</label> <br>
+                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_excel_hps_kontrak.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+                    </div>
+                </center>
+                <center>
+                    <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
+                </center>
+                <?= form_open_multipart('excelisasi_kontrak_hps/upload_excel_hps/upload_excel_hps_penyedia_kontrak_1') ?>
+                <input type="hidden" value="<?= $row_program_kontrak_detail['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
+                <input type="hidden" name="id_detail_sub_program_penyedia_jasa">
+                <input type="hidden" name="id_kontrak" value="<?= $row_program_kontrak_detail['id_kontrak'] ?>">
+                <div class="input-group">
+                    <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                    <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                </div>
+                <?= form_close(); ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" data-backdrop="false" id="modal_excel_addendum_hps_penyedia_kontrak_1" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Buat Uraian Dengan Excel Addendum</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <div>
+                        <label for="">Download Format</label> <br>
+                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_excel_hps_kontrak.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+                    </div>
+                </center>
+                <center>
+                    <label for="Divisi" style="font-weight: bold;" class="col-form-label">Upload Excel</label>
+                </center>
+                <?= form_open_multipart('excelisasi_kontrak_hps/upload_excel_hps/upload_excel_addendum_hps_penyedia_kontrak_1') ?>
+                <input type="hidden" value="<?= $row_program_kontrak_detail['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
+                <input type="text" name="id_detail_sub_program_penyedia_jasa">
+                <input type="hidden" name="addendum_excel">
+                <input type="hidden" name="id_kontrak" value="<?= $row_program_kontrak_detail['id_kontrak'] ?>">
+                <div class="input-group">
+                    <input type="file" class="form-control form-control-sm" id="importexcel" aria-describedby="inputGroupFileAddon04" accept=".xlsx,.xls" name="importexcel" aria-label="Upload">
+                    <button class="btn btn-sm btn-success" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/excel.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+                </div>
+                <?= form_close(); ?>
             </div>
         </div>
     </div>

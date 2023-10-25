@@ -13392,16 +13392,11 @@ class Data_kontrak_penyedia_jasa extends CI_Controller
                 'addendum_ke' => $type_addendum
             ];
             $this->Data_kontrak_model->add_sub_program($data);
-            $data_baru_mata_anggaran = [
-                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
-                'id_detail_sub_program_penyedia_jasa' => $this->db->insert_id(),
-                'no_hps' . $type_addendum . '' => '1.1',
-                'uraian_hps' . $type_addendum . '' => '.'
-            ];
-            $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_1($data_baru_mata_anggaran);
-        }
-
-        foreach ($mata_anggran as $key => $value) {
+            // $data_baru_mata_anggaran = [
+            //     'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+            //     'id_detail_sub_program_penyedia_jasa' => $this->db->insert_id(),
+            // ];
+            // $this->Data_kontrak_model->create_tbl_hps_penyedia_kontrak_1($data_baru_mata_anggaran);
         }
         $this->Data_kontrak_model->delete_tbl_list_mata_anggran($id_kontrak);
 

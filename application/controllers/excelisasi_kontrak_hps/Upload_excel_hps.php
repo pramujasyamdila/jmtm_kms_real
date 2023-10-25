@@ -297,4 +297,111 @@ class Upload_excel_hps extends CI_Controller
             echo "Error : " . $this->upload->display_errors();
         }
     }
+
+
+    public function upload_excel_hps_penyedia_kontrak_1()
+    {
+        $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
+        $id_detail_sub_program_penyedia_jasa = $this->input->post('id_detail_sub_program_penyedia_jasa');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'xlsx|xls';
+        $config['file_name'] = 'doc' . time();
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('importexcel')) {
+            $file = $this->upload->data();
+            $reader = ReaderEntityFactory::createXLSXReader();
+            $reader->open('uploads/' . $file['file_name']);
+            foreach ($reader->getSheetIterator() as $sheet) {
+                $numRow = 1;
+                foreach ($sheet->getRowIterator() as $row) {
+                    if ($numRow > 1) {
+                        $tkdn = $row->getCellAtIndex(6)->getValue();
+                        $volume = $row->getCellAtIndex(4)->getValue();
+                        $harga_satuan =  $row->getCellAtIndex(5)->getValue();
+                        $hitung_harga_satuan_tkdn = $harga_satuan * ($tkdn / 100);
+                        $hasil_harga_satuan_tkdn = round($hitung_harga_satuan_tkdn, 2);
+                        $hitung_jumlah_harga_tkdn = $volume * $hasil_harga_satuan_tkdn;
+                        $hasil_jumlah_harga_tkdn = round($hitung_jumlah_harga_tkdn, 2);
+                        $data = array(
+                            'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                            'id_detail_sub_program_penyedia_jasa' => $id_detail_sub_program_penyedia_jasa,
+                            'no_urut' => $row->getCellAtIndex(0),
+                            'no_hps' => $row->getCellAtIndex(1),
+                            'uraian_hps' => $row->getCellAtIndex(2),
+                            'satuan_hps' => $row->getCellAtIndex(3),
+                            'volume_hps' => $volume,
+                            'harga_satuan_hps' => $harga_satuan,
+                            'total_harga' => $volume * $harga_satuan,
+                            'tkdn' => $tkdn,
+                            'harga_satuan_tkdn' => $hasil_harga_satuan_tkdn,
+                            'jumlah_harga_tkdn' => $hasil_jumlah_harga_tkdn,
+                            'item_baru' => 'kosong'
+
+                        );
+                        $this->Data_excelisasi_model->insert_via_hps_penyedia_kontrak_1($data);
+                    }
+                    $numRow++;
+                }
+                $reader->close();
+                unlink('uploads/' . $file['file_name']);
+                $this->session->set_flashdata('pesan', 'Data Berhasil Di Import');
+                redirect('administrasi_kontrak/administrasi_kontrak/kelola_nilai_kontrak_penyedia/' . $id_detail_program_penyedia_jasa);
+            }
+        } else {
+            echo "Error : " . $this->upload->display_errors();
+        }
+    }
+
+    public function upload_excel_addendum_hps_penyedia_kontrak_1()
+    {
+        $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
+        $add = $this->input->post('addendum_excel');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'xlsx|xls';
+        $config['file_name'] = 'doc' . time();
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('importexcel')) {
+            $file = $this->upload->data();
+            $reader = ReaderEntityFactory::createXLSXReader();
+            $reader->open('uploads/' . $file['file_name']);
+            foreach ($reader->getSheetIterator() as $sheet) {
+                $numRow = 1;
+                foreach ($sheet->getRowIterator() as $row) {
+                    if ($numRow > 1) {
+                        $tkdn = $row->getCellAtIndex(6)->getValue();
+                        $volume = $row->getCellAtIndex(4)->getValue();
+                        $harga_satuan =  $row->getCellAtIndex(5)->getValue();
+                        $hitung_harga_satuan_tkdn = $harga_satuan * ($tkdn / 100);
+                        $hasil_harga_satuan_tkdn = round($hitung_harga_satuan_tkdn, 2);
+                        $hitung_jumlah_harga_tkdn = $volume * $hasil_harga_satuan_tkdn;
+                        $hasil_jumlah_harga_tkdn = round($hitung_jumlah_harga_tkdn, 2);
+                        $data = array(
+                            'id_detail_sub_program_penyedia_jasa' => $this->input->post('id_detail_sub_program_penyedia_jasa'),
+                            'id_detail_program_penyedia_jasa' => $this->input->post('id_detail_program_penyedia_jasa'),
+                            'no_urut' =>  $row->getCellAtIndex(0),
+                            'no_hps_addendum_' . $add . '' => $row->getCellAtIndex(1),
+                            'uraian_hps_addendum_' . $add . '' => $row->getCellAtIndex(2),
+                            'satuan_hps_addendum_' . $add . '' => $row->getCellAtIndex(3),
+                            'volume_hps_addendum_' . $add . '' => $volume,
+                            'harga_satuan_hps_addendum_' . $add . '' => $harga_satuan,
+                            'total_harga_addendum_' . $add . '' => $volume * $harga_satuan,
+                            'tkdn_addendum_' . $add . '' => $tkdn,
+                            'harga_satuan_tkdn_addendum_' . $add . ''  => $hasil_harga_satuan_tkdn,
+                            'jumlah_harga_tkdn_addendum_' . $add . ''  => $hasil_jumlah_harga_tkdn,
+                            'item_baru' => '_addendum_' . $add . ''
+
+                        );
+                        $this->Data_excelisasi_model->insert_via_hps_penyedia_kontrak_1($data);
+                    }
+                    $numRow++;
+                }
+                $reader->close();
+                unlink('uploads/' . $file['file_name']);
+                $this->session->set_flashdata('pesan', 'Data Berhasil Di Import');
+                redirect('administrasi_kontrak/administrasi_kontrak/kelola_nilai_kontrak_penyedia/' . $id_detail_program_penyedia_jasa);
+            }
+        } else {
+            echo "Error : " . $this->upload->display_errors();
+        }
+    }
 }
