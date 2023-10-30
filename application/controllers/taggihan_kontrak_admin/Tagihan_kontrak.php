@@ -151,19 +151,6 @@ class Tagihan_kontrak extends CI_Controller
         $timeDiff = abs($endTimeStamp - $startTimeStamp);
 
         $numberDays = $timeDiff / 86400;  // 86400 seconds in one day
-        if (!$jumlah_mc) {
-            $hasil_setelah_ppn = 0;
-            $hasil_ppn_total = 0;
-            $jumlah_mc = 0;
-        } else {
-            if ($persen_ppn == '11') {
-                $hitung_persen_total_ppn = $jumlah_mc * 0.11;
-            } else {
-                $hitung_persen_total_ppn = $jumlah_mc * 0.10;
-            }
-            $hasil_ppn_total = $hitung_persen_total_ppn;
-            $hasil_setelah_ppn = $jumlah_mc + $hasil_ppn_total;
-        }
 
 
         // and you might want to convert to integer
@@ -176,6 +163,19 @@ class Tagihan_kontrak extends CI_Controller
         }
 
         if ($cek_um == 'ada') {
+            if (!$jumlah_mc) {
+                $hasil_setelah_ppn = 0;
+                $hasil_ppn_total = 0;
+                $jumlah_mc = 0;
+            } else {
+                if ($persen_ppn == '11') {
+                    $hitung_persen_total_ppn = $jumlah_mc * 0.11;
+                } else {
+                    $hitung_persen_total_ppn = $jumlah_mc * 0.10;
+                }
+                $hasil_ppn_total = $hitung_persen_total_ppn;
+                $hasil_setelah_ppn = $jumlah_mc + $hasil_ppn_total;
+            }
             $data = [
                 'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                 'jumlah_mc' => $jumlah_mc,
@@ -198,14 +198,27 @@ class Tagihan_kontrak extends CI_Controller
             ];
         } else {
             if ($data_urut == 1) {
+                if (!$this->input->post('sd_bulan_lalu_number')) {
+                    $hasil_setelah_ppn = 0;
+                    $hasil_ppn_total = 0;
+                    $jumlah_mc = 0;
+                } else {
+                    if ($persen_ppn == '11') {
+                        $hitung_persen_total_ppn = $this->input->post('sd_bulan_lalu_number') * 0.11;
+                    } else {
+                        $hitung_persen_total_ppn = $this->input->post('sd_bulan_lalu_number') * 0.10;
+                    }
+                    $hasil_ppn_total = $hitung_persen_total_ppn;
+                    $hasil_setelah_ppn = $this->input->post('sd_bulan_lalu_number') + $hasil_ppn_total;
+                }
                 $data = [
                     'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
-                    'jumlah_mc' => $jumlah_mc,
+                    'jumlah_mc' => $this->input->post('sd_bulan_lalu_number'),
                     'no_mc_manipulasi' => $no_mc_manipulasi,
                     'tanggal_mc' => $tanggal_mc,
                     'no_mc' => $data_urut,
-                    'sd_bulan_lalu' => $jumlah_mc,
-                    'sd_bulan_ini' => $jumlah_mc,
+                    'sd_bulan_lalu' => $this->input->post('sd_bulan_lalu_number'),
+                    'sd_bulan_ini' =>  $this->input->post('sd_bulan_lalu_number') + $jumlah_mc,
                     'persen_ppn' => $persen_ppn,
                     'ppn_total' => $hasil_ppn_total,
                     'setelah_ppn' => $hasil_setelah_ppn,
@@ -219,6 +232,19 @@ class Tagihan_kontrak extends CI_Controller
                     'nilai_uang_muka' => $nilai_uang_muka,
                 ];
             } else {
+                if (!$jumlah_mc) {
+                    $hasil_setelah_ppn = 0;
+                    $hasil_ppn_total = 0;
+                    $jumlah_mc = 0;
+                } else {
+                    if ($persen_ppn == '11') {
+                        $hitung_persen_total_ppn = $jumlah_mc * 0.11;
+                    } else {
+                        $hitung_persen_total_ppn = $jumlah_mc * 0.10;
+                    }
+                    $hasil_ppn_total = $hitung_persen_total_ppn;
+                    $hasil_setelah_ppn = $jumlah_mc + $hasil_ppn_total;
+                }
                 $data = [
                     'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                     'jumlah_mc' => $jumlah_mc,
@@ -272,45 +298,55 @@ class Tagihan_kontrak extends CI_Controller
         $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
         // var_dump($data_mc[1]['id_mc']);
         // die;
-        if (!isset($data_mc[1])) { } else {
+        if (!isset($data_mc[1])) {
+        } else {
             $id_mc1 = $data_mc[1]['id_mc'];
             $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
         }
 
-        if (!isset($data_mc[2])) { } else {
+        if (!isset($data_mc[2])) {
+        } else {
             $id_mc2 = $data_mc[2]['id_mc'];
             $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
         }
-        if (!isset($data_mc[3])) { } else {
+        if (!isset($data_mc[3])) {
+        } else {
             $id_mc3 = $data_mc[3]['id_mc'];
             $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
         }
 
-        if (!isset($data_mc[4])) { } else {
+        if (!isset($data_mc[4])) {
+        } else {
             $id_mc4 = $data_mc[4]['id_mc'];
             $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
         }
-        if (!isset($data_mc[5])) { } else {
+        if (!isset($data_mc[5])) {
+        } else {
             $id_mc5 = $data_mc[5]['id_mc'];
             $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
         }
-        if (!isset($data_mc[6])) { } else {
+        if (!isset($data_mc[6])) {
+        } else {
             $id_mc6 = $data_mc[6]['id_mc'];
             $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
         }
-        if (!isset($data_mc[7])) { } else {
+        if (!isset($data_mc[7])) {
+        } else {
             $id_mc7 = $data_mc[7]['id_mc'];
             $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
         }
-        if (!isset($data_mc[8])) { } else {
+        if (!isset($data_mc[8])) {
+        } else {
             $id_mc8 = $data_mc[8]['id_mc'];
             $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
         }
-        if (!isset($data_mc[9])) { } else {
+        if (!isset($data_mc[9])) {
+        } else {
             $id_mc9 = $data_mc[9]['id_mc'];
             $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
         }
-        if (!isset($data_mc[10])) { } else {
+        if (!isset($data_mc[10])) {
+        } else {
             $id_mc10 = $data_mc[10]['id_mc'];
             $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
         }
@@ -325,7 +361,8 @@ class Tagihan_kontrak extends CI_Controller
             ];
             $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
             $mc_real1 = $data_arrayku1['id_mc'];
-        } else { }
+        } else {
+        }
         if (isset($data_mc[2])) {
             $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
             $updateAray2 = [
@@ -458,9 +495,566 @@ class Tagihan_kontrak extends CI_Controller
             ];
             $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
             $mc_real10 = $data_arrayku10['id_mc'];
-        } else { }
+        } else {
+        }
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
+
+    public function edit_mc_baru()
+    {
+        $id_detail_program_penyedia_jasa  = $this->input->post('id_detail_program_penyedia_jasa_edit');
+        $jumlah_mc  = $this->input->post('jumlah_mc_biasa_edit');
+        $jumlah_mcku  = $this->input->post('jumlah_mc_edit');
+        $data_no_mc  = $this->input->post('data_no_mc_edit');
+        $id_mc  = $this->input->post('id_mc_edit');
+
+        // retensi
+        $persen_ppn  = $this->input->post('persen_ppn');
+        $tanggal_mc  = $this->input->post('tanggal_mc');
+        $sts_retensi  = $this->input->post('sts_retensi');
+        $nilai_retensi  = $this->input->post('nilai_retensi');
+        $nilai_retensi_tanpa_persen  = $this->input->post('nilai_retensi_tanpa_persen');
+
+
+        // bobot & denda
+        $bobot  = $this->input->post('bobot_nilai');
+        $denda  = $this->input->post('denda');
+        // nilai_uang_muka
+        $nilai_uang_muka  = $this->input->post('nilai_uang_muka');
+        if ($sts_retensi == 1) {
+            $total_retensi = $nilai_retensi_tanpa_persen;
+        } else {
+            $total_retensi = $nilai_retensi;
+        }
+
+        $get_kode_mc = $this->Taggihan_kontrak_admin_model->get_kode_mc($id_detail_program_penyedia_jasa);
+        $urutku = $get_kode_mc + 1;
+        $data_urut = $urutku++;
+        $hitung_persen_total_ppn = ($jumlah_mc * $persen_ppn) / 100;
+        $hasil_ppn_total = $hitung_persen_total_ppn;
+        $hasil_setelah_ppn = $jumlah_mc + $hasil_ppn_total;
+        // kondisi generate update
+        $ambil_mc_edit = $this->Taggihan_kontrak_admin_model->get_only_now_edit($id_mc);
+        $ambil_no_mc_edit = $ambil_mc_edit['no_mc'];
+        $ambil_kontrak_edit = $ambil_mc_edit['id_detail_program_penyedia_jasa'];
+        // looping by edit 
+        $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
+        if ($jika_ada_um_edit) {
+            $cek_um = 'ada';
+        } else {
+            $cek_um = 'tidak ada';
+        }
+        if ($cek_um == 'ada') {
+            $data = [
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'jumlah_mc' => $jumlah_mc,
+                'tanggal_mc' => $tanggal_mc,
+                'no_mc' => 'um',
+                'sd_bulan_lalu' => $jumlah_mc,
+                'sd_bulan_ini' => $jumlah_mc,
+                'persen_ppn' => $persen_ppn,
+                'ppn_total' => $hasil_ppn_total,
+                'setelah_ppn' => $hasil_setelah_ppn,
+                // retensi
+                'nilai_retensi' => $total_retensi,
+                'sts_retensi' => $sts_retensi,
+                // bobot & denda
+                'bobot' => $bobot,
+                'denda' => $denda,
+                // nilai_uang_muka
+                'nilai_uang_muka' => $nilai_uang_muka,
+
+            ];
+            $this->Taggihan_kontrak_admin_model->update_mc($data, $id_mc);
+        } else {
+            if ($data_no_mc == 'um') {
+                $data = [
+                    'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                    'jumlah_mc' => $jumlah_mc,
+                    'tanggal_mc' => $tanggal_mc,
+                    'no_mc' => 'um',
+                    'sd_bulan_lalu' => $jumlah_mc,
+                    'sd_bulan_ini' => $jumlah_mc,
+                    'persen_ppn' => $persen_ppn,
+                    'ppn_total' => $hasil_ppn_total,
+                    'setelah_ppn' => $hasil_setelah_ppn,
+                    // retensi
+                    'nilai_retensi' => $total_retensi,
+                    'sts_retensi' => $sts_retensi,
+                    // bobot & denda
+                    'bobot' => $bobot,
+                    'denda' => $denda,
+                    // nilai_uang_muka
+                    'nilai_uang_muka' => $nilai_uang_muka,
+                ];
+                $this->Taggihan_kontrak_admin_model->update_mc($data, $id_mc);
+            } else if ($data_no_mc == 1) {
+                $data = [
+                    'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                    'jumlah_mc' => $jumlah_mc,
+                    'tanggal_mc' => $tanggal_mc,
+                    'no_mc' => $data_no_mc,
+                    'sd_bulan_lalu' => $jumlah_mcku,
+                    'sd_bulan_ini' => $jumlah_mcku + $jumlah_mc,
+                    'persen_ppn' => $persen_ppn,
+                    'ppn_total' => $hasil_ppn_total,
+                    'setelah_ppn' => $hasil_setelah_ppn,
+                    // retensi
+                    'nilai_retensi' => $total_retensi,
+                    'sts_retensi' => $sts_retensi,
+                    // bobot & denda
+                    'bobot' => $bobot,
+                    'denda' => $denda,
+                    // nilai_uang_muka
+                    'nilai_uang_muka' => $nilai_uang_muka,
+
+                ];
+                $this->Taggihan_kontrak_admin_model->update_mc($data, $id_mc);
+                if ($data_no_mc == 1) {
+                    # code...
+                } else {
+                    $data_mc = $this->Taggihan_kontrak_admin_model->generate_update($ambil_kontrak_edit, $ambil_no_mc_edit);
+                    // array_bulan_ini
+                    $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
+                    // var_dump($data_mc[1]['id_mc']);
+                    // die;
+                    if (!isset($data_mc[1])) {
+                    } else {
+                        $id_mc1 = $data_mc[1]['id_mc'];
+                        $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
+                    }
+
+                    if (!isset($data_mc[2])) {
+                    } else {
+                        $id_mc2 = $data_mc[2]['id_mc'];
+                        $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[3])) {
+                    } else {
+                        $id_mc3 = $data_mc[3]['id_mc'];
+                        $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
+                    }
+
+                    if (!isset($data_mc[4])) {
+                    } else {
+                        $id_mc4 = $data_mc[4]['id_mc'];
+                        $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[5])) {
+                    } else {
+                        $id_mc5 = $data_mc[5]['id_mc'];
+                        $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[6])) {
+                    } else {
+                        $id_mc6 = $data_mc[6]['id_mc'];
+                        $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[7])) {
+                    } else {
+                        $id_mc7 = $data_mc[7]['id_mc'];
+                        $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[8])) {
+                    } else {
+                        $id_mc8 = $data_mc[8]['id_mc'];
+                        $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[9])) {
+                    } else {
+                        $id_mc9 = $data_mc[9]['id_mc'];
+                        $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[10])) {
+                    } else {
+                        $id_mc10 = $data_mc[10]['id_mc'];
+                        $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
+                    }
+                    // 1
+                    if (isset($data_mc[1])) {
+                        $updateAray1 = [
+                            'sd_bulan_lalu' => $sd_bulan_ini0,
+                            'jumlah_mc' => $jumlah_mc1,
+                            'sd_bulan_ini' =>  $sd_bulan_ini0 + $jumlah_mc1,
+
+                        ];
+                        $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
+                        $mc_real1 = $data_arrayku1['id_mc'];
+                    } else {
+                    }
+                    if (isset($data_mc[2])) {
+                        $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
+                        $updateAray2 = [
+                            'sd_bulan_lalu' => $data_row_post_array1['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc2,
+                            'sd_bulan_ini' =>  $data_row_post_array1['sd_bulan_ini'] + $jumlah_mc2,
+
+                        ];
+                        $data_arrayku2 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc2, $updateAray2);
+                        $mc_real2 = $data_arrayku2['id_mc'];
+                    } else {
+                        // 2
+                    }
+                    if (isset($data_mc[3])) {
+                        // 2
+                        // 3
+                        $data_row_post_array2 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real2);
+                        $updateAray3 = [
+                            'sd_bulan_lalu' => $data_row_post_array2['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc3,
+                            'sd_bulan_ini' =>  $data_row_post_array2['sd_bulan_ini'] + $jumlah_mc3,
+
+                        ];
+                        $data_arrayku3 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc3, $updateAray3);
+                        $mc_real3 = $data_arrayku3['id_mc'];
+                    } else {
+                        // 3
+                    }
+
+                    if (isset($data_mc[4])) {
+                        // 1
+                        // 2
+                        $data_row_post_array3 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real3);
+                        $updateAray4 = [
+                            'sd_bulan_lalu' => $data_row_post_array3['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc4,
+                            'sd_bulan_ini' =>  $data_row_post_array3['sd_bulan_ini'] + $jumlah_mc4,
+
+                        ];
+                        $data_arrayku4 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc4, $updateAray4);
+                        $mc_real4 = $data_arrayku4['id_mc'];
+                    } else {
+
+                        // 4
+                    }
+                    if (isset($data_mc[5])) {
+                        // 4
+                        // 5
+                        $data_row_post_array4 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real4);
+                        $updateAray5 = [
+                            'sd_bulan_lalu' => $data_row_post_array4['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc5,
+                            'sd_bulan_ini' =>  $data_row_post_array4['sd_bulan_ini'] + $jumlah_mc5,
+
+                        ];
+                        $data_arrayku5 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc5, $updateAray5);
+                        $mc_real5 = $data_arrayku5['id_mc'];
+                    } else {
+                        // 5
+                    }
+                    if (isset($data_mc[6])) {
+                        // 6
+                        // 5
+                        $data_row_post_array5 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real5);
+                        $updateAray6 = [
+                            'sd_bulan_lalu' => $data_row_post_array5['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc6,
+                            'sd_bulan_ini' =>  $data_row_post_array5['sd_bulan_ini'] + $jumlah_mc6,
+
+                        ];
+                        $data_arrayku6 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc6, $updateAray6);
+                        $mc_real6 = $data_arrayku6['id_mc'];
+                    } else {
+                        // 6
+                    }
+                    if (isset($data_mc[7])) {
+                        // 7
+                        // 6
+                        $data_row_post_array6 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real6);
+                        $updateAray7 = [
+                            'sd_bulan_lalu' => $data_row_post_array6['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc7,
+                            'sd_bulan_ini' =>  $data_row_post_array6['sd_bulan_ini'] + $jumlah_mc7,
+
+                        ];
+                        $data_arrayku7 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc7, $updateAray7);
+                        $mc_real7 = $data_arrayku7['id_mc'];
+                    } else {
+                        // 7
+                    }
+                    if (isset($data_mc[8])) {
+                        // 8
+                        // 7
+                        $data_row_post_array7 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real7);
+                        $updateAray8 = [
+                            'sd_bulan_lalu' => $data_row_post_array7['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc8,
+                            'sd_bulan_ini' =>  $data_row_post_array7['sd_bulan_ini'] + $jumlah_mc8,
+
+                        ];
+                        $data_arrayku8 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc8, $updateAray8);
+                        $mc_real8 = $data_arrayku8['id_mc'];
+                    } else {
+                        // 8
+                    }
+                    if (isset($data_mc[9])) {
+                        // 9
+                        // 8
+                        $data_row_post_array8 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real8);
+                        $updateAray9 = [
+                            'sd_bulan_lalu' => $data_row_post_array8['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc9,
+                            'sd_bulan_ini' =>  $data_row_post_array8['sd_bulan_ini'] + $jumlah_mc9,
+
+                        ];
+                        $data_arrayku9 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc9, $updateAray9);
+                        $mc_real9 = $data_arrayku9['id_mc'];
+                    } else {
+                        // 9
+                    }
+                    if (isset($data_mc[10])) {
+                        // 10
+                        // 9
+                        $data_row_post_array9 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real9);
+                        $updateAray10 = [
+                            'sd_bulan_lalu' => $data_row_post_array9['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc10,
+                            'sd_bulan_ini' =>  $data_row_post_array9['sd_bulan_ini'] + $jumlah_mc10,
+
+                        ];
+                        $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
+                        $mc_real10 = $data_arrayku10['id_mc'];
+                    } else {
+                    }
+                }
+            } else {
+                $data = [
+                    'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                    'jumlah_mc' => $jumlah_mc,
+                    'tanggal_mc' => $tanggal_mc,
+                    'no_mc' => $data_no_mc,
+                    'sd_bulan_lalu' => $jumlah_mcku,
+                    'persen_ppn' => $persen_ppn,
+                    'ppn_total' => $hasil_ppn_total,
+                    'setelah_ppn' => $hasil_setelah_ppn,
+                    'sd_bulan_ini' => $jumlah_mcku + $jumlah_mc,
+                    // retensi
+                    'nilai_retensi' => $total_retensi,
+                    'sts_retensi' => $sts_retensi,
+                    // bobot & denda
+                    'bobot' => $bobot,
+                    'denda' => $denda,
+                    // nilai_uang_muka
+                    'nilai_uang_muka' => $nilai_uang_muka,
+
+                ];
+
+                $this->Taggihan_kontrak_admin_model->update_mc($data, $id_mc);
+                if ($data_no_mc == 1) {
+                    # code...
+                } else {
+                    var_dump('masuk_kesini');die;
+                    $data_mc = $this->Taggihan_kontrak_admin_model->generate_update($ambil_kontrak_edit, $ambil_no_mc_edit);
+                    // array_bulan_ini
+                    $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
+                    // var_dump($data_mc[1]['id_mc']);
+                    // die;
+                    if (!isset($data_mc[1])) {
+                    } else {
+                        $id_mc1 = $data_mc[1]['id_mc'];
+                        $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
+                    }
+
+                    if (!isset($data_mc[2])) {
+                    } else {
+                        $id_mc2 = $data_mc[2]['id_mc'];
+                        $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[3])) {
+                    } else {
+                        $id_mc3 = $data_mc[3]['id_mc'];
+                        $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
+                    }
+
+                    if (!isset($data_mc[4])) {
+                    } else {
+                        $id_mc4 = $data_mc[4]['id_mc'];
+                        $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[5])) {
+                    } else {
+                        $id_mc5 = $data_mc[5]['id_mc'];
+                        $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[6])) {
+                    } else {
+                        $id_mc6 = $data_mc[6]['id_mc'];
+                        $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[7])) {
+                    } else {
+                        $id_mc7 = $data_mc[7]['id_mc'];
+                        $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[8])) {
+                    } else {
+                        $id_mc8 = $data_mc[8]['id_mc'];
+                        $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[9])) {
+                    } else {
+                        $id_mc9 = $data_mc[9]['id_mc'];
+                        $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[10])) {
+                    } else {
+                        $id_mc10 = $data_mc[10]['id_mc'];
+                        $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
+                    }
+
+                    // 1
+                    if (isset($data_mc[1])) {
+                        $updateAray1 = [
+                            'sd_bulan_lalu' => $sd_bulan_ini0,
+                            'jumlah_mc' => $jumlah_mc1,
+                            'sd_bulan_ini' =>  $sd_bulan_ini0 + $jumlah_mc1,
+
+                        ];
+                        $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
+                        $mc_real1 = $data_arrayku1['id_mc'];
+                    } else {
+                    }
+                    if (isset($data_mc[2])) {
+                        $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
+                        $updateAray2 = [
+                            'sd_bulan_lalu' => $data_row_post_array1['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc2,
+                            'sd_bulan_ini' =>  $data_row_post_array1['sd_bulan_ini'] + $jumlah_mc2,
+
+                        ];
+                        $data_arrayku2 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc2, $updateAray2);
+                        $mc_real2 = $data_arrayku2['id_mc'];
+                    } else {
+                        // 2
+                    }
+                    if (isset($data_mc[3])) {
+                        // 2
+                        // 3
+                        $data_row_post_array2 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real2);
+                        $updateAray3 = [
+                            'sd_bulan_lalu' => $data_row_post_array2['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc3,
+                            'sd_bulan_ini' =>  $data_row_post_array2['sd_bulan_ini'] + $jumlah_mc3,
+
+                        ];
+                        $data_arrayku3 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc3, $updateAray3);
+                        $mc_real3 = $data_arrayku3['id_mc'];
+                    } else {
+                        // 3
+                    }
+
+                    if (isset($data_mc[4])) {
+                        // 1
+                        // 2
+                        $data_row_post_array3 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real3);
+                        $updateAray4 = [
+                            'sd_bulan_lalu' => $data_row_post_array3['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc4,
+                            'sd_bulan_ini' =>  $data_row_post_array3['sd_bulan_ini'] + $jumlah_mc4,
+
+                        ];
+                        $data_arrayku4 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc4, $updateAray4);
+                        $mc_real4 = $data_arrayku4['id_mc'];
+                    } else {
+
+                        // 4
+                    }
+                    if (isset($data_mc[5])) {
+                        // 4
+                        // 5
+                        $data_row_post_array4 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real4);
+                        $updateAray5 = [
+                            'sd_bulan_lalu' => $data_row_post_array4['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc5,
+                            'sd_bulan_ini' =>  $data_row_post_array4['sd_bulan_ini'] + $jumlah_mc5,
+
+                        ];
+                        $data_arrayku5 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc5, $updateAray5);
+                        $mc_real5 = $data_arrayku5['id_mc'];
+                    } else {
+                        // 5
+                    }
+                    if (isset($data_mc[6])) {
+                        // 6
+                        // 5
+                        $data_row_post_array5 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real5);
+                        $updateAray6 = [
+                            'sd_bulan_lalu' => $data_row_post_array5['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc6,
+                            'sd_bulan_ini' =>  $data_row_post_array5['sd_bulan_ini'] + $jumlah_mc6,
+
+                        ];
+                        $data_arrayku6 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc6, $updateAray6);
+                        $mc_real6 = $data_arrayku6['id_mc'];
+                    } else {
+                        // 6
+                    }
+                    if (isset($data_mc[7])) {
+                        // 7
+                        // 6
+                        $data_row_post_array6 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real6);
+                        $updateAray7 = [
+                            'sd_bulan_lalu' => $data_row_post_array6['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc7,
+                            'sd_bulan_ini' =>  $data_row_post_array6['sd_bulan_ini'] + $jumlah_mc7,
+
+                        ];
+                        $data_arrayku7 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc7, $updateAray7);
+                        $mc_real7 = $data_arrayku7['id_mc'];
+                    } else {
+                        // 7
+                    }
+                    if (isset($data_mc[8])) {
+                        // 8
+                        // 7
+                        $data_row_post_array7 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real7);
+                        $updateAray8 = [
+                            'sd_bulan_lalu' => $data_row_post_array7['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc8,
+                            'sd_bulan_ini' =>  $data_row_post_array7['sd_bulan_ini'] + $jumlah_mc8,
+
+                        ];
+                        $data_arrayku8 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc8, $updateAray8);
+                        $mc_real8 = $data_arrayku8['id_mc'];
+                    } else {
+                        // 8
+                    }
+                    if (isset($data_mc[9])) {
+                        // 9
+                        // 8
+                        $data_row_post_array8 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real8);
+                        $updateAray9 = [
+                            'sd_bulan_lalu' => $data_row_post_array8['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc9,
+                            'sd_bulan_ini' =>  $data_row_post_array8['sd_bulan_ini'] + $jumlah_mc9,
+
+                        ];
+                        $data_arrayku9 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc9, $updateAray9);
+                        $mc_real9 = $data_arrayku9['id_mc'];
+                    } else {
+                        // 9
+                    }
+                    if (isset($data_mc[10])) {
+                        // 10
+                        // 9
+                        $data_row_post_array9 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real9);
+                        $updateAray10 = [
+                            'sd_bulan_lalu' => $data_row_post_array9['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc10,
+                            'sd_bulan_ini' =>  $data_row_post_array9['sd_bulan_ini'] + $jumlah_mc10,
+
+                        ];
+                        $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
+                        $mc_real10 = $data_arrayku10['id_mc'];
+                    } else {
+                    }
+                }
+            }
+        }
+
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
     public function edit_mc()
     {
         $id_detail_program_penyedia_jasa  = $this->input->post('id_detail_program_penyedia_jasa');
@@ -550,8 +1144,8 @@ class Tagihan_kontrak extends CI_Controller
                     'jumlah_mc' => $jumlah_mc,
                     'tanggal_mc' => $tanggal_mc,
                     'no_mc' => $data_no_mc,
-                    'sd_bulan_lalu' => $jumlah_mc,
-                    'sd_bulan_ini' => $jumlah_mc,
+                    'sd_bulan_lalu' => $jumlah_mcku,
+                    'sd_bulan_ini' => $jumlah_mcku + $jumlah_mc,
                     'persen_ppn' => $persen_ppn,
                     'ppn_total' => $hasil_ppn_total,
                     'setelah_ppn' => $hasil_setelah_ppn,
@@ -566,197 +1160,213 @@ class Tagihan_kontrak extends CI_Controller
 
                 ];
                 $this->Taggihan_kontrak_admin_model->update_mc($data, $id_mc);
-                $data_mc = $this->Taggihan_kontrak_admin_model->generate_update($ambil_kontrak_edit, $ambil_no_mc_edit);
-                // array_bulan_ini
-                $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
-                // var_dump($data_mc[1]['id_mc']);
-                // die;
-                if (!isset($data_mc[1])) { } else {
-                    $id_mc1 = $data_mc[1]['id_mc'];
-                    $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
-                }
-
-                if (!isset($data_mc[2])) { } else {
-                    $id_mc2 = $data_mc[2]['id_mc'];
-                    $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
-                }
-                if (!isset($data_mc[3])) { } else {
-                    $id_mc3 = $data_mc[3]['id_mc'];
-                    $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
-                }
-
-                if (!isset($data_mc[4])) { } else {
-                    $id_mc4 = $data_mc[4]['id_mc'];
-                    $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
-                }
-                if (!isset($data_mc[5])) { } else {
-                    $id_mc5 = $data_mc[5]['id_mc'];
-                    $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
-                }
-                if (!isset($data_mc[6])) { } else {
-                    $id_mc6 = $data_mc[6]['id_mc'];
-                    $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
-                }
-                if (!isset($data_mc[7])) { } else {
-                    $id_mc7 = $data_mc[7]['id_mc'];
-                    $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
-                }
-                if (!isset($data_mc[8])) { } else {
-                    $id_mc8 = $data_mc[8]['id_mc'];
-                    $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
-                }
-                if (!isset($data_mc[9])) { } else {
-                    $id_mc9 = $data_mc[9]['id_mc'];
-                    $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
-                }
-                if (!isset($data_mc[10])) { } else {
-                    $id_mc10 = $data_mc[10]['id_mc'];
-                    $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
-                }
-                // 1
-                if (isset($data_mc[1])) {
-                    $updateAray1 = [
-                        'sd_bulan_lalu' => $sd_bulan_ini0,
-                        'jumlah_mc' => $jumlah_mc1,
-                        'sd_bulan_ini' =>  $sd_bulan_ini0 + $jumlah_mc1,
-
-                    ];
-                    $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
-                    $mc_real1 = $data_arrayku1['id_mc'];
-                } else { }
-                if (isset($data_mc[2])) {
-                    $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
-                    $updateAray2 = [
-                        'sd_bulan_lalu' => $data_row_post_array1['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc2,
-                        'sd_bulan_ini' =>  $data_row_post_array1['sd_bulan_ini'] + $jumlah_mc2,
-
-                    ];
-                    $data_arrayku2 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc2, $updateAray2);
-                    $mc_real2 = $data_arrayku2['id_mc'];
+                if ($data_no_mc == 1) {
+                    # code...
                 } else {
-                    // 2
-                }
-                if (isset($data_mc[3])) {
-                    // 2
-                    // 3
-                    $data_row_post_array2 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real2);
-                    $updateAray3 = [
-                        'sd_bulan_lalu' => $data_row_post_array2['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc3,
-                        'sd_bulan_ini' =>  $data_row_post_array2['sd_bulan_ini'] + $jumlah_mc3,
+                    $data_mc = $this->Taggihan_kontrak_admin_model->generate_update($ambil_kontrak_edit, $ambil_no_mc_edit);
+                    // array_bulan_ini
+                    $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
+                    // var_dump($data_mc[1]['id_mc']);
+                    // die;
+                    if (!isset($data_mc[1])) {
+                    } else {
+                        $id_mc1 = $data_mc[1]['id_mc'];
+                        $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
+                    }
 
-                    ];
-                    $data_arrayku3 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc3, $updateAray3);
-                    $mc_real3 = $data_arrayku3['id_mc'];
-                } else {
-                    // 3
-                }
+                    if (!isset($data_mc[2])) {
+                    } else {
+                        $id_mc2 = $data_mc[2]['id_mc'];
+                        $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[3])) {
+                    } else {
+                        $id_mc3 = $data_mc[3]['id_mc'];
+                        $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
+                    }
 
-                if (isset($data_mc[4])) {
+                    if (!isset($data_mc[4])) {
+                    } else {
+                        $id_mc4 = $data_mc[4]['id_mc'];
+                        $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[5])) {
+                    } else {
+                        $id_mc5 = $data_mc[5]['id_mc'];
+                        $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[6])) {
+                    } else {
+                        $id_mc6 = $data_mc[6]['id_mc'];
+                        $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[7])) {
+                    } else {
+                        $id_mc7 = $data_mc[7]['id_mc'];
+                        $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[8])) {
+                    } else {
+                        $id_mc8 = $data_mc[8]['id_mc'];
+                        $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[9])) {
+                    } else {
+                        $id_mc9 = $data_mc[9]['id_mc'];
+                        $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[10])) {
+                    } else {
+                        $id_mc10 = $data_mc[10]['id_mc'];
+                        $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
+                    }
                     // 1
-                    // 2
-                    $data_row_post_array3 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real3);
-                    $updateAray4 = [
-                        'sd_bulan_lalu' => $data_row_post_array3['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc4,
-                        'sd_bulan_ini' =>  $data_row_post_array3['sd_bulan_ini'] + $jumlah_mc4,
+                    if (isset($data_mc[1])) {
+                        $updateAray1 = [
+                            'sd_bulan_lalu' => $sd_bulan_ini0,
+                            'jumlah_mc' => $jumlah_mc1,
+                            'sd_bulan_ini' =>  $sd_bulan_ini0 + $jumlah_mc1,
 
-                    ];
-                    $data_arrayku4 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc4, $updateAray4);
-                    $mc_real4 = $data_arrayku4['id_mc'];
-                } else {
+                        ];
+                        $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
+                        $mc_real1 = $data_arrayku1['id_mc'];
+                    } else {
+                    }
+                    if (isset($data_mc[2])) {
+                        $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
+                        $updateAray2 = [
+                            'sd_bulan_lalu' => $data_row_post_array1['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc2,
+                            'sd_bulan_ini' =>  $data_row_post_array1['sd_bulan_ini'] + $jumlah_mc2,
 
-                    // 4
+                        ];
+                        $data_arrayku2 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc2, $updateAray2);
+                        $mc_real2 = $data_arrayku2['id_mc'];
+                    } else {
+                        // 2
+                    }
+                    if (isset($data_mc[3])) {
+                        // 2
+                        // 3
+                        $data_row_post_array2 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real2);
+                        $updateAray3 = [
+                            'sd_bulan_lalu' => $data_row_post_array2['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc3,
+                            'sd_bulan_ini' =>  $data_row_post_array2['sd_bulan_ini'] + $jumlah_mc3,
+
+                        ];
+                        $data_arrayku3 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc3, $updateAray3);
+                        $mc_real3 = $data_arrayku3['id_mc'];
+                    } else {
+                        // 3
+                    }
+
+                    if (isset($data_mc[4])) {
+                        // 1
+                        // 2
+                        $data_row_post_array3 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real3);
+                        $updateAray4 = [
+                            'sd_bulan_lalu' => $data_row_post_array3['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc4,
+                            'sd_bulan_ini' =>  $data_row_post_array3['sd_bulan_ini'] + $jumlah_mc4,
+
+                        ];
+                        $data_arrayku4 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc4, $updateAray4);
+                        $mc_real4 = $data_arrayku4['id_mc'];
+                    } else {
+
+                        // 4
+                    }
+                    if (isset($data_mc[5])) {
+                        // 4
+                        // 5
+                        $data_row_post_array4 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real4);
+                        $updateAray5 = [
+                            'sd_bulan_lalu' => $data_row_post_array4['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc5,
+                            'sd_bulan_ini' =>  $data_row_post_array4['sd_bulan_ini'] + $jumlah_mc5,
+
+                        ];
+                        $data_arrayku5 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc5, $updateAray5);
+                        $mc_real5 = $data_arrayku5['id_mc'];
+                    } else {
+                        // 5
+                    }
+                    if (isset($data_mc[6])) {
+                        // 6
+                        // 5
+                        $data_row_post_array5 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real5);
+                        $updateAray6 = [
+                            'sd_bulan_lalu' => $data_row_post_array5['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc6,
+                            'sd_bulan_ini' =>  $data_row_post_array5['sd_bulan_ini'] + $jumlah_mc6,
+
+                        ];
+                        $data_arrayku6 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc6, $updateAray6);
+                        $mc_real6 = $data_arrayku6['id_mc'];
+                    } else {
+                        // 6
+                    }
+                    if (isset($data_mc[7])) {
+                        // 7
+                        // 6
+                        $data_row_post_array6 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real6);
+                        $updateAray7 = [
+                            'sd_bulan_lalu' => $data_row_post_array6['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc7,
+                            'sd_bulan_ini' =>  $data_row_post_array6['sd_bulan_ini'] + $jumlah_mc7,
+
+                        ];
+                        $data_arrayku7 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc7, $updateAray7);
+                        $mc_real7 = $data_arrayku7['id_mc'];
+                    } else {
+                        // 7
+                    }
+                    if (isset($data_mc[8])) {
+                        // 8
+                        // 7
+                        $data_row_post_array7 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real7);
+                        $updateAray8 = [
+                            'sd_bulan_lalu' => $data_row_post_array7['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc8,
+                            'sd_bulan_ini' =>  $data_row_post_array7['sd_bulan_ini'] + $jumlah_mc8,
+
+                        ];
+                        $data_arrayku8 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc8, $updateAray8);
+                        $mc_real8 = $data_arrayku8['id_mc'];
+                    } else {
+                        // 8
+                    }
+                    if (isset($data_mc[9])) {
+                        // 9
+                        // 8
+                        $data_row_post_array8 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real8);
+                        $updateAray9 = [
+                            'sd_bulan_lalu' => $data_row_post_array8['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc9,
+                            'sd_bulan_ini' =>  $data_row_post_array8['sd_bulan_ini'] + $jumlah_mc9,
+
+                        ];
+                        $data_arrayku9 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc9, $updateAray9);
+                        $mc_real9 = $data_arrayku9['id_mc'];
+                    } else {
+                        // 9
+                    }
+                    if (isset($data_mc[10])) {
+                        // 10
+                        // 9
+                        $data_row_post_array9 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real9);
+                        $updateAray10 = [
+                            'sd_bulan_lalu' => $data_row_post_array9['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc10,
+                            'sd_bulan_ini' =>  $data_row_post_array9['sd_bulan_ini'] + $jumlah_mc10,
+
+                        ];
+                        $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
+                        $mc_real10 = $data_arrayku10['id_mc'];
+                    } else {
+                    }
                 }
-                if (isset($data_mc[5])) {
-                    // 4
-                    // 5
-                    $data_row_post_array4 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real4);
-                    $updateAray5 = [
-                        'sd_bulan_lalu' => $data_row_post_array4['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc5,
-                        'sd_bulan_ini' =>  $data_row_post_array4['sd_bulan_ini'] + $jumlah_mc5,
-
-                    ];
-                    $data_arrayku5 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc5, $updateAray5);
-                    $mc_real5 = $data_arrayku5['id_mc'];
-                } else {
-                    // 5
-                }
-                if (isset($data_mc[6])) {
-                    // 6
-                    // 5
-                    $data_row_post_array5 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real5);
-                    $updateAray6 = [
-                        'sd_bulan_lalu' => $data_row_post_array5['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc6,
-                        'sd_bulan_ini' =>  $data_row_post_array5['sd_bulan_ini'] + $jumlah_mc6,
-
-                    ];
-                    $data_arrayku6 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc6, $updateAray6);
-                    $mc_real6 = $data_arrayku6['id_mc'];
-                } else {
-                    // 6
-                }
-                if (isset($data_mc[7])) {
-                    // 7
-                    // 6
-                    $data_row_post_array6 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real6);
-                    $updateAray7 = [
-                        'sd_bulan_lalu' => $data_row_post_array6['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc7,
-                        'sd_bulan_ini' =>  $data_row_post_array6['sd_bulan_ini'] + $jumlah_mc7,
-
-                    ];
-                    $data_arrayku7 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc7, $updateAray7);
-                    $mc_real7 = $data_arrayku7['id_mc'];
-                } else {
-                    // 7
-                }
-                if (isset($data_mc[8])) {
-                    // 8
-                    // 7
-                    $data_row_post_array7 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real7);
-                    $updateAray8 = [
-                        'sd_bulan_lalu' => $data_row_post_array7['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc8,
-                        'sd_bulan_ini' =>  $data_row_post_array7['sd_bulan_ini'] + $jumlah_mc8,
-
-                    ];
-                    $data_arrayku8 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc8, $updateAray8);
-                    $mc_real8 = $data_arrayku8['id_mc'];
-                } else {
-                    // 8
-                }
-                if (isset($data_mc[9])) {
-                    // 9
-                    // 8
-                    $data_row_post_array8 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real8);
-                    $updateAray9 = [
-                        'sd_bulan_lalu' => $data_row_post_array8['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc9,
-                        'sd_bulan_ini' =>  $data_row_post_array8['sd_bulan_ini'] + $jumlah_mc9,
-
-                    ];
-                    $data_arrayku9 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc9, $updateAray9);
-                    $mc_real9 = $data_arrayku9['id_mc'];
-                } else {
-                    // 9
-                }
-                if (isset($data_mc[10])) {
-                    // 10
-                    // 9
-                    $data_row_post_array9 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real9);
-                    $updateAray10 = [
-                        'sd_bulan_lalu' => $data_row_post_array9['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc10,
-                        'sd_bulan_ini' =>  $data_row_post_array9['sd_bulan_ini'] + $jumlah_mc10,
-
-                    ];
-                    $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
-                    $mc_real10 = $data_arrayku10['id_mc'];
-                } else { }
             } else {
                 $data = [
                     'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
@@ -780,198 +1390,214 @@ class Tagihan_kontrak extends CI_Controller
                 ];
 
                 $this->Taggihan_kontrak_admin_model->update_mc($data, $id_mc);
-                $data_mc = $this->Taggihan_kontrak_admin_model->generate_update($ambil_kontrak_edit, $ambil_no_mc_edit);
-                // array_bulan_ini
-                $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
-                // var_dump($data_mc[1]['id_mc']);
-                // die;
-                if (!isset($data_mc[1])) { } else {
-                    $id_mc1 = $data_mc[1]['id_mc'];
-                    $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
-                }
-
-                if (!isset($data_mc[2])) { } else {
-                    $id_mc2 = $data_mc[2]['id_mc'];
-                    $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
-                }
-                if (!isset($data_mc[3])) { } else {
-                    $id_mc3 = $data_mc[3]['id_mc'];
-                    $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
-                }
-
-                if (!isset($data_mc[4])) { } else {
-                    $id_mc4 = $data_mc[4]['id_mc'];
-                    $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
-                }
-                if (!isset($data_mc[5])) { } else {
-                    $id_mc5 = $data_mc[5]['id_mc'];
-                    $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
-                }
-                if (!isset($data_mc[6])) { } else {
-                    $id_mc6 = $data_mc[6]['id_mc'];
-                    $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
-                }
-                if (!isset($data_mc[7])) { } else {
-                    $id_mc7 = $data_mc[7]['id_mc'];
-                    $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
-                }
-                if (!isset($data_mc[8])) { } else {
-                    $id_mc8 = $data_mc[8]['id_mc'];
-                    $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
-                }
-                if (!isset($data_mc[9])) { } else {
-                    $id_mc9 = $data_mc[9]['id_mc'];
-                    $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
-                }
-                if (!isset($data_mc[10])) { } else {
-                    $id_mc10 = $data_mc[10]['id_mc'];
-                    $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
-                }
-
-                // 1
-                if (isset($data_mc[1])) {
-                    $updateAray1 = [
-                        'sd_bulan_lalu' => $sd_bulan_ini0,
-                        'jumlah_mc' => $jumlah_mc1,
-                        'sd_bulan_ini' =>  $sd_bulan_ini0 + $jumlah_mc1,
-
-                    ];
-                    $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
-                    $mc_real1 = $data_arrayku1['id_mc'];
-                } else { }
-                if (isset($data_mc[2])) {
-                    $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
-                    $updateAray2 = [
-                        'sd_bulan_lalu' => $data_row_post_array1['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc2,
-                        'sd_bulan_ini' =>  $data_row_post_array1['sd_bulan_ini'] + $jumlah_mc2,
-
-                    ];
-                    $data_arrayku2 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc2, $updateAray2);
-                    $mc_real2 = $data_arrayku2['id_mc'];
+                if ($data_no_mc == 1) {
+                    # code...
                 } else {
-                    // 2
-                }
-                if (isset($data_mc[3])) {
-                    // 2
-                    // 3
-                    $data_row_post_array2 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real2);
-                    $updateAray3 = [
-                        'sd_bulan_lalu' => $data_row_post_array2['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc3,
-                        'sd_bulan_ini' =>  $data_row_post_array2['sd_bulan_ini'] + $jumlah_mc3,
+                    $data_mc = $this->Taggihan_kontrak_admin_model->generate_update($ambil_kontrak_edit, $ambil_no_mc_edit);
+                    // array_bulan_ini
+                    $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
+                    // var_dump($data_mc[1]['id_mc']);
+                    // die;
+                    if (!isset($data_mc[1])) {
+                    } else {
+                        $id_mc1 = $data_mc[1]['id_mc'];
+                        $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
+                    }
 
-                    ];
-                    $data_arrayku3 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc3, $updateAray3);
-                    $mc_real3 = $data_arrayku3['id_mc'];
-                } else {
-                    // 3
-                }
+                    if (!isset($data_mc[2])) {
+                    } else {
+                        $id_mc2 = $data_mc[2]['id_mc'];
+                        $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[3])) {
+                    } else {
+                        $id_mc3 = $data_mc[3]['id_mc'];
+                        $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
+                    }
 
-                if (isset($data_mc[4])) {
+                    if (!isset($data_mc[4])) {
+                    } else {
+                        $id_mc4 = $data_mc[4]['id_mc'];
+                        $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[5])) {
+                    } else {
+                        $id_mc5 = $data_mc[5]['id_mc'];
+                        $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[6])) {
+                    } else {
+                        $id_mc6 = $data_mc[6]['id_mc'];
+                        $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[7])) {
+                    } else {
+                        $id_mc7 = $data_mc[7]['id_mc'];
+                        $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[8])) {
+                    } else {
+                        $id_mc8 = $data_mc[8]['id_mc'];
+                        $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[9])) {
+                    } else {
+                        $id_mc9 = $data_mc[9]['id_mc'];
+                        $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
+                    }
+                    if (!isset($data_mc[10])) {
+                    } else {
+                        $id_mc10 = $data_mc[10]['id_mc'];
+                        $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
+                    }
+
                     // 1
-                    // 2
-                    $data_row_post_array3 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real3);
-                    $updateAray4 = [
-                        'sd_bulan_lalu' => $data_row_post_array3['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc4,
-                        'sd_bulan_ini' =>  $data_row_post_array3['sd_bulan_ini'] + $jumlah_mc4,
+                    if (isset($data_mc[1])) {
+                        $updateAray1 = [
+                            'sd_bulan_lalu' => $sd_bulan_ini0,
+                            'jumlah_mc' => $jumlah_mc1,
+                            'sd_bulan_ini' =>  $sd_bulan_ini0 + $jumlah_mc1,
 
-                    ];
-                    $data_arrayku4 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc4, $updateAray4);
-                    $mc_real4 = $data_arrayku4['id_mc'];
-                } else {
+                        ];
+                        $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
+                        $mc_real1 = $data_arrayku1['id_mc'];
+                    } else {
+                    }
+                    if (isset($data_mc[2])) {
+                        $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
+                        $updateAray2 = [
+                            'sd_bulan_lalu' => $data_row_post_array1['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc2,
+                            'sd_bulan_ini' =>  $data_row_post_array1['sd_bulan_ini'] + $jumlah_mc2,
 
-                    // 4
+                        ];
+                        $data_arrayku2 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc2, $updateAray2);
+                        $mc_real2 = $data_arrayku2['id_mc'];
+                    } else {
+                        // 2
+                    }
+                    if (isset($data_mc[3])) {
+                        // 2
+                        // 3
+                        $data_row_post_array2 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real2);
+                        $updateAray3 = [
+                            'sd_bulan_lalu' => $data_row_post_array2['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc3,
+                            'sd_bulan_ini' =>  $data_row_post_array2['sd_bulan_ini'] + $jumlah_mc3,
+
+                        ];
+                        $data_arrayku3 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc3, $updateAray3);
+                        $mc_real3 = $data_arrayku3['id_mc'];
+                    } else {
+                        // 3
+                    }
+
+                    if (isset($data_mc[4])) {
+                        // 1
+                        // 2
+                        $data_row_post_array3 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real3);
+                        $updateAray4 = [
+                            'sd_bulan_lalu' => $data_row_post_array3['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc4,
+                            'sd_bulan_ini' =>  $data_row_post_array3['sd_bulan_ini'] + $jumlah_mc4,
+
+                        ];
+                        $data_arrayku4 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc4, $updateAray4);
+                        $mc_real4 = $data_arrayku4['id_mc'];
+                    } else {
+
+                        // 4
+                    }
+                    if (isset($data_mc[5])) {
+                        // 4
+                        // 5
+                        $data_row_post_array4 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real4);
+                        $updateAray5 = [
+                            'sd_bulan_lalu' => $data_row_post_array4['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc5,
+                            'sd_bulan_ini' =>  $data_row_post_array4['sd_bulan_ini'] + $jumlah_mc5,
+
+                        ];
+                        $data_arrayku5 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc5, $updateAray5);
+                        $mc_real5 = $data_arrayku5['id_mc'];
+                    } else {
+                        // 5
+                    }
+                    if (isset($data_mc[6])) {
+                        // 6
+                        // 5
+                        $data_row_post_array5 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real5);
+                        $updateAray6 = [
+                            'sd_bulan_lalu' => $data_row_post_array5['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc6,
+                            'sd_bulan_ini' =>  $data_row_post_array5['sd_bulan_ini'] + $jumlah_mc6,
+
+                        ];
+                        $data_arrayku6 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc6, $updateAray6);
+                        $mc_real6 = $data_arrayku6['id_mc'];
+                    } else {
+                        // 6
+                    }
+                    if (isset($data_mc[7])) {
+                        // 7
+                        // 6
+                        $data_row_post_array6 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real6);
+                        $updateAray7 = [
+                            'sd_bulan_lalu' => $data_row_post_array6['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc7,
+                            'sd_bulan_ini' =>  $data_row_post_array6['sd_bulan_ini'] + $jumlah_mc7,
+
+                        ];
+                        $data_arrayku7 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc7, $updateAray7);
+                        $mc_real7 = $data_arrayku7['id_mc'];
+                    } else {
+                        // 7
+                    }
+                    if (isset($data_mc[8])) {
+                        // 8
+                        // 7
+                        $data_row_post_array7 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real7);
+                        $updateAray8 = [
+                            'sd_bulan_lalu' => $data_row_post_array7['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc8,
+                            'sd_bulan_ini' =>  $data_row_post_array7['sd_bulan_ini'] + $jumlah_mc8,
+
+                        ];
+                        $data_arrayku8 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc8, $updateAray8);
+                        $mc_real8 = $data_arrayku8['id_mc'];
+                    } else {
+                        // 8
+                    }
+                    if (isset($data_mc[9])) {
+                        // 9
+                        // 8
+                        $data_row_post_array8 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real8);
+                        $updateAray9 = [
+                            'sd_bulan_lalu' => $data_row_post_array8['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc9,
+                            'sd_bulan_ini' =>  $data_row_post_array8['sd_bulan_ini'] + $jumlah_mc9,
+
+                        ];
+                        $data_arrayku9 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc9, $updateAray9);
+                        $mc_real9 = $data_arrayku9['id_mc'];
+                    } else {
+                        // 9
+                    }
+                    if (isset($data_mc[10])) {
+                        // 10
+                        // 9
+                        $data_row_post_array9 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real9);
+                        $updateAray10 = [
+                            'sd_bulan_lalu' => $data_row_post_array9['sd_bulan_ini'],
+                            'jumlah_mc' => $jumlah_mc10,
+                            'sd_bulan_ini' =>  $data_row_post_array9['sd_bulan_ini'] + $jumlah_mc10,
+
+                        ];
+                        $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
+                        $mc_real10 = $data_arrayku10['id_mc'];
+                    } else {
+                    }
                 }
-                if (isset($data_mc[5])) {
-                    // 4
-                    // 5
-                    $data_row_post_array4 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real4);
-                    $updateAray5 = [
-                        'sd_bulan_lalu' => $data_row_post_array4['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc5,
-                        'sd_bulan_ini' =>  $data_row_post_array4['sd_bulan_ini'] + $jumlah_mc5,
-
-                    ];
-                    $data_arrayku5 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc5, $updateAray5);
-                    $mc_real5 = $data_arrayku5['id_mc'];
-                } else {
-                    // 5
-                }
-                if (isset($data_mc[6])) {
-                    // 6
-                    // 5
-                    $data_row_post_array5 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real5);
-                    $updateAray6 = [
-                        'sd_bulan_lalu' => $data_row_post_array5['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc6,
-                        'sd_bulan_ini' =>  $data_row_post_array5['sd_bulan_ini'] + $jumlah_mc6,
-
-                    ];
-                    $data_arrayku6 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc6, $updateAray6);
-                    $mc_real6 = $data_arrayku6['id_mc'];
-                } else {
-                    // 6
-                }
-                if (isset($data_mc[7])) {
-                    // 7
-                    // 6
-                    $data_row_post_array6 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real6);
-                    $updateAray7 = [
-                        'sd_bulan_lalu' => $data_row_post_array6['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc7,
-                        'sd_bulan_ini' =>  $data_row_post_array6['sd_bulan_ini'] + $jumlah_mc7,
-
-                    ];
-                    $data_arrayku7 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc7, $updateAray7);
-                    $mc_real7 = $data_arrayku7['id_mc'];
-                } else {
-                    // 7
-                }
-                if (isset($data_mc[8])) {
-                    // 8
-                    // 7
-                    $data_row_post_array7 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real7);
-                    $updateAray8 = [
-                        'sd_bulan_lalu' => $data_row_post_array7['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc8,
-                        'sd_bulan_ini' =>  $data_row_post_array7['sd_bulan_ini'] + $jumlah_mc8,
-
-                    ];
-                    $data_arrayku8 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc8, $updateAray8);
-                    $mc_real8 = $data_arrayku8['id_mc'];
-                } else {
-                    // 8
-                }
-                if (isset($data_mc[9])) {
-                    // 9
-                    // 8
-                    $data_row_post_array8 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real8);
-                    $updateAray9 = [
-                        'sd_bulan_lalu' => $data_row_post_array8['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc9,
-                        'sd_bulan_ini' =>  $data_row_post_array8['sd_bulan_ini'] + $jumlah_mc9,
-
-                    ];
-                    $data_arrayku9 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc9, $updateAray9);
-                    $mc_real9 = $data_arrayku9['id_mc'];
-                } else {
-                    // 9
-                }
-                if (isset($data_mc[10])) {
-                    // 10
-                    // 9
-                    $data_row_post_array9 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real9);
-                    $updateAray10 = [
-                        'sd_bulan_lalu' => $data_row_post_array9['sd_bulan_ini'],
-                        'jumlah_mc' => $jumlah_mc10,
-                        'sd_bulan_ini' =>  $data_row_post_array9['sd_bulan_ini'] + $jumlah_mc10,
-
-                    ];
-                    $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
-                    $mc_real10 = $data_arrayku10['id_mc'];
-                } else { }
             }
         }
 
@@ -1023,45 +1649,55 @@ class Tagihan_kontrak extends CI_Controller
             $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
             // var_dump($data_mc[1]['id_mc']);
             // die;
-            if (!isset($data_mc[1])) { } else {
+            if (!isset($data_mc[1])) {
+            } else {
                 $id_mc1 = $data_mc[1]['id_mc'];
                 $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
             }
 
-            if (!isset($data_mc[2])) { } else {
+            if (!isset($data_mc[2])) {
+            } else {
                 $id_mc2 = $data_mc[2]['id_mc'];
                 $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
             }
-            if (!isset($data_mc[3])) { } else {
+            if (!isset($data_mc[3])) {
+            } else {
                 $id_mc3 = $data_mc[3]['id_mc'];
                 $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
             }
 
-            if (!isset($data_mc[4])) { } else {
+            if (!isset($data_mc[4])) {
+            } else {
                 $id_mc4 = $data_mc[4]['id_mc'];
                 $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
             }
-            if (!isset($data_mc[5])) { } else {
+            if (!isset($data_mc[5])) {
+            } else {
                 $id_mc5 = $data_mc[5]['id_mc'];
                 $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
             }
-            if (!isset($data_mc[6])) { } else {
+            if (!isset($data_mc[6])) {
+            } else {
                 $id_mc6 = $data_mc[6]['id_mc'];
                 $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
             }
-            if (!isset($data_mc[7])) { } else {
+            if (!isset($data_mc[7])) {
+            } else {
                 $id_mc7 = $data_mc[7]['id_mc'];
                 $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
             }
-            if (!isset($data_mc[8])) { } else {
+            if (!isset($data_mc[8])) {
+            } else {
                 $id_mc8 = $data_mc[8]['id_mc'];
                 $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
             }
-            if (!isset($data_mc[9])) { } else {
+            if (!isset($data_mc[9])) {
+            } else {
                 $id_mc9 = $data_mc[9]['id_mc'];
                 $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
             }
-            if (!isset($data_mc[10])) { } else {
+            if (!isset($data_mc[10])) {
+            } else {
                 $id_mc10 = $data_mc[10]['id_mc'];
                 $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
             }
@@ -1076,7 +1712,8 @@ class Tagihan_kontrak extends CI_Controller
                 ];
                 $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
                 $mc_real1 = $data_arrayku1['id_mc'];
-            } else { }
+            } else {
+            }
             if (isset($data_mc[2])) {
                 $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
                 $updateAray2 = [
@@ -1209,7 +1846,8 @@ class Tagihan_kontrak extends CI_Controller
                 ];
                 $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
                 $mc_real10 = $data_arrayku10['id_mc'];
-            } else { }
+            } else {
+            }
             // array_bulan_ini
         }
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
@@ -3818,7 +4456,8 @@ class Tagihan_kontrak extends CI_Controller
             $where = [
                 'id_mc' => $id_mc
             ];
-        } else { }
+        } else {
+        }
 
         $data = [
             'id_mc' => $id_mc,
@@ -4964,7 +5603,8 @@ class Tagihan_kontrak extends CI_Controller
             } else  if ($type == 'file_spmk_mc') {
                 $row[] = $angga->nama_file_spmk_mc;
                 $row[] = '<a href=' . base_url('/file_dokumen_mc' . '/' . $angga->file_spmk_mc) . '>' . '<img width="30px" src=' . base_url('assets/pdf.png') . ' >' . '</a>';
-            } else { }
+            } else {
+            }
             $data[] = $row;
         }
         $output = array(
@@ -5114,7 +5754,8 @@ class Tagihan_kontrak extends CI_Controller
                 $this->session->set_flashdata('error', $this->upload->display_errors());
                 redirect(base_url('upload'));
             }
-        } else { }
+        } else {
+        }
     }
 
     public function upload_excel()
@@ -5215,7 +5856,8 @@ class Tagihan_kontrak extends CI_Controller
 
         $cek_genrate = $this->Tagihan_kontrak_model->cek_genrate($id_mc, $get_mc['id_detail_program_penyedia_jasa']);
 
-        if ($cek_genrate) { } else {
+        if ($cek_genrate) {
+        } else {
 
             $data1 = [
                 'id_mc' => $id_mc,

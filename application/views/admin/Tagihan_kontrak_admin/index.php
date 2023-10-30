@@ -221,28 +221,27 @@
                                                                 <table id="tabledetail" class="table div1" style="font-family: RNSSanz-Black;text-transform: uppercase;">
                                                                     <thead class="text-center">
                                                                         <tr style="background-color:#193B53;">
-                                                                            <th style="font-size: 13px;color:white;width:250px" rowspan="2">Pekerjaan</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Penyedia</th>
                                                                             <th style="font-size: 13px;color:white; width:100px" rowspan="2">MC Ke</th>
                                                                             <th style="font-size: 13px;color:white; width:250px" rowspan="2">Periode</th>
                                                                             <th style="font-size: 13px;color:white; width:750px" colspan="3">Sebelum PPN</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" colspan="2">Sertifikat Bulan Ini</th>
+                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">PPN</th>
+                                                                            <th style="font-size: 13px;color:white; width:250px" colspan="3">Setelah PPN</th>
                                                                             <th style="font-size: 13px;color:white; width:250px" rowspan="2">Retensi</th>
                                                                             <th style="font-size: 13px;color:white; width:250px" rowspan="2">Pengembaliaan uang muka </th>
                                                                             <th style="font-size: 13px;color:white; width:250px" rowspan="2">Denda</th>
                                                                             <th style="font-size: 13px;color:white; width:250px" rowspan="2">Total Potongan</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Bobot</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Ppn Fp</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Status terakhir tracking</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Tanggal update tracking</th>
+                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Total Invoice</th>
+                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Status Tracking</th>
+                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Tanggal Update Tracking</th>
                                                                             <th style="font-size: 13px;color:white; width:250px" rowspan="2">Aksi</th>
                                                                         </tr>
                                                                         <tr class="table-warning">
                                                                             <th style="font-size: 13px;width:250px">S.D.Bulan Lalu</th>
                                                                             <th style="font-size: 13px;width:250px">Bulan Ini</th>
                                                                             <th style="font-size: 13px;width:250px">S.D Bulan Ini</th>
-                                                                            <th style="font-size: 13px;width:250px">PPN</th>
-                                                                            <th style="font-size: 13px;width:250px">Setelah PPN</th>
+                                                                            <th style="font-size: 13px;width:250px">S.D.Bulan Lalu</th>
+                                                                            <th style="font-size: 13px;width:250px">Bulan Ini</th>
+                                                                            <th style="font-size: 13px;width:250px">S.D Bulan Ini</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody class="result_datanya">
@@ -393,12 +392,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="">Bobot</label>
-                                            <input type="number" name="bobot" class="form-control" placeholder="Nilai Bobot" aria-describedby="helpId">
-                                        </div>
-                                    </div> -->
                                     <div class="col-md-6">
                                         <div id="jika_ada_um">
                                             <input type="hidden" name="cek_um">
@@ -419,13 +412,32 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="">No Mc</label>
-                                            <select name="no_mc_manipulasi" class="form-control">
+                                            <select name="no_mc_manipulasi" onchange="jika_mc_number()" class="form-control">
                                                 <option value="">--- Plih ---</option>
                                                 <option value="Um">Um</option>
                                                 <?php for ($i = 1; $i < 30; $i++) {  ?>
                                                     <option value="<?= $i ?>"> <?= $i ?> </option>
                                                 <?php  } ?>
                                             </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 sd_bln_lalu">
+                                        <label for="">Nilai S/D Bulan Lalu</label>
+                                        <div class="input-group mb-3">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="fa fa-money-bill-alt" aria-hidden="true"></i>
+                                                        </span>
+                                                        <input type="text" class="form-control" name="sd_bulan_lalu_number" id="nilai_sd_bulalan_lalu" aria-describedby="helpId" placeholder="Nilai S/D Bulan Lalu">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="text" disabled class="float-right form-control form-control-sm mt-1" style="width: 200px;" id="tanpa-rupiah-sd_bln_lalu">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <input type="hidden" class="form-control" name="jumlah_mc" id="jumlah_mc2" aria-describedby="helpId" placeholder="Jumlah Mc">
@@ -1061,62 +1073,66 @@
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    <div class="text-white">Edit MC</div>
+                    <div class="text-white">Update Bulan Ini</div>
                 </h5>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
             </div>
             <div class="modal-body">
                 <div class="modal-body">
                     <form action="javascript:;" id="form_mc_edit" method="post">
-                        <div class="form-group">
-                            <input type="hidden" name="jumlah_mc_edit">
-                            <input type="hidden" name="id_mc">
-                            <input type="hidden" name="data_no_mc">
-                            <label for="">No Kontrak</label>
-                            <input type="text" class="form-control" readonly name="id_detail_program_penyedia_jasau" aria-describedby="helpId" placeholder="">
-                            <small id="helpId" class="form-text text-muted">Otomartis Generate</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Periode mc</label>
-                            <input type="date" class="form-control" name="tanggal_mc" aria-describedby="helpId" placeholder="">
-                        </div>
-                        <label for="">Jumlah Mc</label>
-                        <div class="input-group mb-3">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-money-bill-alt" aria-hidden="true"></i>
-                                        </span>
-                                        <input type="text" class="form-control" name="jumlah_mc" id="jumlah_mc3" aria-describedby="helpId" placeholder="Jumlah Mc">
+                        <div class="row">
+                            <input type="hidden" name="id_detail_program_penyedia_jasa_edit">
+                            <input type="text" name="jumlah_mc_edit">
+                            <input type="hidden" name="id_mc_edit">
+                            <input type="text" name="data_no_mc_edit">
+                            <div class="col-md-12">
+                                <label for="">Jumlah Nilai Kontrak / Mc Bulan Ini</label>
+                                <div class="input-group mb-3">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fa fa-money-bill-alt" aria-hidden="true"></i>
+                                                </span>
+                                                <input type="text" style="font-size:11px" id="jumlah_mc4" class="form-control form-control-sm" name="jumlah_mc_biasa_edit">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="text" style="font-size:11px" disabled class="float-right form-control form-control-sm mt-1" style="width: 200px;" id="tanpa-rupiah-mc-4" name="jumlah_mc_rupiah">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <input type="text" disabled class="float-right form-control form-control-sm mt-1" style="width: 200px;" id="tanpa-rupiah2">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="hidden" name="tanggal_mc">
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="">PPN</label>
-                            <select name="persen_ppn" class="form-control">
-                                <option value="">--- Pilih PPN ---</option>
-                                <option value="10">10%</option>
-                                <option value="11">11%</option>
-                            </select>
-                        </div>
-                        <div id="jika_ada_um_edit">
-                            <input type="text" name="cek_um">
-                            <input type="text" readonly class="form-control" name="jika_no_urut">
-                        </div>
-                        <div id="jika_tidak_ada_um_edit">
-                            <div class="form-group">
-                                <label for="">Jenis Mc</label>
-                                <select name="cek_um" class="form-control">
-                                    <option value="">--- Plih ---</option>
-                                    <option value="ada">Um</option>
-                                    <option id="no_urut_mc_edit" value="tidak ada">
-                                    </option>
-                                </select>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="hidden" name="nilai_retensi_tanpa_persen">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="hidden" name="nilai_retensi">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="hidden" name="nilai_uang_muka">
+                                </div>
+                            </div>
+                            <input type="hidden" name="bobot_nilai">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="hidden" name="denda">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="hidden" name="persen_ppn">
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -1126,10 +1142,6 @@
                     </form>
                 </div>
             </div>
-            <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div> -->
         </div>
     </div>
 </div>

@@ -450,11 +450,11 @@ $hasil_bobot  = round($hasil_bobot1 * 100);
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <?php if ($row_mc['no_mc'] == 'um') { ?>
-                                                                            <input type="hidden" value="" name="jumlah_mc_edit">
+                                                                            <input type="hidden" value="<?= $row_mc['sd_bulan_ini'] ?>" name="jumlah_mc_edit">
                                                                         <?php  } else if ($row_mc['no_mc'] == '1') { ?>
-                                                                            <input type="hidden" value="" name="jumlah_mc_edit">
+                                                                            <input type="hidden" value="<?= $row_mc['sd_bulan_ini'] ?>" name="jumlah_mc_edit">
                                                                         <?php  } else { ?>
-                                                                            <input type="hidden" value="<?= $total_mc_sebelum_edit['sd_bulan_ini'] ?>" name="jumlah_mc_edit">
+                                                                            <input type="hidden" value="<?= $row_mc['sd_bulan_ini'] ?>" name="jumlah_mc_edit">
                                                                         <?php   }
                                                                         ?>
 

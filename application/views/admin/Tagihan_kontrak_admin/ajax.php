@@ -69,9 +69,9 @@
                         var hasil_bulan_lalu = response['get_detail_taggihan'][i].sd_bulan_lalu;
                         var hasil_jumlah_mc = response['get_detail_taggihan'][i].jumlah_mc;
                         if (response['get_detail_taggihan'][i].no_mc == 'um') {
-                            var sd_bulan_lalu = ''
+                            var sd_bulan_lalu = 'Rp. ' + hasil_bulan_lalu.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00'
                         } else if (response['get_detail_taggihan'][i].no_mc == '1') {
-                            var sd_bulan_lalu = ''
+                            var sd_bulan_lalu = 'Rp. ' + hasil_bulan_lalu.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00'
                         } else {
                             var sd_bulan_lalu = 'Rp. ' + hasil_bulan_lalu.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00'
                         }
@@ -85,9 +85,9 @@
                         }
 
                         if (response['get_detail_taggihan'][i].no_mc == 'um') {
-                            var sd_bulan_ini = 'Rp. ' + response['get_detail_taggihan'][i].jumlah_mc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00'
+                            var sd_bulan_ini = 'Rp. ' + response['get_detail_taggihan'][i].sd_bulan_ini.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00'
                         } else if (response['get_detail_taggihan'][i].no_mc == '1') {
-                            var sd_bulan_ini = 'Rp. ' + response['get_detail_taggihan'][i].jumlah_mc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00'
+                            var sd_bulan_ini = 'Rp. ' + response['get_detail_taggihan'][i].sd_bulan_ini.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00'
                         } else {
                             var sd_bulan_ini = 'Rp. ' + response['get_detail_taggihan'][i].sd_bulan_ini.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00'
                         }
@@ -118,24 +118,6 @@
                             }
                         }
 
-
-                        // if (response['vendor_session']) {
-                        //     if (response['get_detail_taggihan'][i].status_penaggihan == 1) {
-                        //         var action = '<a style="font-size:10px" class="btn btn-sm btn-block btn-primary text-white" onclick="Traking_area2(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-eye" aria-hidden="true"></i> View Traking</a> <a style="font-size:10px" class="btn btn-sm btn-block btn-warning text-white" onclick="Edit_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Kelola Mc</a>'
-
-                        //     } else {
-                        //         if (response['get_detail_taggihan'][i].status_penaggihan == 2) {
-                        //             if (response['get_detail_taggihan'][i].status_pencairan == 1) {} else {
-                        //                 var action = '<a style="font-size:10px" class="btn btn-sm btn-block btn-success text-white" onclick="Traking_area2(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-credit-card" aria-hidden="true"></i> Pencairan</a>'
-                        //             }
-
-                        //         } else {
-                        //             var action = '<a style="font-size:10px" class="btn btn-sm btn-block btn-primary text-white" onclick="Traking_area2(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-eye" aria-hidden="true"></i> View Traking</a> <a style="font-size:10px" class="btn btn-sm btn-block btn-warning text-white" onclick="Edit_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Kelola Mc</a>'
-                        //         }
-                        //     }
-                        // } else {
-
-                        // }
 
                         if (response['get_detail_taggihan'][i].status_penaggihan == 1) {
                             var action = '<a style="font-size:10px" class="btn btn-sm btn-block btn-primary text-white" onclick="Traking_area2(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-eye" aria-hidden="true"></i> View Traking</a><a style="font-size:10px" class="btn btn-sm btn-block btn-warning text-white" onclick="Edit_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Kelola Mc</a>'
@@ -184,25 +166,27 @@
                             }
                         }
 
+                        var total_sd_setelah_ppn = parseInt(response['get_detail_taggihan'][i].sd_bulan_lalu) + parseInt(response['get_detail_taggihan'][i].setelah_ppn);
+
                         // logika potongan
                         var total_potongan = parseInt(nilai_retensi) + parseInt(response['get_detail_taggihan'][i].nilai_uang_muka) + parseInt(response['get_detail_taggihan'][i].denda);
-
+                        var total_invoice = parseInt(total_sd_setelah_ppn) - parseInt(nilai_retensi);
                         html +=
-                            '<tr style="font-size:12px">' + nama_pekerjaan_program_mata_anggaran + '' +
-                            '<td style="font-size:12px" class = "tg-d2hi">' + response['row_kontrak'].nama_penyedia + '</td>' +
+                            '<tr style="font-size:12px">' +
                             '<td style="font-size:12px" class = "tg-d2hi">' + response['get_detail_taggihan'][i].no_mc_manipulasi + '</td>' +
                             '<td style="font-size:12px" class = "tg-d2hi">' + response['get_detail_taggihan'][i].tanggal_mc + ' </td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi">' + sd_bulan_lalu + ' </td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi"> ' + bulan_ini + ' </td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi"> ' + sd_bulan_ini + ' </td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi"> ' + 'Rp. ' + response['get_detail_taggihan'][i].ppn_total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + ' </td> ' +
+                            '<td style="font-size:12px" class = "tg-d2hi">' + sd_bulan_lalu + ' </td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi"> ' + 'Rp. ' + response['get_detail_taggihan'][i].setelah_ppn.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + ' </td> ' +
+                            '<td style="font-size:12px" class = "tg-d2hi"> ' + 'Rp. ' + total_sd_setelah_ppn.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + ' </td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi"> ' + 'Rp. ' + nilai_retensi.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + '</td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi"> ' + 'Rp. ' + response['get_detail_taggihan'][i].nilai_uang_muka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + '</td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi"> ' + 'Rp. ' + response['get_detail_taggihan'][i].denda.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + ' </td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi">' + 'Rp. ' + total_potongan.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + '</td> ' +
-                            '<td style="font-size:12px" class = "tg-d2hi"> ' + response['get_detail_taggihan'][i].bobot + '% </td> ' +
-                            '<td style="font-size:12px" class = "tg-d2hi"> PPN FP </td> ' +
+                            '<td style="font-size:12px" class = "tg-d2hi">' + 'Rp. ' + total_invoice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + '</td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi">' + sts_trakhir + '</td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi">' + tanggal_trakhir + ' </td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi">' + action + '</td> ' +
@@ -253,38 +237,36 @@
 
 
     function Edit_traking(id) {
-        window.open('<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/kelola_mc/') ?>' + id, '_blank');
-        // var edit_mc = $('#edit_mc')
-        // $.ajax({
-        //     type: "POST",
-        //     url: "<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/by_id_mc/') ?>" + id,
-        //     dataType: "JSON",
-        //     success: function(response) {
-        //         edit_mc.modal('show');
-        //         $('#no_urut_mc_edit').text('Nomor Mc Ke' + response['row_mc'].no_mc);
-        //         if (response['jika_ada_um_edit']) {
-        //             $('#jika_ada_um_edit').css('display', 'block');
-        //             $('#jika_tidak_ada_um_edit').css('display', 'none');
-        //             $('[name="jika_no_urut"]').val('Nomor Mc Ke ' + response['row_mc'].no_mc);
-        //             $('[name="cek_um"]').val('tidak ada');
-        //         } else {
-        //             $('#jika_ada_um_edit').css('display', 'none');
-        //             $('#jika_tidak_ada_um_edit').css('display', 'block');
-        //         }
-        //         $('[name="tanggal_mc"]').val(response['row_mc'].tanggal_mc);
-        //         $('[name="jumlah_mc"]').val(response['row_mc'].jumlah_mc);
-        //         if (response['row_mc'].no_mc == 'um') {
-        //             $('[name="jumlah_mc_edit"]').val('');
-        //         } else if (response['row_mc'].no_mc == '1') {
-        //             $('[name="jumlah_mc_edit"]').val();
-        //         } else {
-        //             $('[name="jumlah_mc_edit"]').val(response['total_mc_sebelum_edit'].sd_bulan_ini);
-        //         }
-        //         $('[name="persen_ppn"]').val(response['row_mc'].persen_ppn);
-        //         $('[name="data_no_mc"]').val(response['row_mc'].no_mc);
-        //         $('[name="id_mc"]').val(response['row_mc'].id_mc);
-        //     }
-        // });
+        // window.open('<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/kelola_mc/') ?>' + id, '_blank');
+        var edit_mc = $('#edit_mc')
+        edit_mc.modal('show');
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/by_id_mc/') ?>" + id,
+            dataType: "JSON",
+            success: function(response) {
+                edit_mc.modal('show');
+                $('#no_urut_mc_edit').text('Nomor Mc Ke' + response['row_mc'].no_mc);
+                $('[name="tanggal_mc"]').val(response['row_mc'].tanggal_mc);
+                $('[name="nilai_retensi_tanpa_persen"]').val(response['row_mc'].nilai_retensi);
+                $('[name="nilai_retensi"]').val(response['row_mc'].nilai_retensi);
+                $('[name="nilai_uang_muka"]').val(response['row_mc'].tanggal_mc);
+                $('[name="denda"]').val(response['row_mc'].denda);
+                $('[name="persen_ppn"]').val(response['row_mc'].persen_ppn);
+                if (response['row_mc'].no_mc == 'um') {
+                    $('[name="jumlah_mc_edit"]').val();
+                } else if (response['row_mc'].no_mc == '1') {
+                    $('[name="jumlah_mc_edit"]').val(response['row_mc'].sd_bulan_ini);
+                } else {
+                    $('[name="jumlah_mc_edit"]').val(response['total_mc_sebelum_edit'].sd_bulan_ini);
+                }
+                $('[name="jumlah_mc_rupiah"]').val('Rp. ' + response['row_mc'].jumlah_mc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00');
+                $('[name="id_detail_program_penyedia_jasa_edit"]').val(response['row_mc'].id_detail_program_penyedia_jasa);
+                $('[name="jumlah_mc_biasa_edit"]').val(response['row_mc'].jumlah_mc);
+                $('[name="data_no_mc_edit"]').val(response['row_mc'].no_mc);
+                $('[name="id_mc_edit"]').val(response['row_mc'].id_mc);
+            }
+        });
     }
 
     // <
@@ -410,7 +392,7 @@
     function Simpan_edit_traking() {
         $.ajax({
             method: "POST",
-            url: "<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/edit_mc') ?>",
+            url: "<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/edit_mc_baru') ?>",
             data: $('#form_mc_edit').serialize(),
             dataType: "JSON",
             success: function(response) {
@@ -1044,6 +1026,31 @@
 
     toggleButton.onclick = toggleComplete;
 </script>
+
+<script>
+    $("#jumlah_mc4").keyup(function() {
+        var harga = $("#jumlah_mc4").val();
+        var tanpa_rupiah = document.getElementById('tanpa-rupiah-mc-4');
+        tanpa_rupiah.value = formatRupiah(this.value, 'Rp. ');
+        /* Fungsi */
+        function formatRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                split = number_string.split(','),
+                sisa = split[0].length % 3,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+        }
+    });
+</script>
+
 <script>
     $("#jumlah_mc2").keyup(function() {
         var harga = $("#jumlah_mc2").val();
@@ -1147,6 +1154,30 @@
     $("#denda2").keyup(function() {
         var harga = $("#denda2").val();
         var tanpa_rupiah = document.getElementById('tanpa-rupiah-denda');
+        tanpa_rupiah.value = formatRupiah(this.value, 'Rp. ');
+        /* Fungsi */
+        function formatRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                split = number_string.split(','),
+                sisa = split[0].length % 3,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+        }
+    });
+</script>
+
+<script>
+    $("#nilai_sd_bulalan_lalu").keyup(function() {
+        var harga = $("#nilai_sd_bulalan_lalu").val();
+        var tanpa_rupiah = document.getElementById('tanpa-rupiah-sd_bln_lalu');
         tanpa_rupiah.value = formatRupiah(this.value, 'Rp. ');
         /* Fungsi */
         function formatRupiah(angka, prefix) {
@@ -3311,13 +3342,22 @@
 <script>
     function NilaiManipulasiMc() {
         var cek_um = $('[name="cek_um"]').val();
-        console.log(cek_um);
         if (cek_um == 'um') {
             $('.no_mc_manipulasi_um').css('display', 'block');
             $('.no_mc_manipulasi_number').css('display', 'none');
         } else {
             $('.no_mc_manipulasi_um').css('display', 'none');
             $('.no_mc_manipulasi_number').css('display', 'block');
+        }
+    }
+
+    function jika_mc_number() {
+        var no_mc_manipulasi = $('[name="no_mc_manipulasi"]').val();
+        if (no_mc_manipulasi == 'Um' || no_mc_manipulasi == 1) {
+            $('[name="sd_bulan_lalu"]').val('');
+            $('.sd_bln_lalu').css('display', 'none');
+        } else {
+            $('.sd_bln_lalu').css('display', 'block');
         }
     }
 </script>
