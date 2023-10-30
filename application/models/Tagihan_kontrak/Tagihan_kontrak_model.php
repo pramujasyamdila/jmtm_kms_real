@@ -482,9 +482,89 @@ class Tagihan_kontrak_model extends CI_Model
         return $query->row_array();
     }
 
+    public function insert_dok_mc_detail($data)
+    {
+        $this->db->insert('tbl_dok_mc_detail', $data);
+    }
+
     public function update_dok_mc($data, $where)
     {
         $this->db->where($where);
         $this->db->update('tbl_dok_mc', $data);
+    }
+
+    public function update_dok_mc_detail($data, $where)
+    {
+        $this->db->where($where);
+        $this->db->update('tbl_dok_mc_detail', $data);
+    }
+
+    public function delete_dok_mc_detail($where)
+    {
+        $this->db->where($where);
+        $this->db->delete('tbl_dok_mc_detail');
+    }
+
+    // load detail dokumen mc
+
+    var $table = 'tbl_dok_mc_detail';
+    var $field = array('id_dok_mc_detail', 'user_uploaded', 'status_verifikasi', 'keterangan', 'tgl_periksa', 'file_dokumen');
+    private function _get_data_query($id_dok_mc)
+    {
+        $i = 0;
+        $this->db->select('*');
+        $this->db->from('tbl_dok_mc_detail');
+        $this->db->where('id_dok_mc', $id_dok_mc);
+        foreach ($this->field as $item) // looping awal
+        {
+            if ($_POST['search']['value']) // jika datatable mengirimkan pencarian dengan metode POST
+            {
+
+                if ($i === 0) // looping awal
+                {
+                    $this->db->group_start();
+                    $this->db->like($item, $_POST['search']['value']);
+                } else {
+                    $this->db->or_like(
+                        $item,
+                        $_POST['search']['value']
+                    );
+                }
+
+                if (count($this->field) - 1 == $i)
+                    $this->db->group_end();
+            }
+            $i++;
+        }
+        if (isset($_POST['order'])) {
+            $this->db->order_by($this->field[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        } else {
+            $this->db->order_by('id_dok_mc_detail', 'DESC');
+        }
+    }
+
+    public function getdatatable($id_dok_mc) //nam[ilin data pake ini
+    {
+        $this->_get_data_query($id_dok_mc); //ambil data dari get yg di atas
+        if ($_POST['length'] != -1) {
+            $this->db->limit($_POST['length'], $_POST['start']);
+        }
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function count_filtered_data($id_dok_mc)
+    {
+        $this->_get_data_query($id_dok_mc); //ambil data dari get yg di atas
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function count_all_data($id_dok_mc)
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('id_dok_mc', $id_dok_mc);
+        $this->db->get();
+        return $this->db->count_all_results();
     }
 }

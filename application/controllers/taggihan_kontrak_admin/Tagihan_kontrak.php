@@ -299,55 +299,45 @@ class Tagihan_kontrak extends CI_Controller
         $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
         // var_dump($data_mc[1]['id_mc']);
         // die;
-        if (!isset($data_mc[1])) {
-        } else {
+        if (!isset($data_mc[1])) { } else {
             $id_mc1 = $data_mc[1]['id_mc'];
             $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
         }
 
-        if (!isset($data_mc[2])) {
-        } else {
+        if (!isset($data_mc[2])) { } else {
             $id_mc2 = $data_mc[2]['id_mc'];
             $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
         }
-        if (!isset($data_mc[3])) {
-        } else {
+        if (!isset($data_mc[3])) { } else {
             $id_mc3 = $data_mc[3]['id_mc'];
             $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
         }
 
-        if (!isset($data_mc[4])) {
-        } else {
+        if (!isset($data_mc[4])) { } else {
             $id_mc4 = $data_mc[4]['id_mc'];
             $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
         }
-        if (!isset($data_mc[5])) {
-        } else {
+        if (!isset($data_mc[5])) { } else {
             $id_mc5 = $data_mc[5]['id_mc'];
             $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
         }
-        if (!isset($data_mc[6])) {
-        } else {
+        if (!isset($data_mc[6])) { } else {
             $id_mc6 = $data_mc[6]['id_mc'];
             $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
         }
-        if (!isset($data_mc[7])) {
-        } else {
+        if (!isset($data_mc[7])) { } else {
             $id_mc7 = $data_mc[7]['id_mc'];
             $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
         }
-        if (!isset($data_mc[8])) {
-        } else {
+        if (!isset($data_mc[8])) { } else {
             $id_mc8 = $data_mc[8]['id_mc'];
             $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
         }
-        if (!isset($data_mc[9])) {
-        } else {
+        if (!isset($data_mc[9])) { } else {
             $id_mc9 = $data_mc[9]['id_mc'];
             $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
         }
-        if (!isset($data_mc[10])) {
-        } else {
+        if (!isset($data_mc[10])) { } else {
             $id_mc10 = $data_mc[10]['id_mc'];
             $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
         }
@@ -362,8 +352,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
             $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
             $mc_real1 = $data_arrayku1['id_mc'];
-        } else {
-        }
+        } else { }
         if (isset($data_mc[2])) {
             $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
             $updateAray2 = [
@@ -496,8 +485,7 @@ class Tagihan_kontrak extends CI_Controller
             ];
             $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
             $mc_real10 = $data_arrayku10['id_mc'];
-        } else {
-        }
+        } else { }
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 
@@ -619,55 +607,45 @@ class Tagihan_kontrak extends CI_Controller
                     $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
                     // var_dump($data_mc[1]['id_mc']);
                     // die;
-                    if (!isset($data_mc[1])) {
-                    } else {
+                    if (!isset($data_mc[1])) { } else {
                         $id_mc1 = $data_mc[1]['id_mc'];
                         $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
                     }
 
-                    if (!isset($data_mc[2])) {
-                    } else {
+                    if (!isset($data_mc[2])) { } else {
                         $id_mc2 = $data_mc[2]['id_mc'];
                         $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[3])) {
-                    } else {
+                    if (!isset($data_mc[3])) { } else {
                         $id_mc3 = $data_mc[3]['id_mc'];
                         $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
                     }
 
-                    if (!isset($data_mc[4])) {
-                    } else {
+                    if (!isset($data_mc[4])) { } else {
                         $id_mc4 = $data_mc[4]['id_mc'];
                         $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[5])) {
-                    } else {
+                    if (!isset($data_mc[5])) { } else {
                         $id_mc5 = $data_mc[5]['id_mc'];
                         $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[6])) {
-                    } else {
+                    if (!isset($data_mc[6])) { } else {
                         $id_mc6 = $data_mc[6]['id_mc'];
                         $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[7])) {
-                    } else {
+                    if (!isset($data_mc[7])) { } else {
                         $id_mc7 = $data_mc[7]['id_mc'];
                         $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[8])) {
-                    } else {
+                    if (!isset($data_mc[8])) { } else {
                         $id_mc8 = $data_mc[8]['id_mc'];
                         $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[9])) {
-                    } else {
+                    if (!isset($data_mc[9])) { } else {
                         $id_mc9 = $data_mc[9]['id_mc'];
                         $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[10])) {
-                    } else {
+                    if (!isset($data_mc[10])) { } else {
                         $id_mc10 = $data_mc[10]['id_mc'];
                         $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
                     }
@@ -681,8 +659,7 @@ class Tagihan_kontrak extends CI_Controller
                         ];
                         $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
                         $mc_real1 = $data_arrayku1['id_mc'];
-                    } else {
-                    }
+                    } else { }
                     if (isset($data_mc[2])) {
                         $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
                         $updateAray2 = [
@@ -815,8 +792,7 @@ class Tagihan_kontrak extends CI_Controller
                         ];
                         $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
                         $mc_real10 = $data_arrayku10['id_mc'];
-                    } else {
-                    }
+                    } else { }
                 }
             } else {
                 $data = [
@@ -844,61 +820,52 @@ class Tagihan_kontrak extends CI_Controller
                 if ($data_no_mc == 1) {
                     # code...
                 } else {
-                    var_dump('masuk_kesini');die;
+                    var_dump('masuk_kesini');
+                    die;
                     $data_mc = $this->Taggihan_kontrak_admin_model->generate_update($ambil_kontrak_edit, $ambil_no_mc_edit);
                     // array_bulan_ini
                     $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
                     // var_dump($data_mc[1]['id_mc']);
                     // die;
-                    if (!isset($data_mc[1])) {
-                    } else {
+                    if (!isset($data_mc[1])) { } else {
                         $id_mc1 = $data_mc[1]['id_mc'];
                         $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
                     }
 
-                    if (!isset($data_mc[2])) {
-                    } else {
+                    if (!isset($data_mc[2])) { } else {
                         $id_mc2 = $data_mc[2]['id_mc'];
                         $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[3])) {
-                    } else {
+                    if (!isset($data_mc[3])) { } else {
                         $id_mc3 = $data_mc[3]['id_mc'];
                         $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
                     }
 
-                    if (!isset($data_mc[4])) {
-                    } else {
+                    if (!isset($data_mc[4])) { } else {
                         $id_mc4 = $data_mc[4]['id_mc'];
                         $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[5])) {
-                    } else {
+                    if (!isset($data_mc[5])) { } else {
                         $id_mc5 = $data_mc[5]['id_mc'];
                         $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[6])) {
-                    } else {
+                    if (!isset($data_mc[6])) { } else {
                         $id_mc6 = $data_mc[6]['id_mc'];
                         $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[7])) {
-                    } else {
+                    if (!isset($data_mc[7])) { } else {
                         $id_mc7 = $data_mc[7]['id_mc'];
                         $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[8])) {
-                    } else {
+                    if (!isset($data_mc[8])) { } else {
                         $id_mc8 = $data_mc[8]['id_mc'];
                         $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[9])) {
-                    } else {
+                    if (!isset($data_mc[9])) { } else {
                         $id_mc9 = $data_mc[9]['id_mc'];
                         $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[10])) {
-                    } else {
+                    if (!isset($data_mc[10])) { } else {
                         $id_mc10 = $data_mc[10]['id_mc'];
                         $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
                     }
@@ -913,8 +880,7 @@ class Tagihan_kontrak extends CI_Controller
                         ];
                         $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
                         $mc_real1 = $data_arrayku1['id_mc'];
-                    } else {
-                    }
+                    } else { }
                     if (isset($data_mc[2])) {
                         $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
                         $updateAray2 = [
@@ -1047,8 +1013,7 @@ class Tagihan_kontrak extends CI_Controller
                         ];
                         $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
                         $mc_real10 = $data_arrayku10['id_mc'];
-                    } else {
-                    }
+                    } else { }
                 }
             }
         }
@@ -1169,55 +1134,45 @@ class Tagihan_kontrak extends CI_Controller
                     $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
                     // var_dump($data_mc[1]['id_mc']);
                     // die;
-                    if (!isset($data_mc[1])) {
-                    } else {
+                    if (!isset($data_mc[1])) { } else {
                         $id_mc1 = $data_mc[1]['id_mc'];
                         $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
                     }
 
-                    if (!isset($data_mc[2])) {
-                    } else {
+                    if (!isset($data_mc[2])) { } else {
                         $id_mc2 = $data_mc[2]['id_mc'];
                         $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[3])) {
-                    } else {
+                    if (!isset($data_mc[3])) { } else {
                         $id_mc3 = $data_mc[3]['id_mc'];
                         $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
                     }
 
-                    if (!isset($data_mc[4])) {
-                    } else {
+                    if (!isset($data_mc[4])) { } else {
                         $id_mc4 = $data_mc[4]['id_mc'];
                         $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[5])) {
-                    } else {
+                    if (!isset($data_mc[5])) { } else {
                         $id_mc5 = $data_mc[5]['id_mc'];
                         $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[6])) {
-                    } else {
+                    if (!isset($data_mc[6])) { } else {
                         $id_mc6 = $data_mc[6]['id_mc'];
                         $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[7])) {
-                    } else {
+                    if (!isset($data_mc[7])) { } else {
                         $id_mc7 = $data_mc[7]['id_mc'];
                         $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[8])) {
-                    } else {
+                    if (!isset($data_mc[8])) { } else {
                         $id_mc8 = $data_mc[8]['id_mc'];
                         $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[9])) {
-                    } else {
+                    if (!isset($data_mc[9])) { } else {
                         $id_mc9 = $data_mc[9]['id_mc'];
                         $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[10])) {
-                    } else {
+                    if (!isset($data_mc[10])) { } else {
                         $id_mc10 = $data_mc[10]['id_mc'];
                         $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
                     }
@@ -1231,8 +1186,7 @@ class Tagihan_kontrak extends CI_Controller
                         ];
                         $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
                         $mc_real1 = $data_arrayku1['id_mc'];
-                    } else {
-                    }
+                    } else { }
                     if (isset($data_mc[2])) {
                         $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
                         $updateAray2 = [
@@ -1365,8 +1319,7 @@ class Tagihan_kontrak extends CI_Controller
                         ];
                         $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
                         $mc_real10 = $data_arrayku10['id_mc'];
-                    } else {
-                    }
+                    } else { }
                 }
             } else {
                 $data = [
@@ -1403,49 +1356,40 @@ class Tagihan_kontrak extends CI_Controller
                         $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
                     }
 
-                    if (!isset($data_mc[2])) {
-                    } else {
+                    if (!isset($data_mc[2])) { } else {
                         $id_mc2 = $data_mc[2]['id_mc'];
                         $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[3])) {
-                    } else {
+                    if (!isset($data_mc[3])) { } else {
                         $id_mc3 = $data_mc[3]['id_mc'];
                         $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
                     }
 
-                    if (!isset($data_mc[4])) {
-                    } else {
+                    if (!isset($data_mc[4])) { } else {
                         $id_mc4 = $data_mc[4]['id_mc'];
                         $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[5])) {
-                    } else {
+                    if (!isset($data_mc[5])) { } else {
                         $id_mc5 = $data_mc[5]['id_mc'];
                         $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[6])) {
-                    } else {
+                    if (!isset($data_mc[6])) { } else {
                         $id_mc6 = $data_mc[6]['id_mc'];
                         $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[7])) {
-                    } else {
+                    if (!isset($data_mc[7])) { } else {
                         $id_mc7 = $data_mc[7]['id_mc'];
                         $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[8])) {
-                    } else {
+                    if (!isset($data_mc[8])) { } else {
                         $id_mc8 = $data_mc[8]['id_mc'];
                         $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[9])) {
-                    } else {
+                    if (!isset($data_mc[9])) { } else {
                         $id_mc9 = $data_mc[9]['id_mc'];
                         $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
                     }
-                    if (!isset($data_mc[10])) {
-                    } else {
+                    if (!isset($data_mc[10])) { } else {
                         $id_mc10 = $data_mc[10]['id_mc'];
                         $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
                     }
@@ -1460,8 +1404,7 @@ class Tagihan_kontrak extends CI_Controller
                         ];
                         $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
                         $mc_real1 = $data_arrayku1['id_mc'];
-                    } else {
-                    }
+                    } else { }
                     if (isset($data_mc[2])) {
                         $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
                         $updateAray2 = [
@@ -1594,8 +1537,7 @@ class Tagihan_kontrak extends CI_Controller
                         ];
                         $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
                         $mc_real10 = $data_arrayku10['id_mc'];
-                    } else {
-                    }
+                    } else { }
                 }
             }
         }
@@ -1648,55 +1590,45 @@ class Tagihan_kontrak extends CI_Controller
             $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
             // var_dump($data_mc[1]['id_mc']);
             // die;
-            if (!isset($data_mc[1])) {
-            } else {
+            if (!isset($data_mc[1])) { } else {
                 $id_mc1 = $data_mc[1]['id_mc'];
                 $jumlah_mc1 = $data_mc[1]['jumlah_mc'];
             }
 
-            if (!isset($data_mc[2])) {
-            } else {
+            if (!isset($data_mc[2])) { } else {
                 $id_mc2 = $data_mc[2]['id_mc'];
                 $jumlah_mc2 = $data_mc[2]['jumlah_mc'];
             }
-            if (!isset($data_mc[3])) {
-            } else {
+            if (!isset($data_mc[3])) { } else {
                 $id_mc3 = $data_mc[3]['id_mc'];
                 $jumlah_mc3 = $data_mc[3]['jumlah_mc'];
             }
 
-            if (!isset($data_mc[4])) {
-            } else {
+            if (!isset($data_mc[4])) { } else {
                 $id_mc4 = $data_mc[4]['id_mc'];
                 $jumlah_mc4 = $data_mc[4]['jumlah_mc'];
             }
-            if (!isset($data_mc[5])) {
-            } else {
+            if (!isset($data_mc[5])) { } else {
                 $id_mc5 = $data_mc[5]['id_mc'];
                 $jumlah_mc5 = $data_mc[5]['jumlah_mc'];
             }
-            if (!isset($data_mc[6])) {
-            } else {
+            if (!isset($data_mc[6])) { } else {
                 $id_mc6 = $data_mc[6]['id_mc'];
                 $jumlah_mc6 = $data_mc[6]['jumlah_mc'];
             }
-            if (!isset($data_mc[7])) {
-            } else {
+            if (!isset($data_mc[7])) { } else {
                 $id_mc7 = $data_mc[7]['id_mc'];
                 $jumlah_mc7 = $data_mc[7]['jumlah_mc'];
             }
-            if (!isset($data_mc[8])) {
-            } else {
+            if (!isset($data_mc[8])) { } else {
                 $id_mc8 = $data_mc[8]['id_mc'];
                 $jumlah_mc8 = $data_mc[8]['jumlah_mc'];
             }
-            if (!isset($data_mc[9])) {
-            } else {
+            if (!isset($data_mc[9])) { } else {
                 $id_mc9 = $data_mc[9]['id_mc'];
                 $jumlah_mc9 = $data_mc[9]['jumlah_mc'];
             }
-            if (!isset($data_mc[10])) {
-            } else {
+            if (!isset($data_mc[10])) { } else {
                 $id_mc10 = $data_mc[10]['id_mc'];
                 $jumlah_mc10 = $data_mc[10]['jumlah_mc'];
             }
@@ -1711,8 +1643,7 @@ class Tagihan_kontrak extends CI_Controller
                 ];
                 $data_arrayku1 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc1, $updateAray1);
                 $mc_real1 = $data_arrayku1['id_mc'];
-            } else {
-            }
+            } else { }
             if (isset($data_mc[2])) {
                 $data_row_post_array1 = $this->Taggihan_kontrak_admin_model->cek_row_mc($mc_real1);
                 $updateAray2 = [
@@ -1845,8 +1776,7 @@ class Tagihan_kontrak extends CI_Controller
                 ];
                 $data_arrayku10 = $this->Taggihan_kontrak_admin_model->upadte_aray1($id_mc10, $updateAray10);
                 $mc_real10 = $data_arrayku10['id_mc'];
-            } else {
-            }
+            } else { }
             // array_bulan_ini
         }
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
@@ -4455,8 +4385,7 @@ class Tagihan_kontrak extends CI_Controller
             $where = [
                 'id_mc' => $id_mc
             ];
-        } else {
-        }
+        } else { }
 
         $data = [
             'id_mc' => $id_mc,
@@ -5602,8 +5531,7 @@ class Tagihan_kontrak extends CI_Controller
             } else  if ($type == 'file_spmk_mc') {
                 $row[] = $angga->nama_file_spmk_mc;
                 $row[] = '<a href=' . base_url('/file_dokumen_mc' . '/' . $angga->file_spmk_mc) . '>' . '<img width="30px" src=' . base_url('assets/pdf.png') . ' >' . '</a>';
-            } else {
-            }
+            } else { }
             $data[] = $row;
         }
         $output = array(
@@ -5753,8 +5681,7 @@ class Tagihan_kontrak extends CI_Controller
                 $this->session->set_flashdata('error', $this->upload->display_errors());
                 redirect(base_url('upload'));
             }
-        } else {
-        }
+        } else { }
     }
 
     public function upload_excel()
@@ -5855,8 +5782,7 @@ class Tagihan_kontrak extends CI_Controller
 
         $cek_genrate = $this->Tagihan_kontrak_model->cek_genrate($id_mc, $get_mc['id_detail_program_penyedia_jasa']);
 
-        if ($cek_genrate) {
-        } else {
+        if ($cek_genrate) { } else {
 
             $data1 = [
                 'id_mc' => $id_mc,
@@ -6086,6 +6012,37 @@ class Tagihan_kontrak extends CI_Controller
         $this->load->view('admin/Tagihan_kontrak_admin/ajax_dokumen_mc');
     }
 
+    public function get_data_dok_mc_detail($id_dok_mc)
+    {
+        $resultss = $this->Tagihan_kontrak_model->getdatatable($id_dok_mc);
+        $data = [];
+        $no = $_POST['start'];
+        foreach ($resultss as $res) {
+            $row = array();
+            $row[] = ++$no;
+            $row[] = date('d-m-Y', $res->tgl_upload);
+            $row[] = '<a target="_blank" href="' . base_url('file_dokumen_mc/') . $res->file_dokumen . '" class="btn btn-block btn-sm btn-outline-primary"><i class="fas fa fa-file"></i> Lihat Dokumen</a>';
+            $row[] = $res->user_uploaded;
+            if ($res->status_verifikasi == 1) {
+                $row[] = '<span class="badge badge-success">Yes</span>';
+            } else {
+                $row[] = '<a href="javascript:;" class="btn btn-danger btn-sm" onClick="no(' . "'" . $res->id_dok_mc_detail . "','hapus'" . ')"><i class="fas fa-times"></i> No</a> / <a href="javascript:;" class="btn btn-success btn-sm" onClick="yes(' . "'" . $res->id_dok_mc_detail . "','hapus'" . ')"><i class="fas fa-check"></i> Yes</a>';
+            }
+            $row[] = $res->keterangan;
+            $row[] = $res->tgl_periksa;
+            $row[] = '<a href="javascript:;" class="btn btn-danger btn-sm btn-block" onClick="hapus(' . "'" . $res->id_dok_mc_detail . "','hapus'" . ')"><i class="fas fa-trash"></i> Hapus</a>';
+            // $row[] = 'test';
+            $data[] = $row;
+        }
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->Tagihan_kontrak_model->count_all_data($id_dok_mc),
+            "recordsFiltered" => $this->Tagihan_kontrak_model->count_filtered_data($id_dok_mc),
+            "data" => $data
+        );
+        $this->output->set_content_type('application/json')->set_output(json_encode($output));
+    }
+
     public function upload_file_dok_mc()
     {
         $id_dok_mc = $this->input->post('id_dok_mc');
@@ -6098,31 +6055,62 @@ class Tagihan_kontrak extends CI_Controller
         $config['max_size'] = 0;
         // $config['encrypt_name'] = TRUE;
         $this->load->library('upload', $config);
-
-        if ($this->upload->do_upload('file_dokumen_mc')) {
+        if ($this->upload->do_upload('file_dokumen')) {
             $fileData = $this->upload->data();
             if ($no_urut_dok >= 12) {
                 $data = [
-                    'tgl_upload' => date('Y-m-d'),
-                    'file_mc' => $fileData['file_name'],
-                    'user_uploaded' => $nama_pegawai
+                    'file_dokumen' => $fileData['file_name'],
+                    'user_uploaded' => $nama_pegawai,
+                    'id_dok_mc' => $id_dok_mc,
                 ];
-                $where = [
-                    'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
-                    'nama_dok' => $nama_dok
-                ];
-                $this->Tagihan_kontrak_model->update_dok_mc($data, $where);
-            } else {
-                $data = [
-                    'tgl_upload' => date('Y-m-d'),
-                    'file_mc' => $fileData['file_name'],
-                    'user_uploaded' => $nama_pegawai
+                $data2 = [
+                    'sts_upload' => 1
                 ];
                 $where = [
                     'id_dok_mc' => $id_dok_mc
                 ];
-                $this->Tagihan_kontrak_model->update_dok_mc($data, $where);
+                $this->Tagihan_kontrak_model->insert_dok_mc_detail($data);
+                $this->Tagihan_kontrak_model->update_dok_mc($data2, $where);
+            } else {
+                $data = [
+                    'file_dokumen' => $fileData['file_name'],
+                    'user_uploaded' => $nama_pegawai,
+                    'id_dok_mc' => $id_dok_mc,
+                ];
+                $data2 = [
+                    'sts_upload' => 1
+                ];
+                $where = [
+                    'id_dok_mc' => $id_dok_mc
+                ];
+                $this->Tagihan_kontrak_model->insert_dok_mc_detail($data);
+                $this->Tagihan_kontrak_model->update_dok_mc($data2, $where);
             }
+
+            // if ($this->upload->do_upload('file_dokumen_mc')) {
+            //     $fileData = $this->upload->data();
+            //     if ($no_urut_dok >= 12) {
+            //         $data = [
+            //             'tgl_upload' => date('Y-m-d'),
+            //             'file_mc' => $fileData['file_name'],
+            //             'user_uploaded' => $nama_pegawai
+            //         ];
+            //         $where = [
+            //             'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+            //             'nama_dok' => $nama_dok
+            //         ];
+            //         $this->Tagihan_kontrak_model->update_dok_mc($data, $where);
+            //     } else {
+            //         $data = [
+            //             'tgl_upload' => date('Y-m-d'),
+            //             'file_mc' => $fileData['file_name'],
+            //             'user_uploaded' => $nama_pegawai
+            //         ];
+            //         $where = [
+            //             'id_dok_mc' => $id_dok_mc
+            //         ];
+            //         $this->Tagihan_kontrak_model->update_dok_mc($data, $where);
+            //     }
 
 
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
@@ -6145,33 +6133,45 @@ class Tagihan_kontrak extends CI_Controller
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 
-    public function validation($id_dok_mc)
+    public function validation($id_dok_mc_detail)
     {
         $nama_pegawai = $this->session->userdata('nama_pegawai');
         $data = [
             'tgl_periksa' => date('Y-m-d'),
-            'status_verif' => 1,
+            'status_verifikasi' => 1,
+            'user_verifikasi' => $nama_pegawai
         ];
         $where = [
-            'id_dok_mc' => $id_dok_mc
+            'id_dok_mc_detail' => $id_dok_mc_detail
         ];
-        $this->Tagihan_kontrak_model->update_dok_mc($data, $where);
+        $this->Tagihan_kontrak_model->update_dok_mc_detail($data, $where);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+    public function hapus_dokumen_mc($id_dok_mc_detail)
+    {
+        $where = [
+            'id_dok_mc_detail' => $id_dok_mc_detail
+        ];
+        $this->Tagihan_kontrak_model->delete_dok_mc_detail($where);
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 
     public function tidak_valid()
     {
         $nama_pegawai = $this->session->userdata('nama_pegawai');
-        $id_dok_mc = $this->input->post('id_dok_mc');
+        $id_dok_mc_detail = $this->input->post('id_dok_mc_detail');
         $data = [
             'tgl_periksa' => date('Y-m-d'),
-            'status_verif' => 2,
-            'keterangan' => $this->input->post('keterangan')
+            'status_verifikasi' => 2,
+            'keterangan' => $this->input->post('keterangan'),
+            'user_verifikasi' => $nama_pegawai
         ];
+
         $where = [
-            'id_dok_mc' => $id_dok_mc
+            'id_dok_mc_detail' => $id_dok_mc_detail
         ];
-        $this->Tagihan_kontrak_model->update_dok_mc($data, $where);
+        $this->Tagihan_kontrak_model->update_dok_mc_detail($data, $where);
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 }
