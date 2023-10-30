@@ -268,6 +268,7 @@ class Tagihan_kontrak extends CI_Controller
             }
         }
         // data
+        
         $this->Taggihan_kontrak_admin_model->insert_mc($data);
         $id_mc = $this->db->insert_id();
 
@@ -549,9 +550,9 @@ class Tagihan_kontrak extends CI_Controller
                 'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                 'jumlah_mc' => $jumlah_mc,
                 'tanggal_mc' => $tanggal_mc,
-                'no_mc' => 'um',
-                'sd_bulan_lalu' => $jumlah_mc,
-                'sd_bulan_ini' => $jumlah_mc,
+                // 'no_mc' => 'um',
+                'sd_bulan_lalu' => $jumlah_mcku,
+                'sd_bulan_ini' => $jumlah_mcku + $jumlah_mc,
                 'persen_ppn' => $persen_ppn,
                 'ppn_total' => $hasil_ppn_total,
                 'setelah_ppn' => $hasil_setelah_ppn,
@@ -572,7 +573,7 @@ class Tagihan_kontrak extends CI_Controller
                     'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                     'jumlah_mc' => $jumlah_mc,
                     'tanggal_mc' => $tanggal_mc,
-                    'no_mc' => 'um',
+                    // 'no_mc' => 'um',
                     'sd_bulan_lalu' => $jumlah_mc,
                     'sd_bulan_ini' => $jumlah_mc,
                     'persen_ppn' => $persen_ppn,
@@ -593,7 +594,7 @@ class Tagihan_kontrak extends CI_Controller
                     'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                     'jumlah_mc' => $jumlah_mc,
                     'tanggal_mc' => $tanggal_mc,
-                    'no_mc' => $data_no_mc,
+                    // 'no_mc' => $data_no_mc,
                     'sd_bulan_lalu' => $jumlah_mcku,
                     'sd_bulan_ini' => $jumlah_mcku + $jumlah_mc,
                     'persen_ppn' => $persen_ppn,
@@ -1372,7 +1373,7 @@ class Tagihan_kontrak extends CI_Controller
                     'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                     'jumlah_mc' => $jumlah_mc,
                     'tanggal_mc' => $tanggal_mc,
-                    'no_mc' => $data_no_mc,
+                    // 'no_mc' => $data_no_mc,
                     'sd_bulan_lalu' => $jumlah_mcku,
                     'persen_ppn' => $persen_ppn,
                     'ppn_total' => $hasil_ppn_total,
@@ -1396,8 +1397,6 @@ class Tagihan_kontrak extends CI_Controller
                     $data_mc = $this->Taggihan_kontrak_admin_model->generate_update($ambil_kontrak_edit, $ambil_no_mc_edit);
                     // array_bulan_ini
                     $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
-                    // var_dump($data_mc[1]['id_mc']);
-                    // die;
                     if (!isset($data_mc[1])) {
                     } else {
                         $id_mc1 = $data_mc[1]['id_mc'];

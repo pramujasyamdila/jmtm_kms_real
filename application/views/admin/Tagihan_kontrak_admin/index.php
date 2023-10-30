@@ -1082,9 +1082,9 @@
                     <form action="javascript:;" id="form_mc_edit" method="post">
                         <div class="row">
                             <input type="hidden" name="id_detail_program_penyedia_jasa_edit">
-                            <input type="text" name="jumlah_mc_edit">
+                            <input type="hidden" name="jumlah_mc_edit">
                             <input type="hidden" name="id_mc_edit">
-                            <input type="text" name="data_no_mc_edit">
+                            <input type="hidden" name="data_no_mc_edit">
                             <div class="col-md-12">
                                 <label for="">Jumlah Nilai Kontrak / Mc Bulan Ini</label>
                                 <div class="input-group mb-3">

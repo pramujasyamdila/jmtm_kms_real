@@ -94,6 +94,22 @@ class Laporan_kinerja extends CI_Controller
         $data['result_dokumen_laporan'] = $this->Data_kontrak_model->get_result_laporan_kinerja_dokumen($id_kontrak);
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
+        $this->load->view('laporan_kinerja/new_laporan_kinerja', $data);
+        $this->load->view('template_stisla/footer');
+        $this->load->view('laporan_kinerja/ajax');
+    }
+
+    public function buat_laporan_kinerja2($id_kontrak)
+    {
+        $data['active_kontrak'] = 'active';
+        $data['menu_open_kontrak'] = 'menu-open';
+        $data['row_kontrak'] = $this->Data_kontrak_model->get_by_id_join($id_kontrak);
+        $data['id_departemen'] = $data['row_kontrak']['id_departemen'];
+        $data['id_area'] = $data['row_kontrak']['id_area'];
+        $data['id_sub_area'] = $data['row_kontrak']['id_sub_area'];
+        $data['result_dokumen_laporan'] = $this->Data_kontrak_model->get_result_laporan_kinerja_dokumen($id_kontrak);
+        $this->load->view('template_stisla/header');
+        $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('laporan_kinerja/buat_laporan_kinerja', $data);
         $this->load->view('template_stisla/footer');
         $this->load->view('laporan_kinerja/ajax');
