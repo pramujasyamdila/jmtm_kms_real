@@ -67,11 +67,11 @@
                                                                     <th class="text-white">Upload</th>
                                                                     <th class="text-white">Download</th>
                                                                     <th class="text-white">Status</th>
-                                                                    <th class="text-white">Tgl Upload</th>
+                                                                    <!-- <th class="text-white">Tgl Upload</th>
                                                                     <th class="text-white">Diupload Oleh</th>
                                                                     <th class="text-white">Status Verifikasi JMTM Pusat</th>
                                                                     <th class="text-white">Keterangan</th>
-                                                                    <th class="text-white">Tgl Periksa</th>
+                                                                    <th class="text-white">Tgl Periksa</th> -->
                                                                     <!-- <th class="text-white">Upload</th> -->
                                                                 </tr>
                                                             </thead>
@@ -104,8 +104,8 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modal_upload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade bd-example-modal-xl" id="modal_upload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h5 class="modal-title text-white" id="exampleModalLabel">Upload Dokumen <label class="nama_dok"></label></h5>
@@ -122,14 +122,30 @@
                             <input type="hidden" name="no_urut_dok">
                             <input type="hidden" name="id_detail_program_penyedia_jasa">
                             <div class="input-group-append">
-                                <input type="file" id="file_mc" class="file_dokumen_mc form-control" name="file_dokumen_mc" />
+                                <input type="file" id="file_mc" class="file_dokumen_mc form-control" name="file_dokumen" />
                             </div>
-                            <!-- <br>
+                            <div style="display: none;" id="error_file" class="alert alert-danger" role="alert">
+                                ANDA BELUM MENGISI FILE !!!
+                            </div>
                             <br>
-                            <button type="button" class="btn btn-danger">Tidak Diperlukan</button> -->
-                            <!-- <div style="display: none;" id="error_file" class="alert alert-danger" role="alert">
-                            ANDA BELUM MENGISI FILE !!!
-                        </div> -->
+                            <br>
+                            <table class="table table-striped table-bordered" id="dok_mc_detail">
+                                <thead class="text-center">
+                                    <tr class="bg-primary">
+                                        <th class="text-white">No</th>
+                                        <th class="text-white">Tgl Upload</th>
+                                        <th class="text-white">File</th>
+                                        <th class="text-white">Diupload Oleh</th>
+                                        <th class="text-white">Status Verifikasi JMTM Pusat</th>
+                                        <th class="text-white">Keterangan</th>
+                                        <th class="text-white">Tgl Periksa</th>
+                                        <th class="text-white">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
                         </center>
                         <br>
                     </div>
@@ -156,7 +172,7 @@
             <form id="form_tidak_valid" enctype="multipart/form-data">
                 <div class="modal-body">
                     <center>
-                        <input type="hidden" name="id_dok_mc">
+                        <input type="text" name="id_dok_mc_detail">
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Isi Keterangan Tidak Valid</label>
                             <br>

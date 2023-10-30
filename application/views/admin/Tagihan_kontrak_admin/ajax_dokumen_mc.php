@@ -10,11 +10,41 @@
 
     function byid(id_dok_mc, nama_dok, id_detail_program_penyedia_jasa, no_urut_dok) {
         $('#modal_upload').modal('show')
-        $('#nama_dok').text(nama_dok)
+        $('.nama_dok').text(nama_dok)
         $('[name="id_dok_mc"]').val(id_dok_mc)
         $('[name="nama_dok"]').val(nama_dok)
         $('[name="id_detail_program_penyedia_jasa"]').val(id_detail_program_penyedia_jasa)
         $('[name="no_urut_dok"]').val(no_urut_dok)
+
+        $('#dok_mc_detail').DataTable({
+            "responsive": false,
+            "ordering": true,
+            "processing": true,
+            "serverSide": true,
+            "autoWidth": false,
+            "bDestroy": true,
+            "order": [],
+            "ajax": {
+                "url": "<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/get_data_dok_mc_detail/') ?>" + id_dok_mc,
+                "type": "POST",
+            },
+            "columnDefs": [{
+                "target": [-1],
+                "orderable": false
+            }],
+            "oLanguage": {
+                "sSearch": "Pencarian : ",
+                "sEmptyTable": "Data Tidak Tersedia",
+                "sLoadingRecords": "Silahkan Tunggu - loading...",
+                "sLengthMenu": "Menampilkan &nbsp;  _MENU_  &nbsp;   Data",
+                "sZeroRecords": "Tidak Ada Data Yang Di Cari",
+                "sProcessing": "Memuat Data...."
+            }
+        })
+    }
+
+    function reload_table() {
+        $('#dok_mc_detail').DataTable().ajax.reload();
     }
 
     load_table_dok_mc()
@@ -26,6 +56,7 @@
             url: "<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/get_Data_dok_mc/') ?>" + id_mc,
             dataType: "JSON",
             success: function(response) {
+
                 var html = '';
                 for (i = 0; i < response.length; ++i) {
 
@@ -40,13 +71,14 @@
                         }
                     }
 
-                    if (!response[i]['file_mc']) {
-                        var status_upload = '<span class="badge badge-sm badge-danger">Belum Upload</span>'
+                    if (response[i]['sts_upload'] == 1) {
+
+                        var status_upload = '<span class="badge badge-sm badge-success">Sudah Upload</span>'
                     } else {
                         if (response[i]['status_tidak_butuh'] == 1) {
                             var status_upload = '<span class="badge badge-sm badge-success">Tidak Dibutuhkan</span>'
                         } else {
-                            var status_upload = '<span class="badge badge-sm badge-success">Sudah Upload</span>'
+                            var status_upload = '<span class="badge badge-sm badge-danger">Belum Upload</span>'
                         }
 
                     }
@@ -95,11 +127,6 @@
                         '<td>' + aksi + '</td>' +
                         '<td>' + dok + '</td>' +
                         '<td>' + status_upload + '</td>' +
-                        '<td>' + tgl_upload + '</td>' +
-                        '<td>' + user_uploaded + '</td>' +
-                        '<td>' + status_verif + '</td>' +
-                        '<td>' + keterangan + '</td>' +
-                        '<td>' + tgl_periksa + '</td>' +
 
                         '</tr>';
                 }
@@ -128,9 +155,10 @@
                 success: function(response) {
                     $('#form_upload_mc')[0].reset();
                     //   $('#upload_mcku').attr('disabled', false);
-                    $('#modal_upload').modal('hide');
+                    // $('#modal_upload').modal('hide');
                     message('success', 'Berhasil', 'Data Berhasil Di Upload!')
                     //   message('success', 'Data Berhasil Di Upload');
+                    reload_table()
                     load_table_dok_mc()
                 }
             });
@@ -157,9 +185,9 @@
                     $('#form_tidak_valid')[0].reset();
                     //   $('#upload_mcku').attr('disabled', false);
                     $('#modal_no').modal('hide');
-                    message('success', 'Berhasil', 'Data Berhasil Di Upload!')
+                    message('success', 'Berhasil', 'Data Berhasil Di Update!')
                     //   message('success', 'Data Berhasil Di Upload');
-                    load_table_dok_mc()
+                    reload_table()
                 }
             });
         }
@@ -202,9 +230,9 @@
         })
     }
 
-    function yes(id_dok_mc, nama_dok) {
+    function yes(id_dok_mc_detail) {
         Swal.fire({
-            title: 'Anda Yakin Dokumen ' + nama_dok + ' Sudah Valid?',
+            title: 'Anda Yakin Dokumen Sudah Valid?',
             text: "Ya / Tidak",
             icon: 'warning',
             showCancelButton: true,
@@ -214,7 +242,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "<?php echo base_url(); ?>taggihan_kontrak_admin/tagihan_kontrak/validation/" + id_dok_mc,
+                    url: "<?php echo base_url(); ?>taggihan_kontrak_admin/tagihan_kontrak/validation/" + id_dok_mc_detail,
                     method: "POST",
                     contentType: false,
                     cache: false,
@@ -227,7 +255,7 @@
                                 'success'
                             )
                             //   message('success', 'Data Berhasil Di Upload');
-                            load_table_dok_mc()
+                            reload_table()
                         } else {
 
                         }
@@ -240,9 +268,46 @@
     }
 
 
-    function no(id_dok_mc, nama_dok) {
+    function no(id_dok_mc_detail, nama_dok) {
         $('#modal_no').modal('show')
         $('.nama_dok').text(nama_dok)
-        $('[name="id_dok_mc"]').val(id_dok_mc)
+        $('[name="id_dok_mc_detail"]').val(id_dok_mc_detail)
+    }
+
+    function hapus(id_dok_mc_detail) {
+        Swal.fire({
+            title: 'Anda Yakin Hapus Dokumen Ini?',
+            text: "Ya / Tidak",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "<?php echo base_url(); ?>taggihan_kontrak_admin/tagihan_kontrak/hapus_dokumen_mc/" + id_dok_mc_detail,
+                    method: "POST",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(response) {
+                        if (response == 'success') {
+                            Swal.fire(
+                                'Berhasil!',
+                                'Data Berhasil Hapus.',
+                                'success'
+                            )
+                            //   message('success', 'Data Berhasil Di Upload');
+                            reload_table()
+                        } else {
+
+                        }
+
+                    }
+                })
+
+            }
+        })
     }
 </script>
