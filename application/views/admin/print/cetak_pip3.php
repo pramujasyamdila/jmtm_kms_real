@@ -15,8 +15,9 @@
 
 </head>
 
-<body style="font-size: 13px;">
+<body style="font-size: 13px;margin:25mm 25mm 25mm;">
     <div class="container">
+        <img src="https://www.jmtm.co.id/assets/img-jmtm/logojmtm.png" width="200px" alt="">
         <!-- <a target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip1/' . $row_program['id_detail_program_penyedia_jasa']) ?>" class="btn btn-sm btn-primary">Cetak <i class="fa fa-print"></i></a> -->
         <div class="row">
             <div class="col-md-6">
@@ -928,7 +929,11 @@
 
         }
     </script>
-
+   <script>
+        setTimeout(() => {
+            window.print();
+        }, 1000);
+    </script>
 </body>
 
 </html>

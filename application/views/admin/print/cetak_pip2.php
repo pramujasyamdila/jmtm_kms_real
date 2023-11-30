@@ -15,14 +15,17 @@
 
 </head>
 
-<body style="font-size: 13px;">
+<body style="font-size: 13px;margin:25mm 25mm 25mm;">
     <div class="container">
+
+        <img src="https://www.jmtm.co.id/assets/img-jmtm/logojmtm.png" width="200px" alt="">
         <!-- <a target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip1/' . $row_program['id_detail_program_penyedia_jasa']) ?>" class="btn btn-sm btn-primary">Cetak <i class="fa fa-print"></i></a> -->
         <div class="row">
             <div class="col-md-6">
                 <img src="https://jmtm.co.id/assets/img_jmtm/logo.png" alt="" width="300px" style="margin-top:50px">
             </div>
-        </div><br><br>
+        </div>
+        
         <input type="hidden" name="type_pip_number" value="1">
         <input type="hidden" name="id_detail_program_penyedia_jasa" value="<?= $id_detail_program_penyedia_jasa ?>">
         <div class="row">
@@ -89,7 +92,7 @@
                 </div>
             </div>
         </div>
-        <center class="mt-4">
+        <center class="mt-3">
             <b>I. KETERANGAN PEKERJAAN</b>
         </center>
         <div class="mt-3">
@@ -113,7 +116,7 @@
             </div>
         </div>
 
-        <center class="mt-4">
+        <center class="mt-3">
             <b>II. KETERANGAN PEMBIAYAAN</b>
         </center>
         <div class="mt-3">
@@ -414,12 +417,12 @@
                     <label for="">7. Pembebanan Biaya</label>
                 </div>
                 <div class="col-md-9">
-                    <label for="">: Mata Anggaran <?= $row_program_detail['mata_anggaran_surat'] ?> <br> &nbsp; PT Jasamarga Tollroad Maintenance Area <?= $row_program_detail['lokasi_pekerjaan_surat']  ?> <?= $row_program_detail['tahun_anggaran_surat']  ?></label>
+                    <label for="">: Mata Anggaran <?= $row_program_detail['mata_anggaran_surat'] ?> <br> &nbsp; PT Jasamarga Tollroad Maintenance Area <?= $row_program_detail['lokasi_pekerjaan_surat']  ?> <br>&nbsp; <?= $row_program_detail['tahun_anggaran_surat']  ?></label>
                 </div>
             </div>
         </div>
         <br>
-        <center class="mt-4">
+        <center class="mt-3">
             <b>III. ALASAN METODE PEMILIHAN PENYEDIA JASA</b>
         </center>
         <br>
@@ -430,10 +433,10 @@
         </div>
 
         <div style="margin-left: 40px;">
-            <?php $i = 0;
+            <?php $i = 1;
             foreach ($data_administrasi as $value) { ?>
                 <div class="row">
-                    <div class="col-md-1">1.<?= $i + 1 ?></div>
+                    <div class="col-md-1">1.<?= $i++ ?></div>
                     <div class="col-md-11" style="margin-left: -40px;">
                         <?= $value['nama_alasan'] ?>
                     </div>
@@ -447,18 +450,16 @@
             </div>
         </div>
         <div style="margin-left: 40px;">
-            <?php $i = 0;
+            <?php $i = 1;
             foreach ($data_teknis as $value) { ?>
                 <div class="row">
-                    <div class="col-md-1">2.<?= $i + 1 ?></div>
+                    <div class="col-md-1">2.<?= $i++ ?></div>
                     <div class="col-md-11" style="margin-left: -40px;">
                         <?= $value['nama_alasan'] ?>
                     </div>
                 </div>
             <?php }  ?>
         </div>
-        <br>
-        <br>
         <br>
         Demikian disampaikan, atas perhatian dan persetujuannya kami ucapkan terima kasih.
         <br><br>
@@ -470,7 +471,7 @@
                     <h6>PT Jasamarga Tollroad Maintenance</h6>
                     <br>
                     <br>
-                    <br><br><br><br>
+                    <br><br>
                     <h6> <u style="text-transform: capitalize;"><?= $row_program_detail['pengirim_pip_gm_ke_dirops'] ?></u></h6>
                     <h6><?= $row_program_detail['jabatan_pengirim_pip_gm_ke_dirops'] ?>
                     </h6>
@@ -929,7 +930,11 @@
 
         }
     </script>
-
+   <script>
+        setTimeout(() => {
+            window.print();
+        }, 1000);
+    </script>
 </body>
 
 </html>

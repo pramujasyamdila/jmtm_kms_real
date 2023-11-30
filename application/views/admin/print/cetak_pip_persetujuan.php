@@ -15,14 +15,15 @@
 
 </head>
 
-<body style="font-size: 13px;">
+<body style="font-size: 13px;margin:25mm 25mm 25mm;">
     <div class="container">
+    <img src="https://www.jmtm.co.id/assets/img-jmtm/logojmtm.png" width="200px" alt="">
         <!-- <a target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip1/' . $row_program['id_detail_program_penyedia_jasa']) ?>" class="btn btn-sm btn-primary">Cetak <i class="fa fa-print"></i></a> -->
         <div class="row">
             <div class="col-md-6">
                 <img src="https://jmtm.co.id/assets/img_jmtm/logo.png" alt="" width="300px" style="margin-top:50px">
             </div>
-        </div><br><br>
+        </div>
         <input type="hidden" name="type_pip_number" value="1">
         <input type="hidden" name="id_detail_program_penyedia_jasa" value="<?= $id_detail_program_penyedia_jasa ?>">
         <div class="row">
@@ -412,7 +413,7 @@
                     <label for="">7. Pembebanan Biaya</label>
                 </div>
                 <div class="col-md-9">
-                    <label for="">: Mata Anggaran <?= $row_program_detail['mata_anggaran_surat'] ?> <br> &nbsp; PT Jasamarga Tollroad Maintenance Area <?= $row_program_detail['lokasi_pekerjaan_surat']  ?> <?= $row_program_detail['tahun_anggaran_surat']  ?></label>
+                    <label for="">: Mata Anggaran <?= $row_program_detail['mata_anggaran_surat'] ?> <br> &nbsp; PT Jasamarga Tollroad Maintenance Area <?= $row_program_detail['lokasi_pekerjaan_surat']  ?> <br> &nbsp;  <?= $row_program_detail['tahun_anggaran_surat']  ?></label>
                 </div>
             </div>
         </div>
