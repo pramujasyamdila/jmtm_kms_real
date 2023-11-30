@@ -9,6 +9,7 @@ class Administrasi_penyedia extends CI_Controller
         parent::__construct();
         $this->load->model('Admin/Data_kontrak_model');
         $this->load->model('Auth_model');
+        $this->load->model('Admin/M_analisis');
         $session = $this->session->userdata('id_pegawai');
         if (!$session) {
             redirect('auth');
@@ -17,8 +18,6 @@ class Administrasi_penyedia extends CI_Controller
 
     public function index()
     {
-
-
         $data['active_kontrak'] = 'active';
         $data['menu_open_kontrak'] = 'menu-open';
         $get_pegawai = $this->Auth_model->get_pegawai();
@@ -3212,9 +3211,7 @@ class Administrasi_penyedia extends CI_Controller
         $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
         $get_flow = $this->db->query("SELECT flow_pra_dokumen_kontrak FROM tbl_detail_program_penyedia_jasa WHERE id_detail_program_penyedia_jasa = $id_detail_program_penyedia_jasa")->row();
-
         $data['dokumen_flow_1']  = $this->Data_kontrak_model->get_mata_anggaran_row($id_detail_program_penyedia_jasa);
-
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
         if ($get_flow->flow_pra_dokumen_kontrak == 'Flow 1') {
@@ -3665,10 +3662,36 @@ class Administrasi_penyedia extends CI_Controller
         $id_departemen = $row_kontrak['id_departemen'];
         $id_area = $row_kontrak['id_area'];
         $id_sub_area = $row_kontrak['id_sub_area'];
+        $data['result_kontrak'] =  $this->Data_kontrak_model->get_all_kontrak($id_departemen, $id_area, $id_sub_area, $id_kontrak);
         $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
         $data['id_kontrak'] = $id_kontrak;
         $data['nama_kontrak'] = $row_kontrak;
+        $data['data_pekerjaan'] = $this->M_analisis->get_pekerjaan_pra($id_kontrak);
+
+
+        $data['m1_dok_selesai'] = $this->M_analisis->m1_dok_selesai();
+        $data['m1_dok_progres'] = $this->M_analisis->m1_dok_progres();
+        $data['m1_dok_progres2'] = $data['m1_dok_progres'] - $data['m1_dok_selesai'];
+
+
+        $data['m2_dok_selesai'] = $this->M_analisis->m2_dok_selesai();
+        $data['m2_dok_progres'] = $this->M_analisis->m2_dok_progres();
+
+        $data['m2_dok_selesai_pasca'] = $this->M_analisis->m2_dok_selesai_pasca();
+        $data['m2_dok_progres_pasca'] = $this->M_analisis->m2_dok_progres_pasca();
+
+
+        $data['m2_dok_selesai_pasca_kontrak'] = $this->M_analisis->m2_dok_selesai_pasca_kontrak();
+        $data['m2_dok_progres_pasca_kontrak'] = $this->M_analisis->m2_dok_progres_pasca_kontrak();
+
+
+        $data['m2_dok_selesai_pasca_final'] = $data['m2_dok_selesai_pasca'] + $data['m2_dok_selesai_pasca_kontrak'];
+        $data['m2_dok_progres_pasca_final'] = $data['m2_dok_progres_pasca'] + $data['m2_dok_progres_pasca_kontrak'] + 1;
+        $data['m2_final_pasca'] = $data['m2_dok_progres_pasca_final'] - $data['m2_dok_selesai_pasca_final'];
+
+        
+
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('admin/kontrak_management_administrasi_penyedia/index', $data);
@@ -4201,6 +4224,16 @@ class Administrasi_penyedia extends CI_Controller
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
+
+    public function get_mata_anggaran_row_hapus($id_detail_program_penyedia_jasa)
+    {
+        $row_program = $this->Data_kontrak_model->get_mata_anggaran_row_hapus($id_detail_program_penyedia_jasa);
+        $data = [
+            'program' => $row_program,
+        ];
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+    }
+
 
     public function update_program()
     {

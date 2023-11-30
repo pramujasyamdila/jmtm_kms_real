@@ -36,7 +36,7 @@
                 "sSearch": "Pencarian : ",
                 "sEmptyTable": "Data Tidak Tersedia",
                 "sLoadingRecords": "Silahkan Tunggu - loading...",
-                "sLengthMenu": "Menampilkan &nbsp;  _MENU_  &nbsp;   Data",
+                "sLengthMenu": "Menampilkan &nbsp;  MENU  &nbsp;   Data",
                 "sZeroRecords": "Tidak Ada Data Yang Di Cari",
                 "sProcessing": "Memuat Data...."
             }

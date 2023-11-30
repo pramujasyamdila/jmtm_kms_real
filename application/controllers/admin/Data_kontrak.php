@@ -9,6 +9,9 @@ class Data_kontrak extends CI_Controller
         parent::__construct();
         $this->load->model('Admin/Data_kontrak_model');
         $this->load->model('Auth_model');
+        $this->load->model('Admin/M_analisis');
+        $this->load->helper(array('url', 'form', 'string'));
+        $this->load->library(array('form_validation', 'recaptcha'));
         $session = $this->session->userdata('id_pegawai');
         if (!$session) {
             redirect('auth');
@@ -29,6 +32,14 @@ class Data_kontrak extends CI_Controller
         $data['get_departemen'] = $this->Data_kontrak_model->get_departemen($get_pegawai['id_departemen']);
         $data['get_area'] = $this->Data_kontrak_model->get_area($get_pegawai['id_area']);
         $data['get_sub_area'] = $this->Data_kontrak_model->get_sub_area($get_pegawai['id_sub_area']);
+
+        $data['m1_dok_selesai'] = $this->M_analisis->m1_dok_selesai();
+        $data['m1_dok_progres'] = $this->M_analisis->m1_dok_progres();
+        $data['m1_dok_progres2'] = $data['m1_dok_progres'] - $data['m1_dok_selesai'];
+        $data['data_kontrak'] = $this->M_analisis->get_kontrak();
+        $data['data_pekerjaan'] = $this->M_analisis->get_pekerjaan();
+        $data['data_mc'] = $this->M_analisis->get_mc();
+        
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('admin/kontrak_management/index', $data);
@@ -76,7 +87,6 @@ class Data_kontrak extends CI_Controller
         $data = [];
         $no = $_POST['start'];
         foreach ($resultss as $rs) {
-
             $row = array();
             $row[] = ++$no;
             $row[] = '<label data-toggle="tooltip" data-placement="bottom" title="' . $rs->nama_kontrak . '" style=" white-space: nowrap; width: 300px;overflow: hidden;text-overflow: ellipsis;">' . $rs->nama_kontrak . '</label>';
@@ -86,7 +96,7 @@ class Data_kontrak extends CI_Controller
             $row[] = $rs->no_kontrak;
             $row[] = $rs->tahun_kontrak;
             $row[] = $rs->tahun_anggaran;
-            if ($rs->id_adendum == 0 || $rs->id_adendum == null) {
+            if ($rs->add_ke == 0 || $rs->add_ke == null) {
                 $row[] = "Rp " . number_format($rs->nilai_kontrak_awal, 2, ',', '.');
                 $row[] = $rs->tahun_kontrak;
                 $row[] = 'Nilai Kontrak Awal';
@@ -121,6 +131,36 @@ class Data_kontrak extends CI_Controller
                     $row[] = "Rp " . number_format($rs->nilai_add_XIV, 2, ',', '.');
                 } else if ($rs->add_ke == 15) {
                     $row[] = "Rp " . number_format($rs->nilai_add_XV, 2, ',', '.');
+                } else if ($rs->add_ke == 16) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XVI, 2, ',', '.');
+                } else if ($rs->add_ke == 17) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XVII, 2, ',', '.');
+                } else if ($rs->add_ke == 18) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XVIII, 2, ',', '.');
+                } else if ($rs->add_ke == 19) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XIX, 2, ',', '.');
+                } else if ($rs->add_ke == 20) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XX, 2, ',', '.');
+                } else if ($rs->add_ke == 21) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XXI, 2, ',', '.');
+                } else if ($rs->add_ke == 22) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XXII, 2, ',', '.');
+                } else if ($rs->add_ke == 23) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XXIII, 2, ',', '.');
+                } else if ($rs->add_ke == 24) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XXIV, 2, ',', '.');
+                } else if ($rs->add_ke == 25) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XXV, 2, ',', '.');
+                } else if ($rs->add_ke == 26) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XXVI, 2, ',', '.');
+                } else if ($rs->add_ke == 27) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XXVII, 2, ',', '.');
+                } else if ($rs->add_ke == 28) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XXVIII, 2, ',', '.');
+                } else if ($rs->add_ke == 29) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XXIX, 2, ',', '.');
+                } else if ($rs->add_ke == 30) {
+                    $row[] = "Rp " . number_format($rs->nilai_add_XXX, 2, ',', '.');
                 } else {
                     $row[] = '';
                 }
@@ -220,38 +260,6 @@ class Data_kontrak extends CI_Controller
         if ($cek_no_kontrak_sudah_ada) {
             $this->output->set_content_type('application/json')->set_output(json_encode('sudah_ada'));
         } else {
-            // if ($this->input->post('jenis_kontrak') == 'Unit Price') {
-            //     $data_kontrak = [
-            //         'nama_kontrak' => $this->input->post('nama_kontrak'),
-            //         'tahun_kontrak' =>  $this->input->post('tahun_kontrak'),
-            //         'id_departemen' => $this->input->post('id_departemen2'),
-            //         'id_area' => $this->input->post('id_area2'),
-            //         'id_sub_area' => $this->input->post('id_sub_area2'),
-            //         'no_kontrak' => $this->input->post('no_kontrak'),
-            //         'jenis_kontrak' => $this->input->post('jenis_kontrak'),
-            //         'status' => 1,
-            //         'tahun_anggaran' => $this->input->post('tahun_anggaran')
-            //     ];
-            //     $this->Data_kontrak_model->add($data_kontrak);
-            //     $id_kontrak = $this->db->insert_id();
-            //     $buat_no_urut = $this->Data_kontrak_model->cek_no_urut_tbl_unit_price($id_kontrak);
-            //     $count = $buat_no_urut + 1;
-            //     if ($buat_no_urut == 0) {
-            //         $data = [
-            //             'nama_uraian' => $this->input->post('nama_kontrak'),
-            //             'no_urut' => $count,
-            //             'id_kontrak' => $id_kontrak,
-            //         ];
-            //         $this->Data_kontrak_model->tambah_ke_tbl_unit_price($data);
-            //     } else {
-            //         $data = [
-            //             'nama_uraian' => $this->input->post('nama_kontrak'),
-            //             'no_urut' => $count,
-            //             'id_kontrak' => $id_kontrak,
-            //         ];
-            //         $this->Data_kontrak_model->tambah_ke_tbl_unit_price($data);
-            //     }
-            // } else {
             $data_kontrak = [
                 'nama_kontrak' => $this->input->post('nama_kontrak'),
                 'tahun_kontrak' =>  $this->input->post('tahun_kontrak'),
@@ -368,6 +376,16 @@ class Data_kontrak extends CI_Controller
         $data['id_departemen'] = $get_pegawai['id_departemen'];
         $data['id_area'] = $get_pegawai['id_area'];
         $data['id_sub_area'] = $get_pegawai['id_sub_area'];
+
+        $data['m1_dok_selesai'] = $this->M_analisis->m1_dok_selesai_kontrak($id_kontrak);
+        $data['m1_dok_progres'] = $this->M_analisis->m1_dok_progres_kontrak($id_kontrak);
+        $data['m1_dok_progres2'] = $data['m1_dok_progres'] - $data['m1_dok_selesai'];
+
+
+        $data['data_kontrak'] = $this->M_analisis->get_kontrak();
+        $data['data_pekerjaan'] = $this->M_analisis->get_pekerjaan();
+        $data['data_mc'] = $this->M_analisis->get_mc();
+
         $this->load->view('template_stisla/header', $data);
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('admin/kontrak_management/kelola_level', $data);
@@ -1538,211 +1556,243 @@ class Data_kontrak extends CI_Controller
     {
         $id_kontrak = $this->input->post('id_kontrak_adendum');
         $cek_no_add =  $this->input->post('no_adendum');
-        $data_ke_logic['id_kontrak'] = $this->input->post('id_kontrak_adendum');
-        $data_ke_logic['copy_add'] = $this->input->post('copy_add');
-        if ($cek_no_add == 'kontrak_awal') {
-            $data = [
-                'no_adendum' => $this->input->post('no_adendum'),
-                'tanggal' => $this->input->post('tanggal'),
-                'id_kontrak' => $this->input->post('id_kontrak_adendum'),
-            ];
-            $this->Data_kontrak_model->add_addendum($data);
-            $this->load->view('tidak_ada_add/add_kontrak_awal', $data_ke_logic);
-            $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+        $cek_addendum = $this->Data_kontrak_model->cek_valid_addendum($id_kontrak, $cek_no_add);
+        if ($cek_addendum) {
+            $this->session->set_flashdata('addendum_sudah_ada', 'Adendum ' . $cek_no_add . ' Sudah Ada');
+            $this->output->set_content_type('application/json')->set_output(json_encode('sudah_ada_adendum'));
         } else {
-            $jika_ada_add = $this->Data_kontrak_model->get_addendum_by_id($id_kontrak);
             $data_ke_logic['id_kontrak'] = $this->input->post('id_kontrak_adendum');
             $data_ke_logic['copy_add'] = $this->input->post('copy_add');
-            if ($jika_ada_add) {
+            $ehere_add = [
+                'id_kontrak' => $id_kontrak
+            ];
+            $dataadd = [
+                'tanggal_add' => $this->input->post('tanggal'),
+                'add_ke' => $cek_no_add,
+            ];
+            $this->Data_kontrak_model->update_kontrak($ehere_add, $dataadd);
+            // ini max Addendum
+            $row_max_add = $this->Data_kontrak_model->select_max_addendum($id_kontrak);
+            $row_max_add_row = $this->Data_kontrak_model->select_max_addendum_row($id_kontrak);
+            $where_kontrak = [
+                'id_kontrak' => $id_kontrak
+            ];
+            if ($cek_no_add == 'kontrak_awal') {
+                $data_kontrak = [
+                    'add_ke' => NULL,
+                ];
+            } else {
+                $data_kontrak = [
+                    'add_ke' => $row_max_add,
+                    'tanggal_add' => $row_max_add_row['tanggal'],
+                ];
+            }
+            // end ini max Addendum
+            $this->Data_kontrak_model->update_kontrak($where_kontrak, $data_kontrak);
+            if ($cek_no_add == 'kontrak_awal') {
                 $data = [
                     'no_adendum' => $this->input->post('no_adendum'),
                     'tanggal' => $this->input->post('tanggal'),
                     'id_kontrak' => $this->input->post('id_kontrak_adendum'),
                 ];
                 $this->Data_kontrak_model->add_addendum($data);
-                if ($cek_no_add == 1) {
-                    $this->load->view('cek_add/copy_add_I', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 2) {
-                    $this->load->view('cek_add/copy_add_II', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 3) {
-                    $this->load->view('cek_add/copy_add_III', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 4) {
-                    $this->load->view('cek_add/copy_add_IV', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 5) {
-                    $this->load->view('cek_add/copy_add_V', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 6) {
-                    $this->load->view('cek_add/copy_add_VI', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 7) {
-                    $this->load->view('cek_add/copy_add_VII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 8) {
-                    $this->load->view('cek_add/copy_add_VIII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 9) {
-                    $this->load->view('cek_add/copy_add_IX', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 10) {
-                    $this->load->view('cek_add/copy_add_X', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 11) {
-                    $this->load->view('cek_add/copy_add_XI', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 12) {
-                    $this->load->view('cek_add/copy_add_XII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 13) {
-                    $this->load->view('cek_add/copy_add_XIII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 14) {
-                    $this->load->view('cek_add/copy_add_XIV', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 15) {
-                    $this->load->view('cek_add/copy_add_XV', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 16) {
-                    $this->load->view('cek_add/copy_add_XVI', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 17) {
-                    $this->load->view('cek_add/copy_add_XVII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 18) {
-                    $this->load->view('cek_add/copy_add_XVIII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 19) {
-                    $this->load->view('cek_add/copy_add_XIX', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 20) {
-                    $this->load->view('cek_add/copy_add_XX', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 21) {
-                    $this->load->view('cek_add/copy_add_XXI', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 22) {
-                    $this->load->view('cek_add/copy_add_XXII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 23) {
-                    $this->load->view('cek_add/copy_add_XXIII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 24) {
-                    $this->load->view('cek_add/copy_add_XXIV', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 25) {
-                    $this->load->view('cek_add/copy_add_XXV', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 26) {
-                    $this->load->view('cek_add/copy_add_XXVI', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 27) {
-                    $this->load->view('cek_add/copy_add_XXVII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 28) {
-                    $this->load->view('cek_add/copy_add_XXVIII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 29) {
-                    $this->load->view('cek_add/copy_add_XXIX', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 30) {
-                    $this->load->view('cek_add/copy_add_XXX', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                }
+                $this->load->view('tidak_ada_add/add_kontrak_awal', $data_ke_logic);
+                $this->output->set_content_type('application/json')->set_output(json_encode('success'));
             } else {
-                if ($cek_no_add == 1) {
-                    $this->load->view('tidak_ada_add/add_I', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 2) {
-                    $this->load->view('tidak_ada_add/add_II', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 3) {
-                    $this->load->view('tidak_ada_add/add_III', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 4) {
-                    $this->load->view('tidak_ada_add/add_IV', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 5) {
-                    $this->load->view('tidak_ada_add/add_V', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 6) {
-                    $this->load->view('tidak_ada_add/add_VI', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 7) {
-                    $this->load->view('tidak_ada_add/add_VII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 8) {
-                    $this->load->view('tidak_ada_add/add_VIII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 9) {
-                    $this->load->view('tidak_ada_add/add_IX', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 10) {
-                    $this->load->view('tidak_ada_add/add_X', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 11) {
-                    $this->load->view('tidak_ada_add/add_XI', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 12) {
-                    $this->load->view('tidak_ada_add/add_XII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 13) {
-                    $this->load->view('tidak_ada_add/add_XIII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 14) {
-                    $this->load->view('tidak_ada_add/add_XIV', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 15) {
-                    $this->load->view('tidak_ada_add/add_XV', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 16) {
-                    $this->load->view('tidak_ada_add/add_XVI', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 17) {
-                    $this->load->view('tidak_ada_add/add_XVII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 18) {
-                    $this->load->view('tidak_ada_add/add_XVIII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 19) {
-                    $this->load->view('tidak_ada_add/add_XIX', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 20) {
-                    $this->load->view('tidak_ada_add/add_XX', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 21) {
-                    $this->load->view('tidak_ada_add/add_XXI', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 22) {
-                    $this->load->view('tidak_ada_add/add_XXII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 23) {
-                    $this->load->view('tidak_ada_add/add_XXIII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 24) {
-                    $this->load->view('tidak_ada_add/add_XXIV', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 25) {
-                    $this->load->view('tidak_ada_add/add_XXV', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 26) {
-                    $this->load->view('tidak_ada_add/add_XXVI', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 27) {
-                    $this->load->view('tidak_ada_add/add_XXVII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 28) {
-                    $this->load->view('tidak_ada_add/add_XXVIII', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 29) {
-                    $this->load->view('tidak_ada_add/add_XXIX', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
-                } else if ($cek_no_add == 30) {
-                    $this->load->view('tidak_ada_add/add_XXX', $data_ke_logic);
-                    $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                $jika_ada_add = $this->Data_kontrak_model->get_addendum_by_id($id_kontrak);
+                $data_ke_logic['id_kontrak'] = $this->input->post('id_kontrak_adendum');
+                $data_ke_logic['copy_add'] = $this->input->post('copy_add');
+                if ($jika_ada_add) {
+                    $data = [
+                        'no_adendum' => $this->input->post('no_adendum'),
+                        'tanggal' => $this->input->post('tanggal'),
+                        'id_kontrak' => $this->input->post('id_kontrak_adendum'),
+                    ];
+                    $this->Data_kontrak_model->add_addendum($data);
+                    if ($cek_no_add == 1) {
+                        $this->load->view('cek_add/copy_add_I', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 2) {
+                        $this->load->view('cek_add/copy_add_II', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 3) {
+                        $this->load->view('cek_add/copy_add_III', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 4) {
+                        $this->load->view('cek_add/copy_add_IV', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 5) {
+                        $this->load->view('cek_add/copy_add_V', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 6) {
+                        $this->load->view('cek_add/copy_add_VI', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 7) {
+                        $this->load->view('cek_add/copy_add_VII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 8) {
+                        $this->load->view('cek_add/copy_add_VIII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 9) {
+                        $this->load->view('cek_add/copy_add_IX', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 10) {
+                        $this->load->view('cek_add/copy_add_X', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 11) {
+                        $this->load->view('cek_add/copy_add_XI', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 12) {
+                        $this->load->view('cek_add/copy_add_XII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 13) {
+                        $this->load->view('cek_add/copy_add_XIII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 14) {
+                        $this->load->view('cek_add/copy_add_XIV', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 15) {
+                        $this->load->view('cek_add/copy_add_XV', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 16) {
+                        $this->load->view('cek_add/copy_add_XVI', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 17) {
+                        $this->load->view('cek_add/copy_add_XVII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 18) {
+                        $this->load->view('cek_add/copy_add_XVIII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 19) {
+                        $this->load->view('cek_add/copy_add_XIX', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 20) {
+                        $this->load->view('cek_add/copy_add_XX', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 21) {
+                        $this->load->view('cek_add/copy_add_XXI', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 22) {
+                        $this->load->view('cek_add/copy_add_XXII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 23) {
+                        $this->load->view('cek_add/copy_add_XXIII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 24) {
+                        $this->load->view('cek_add/copy_add_XXIV', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 25) {
+                        $this->load->view('cek_add/copy_add_XXV', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 26) {
+                        $this->load->view('cek_add/copy_add_XXVI', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 27) {
+                        $this->load->view('cek_add/copy_add_XXVII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 28) {
+                        $this->load->view('cek_add/copy_add_XXVIII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 29) {
+                        $this->load->view('cek_add/copy_add_XXIX', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 30) {
+                        $this->load->view('cek_add/copy_add_XXX', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    }
                 } else {
+                    if ($cek_no_add == 1) {
+                        $this->load->view('tidak_ada_add/add_I', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 2) {
+                        $this->load->view('tidak_ada_add/add_II', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 3) {
+                        $this->load->view('tidak_ada_add/add_III', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 4) {
+                        $this->load->view('tidak_ada_add/add_IV', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 5) {
+                        $this->load->view('tidak_ada_add/add_V', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 6) {
+                        $this->load->view('tidak_ada_add/add_VI', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 7) {
+                        $this->load->view('tidak_ada_add/add_VII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 8) {
+                        $this->load->view('tidak_ada_add/add_VIII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 9) {
+                        $this->load->view('tidak_ada_add/add_IX', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 10) {
+                        $this->load->view('tidak_ada_add/add_X', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 11) {
+                        $this->load->view('tidak_ada_add/add_XI', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 12) {
+                        $this->load->view('tidak_ada_add/add_XII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 13) {
+                        $this->load->view('tidak_ada_add/add_XIII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 14) {
+                        $this->load->view('tidak_ada_add/add_XIV', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 15) {
+                        $this->load->view('tidak_ada_add/add_XV', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 16) {
+                        $this->load->view('tidak_ada_add/add_XVI', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 17) {
+                        $this->load->view('tidak_ada_add/add_XVII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 18) {
+                        $this->load->view('tidak_ada_add/add_XVIII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 19) {
+                        $this->load->view('tidak_ada_add/add_XIX', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 20) {
+                        $this->load->view('tidak_ada_add/add_XX', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 21) {
+                        $this->load->view('tidak_ada_add/add_XXI', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 22) {
+                        $this->load->view('tidak_ada_add/add_XXII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 23) {
+                        $this->load->view('tidak_ada_add/add_XXIII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 24) {
+                        $this->load->view('tidak_ada_add/add_XXIV', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 25) {
+                        $this->load->view('tidak_ada_add/add_XXV', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 26) {
+                        $this->load->view('tidak_ada_add/add_XXVI', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 27) {
+                        $this->load->view('tidak_ada_add/add_XXVII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 28) {
+                        $this->load->view('tidak_ada_add/add_XXVIII', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 29) {
+                        $this->load->view('tidak_ada_add/add_XXIX', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else if ($cek_no_add == 30) {
+                        $this->load->view('tidak_ada_add/add_XXX', $data_ke_logic);
+                        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+                    } else {
+                    }
                 }
             }
         }
@@ -7169,7 +7219,8 @@ class Data_kontrak extends CI_Controller
             $row = array();
             $row[] = ++$no;
             $row[] = $angga->nama_file_dok_penunjang;
-            $row[] = '<a href=' . base_url('/file_dokumen_penunjang' . '/' . $angga->file_dokumen_penunjang) . '>' . '<img width="30px" src=' . base_url('assets/pdf.png') . ' >' . '</a>';
+            $row[] = $angga->file_dokumen_penunjang;
+            $row[] = '<a target="_blank" href=' . base_url('/file_dokumen_penunjang' . '/' . $angga->file_dokumen_penunjang) . '>' . '<img width="30px" src="https://cdn-icons-png.flaticon.com/512/124/124837.png">' . '</a>';
             $row[] = '<a href="javascript:;" class="btn btn-danger  btn-block btn-sm" onClick="hapus_dok_penunjang(' . "'" . $angga->id_dokumen_penunjang . "','hapus_dok_penunjang'" . ')">  <i class="fas fa-trash"></i> Hapus</a>';
             $data[] = $row;
         }
@@ -7188,7 +7239,7 @@ class Data_kontrak extends CI_Controller
         $sts_dokumen = $this->input->post('sts_dokumen');
         $nama_file_dok_penunjang = $this->input->post('nama_file_dok_penunjang');
         $config['upload_path'] = './file_dokumen_penunjang/';
-        $config['allowed_types'] = 'pdf';
+        $config['allowed_types'] = 'pdf|xlsx|word|doc|docx';
         $config['max_size'] = 0;
 
         $this->load->library('upload', $config);
@@ -7211,6 +7262,53 @@ class Data_kontrak extends CI_Controller
     public function hapus_dok_penunjang($id_dokumen_penunjang)
     {
         $this->Data_kontrak_model->deletedata_dok_penunjang($id_dokumen_penunjang);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+
+    public function hapus_addendum()
+    {
+        $id_kontrak = $this->input->post('id_kontrak');
+        $type_add = $this->input->post('type_add');
+        $where = [
+            'id_kontrak' => $id_kontrak,
+            'no_adendum' => $type_add,
+        ];
+        $this->Data_kontrak_model->delete_addendum($where);
+        $row_max_add = $this->Data_kontrak_model->select_max_addendum($id_kontrak);
+        $row_max_add_row = $this->Data_kontrak_model->select_max_addendum_row($id_kontrak);
+        var_dump($row_max_add_row);die;
+        $where_kontrak = [
+            'id_kontrak' => $id_kontrak
+        ];
+        if ($type_add == 'kontrak_awal') {
+            $data_kontrak = [
+                'add_ke' => NULL,
+            ];
+        } else {
+            $data_kontrak = [
+                'add_ke' => $row_max_add,
+                'tanggal_add' => $row_max_add_row['tanggal'],
+            ];
+        }
+        // end ini max Addendum
+        $this->Data_kontrak_model->update_kontrak($where_kontrak, $data_kontrak);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+    public function update_tanggal_addendum()
+    {
+        $id_kontrak_addendum_edit = $this->input->post('id_kontrak_addendum_edit');
+        $no_addendum_edit = $this->input->post('no_addendum_edit');
+        $tanggal_adendum_edit = $this->input->post('tanggal_adendum_edit');
+        $where = [
+            'id_kontrak' => $id_kontrak_addendum_edit,
+            'no_adendum' => $no_addendum_edit,
+        ];
+        $data = [
+            'tanggal' => $tanggal_adendum_edit
+        ];
+        $this->Data_kontrak_model->update_addendum($data, $where);
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 

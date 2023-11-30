@@ -1,10 +1,9 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="main-content">
     <section class="section">
-        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
-  position: fixed; top:50px">
-            <h5> <i> <?= $row_program_kontrak_detail['nama_pekerjaan_program_mata_anggaran'] ?></i></h5>
-            <h6 style="margin-left: auto;"> Kelola Nilai Kontrak</h6>
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
+  position: fixed; top:50px;  padding-bottom: -10px;">
+            <b style="margin-left: auto; font-weight:1000" class="text-black"><?= $row_program_kontrak_detail['nama_pekerjaan_program_mata_anggaran'] ?> - <?= $row_program_kontrak_detail['tahun_kontrak_program'] ?> - Lembar Kerja - Pasca Pengadaan</b>
         </nav>
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -278,14 +277,14 @@
                                                                                     PENJELASAN REKAP KONTRAK AWAL
                                                                                 </div>
                                                                                 <div class="card-body">
-                                                                                    <table class="table">
-                                                                                        <thead>
-                                                                                            <tr>
-                                                                                                <th>No</th>
-                                                                                                <th>Mata Anggaran</th>
-                                                                                                <th>Subtotal (Sebelum PPN)</th>
-                                                                                                <th>PPN</th>
-                                                                                                <th>Subtotal (Setelah PPN)</th>
+                                                                                    <table class="table" style="font-family: RNSSanz-Black;text-transform: uppercase;">
+                                                                                        <thead class="thead-inverse bg-primary text-white">
+                                                                                        <tr style="background-color: #193B53;color:white">
+                                                                                                <th style="color:white;">No</th>
+                                                                                                <th style="color:white;">Mata Anggaran</th>
+                                                                                                <th style="color:white;">Subtotal (Sebelum PPN)</th>
+                                                                                                <th style="color:white;">PPN</th>
+                                                                                                <th style="color:white;">Subtotal (Setelah PPN)</th>
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody>
@@ -319,8 +318,8 @@
                                                                                     <div class="card-body">
                                                                                         <div style="overflow-x: auto;">
                                                                                             <table class="table table-bordered table-striped" style="font-family: RNSSanz-Black;text-transform: uppercase;">
-                                                                                                <thead style="font-size: 12px;" class="thead-inverse bg-primary">
-                                                                                                    <tr style="background-color: #193B53;">
+                                                                                                <thead style="font-size: 12px;" class="thead-inverse bg-primary text-white">
+                                                                                                    <tr style="background-color: #193B53;color:white">
                                                                                                         <th class="text-white">No</th>
                                                                                                         <th class="text-white">Nomor Mata Pembayaran</th>
                                                                                                         <th class="text-white">Uraian</th>
@@ -475,14 +474,14 @@
                                                                                     PENJELASAN REKAP
                                                                                 </div>
                                                                                 <div class="card-body">
-                                                                                    <table class="table">
-                                                                                        <thead>
-                                                                                            <tr>
-                                                                                                <th>No</th>
-                                                                                                <th>Mata Anggaran</th>
-                                                                                                <th>Subtotal (Sebelum PPN)</th>
-                                                                                                <th>PPN</th>
-                                                                                                <th>Subtotal (Setelah PPN)</th>
+                                                                                    <table class="table" style="font-family: RNSSanz-Black;text-transform: uppercase;">
+                                                                                        <thead class="thead-inverse bg-primary text-white">
+                                                                                            <tr style="background-color: #193B53;color:white">
+                                                                                                <th style="color:white;">No</th>
+                                                                                                <th style="color:white;">Mata Anggaran</th>
+                                                                                                <th style="color:white;">Subtotal (Sebelum PPN)</th>
+                                                                                                <th style="color:white;">PPN</th>
+                                                                                                <th style="color:white;">Subtotal (Setelah PPN)</th>
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody>
@@ -598,8 +597,8 @@
                                                                                     <div class="card-body">
                                                                                         <div style="overflow-x: auto;">
                                                                                             <table class="table table-bordered table-striped">
-                                                                                                <thead style="font-size: 12px;" class="thead-inverse bg-primary">
-                                                                                                    <tr>
+                                                                                                <thead style="font-size: 12px;" class="thead-inverse bg-primary text-white">
+                                                                                                <tr style="background-color: #193B53;color:white">
                                                                                                         <th class="text-white">No</th>
                                                                                                         <th class="text-white">No Mata Anggaran</th>
                                                                                                         <th class="text-white">Uraian</th>
@@ -655,7 +654,7 @@
                                                                                                             <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_tkdn'], 2, ',', '.') ?></td>
                                                                                                             <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['jumlah_harga_tkdn'], 2, ',', '.') ?></td>
                                                                                                             <!-- <td> -->
-                                                                                                                <!-- <div class="btn-group">
+                                                                                                            <!-- <div class="btn-group">
                                                                                                                     <button type="button" class="btn btn-default"><i class="fa fa-cogs" aria-hidden="true"></i></button>
                                                                                                                     <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                                                                                                         <span class="sr-only">Toggle Dropdown</span>
@@ -688,7 +687,7 @@
                                                                                                             <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_kontrak_1, 2, ',', '.') ?>
                                                                                                             </label>
                                                                                                         </td>
-                                                                                                        
+
                                                                                                         <td>
 
                                                                                                         </td>
@@ -711,7 +710,7 @@
                                                                                                             <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
                                                                                                             </label>
                                                                                                         </td>
-                                                                                                        
+
                                                                                                         <td>
 
                                                                                                         </td>
@@ -726,7 +725,7 @@
                                                                                                             <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
                                                                                                             </label>
                                                                                                         </td>
-                                                                                                        
+
                                                                                                         <td>
                                                                                                             <a href="javascript:;" onclick="Update_nilai_ke_sub_program_kontrak(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,0)" class="btn btn-sm btn-primary" style="font-size: 12px;"><i class="fas fa fa-save"></i> Simpan Dan Update</a>
                                                                                                         </td>
@@ -913,9 +912,9 @@
                                                                                         PENJELASAN REKAP ADDENDUM <?= $value_addendum['no_addendum'] ?>
                                                                                     </div>
                                                                                     <div class="card-body">
-                                                                                        <table class="table">
-                                                                                            <thead>
-                                                                                                <tr>
+                                                                                        <table class="table" style="font-family: RNSSanz-Black;text-transform: uppercase;">
+                                                                                            <thead class="thead-inverse bg-primary text-white">
+                                                                                            <tr style="background-color: #193B53;color:white">
                                                                                                     <th>No</th>
                                                                                                     <th>Mata Anggaran</th>
                                                                                                     <th>Subtotal (Sebelum PPN)</th>
@@ -982,7 +981,7 @@
                                                                                             <div style="overflow-x: auto;">
                                                                                                 <table class="table table-bordered table-striped">
                                                                                                     <thead style="font-size: 12px;color:white" class="thead-inverse bg-primary text-white">
-                                                                                                        <tr>
+                                                                                                    <tr style="background-color: #193B53;color:white">
                                                                                                             <th class="text-white">No</th>
                                                                                                             <th class="text-white">No Mata Anggaran</th>
                                                                                                             <th class="text-white">Uraian</th>
@@ -993,7 +992,7 @@
                                                                                                             <th class="text-white">TKDN</th>
                                                                                                             <th class="text-white">Harga Satuan TKDN</th>
                                                                                                             <th class="text-white">Jumlah Harga TKDN</th>
-                                                                                                            <th class="text-white">Keterangan</th>
+                                                                                                            <!-- <th class="text-white">Keterangan</th> -->
                                                                                                         </tr>
                                                                                                     </thead>
                                                                                                     <tbody style="font-size: 10px;">
@@ -1051,40 +1050,28 @@
                                                                                                                 <td><?= $value_hps_penyedia_kontrak_1['tkdn' . $field_addendum] ?>%</td>
                                                                                                                 <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['harga_satuan_tkdn' . $field_addendum], 2, ',', '.') ?></td>
                                                                                                                 <td><?= "Rp " . number_format($value_hps_penyedia_kontrak_1['jumlah_harga_tkdn' . $field_addendum], 2, ',', '.') ?></td>
-                                                                                                                <td><?= $keterangan_volume ?></td>
-                                                                                                                <!-- <td>
-                                                                                                                    <div class="btn-group">
-                                                                                                                        <button type="button" class="btn btn-default">Action</button>
-                                                                                                                        <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                                                                                            <span class="sr-only">Toggle Dropdown</span>
-                                                                                                                        </button>
-                                                                                                                        <div class="dropdown-menu" role="menu">
-                                                                                                                            <a onclick="modal_hps_penyedia_kontrak_addendum(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'hapus',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-danger" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Hapus Turunan"><i class="fas fa-trash"></i></a>
-                                                                                                                            <a onclick="modal_hps_penyedia_kontrak_2_addendum(<?= $value_hps_penyedia_kontrak_1['id_hps_penyedia_kontrak_1'] ?>,'edit',<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-warning" href="javascript:;" data-toggle="tooltip" data-placement="top" title="Edit Turunan"><i class="fas fa-edit"></i></a>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </td> -->
                                                                                                             </tr>
                                                                                                         <?php } ?>
                                                                                                     </tbody>
                                                                                                     <tfoot>
                                                                                                         <tr>
-                                                                                                            <td colspan="2">
+                                                                                                            <td>
                                                                                                                 <label for="" style="font-size: 12px;">SUBTOTAL (SEBELUM PPN Rp.)</label>
                                                                                                             </td>
-                                                                                                            <td colspan="4"></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
                                                                                                             <?php                                                                       ?>
                                                                                                             <td>
                                                                                                                 <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_addendum, 2, ',', '.') ?>
                                                                                                                 </label>
                                                                                                             </td>
-                                                                                                            <td colspan="3"></td>
-                                                                                                            <td>
-
-                                                                                                            </td>
+                                                                                                            <td></td>
                                                                                                         </tr>
                                                                                                         <tr>
-                                                                                                            <td colspan="2">
+                                                                                                            <td>
                                                                                                                 <label for="" style="font-size: 12px;">PPN(<?= $value['ppn_hps_kontrak_addendum_' . $value_addendum['no_addendum']] ?>%)<select name="ppn_hps_kontrak_addendum_<?= $value_addendum['no_addendum'] ?><?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="Pilih_ppn_kontrak_addendum(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,<?= $value_addendum['no_addendum'] ?>)">
                                                                                                                         <option selected value="<?= $value['ppn_hps_kontrak_addendum_' . $value_addendum['no_addendum']] ?>">--Pilih PPN--</option>
                                                                                                                         <option value="10">10%</option>
@@ -1092,7 +1079,11 @@
                                                                                                                         <option value="12">12%</option>
                                                                                                                     </select></label>
                                                                                                             </td>
-                                                                                                            <td colspan="4"></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
                                                                                                             <?php
                                                                                                             $total_ppn = ($value['ppn_hps_kontrak_addendum_' . $value_addendum['no_addendum']] * $total_hps_addendum) / 100;
                                                                                                             $total_setelah_ppn = $total_ppn + $total_hps_addendum;
@@ -1101,25 +1092,28 @@
                                                                                                                 <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
                                                                                                                 </label>
                                                                                                             </td>
-                                                                                                            <td colspan="3"></td>
-                                                                                                            <td>
+                                                                                                            <td></td>
 
-                                                                                                            </td>
                                                                                                         </tr>
                                                                                                         <tr>
-                                                                                                            <td colspan="2">
+                                                                                                            <td>
                                                                                                                 <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
                                                                                                             </td>
-                                                                                                            <td colspan="4"></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
                                                                                                             <?php                                                                       ?>
                                                                                                             <td>
                                                                                                                 <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
                                                                                                                 </label>
                                                                                                             </td>
-                                                                                                            <td colspan="3"></td>
                                                                                                             <td>
                                                                                                                 <a href="javascript:;" onclick="Update_nilai_ke_sub_program_addendum(<?= $value['id_detail_sub_program_penyedia_jasa'] ?>,<?= $value_addendum['no_addendum'] ?>)" class="btn btn-sm btn-primary"><i class="fas fa fa-save"></i> Simpan Dan Update</a>
                                                                                                             </td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
                                                                                                         </tr>
                                                                                                     </tfoot>
                                                                                                 </table>

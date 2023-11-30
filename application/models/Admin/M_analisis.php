@@ -6,8 +6,26 @@ class M_analisis extends CI_Model
     function m1_dok_selesai()
     {
         $this->db->select('*');
+        $this->db->from('tbl_dokumen_penunjang');
+        $this->db->group_by('tbl_dokumen_penunjang.id_kontrak');
+        return $this->db->count_all_results();
+    }
+
+    function m1_dok_selesai_kontrak($id_kontrak)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dokumen_penunjang');
+        $this->db->where('tbl_dokumen_penunjang.id_kontrak', $id_kontrak);
+        $this->db->limit(1);
+        return $this->db->count_all_results();
+    }
+
+    function m1_dok_progres_kontrak($id_kontrak)
+    {
+        $this->db->select('*');
         $this->db->from('mst_kontrak');
-        $this->db->join('tbl_dokumen_penunjang', 'mst_kontrak.id_kontrak = tbl_dokumen_penunjang.id_kontrak');
+        $this->db->join('table_adendum', 'mst_kontrak.id_kontrak = table_adendum.id_kontrak');
+        $this->db->where('table_adendum.id_kontrak', $id_kontrak);
         return $this->db->count_all_results();
     }
 
@@ -36,6 +54,7 @@ class M_analisis extends CI_Model
         $this->db->where('tbl_dokumen_surat_pra.file !=', NULL);
         return $this->db->count_all_results();
     }
+    
 
 
     function m2_dok_progres()
@@ -113,7 +132,7 @@ class M_analisis extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('mst_kontrak');
-        $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area');
+        // $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -157,6 +176,17 @@ class M_analisis extends CI_Model
         $this->db->from('tbl_detail_program_penyedia_jasa');
         $this->db->join('mst_kontrak', 'tbl_detail_program_penyedia_jasa.id_kontrak = mst_kontrak.id_kontrak');
         $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    function get_pekerjaan_pra($id_kontrak)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_detail_program_penyedia_jasa');
+        $this->db->join('mst_kontrak', 'tbl_detail_program_penyedia_jasa.id_kontrak = mst_kontrak.id_kontrak');
+        $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area');
+        $this->db->where('mst_kontrak.id_kontrak', $id_kontrak);
         $query = $this->db->get();
         return $query->result_array();
     }

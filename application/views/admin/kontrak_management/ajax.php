@@ -144,11 +144,11 @@
                     text: '<i class="fa fa-file-excel"> Excel</i>',
                     titleAttr: 'Excel'
                 },
-                {
-                    extend: 'pdfHtml5',
-                    text: '<i class="fa fa-file-pdf"> Pdf</i>',
-                    titleAttr: 'PDF'
-                }
+                // {
+                //     extend: 'pdfHtml5',
+                //     text: '<i class="fa fa-file-pdf"> Pdf</i>',
+                //     titleAttr: 'PDF'
+                // }
             ],
             "order": [],
             "ajax": {

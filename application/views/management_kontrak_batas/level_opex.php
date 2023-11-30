@@ -1,5 +1,6 @@
 <script>
     // ini untuk modal global excel 
+    // opex
     var modal_excel_opex_2 = $('#modal_excel_opex_2');
     var form_modal_level_2_opex = $('#form_modal_level_2_opex')
     var form_simpan_level_2_opex = $('#form_simpan_level_2_opex')
@@ -679,6 +680,7 @@
     var modal_opex_urutan = $('#modal_opex_urutan');
 
     function modal_level_3_opex(id, type, type_add) {
+        console.log(id, type, type_add);
         if (type == 'update_nilai_level_3_opex') {
 
         }
@@ -837,7 +839,7 @@
                     $('#form_tambah_level_3_opex').css('display', 'block')
                     $('#button_edit_level_3_opex').css('display', 'block')
 
-                    $('[name="id_detail_opex_1"]').val(response['row_opex_detail'].id_opex_detail);
+                    $('[name="id_opex_detail"]').val(response['row_opex_detail'].id_opex_detail);
                     $('[name="nama_uraian"]').val(response['row_opex_detail'].nama_uraian);
                     $('#title_modal_level_3_opex').text('Edit Uraian')
                 }

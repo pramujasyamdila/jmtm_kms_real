@@ -218,6 +218,7 @@ class Laporan_kinerja extends CI_Controller
         $get_program_by_id_kontrak = $this->Data_kontrak_model->get_program_by_id_kontrak($id_kontrak);
         foreach ($get_program_by_id_kontrak as $key => $value) {
             $data = [
+                'id_detail_program_penyedia_jasa' => $value['id_detail_program_penyedia_jasa'],
                 'id_laporan_periode' => $insert_id,
                 'id_kontrak' => $value['id_kontrak'],
                 'no_kontrak_penyedia' => $value['no_kontrak_penyedia'],
@@ -231,6 +232,7 @@ class Laporan_kinerja extends CI_Controller
                 'id_area' => $value['id_area'],
                 'jenis_pengadaan' => $value['jenis_pengadaan'],
                 'nilai_rup' => $value['nilai_rup'],
+                'total_kontrak' => $value['total_kontrak'],
                 'total_kontrak_addendum_1' => $value['total_kontrak_addendum_1'],
                 'total_kontrak_addendum_2' => $value['total_kontrak_addendum_2'],
                 'total_kontrak_addendum_3' => $value['total_kontrak_addendum_3'],
@@ -245,7 +247,22 @@ class Laporan_kinerja extends CI_Controller
                 'total_kontrak_addendum_12' => $value['total_kontrak_addendum_12'],
                 'total_kontrak_addendum_13' => $value['total_kontrak_addendum_13'],
                 'total_kontrak_addendum_14' => $value['total_kontrak_addendum_14'],
-
+                'total_kontrak_addendum_15' => $value['total_kontrak_addendum_15'],
+                'total_kontrak_addendum_16' => $value['total_kontrak_addendum_16'],
+                'total_kontrak_addendum_17' => $value['total_kontrak_addendum_17'],
+                'total_kontrak_addendum_18' => $value['total_kontrak_addendum_18'],
+                'total_kontrak_addendum_19' => $value['total_kontrak_addendum_19'],
+                'total_kontrak_addendum_20' => $value['total_kontrak_addendum_20'],
+                'total_kontrak_addendum_21' => $value['total_kontrak_addendum_21'],
+                'total_kontrak_addendum_22' => $value['total_kontrak_addendum_22'],
+                'total_kontrak_addendum_23' => $value['total_kontrak_addendum_23'],
+                'total_kontrak_addendum_24' => $value['total_kontrak_addendum_24'],
+                'total_kontrak_addendum_25' => $value['total_kontrak_addendum_25'],
+                'total_kontrak_addendum_26' => $value['total_kontrak_addendum_26'],
+                'total_kontrak_addendum_27' => $value['total_kontrak_addendum_27'],
+                'total_kontrak_addendum_28' => $value['total_kontrak_addendum_28'],
+                'total_kontrak_addendum_29' => $value['total_kontrak_addendum_29'],
+                'total_kontrak_addendum_30' => $value['total_kontrak_addendum_30'],
 
             ];
             $this->Data_kontrak_model->simpan_laporan_periode_ke_detail_program($data);
@@ -253,7 +270,8 @@ class Laporan_kinerja extends CI_Controller
             $get_sub_program_by_id_kontrak = $this->Data_kontrak_model->get_sub_program_by_id_kontrak($value['id_detail_program_penyedia_jasa']);
             foreach ($get_sub_program_by_id_kontrak as $key => $value2) {
                 $data = [
-                    'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                    'id_detail_sub_program_penyedia_jasa' => $value['id_detail_sub_program_penyedia_jasa'],
+                    'id_detail_program_penyedia_jasa' => $value['id_detail_program_penyedia_jasa'],
                     'nama_kontrak_program' => $value2['nama_kontrak_program'],
                     'data' => $value2['data'],
                     'jenis_pengadaan' => $value2['jenis_pengadaan'],
@@ -269,7 +287,9 @@ class Laporan_kinerja extends CI_Controller
                     'persen_progres_fisik' => $value2['persen_progres_fisik'],
                     'keterangan_laporan' => $value2['keterangan_laporan'],
                     'nilai_kontrak_km' => $value2['nilai_kontrak_km'],
+                    'nilai_kontrak_km' => $value2['nilai_kontrak_km'],
                     'prognosa_beban' => $value2['prognosa_beban'],
+                    'keterangan_laporan' => $value2['keterangan_laporan'],
                     'status_mata_anggaran_addendum' => $value2['status_mata_anggaran_addendum'],
                     'nilai_sub_kontrak_penyedia_addendum_1' => $value2['nilai_sub_kontrak_penyedia_addendum_1'],
                     'nilai_sub_kontrak_penyedia_addendum_2' => $value2['nilai_sub_kontrak_penyedia_addendum_2'],
@@ -281,6 +301,26 @@ class Laporan_kinerja extends CI_Controller
                     'nilai_sub_kontrak_penyedia_addendum_8' => $value2['nilai_sub_kontrak_penyedia_addendum_8'],
                     'nilai_sub_kontrak_penyedia_addendum_9' => $value2['nilai_sub_kontrak_penyedia_addendum_9'],
                     'nilai_sub_kontrak_penyedia_addendum_10' => $value2['nilai_sub_kontrak_penyedia_addendum_10'],
+                    'nilai_sub_kontrak_penyedia_addendum_11' => $value2['nilai_sub_kontrak_penyedia_addendum_11'],
+                    'nilai_sub_kontrak_penyedia_addendum_12' => $value2['nilai_sub_kontrak_penyedia_addendum_12'],
+                    'nilai_sub_kontrak_penyedia_addendum_13' => $value2['nilai_sub_kontrak_penyedia_addendum_13'],
+                    'nilai_sub_kontrak_penyedia_addendum_14' => $value2['nilai_sub_kontrak_penyedia_addendum_14'],
+                    'nilai_sub_kontrak_penyedia_addendum_15' => $value2['nilai_sub_kontrak_penyedia_addendum_15'],
+                    'nilai_sub_kontrak_penyedia_addendum_16' => $value2['nilai_sub_kontrak_penyedia_addendum_16'],
+                    'nilai_sub_kontrak_penyedia_addendum_17' => $value2['nilai_sub_kontrak_penyedia_addendum_17'],
+                    'nilai_sub_kontrak_penyedia_addendum_18' => $value2['nilai_sub_kontrak_penyedia_addendum_18'],
+                    'nilai_sub_kontrak_penyedia_addendum_19' => $value2['nilai_sub_kontrak_penyedia_addendum_19'],
+                    'nilai_sub_kontrak_penyedia_addendum_20' => $value2['nilai_sub_kontrak_penyedia_addendum_20'],
+                    'nilai_sub_kontrak_penyedia_addendum_21' => $value2['nilai_sub_kontrak_penyedia_addendum_21'],
+                    'nilai_sub_kontrak_penyedia_addendum_22' => $value2['nilai_sub_kontrak_penyedia_addendum_22'],
+                    'nilai_sub_kontrak_penyedia_addendum_23' => $value2['nilai_sub_kontrak_penyedia_addendum_23'],
+                    'nilai_sub_kontrak_penyedia_addendum_24' => $value2['nilai_sub_kontrak_penyedia_addendum_24'],
+                    'nilai_sub_kontrak_penyedia_addendum_25' => $value2['nilai_sub_kontrak_penyedia_addendum_25'],
+                    'nilai_sub_kontrak_penyedia_addendum_26' => $value2['nilai_sub_kontrak_penyedia_addendum_26'],
+                    'nilai_sub_kontrak_penyedia_addendum_27' => $value2['nilai_sub_kontrak_penyedia_addendum_27'],
+                    'nilai_sub_kontrak_penyedia_addendum_28' => $value2['nilai_sub_kontrak_penyedia_addendum_28'],
+                    'nilai_sub_kontrak_penyedia_addendum_29' => $value2['nilai_sub_kontrak_penyedia_addendum_29'],
+                    'nilai_sub_kontrak_penyedia_addendum_30' => $value2['nilai_sub_kontrak_penyedia_addendum_30'],
                     'addendum_ke' => $value2['addendum_ke'],
 
                 ];

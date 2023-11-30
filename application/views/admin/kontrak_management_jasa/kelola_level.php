@@ -16,15 +16,9 @@
 </style>
 <div class="main-content">
     <section class="section">
-        <!-- <div class="section-header">
-            <h1><i class="fa fa-book"></i> PILIH PROGRAM MATA ANGGARAN</h1>
-            <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="#">PILIH PROGRAM MATA ANGGARAN</a></div>
-            </div>
-        </div> -->
         <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
   position: fixed; top:50px;  padding-bottom: -10px;">
-            <b style="margin-left: auto; font-weight:1000" class="text-black">(<?= $row_kontrak['no_kontrak'] ?>) (<?= $row_kontrak['tahun_anggaran'] ?>) - Lembar Kerja - Mata Anggaran</b>
+            <b style="margin-left: auto; font-weight:1000" class="text-black"><?= $row_kontrak['no_kontrak'] ?> - Tahun Anggaran <?= $row_kontrak['tahun_anggaran'] ?> - Lembar Kerja - Mata Anggaran</b>
         </nav>
 
         <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
@@ -1046,7 +1040,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 
                                                                             ?>
 
-                                                                            <tr class="text-info" style="font-size:12px;font-weight: 450;">
+                                                                            <tr class="text-black" style="font-size:12px;font-weight: 450;">
                                                                                 <td class="tg-0lax">
                                                                                     <?= $value_detail_capex_1['no_urut_1_capex'] ?> </td>
                                                                                 </td>
@@ -1323,7 +1317,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         $this->db->from('tbl_detail_capex_3');
                                                                                         $this->db->where('tbl_detail_capex_3.id_detail_capex_2', $id_detail_capex_2);
                                                                                         $kondisi_capex_detail_2 = $this->db->get()->result_array() ?>
-                                                                               <tr class="text-danger" style="font-size:12px;font-weight: 400;">
+                                                                               <tr class="text-black" style="font-size:12px;font-weight: 400;">
                                                                                     <td class="tg-0lax">
                                                                                         <?= $value_detail_capex_2['no_urut_2_capex'] ?></td>
                                                                                     </td>
@@ -1608,7 +1602,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                             $this->db->from('tbl_detail_capex_4');
                                                                                             $this->db->where('tbl_detail_capex_4.id_detail_capex_3', $id_detail_capex_3);
                                                                                             $kondisi_capex_detail_4 = $this->db->get()->result_array() ?>
-                                                                                    <tr class="text-success">
+                                                                                    <tr class="text-black">
                                                                                         <!-- detail_3 -->
                                                                                         <!-- capex_3 -->
                                                                                         <!-- level_6 -->
@@ -4228,7 +4222,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 
                                                                             ?>
 
-                                                                            <tr class="text-info" style="font-size:12px;font-weight: 450;">
+                                                                            <tr class="text-black" style="font-size:12px;font-weight: 450;">
                                                                                 <td class="tg-0lax">
                                                                                     <?= $value_detail_opex_1['no_urut_1_opex'] ?> </td>
                                                                                 </td>
@@ -4508,7 +4502,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         $this->db->from('tbl_detail_opex_3');
                                                                                         $this->db->where('tbl_detail_opex_3.id_detail_opex_2', $id_detail_opex_2);
                                                                                         $kondisi_opex_detail_2 = $this->db->get()->result_array() ?>
-                                                                               <tr class="text-danger" style="font-size:12px;font-weight: 400;">
+                                                                               <tr class="text-black" style="font-size:12px;font-weight: 400;">
                                                                                     <td class="tg-0lax">
                                                                                         <?= $value_detail_opex_2['no_urut_2_opex'] ?> </td>
                                                                                     </td>
@@ -4794,7 +4788,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                             $this->db->from('tbl_detail_opex_4');
                                                                                             $this->db->where('tbl_detail_opex_4.id_detail_opex_3', $id_detail_opex_3);
                                                                                             $kondisi_opex_detail_4 = $this->db->get()->result_array() ?>
-                                                                                    <tr class="text-success">
+                                                                                    <tr class="text-black">
                                                                                         <!-- detail_3 -->
                                                                                         <!-- opex_3 -->
                                                                                         <!-- level_6 -->
@@ -7424,7 +7418,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 
                                                                             ?>
 
-                                                                            <tr class="text-info" style="font-size:12px;font-weight: 450;">
+                                                                            <tr class="text-black" style="font-size:12px;font-weight: 450;">
                                                                                 <td class="tg-0lax">
                                                                                     <?= $value_detail_bua_1['no_urut_1_bua'] ?> </td>
                                                                                 </td>
@@ -7703,7 +7697,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         $this->db->from('tbl_detail_bua_3');
                                                                                         $this->db->where('tbl_detail_bua_3.id_detail_bua_2', $id_detail_bua_2);
                                                                                         $kondisi_bua_detail_2 = $this->db->get()->result_array() ?>
-                                                                               <tr class="text-danger" style="font-size:12px;font-weight: 400;">
+                                                                               <tr class="text-black" style="font-size:12px;font-weight: 400;">
                                                                                     <td class="tg-0lax">
                                                                                         <?= $value_detail_bua_2['no_urut_2_bua'] ?> </td>
                                                                                     </td>
@@ -7989,7 +7983,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                             $this->db->from('tbl_detail_bua_4');
                                                                                             $this->db->where('tbl_detail_bua_4.id_detail_bua_3', $id_detail_bua_3);
                                                                                             $kondisi_bua_detail_4 = $this->db->get()->result_array() ?>
-                                                                                    <tr class="text-success">
+                                                                                    <tr class="text-black">
                                                                                         <!-- detail_3 -->
                                                                                         <!-- bua_3 -->
                                                                                         <!-- level_6 -->
@@ -10621,7 +10615,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 
                                                                             ?>
 
-                                                                            <tr class="text-info" style="font-size:12px;font-weight: 450;">
+                                                                            <tr class="text-black" style="font-size:12px;font-weight: 450;">
                                                                                 <td class="tg-0lax">
                                                                                     <?= $value_detail_sdm_1['no_urut_1_sdm'] ?> </td>
                                                                                 </td>
@@ -10900,7 +10894,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         $this->db->from('tbl_detail_sdm_3');
                                                                                         $this->db->where('tbl_detail_sdm_3.id_detail_sdm_2', $id_detail_sdm_2);
                                                                                         $kondisi_sdm_detail_2 = $this->db->get()->result_array() ?>
-                                                                               <tr class="text-danger" style="font-size:12px;font-weight: 400;">
+                                                                               <tr class="text-black" style="font-size:12px;font-weight: 400;">
                                                                                     <td class="tg-0lax">
                                                                                         <?= $value_detail_sdm_2['no_urut_2_sdm'] ?> </td>
                                                                                     </td>
@@ -11186,7 +11180,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                             $this->db->from('tbl_detail_sdm_4');
                                                                                             $this->db->where('tbl_detail_sdm_4.id_detail_sdm_3', $id_detail_sdm_3);
                                                                                             $kondisi_sdm_detail_4 = $this->db->get()->result_array() ?>
-                                                                                    <tr class="text-success">
+                                                                                    <tr class="text-black">
                                                                                         <!-- detail_3 -->
                                                                                         <!-- sdm_3 -->
                                                                                         <!-- level_6 -->
@@ -13217,8 +13211,10 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
         </div>
 
         <div class="card" style="margin-top: -18px; padding: 20px">
-            <h6>*Pilih satu atau beberapa mata anggaran untuk dibuat menjadi program pekerjaan</h6>
-
+            <h4 style="font-family: 'Poppins', sans-serif;">PETUNJUK UMUM</h4>
+            <b>
+                <h6 style="text-transform: capitalize;font-family: 'Poppins', sans-serif;">*Pilih satu atau beberapa mata anggaran untuk dibuat menjadi program pekerjaan</h6>
+            </b>
         </div>
 
 <!-- Modal -->

@@ -1371,6 +1371,52 @@ class Data_kontrak_model extends CI_Model
         return $query->result_array();
     }
 
+    public function get_mata_anggaran_tagihan($id_departemen, $id_area, $id_sub_area, $keyword = null)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_detail_program_penyedia_jasa');
+        $this->db->join('mst_kontrak', 'tbl_detail_program_penyedia_jasa.id_kontrak = mst_kontrak.id_kontrak');
+        $this->db->join('mst_departemen', 'mst_kontrak.id_departemen = mst_departemen.id_departemen', 'left');
+        $this->db->join('mst_area', 'mst_kontrak.id_area = mst_area.id_area', 'left');
+        $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area', 'left');
+        $this->db->where('mst_kontrak.sts_delete', '');
+        if ($id_departemen == 4) {
+            if ($keyword) {
+                $this->db->like('nama_pekerjaan_program_mata_anggaran', $keyword);
+                $this->db->or_like('no_kontrak_penyedia', $keyword);
+                $this->db->or_like('mst_kontrak.no_kontrak', $keyword);
+                $this->db->or_like('nama_penyedia', $keyword);
+                $this->db->or_like('nama_area', $keyword);
+                $this->db->or_like('nama_departemen', $keyword);
+                $this->db->or_like('nama_sub_area', $keyword);
+            } else {
+            }
+        } else {
+            if ($keyword) {
+                $this->db->like('nama_pekerjaan_program_mata_anggaran', $keyword);
+                $this->db->or_like('no_kontrak_penyedia', $keyword);
+                $this->db->or_like('mst_kontrak.no_kontrak', $keyword);
+                $this->db->or_like('nama_penyedia', $keyword);
+                $this->db->or_like('nama_area', $keyword);
+                $this->db->or_like('nama_departemen', $keyword);
+                $this->db->or_like('nama_sub_area', $keyword);
+            } else {
+            }
+            if ($id_departemen && $id_area == 0 && $id_sub_area == 0) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+            } else if ($id_departemen && $id_area && $id_sub_area == 0) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+                $this->db->where('mst_kontrak.id_area', $id_area);
+            } else if ($id_departemen && $id_area && $id_sub_area) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+                $this->db->where('mst_kontrak.id_area', $id_area);
+                $this->db->where('mst_kontrak.id_sub_area', $id_sub_area);
+            }
+        }
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function get_mata_anggaran_row($id_detail_program_penyedia_jasa)
     {
         $this->db->select('*');
@@ -1380,6 +1426,16 @@ class Data_kontrak_model extends CI_Model
         $this->db->join('mst_area', 'mst_kontrak.id_area = mst_area.id_area', 'left');
         $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area', 'left');
         $this->db->where('mst_kontrak.sts_delete', '');
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+    public function get_mata_anggaran_row_hapus($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_detail_program_penyedia_jasa');
+        $this->db->join('mst_kontrak', 'tbl_detail_program_penyedia_jasa.id_kontrak = mst_kontrak.id_kontrak');
         $this->db->where('tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
         $query = $this->db->get();
         return $query->row_array();
@@ -5087,6 +5143,34 @@ class Data_kontrak_model extends CI_Model
         $this->db->delete('tbl_dokumen_penunjang', ['id_dokumen_penunjang' => $id_dokumen_penunjang]);
     }
 
+    public function delete_addendum($where)
+    {
+        $this->db->where($where);
+        $this->db->delete('table_adendum');
+    }
+
+
+
+    public function select_max_addendum($id_kontrak)
+    {
+        $this->db->select_max('CAST(no_adendum AS UNSIGNED)', 'max_value');
+        $this->db->from('table_adendum');
+        $this->db->where('id_kontrak', $id_kontrak);
+        $query = $this->db->get();
+        $result = $query->row()->max_value;
+        return $result;
+    }
+
+    public function select_max_addendum_row($id_kontrak)
+    {
+        
+        $this->db->select_max('CAST(no_adendum AS DECIMAL(10,6)) ASC');
+        $this->db->from('table_adendum');
+        $this->db->where('id_kontrak', $id_kontrak);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+    
     // addendum administarsi trakhir
     public function get_row_addendum_administrasi_terakhir($id_detail_program_penyedia_jasa)
     {
@@ -6511,7 +6595,7 @@ class Data_kontrak_model extends CI_Model
         return $this->db->affected_rows();
     }
 
-    function get_result_kontrak($id_departemen, $id_area, $id_sub_area, $filter_tahun)
+    function get_result_kontrak($get_pegawai)
     {
         $this->db->select('*');
         $this->db->from('mst_kontrak');
@@ -6519,27 +6603,67 @@ class Data_kontrak_model extends CI_Model
         $this->db->join('mst_area', 'mst_kontrak.id_area = mst_area.id_area', 'left');
         $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area', 'left');
         $this->db->where('mst_kontrak.sts_delete', '');
+        $id_departemen = $get_pegawai['id_departemen'];
+        $id_area = $get_pegawai['id_area'];
+        $id_sub_area = $get_pegawai['id_sub_area'];
+        if ($_POST['id_kontrak_filter']) {
+            $this->db->where('mst_kontrak.id_kontrak', $_POST['id_kontrak_filter']);
+        } else {
+        }
         if ($id_departemen == 4) {
-            $this->db->where('mst_kontrak.tahun_anggaran', $filter_tahun);
         } else {
             if ($id_departemen && $id_area == 0 && $id_sub_area == 0) {
                 $this->db->where('mst_kontrak.id_departemen', $id_departemen);
-                $this->db->where('mst_kontrak.tahun_anggaran', $filter_tahun);
             } else if ($id_departemen && $id_area && $id_sub_area == 0) {
                 $this->db->where('mst_kontrak.id_departemen', $id_departemen);
                 $this->db->where('mst_kontrak.id_area', $id_area);
-                $this->db->where('mst_kontrak.tahun_anggaran', $filter_tahun);
             } else if ($id_departemen && $id_area && $id_sub_area) {
                 $this->db->where('mst_kontrak.id_departemen', $id_departemen);
                 $this->db->where('mst_kontrak.id_area', $id_area);
                 $this->db->where('mst_kontrak.id_sub_area', $id_sub_area);
-                $this->db->where('mst_kontrak.tahun_anggaran', $filter_tahun);
             }
         }
         $query = $this->db->get();
         return $query->result_array();
     }
 
+
+    function get_result_kontrak_select($id_departemen, $id_area, $id_sub_area)
+    {
+        $this->db->select('*');
+        $this->db->from('mst_kontrak');
+        $this->db->join('mst_departemen', 'mst_kontrak.id_departemen = mst_departemen.id_departemen', 'left');
+        $this->db->join('mst_area', 'mst_kontrak.id_area = mst_area.id_area', 'left');
+        $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area', 'left');
+        $this->db->where('mst_kontrak.sts_delete', '');
+        if (isset($_POST['id_departemen'])) {
+            $this->db->like('mst_kontrak.id_departemen', $_POST['id_departemen']);
+        } else {
+        }
+        if (isset($_POST['id_area'])) {
+            $this->db->like('mst_kontrak.id_area', $_POST['id_area']);
+        } else {
+        }
+        if (isset($_POST['id_sub_area'])) {
+            $this->db->like('mst_kontrak.id_sub_area', $_POST['id_sub_area']);
+        } else {
+        }
+        if ($id_departemen == 4) {
+        } else {
+            if ($id_departemen && $id_area == 0 && $id_sub_area == 0) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+            } else if ($id_departemen && $id_area && $id_sub_area == 0) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+                $this->db->where('mst_kontrak.id_area', $id_area);
+            } else if ($id_departemen && $id_area && $id_sub_area) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+                $this->db->where('mst_kontrak.id_area', $id_area);
+                $this->db->where('mst_kontrak.id_sub_area', $id_sub_area);
+            }
+        }
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
     public function update_tbl_unit_price($where, $data)
     {
@@ -6925,6 +7049,8 @@ class Data_kontrak_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('tbl_vendor_identitas_prusahaan');
+        $this->db->group_by('tbl_vendor_identitas_prusahaan.id_vendor');
+        $this->db->group_by('tbl_vendor_identitas_prusahaan.nama_usaha');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -7012,4 +7138,96 @@ class Data_kontrak_model extends CI_Model
         $this->db->delete('tbl_hps_penyedia_kontrak_1', $where);
         return $this->db->affected_rows();
     }
+
+    function get_all_kontrak($id_departemen, $id_area, $id_sub_area, $id_kontrak)
+    {
+        $this->db->select('*');
+        $this->db->from('mst_kontrak');
+        $this->db->join('mst_departemen', 'mst_kontrak.id_departemen = mst_departemen.id_departemen', 'left');
+        $this->db->join('mst_area', 'mst_kontrak.id_area = mst_area.id_area', 'left');
+        $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area', 'left');
+        $this->db->where('mst_kontrak.sts_delete', '');
+        $this->db->where('mst_kontrak.id_kontrak', $id_kontrak);
+        if (isset($_POST['id_departemen'])) {
+            $this->db->like('mst_kontrak.id_departemen', $_POST['id_departemen']);
+        } else {
+        }
+        if (isset($_POST['id_area'])) {
+            $this->db->like('mst_kontrak.id_area', $_POST['id_area']);
+        } else {
+        }
+        if (isset($_POST['id_sub_area'])) {
+            $this->db->like('mst_kontrak.id_sub_area', $_POST['id_sub_area']);
+        } else {
+        }
+        if ($id_departemen == 4) {
+        } else {
+            if ($id_departemen && $id_area == 0 && $id_sub_area == 0) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+            } else if ($id_departemen && $id_area && $id_sub_area == 0) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+                $this->db->where('mst_kontrak.id_area', $id_area);
+            } else if ($id_departemen && $id_area && $id_sub_area) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+                $this->db->where('mst_kontrak.id_area', $id_area);
+                $this->db->where('mst_kontrak.id_sub_area', $id_sub_area);
+            }
+        }
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    function result_kontrak_export($id_departemen, $id_area, $id_sub_area)
+    {
+        $this->db->select('*');
+        $this->db->from('mst_kontrak');
+        $this->db->join('mst_departemen', 'mst_kontrak.id_departemen = mst_departemen.id_departemen', 'left');
+        $this->db->join('mst_area', 'mst_kontrak.id_area = mst_area.id_area', 'left');
+        $this->db->join('mst_sub_area', 'mst_kontrak.id_sub_area = mst_sub_area.id_sub_area', 'left');
+        $this->db->where('mst_kontrak.sts_delete', '');
+        if (isset($_POST['id_departemen'])) {
+            $this->db->like('mst_kontrak.id_departemen', $_POST['id_departemen']);
+        } else {
+        }
+        if (isset($_POST['id_area'])) {
+            $this->db->like('mst_kontrak.id_area', $_POST['id_area']);
+        } else {
+        }
+        if (isset($_POST['id_sub_area'])) {
+            $this->db->like('mst_kontrak.id_sub_area', $_POST['id_sub_area']);
+        } else {
+        }
+        if ($id_departemen == 4) {
+        } else {
+            if ($id_departemen && $id_area == 0 && $id_sub_area == 0) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+            } else if ($id_departemen && $id_area && $id_sub_area == 0) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+                $this->db->where('mst_kontrak.id_area', $id_area);
+            } else if ($id_departemen && $id_area && $id_sub_area) {
+                $this->db->where('mst_kontrak.id_departemen', $id_departemen);
+                $this->db->where('mst_kontrak.id_area', $id_area);
+                $this->db->where('mst_kontrak.id_sub_area', $id_sub_area);
+            }
+        }
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    function cek_valid_addendum($id_kontrak, $no_adendum)
+    {
+        $this->db->select('*');
+        $this->db->from('table_adendum');
+        $this->db->where('table_adendum.id_kontrak', $id_kontrak);
+        $this->db->where('table_adendum.no_adendum', $no_adendum);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function update_addendum($data, $where)
+    {
+        $this->db->update('table_adendum', $data, $where);
+        return $this->db->affected_rows();
+    }
+    
 }

@@ -135,58 +135,184 @@
                         <div class="dropdown-menu dropdown-list dropdown-menu-right">
                             <div class="dropdown-header">Notifications
                                 <div class="float-right">
-                                    <a href="#">Mark All As Read</a>
                                 </div>
                             </div>
                             <div class="dropdown-list-content dropdown-list-icons">
-                                <a href="#" class="dropdown-item dropdown-item-unread">
-                                    <div class="dropdown-item-icon bg-primary text-white">
-                                        <i class="fas fa-code"></i>
+                                <div class="row mt-3" style="margin:5px">
+                                    <center>
+                                        <label style="font-family: 'Poppins', sans-serif;"><b> MODUL 1 - CHECKLIST DAN TO DO LIST </b></label>
+                                    </center>
+                                    <div class="col-md-6">
+                                        <div class="card bg-success" style="border-radius:10px;height:50px;">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <center>
+                                                        <label style="font-family: 'Poppins', sans-serif;">Done</label>
+                                                    </center>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card bg-warning" style="font-family: 'Poppins', sans-serif;">
+                                                        <center>
+                                                            <label><?= $m1_dok_selesai ?></label>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <div class="dropdown-item-desc">
-                                        Template update is available now!
-                                        <div class="time text-primary">2 Min Ago</div>
+                                    <div class="col-md-6">
+                                        <div class="card bg-warning" style="border-radius:10px;height:50px;">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <center>
+                                                        <label style="font-family: 'Poppins', sans-serif;margin-left:5px;">Progres</label>
+                                                    </center>
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card bg-success" style="font-family: 'Poppins', sans-serif;">
+                                                        <center>
+                                                            <label><?= $m1_dok_progres2 ?></label>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="dropdown-item-icon bg-info text-white">
-                                        <i class="far fa-user"></i>
+                                </div>
+                                <div class="row" style="margin:5px">
+                                    <center>
+                                        <label style="font-family: 'Poppins', sans-serif;"><b> MODUL 2 - DOKUMEN PRA PENGADAAN </b></label>
+                                    </center>
+                                    <div class="col-md-6">
+                                        <div class="card bg-success" style="border-radius:10px;height:50px;">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <center>
+                                                        <label style="font-family: 'Poppins', sans-serif;">Done</label>
+                                                    </center>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card bg-warning" style="font-family: 'Poppins', sans-serif;">
+                                                        <center>
+                                                            <label><?= $m2_dok_selesai ?></label>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <div class="dropdown-item-desc">
-                                        <b>You</b> and <b>Dedik Sugiharto</b> are now friends
-                                        <div class="time">10 Hours Ago</div>
+                                    <div class="col-md-6">
+                                        <div class="card bg-warning" style="border-radius:10px;height:50px;">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <center>
+                                                        <label style="font-family: 'Poppins', sans-serif;margin-left:5px;">Progres</label>
+                                                    </center>
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card bg-success" style="font-family: 'Poppins', sans-serif;">
+                                                        <center>
+                                                            <label><?= $m2_dok_progres ?></label>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="dropdown-item-icon bg-success text-white">
-                                        <i class="fas fa-check"></i>
+                                </div>
+                                <div class="row" style="margin:5px">
+                                    <center>
+                                        <label style="font-family: 'Poppins', sans-serif;"><b> MODUL 2 - DOKUMEN PASCA PENGADAAN </b></label>
+                                    </center>
+                                    <div class="col-md-6">
+                                        <div class="card bg-success" style="border-radius:10px;height:50px;">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <center>
+                                                        <label style="font-family: 'Poppins', sans-serif;">Done</label>
+                                                    </center>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card bg-warning" style="font-family: 'Poppins', sans-serif;">
+                                                        <center>
+                                                            <label><?= $m2_dok_selesai_pasca_final ?></label>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <div class="dropdown-item-desc">
-                                        <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
-                                        <div class="time">12 Hours Ago</div>
+                                    <div class="col-md-6">
+                                        <div class="card bg-warning" style="border-radius:10px;height:50px;">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <center>
+                                                        <label style="font-family: 'Poppins', sans-serif;margin-left:5px;">Progres</label>
+                                                    </center>
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card bg-success" style="font-family: 'Poppins', sans-serif;">
+                                                        <center>
+                                                            <label><?= $m2_final_pasca ?></label>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="dropdown-item-icon bg-danger text-white">
-                                        <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="row" style="margin:5px">
+                                    <center>
+                                        <label style="font-family: 'Poppins', sans-serif;"><b> MODUL 3 - DOKUMEN TAGIHAN </b></label>
+                                    </center>
+                                    <div class="col-md-6">
+                                        <div class="card bg-success" style="border-radius:10px;height:50px;">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <center>
+                                                        <label style="font-family: 'Poppins', sans-serif;">Done</label>
+                                                    </center>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card bg-warning" style="font-family: 'Poppins', sans-serif;">
+                                                        <center>
+                                                            <label><?= $m2_dok_selesai_pasca_final ?></label>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <div class="dropdown-item-desc">
-                                        Low disk space. Let's clean it!
-                                        <div class="time">17 Hours Ago</div>
+                                    <div class="col-md-6">
+                                        <div class="card bg-warning" style="border-radius:10px;height:50px;">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <center>
+                                                        <label style="font-family: 'Poppins', sans-serif;margin-left:5px;">Progres</label>
+                                                    </center>
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card bg-success" style="font-family: 'Poppins', sans-serif;">
+                                                        <center>
+                                                            <label><?= $m2_final_pasca ?></label>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="dropdown-item-icon bg-info text-white">
-                                        <i class="fas fa-bell"></i>
-                                    </div>
-                                    <div class="dropdown-item-desc">
-                                        Welcome to Stisla template!
-                                        <div class="time">Yesterday</div>
-                                    </div>
-                                </a>
+                                </div>
                             </div>
                             <div class="dropdown-footer text-center">
-                                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                                <a href="<?= base_url('admin/to_do_list')?>">View All <i class="fas fa-chevron-right"></i></a>
                             </div>
                         </div>
                     </li>
@@ -196,12 +322,12 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-title">Logged in 5 min ago</div>
-                            <a href="<?= base_url('auth/profile') ?>" class="dropdown-item has-icon">
+                            <a href="<?= base_url('profile') ?>" class="dropdown-item has-icon">
                                 <i class="far fa-user"></i> Profile
                             </a>
-                            <a href="<?= base_url('auth/setting') ?>" class="dropdown-item has-icon">
+                            <!-- <a href="<?= base_url('setting') ?>" class="dropdown-item has-icon">
                                 <i class="fas fa-cog"></i> Settings
-                            </a>
+                            </a> -->
                             <div class="dropdown-divider"></div>
                             <a href="<?= base_url('auth/logout') ?>" class="dropdown-item has-icon text-danger">
                                 <i class="fas fa-sign-out-alt"></i> Logout

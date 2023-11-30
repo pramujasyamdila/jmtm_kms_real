@@ -1,16 +1,9 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="main-content">
     <section class="section">
-        <!-- <div class="section-header">
-            <h1><i class="fa fa-book"></i> Pra Pengadaan</h1>
-            <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item"><a href="<?= base_url('admin/administrasi_penyedia') ?>">Admininstrasi Penyedia</a></div>
-                <div class="breadcrumb-item active"><a href="<?= base_url('admin/data_kontrak') ?>"> Pra Pengadaan</a></div>
-            </div>
-        </div> -->
         <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
   position: fixed; top:50px;  padding-bottom: -10px;">
-            <b style="margin-left: auto; font-weight:1000" class="text-black">(<?= $nama_kontrak['nama_kontrak'] ?>) (<?= $nama_kontrak['tahun_anggaran'] ?>) - Lembar Kerja - Pra Pengadaan</b>
+            <b style="margin-left: auto; font-weight:1000" class="text-black"><?= $nama_kontrak['nama_kontrak'] ?> - <?= $nama_kontrak['tahun_anggaran'] ?> - Lembar Kerja - Pra Pengadaan</b>
         </nav>
 
         <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
@@ -19,30 +12,58 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <h6 style="font-family: 'Poppins', sans-serif;"><b> Modul ini bertujuan untuk memilih mata anggaran yang akan dibuat menjadi suatu Program Pekerjaan</b></h6>
         </div>
 
-
-        <div class="card" style="margin-top: -20px; padding: 20px;background: rgb(36,93,120);
-background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
-
-            <form action="<?= base_url('admin/administrasi_penyedia/search/') . $id_kontrak ?>" method="post">
-                <div class="row">
-                    <div class="col-md-10">
-                        <input type="text" name="keyword" placeholder="Masukan Keyword Pencarian..." class="form-control  rounded-0">
-
-                    </div>
-                    <div class="col-md-2">
-                        <button type="submit" class="btn btn-sm btn-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</button>
-                    </div>
-                </div>
-
-
-            </form>
-        </div>
-
+        <br>
 
         <div class="content-wrapper" style="margin-top: -18px;background-color:white">
             <!-- Content Header (Page header) -->
             <!-- /.content-header -->
             <!-- Main content -->
+            <div class="card" style="margin-top: -20px; padding-top: 10px; padding-left: 20px">
+                <h5 style="font-family: 'Poppins', sans-serif;"><b>CHECKLIST DAN TO DO LIST </b></h5>
+                <div class="row" style="padding-left:90px">
+                    <div class="col-md-4">
+                        <div class="card bg-success" style="margin-top: 20px; padding-top: 10px; padding-left: 20px; border-radius:10px">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <center>
+                                        <h5 style="font-family: 'Poppins', sans-serif;">Done</h5>
+                                    </center>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card bg-warning" style="font-family: 'Poppins', sans-serif;">
+                                        <center>
+                                            <h5><?= $m2_dok_selesai ?></h5>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-warning" style="margin-top: 20px; padding-top: 10px; padding-left: 20px; border-radius:10px">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <center>
+                                        <h5 style="font-family: 'Poppins', sans-serif;">On Progres</h5>
+                                    </center>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card bg-success" style="font-family: 'Poppins', sans-serif;">
+                                        <center>
+                                            <h5><?= $m2_dok_progres ?></h5>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="javascirpt:;" class="btn btn-primary" data-toggle="modal" data-target="#modal_m2" class="btn btn-xl btn-primary" style="font-family: RNSSanz-Black;text-transform: uppercase;padding-left: 50px;padding-right: 50px;background-color: #302B63;margin-top:30px">Lihat Detail</a>
+                    </div>
+                </div>
+            </div>
             <section class="content">
                 <div class="card card-outline card-warning">
                     <div class="card-body">
@@ -57,8 +78,9 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                 border: 3px solid black;
                             }
                         </style>
-                        <table id="table_list_program" class="table table-bordered" style="font-family: RNSSanz-Black;text-transform: uppercase;">
-                            <thead>
+                        <br>
+                        <table id="table_list_program" class="table table-bordered">
+                            <thead style="font-family: RNSSanz-Black;text-transform: uppercase;">
                                 <tr class="text-center " style="background-color: #193B53;">
                                     <th class="tg-0pky text-center text-white" style="font-size: 12px;">No</th>
                                     <th class="tg-0pky text-center text-white" style="font-size: 12px;width:300px !important;border: 1px solid #ccc;" rowspan="1">Uraian Pekerjaan</th>
@@ -68,7 +90,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                     <th class="tg-0pky text-center text-white" style="font-size: 12px;">Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="font-family: RNSSanz-Black;">
                                 <?php $i = 1;
                                 $j = 1;
                                 foreach ($get_mata_anggaran as $key => $value) { ?>
@@ -105,16 +127,16 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                             <i class="fa fa-cogs" aria-hidden="true"></i>
                                                         </button>
                                                         <div class="dropdown-menu">
-                                                            <a style="font-size: 12px;" title="Hapus Nama Program Mata Anggaran" class="btn btn-sm btn-outline-danger" href="javascript:;" onclick="Hapus_nama_mata_anggaran(' <?= $value['id_detail_program_penyedia_jasa'] ?>')"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                            <a style="font-size: 12px;" title="Hapus Nama Program Mata Anggaran" class="btn btn-sm btn-outline-danger" href="javascript:;" onclick="Hapus_nama_mata_anggaran('<?= $value['id_detail_program_penyedia_jasa'] ?>')"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                                             <a style="font-size: 12px;" title="Edit Nama Program Mata Anggaran" class="btn btn-sm btn-outline-warning" href="javascript:;" onclick="Edit_nama_mata_anggaran('<?= $value['id_detail_program_penyedia_jasa'] ?>')"><i class="fa fa-edit" aria-hidden="true"></i></a>
                                                             <a style="font-size: 12px;" title="Buat Hps" class="btn btn-sm btn-outline-secondary" target="_blank" href="<?= base_url('admin/administrasi_penyedia/buat_hps/' . $value['id_detail_program_penyedia_jasa']) ?>"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
-                                                            <a href="javascript:;" style="font-size: 12px;" onclick="alert_hps_belum_dibuat()" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" title="Kelola Format Surat"><i class="fas fa fa-envelope"></i> </a>
+                                                            <a target="_blank" style="font-size: 12px;" href="<?= base_url('admin/administrasi_penyedia/kelola_format_surat_pasca/' . $value['id_detail_program_penyedia_jasa']) ?>" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" title="Kelola Format Surat"><i class="fas fa fa-envelope"></i> </a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </td>
                                         <?php  } else { ?>
-                                            <td class="tg-0pky text-center" style="font-size: 12px;">
+                                            <td class="tg-0pky text-center" style="font-size: 12 px;">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend" style="width: 100%;">
                                                         <button type="button" class="btn-block btn btn-primary" data-toggle="dropdown">
@@ -226,23 +248,81 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         </div>
                     </div>
                     <!-- /.col -->
-
                     <!-- /.row -->
                     <!-- Main row -->
                     <!-- /.row -->
-
                     <!--/. container-fluid -->
                 </div>
             </section>
             <!-- /.content -->
         </div>
-
-
-
         <div class="card" style="margin-top: -18px; padding: 20px">
-            <h6>*Jenis Pengadaan diambil otomatis dari Persetujuan Izin Prinsip</h6>
-            <h6>*Nilai Pagu diambil otomatis dari Rekapitulasi Daftar Kuantitas dan Harga Perkiraan Sendiri (HPS)</h6>
-            <h6>*Seluruh Nilai pada Tabel di atas adalah Nilai Sebelum PPN</h6>
+            <h4 style="text-transform: uppercase;font-family: 'Poppins', sans-serif;">PETUNJUK UMUM</h4>
+            <h6 style="text-transform: capitalize;;font-family: 'Poppins', sans-serif;">*Jenis Pengadaan diambil otomatis dari Persetujuan Izin Prinsip</h6>
+            <h6 style="text-transform: capitalize;;font-family: 'Poppins', sans-serif;">*Nilai Pagu dapat diambil dari Nilai Kontrak/Addendum Kontrak Manajemen atau dapat Diisi sesuai Perhitungan masing-masing Area</h6>
+            <h6 style="text-transform: capitalize;;font-family: 'Poppins', sans-serif;">*Seluruh Nilai pada Tabel di atas adalah Nilai Setelah PPN</h6>
+            <h6 style="text-transform: capitalize;;font-family: 'Poppins', sans-serif;">*Otomatisasi Persuratan Hanya Bisa dipakai untuk Jenis Pengadaan yang hanya melibatkan 1 Ruas, untuk Ruas gabungan gunakan Download Format Surat dan Upload Dokumen Surat secara Manual</h6>
         </div>
     </section>
+</div>
+
+
+<div class="modal fade bd-example-modal-lg" id="modal_m2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">MODUL 2 - DOKUMEN PRA PENGADAAN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="overflow-x: auto;">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Uraian Pekerjaan</th>
+                                <th>Done</th>
+                                <th>On Progres</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1;
+                            foreach ($data_pekerjaan as $key => $value) { ?>
+                                <tr>
+                                    <td><?= $i++ ?></td>
+                                    <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
+                                    <td>
+                                        <?php
+                                        $this->db->select('*');
+                                        $this->db->from('mst_kontrak');
+                                        $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
+                                        $this->db->join('tbl_dokumen_surat_pra', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa');
+                                        $this->db->where('tbl_dokumen_surat_pra.file !=', NULL);
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                        $query = $this->db->count_all_results();
+                                        ?>
+                                        <?= $query ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        $this->db->select('*');
+                                        $this->db->from('mst_kontrak');
+                                        $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
+                                        $this->db->join('tbl_dokumen_surat_pra', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa');
+                                        $this->db->where('tbl_dokumen_surat_pra.file', NULL);
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                        $query2 =  $this->db->count_all_results();
+                                        ?>
+                                        <?= $query2 - $query  ?>
+                                    </td>
+                                </tr>
+                            <?php   } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

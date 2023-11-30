@@ -1,5 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
-<style>
+<!-- <style>
     th,
     td {
         white-space: nowrap;
@@ -13,7 +13,7 @@
     tr {
         height: 50px;
     }
-</style>
+</style> -->
 <div class="main-content" style="font-family: 'RNSSanz-Bold'">
     <section class="section">
         <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
@@ -27,14 +27,59 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <h6 style="font-family: 'Poppins', sans-serif;"><b> Modul ini digunakan dalam menyusun Mata Anggaran di dalam Kontrak Manajemen </b></h6>
 
         </div>
+        <div class="card" style="margin-top: -20px; padding-top: 10px; padding-left: 20px">
+            <h5 style="font-family: 'Poppins', sans-serif;"><b>CHECKLIST DAN TO DO LIST </b></h5>
+            <div class="row" style="padding-left:90px">
+                <div class="col-md-4">
+                    <div class="card bg-success" style="margin-top: 20px; padding-top: 10px; padding-left: 20px; border-radius:10px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <center>
+                                    <h5 style="font-family: 'Poppins', sans-serif;">Done</h5>
+                                </center>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card bg-warning" style="font-family: 'Poppins', sans-serif;">
+                                    <center>
+                                        <h5><?= $m1_dok_selesai ?></h5>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-warning" style="margin-top: 20px; padding-top: 10px; padding-left: 20px; border-radius:10px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <center>
+                                    <h5 style="font-family: 'Poppins', sans-serif;">On Progres</h5>
+                                </center>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card bg-success" style="font-family: 'Poppins', sans-serif;">
+                                    <center>
+                                        <h5><?= $m1_dok_progres2 ?></h5>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="card" style="margin-top: -20px; padding-bottom: 30px; padding-top: 2px;padding-left:20px;padding-right:20px">
-            <button type="button" class="btn btn-outline-primary btn-sm btn-lg mb-2 mt-4" data-toggle="modal" data-target="#tambah_addendum">
+            <br>
+            <button style="font-family: RNSSanz-Black;text-transform: uppercase;" type="button" class="btn btn-outline-primary btn-sm btn-lg mb-2 mt-4" data-toggle="modal" data-target="#tambah_addendum">
                 <i class="fas fa fa-plus"></i> Tambah Addendum
             </button>
             <br>
-
-            <div style="overflow-x: auto;overflow-y: auto;height:550px;margin-bottom:-40px">
+            <a style="font-family: RNSSanz-Black;text-transform: uppercase;" class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_5.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+            <br>
+            <div style="overflow-x: auto;overflow-y: auto;height:550px;margin-bottom:-40px;">
                 <table style="font-family: RNSSanz-Black;text-transform: uppercase;" class="table" id="table_kontrak">
                     <thead class="bg-primary">
                         <tr>
@@ -44,6 +89,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                 <th class="table-warning text-center text-white" style="width: 150px;background-color: #193B53"><i class="fa fa-list" aria-hidden="true"></i> Kontrak Awal
                                     <hr>
                                     <?= $row_kontrak['tahun_kontrak'] ?>
+                                    <a href="javascript:;" style="font-size:11px;" class="btn btn-sm btn-info btn-sm" onclick="Edit_tgl_addendum('kontrak_awal')"><i class="fas fa fa-edit" title="Edit Tanggal"></i> </a>
                                 </th>
                                 <th class="table-secondary text-center text-white" style="width: 130px;background-color: #193B53;"> <a href="javascript:;" style="font-size:11px;margin-top:-20px;" class="btn btn-sm btn-danger btn-lg" onclick="ModalPenunjang('Kontrak Awal')"><i class="fa fa-file-pdf" aria-hidden="true" title="Dok. Penunjang / Kontrak"></i> </a><br><i class="fa fa-key" aria-hidden="true"></i></th>
                             <?php } else { ?>
@@ -115,11 +161,18 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                     ?>
                                     <th class="table-warning text-center text-white" style="width: 200px;background-color: #193B53;"><i class="fa fa-list" aria-hidden="true"></i> <?= $romawi_add ?>
                                         <hr>
-                                        <?= $value['tanggal'] ?>
+                                        <?php if ($value['tanggal'] == '0000-00-00') { ?>
+                                            <?= $this->jam_tgl->tgl_indo($row_kontrak['tahun_kontrak']) ?>
+                                        <?php } else { ?>
+                                            <?= $this->jam_tgl->tgl_indo($value['tanggal']) ?>
+                                            <a href="javascript:;" style="font-size:11px;" class="btn btn-sm btn-info btn-sm" onclick="Edit_tgl_addendum('<?= $value['no_adendum'] ?>')"><i class="fas fa fa-edit" title="Edit Tanggal"></i> </a>
+                                        <?php  }
+                                        ?>
+
                                     </th>
                                     <th class="table-secondary text-center text-white" style="background-color: #193B53">
                                         <a href="javascript:;" style="font-size:11px;" class="btn btn-sm btn-success btn-sm" onclick="ModalPenunjang('<?= $romawi_add ?>')"><i class="fas fa fa-file" title="Dokumen Penunjang / Kontrak"></i> </a>
-                                        <a href="javascript:;" style="font-size:11px;" class="btn btn-sm btn-danger btn-sm" onclick="Hapus_addendum('<?= $romawi_add ?>')"><i class="fas fa fa-trash" title="Hapus Addendum"></i> </a>
+                                        <a href="javascript:;" style="font-size:11px;" class="btn btn-sm btn-danger btn-sm" onclick="Hapus_addendum('<?= $value['no_adendum'] ?>')"><i class="fas fa fa-trash" title="Hapus Addendum"></i> </a>
                                         <hr>
                                         <i class="fa fa-key" title="Aksi <?= $romawi_add ?>" aria-hidden="true"></i>
                                     </th>
@@ -603,10 +656,19 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
         </div> -->
 
         <div class="card" style="margin-top: -18px; padding: 20px">
-            <h6>*Pastikan Nilai Nominal hanya diisi pada Turunan Terakhir</h6>
-            <h6>*Ubah Nilai Nominal menjadi "0" (nol) jika ingin menurunkan mata anggaran ke level selanjutnya</h6>
-            <h6>*Addendum maksimal dalam sistem adalah Addendum 30 dengan Turunan level maksimal 7 level turunan</h6>
-            <h6>*Pastikan Kontrak Manajemen / Addendumnya diupload ke dalam sistem. Dokumen pendukung (jika ada) juga dapat diinput ke dalam sistem</h6>
+            <h4 style="text-transform: uppercase;font-family: 'Poppins', sans-serif;">PETUNJUK UMUM</h4>
+            <b>
+                <h6 style="font-family: 'Poppins', sans-serif;">*Pastikan Nilai Nominal hanya diisi pada Turunan Terakhir</h6>
+            </b>
+            <b>
+                <h6 style="font-family: 'Poppins', sans-serif;">*Ubah Nilai Nominal menjadi "0" (nol) jika ingin menurunkan mata anggaran ke level selanjutnya</h6>
+            </b>
+            <b>
+                <h6 style="font-family: 'Poppins', sans-serif;">*Addendum maksimal dalam sistem adalah Addendum 30 dengan Turunan level maksimal 7 level turunan</h6>
+            </b>
+            <b>
+                <h6 style="font-family: 'Poppins', sans-serif;">*Pastikan Kontrak Manajemen / Addendumnya diupload ke dalam sistem. Dokumen pendukung (jika ada) juga dapat diinput ke dalam sistem</h6>
+            </b>
 
         </div>
         <!-- Button trigger modal -->
@@ -624,7 +686,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
     </section>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="modal_nilai_kontrak_awal_level_1" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_nilai_kontrak_awal_level_1" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
 
         <div class="modal-content">
@@ -676,7 +738,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- capex -->
-<div class="modal fade" id="modal_excel_capex_2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_capex_2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -688,8 +750,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_2.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -714,7 +775,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- capex 1 -->
-<div class="modal fade" id="modal_excel_capex_3" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_capex_3" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -726,8 +787,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_3.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -751,7 +811,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
     </div>
 </div>
 
-<div class="modal fade" id="modal_capex_urutan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_capex_urutan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -762,7 +822,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <table class="table">
+                    <table style="font-family: RNSSanz-Black;text-transform: uppercase;" class="table">
                         <thead>
                             <tr>
                                 <th>No Hps</th>
@@ -784,7 +844,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
     </div>
 </div>
 
-<div class="modal fade" id="modal_opex_urutan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_opex_urutan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -795,7 +855,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <table class="table">
+                    <table style="font-family: RNSSanz-Black;text-transform: uppercase;" class="table">
                         <thead>
                             <tr>
                                 <th>No Hps</th>
@@ -817,7 +877,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
     </div>
 </div>
 
-<div class="modal fade" id="modal_bua_urutan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_bua_urutan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -828,7 +888,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <table class="table">
+                    <table style="font-family: RNSSanz-Black;text-transform: uppercase;" class="table">
                         <thead>
                             <tr>
                                 <th>No Hps</th>
@@ -850,7 +910,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
     </div>
 </div>
 
-<div class="modal fade" id="modal_sdm_urutan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_sdm_urutan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -861,7 +921,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <table class="table">
+                    <table style="font-family: RNSSanz-Black;text-transform: uppercase;" class="table">
                         <thead>
                             <tr>
                                 <th>No Hps</th>
@@ -886,7 +946,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 
 
 <!-- capex 2 -->
-<div class="modal fade" id="modal_excel_capex_4" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_capex_4" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -898,8 +958,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_4.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -924,7 +983,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- capex 3 -->
-<div class="modal fade" id="modal_excel_capex_5" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_capex_5" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -936,8 +995,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_5.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -962,7 +1020,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- capex 4 -->
-<div class="modal fade" id="modal_excel_capex_6" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_capex_6" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -974,8 +1032,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_6.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1000,7 +1057,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- capex 5 -->
-<div class="modal fade" id="modal_excel_capex_7" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_capex_7" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1012,8 +1069,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_7.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1038,7 +1094,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- capex 7 -->
-<div class="modal fade" id="modal_excel_capex_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_capex_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1050,8 +1106,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_8.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1076,7 +1131,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- capex 8 -->
-<div class="modal fade" id="modal_excel_capex_9" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_capex_9" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1088,8 +1143,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_9.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1114,7 +1168,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- capex 9 -->
-<div class="modal fade" id="modal_excel_capex_10" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_capex_10" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1126,8 +1180,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_capex_9.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1152,7 +1205,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- opex -->
-<div class="modal fade" id="modal_excel_opex_2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_opex_2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1164,8 +1217,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_opex_2.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1190,7 +1242,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- opex 1 -->
-<div class="modal fade" id="modal_excel_opex_3" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_opex_3" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1202,8 +1254,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_opex_3.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1228,7 +1279,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- opex 2 -->
-<div class="modal fade" id="modal_excel_opex_4" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_opex_4" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1240,8 +1291,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_opex_4.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1266,7 +1316,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- opex 3 -->
-<div class="modal fade" id="modal_excel_opex_5" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_opex_5" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1278,8 +1328,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_opex_5.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1304,7 +1353,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- opex 4 -->
-<div class="modal fade" id="modal_excel_opex_6" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_opex_6" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1316,8 +1365,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_opex_6.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1342,7 +1390,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- opex 5 -->
-<div class="modal fade" id="modal_excel_opex_7" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_opex_7" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1354,8 +1402,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_opex_7.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1380,7 +1427,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- opex 6 -->
-<div class="modal fade" id="modal_excel_opex_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_opex_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1392,8 +1439,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_opex_8.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1418,7 +1464,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- opex 7 -->
-<div class="modal fade" id="modal_excel_opex_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_opex_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1430,8 +1476,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_opex_8.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1456,7 +1501,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- opex 8 -->
-<div class="modal fade" id="modal_excel_opex_9" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_opex_9" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1468,8 +1513,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_opex_9.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1494,7 +1538,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- opex 9 -->
-<div class="modal fade" id="modal_excel_opex_10" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_opex_10" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1506,8 +1550,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_opex_10.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1532,7 +1575,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- bua -->
-<div class="modal fade" id="modal_excel_bua_2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_bua_2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1544,8 +1587,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_bua_2.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1570,7 +1612,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- bua 1 -->
-<div class="modal fade" id="modal_excel_bua_3" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_bua_3" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1608,7 +1650,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- bua 2 -->
-<div class="modal fade" id="modal_excel_bua_4" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_bua_4" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1620,8 +1662,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_bua_4.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1646,7 +1687,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- bua 3 -->
-<div class="modal fade" id="modal_excel_bua_5" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_bua_5" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1658,8 +1699,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_bua_5.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1684,7 +1724,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- bua 4 -->
-<div class="modal fade" id="modal_excel_bua_6" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_bua_6" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1696,8 +1736,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_bua_6.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1722,7 +1761,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- bua 5 -->
-<div class="modal fade" id="modal_excel_bua_7" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_bua_7" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1734,8 +1773,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_bua_7.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1760,7 +1798,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- bua 6 -->
-<div class="modal fade" id="modal_excel_bua_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_bua_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1772,8 +1810,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_bua_8.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1798,7 +1835,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- bua 7 -->
-<div class="modal fade" id="modal_excel_bua_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_bua_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1810,8 +1847,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_bua_9.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1836,7 +1872,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- bua 8 -->
-<div class="modal fade" id="modal_excel_bua_9" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_bua_9" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1848,8 +1884,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_bua_9.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1874,7 +1909,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- bua 9 -->
-<div class="modal fade" id="modal_excel_bua_10" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_bua_10" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1886,8 +1921,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_bua.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1912,7 +1946,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- sdm -->
-<div class="modal fade" id="modal_excel_sdm_2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_sdm_2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1924,8 +1958,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_sdm_2.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1950,7 +1983,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- sdm 1 -->
-<div class="modal fade" id="modal_excel_sdm_3" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_sdm_3" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1962,8 +1995,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_sdm_3.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -1988,7 +2020,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- sdm 2 -->
-<div class="modal fade" id="modal_excel_sdm_4" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_sdm_4" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -2000,8 +2032,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_sdm_4.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -2026,7 +2057,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- sdm 3 -->
-<div class="modal fade" id="modal_excel_sdm_5" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_sdm_5" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -2038,8 +2069,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_sdm_5.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -2064,7 +2094,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- sdm 4 -->
-<div class="modal fade" id="modal_excel_sdm_6" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_sdm_6" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -2076,8 +2106,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_sdm_6.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -2102,7 +2131,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- sdm 5 -->
-<div class="modal fade" id="modal_excel_sdm_7" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_sdm_7" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -2114,8 +2143,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_sdm_7.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -2140,7 +2168,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- sdm 6 -->
-<div class="modal fade" id="modal_excel_sdm_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_sdm_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -2152,8 +2180,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_sdm_8.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -2178,7 +2205,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- sdm 7 -->
-<div class="modal fade" id="modal_excel_sdm_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_sdm_8" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -2190,8 +2217,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_sdm_9.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -2216,7 +2242,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- sdm 8 -->
-<div class="modal fade" id="modal_excel_sdm_9" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_sdm_9" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -2228,8 +2254,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_sdm_9.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -2254,7 +2279,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 
 <!-- sdm 9 -->
-<div class="modal fade" id="modal_excel_sdm_10" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_excel_sdm_10" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -2266,8 +2291,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-body">
                 <center>
                     <div>
-                        <label for="">Download Format</label> <br>
-                        <a class="btn btn-success btn-sm" href="<?= base_url('file_excel_format/format_sdm.xlsx') ?>"> <i class="fas fa fa-file"></i> Download Format</a>
+
                     </div>
                 </center>
                 <center>
@@ -2291,11 +2315,11 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
     </div>
 </div>
 
-<div class="modal fade" id="modal_dok_penunjang" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_dok_penunjang" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title"> Dokumen Penunjnag</h5>
+                <h5 class="modal-title"> Dokumen Penunjang</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -2306,21 +2330,22 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         <form id="form_dok_penunjang" enctype="multipart/form-data">
                             <input type="hidden" name="id_kontrak" value="<?= $row_kontrak['id_kontrak'] ?>">
                             <input type="hidden" name="sts_dokumen">
-                            <div class="input-group col-md-6">
+                            <div class="input-group col-md-12">
                                 <div class="input-group-append">
                                     <button class="input-group-text attach_btn btn-grad100" type="button" id="loadFileXml" value="loadXml" onclick="document.getElementById('file').click();"><i class="fas fa-paperclip"></i></button>
                                     <input type="file" style="display:none;" id="file" class="file_dokumen_penunjang" name="file_dokumen_penunjang" />
                                 </div>
-                                <input type="text" name="nama_file_dok_penunjang" class="form-control form-control-sm" placeholder="Nama File....">
+                                <input type="text" name="nama_file_dok_penunjang" class="form-control form-control" placeholder="Nama Dokumen">
                                 <div class="input-group-append">
                                     <button type="submit" id="upload" name="upload" class="input-group-text  btn-grad100"><i class="fas fa-upload"></i></button>
                                 </div>
                             </div>
+                            
                         </form>
-                        <br>
                         <div style="display: none;" id="error_file" class="alert alert-danger" role="alert">
                             ANDA BELUM MENGISI FILE !!!
                         </div>
+                        <small class="text-danger" style="text-transform: capitalize;;font-family: 'Poppins', sans-serif;font-size:14px">*Masimal Ukuran Dokumen Yang Bisa Diupload Adalah 20Mb Setiap Dokumen</small>
                     </center>
                     <br>
                     <center>
@@ -2332,19 +2357,22 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                             </div>
                         </div>
                     </center>
-                    <table class="table table-hover" id="tabledata_dok_penunjang">
-                        <thead>
-                            <tr class="btn-grad100">
-                                <th>No</th>
-                                <th>Nama Dokumen</th>
-                                <th>File</th>
-                                <th><i class="fa fa-cogs" aria-hidden="true"></i></th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div style="overflow-x: auto;">
+                        <table style="font-family: RNSSanz-Black;text-transform: uppercase;" class="table table-hover" id="tabledata_dok_penunjang">
+                            <thead>
+                                <tr class="btn-grad100">
+                                    <th>No</th>
+                                    <th>Nama Dokumen</th>
+                                    <th>Nama File</th>
+                                    <th>File</th>
+                                    <th><i class="fa fa-cogs" aria-hidden="true"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -2353,7 +2381,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
         </div>
     </div>
 </div>
-<div class="modal fade" id="tambah_addendum" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="tambah_addendum" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
@@ -2466,6 +2494,33 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="modal_edit_tanggal_adendum" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Ubah Tanggal Addendum Ini</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="no_addendum_edit">
+                <input type="hidden" name="id_kontrak_addendum_edit" value="<?= $row_kontrak['id_kontrak'] ?>">
+                <div class="form-group">
+                    <label for="">Tanggal Addendum</label>
+                    <input type="date" name="tanggal_adendum_edit" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="javascript:;" onclick="Simpan_tanggal()" class="btn btn-primary button_simpan"><i class="fa fa-paper-plane" aria-hidden="true"></i> Update</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Button trigger modal -->
 
 

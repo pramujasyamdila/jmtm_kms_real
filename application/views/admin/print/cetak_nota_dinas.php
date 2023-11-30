@@ -42,8 +42,7 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-2">
-                <label><?= $row_program_detail['tgl_surat_nota_dinas'] ?></label>
-
+                <label><?= $this->jam_tgl->tgl_indo($row_program_detail['tgl_surat_nota_dinas']) ?></label>
             </div>
         </div>
         <div class="row">
@@ -54,7 +53,7 @@
                 <label for="" style="margin-right: auto;"> :</label>
             </div>
             <div class="col-md-4">
-                <label for="" style="margin-left: -90px;">Lampiran : 1 (Satu) Berkas</label>
+                <label for="" style="margin-left: -90px;">1 (Satu) Berkas</label>
             </div>
             <div class="col-md-2">
             </div>
@@ -101,13 +100,12 @@
             Berdasarkan :
         </div>
         <div>
-            Diambil dari alasan administrasi
             <br>
-            <?php
+            <?php $no_ku = 1;
             foreach ($data_administrasi as $value) { ?>
                 <div class="row">
                     <div class="col-md-1">
-                        <?= $i + 1 ?>.&ensp;
+                        <?= $no_ku++ ?>.&ensp;
                     </div>
                     <div class="col-md-11" style="margin-left:-80px">
                         <?= $value['nama_alasan'] ?>
@@ -171,13 +169,13 @@
                         <?= $row_program_detail['nama_pekerjaan_program_mata_anggaran']  ?>
                     </td>
                     <td>
-                        <?= number_format($total_hps, 2, ',', '.'); ?>
+                        Rp. <?= number_format($total_hps, 2, ',', '.'); ?>
                     </td>
                     <td>
-                        <?= $row_program_detail['waktu_pelaksanaan_pip'] ?> Hari Kalender
+                        <?= $row_program_detail['waktu_pelaksanaan_pip'] ?> <?= $row_program_detail['satuan_pelaksanaan_surat'] ?>
                     </td>
                     <td>
-                        <?= $row_program_detail['waktu_pemeliharaan_pip'] ?> Hari Kalender
+                        <?= $row_program_detail['waktu_pemeliharaan_pip'] ?> <?= $row_program_detail['satuan_pemeliharaan_surat'] ?>
                     </td>
 
                 </tr>
@@ -198,12 +196,13 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <center>
+                    <h6>PT Jasamarga Tollroad Maintenance</h6>
                     <br>
                     <br>
                     <br><br><br><br>
-                    <h5> <u style="text-transform: capitalize;"><?= $row_program_detail['pengirim_nota_dinas'] ?></u></h5>
-                    <h5><?= $row_program_detail['jabatan_pengirim_nota_dinas']   ?>
-                    </h5>
+                    <h6> <u style="text-transform: capitalize;"><?= $row_program_detail['pengirim_nota_dinas'] ?></u></h6>
+                    <h6><?= $row_program_detail['jabatan_pengirim_nota_dinas'] ?>
+                    </h6>
 
                 </center>
             </div>

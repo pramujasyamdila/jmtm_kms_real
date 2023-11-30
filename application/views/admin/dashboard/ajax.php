@@ -1,85 +1,4 @@
 <script>
-  dummy_cart();
-
-  function dummy_cart() {
-    // januari
-    var januari = 0;
-    var januari_pendapatan = 0;
-    // februari
-    var februari = 0;
-    var februari_pendapatan = 0;
-
-    var maret = 0;
-    var maret_pendapatan = 0;
-
-    var april = 0;
-    var april_pendapatan = 0;
-
-    var mei = 0;
-    var mei_pendapatan = 0;
-
-    var juni = 0;
-    var juni_pendapatan = 0;
-
-    var juli = 0;
-    var juli_pendapatan = 0;
-
-    var agustus = 0;
-    var agustus_pendapatan = 0;
-
-    var september = 0;
-    var september_pendapatan = 0;
-
-    var oktober = 0;
-    var oktober_pendapatan = 0;
-
-    var november = 0;
-    var november_pendapatan = 0;
-
-    var desember = 0;
-    var desember_pendapatan = 0;
-
-
-    var ctx = document.getElementById("barChart2").getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
-        datasets: [{
-            label: 'Pendapatan',
-            backgroundColor: 'rgba(60,141,188,0.9)',
-            borderColor: 'rgba(60,141,188,0.8)',
-            pointRadius: false,
-            pointColor: '#3b8bba',
-            pointStrokeColor: 'rgba(60,141,188,1)',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(60,141,188,1)',
-            data: [januari_pendapatan, februari_pendapatan, maret_pendapatan, april_pendapatan, mei_pendapatan, juni_pendapatan, juli_pendapatan, agustus_pendapatan, september_pendapatan, oktober_pendapatan, november_pendapatan, desember_pendapatan]
-          },
-          {
-            label: 'Pencairan',
-            backgroundColor: 'rgba(210, 214, 222, 1)',
-            borderColor: 'rgba(210, 214, 222, 1)',
-            pointRadius: false,
-            pointColor: 'rgba(210, 214, 222, 1)',
-            pointStrokeColor: '#c1c7d1',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [januari, februari, maret, april, mei, juni, juli, agustus, september, oktober, november, desember]
-          }
-        ]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        },
-      }
-    })
-  }
   // sweetalert
   function message(icon, text, title) {
     Swal.fire({
@@ -94,10 +13,10 @@
   var tambah_pendaptan = $('#tambah_pendaptan');
 
   function TambahPendapatan() {
-    var id_kontrak = $('[name="id_kontrak_filter"]').val();
+    var id_kontrak = $('[name="id_kontrak_cari"]').val();
     $.ajax({
       method: "POST",
-      url: "<?= base_url('admin/dashboard/add_pendapatan') ?>",
+      url: "<?= base_url('admin/analisa_tagihan/add_pendapatan') ?>",
       data: form_pendaptan.serialize(),
       dataType: "JSON",
       success: function(response) {
@@ -111,66 +30,112 @@
   }
 </script>
 <script>
+  Result_kontrak()
+
   function Result_kontrak() {
     var tahun_kontrak = $('[name="tahun_kontrak"]').val();
     var id_departemen = $('[name="id_departemen"]').val();
     var id_area = $('[name="id_area"]').val();
     var id_sub_area = $('[name="id_sub_area"]').val();
-    if (id_departemen == '') {
-      message('warning', 'Departmen Belum Dipilih!', 'Maaf')
-    } else if (id_area == '') {
-      message('warning', 'Area Belum Dipilih!', 'Maaf')
-    } else if (id_sub_area == '') {
-      message('warning', 'Sub Area Belum Dipilih!', 'Maaf')
-    } else {
-      $.ajax({
-        method: "POST",
-        url: "<?= base_url('admin/dashboard/result_kontrak') ?>",
-        dataType: "JSON",
-        data: {
-          id_departemen: id_departemen,
-          id_area: id_area,
-          id_sub_area: id_sub_area,
-          tahun_kontrak: tahun_kontrak,
-        },
-        success: function(response) {
-          $('[name="tahun_kontrak"]').val(tahun_kontrak);
-          var html = '';
-          var i;
-          var start = response.start;
-          for (i = 0; i < response['result_kontrak'].length; ++i) {
-            html +=
-              '<tr>' +
-              '<td class = "tg-d2hi">' + (i + 1) + '</td>' +
-              '<td class = "tg-d2hi">' + response['result_kontrak'][i].nama_kontrak + ' </td> ' +
-              '<td class = "tg-d2hi">' + response['result_kontrak'][i].tahun_anggaran + ' </td> ' +
-              '<td class = "tg-d2hi"><a style="font-size:10px" class="btn btn-sm btn-block btn-primary text-white" onclick="datagrafik(' + response['result_kontrak'][i].id_kontrak + ')" href="javascript:;"><i class="fa fa-file" aria-hidden="true"></i> Manage</a></td> ' +
-              '</tr>';
-          }
-          $('.result_kontrak').html(html);
+    var id_kontrak_filter = $('[name="id_kontrak_filter"]').val();
+    $.ajax({
+      method: "POST",
+      url: "<?= base_url('admin/analisa_tagihan/result_kontrak') ?>",
+      dataType: "JSON",
+      beforeSend: function() {
+        $('.loader').css('display', 'block');
+      },
+      data: {
+        id_kontrak_filter: id_kontrak_filter,
+        id_departemen: id_departemen,
+        id_area: id_area,
+        id_sub_area: id_sub_area,
+        tahun_kontrak: tahun_kontrak,
+      },
+      success: function(response) {
+        $('.loader').css('display', 'none');
+        $('[name="tahun_kontrak"]').val(tahun_kontrak);
+        var html = '';
+        var i;
+        var start = response.start;
+        for (i = 0; i < response['result_kontrak'].length; ++i) {
+          html +=
+            '<tr>' +
+            '<td class = "tg-d2hi">' + (i + 1) + '</td>' +
+            '<td class = "tg-d2hi">' + response['result_kontrak'][i].nama_kontrak + ' </td> ' +
+            '<td class = "tg-d2hi">' + response['result_kontrak'][i].tahun_anggaran + ' </td> ' +
+            '<td class = "tg-d2hi"><a style="font-size:10px" class="btn btn-sm btn-block btn-primary text-white" href="<?= base_url('admin/analisa_tagihan/filter_kontrak_grafik/') ?>' + response['result_kontrak'][i].id_kontrak + '"><i class="fa fa-file" aria-hidden="true"></i> Manage</a></td> ' +
+            '</tr>';
         }
-      })
-    }
+        $('.result_kontrak').html(html);
+
+      }
+    })
+  }
+
+  function Pilter_kontrak() {
+    var id_kontrak_filter = $('[name="id_kontrak_filter"]').val();
+    var tahun_kontrak = $('[name="tahun_kontrak"]').val();
+    var id_departemen = $('[name="id_departemen"]').val();
+    var id_area = $('[name="id_area"]').val();
+    var id_sub_area = $('[name="id_sub_area"]').val();
+    $.ajax({
+      method: "POST",
+      url: "<?= base_url('admin/analisa_tagihan/result_kontrak') ?>",
+      dataType: "JSON",
+      beforeSend: function() {
+        $('.loader').css('display', 'block');
+      },
+      data: {
+        id_kontrak_filter: id_kontrak_filter,
+        id_departemen: id_departemen,
+        id_area: id_area,
+        id_sub_area: id_sub_area,
+        tahun_kontrak: tahun_kontrak,
+      },
+      success: function(response) {
+        $('.loader').css('display', 'none');
+        $('[name="tahun_kontrak"]').val(tahun_kontrak);
+        var html = '';
+        var i;
+        var start = response.start;
+        for (i = 0; i < response['result_kontrak'].length; ++i) {
+          html +=
+            '<tr>' +
+            '<td class = "tg-d2hi">' + (i + 1) + '</td>' +
+            '<td class = "tg-d2hi">' + response['result_kontrak'][i].nama_kontrak + ' </td> ' +
+            '<td class = "tg-d2hi">' + response['result_kontrak'][i].tahun_anggaran + ' </td> ' +
+            '<td class = "tg-d2hi"><a style="font-size:10px" class="btn btn-sm btn-block btn-primary text-white" href="<?= base_url('admin/analisa_tagihan/filter_kontrak_grafik/') ?>' + response['result_kontrak'][i].id_kontrak + '"><i class="fa fa-file" aria-hidden="true"></i> Manage</a></td> ' +
+            '</tr>';
+        }
+        $('.result_kontrak').html(html);
+      }
+    })
   }
 </script>
 <script>
-  function datagrafik(id_kontrak) {
+  datagrafik()
+
+  function datagrafik() {
     var tahun_kontrak = $('[name="tahun_kontrak"]').val();
-    $('[name="id_kontrak_filter"]').val(id_kontrak);
+    var id_kontrak = $('[name="id_kontrak"]').val();
+    var id_departemen = $('[name="id_departemen"]').val();
+    var id_area = $('[name="id_area"]').val();
+    var id_sub_area = $('[name="id_sub_area"]').val();
+    console.log(tahun_kontrak, id_kontrak, id_departemen, id_area, id_sub_area);
     $.ajax({
       method: "POST",
-      url: "<?= base_url('admin/dashboard/result_by_id_kontrak') ?>",
+      url: "<?= base_url('admin/analisa_tagihan/result_by_id_kontrak_awal_global') ?>",
       data: {
         tahun_kontrak: tahun_kontrak,
-        id_kontrak: id_kontrak,
+        id_departemen: id_departemen,
+        id_area: id_area,
+        id_sub_area: id_sub_area,
+        id_kontrak: id_kontrak
       },
       dataType: "JSON",
       success: function(response) {
         $('#filter_kontrak').modal('hide');
-        $('.result_grafiku').css('display', 'block');
-        $('.tampil_button_pendaptan').css('display', 'block');
-        $('.bar2').css('display', 'none');
-        $('.bar1').css('display', 'block');
         // januari
         var januari = response['data_filter'].januari;
         var januari_pendapatan = response['data_filter'].januari_pendapatan;
@@ -200,6 +165,7 @@
         var september_pendapatan = response['data_filter'].september_pendapatan;
 
         var oktober = response['data_filter'].oktober;
+        console.log(oktober);
         var oktober_pendapatan = response['data_filter'].oktober_pendapatan;
 
         var november = response['data_filter'].november;
@@ -240,6 +206,9 @@
           },
 
           options: {
+            hover: {
+              mode: false
+            },
             scales: {
               yAxes: [{
                 ticks: {
@@ -261,7 +230,6 @@
               var selectedIndex = activePoints[0]._index;
               open_modal_diagram.modal('show');
               var tahun_kontrak = $('[name="tahun_kontrak"]').val();
-              var id_kontrak = $('[name="id_kontrak_filter"]').val();
               var bulan = activePoints[0]['_model'].label;
               $('#label_diagram').html(bulan);
               var pendapatan = activePoints[0]['_model'].datasetLabel;
@@ -277,12 +245,15 @@
                 "bDestroy": true,
                 "order": [],
                 "ajax": {
-                  "url": "<?= base_url('admin/dashboard/get_data_pendapatan') ?>",
+                  "url": "<?= base_url('admin/analisa_tagihan/get_data_pendapatan') ?>",
                   "type": "POST",
                   data: {
                     tahun_kontrak: tahun_kontrak,
                     bulan: bulan,
                     id_kontrak: id_kontrak,
+                    id_departemen: id_departemen,
+                    id_area: id_area,
+                    id_sub_area: id_sub_area,
                     pendapatan: pendapatan
                   },
                 },
@@ -308,12 +279,15 @@
                 "bDestroy": true,
                 "order": [],
                 "ajax": {
-                  "url": "<?= base_url('admin/dashboard/get_data_pencairan') ?>",
+                  "url": "<?= base_url('admin/analisa_tagihan/get_data_pencairan') ?>",
                   "type": "POST",
                   data: {
                     tahun_kontrak: tahun_kontrak,
                     bulan: bulan,
                     id_kontrak: id_kontrak,
+                    id_departemen: id_departemen,
+                    id_area: id_area,
+                    id_sub_area: id_sub_area,
                     pencairan: pencairan
                   },
                 },
@@ -340,7 +314,7 @@
 
 <script>
   $(document).ready(function() {
-    $('.table').DataTable({});
+    $('#table').DataTable({});
   });
 </script>
 <script>

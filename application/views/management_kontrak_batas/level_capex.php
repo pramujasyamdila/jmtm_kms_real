@@ -679,6 +679,7 @@
     var modal_capex_urutan = $('#modal_capex_urutan');
 
     function modal_level_3_capex(id, type, type_add) {
+        console.log(id, type, type_add);
         if (type == 'update_nilai_level_3_capex') {
 
         }
@@ -837,7 +838,7 @@
                     $('#form_tambah_level_3_capex').css('display', 'block')
                     $('#button_edit_level_3_capex').css('display', 'block')
 
-                    $('[name="id_detail_capex_1"]').val(response['row_capex_detail'].id_capex_detail);
+                    $('[name="id_capex_detail"]').val(response['row_capex_detail'].id_capex_detail);
                     $('[name="nama_uraian"]').val(response['row_capex_detail'].nama_uraian);
                     $('#title_modal_level_3_capex').text('Edit Uraian')
                 }

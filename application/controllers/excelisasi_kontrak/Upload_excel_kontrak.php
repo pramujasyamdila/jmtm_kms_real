@@ -295,7 +295,6 @@ class Upload_excel_kontrak extends CI_Controller
         } else {
             $sen_kevalue = 'nilai_capex_detail_2';
         }
-
         if ($this->upload->do_upload('importexcel')) {
             $file = $this->upload->data();
             $reader = ReaderEntityFactory::createXLSXReader();

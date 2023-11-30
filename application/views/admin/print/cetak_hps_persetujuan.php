@@ -32,15 +32,14 @@
                 <label for="" style="margin-right: auto;"> :</label>
             </div>
             <div class="col-md-4">
-                <label for="" style="margin-left: -90px;"><?= $row_program_detail['no_surat_hps_dirops_ke_dirut'] ?></label>
+                <label for="" style="margin-left: -90px;"><?= $row_program_detail['no_surat_persetujuan_hps_dirops_ke_dirut'] ?></label>
             </div>
             <div class="col-md-2">
             </div>
             <div class="col-md-2">
             </div>
             <div class="col-md-2">
-                <label><?= $row_program_detail['tgl_surat_hps_dirops_ke_dirut'] ?></label>
-
+                <label><?= $this->jam_tgl->tgl_indo($row_program_detail['tgl_surat_persetujuan_hps_dirops_ke_dirut']) ?></label>
             </div>
         </div>
         <div class="row">
@@ -51,7 +50,7 @@
                 <label for="" style="margin-right: auto;"> :</label>
             </div>
             <div class="col-md-4">
-                <label for="" style="margin-left: -90px;">Lampiran : 1 (Satu) Berkas</label>
+                <label for="" style="margin-left: -90px;"> 1 (Satu) Berkas</label>
             </div>
             <div class="col-md-2">
             </div>
@@ -66,20 +65,20 @@
             </div>
             <div class="col-md-11">
                 <label for="" style="margin-left: auto;">
-                    : <b> Persetujuan HPS Pengadaan <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label> </b></b>
+                    : <b> Persetujuan Harga Perkiraan Sendiri (HPS) Pengadaan <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label> </b></b>
                 </label>
             </div>
         </div>
         <div class="mt-5">
             Yth.
             <br>
-            <b> Direktur Operasional</b> <br>
+            <b> <label for=""><?= $row_program_detail['persetujuan_jabatan_penerima_hps_dirops_ke_dirut'] ?></label></b> <br>
             PT Jasamarga Tollroad Maintenance <br>
             Selaku Pejabat Pemberi Persetujuan Harga Perkiraan Sendiri (HPS)
         </div>
         <div class="mt-2">
-            Menunjuk permohonan Surat Saudara <?= date('d-m-Y', strtotime($row_program_detail['tgl_surat_hps_dirops_ke_dirut'])) ?> <?= $row_program_detail['jenis_pengadaan'] ?>
-            <?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?> , bersama ini kami sampaikan penetapan Harga Perkiraan Sendiri (HPS) untuk Pekerjaan dimaksud, sebagai berikut :
+            Menunjuk permohonan Surat Saudara nomor:  <?= $row_program_detail['no_surat_hps_gm_ke_dirops'] ?> tanggal <?= $this->jam_tgl->tgl_indo($row_program_detail['tgl_surat_hps_gm_ke_dirops']) ?> perihal Permohonan Harga Perkiraan Sendiri (HPS) Pengadaan <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label>
+             , bersama ini kami sampaikan Penetapan Harga Perkiraan Sendiri (HPS) untuk Pekerjaan dimaksud, sebagai berikut :
         </div>
 
         <div class="row mt-3">
@@ -90,7 +89,7 @@
                 <label for="" style="margin-right: auto;"> :</label>
             </div>
             <div class="col-md-4">
-                <label for="" style="margin-left: -90px;">Rp . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</label>
+                <label for="" style="margin-left: -90px;">Rp . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</label>
             </div>
         </div>
 
@@ -110,10 +109,10 @@
         <div class="mt-4">
             <div class="row">
                 <div class="col-md-12">
-                    Rincian Harga Perkiraan Sendiri adalah bersifat RAHASIA, yang terhitung sejak ditetapkan Nilai Total Harga Perkiraan Sendiri sampai dengan akan dilakukan Evaluasi Penawaran.
+                    Rincian Harga Perkiraan Sendiri adalah bersifat <b>RAHASIA</b>, yang terhitung sejak ditetapkan Nilai Total Harga Perkiraan Sendiri sampai dengan akan dilakukan Evaluasi Penawaran.
                     <br>
                     <br>
-                    Demikian kami sampaikan, untuk digunakan sesuai ketentuan yang berlaku.
+                    Demikian disampaikan, untuk digunakan sesuai ketentuan yang berlaku.
                 </div>
             </div>
         </div>
@@ -124,13 +123,13 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <center>
-                    PT Jasamarga Tollroad Maintenance
+                    <h6>PT Jasamarga Tollroad Maintenance</h6>
                     <br>
                     <br>
                     <br><br><br><br>
-                    <h5> <u style="text-transform: capitalize;"><?= $row_program_detail['persetujuan_pengirim_hps_dirops_ke_dirut'] ?></u></h5>
-                    <h5>Direktur Utama
-                    </h5>
+                    <h6> <u style="text-transform: capitalize;"><?= $row_program_detail['persetujuan_pengirim_hps_dirops_ke_dirut'] ?></u></h6>
+                    <h6><?= $row_program_detail['persetujuan_jabatan_pengirim_hps_dirops_ke_dirut'] ?>
+                    </h6>
 
                 </center>
             </div>

@@ -2183,3 +2183,28 @@
         })
     }
 </script>
+
+<script>
+    function Modal_lihat_barcode(id_detail_program_penyedia_jasa) {
+        var modal_qrcode = $('#modal_lihat_qrcode');
+        modal_qrcode.modal('show');
+        $('.qr_view').html('<img src="https://jmtm-ams2.kintekindo.net/render_qr/qrcode_kms_mc/' + id_detail_program_penyedia_jasa + '" alt="Admin" width="300" height="300">');
+        $('.button_view_langsung').html('<a href="<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/buat_tagihan/') ?>' + id_detail_program_penyedia_jasa + '" class="btn btn-sm btn-primary btn-block">Kelola Taggihan Kontrak</a>');
+    }
+
+    // $(document).ready(function() {
+    //     $('.table').DataTable({
+    //         "ordering": false,
+    //         "info": true,
+    //         "paging": false,
+    //         dom: '<"dt-top-container"<l><"dt-center-in-div"B><f>r>t<"dt-filter-spacer"f><ip>',
+    //         buttons: [
+    //             {
+    //                 extend: 'excelHtml5',
+    //                 text: '<i class="fas fa-file-excel"> Excel</i>',
+    //                 titleAttr: 'Excel'
+    //             }
+    //         ]
+    //     });
+    // });
+</script>

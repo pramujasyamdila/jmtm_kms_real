@@ -707,8 +707,8 @@
                 }
                 $('[name="waktu_pelaksanaan_pip"]').val(response['row_program_detail'].waktu_pelaksanaan_pip);
                 $('[name="waktu_pemeliharaan_pip"]').val(response['row_program_detail'].waktu_pemeliharaan_pip);
-                $('.terbilang_waktu_pelaksanaan_pip').html(terbilang(response['row_program_detail'].waktu_pelaksanaan_pip) + ' Hari Kalender');
-                $('.terbilang_waktu_pemeliharaan_pip').html(terbilang(response['row_program_detail'].waktu_pemeliharaan_pip) + ' Hari Kalender');
+                $('.terbilang_waktu_pelaksanaan_pip').html(terbilang(response['row_program_detail'].waktu_pelaksanaan_pip));
+                $('.terbilang_waktu_pemeliharaan_pip').html(terbilang(response['row_program_detail'].waktu_pemeliharaan_pip));
                 // pengirim_pip_ca_ke_gm
                 $('[name="pengirim_pip_ca_ke_gm"]').val(response['row_program_detail'].pengirim_pip_ca_ke_gm);
                 // penerima_pip_ca_ke_gm
@@ -847,9 +847,6 @@
 
                 // INI UNTUK MASTER DATA PRA
                 $('[name="tkdn_pra"]').val(response['row_program_detail'].tkdn_pra);
-                $('[name="harga_penawaran_terkoreksi"]').val(response['row_program_detail'].harga_penawaran_terkoreksi);
-                $('.rupiah_harga_penawaran').html("Rp " + response['row_program_detail'].harga_penawaran_terkoreksi.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00');
-                $('.terbilang_rupiah_harga_penawaran').html(terbilang(response['row_program_detail'].harga_penawaran_terkoreksi) + ' Rupiah');
                 $('[name="status_jaminan_gunning"]').val(response['row_program_detail'].status_jaminan_gunning);
                 $('[name="persentase_jaminan_gunning"]').val(response['row_program_detail'].persentase_jaminan_gunning);
                 $('[name="masa_berlaku_persentase_jaminan_gunning"]').val(response['row_program_detail'].masa_berlaku_persentase_jaminan_gunning);
@@ -893,32 +890,51 @@
                 }
                 $('.result_multiyears').html(html2);
 
-                var html3 = '';
-                var x;
-                for (x = 0; x < response['data_teknis'].length; x++) {
-                    html3 +=
-                        '<b>2.' + [x + 1] + ' ' + response['data_teknis'][x].nama_alasan + '</b>' +
-                        '&nbsp;<a href="javascript:;" onclick="hapus_teknis(' + response['data_teknis'][x].id_alasan_teknis + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a><br>';
-                }
-                $('#alasan_teknis').html(html3);
 
                 var html4 = '';
                 var o;
                 for (o = 0; o < response['data_administrasi'].length; o++) {
-                    html4 +=
+                    html4 += '<tr>' +
+                        '<td>' +
                         '<b>1.' + [o + 1] + ' ' + response['data_administrasi'][o].nama_alasan + '</b>' +
-                        '&nbsp;<a href="javascript:;" onclick="hapus_administrasi(' + response['data_administrasi'][o].id_alasan_administrasi + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a><br>';
+                        '</td>' +
+                        '<td>' +
+                        '<a href="javascript:;" onclick="hapus_administrasi(' + response['data_administrasi'][o].id_alasan_administrasi + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a>' +
+                        '</td>' +
+                        '</tr>';
                 }
                 $('#alasan_administrasi').html(html4);
+
+                var html3 = '';
+                var x;
+                for (x = 0; x < response['data_teknis'].length; x++) {
+                    html3 += '<tr>' +
+                        '<td>' +
+                        '<b>2.' + [x + 1] + ' ' + response['data_teknis'][x].nama_alasan + '</b>' +
+                        '</td>' +
+                        '<td>' +
+                        '<a href="javascript:;" onclick="hapus_teknis(' + response['data_teknis'][x].id_alasan_teknis + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a>' +
+                        '</td>' +
+                        '</tr>';
+                }
+                $('#alasan_teknis').html(html3);
 
                 var html5 = '';
                 var s1;
                 for (s1 = 0; s1 < response['data_ketentuan'].length; s1++) {
-                    html5 +=
-                        '<b>' + [s1 + 1] + '. ' + response['data_ketentuan'][s1].ketentuan + '</b>' +
-                        '&nbsp;<a href="javascript:;" onclick="hapus_ketentuan(' + response['data_ketentuan'][s1].id_ketentuan + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a><br>';
+                    html5 += '<tr>' +
+                        '<td>' +
+                        '<b>1.' + [s1 + 1] + ' ' + response['data_ketentuan'][s1].ketentuan + '</b>' +
+                        '</td>' +
+                        '<td>' +
+                        '<a href="javascript:;" onclick="hapus_ketentuan(' + response['data_ketentuan'][s1].id_ketentuan + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a>' +
+                        '</td>' +
+                        '</tr>';
                 }
                 $('#ketentuan').html(html5);
+                $('[name="harga_penawaran_terkoreksi"]').val(response['row_program_detail'].harga_penawaran_terkoreksi);
+                $('.rupiah_harga_penawaran').html("Rp " + response['row_program_detail'].harga_penawaran_terkoreksi.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00');
+                $('.terbilang_rupiah_harga_penawaran').html(terbilang(response['row_program_detail'].harga_penawaran_terkoreksi) + ' Rupiah');
             }
         })
     }
@@ -1171,9 +1187,7 @@
             dataType: "JSON",
             success: function(response) {
                 if (response == 'success') {
-                    setTimeout(() => {
-                        Kelola_surat()
-                    }, 10000);
+                    // Kelola_surat()
                 }
             }
         })
@@ -1204,9 +1218,7 @@
             dataType: "JSON",
             success: function(response) {
                 if (response == 'success') {
-                    setTimeout(() => {
-                        Kelola_surat()
-                    }, 5000);
+                    // Kelola_surat()
                 }
             }
         })
@@ -1700,10 +1712,11 @@
     function Hapus_nama_mata_anggaran(id_detail_program_penyedia_jasa) {
         $.ajax({
             type: 'GET',
-            url: '<?= base_url('admin/administrasi_penyedia/get_detail_program/') ?>' + id_detail_program_penyedia_jasa,
+            url: '<?= base_url('admin/administrasi_penyedia/get_mata_anggaran_row_hapus/') ?>' + id_detail_program_penyedia_jasa,
             async: false,
-            dataType: 'json',
+            dataType: 'JSON',
             success: function(response) {
+                console.log(response);
                 Question_hapus_anggaran(response['program'].id_detail_program_penyedia_jasa, response['program'].nama_pekerjaan_program_mata_anggaran)
             }
         })
@@ -1861,6 +1874,7 @@
         })
     }
 
+
     function pilih_status_non_spm(type) {
         var type_post_name = $('[name="' + type + '"]').val();
         var id_detail_program_penyedia_jasa = $('[name="id_detail_program_penyedia_jasa"]').val();
@@ -1951,9 +1965,7 @@
             },
             dataType: "JSON",
             success: function(response) {
-                setTimeout(() => {
-                    Kelola_surat()
-                }, 5000);
+                Kelola_surat()
             }
         })
     }

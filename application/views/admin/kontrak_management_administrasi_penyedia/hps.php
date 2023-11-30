@@ -3,7 +3,7 @@
     <section class="section">
         <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
   position: fixed; top:50px;  padding-bottom: -10px;">
-            <b style="margin-left: auto; font-weight:1000" class="text-black">(<?= $nama_kontrak['nama_kontrak'] ?>) (<?= $nama_kontrak['tahun_anggaran'] ?>) - Lembar Kerja - Pra Pengadaan</b>
+            <b style="margin-left: auto; font-weight:1000" class="text-black"><?= $row_program['nama_pekerjaan_program_mata_anggaran'] ?> - <?= $nama_kontrak['tahun_anggaran'] ?> - Lembar Kerja - Pra Pengadaan</b>
         </nav>
         <input type="hidden" name="id_program_ku" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>">
         <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
@@ -141,7 +141,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                             <th class="text-white">TKDN</th>
                                             <th class="text-white">Harga Satuan TKDN</th>
                                             <th class="text-white">Jumlah Harga TKDN</th>
-\                                        </tr>
+                                        </tr>
                                     </thead>
                                     <tbody style="font-size: 12px;">
                                         <?php
@@ -154,6 +154,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                         <?php
                                         $no = 1;
                                         $total_hps_penyedia_1 = 0;
+                                        $total_hps_tkdn = 0;
                                         foreach ($query_tbl_hps_penyedia_1->result_array() as $key => $value_hps_penyedia_1) { ?>
                                             <?php
                                             $id_hps_penyedia_1 = $value_hps_penyedia_1['id_hps_penyedia_1'];
@@ -165,6 +166,12 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                 $total_hps_penyedia_1 +=  $value_hps_penyedia_1['total_harga'];
                                             } else {
                                                 $total_hps_penyedia_1 +=  0;
+                                            }
+
+                                            if ($value_hps_penyedia_1['jumlah_harga_tkdn']) {
+                                                $total_hps_tkdn +=  $value_hps_penyedia_1['jumlah_harga_tkdn'];
+                                            } else {
+                                                $total_hps_tkdn +=  0;
                                             }
                                             ?>
                                             <tr class="text-black">
@@ -194,50 +201,66 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                     <tfoot>
                                         <tr>
                                             <td colspan="2">
-                                                <label for="" style="font-size: 12px;">SUBTOTAL (SEBELUM PPN Rp.)</label>
+                                                <b for="" style="font-size: 12px;font-weight:bold;color:black;">SUBTOTAL (SEBELUM PPN Rp.)</b>
                                             </td>
                                             <td colspan="4"></td>
                                             <?php                                                                       ?>
                                             <td>
-                                                <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_hps_penyedia_1, 2, ',', '.') ?>
-                                                </label>
+                                                <b style="font-size: 12px;font-weight:bold;color:black;" for=""> <?= "Rp " . number_format($total_hps_penyedia_1, 2, ',', '.') ?>
+                                                </b>
                                             </td>
-                                            <td colspan="3"></td>
-                                            <td>
-
+                                            <td colspan="2">
+                                            </td>
+                                            <td colspan="3">
+                                                <b style="font-size: 12px;font-weight:bold;color:black;" for=""> <?= "Rp " . number_format($total_hps_tkdn, 2, ',', '.') ?>
+                                                </b>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <label for="" style="font-size: 12px;">PPN(<?= $value['ppn_hps'] ?>%)<?= $value['id_detail_sub_program_penyedia_jasa'] ?> <select name="ppn_hps<?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="pilih_ppn_sub_program('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')">
+                                                <b for="" style="font-size: 12px;font-weight:bold;color:black;">PPN(<?= $value['ppn_hps'] ?>%) <select name="ppn_hps<?= $value['id_detail_sub_program_penyedia_jasa'] ?>" onchange="pilih_ppn_sub_program('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')">
                                                         <option selected value="<?= $value['ppn_hps'] ?>">--Pilih PPN--</option>
                                                         <option value="10">10%</option>
                                                         <option value="11">11%</option>
                                                         <option value="12">12%</option>
-                                                    </select></label>
+                                                    </select></b>
                                             </td>
                                             <td colspan="4"></td>
                                             <?php
                                             $total_ppn = ($value['ppn_hps'] * $total_hps_penyedia_1) / 100;
                                             $total_setelah_ppn = $total_ppn + $total_hps_penyedia_1;
                                             ?>
+                                            <?php
+                                            $total_ppn_tkdn = ($value['ppn_hps'] * $total_hps_tkdn) / 100;
+                                            $total_setelah_ppn_tkdn = $total_ppn_tkdn + $total_hps_tkdn;
+                                            ?>
                                             <td>
-                                                <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
-                                                </label>
+                                                <b style="font-size: 12px;font-weight:bold;color:black;" for=""> <?= "Rp " . number_format($total_ppn, 2, ',', '.') ?>
+                                                </b>
+                                            </td>
+                                            <td colspan="2">
+                                            </td>
+                                            <td colspan="3">
+                                                <b style="font-size: 12px;font-weight:bold;color:black;" for=""> <?= "Rp " . number_format($total_ppn_tkdn, 2, ',', '.') ?>
+                                                </b>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <label for="" style="font-size: 12px;">TOTAL (SETELAH PPN Rp.)</label>
+                                                <b for="" style="font-size: 12px;font-weight:bold;color:black;">TOTAL (SETELAH PPN Rp.)</b>
                                             </td>
-                                            <td colspan="3"></td>
+                                            <td colspan="4"></td>
                                             <?php                                                                       ?>
-                                            <td>
-                                                <label style="font-size: 12px;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
-                                                </label>
+                                            <td colspan="2">
+                                                <b style="font-size: 12px;font-weight:bold;color:black;" for=""> <?= "Rp " . number_format($total_setelah_ppn, 2, ',', '.') ?>
+                                                </b>
                                             </td>
                                             <td>
                                                 <a href="javascript:;" onclick="Update_nilai_ke_sub_program('<?= $value['id_detail_sub_program_penyedia_jasa'] ?>')" class="btn btn-sm btn-success"> <i class="fas fa fa-save"></i> Simpan Dan Update</a>
+                                            </td>
+                                            <td>
+                                                <b style="font-size: 12px;font-weight:bold;color:black;" for=""> <?= "Rp " . number_format($total_setelah_ppn_tkdn, 2, ',', '.') ?>
+                                                </b>
                                             </td>
                                         </tr>
                                     </tfoot>
@@ -330,12 +353,37 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                             <th>Mata Anggaran</th>
                                             <th>Subtotal (Sebelum PPN)</th>
                                             <th>PPN</th>
-                                            <th>Subtotal (Setelah PPN)</th>
+                                            <th>Total (Setelah PPN)</th>
+                                            <th>Subtotal (Sebelum TKDN)</th>
+                                            <th>PPN TKDN</th>
+                                            <th>Total (Setelah TKDN)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $nomor = 1;
+                                        $total_sebelum_ppn_count = 0;
+                                        $total_ppn_count = 0;
+                                        $total_setelah_ppn_count = 0;
                                         foreach ($result_rekap_hps as $key => $value) { ?>
+                                            <?php
+                                            if ($value['total_sebelum_ppn']) {
+                                                $total_sebelum_ppn_count +=  $value['total_sebelum_ppn'];
+                                            } else {
+                                                $total_sebelum_ppn_count +=  0;
+                                            }
+
+                                            if ($value['ppn']) {
+                                                $total_ppn_count +=  $value['ppn'];
+                                            } else {
+                                                $total_ppn_count +=  0;
+                                            }
+
+                                            if ($value['total_setelah_ppn']) {
+                                                $total_setelah_ppn_count +=  $value['total_setelah_ppn'];
+                                            } else {
+                                                $total_setelah_ppn_count +=  0;
+                                            }
+                                            ?>
                                             <tr>
                                                 <td><?= $nomor++ ?></td>
                                                 <td><?= $value['nama_program_mata_anggaran'] ?></td>
@@ -345,6 +393,18 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                             </tr>
                                         <?php } ?>
                                     </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td>Total : </td>
+                                            <td></td>
+                                            </b></td>
+                                            <td> <b style="font-size: 12px;font-weight:bold;color:black;" for=""> <?= "Rp " . number_format($total_sebelum_ppn_count, 2, ',', '.') ?>
+                                            <td> <b style="font-size: 12px;font-weight:bold;color:black;" for=""> <?= "Rp " . number_format($total_ppn_count, 2, ',', '.') ?>
+                                                </b></td>
+                                            <td> <b style="font-size: 12px;font-weight:bold;color:black;" for=""> <?= "Rp " . number_format($total_setelah_ppn_count, 2, ',', '.') ?>
+                                                </b></td>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>

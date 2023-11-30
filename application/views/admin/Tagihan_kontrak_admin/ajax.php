@@ -3286,16 +3286,10 @@
                 ['10 Rows', '25 Rows', '50 Rows', 'Back']
             ],
             dom: 'Bfrtip',
-            buttons: [{
-                extend: 'pdf',
-                text: ' Export a PDF'
-            }, {
-                extend: 'csv',
-                text: ' Export a CSV'
-            }, {
+            buttons: [  {
                 extend: 'excel',
                 text: ' Export a EXCEL'
-            }, 'pageLength'],
+            }],
         });
         table.buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');
 
@@ -3320,19 +3314,13 @@
                 ['10 Rows', '25 Rows', '50 Rows', 'Back']
             ],
             dom: 'Bfrtip',
-            buttons: [{
-                extend: 'pdf',
-                text: ' Export a PDF'
-            }, {
-                extend: 'csv',
-                text: ' Export a CSV'
-            }, {
+            buttons: [ {
                 extend: 'excel',
                 exportOption: {
                     columns: [0, 1, 2, 3]
                 },
                 text: ' Export a EXCEL'
-            }, 'pageLength'],
+            }],
         });
         table.buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');
 
@@ -3359,5 +3347,15 @@
         } else {
             $('.sd_bln_lalu').css('display', 'block');
         }
+    }
+</script>
+
+<script>
+    view_qr_show()
+
+    function view_qr_show() {
+        var id_detail_program_penyedia_jasa = $('[name="id_detail_program_penyedia_jasa"]').val();
+        $('.qr_view').html('<img src="https://jmtm-ams2.kintekindo.net/render_qr/qrcode_kms_mc/' + id_detail_program_penyedia_jasa + '" alt="Admin" width="200" height="200">');
+        // $('.button_view_langsung').html('<a href="<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/buat_tagihan/') ?>' + id_detail_program_penyedia_jasa + '" class="btn btn-sm btn-primary btn-block">Kelola Taggihan Kontrak</a>');
     }
 </script>

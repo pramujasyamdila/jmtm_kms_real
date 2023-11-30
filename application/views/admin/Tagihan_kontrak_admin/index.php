@@ -1,277 +1,205 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="main-content">
-    <section class="section">
-        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
+    <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
   position: fixed; top:50px">
-            <b>
-                <?= $row_kontrak['nama_pekerjaan_program_mata_anggaran'] ?>
-            </b>
-            <b style="margin-left: auto;"> Administrasi Tagihan</b>
-        </nav>
-        <div class="content-wrapper">
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="card card-outline card-warning">
-                            <div class="card-body">
-                                <div class="col-md-12">
-                                    <div class="card">
-                                        <div class="card-header text-white" style="background-color:#193B53;">
-                                            <h5 class="card-title">
-                                                <i class="nav-icon far fa-file-alt"></i>
-                                                Detail Kontrak
-                                            </h5>
-                                        </div>
-                                        <!-- /.card-header -->
-                                        <div class="card-body">
-                                            <br>
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="col-md-2">
-                                                            <label for="">Penyedia Jasa :</label>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <label for=""><?= $row_kontrak['nama_penyedia'] ?></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-2">
-                                                            <label for="">Nomor Kontrak :</label>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <label for=""><?= $row_kontrak['no_kontrak_penyedia'] ?></label>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <!-- <small id="helpId" class="form-text text-muted">Ini Pake Search Select</small> -->
-                                                    <div class="input-group">
-                                                        <input type="hidden" class="form-control" value="<?= $row_kontrak['id_detail_program_penyedia_jasa'] ?>" id="id_detail_program_penyedia_jasa" name="id_detail_program_penyedia_jasa" readonly placeholder="Cari No. Kontrak">
-                                                        <span class="input-group-btn">
-                                                            <!-- <a href="javascript:;" onclick="cari_no_kontrak()" class="btn btn-primary text-white"><i class="fas fa-search"></i> Cari</a> -->
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="card card-outline card-primary mb-4">
-                                                        <div class="card-header card-info card-outline"><strong>Result Addendum Kontrak Penyedia</strong><span class="small ms-1"></span></div>
-                                                        <div class="card-body">
-                                                            <style type="text/css">
-                                                                .tg {
-                                                                    border-collapse: collapse;
-                                                                    border-color: #9ABAD9;
-                                                                    border-spacing: 0;
-                                                                }
-
-                                                                .tg td {
-                                                                    background-color: #EBF5FF;
-                                                                    border-color: #9ABAD9;
-                                                                    border-style: solid;
-                                                                    border-width: 1px;
-                                                                    color: #444;
-                                                                    font-family: Arial, sans-serif;
-                                                                    font-size: 14px;
-                                                                    overflow: hidden;
-                                                                    padding: 10px 5px;
-                                                                    word-break: normal;
-                                                                }
-
-                                                                .tg th {
-                                                                    background-color: #409cff;
-                                                                    border-color: #9ABAD9;
-                                                                    border-style: solid;
-                                                                    border-width: 1px;
-                                                                    color: #fff;
-                                                                    font-family: Arial, sans-serif;
-                                                                    font-size: 14px;
-                                                                    font-weight: normal;
-                                                                    overflow: hidden;
-                                                                    padding: 10px 5px;
-                                                                    word-break: normal;
-                                                                }
-
-                                                                .tg .tg-c3ow {
-                                                                    border-color: inherit;
-                                                                    text-align: center;
-                                                                    vertical-align: top
-                                                                }
-                                                            </style>
-                                                            <table class="tg table bg-primary">
-                                                                <thead style="background-color:#193B53;font-family: RNSSanz-Black;text-transform: uppercase;">
-                                                                    <tr>
-                                                                        <th class="tg-c3ow text-white">No Kontrak</th>
-                                                                        <th class="tg-c3ow text-white">Kontrak Awal</th>
-                                                                        <?php foreach ($looping_adendum as $key => $value) { ?>
-                                                                            <th class="tg-c3ow text-white">Addendum <?= $value['no_addendum'] ?></th>
-                                                                        <?php    } ?>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-
-                                                                    <tr>
-                                                                        <td class="tg-c3ow" rowspan="2"><?= $row_kontrak['no_kontrak_penyedia'] ?></td>
-                                                                        <td class="tg-c3ow"><?= date('d-M-Y', strtotime($row_kontrak['tanggal_kontrak_program']))  ?></td>
-                                                                        <?php foreach ($looping_adendum as $key => $value) { ?>
-                                                                            <td class="tg-c3ow"><?= date('d-M-Y', strtotime($value['tanggal_addendum']))  ?></td>
-                                                                        <?php    } ?>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <?php
-                                                                        $this->db->select('*');
-                                                                        $this->db->from('tbl_sub_detail_program_penyedia_jasa');
-                                                                        $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $row_kontrak['id_detail_program_penyedia_jasa']);
-                                                                        $get_nilai_kontrak = $this->db->get();
-                                                                        $total_kontrak  = 0;
-                                                                        foreach ($get_nilai_kontrak->result_array() as $value_kontrak) {
-                                                                            $total_kontrak += $value_kontrak['nilai_sub_kontrak_penyedia']
-                                                                        ?>
-                                                                        <?php } ?>
-                                                                        <td class="tg-c3ow"> <?= "Rp " . number_format($total_kontrak, 2, ',', '.') ?></td>
-                                                                        <?php foreach ($looping_adendum as $key => $value) { ?>
-                                                                            <td class="tg-c3ow"><?= "Rp " . number_format($row_kontrak['total_kontrak_addendum_' . $value['no_addendum']], 2, ',', '.') ?></td>
-                                                                        <?php    } ?>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="card card-outline card-success mb-4">
-                                                        <div class="card-header card-warning card-outline"><strong>Result Master Data Tagihan Penyedia Jasa</strong><span class="small ms-1"></span></div>
-                                                        <div class="card-body">
-                                                            <button style="display: none;" type="button" class="btn btn-sm btn-outline-primary create_mcku" data-toggle="modal" data-target="#modelId">
-                                                                Tambah Master Data Tagihan Penyedia / MC +
-                                                            </button>
-                                                            <br>
-                                                            <div style="overflow-x: auto;overflow-y: scroll;">
-                                                                <style type="text/css">
-                                                                    .div1 {
-                                                                        overflow: scroll;
-                                                                        border: 1px solid #777777;
-                                                                    }
-
-                                                                    .div1 table {
-                                                                        border-spacing: 0;
-                                                                    }
-
-                                                                    .div1 th {
-                                                                        border-left: none;
-                                                                        border-right: 1px solid #bbbbbb;
-                                                                        padding: 5px;
-                                                                        width: 80px;
-                                                                        min-width: 80px;
-                                                                        position: sticky;
-                                                                        top: 0;
-                                                                        color: #e0e0e0;
-                                                                        background-color: #409cff;
-                                                                        font-weight: normal;
-                                                                    }
-
-                                                                    .div1 tr {
-                                                                        color: black;
-                                                                        ;
-                                                                    }
-
-                                                                    .div1 td {
-                                                                        border-left: none;
-                                                                        border-right: 1px solid #bbbbbb;
-                                                                        border-bottom: 1px solid #bbbbbb;
-                                                                        padding: 5px;
-                                                                        width: 80px;
-                                                                        min-width: 80px;
-                                                                    }
-
-                                                                    .div1 th:nth-child(1),
-                                                                    .div1 td:nth-child(1) {
-                                                                        position: sticky;
-                                                                        left: 0;
-                                                                        width: 150px;
-                                                                        min-width: 150px;
-                                                                    }
-
-                                                                    .div1 th:nth-child(2),
-                                                                    .div1 td:nth-child(2) {
-                                                                        position: sticky;
-                                                                        left: 150px;
-                                                                        width: 50px;
-                                                                        min-width: 50px;
-                                                                    }
-
-                                                                    .div1 td:nth-child(1),
-                                                                    .div1 td:nth-child(2) {
-                                                                        background-color: #F0F8FF;
-                                                                    }
-
-                                                                    .div1 th:nth-child(1),
-                                                                    .div1 th:nth-child(2) {
-                                                                        z-index: 2;
-                                                                        background-color: #F0F8FF;
-                                                                    }
-                                                                </style>
-                                                                <table id="tabledetail" class="table div1" style="font-family: RNSSanz-Black;text-transform: uppercase;">
-                                                                    <thead class="text-center">
-                                                                        <tr style="background-color:#193B53;">
-                                                                            <th style="font-size: 13px;color:white; width:100px" rowspan="2">MC Ke</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Periode</th>
-                                                                            <th style="font-size: 13px;color:white; width:750px" colspan="3">Sebelum PPN</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">PPN</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" colspan="3">Setelah PPN</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Retensi</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Pengembaliaan uang muka </th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Denda</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Total Potongan</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Total Invoice</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Status Tracking</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Tanggal Update Tracking</th>
-                                                                            <th style="font-size: 13px;color:white; width:250px" rowspan="2">Aksi</th>
-                                                                        </tr>
-                                                                        <tr class="table-warning">
-                                                                            <th style="font-size: 13px;width:250px">S.D.Bulan Lalu</th>
-                                                                            <th style="font-size: 13px;width:250px">Bulan Ini</th>
-                                                                            <th style="font-size: 13px;width:250px">S.D Bulan Ini</th>
-                                                                            <th style="font-size: 13px;width:250px">S.D.Bulan Lalu</th>
-                                                                            <th style="font-size: 13px;width:250px">Bulan Ini</th>
-                                                                            <th style="font-size: 13px;width:250px">S.D Bulan Ini</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody class="result_datanya">
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- /.row -->
-                                        </div>
-                                        <!-- ./card-body -->
-                                        <!-- /.card-footer -->
-                                    </div>
-                                    <!-- /.card -->
-                                </div>
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
-                        <!-- Main row -->
-                        <!-- /.row -->
-                    </div>
-                    <!--/. container-fluid -->
-            </section>
-            <!-- /.content -->
+        <b>
+            <?= $row_kontrak['nama_pekerjaan_program_mata_anggaran'] ?>
+        </b>
+        <b style="margin-left: auto;"> Administrasi Tagihan</b>
+    </nav>
+    <div class="row mt-5">
+        <div class="col-md-9">
+            <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
+background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
+                <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 3 - ADMINISTRASI TAGIHAN </b></h4>
+                <h6 style="font-family: 'Poppins', sans-serif;">Modul ini digunakan dalam membuat Data Terkait Tagihan Penyedia Jasa yang dipiliih</h6>
+            </div>
         </div>
-    </section>
+        <div class="col-md-3">
+            <div class="qr_view">
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Main content -->
+    <div class="col-md-12">
+        <!-- /.card-header -->
+        <div class="row">
+            <div class="col-6">
+                <!-- <small id="helpId" class="form-text text-muted">Ini Pake Search Select</small> -->
+                <div class="input-group">
+                    <input type="hidden" class="form-control" value="<?= $row_kontrak['id_detail_program_penyedia_jasa'] ?>" id="id_detail_program_penyedia_jasa" name="id_detail_program_penyedia_jasa" readonly placeholder="Cari No. Kontrak">
+                    <span class="input-group-btn">
+                        <!-- <a href="javascript:;" onclick="cari_no_kontrak()" class="btn btn-primary text-white"><i class="fas fa-search"></i> Cari</a> -->
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-outline card-primary mb-4">
+                    <br>
+                    <a style="width: 200px;margin-left:10px" target="_blank" href="<?= base_url('export_pdf/buat_pdf/print_tagihan/'. $row_kontrak['id_detail_program_penyedia_jasa'])?>" class="btn btn-info"> <i class="fas fa fa-file"></i> Report Print To PDF</a>
+                    <div class="card-header card-info card-outline"><strong>Histori Kontrak Penyedia</strong><span class="small ms-1"></span></div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <th class="bg-warning" style="font-family: RNSSanz-Black;text-transform: uppercase;color:white;">Penyedia Jasa</th>
+                                <th colspan="2"><?= $row_kontrak['nama_penyedia'] ?></th>
+                            </tr>
+                            <tr>
+                                <th class="bg-warning" style="font-family: RNSSanz-Black;text-transform: uppercase;color:white;">Nomor Kontrak</th>
+                                <th colspan="2"><?= $row_kontrak['no_kontrak_penyedia'] ?></th>
+                            </tr>
+                            <tr>
+                                <td style="background-color:#193B53;font-family: RNSSanz-Black;text-transform: uppercase;color:white;">Histori Kontrak</td>
+                                <td style="background-color:#193B53;font-family: RNSSanz-Black;text-transform: uppercase;color:white;">Nilai Kontrak / Addendum</td>
+                                <td style="background-color:#193B53;font-family: RNSSanz-Black;text-transform: uppercase;color:white;">Tanggal Kontrak / Addendum</td>
+                            </tr>
+                            <?php
+                            $this->db->select('*');
+                            $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                            $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $row_kontrak['id_detail_program_penyedia_jasa']);
+                            $get_nilai_kontrak = $this->db->get();
+                            $total_kontrak  = 0;
+                            foreach ($get_nilai_kontrak->result_array() as $value_kontrak) {
+                                $total_kontrak += $value_kontrak['nilai_sub_kontrak_penyedia']
+                            ?>
+                            <?php } ?>
+                            <tr>
+                                <td class="bg-warning" style="font-family: RNSSanz-Black;text-transform: uppercase;color:white;">Kontrak Awal</td>
+                                <td><?= "Rp " . number_format($total_kontrak, 2, ',', '.') ?></td>
+                                <td><?= date('d-M-Y', strtotime($row_kontrak['tanggal_kontrak_program']))  ?></td>
+                            </tr>
+                            <?php foreach ($looping_adendum as $key => $value) { ?>
+                                <tr>
+                                    <td class="bg-warning" style="font-family: RNSSanz-Black;text-transform: uppercase;color:white;">Addendum <?= $value['no_addendum'] ?></td>
+                                    <td><?= "Rp " . number_format($row_kontrak['total_kontrak_addendum_' . $value['no_addendum']], 2, ',', '.') ?></td>
+                                    <td><?= date('d-M-Y', strtotime($value['tanggal_addendum']))  ?></td>
+                                </tr>
+                            <?php    } ?>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-outline card-success mb-4">
+                    <div class="card-header card-warning card-outline"><strong>Result Master Data Tagihan Penyedia Jasa</strong><span class="small ms-1"></span></div>
+                    <div class="card-body">
+                        <button style="display: none;" type="button" class="btn btn-sm btn-outline-primary create_mcku" data-toggle="modal" data-target="#modelId">
+                            Tambah Master Data Tagihan Penyedia / MC +
+                        </button>
+                        <br>
+                        <div style="overflow-x: auto;overflow-y: scroll;">
+                            <style type="text/css">
+                                .div1 {
+                                    overflow: scroll;
+                                    border: 1px solid #777777;
+                                }
+
+                                .div1 table {
+                                    border-spacing: 0;
+                                }
+
+                                .div1 th {
+                                    border-left: none;
+                                    border-right: 1px solid #bbbbbb;
+                                    padding: 5px;
+                                    width: 80px;
+                                    min-width: 80px;
+                                    position: sticky;
+                                    top: 0;
+                                    color: #e0e0e0;
+                                    background-color: #409cff;
+                                    font-weight: normal;
+                                }
+
+                                .div1 tr {
+                                    color: black;
+                                    ;
+                                }
+
+                                .div1 td {
+                                    border-left: none;
+                                    border-right: 1px solid #bbbbbb;
+                                    border-bottom: 1px solid #bbbbbb;
+                                    padding: 5px;
+                                    width: 80px;
+                                    min-width: 80px;
+                                }
+
+                                .div1 th:nth-child(1),
+                                .div1 td:nth-child(1) {
+                                    position: sticky;
+                                    left: 0;
+                                    width: 150px;
+                                    min-width: 150px;
+                                }
+
+                                .div1 th:nth-child(2),
+                                .div1 td:nth-child(2) {
+                                    position: sticky;
+                                    left: 150px;
+                                    width: 50px;
+                                    min-width: 50px;
+                                }
+
+                                .div1 td:nth-child(1),
+                                .div1 td:nth-child(2) {
+                                    background-color: #F0F8FF;
+                                }
+
+                                .div1 th:nth-child(1),
+                                .div1 th:nth-child(2) {
+                                    z-index: 2;
+                                    background-color: #F0F8FF;
+                                }
+                            </style>
+                            <table id="tabledetail" class="table div1" style="font-family: RNSSanz-Black;text-transform: uppercase;">
+                                <thead class="text-center">
+                                    <tr style="background-color:#193B53;">
+                                        <th style="font-size: 13px;color:white; width:100px" rowspan="2">MC Ke</th>
+                                        <th style="font-size: 13px;color:white; width:250px" rowspan="2">Periode</th>
+                                        <th style="font-size: 13px;color:white; width:750px" colspan="3">Sebelum PPN</th>
+                                        <th style="font-size: 13px;color:white; width:250px" rowspan="2">PPN</th>
+                                        <th style="font-size: 13px;color:white; width:250px" colspan="3">Setelah PPN</th>
+                                        <th style="font-size: 13px;color:white; width:250px" rowspan="2">Retensi</th>
+                                        <th style="font-size: 13px;color:white; width:250px" rowspan="2">Pengembaliaan uang muka </th>
+                                        <th style="font-size: 13px;color:white; width:250px" rowspan="2">Denda</th>
+                                        <th style="font-size: 13px;color:white; width:250px" rowspan="2">Total Potongan</th>
+                                        <th style="font-size: 13px;color:white; width:250px" rowspan="2">Total Invoice</th>
+                                        <th style="font-size: 13px;color:white; width:250px" rowspan="2">Status Tracking</th>
+                                        <th style="font-size: 13px;color:white; width:250px" rowspan="2">Tanggal Update Tracking</th>
+                                        <th style="font-size: 13px;color:white; width:250px" rowspan="2">Aksi</th>
+                                    </tr>
+                                    <tr class="table-warning">
+                                        <th style="font-size: 13px;width:250px">S.D.Bulan Lalu</th>
+                                        <th style="font-size: 13px;width:250px">Bulan Ini</th>
+                                        <th style="font-size: 13px;width:250px">S.D Bulan Ini</th>
+                                        <th style="font-size: 13px;width:250px">S.D.Bulan Lalu</th>
+                                        <th style="font-size: 13px;width:250px">Bulan Ini</th>
+                                        <th style="font-size: 13px;width:250px">S.D Bulan Ini</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="result_datanya">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="margin-top: -18px; padding: 20px">
+            <h5><b>PETUNJUK UMUM</b></h5>
+            <h6>*Histori Kontrak diambil berdasarkan data yang telah diisi di Pasca Pengadaan</h6>
+            <h6>*Tracking MC agar dapat diupdate pada masing-masing Akun sesuai dengan pergerakan Dokumen</h6>
+        </div>
+    </div>
+    <!--/. container-fluid -->
+    <!-- /.content -->
 </div>
 <!-- Button trigger modal -->
 <!-- Modal -->
@@ -1066,7 +994,6 @@
     </div>
 </div>
 </div>
-
 
 <div class="modal fade" data-backdrop="false" id="edit_mc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

@@ -1,44 +1,45 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="main-content">
     <section class="section">
+        <br>
         <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
   position: fixed; top:50px;">
             <b style="margin-left: auto; font-weight:900">Laporan Kinerja</b>
         </nav>
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
+  position: fixed; top:50px;  padding-bottom: -10px;">
+            <b style="margin-left: auto; font-weight:1000" class="text-black">Modul 4 : Laporan Kinerja</b>
+        </nav>
+
+        <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
+background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
+            <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 4 - LAPORAN KINERJA</b></h4>
+            <h6 style="font-family: 'Poppins', sans-serif;"><b> Modul ini digunakan untuk membuat laporan kinerja kontrak program </b></h6>
+
+        </div>
         <div class="content-wrapper" style="background-color:white">
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="row">
-                                <div class="col-md-10 mt-4">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <div class="input-group mb-3">
-                                                    <input type="text" placeholder="Cari Kontrak" class="form-control rounded-0">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <div class="input-group mb-3">
-                                                    <input type="text" placeholder="Cari No.Kontrak" class="form-control rounded-0">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 mt-1">
-                                            <a href="#" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</a>
-                                        </div>
-                                        <div class="col-md-3 mt-1">
-                                            <button type="button" class="btn btn-sm btn-outline-primary btn-block" data-toggle="modal" data-target="#tambah_program">
-                                                <i class="fas fa-plus"></i>
-                                                Tambah Kontrak
-                                            </button>
+                            <div class="row mt-4">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group mb-5">
+                                            <input type="text" placeholder="Cari Kontrak" class="form-control rounded-0">
                                         </div>
                                     </div>
-
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group mb-5">
+                                            <input type="text" placeholder="Cari No.Kontrak" class="form-control rounded-0">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 mt-1">
+                                    <a href="#" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</a>
                                 </div>
                             </div>
                             <table id="table" class="table-bordered table-striped" style="font-family: RNSSanz-Black;text-transform: uppercase; margin-top: -10px">

@@ -13363,7 +13363,7 @@ class Data_kontrak_penyedia_jasa extends CI_Controller
             $data = [
                 'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                 'nama_program_mata_anggaran' => $value['nama_mata_anggaran'],
-                'nilai_program_mata_anggran' => $value['nilai_program_mata_anggran'],
+                'nilai_program_mata_anggran' => 0,
                 'id_checking' => $value['id_checking'],
                 'no_add_checking' => $value['no_add'],
                 'addendum_ke' => 'kosong'

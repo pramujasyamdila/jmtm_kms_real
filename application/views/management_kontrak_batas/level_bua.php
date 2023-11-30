@@ -1,5 +1,6 @@
 <script>
     // ini untuk modal global excel 
+    // bua
     var modal_excel_bua_2 = $('#modal_excel_bua_2');
     var form_modal_level_2_bua = $('#form_modal_level_2_bua')
     var form_simpan_level_2_bua = $('#form_simpan_level_2_bua')
@@ -679,6 +680,7 @@
     var modal_bua_urutan = $('#modal_bua_urutan');
 
     function modal_level_3_bua(id, type, type_add) {
+        console.log(id, type, type_add);
         if (type == 'update_nilai_level_3_bua') {
 
         }
@@ -837,7 +839,7 @@
                     $('#form_tambah_level_3_bua').css('display', 'block')
                     $('#button_edit_level_3_bua').css('display', 'block')
 
-                    $('[name="id_detail_bua_1"]').val(response['row_bua_detail'].id_bua_detail);
+                    $('[name="id_bua_detail"]').val(response['row_bua_detail'].id_bua_detail);
                     $('[name="nama_uraian"]').val(response['row_bua_detail'].nama_uraian);
                     $('#title_modal_level_3_bua').text('Edit Uraian')
                 }

@@ -1071,6 +1071,9 @@
                     tambah_addendum.modal('hide')
                     message('success', 'Data Berhasil Di Tambah!', 'Berhasil')
                     location.reload()
+                } else {
+                    $('.button_simpan').removeClass('disabled');
+                    message('warning', 'Maaf Addendum Sudah Ada!', 'Maaf')
                 }
             }
         })
@@ -1190,6 +1193,70 @@
             }
         });
     }
+
+    function Hapus_addendum(type_add) {
+        var id_kontrak = $('[name="id_kontrak"]').val();
+        Swal.fire({
+            title: 'Apakah Anda Yakin Ingin Menghapus',
+            text: 'Addendum Ini ??',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Jangan Hapus!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('admin/data_kontrak/hapus_addendum') ?>",
+                    data: {
+                        type_add: type_add,
+                        id_kontrak: id_kontrak
+                    },
+                    dataType: "JSON",
+                    success: function(response) {
+                        if (response == 'success') {
+                            message('success', 'Berhasil!', 'Data Berhasil Di Hapus')
+                            location.reload()
+                        }
+                    }
+                })
+
+            }
+        })
+    }
+
+    function Edit_tgl_addendum(type_add) {
+        $('[name="id_kontrak"]').val();
+        $('[name="no_addendum_edit"]').val(type_add);
+        var modal_edit_tanggal_adendum = $('#modal_edit_tanggal_adendum');
+        modal_edit_tanggal_adendum.modal('show');
+    }
+
+    function Simpan_tanggal() {
+        var modal_edit_tanggal_adendum = $('#modal_edit_tanggal_adendum');
+        var id_kontrak_addendum_edit = $('[name="id_kontrak_addendum_edit"]').val();
+        var tanggal_adendum_edit = $('[name="tanggal_adendum_edit"]').val();
+        var no_addendum_edit = $('[name="no_addendum_edit"]').val();
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('admin/data_kontrak/update_tanggal_addendum') ?>",
+            data: {
+                no_addendum_edit: no_addendum_edit,
+                id_kontrak_addendum_edit: id_kontrak_addendum_edit,
+                tanggal_adendum_edit:tanggal_adendum_edit
+            },
+            dataType: "JSON",
+            success: function(response) {
+                if (response == 'success') {
+                    message('success', 'Berhasil!', 'Tanggal Addendum Berhasil Diubah')
+                    location.reload()
+                    modal_edit_tanggal_adendum.modal('hide');
+                }
+            }
+        })
+    }
 </script>
 
 <script>
@@ -1237,4 +1304,23 @@
             }
         })
     }
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('.table').DataTable({
+            "ordering": false,
+            "info": true,
+            "paging": false,
+            dom: '<"dt-top-container"<l><"dt-center-in-div"B><f>r>t<"dt-filter-spacer"f><ip>',
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    text: '<i class="fas fa-file-excel"> Excel</i>',
+                    titleAttr: 'Excel'
+                }
+            ]
+        });
+    });
 </script>

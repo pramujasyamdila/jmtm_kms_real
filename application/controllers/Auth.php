@@ -8,6 +8,7 @@ class Auth extends CI_Controller
         parent::__construct();
         $this->load->helper(array('url', 'form', 'string'));
         $this->load->model('Auth_model');
+        $this->load->model('Admin/Pengguna_model');
         $this->load->library(array('form_validation', 'recaptcha'));
     }
 
@@ -36,10 +37,36 @@ class Auth extends CI_Controller
         $this->load->view('auth/v_login', $data);
     }
 
+    function ubah_password()
+    {
+        $username = $this->input->post('username');
+        $id_pegawai = $this->input->post('id_pegawai');
+        $password = $this->input->post('password');
+        $confirmPassword = $this->input->post('confirmPassword');
+        if ($password == '') {
+            $this->session->set_flashdata('password_kosong', 'Password Tidak Boleh Kosong');
+            redirect('profile');
+        } else {
+            if ($password == $confirmPassword) {
+                $where = [
+                    'id_pegawai' => $id_pegawai
+                ];
+                $data = [
+                    'username' =>  $username,
+                    'password' => password_hash($password, PASSWORD_DEFAULT),
+                ];
+                $this->Pengguna_model->update($where, $data);
+                $this->session->set_flashdata('berhasil_ubah_password', 'Password Berhasil Di Ubah');
+            } else {
+                $this->session->set_flashdata('password_kosong', 'Password Tidak Sama');
+            }
+            redirect('profile');
+        }
+    }
+
 
     public function logout()
     {
         $this->role_login->logout();
     }
-
 }

@@ -10,6 +10,7 @@ class Home extends CI_Controller
         $this->load->model('Admin/Data_kontrak_model');
         $this->load->model('Auth_model');
         $session = $this->session->userdata('id_pegawai');
+        $this->load->model('Admin/M_analisis');
         // if (!$session) {
         // 	redirect('auth');
         // }
@@ -18,6 +19,27 @@ class Home extends CI_Controller
     public function index()
     {
         $data['title'] = 'Admin/Dashboard';
+
+        $data['m1_dok_selesai'] = $this->M_analisis->m1_dok_selesai();
+        $data['m1_dok_progres'] = $this->M_analisis->m1_dok_progres();
+        $data['m1_dok_progres2'] = $data['m1_dok_progres'] - $data['m1_dok_selesai'];
+
+
+        $data['m2_dok_selesai'] = $this->M_analisis->m2_dok_selesai();
+        $data['m2_dok_progres'] = $this->M_analisis->m2_dok_progres();
+
+        $data['m2_dok_selesai_pasca'] = $this->M_analisis->m2_dok_selesai_pasca();
+        $data['m2_dok_progres_pasca'] = $this->M_analisis->m2_dok_progres_pasca();
+
+
+        $data['m2_dok_selesai_pasca_kontrak'] = $this->M_analisis->m2_dok_selesai_pasca_kontrak();
+        $data['m2_dok_progres_pasca_kontrak'] = $this->M_analisis->m2_dok_progres_pasca_kontrak();
+
+
+        $data['m2_dok_selesai_pasca_final'] = $data['m2_dok_selesai_pasca'] + $data['m2_dok_selesai_pasca_kontrak'];
+        $data['m2_dok_progres_pasca_final'] = $data['m2_dok_progres_pasca'] + $data['m2_dok_progres_pasca_kontrak'] + 1;
+        $data['m2_final_pasca'] = $data['m2_dok_progres_pasca_final'] - $data['m2_dok_selesai_pasca_final'];
+
         // januari
         $id_kontrak = $this->session->userdata('id_kontrak');
         $get_pegawai = $this->Auth_model->get_pegawai();
@@ -28,7 +50,7 @@ class Home extends CI_Controller
         $data['get_area'] = $this->Data_kontrak_model->get_area($get_pegawai['id_area']);
         $data['get_sub_area'] = $this->Data_kontrak_model->get_sub_area($get_pegawai['id_sub_area']);
         $data['kontrak'] =  $this->Data_kontrak_model->get_row_kontrak($id_kontrak);
-        $this->load->view('template_stisla/header');
+        $this->load->view('template_stisla/header', $data);
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('home/index', $data);
         $this->load->view('template_stisla/footer',);

@@ -15,20 +15,20 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
         </div>
 
         <div class="card" style="margin-top: -20px; padding-bottom: 10px; padding-top: 10px; padding-left: 20px">
-            <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 4 - CHECKLIST DAN TO DO LIST </b></h4>
+            <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 1 - CHECKLIST DAN TO DO LIST </b></h4>
             <div class="row" style="padding-left:90px">
                 <div class="col-md-4">
                     <div class="card bg-success" style="margin-top: 20px; padding-bottom: 10px; padding-top: 10px; padding-left: 20px; border-radius:10px">
                         <div class="row">
                             <div class="col-md-6">
                                 <center>
-                                    <h2 style="font-family: 'Poppins', sans-serif;">Done</h2>
+                                    <h5 style="font-family: 'Poppins', sans-serif;">Done</h5>
                                 </center>
                             </div>
                             <div class="col-md-6">
                                 <div class="card bg-warning" style="font-family: 'Poppins', sans-serif;">
                                     <center>
-                                        <h1><?= $m1_dok_selesai ?></h1>
+                                        <h5><?= $m1_dok_selesai ?></h5>
                                     </center>
                                 </div>
                             </div>
@@ -41,14 +41,14 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         <div class="row">
                             <div class="col-md-6">
                                 <center>
-                                    <h2 style="font-family: 'Poppins', sans-serif;">On Progres</h2>
+                                    <h5 style="font-family: 'Poppins', sans-serif;">On Progres</h5>
                                 </center>
 
                             </div>
                             <div class="col-md-6">
                                 <div class="card bg-success" style="font-family: 'Poppins', sans-serif;">
                                     <center>
-                                        <h1><?= $m1_dok_progres2 ?></h1>
+                                        <h5><?= $m1_dok_progres2 ?></h5>
                                     </center>
                                 </div>
                             </div>
@@ -69,13 +69,13 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         <div class="row">
                             <div class="col-md-6">
                                 <center>
-                                    <h2 style="font-family: 'Poppins', sans-serif;">Done</h2>
+                                    <h5 style="font-family: 'Poppins', sans-serif;">Done</h5>
                                 </center>
                             </div>
                             <div class="col-md-6">
                                 <div class="card bg-warning" style="font-family: 'Poppins', sans-serif;">
                                     <center>
-                                        <h1><?= $m2_dok_selesai ?></h1>
+                                        <h5><?= $m2_dok_selesai ?></h5>
                                     </center>
                                 </div>
                             </div>
@@ -88,14 +88,14 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         <div class="row">
                             <div class="col-md-6">
                                 <center>
-                                    <h2 style="font-family: 'Poppins', sans-serif;">On Progres</h2>
+                                    <h5 style="font-family: 'Poppins', sans-serif;">On Progres</h5>
                                 </center>
 
                             </div>
                             <div class="col-md-6">
                                 <div class="card bg-success" style="font-family: 'Poppins', sans-serif;">
                                     <center>
-                                        <h1><?= $m2_dok_progres ?></h1>
+                                        <h5><?= $m2_dok_progres ?></h5>
                                     </center>
                                 </div>
                             </div>
@@ -116,13 +116,13 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         <div class="row">
                             <div class="col-md-6">
                                 <center>
-                                    <h2 style="font-family: 'Poppins', sans-serif;">Done</h2>
+                                    <h5 style="font-family: 'Poppins', sans-serif;">Done</h5>
                                 </center>
                             </div>
                             <div class="col-md-6">
                                 <div class="card bg-warning" style="font-family: 'Poppins', sans-serif;">
                                     <center>
-                                        <h1><?= $m2_dok_selesai_pasca_final  ?></h1>
+                                        <h5><?= $m2_dok_selesai_pasca_final  ?></h5>
                                     </center>
                                 </div>
                             </div>
@@ -135,14 +135,14 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         <div class="row">
                             <div class="col-md-6">
                                 <center>
-                                    <h2 style="font-family: 'Poppins', sans-serif;">On Progres</h2>
+                                    <h5 style="font-family: 'Poppins', sans-serif;">On Progres</h5>
                                 </center>
 
                             </div>
                             <div class="col-md-6">
                                 <div class="card bg-success" style="font-family: 'Poppins', sans-serif;">
                                     <center>
-                                        <h1><?= $m2_final_pasca ?></h1>
+                                        <h5><?= $m2_final_pasca ?></h5>
                                     </center>
                                 </div>
                             </div>
@@ -163,13 +163,13 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         <div class="row">
                             <div class="col-md-6">
                                 <center>
-                                    <h2 style="font-family: 'Poppins', sans-serif;">Done</h2>
+                                    <h5 style="font-family: 'Poppins', sans-serif;">Done</h5>
                                 </center>
                             </div>
                             <div class="col-md-6">
                                 <div class="card bg-warning" style="font-family: 'Poppins', sans-serif;">
                                     <center>
-                                        <h1>0</h1>
+                                        <h5>0</h5>
                                     </center>
                                 </div>
                             </div>
@@ -182,14 +182,14 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                         <div class="row">
                             <div class="col-md-6">
                                 <center>
-                                    <h2 style="font-family: 'Poppins', sans-serif;">On Progres</h2>
+                                    <h5 style="font-family: 'Poppins', sans-serif;">On Progres</h5>
                                 </center>
 
                             </div>
                             <div class="col-md-6">
                                 <div class="card bg-success" style="font-family: 'Poppins', sans-serif;">
                                     <center>
-                                        <h1>19</h1>
+                                        <h5>19</h5>
                                     </center>
                                 </div>
                             </div>
@@ -292,49 +292,51 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                 </button>
             </div>
             <div class="modal-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Uraian Pekerjaan</th>
-                            <th>Done</th>
-                            <th>On Progres</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1;
-                        foreach ($data_pekerjaan as $key => $value) { ?>
+                <div style="overflow-x: auto;">
+                    <table class="table table-bordered">
+                        <thead>
                             <tr>
-                                <td><?= $i++ ?></td>
-                                <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
-                                <td>
-                                    <?php
-                                    $this->db->select('*');
-                                    $this->db->from('mst_kontrak');
-                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
-                                    $this->db->join('tbl_dokumen_surat_pra', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa');
-                                    $this->db->where('tbl_dokumen_surat_pra.file !=', NULL);
-                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
-                                    $query = $this->db->count_all_results();
-                                    ?>
-                                    <?= $query ?>
-                                </td>
-                                <td>
-                                    <?php
-                                    $this->db->select('*');
-                                    $this->db->from('mst_kontrak');
-                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
-                                    $this->db->join('tbl_dokumen_surat_pra', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa');
-                                    $this->db->where('tbl_dokumen_surat_pra.file', NULL);
-                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
-                                    $query2 =  $this->db->count_all_results();
-                                    ?>
-                                    <?= $query2 - $query  ?>
-                                </td>
+                                <th>No</th>
+                                <th>Uraian Pekerjaan</th>
+                                <th>Done</th>
+                                <th>On Progres</th>
                             </tr>
-                        <?php   } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1;
+                            foreach ($data_pekerjaan as $key => $value) { ?>
+                                <tr>
+                                    <td><?= $i++ ?></td>
+                                    <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
+                                    <td>
+                                        <?php
+                                        $this->db->select('*');
+                                        $this->db->from('mst_kontrak');
+                                        $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
+                                        $this->db->join('tbl_dokumen_surat_pra', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa');
+                                        $this->db->where('tbl_dokumen_surat_pra.file !=', NULL);
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                        $query = $this->db->count_all_results();
+                                        ?>
+                                        <?= $query ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        $this->db->select('*');
+                                        $this->db->from('mst_kontrak');
+                                        $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
+                                        $this->db->join('tbl_dokumen_surat_pra', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa');
+                                        $this->db->where('tbl_dokumen_surat_pra.file', NULL);
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                        $query2 =  $this->db->count_all_results();
+                                        ?>
+                                        <?= $query2 - $query  ?>
+                                    </td>
+                                </tr>
+                            <?php   } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

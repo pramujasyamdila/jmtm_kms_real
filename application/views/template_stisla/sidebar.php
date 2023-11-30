@@ -82,6 +82,7 @@
                     </ul>
                 </li>
                 <li><a class="nav-link" href="<?= base_url('admin/lembar_kerja') ?>"><i class="fa fa-tasks" aria-hidden="true"></i><span>Lembar Kerja</span></a></li>
+                <!-- <li><a class="nav-link" href="<?= base_url('administrasi_kontrak/administrasi_kontrak/list_program_taggihan_tagihan') ?>"><i class="fa fa-qrcode" aria-hidden="true"></i><span>Qrcode Tagihan Penyedia</span></a></li> -->
                 <li class="menu-header text-modul">MODUL 4 <br> <label for="" style="font-size: 14x;">Analisis Data</label> </li>
                 <li class="dropdown">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Modul 4 ANALISIS DATA</span></a>

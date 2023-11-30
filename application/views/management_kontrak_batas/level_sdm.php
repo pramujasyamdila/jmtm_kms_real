@@ -1,5 +1,6 @@
 <script>
     // ini untuk modal global excel 
+    // sdm
     var modal_excel_sdm_2 = $('#modal_excel_sdm_2');
     var form_modal_level_2_sdm = $('#form_modal_level_2_sdm')
     var form_simpan_level_2_sdm = $('#form_simpan_level_2_sdm')
@@ -658,11 +659,11 @@
                 split = number_string.split(','),
                 sisa = split[0].length % 3,
                 rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
+                risdmn = split[0].substr(sisa).match(/\d{1,3}/gi);
 
-            if (ribuan) {
+            if (risdmn) {
                 separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                rupiah += separator + risdmn.join('.');
             }
 
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
@@ -679,6 +680,7 @@
     var modal_sdm_urutan = $('#modal_sdm_urutan');
 
     function modal_level_3_sdm(id, type, type_add) {
+        console.log(id, type, type_add);
         if (type == 'update_nilai_level_3_sdm') {
 
         }
@@ -837,7 +839,7 @@
                     $('#form_tambah_level_3_sdm').css('display', 'block')
                     $('#button_edit_level_3_sdm').css('display', 'block')
 
-                    $('[name="id_detail_sdm_1"]').val(response['row_sdm_detail'].id_sdm_detail);
+                    $('[name="id_sdm_detail"]').val(response['row_sdm_detail'].id_sdm_detail);
                     $('[name="nama_uraian"]').val(response['row_sdm_detail'].nama_uraian);
                     $('#title_modal_level_3_sdm').text('Edit Uraian')
                 }
@@ -1455,11 +1457,11 @@
                 split = number_string.split(','),
                 sisa = split[0].length % 3,
                 rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
+                risdmn = split[0].substr(sisa).match(/\d{1,3}/gi);
 
-            if (ribuan) {
+            if (risdmn) {
                 separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                rupiah += separator + risdmn.join('.');
             }
 
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
@@ -2261,11 +2263,11 @@
                 split = number_string.split(','),
                 sisa = split[0].length % 3,
                 rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
+                risdmn = split[0].substr(sisa).match(/\d{1,3}/gi);
 
-            if (ribuan) {
+            if (risdmn) {
                 separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                rupiah += separator + risdmn.join('.');
             }
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
@@ -3069,11 +3071,11 @@
                 split = number_string.split(','),
                 sisa = split[0].length % 3,
                 rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
+                risdmn = split[0].substr(sisa).match(/\d{1,3}/gi);
 
-            if (ribuan) {
+            if (risdmn) {
                 separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                rupiah += separator + risdmn.join('.');
             }
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
@@ -3882,11 +3884,11 @@
                 split = number_string.split(','),
                 sisa = split[0].length % 3,
                 rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
+                risdmn = split[0].substr(sisa).match(/\d{1,3}/gi);
 
-            if (ribuan) {
+            if (risdmn) {
                 separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                rupiah += separator + risdmn.join('.');
             }
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
@@ -4694,11 +4696,11 @@
                 split = number_string.split(','),
                 sisa = split[0].length % 3,
                 rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
+                risdmn = split[0].substr(sisa).match(/\d{1,3}/gi);
 
-            if (ribuan) {
+            if (risdmn) {
                 separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                rupiah += separator + risdmn.join('.');
             }
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
@@ -5507,11 +5509,11 @@
                 split = number_string.split(','),
                 sisa = split[0].length % 3,
                 rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
+                risdmn = split[0].substr(sisa).match(/\d{1,3}/gi);
 
-            if (ribuan) {
+            if (risdmn) {
                 separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                rupiah += separator + risdmn.join('.');
             }
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
@@ -6324,11 +6326,11 @@
                 split = number_string.split(','),
                 sisa = split[0].length % 3,
                 rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
+                risdmn = split[0].substr(sisa).match(/\d{1,3}/gi);
 
-            if (ribuan) {
+            if (risdmn) {
                 separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                rupiah += separator + risdmn.join('.');
             }
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
@@ -7136,11 +7138,11 @@
                 split = number_string.split(','),
                 sisa = split[0].length % 3,
                 rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
+                risdmn = split[0].substr(sisa).match(/\d{1,3}/gi);
 
-            if (ribuan) {
+            if (risdmn) {
                 separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                rupiah += separator + risdmn.join('.');
             }
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
@@ -7948,11 +7950,11 @@
                 split = number_string.split(','),
                 sisa = split[0].length % 3,
                 rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
+                risdmn = split[0].substr(sisa).match(/\d{1,3}/gi);
 
-            if (ribuan) {
+            if (risdmn) {
                 separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                rupiah += separator + risdmn.join('.');
             }
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
@@ -8757,11 +8759,11 @@
                 split = number_string.split(','),
                 sisa = split[0].length % 3,
                 rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
+                risdmn = split[0].substr(sisa).match(/\d{1,3}/gi);
 
-            if (ribuan) {
+            if (risdmn) {
                 separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                rupiah += separator + risdmn.join('.');
             }
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');

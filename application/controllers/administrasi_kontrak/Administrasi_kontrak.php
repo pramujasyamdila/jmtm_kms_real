@@ -9,6 +9,7 @@ class Administrasi_kontrak extends CI_Controller
         parent::__construct();
         $this->load->model('Admin/Data_kontrak_model');
         $this->load->model('Admin/Administrasi_kontrak_model');
+        $this->load->model('Admin/M_analisis');
         $this->load->model('Auth_model');
         $session = $this->session->userdata('id_pegawai');
         if (!$session) {
@@ -57,6 +58,29 @@ class Administrasi_kontrak extends CI_Controller
         $this->load->view('template_stisla/footer');
         $this->load->view('admin/administrasi_kontrak/ajax');
     }
+
+
+
+
+    public function list_program_taggihan_tagihan()
+    {
+        $keyword = $this->input->post('keyword');
+        $data['active_kontrak'] = 'active';
+        $data['menu_open_kontrak'] = 'menu-open';
+        $get_pegawai = $this->Auth_model->get_pegawai();
+        $id_departemen = $get_pegawai['id_departemen'];
+        $id_area = $get_pegawai['id_area'];
+        $id_sub_area = $get_pegawai['id_sub_area'];
+        $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran_tagihan($id_departemen, $id_area, $id_sub_area, $keyword);
+        $data['get_spm'] = $this->Data_kontrak_model->get_spm();
+        $this->load->view('template_stisla/header');
+        $this->load->view('template_stisla/sidebar', $data);
+        $this->load->view('admin/administrasi_kontrak/program_tagihan', $data);
+        $this->load->view('template_stisla/footer');
+        $this->load->view('admin/administrasi_kontrak/ajax');
+    }
+
+
 
     public function buat_tagihan($id_detail_program_penyedia_jasa)
     {
@@ -122,6 +146,8 @@ class Administrasi_kontrak extends CI_Controller
 
     public function list_program($id_kontrak)
     {
+
+
         $keyword = $this->input->post('keyword');
         $data['active_kontrak'] = 'active';
         $data['menu_open_kontrak'] = 'menu-open';
@@ -134,6 +160,26 @@ class Administrasi_kontrak extends CI_Controller
         $data['get_penyedia'] = $this->Data_kontrak_model->get_penyedia();
         $data['id_kontrak'] = $id_kontrak;
         $data['nama_kontrak'] = $row_kontrak['nama_kontrak'];
+        $data['m1_dok_selesai'] = $this->M_analisis->m1_dok_selesai();
+        $data['m1_dok_progres'] = $this->M_analisis->m1_dok_progres();
+        $data['m1_dok_progres2'] = $data['m1_dok_progres'] - $data['m1_dok_selesai'];
+
+
+        $data['m2_dok_selesai'] = $this->M_analisis->m2_dok_selesai();
+        $data['m2_dok_progres'] = $this->M_analisis->m2_dok_progres();
+
+        $data['m2_dok_selesai_pasca'] = $this->M_analisis->m2_dok_selesai_pasca();
+        $data['m2_dok_progres_pasca'] = $this->M_analisis->m2_dok_progres_pasca();
+
+
+        $data['m2_dok_selesai_pasca_kontrak'] = $this->M_analisis->m2_dok_selesai_pasca_kontrak();
+        $data['m2_dok_progres_pasca_kontrak'] = $this->M_analisis->m2_dok_progres_pasca_kontrak();
+
+
+        $data['m2_dok_selesai_pasca_final'] = $data['m2_dok_selesai_pasca'] + $data['m2_dok_selesai_pasca_kontrak'];
+        $data['m2_dok_progres_pasca_final'] = $data['m2_dok_progres_pasca'] + $data['m2_dok_progres_pasca_kontrak'] + 1;
+        $data['m2_final_pasca'] = $data['m2_dok_progres_pasca_final'] - $data['m2_dok_selesai_pasca_final'];
+        $data['data_pekerjaan'] = $this->M_analisis->get_pekerjaan_pra($id_kontrak);
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('admin/administrasi_kontrak/pasca_pengadaan', $data);

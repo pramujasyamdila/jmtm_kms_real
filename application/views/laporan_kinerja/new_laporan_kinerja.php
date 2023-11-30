@@ -15,15 +15,15 @@
 </style>
 <div class="main-content">
     <section class="section">
-    <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
   position: fixed; top:50px;  padding-bottom: -10px;">
-            <b style="margin-left: auto; font-weight:1000" class="text-black">Modul 4 : ANALISIS DATA</b>
+            <b style="margin-left: auto; font-weight:1000" class="text-black">Modul 4 : LAPORAN KINERJA</b>
         </nav>
 
         <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
 background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
-            <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 4 - ANALISIS DATA </b></h4>
-            <h6 style="font-family: 'Poppins', sans-serif;">Modul ini digunakan dalam membuat Data Terkait Informasi Laporan Kinerja yang sudah ada</h6>
+            <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 4 - LAPORAN KINERJA </b></h4>
+            <h6 style="font-family: 'Poppins', sans-serif;">Modul ini digunakan dalam membuat Laporan Kinerja Kontrak Program</h6>
 
         </div>
         <div class="content-wrapper" style="background-color:white">
@@ -66,7 +66,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                     <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true"><i class="fa fa-filter" aria-hidden="true"></i> View Laporan</a>
                                                                 </li>
                                                                 <li class="nav-item">
-                                                                    <a class="nav-link" id="custom-tabs-two-januari-tab" data-toggle="pill" href="#custom-tabs-two-januari" role="tab" aria-controls="custom-tabs-two-januari" aria-selected="false"><i class="fa fa-calendar" aria-hidden="true"></i> View Action</a>
+                                                                    <a class="nav-link" id="custom-tabs-laporan_view-tab" data-toggle="pill" href="#custom-tabs-laporan_view" role="tab" aria-controls="custom-tabs-laporan_view" aria-selected="false"><i class="fa fa-calendar" aria-hidden="true"></i> View Action</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -93,8 +93,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         border-color: black;
                                                                                         border-style: solid;
                                                                                         border-width: 1px;
-                                                                                       font-family: RNSSanz-Black;
-                                                                                       text-transform: uppercase;
+                                                                                        font-family: RNSSanz-Black;
+                                                                                        text-transform: uppercase;
                                                                                         font-size: 14px;
                                                                                         overflow: hidden;
                                                                                         padding: 10px 5px;
@@ -106,8 +106,8 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         border-color: black;
                                                                                         border-style: solid;
                                                                                         border-width: 1px;
-                                                                                       font-family: RNSSanz-Black;
-                                                                                       text-transform: uppercase;
+                                                                                        font-family: RNSSanz-Black;
+                                                                                        text-transform: uppercase;
                                                                                         font-size: 14px;
                                                                                         font-weight: normal;
                                                                                         overflow: hidden;
@@ -343,14 +343,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                     <?php
                                                                                                     if ($get_addendum_kontrak) { ?>
                                                                                                         <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                         <?php } ?>
                                                                                                     <?php } else { ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                     <?php } ?>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                    <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                     <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -493,14 +500,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                         <?php
                                                                                                         if ($get_addendum_kontrak) { ?>
                                                                                                             <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                             <?php } ?>
                                                                                                         <?php } else { ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                         <?php } ?>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                        <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                         <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -631,14 +645,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                             <?php
                                                                                                             if ($get_addendum_kontrak) { ?>
                                                                                                                 <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                 <?php } ?>
                                                                                                             <?php } else { ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                             <?php } ?>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                            <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                             <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -770,14 +791,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                 <?php
                                                                                                                 if ($get_addendum_kontrak) { ?>
                                                                                                                     <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                     <?php } ?>
                                                                                                                 <?php } else { ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                 <?php } ?>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                 <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -909,14 +937,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                     <?php
                                                                                                                     if ($get_addendum_kontrak) { ?>
                                                                                                                         <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                         <?php } ?>
                                                                                                                     <?php } else { ?>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                     <?php } ?>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                    <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                     <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -1049,14 +1084,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                         <?php
                                                                                                                         if ($get_addendum_kontrak) { ?>
                                                                                                                             <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                             <?php } ?>
                                                                                                                         <?php } else { ?>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                         <?php } ?>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                        <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                         <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -1189,14 +1231,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                             <?php
                                                                                                                             if ($get_addendum_kontrak) { ?>
                                                                                                                                 <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                                 <?php } ?>
                                                                                                                             <?php } else { ?>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                             <?php } ?>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                            <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                             <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -1328,14 +1377,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                                 <?php
                                                                                                                                 if ($get_addendum_kontrak) { ?>
                                                                                                                                     <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                                     <?php } ?>
                                                                                                                                 <?php } else { ?>
-                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                                 <?php } ?>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                                 <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -1467,14 +1523,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                                     <?php
                                                                                                                                     if ($get_addendum_kontrak) { ?>
                                                                                                                                         <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                                         <?php } ?>
                                                                                                                                     <?php } else { ?>
-                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                                     <?php } ?>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                    <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                                     <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -1509,8 +1572,6 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                 <?php } ?>
                                                                                             <?php } ?>
                                                                                         <?php } ?>
-
-
                                                                                         <?php
                                                                                         // opex
                                                                                         $this->db->select('*');
@@ -1627,14 +1688,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                     <?php
                                                                                                     if ($get_addendum_kontrak) { ?>
                                                                                                         <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                         <?php } ?>
                                                                                                     <?php } else { ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                     <?php } ?>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                    <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                     <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -1777,14 +1845,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                         <?php
                                                                                                         if ($get_addendum_kontrak) { ?>
                                                                                                             <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                             <?php } ?>
                                                                                                         <?php } else { ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                         <?php } ?>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                        <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                         <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -1915,14 +1990,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                             <?php
                                                                                                             if ($get_addendum_kontrak) { ?>
                                                                                                                 <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                 <?php } ?>
                                                                                                             <?php } else { ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                             <?php } ?>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                            <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                             <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -2054,14 +2136,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                 <?php
                                                                                                                 if ($get_addendum_kontrak) { ?>
                                                                                                                     <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                     <?php } ?>
                                                                                                                 <?php } else { ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                 <?php } ?>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                 <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -2193,14 +2282,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                     <?php
                                                                                                                     if ($get_addendum_kontrak) { ?>
                                                                                                                         <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                         <?php } ?>
                                                                                                                     <?php } else { ?>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                     <?php } ?>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                    <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                     <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -2333,14 +2429,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                         <?php
                                                                                                                         if ($get_addendum_kontrak) { ?>
                                                                                                                             <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                             <?php } ?>
                                                                                                                         <?php } else { ?>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                         <?php } ?>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                        <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                         <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -2473,14 +2576,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                             <?php
                                                                                                                             if ($get_addendum_kontrak) { ?>
                                                                                                                                 <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                                 <?php } ?>
                                                                                                                             <?php } else { ?>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                             <?php } ?>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                            <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                             <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -2612,14 +2722,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                                 <?php
                                                                                                                                 if ($get_addendum_kontrak) { ?>
                                                                                                                                     <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                                     <?php } ?>
                                                                                                                                 <?php } else { ?>
-                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                                 <?php } ?>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                                 <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -2751,14 +2868,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                                     <?php
                                                                                                                                     if ($get_addendum_kontrak) { ?>
                                                                                                                                         <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                                         <?php } ?>
                                                                                                                                     <?php } else { ?>
-                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                                     <?php } ?>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                    <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                                     <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -2909,14 +3033,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                     <?php
                                                                                                     if ($get_addendum_kontrak) { ?>
                                                                                                         <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                         <?php } ?>
                                                                                                     <?php } else { ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                     <?php } ?>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                    <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                     <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -3059,14 +3190,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                         <?php
                                                                                                         if ($get_addendum_kontrak) { ?>
                                                                                                             <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                             <?php } ?>
                                                                                                         <?php } else { ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                         <?php } ?>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                        <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                         <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -3197,14 +3335,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                             <?php
                                                                                                             if ($get_addendum_kontrak) { ?>
                                                                                                                 <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                 <?php } ?>
                                                                                                             <?php } else { ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                             <?php } ?>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                            <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                             <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -3336,14 +3481,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                 <?php
                                                                                                                 if ($get_addendum_kontrak) { ?>
                                                                                                                     <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                     <?php } ?>
                                                                                                                 <?php } else { ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                 <?php } ?>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                 <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -3475,14 +3627,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                     <?php
                                                                                                                     if ($get_addendum_kontrak) { ?>
                                                                                                                         <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                         <?php } ?>
                                                                                                                     <?php } else { ?>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                     <?php } ?>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                    <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                     <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -3615,14 +3774,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                         <?php
                                                                                                                         if ($get_addendum_kontrak) { ?>
                                                                                                                             <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                             <?php } ?>
                                                                                                                         <?php } else { ?>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                         <?php } ?>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                        <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                         <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -3755,14 +3921,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                             <?php
                                                                                                                             if ($get_addendum_kontrak) { ?>
                                                                                                                                 <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                                 <?php } ?>
                                                                                                                             <?php } else { ?>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                             <?php } ?>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                            <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                             <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -3894,14 +4067,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                                 <?php
                                                                                                                                 if ($get_addendum_kontrak) { ?>
                                                                                                                                     <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                                     <?php } ?>
                                                                                                                                 <?php } else { ?>
-                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                                 <?php } ?>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                                 <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -4033,14 +4213,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                                     <?php
                                                                                                                                     if ($get_addendum_kontrak) { ?>
                                                                                                                                         <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                                         <?php } ?>
                                                                                                                                     <?php } else { ?>
-                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                                     <?php } ?>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                    <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                                     <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -4191,14 +4378,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                     <?php
                                                                                                     if ($get_addendum_kontrak) { ?>
                                                                                                         <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                         <?php } ?>
                                                                                                     <?php } else { ?>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                     <?php } ?>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                    <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                     <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -4341,14 +4535,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                         <?php
                                                                                                         if ($get_addendum_kontrak) { ?>
                                                                                                             <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                             <?php } ?>
                                                                                                         <?php } else { ?>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                         <?php } ?>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                        <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                         <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -4479,14 +4680,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                             <?php
                                                                                                             if ($get_addendum_kontrak) { ?>
                                                                                                                 <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                 <?php } ?>
                                                                                                             <?php } else { ?>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                             <?php } ?>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                            <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                             <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -4618,14 +4826,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                 <?php
                                                                                                                 if ($get_addendum_kontrak) { ?>
                                                                                                                     <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                     <?php } ?>
                                                                                                                 <?php } else { ?>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                 <?php } ?>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                 <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -4757,14 +4972,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                     <?php
                                                                                                                     if ($get_addendum_kontrak) { ?>
                                                                                                                         <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                         <?php } ?>
                                                                                                                     <?php } else { ?>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                     <?php } ?>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                    <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                     <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -4897,14 +5119,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                         <?php
                                                                                                                         if ($get_addendum_kontrak) { ?>
                                                                                                                             <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                             <?php } ?>
                                                                                                                         <?php } else { ?>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                         <?php } ?>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                        <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                         <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                         <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -5037,14 +5266,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                             <?php
                                                                                                                             if ($get_addendum_kontrak) { ?>
                                                                                                                                 <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                                 <?php } ?>
                                                                                                                             <?php } else { ?>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                             <?php } ?>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                            <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                             <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                             <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -5176,14 +5412,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                                 <?php
                                                                                                                                 if ($get_addendum_kontrak) { ?>
                                                                                                                                     <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                                     <?php } ?>
                                                                                                                                 <?php } else { ?>
-                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                                 <?php } ?>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
+                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                                 <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                                 <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -5315,14 +5558,21 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                                                     <?php
                                                                                                                                     if ($get_addendum_kontrak) { ?>
                                                                                                                                         <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
                                                                                                                                         <?php } ?>
                                                                                                                                     <?php } else { ?>
-                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
                                                                                                                                     <?php } ?>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_hps'], 2, ',', '.') ?></td>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                    <?php
+                                                                                                                                if ($get_addendum_kontrak) { ?>
+                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                                                                                                    <?php } ?>
+                                                                                                                                <?php } else { ?>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                                                                                                                <?php } ?>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?></td>
                                                                                                                                     <td class="tg-0lax"> <?= "Rp " . number_format($value_program['persen_progres_fisik'], 2, ',', '.') ?></td>
                                                                                                                                     <?php if ($value_program['persen_progres_fisik']) { ?>
@@ -5365,7 +5615,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                 </div>
 
                                                                 <!-- LAPORAN KINERJA ACTION -->
-                                                                <div class="tab-pane fade show" id="custom-tabs-two-januari" role="tabpanel" aria-labelledby="custom-tabs-two-januari-tab">
+                                                                <div class="tab-pane fade show" id="custom-tabs-laporan_view" role="tabpanel" aria-labelledby="custom-tabs-laporan_view-tab">
                                                                     <div class="card card-outline card-primary">
                                                                         <div class="card-header">
                                                                             <h3 class="card-title">
@@ -5386,7 +5636,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 
                                                                                 <div class="tab-pane fade show active" id="custom-tabs-master_data" role="tabpanel" aria-labelledby="custom-tabs-master_data-tab">
                                                                                     <br>
-                                                                                   
+
                                                                                     <div class="card card-outline card-primary">
                                                                                         <div class="card-header">
                                                                                             <h3>Master Data</h3>
@@ -5423,1098 +5673,4961 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                             <th class="tg-baqh" rowspan="2">Aksi</th>
                                                                                                     </thead>
                                                                                                     <tbody>
-                                                                                                        <?php
-                                                                                                        // capex
-                                                                                                        $this->db->select('*');
-                                                                                                        $this->db->from('tbl_capex');
-                                                                                                        $this->db->where('tbl_capex.id_kontrak', $row_kontrak['id_kontrak']);
-                                                                                                        $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
-                                                                                                        $query_result_capex = $this->db->get() ?>
-                                                                                                        <?php
-                                                                                                        foreach ($query_result_capex->result_array() as $value_capex) { ?>
-                                                                                                            <?php $id_capex = $value_capex['id_capex'];   ?>
-                                                                                                            <?php $nama_uraian_capex = $value_capex['nama_uraian']; ?>
-                                                                                                            <tr>
-                                                                                                                <td class="tg-0lax"><?= $value_capex['no_urut'] ?></td>
-                                                                                                                <td class="tg-0lax"><?= $value_capex['nama_uraian']; ?></td>
-                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                <td class="tg-0lax"></td>
-                                                                                                            </tr>
-                                                                                                            <?php
-                                                                                                            $this->db->select('*');
-                                                                                                            $this->db->from('tbl_sub_detail_program_penyedia_jasa');
-                                                                                                            $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
-                                                                                                            $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex);
-                                                                                                            if ($id_departemen == 4) {
-                                                                                                            } else {
-                                                                                                                $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
-                                                                                                                $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
-                                                                                                                $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
-                                                                                                            }
-                                                                                                            $result_program = $this->db->get() ?>
-                                                                                                            <?php
-                                                                                                            foreach ($result_program->result_array() as $value_program) { ?>
-                                                                                                                <?php
-                                                                                                                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                ?>
-                                                                                                                <?php
-                                                                                                                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                ?>
-                                                                                                                <?php
-                                                                                                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                ?>
-                                                                                                                <?php
-                                                                                                                // 
-                                                                                                                if (round($total_margin) < 2) {
-                                                                                                                    $fee_jmtm  =  $total_efisiensi * 0  / 100;
-                                                                                                                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                    $fee_jmtm  =  $total_efisiensi * 50  / 100;
-                                                                                                                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                    $fee_jmtm  =  $total_efisiensi * 70  / 100;
-                                                                                                                } else if (round($total_margin) >= 8) {
-                                                                                                                    $fee_jmtm  =  $total_efisiensi * 90  / 100;
-                                                                                                                }
+                                                                                                    <?php
+// capex
+$this->db->select('*');
+$this->db->from('tbl_capex');
+$this->db->where('tbl_capex.id_kontrak', $row_kontrak['id_kontrak']);
+$this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
+$query_result_capex = $this->db->get() ?>
+<?php
+foreach ($query_result_capex->result_array() as $value_capex) { ?>
+    <?php $id_capex = $value_capex['id_capex'];   ?>
+    <?php $nama_uraian_capex = $value_capex['nama_uraian']; ?>
+    <tr>
+        <td class="tg-0lax"><?= $value_capex['no_urut'] ?></td>
+        <td class="tg-0lax"><?= $value_capex['nama_uraian']; ?></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+    </tr>
+    <?php
+    $this->db->select('*');
+    $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+    $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+    $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex);
+    if ($id_departemen == 4) {
+    } else {
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+    }
+    $result_program = $this->db->get() ?>
+    <?php
+    foreach ($result_program->result_array() as $value_program) { ?>
+        <?php
+        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+        $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+        ?>
+        <?php
+        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+        ?>
+        <?php
+        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+        ?>
+        <?php
+        // 
+        if (round($total_margin) < 2) {
+            $fee_jmtm  =  $total_efisiensi * 0  / 100;
+        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+            $fee_jmtm  =  $total_efisiensi * 50  / 100;
+        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+            $fee_jmtm  =  $total_efisiensi * 70  / 100;
+        } else if (round($total_margin) >= 8) {
+            $fee_jmtm  =  $total_efisiensi * 90  / 100;
+        }
 
-                                                                                                                if (round($total_margin) < 2) {
-                                                                                                                    $fee_owner  =  $total_efisiensi * 100  / 100;
-                                                                                                                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                    $fee_owner  =  $total_efisiensi * 50  / 100;
-                                                                                                                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                    $fee_owner  =  $total_efisiensi * 30 / 100;
-                                                                                                                } else if (round($total_margin) >= 8) {
-                                                                                                                    $fee_owner  =  $total_efisiensi * 10  / 100;
-                                                                                                                }
-                                                                                                                $total_kontrak_awal_vendor_atas = 0;
-                                                                                                                $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
-                                                                                                                $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
-                                                                                                                $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
-                                                                                                                ?>
-                                                                                                                <tr>
-                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                    <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
-                                                                                                                    <!-- ambil kontrak awal / addendum -->
-                                                                                                                    <?php
-                                                                                                                    // capex
-                                                                                                                    $this->db->select('*');
-                                                                                                                    $this->db->from('tbl_hps_penyedia_kontrak_addendum');
-                                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
-                                                                                                                    $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                    $this->db->limit(1);
-                                                                                                                    $get_addendum_kontrak = $this->db->get()->result_array() ?>
-                                                                                                                    <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
-                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                    <?php
-                                                                                                                    if ($get_addendum_kontrak) { ?>
-                                                                                                                        <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
-                                                                                                                        <?php } ?>
-                                                                                                                    <?php } else { ?>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
-                                                                                                                    <?php } ?>
-                                                                                                                    <?php if ($value_program['persen_progres_fisik']) { ?>
-                                                                                                                        <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
-                                                                                                                    <?php   } else { ?>
-                                                                                                                        <td class="tg-0l"></td>
-                                                                                                                    <?php   }  ?>
-                                                                                                                    <td class="tg-0lax">
-                                                                                                                        <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
-                                                                                                                    </td>
-                                                                                                                    <?php if ($value_program['persen_progres_fisik']) { ?>
-                                                                                                                        <!-- gila2 -->
-                                                                                                                        <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
-                                                                                                                        <!-- gila -->
-                                                                                                                    <?php   } else { ?>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                    <?php   }  ?>
-                                                                                                                    <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
-                                                                                                                    <?php if ($value_program['formula_fee_jmtm'] == 2) { ?>
-                                                                                                                        <td class="tg-0l">Lumpsum</td>
-                                                                                                                    <?php   } else { ?>
-                                                                                                                        <td class="tg-0l">Atcost</td>
-                                                                                                                    <?php   }  ?>
-                                                                                                                    <td class="tg-0lax">
-                                                                                                                        <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
-                                                                                                                        <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
-                                                                                                                        <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+        if (round($total_margin) < 2) {
+            $fee_owner  =  $total_efisiensi * 100  / 100;
+        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+            $fee_owner  =  $total_efisiensi * 50  / 100;
+        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+            $fee_owner  =  $total_efisiensi * 30 / 100;
+        } else if (round($total_margin) >= 8) {
+            $fee_owner  =  $total_efisiensi * 10  / 100;
+        }
+        $total_kontrak_awal_vendor_atas = 0;
+        $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+        $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
+        $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+        ?>
+        <tr>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+            <!-- ambil kontrak awal / addendum -->
+            <?php
+            // capex
+            $this->db->select('*');
+            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+            $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+            $this->db->limit(1);
+            $get_addendum_kontrak = $this->db->get()->result_array() ?>
+            <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+            <?php
+            if ($get_addendum_kontrak) { ?>
+                <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                <?php } ?>
+            <?php } else { ?>
+                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+            <?php } ?>
+            <?php if ($value_program['persen_progres_fisik']) { ?>
+                <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+            <?php   } else { ?>
+                <td class="tg-0l"></td>
+            <?php   }  ?>
+            <td class="tg-0lax">
+                <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+            </td>
+            <?php if ($value_program['persen_progres_fisik']) { ?>
+                <!-- gila2 -->
+                <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                <!-- gila -->
+            <?php   } else { ?>
+                <td class="tg-0lax"></td>
+            <?php   }  ?>
+            <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+            <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                <td class="tg-0l">AtCost</td>
+            <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                <td class="tg-0l">LumpSump</td>
+            <?php   } else { ?>
+                <td class="tg-01"></td>
+            <?php }  ?>
+            <td class="tg-0lax">
+                <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
 
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                            <?php } ?>
-                                                                                                            <?php
-                                                                                                            $this->db->select('*');
-                                                                                                            $this->db->from('tbl_capex_detail');
-                                                                                                            $this->db->where('tbl_capex_detail.id_capex', $id_capex);
-                                                                                                            $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
-                                                                                                            $query_result_capex_detail = $this->db->get() ?>
-                                                                                                            <?php
-                                                                                                            foreach ($query_result_capex_detail->result_array() as $value_capex_detail) { ?>
-                                                                                                                <?php $id_capex_detail = $value_capex_detail['id_capex_detail'];  ?>
-                                                                                                                <?php $nama_uraian_capex_detail = $value_capex_detail['nama_uraian']; ?>
-                                                                                                                <tr>
-                                                                                                                    <td class="tg-0lax"><?= $value_capex_detail['no_urut'] ?></td>
-                                                                                                                    <td class="tg-0lax"><?= $value_capex_detail['nama_uraian']; ?></td>
-                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                </tr>
-                                                                                                                <?php
-                                                                                                                $this->db->select('*');
-                                                                                                                $this->db->from('tbl_sub_detail_program_penyedia_jasa');
-                                                                                                                $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
-                                                                                                                $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail);
-                                                                                                                if ($id_departemen == 4) {
-                                                                                                                } else {
-                                                                                                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
-                                                                                                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
-                                                                                                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
-                                                                                                                }
-                                                                                                                $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
-                                                                                                                $result_program = $this->db->get() ?>
-                                                                                                                <?php
-                                                                                                                foreach ($result_program->result_array() as $value_program) { ?>
-                                                                                                                    <?php
-                                                                                                                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                    $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                    ?>
-                                                                                                                    <?php
-                                                                                                                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                    ?>
-                                                                                                                    <?php
-                                                                                                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                    ?>
-                                                                                                                    <?php
-                                                                                                                    // 
-                                                                                                                    if (round($total_margin) < 2) {
-                                                                                                                        $fee_jmtm  =  $total_efisiensi * 0  / 100;
-                                                                                                                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                        $fee_jmtm  =  $total_efisiensi * 50  / 100;
-                                                                                                                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                        $fee_jmtm  =  $total_efisiensi * 70  / 100;
-                                                                                                                    } else if (round($total_margin) >= 8) {
-                                                                                                                        $fee_jmtm  =  $total_efisiensi * 90  / 100;
-                                                                                                                    }
+            </td>
+        </tr>
+    <?php } ?>
+    <?php
+    $this->db->select('*');
+    $this->db->from('tbl_capex_detail');
+    $this->db->where('tbl_capex_detail.id_capex', $id_capex);
+    $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
+    $query_result_capex_detail = $this->db->get() ?>
+    <?php
+    foreach ($query_result_capex_detail->result_array() as $value_capex_detail) { ?>
+        <?php $id_capex_detail = $value_capex_detail['id_capex_detail'];  ?>
+        <?php $nama_uraian_capex_detail = $value_capex_detail['nama_uraian']; ?>
+        <tr>
+            <td class="tg-0lax"><?= $value_capex_detail['no_urut'] ?></td>
+            <td class="tg-0lax"><?= $value_capex_detail['nama_uraian']; ?></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+        </tr>
+        <?php
+        $this->db->select('*');
+        $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+        $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+        $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail);
+        if ($id_departemen == 4) {
+        } else {
+            $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+            $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+            $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+        }
+        $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+        $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+        $result_program = $this->db->get() ?>
+        <?php
+        foreach ($result_program->result_array() as $value_program) { ?>
+            <?php
+            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+            $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+            ?>
+            <?php
+            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+            ?>
+            <?php
+            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+            ?>
+            <?php
+            // 
+            if (round($total_margin) < 2) {
+                $fee_jmtm  =  $total_efisiensi * 0  / 100;
+            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                $fee_jmtm  =  $total_efisiensi * 50  / 100;
+            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                $fee_jmtm  =  $total_efisiensi * 70  / 100;
+            } else if (round($total_margin) >= 8) {
+                $fee_jmtm  =  $total_efisiensi * 90  / 100;
+            }
 
-                                                                                                                    if (round($total_margin) < 2) {
-                                                                                                                        $fee_owner  =  $total_efisiensi * 100  / 100;
-                                                                                                                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                        $fee_owner  =  $total_efisiensi * 50  / 100;
-                                                                                                                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                        $fee_owner  =  $total_efisiensi * 30 / 100;
-                                                                                                                    } else if (round($total_margin) >= 8) {
-                                                                                                                        $fee_owner  =  $total_efisiensi * 10  / 100;
-                                                                                                                    }
-                                                                                                                    $total_kontrak_awal_vendor_atas = 0;
-                                                                                                                    $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
-                                                                                                                    $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
-                                                                                                                    $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
-                                                                                                                    ?>
-                                                                                                                    <tr>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
-                                                                                                                        <!-- ambil kontrak awal / addendum -->
-                                                                                                                        <?php
-                                                                                                                        // capex
-                                                                                                                        $this->db->select('*');
-                                                                                                                        $this->db->from('tbl_hps_penyedia_kontrak_addendum');
-                                                                                                                        $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
-                                                                                                                        $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                        $this->db->limit(1);
-                                                                                                                        $get_addendum_kontrak = $this->db->get()->result_array() ?>
-                                                                                                                        <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
-                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                        <?php
-                                                                                                                        if ($get_addendum_kontrak) { ?>
-                                                                                                                            <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
-                                                                                                                            <?php } ?>
-                                                                                                                        <?php } else { ?>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
-                                                                                                                        <?php } ?>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax">
-                                                                                                                            <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
-                                                                                                                            <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
-                                                                                                                            <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+            if (round($total_margin) < 2) {
+                $fee_owner  =  $total_efisiensi * 100  / 100;
+            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                $fee_owner  =  $total_efisiensi * 50  / 100;
+            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                $fee_owner  =  $total_efisiensi * 30 / 100;
+            } else if (round($total_margin) >= 8) {
+                $fee_owner  =  $total_efisiensi * 10  / 100;
+            }
+            $total_kontrak_awal_vendor_atas = 0;
+            $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+            $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
+            $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+            ?>
+            <tr>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                <!-- ambil kontrak awal / addendum -->
+                <?php
+                // capex
+                $this->db->select('*');
+                $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                $this->db->limit(1);
+                $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                <?php
+                if ($get_addendum_kontrak) { ?>
+                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                    <?php } ?>
+                <?php } else { ?>
+                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                <?php } ?>
+                <?php if ($value_program['persen_progres_fisik']) { ?>
+                    <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                <?php   } else { ?>
+                    <td class="tg-0l"></td>
+                <?php   }  ?>
+                <td class="tg-0lax">
+                    <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                </td>
+                <?php if ($value_program['persen_progres_fisik']) { ?>
+                    <!-- gila2 -->
+                    <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                    <!-- gila -->
+                <?php   } else { ?>
+                    <td class="tg-0lax"></td>
+                <?php   }  ?>
+                <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                    <td class="tg-0l">AtCost</td>
+                <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                    <td class="tg-0l">LumpSump</td>
+                <?php   } else { ?>
+                    <td class="tg-01"></td>
+                <?php }  ?>
+                <td class="tg-0lax">
+                    <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                    <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                    <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
 
-                                                                                                                        </td>
-                                                                                                                    </tr>
-                                                                                                                <?php } ?>
-                                                                                                                <!-- _1_ -->
-                                                                                                                <?php
-                                                                                                                $this->db->select('*');
-                                                                                                                $this->db->from('tbl_detail_capex_1');
-                                                                                                                $this->db->where('tbl_detail_capex_1.id_capex_detail', $id_capex_detail);
-                                                                                                                $this->db->order_by('CAST(no_urut_1_capex AS DECIMAL(10,6)) ASC');
-                                                                                                                $query_result_capex_detail_1 = $this->db->get() ?>
-                                                                                                                <?php
-                                                                                                                foreach ($query_result_capex_detail_1->result_array() as $value_capex_detail_1) { ?>
-                                                                                                                    <?php $id_detail_capex_1 = $value_capex_detail_1['id_detail_capex_1'];  ?>
-                                                                                                                    <?php $nama_uraian_capex_detail_1 = $value_capex_detail_1['nama_uraian_1_capex']; ?>
-                                                                                                                    <tr>
-                                                                                                                        <td class="tg-0lax"><?= $value_capex_detail_1['no_urut_1_capex'] ?></td>
-                                                                                                                        <td class="tg-0lax"><?= $value_capex_detail_1['nama_uraian_1_capex']; ?></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                    </tr>
-                                                                                                                    <?php
-                                                                                                                    $this->db->select('*');
-                                                                                                                    $this->db->from('tbl_sub_detail_program_penyedia_jasa');
-                                                                                                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
-                                                                                                                    $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail_1);
-                                                                                                                    if ($id_departemen == 4) {
-                                                                                                                    } else {
-                                                                                                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
-                                                                                                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
-                                                                                                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
-                                                                                                                    }
-                                                                                                                    $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                    $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
-                                                                                                                    $result_program = $this->db->get() ?>
-                                                                                                                    <?php
-                                                                                                                    foreach ($result_program->result_array() as $value_program) { ?>
-                                                                                                                        <?php
-                                                                                                                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                        $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                        ?>
-                                                                                                                        <?php
-                                                                                                                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                        ?>
-                                                                                                                        <?php
-                                                                                                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                        ?>
-                                                                                                                        <?php
-                                                                                                                        // 
-                                                                                                                        if (round($total_margin) < 2) {
-                                                                                                                            $fee_jmtm  =  $total_efisiensi * 0  / 100;
-                                                                                                                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                            $fee_jmtm  =  $total_efisiensi * 50  / 100;
-                                                                                                                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                            $fee_jmtm  =  $total_efisiensi * 70  / 100;
-                                                                                                                        } else if (round($total_margin) >= 8) {
-                                                                                                                            $fee_jmtm  =  $total_efisiensi * 90  / 100;
-                                                                                                                        }
+                </td>
+            </tr>
+        <?php } ?>
+        <!-- _1_ -->
+        <?php
+        $this->db->select('*');
+        $this->db->from('tbl_detail_capex_1');
+        $this->db->where('tbl_detail_capex_1.id_capex_detail', $id_capex_detail);
+        $this->db->order_by('CAST(no_urut_1_capex AS DECIMAL(10,6)) ASC');
+        $query_result_capex_detail_1 = $this->db->get() ?>
+        <?php
+        foreach ($query_result_capex_detail_1->result_array() as $value_capex_detail_1) { ?>
+            <?php $id_detail_capex_1 = $value_capex_detail_1['id_detail_capex_1'];  ?>
+            <?php $nama_uraian_capex_detail_1 = $value_capex_detail_1['nama_uraian_1_capex']; ?>
+            <tr>
+                <td class="tg-0lax"><?= $value_capex_detail_1['no_urut_1_capex'] ?></td>
+                <td class="tg-0lax"><?= $value_capex_detail_1['nama_uraian_1_capex']; ?></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+            </tr>
+            <?php
+            $this->db->select('*');
+            $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+            $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+            $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail_1);
+            if ($id_departemen == 4) {
+            } else {
+                $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+            }
+            $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+            $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+            $result_program = $this->db->get() ?>
+            <?php
+            foreach ($result_program->result_array() as $value_program) { ?>
+                <?php
+                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                ?>
+                <?php
+                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                ?>
+                <?php
+                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                ?>
+                <?php
+                // 
+                if (round($total_margin) < 2) {
+                    $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                    $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                    $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                } else if (round($total_margin) >= 8) {
+                    $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                }
 
-                                                                                                                        if (round($total_margin) < 2) {
-                                                                                                                            $fee_owner  =  $total_efisiensi * 100  / 100;
-                                                                                                                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                            $fee_owner  =  $total_efisiensi * 50  / 100;
-                                                                                                                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                            $fee_owner  =  $total_efisiensi * 30 / 100;
-                                                                                                                        } else if (round($total_margin) >= 8) {
-                                                                                                                            $fee_owner  =  $total_efisiensi * 10  / 100;
-                                                                                                                        }
-                                                                                                                        $total_kontrak_awal_vendor_atas = 0;
-                                                                                                                        $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
-                                                                                                                        $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
-                                                                                                                        $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
-                                                                                                                        ?>
-                                                                                                                        <tr>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
-                                                                                                                            <!-- ambil kontrak awal / addendum -->
-                                                                                                                            <?php
-                                                                                                                            // capex
-                                                                                                                            $this->db->select('*');
-                                                                                                                            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
-                                                                                                                            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
-                                                                                                                            $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                            $this->db->limit(1);
-                                                                                                                            $get_addendum_kontrak = $this->db->get()->result_array() ?>
-                                                                                                                            <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
-                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                            <?php
-                                                                                                                            if ($get_addendum_kontrak) { ?>
-                                                                                                                                <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
-                                                                                                                                <?php } ?>
-                                                                                                                            <?php } else { ?>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
-                                                                                                                            <?php } ?>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax">
-                                                                                                                                <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
-                                                                                                                                <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
-                                                                                                                                <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+                if (round($total_margin) < 2) {
+                    $fee_owner  =  $total_efisiensi * 100  / 100;
+                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                    $fee_owner  =  $total_efisiensi * 50  / 100;
+                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                    $fee_owner  =  $total_efisiensi * 30 / 100;
+                } else if (round($total_margin) >= 8) {
+                    $fee_owner  =  $total_efisiensi * 10  / 100;
+                }
+                $total_kontrak_awal_vendor_atas = 0;
+                $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
+                $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                ?>
+                <tr>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                    <!-- ambil kontrak awal / addendum -->
+                    <?php
+                    // capex
+                    $this->db->select('*');
+                    $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                    $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                    $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                    $this->db->limit(1);
+                    $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                    <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                    <?php
+                    if ($get_addendum_kontrak) { ?>
+                        <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                    <?php } ?>
+                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                        <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                    <?php   } else { ?>
+                        <td class="tg-0l"></td>
+                    <?php   }  ?>
+                    <td class="tg-0lax">
+                        <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                    </td>
+                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                        <!-- gila2 -->
+                        <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                        <!-- gila -->
+                    <?php   } else { ?>
+                        <td class="tg-0lax"></td>
+                    <?php   }  ?>
+                    <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                    <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                        <td class="tg-0l">AtCost</td>
+                    <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                        <td class="tg-0l">LumpSump</td>
+                    <?php   } else { ?>
+                        <td class="tg-01"></td>
+                    <?php }  ?>
+                    <td class="tg-0lax">
+                        <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                        <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                        <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
 
-                                                                                                                            </td>
-                                                                                                                        </tr>
-                                                                                                                    <?php } ?>
-                                                                                                                    <?php
-                                                                                                                    // _1
-                                                                                                                    // _2
-                                                                                                                    $this->db->select('*');
-                                                                                                                    $this->db->from('tbl_detail_capex_2');
-                                                                                                                    $this->db->where('tbl_detail_capex_2.id_detail_capex_1', $id_detail_capex_1);
-                                                                                                                    $this->db->order_by('CAST(no_urut_2_capex AS DECIMAL(10,6)) ASC');
-                                                                                                                    $query_result_capex_detail_2 = $this->db->get() ?>
-                                                                                                                    <?php
-                                                                                                                    foreach ($query_result_capex_detail_2->result_array() as $value_capex_detail_2) { ?>
-                                                                                                                        <?php $id_detail_capex_2 = $value_capex_detail_2['id_detail_capex_2'];  ?>
-                                                                                                                        <?php $nama_uraian_capex_detail_2 = $value_capex_detail_2['nama_uraian_2_capex']; ?>
-                                                                                                                        <tr>
-                                                                                                                            <td class="tg-0lax"><?= $value_capex_detail_2['no_urut_2_capex'] ?></td>
-                                                                                                                            <td class="tg-0lax"><?= $value_capex_detail_2['nama_uraian_2_capex']; ?></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                        </tr>
-                                                                                                                        <?php
-                                                                                                                        $this->db->select('*');
-                                                                                                                        $this->db->from('tbl_sub_detail_program_penyedia_jasa');
-                                                                                                                        $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
-                                                                                                                        $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail_2);
-                                                                                                                        if ($id_departemen == 4) {
-                                                                                                                        } else {
-                                                                                                                            $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
-                                                                                                                            $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
-                                                                                                                            $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
-                                                                                                                        }
-                                                                                                                        $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                        $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
-                                                                                                                        $result_program = $this->db->get() ?>
-                                                                                                                        <?php
-                                                                                                                        foreach ($result_program->result_array() as $value_program) { ?>
-                                                                                                                            <?php
-                                                                                                                            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                            $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                            ?>
-                                                                                                                            <?php
-                                                                                                                            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                            ?>
-                                                                                                                            <?php
-                                                                                                                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                            ?>
-                                                                                                                            <?php
-                                                                                                                            // 
-                                                                                                                            if (round($total_margin) < 2) {
-                                                                                                                                $fee_jmtm  =  $total_efisiensi * 0  / 100;
-                                                                                                                            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                                $fee_jmtm  =  $total_efisiensi * 50  / 100;
-                                                                                                                            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                                $fee_jmtm  =  $total_efisiensi * 70  / 100;
-                                                                                                                            } else if (round($total_margin) >= 8) {
-                                                                                                                                $fee_jmtm  =  $total_efisiensi * 90  / 100;
-                                                                                                                            }
+                    </td>
+                </tr>
+            <?php } ?>
+            <?php
+            // _1
+            // _2
+            $this->db->select('*');
+            $this->db->from('tbl_detail_capex_2');
+            $this->db->where('tbl_detail_capex_2.id_detail_capex_1', $id_detail_capex_1);
+            $this->db->order_by('CAST(no_urut_2_capex AS DECIMAL(10,6)) ASC');
+            $query_result_capex_detail_2 = $this->db->get() ?>
+            <?php
+            foreach ($query_result_capex_detail_2->result_array() as $value_capex_detail_2) { ?>
+                <?php $id_detail_capex_2 = $value_capex_detail_2['id_detail_capex_2'];  ?>
+                <?php $nama_uraian_capex_detail_2 = $value_capex_detail_2['nama_uraian_2_capex']; ?>
+                <tr>
+                    <td class="tg-0lax"><?= $value_capex_detail_2['no_urut_2_capex'] ?></td>
+                    <td class="tg-0lax"><?= $value_capex_detail_2['nama_uraian_2_capex']; ?></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                </tr>
+                <?php
+                $this->db->select('*');
+                $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail_2);
+                if ($id_departemen == 4) {
+                } else {
+                    $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                    $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                    $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                }
+                $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                $result_program = $this->db->get() ?>
+                <?php
+                foreach ($result_program->result_array() as $value_program) { ?>
+                    <?php
+                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                    $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                    ?>
+                    <?php
+                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                    ?>
+                    <?php
+                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                    ?>
+                    <?php
+                    // 
+                    if (round($total_margin) < 2) {
+                        $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                        $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                        $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                    } else if (round($total_margin) >= 8) {
+                        $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                    }
 
-                                                                                                                            if (round($total_margin) < 2) {
-                                                                                                                                $fee_owner  =  $total_efisiensi * 100  / 100;
-                                                                                                                            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                                $fee_owner  =  $total_efisiensi * 50  / 100;
-                                                                                                                            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                                $fee_owner  =  $total_efisiensi * 30 / 100;
-                                                                                                                            } else if (round($total_margin) >= 8) {
-                                                                                                                                $fee_owner  =  $total_efisiensi * 10  / 100;
-                                                                                                                            }
-                                                                                                                            $total_kontrak_awal_vendor_atas = 0;
-                                                                                                                            $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
-                                                                                                                            $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
-                                                                                                                            $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
-                                                                                                                            ?>
-                                                                                                                            <tr>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
-                                                                                                                                <!-- ambil kontrak awal / addendum -->
-                                                                                                                                <?php
-                                                                                                                                // capex
-                                                                                                                                $this->db->select('*');
-                                                                                                                                $this->db->from('tbl_hps_penyedia_kontrak_addendum');
-                                                                                                                                $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
-                                                                                                                                $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                                $this->db->limit(1);
-                                                                                                                                $get_addendum_kontrak = $this->db->get()->result_array() ?>
-                                                                                                                                <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
-                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                                <?php
-                                                                                                                                if ($get_addendum_kontrak) { ?>
-                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
-                                                                                                                                    <?php } ?>
-                                                                                                                                <?php } else { ?>
-                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
-                                                                                                                                <?php } ?>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax">
-                                                                                                                                    <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
-                                                                                                                                    <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
-                                                                                                                                    <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+                    if (round($total_margin) < 2) {
+                        $fee_owner  =  $total_efisiensi * 100  / 100;
+                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                        $fee_owner  =  $total_efisiensi * 50  / 100;
+                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                        $fee_owner  =  $total_efisiensi * 30 / 100;
+                    } else if (round($total_margin) >= 8) {
+                        $fee_owner  =  $total_efisiensi * 10  / 100;
+                    }
+                    $total_kontrak_awal_vendor_atas = 0;
+                    $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                    $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
+                    $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                    ?>
+                    <tr>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                        <!-- ambil kontrak awal / addendum -->
+                        <?php
+                        // capex
+                        $this->db->select('*');
+                        $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                        $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                        $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                        $this->db->limit(1);
+                        $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                        <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                        <?php
+                        if ($get_addendum_kontrak) { ?>
+                            <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                        <?php } ?>
+                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                            <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                        <?php   } else { ?>
+                            <td class="tg-0l"></td>
+                        <?php   }  ?>
+                        <td class="tg-0lax">
+                            <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                        </td>
+                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                            <!-- gila2 -->
+                            <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                            <!-- gila -->
+                        <?php   } else { ?>
+                            <td class="tg-0lax"></td>
+                        <?php   }  ?>
+                        <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                        <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                            <td class="tg-0l">AtCost</td>
+                        <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                            <td class="tg-0l">LumpSump</td>
+                        <?php   } else { ?>
+                            <td class="tg-01"></td>
+                        <?php }  ?>
+                        <td class="tg-0lax">
+                            <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                            <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                            <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
 
-                                                                                                                                </td>
-                                                                                                                            </tr>
-                                                                                                                        <?php } ?>
-                                                                                                                        <?php
-                                                                                                                        // _2
-                                                                                                                        // _3
-                                                                                                                        $this->db->select('*');
-                                                                                                                        $this->db->from('tbl_detail_capex_3');
-                                                                                                                        $this->db->where('tbl_detail_capex_3.id_detail_capex_2', $id_detail_capex_2);
-                                                                                                                        $this->db->order_by('CAST(no_urut_3_capex AS DECIMAL(10,6)) ASC');
-                                                                                                                        $query_result_capex_detail_3 = $this->db->get() ?>
-                                                                                                                        <?php
-                                                                                                                        foreach ($query_result_capex_detail_3->result_array() as $value_capex_detail_3) { ?>
-                                                                                                                            <?php $id_detail_capex_3 = $value_capex_detail_3['id_detail_capex_3'];  ?>
-                                                                                                                            <?php $nama_uraian_capex_detail_3 = $value_capex_detail_3['nama_uraian_3_capex']; ?>
-                                                                                                                            <tr>
-                                                                                                                                <td class="tg-0lax"><?= $value_capex_detail_3['no_urut_3_capex'] ?></td>
-                                                                                                                                <td class="tg-0lax"><?= $value_capex_detail_3['nama_uraian_3_capex']; ?></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                            </tr>
-                                                                                                                            <?php
-                                                                                                                            $this->db->select('*');
-                                                                                                                            $this->db->from('tbl_sub_detail_program_penyedia_jasa');
-                                                                                                                            $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
-                                                                                                                            $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail_3);
-                                                                                                                            if ($id_departemen == 4) {
-                                                                                                                            } else {
-                                                                                                                                $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
-                                                                                                                                $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
-                                                                                                                                $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
-                                                                                                                            }
-                                                                                                                            $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                            $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
-                                                                                                                            $result_program = $this->db->get() ?>
-                                                                                                                            <?php
-                                                                                                                            foreach ($result_program->result_array() as $value_program) { ?>
-                                                                                                                                <?php
-                                                                                                                                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                ?>
-                                                                                                                                <?php
-                                                                                                                                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                ?>
-                                                                                                                                <?php
-                                                                                                                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                ?>
-                                                                                                                                <?php
-                                                                                                                                // 
-                                                                                                                                if (round($total_margin) < 2) {
-                                                                                                                                    $fee_jmtm  =  $total_efisiensi * 0  / 100;
-                                                                                                                                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                                    $fee_jmtm  =  $total_efisiensi * 50  / 100;
-                                                                                                                                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                                    $fee_jmtm  =  $total_efisiensi * 70  / 100;
-                                                                                                                                } else if (round($total_margin) >= 8) {
-                                                                                                                                    $fee_jmtm  =  $total_efisiensi * 90  / 100;
-                                                                                                                                }
+                        </td>
+                    </tr>
+                <?php } ?>
+                <?php
+                // _2
+                // _3
+                $this->db->select('*');
+                $this->db->from('tbl_detail_capex_3');
+                $this->db->where('tbl_detail_capex_3.id_detail_capex_2', $id_detail_capex_2);
+                $this->db->order_by('CAST(no_urut_3_capex AS DECIMAL(10,6)) ASC');
+                $query_result_capex_detail_3 = $this->db->get() ?>
+                <?php
+                foreach ($query_result_capex_detail_3->result_array() as $value_capex_detail_3) { ?>
+                    <?php $id_detail_capex_3 = $value_capex_detail_3['id_detail_capex_3'];  ?>
+                    <?php $nama_uraian_capex_detail_3 = $value_capex_detail_3['nama_uraian_3_capex']; ?>
+                    <tr>
+                        <td class="tg-0lax"><?= $value_capex_detail_3['no_urut_3_capex'] ?></td>
+                        <td class="tg-0lax"><?= $value_capex_detail_3['nama_uraian_3_capex']; ?></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                    </tr>
+                    <?php
+                    $this->db->select('*');
+                    $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                    $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                    $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail_3);
+                    if ($id_departemen == 4) {
+                    } else {
+                        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                    }
+                    $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                    $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                    $result_program = $this->db->get() ?>
+                    <?php
+                    foreach ($result_program->result_array() as $value_program) { ?>
+                        <?php
+                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                        $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                        ?>
+                        <?php
+                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                        ?>
+                        <?php
+                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                        ?>
+                        <?php
+                        // 
+                        if (round($total_margin) < 2) {
+                            $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                            $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                            $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                        } else if (round($total_margin) >= 8) {
+                            $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                        }
 
-                                                                                                                                if (round($total_margin) < 2) {
-                                                                                                                                    $fee_owner  =  $total_efisiensi * 100  / 100;
-                                                                                                                                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                                    $fee_owner  =  $total_efisiensi * 50  / 100;
-                                                                                                                                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                                    $fee_owner  =  $total_efisiensi * 30 / 100;
-                                                                                                                                } else if (round($total_margin) >= 8) {
-                                                                                                                                    $fee_owner  =  $total_efisiensi * 10  / 100;
-                                                                                                                                }
-                                                                                                                                $total_kontrak_awal_vendor_atas = 0;
-                                                                                                                                $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
-                                                                                                                                $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
-                                                                                                                                $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
-                                                                                                                                ?>
-                                                                                                                                <tr>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
-                                                                                                                                    <!-- ambil kontrak awal / addendum -->
-                                                                                                                                    <?php
-                                                                                                                                    // capex
-                                                                                                                                    $this->db->select('*');
-                                                                                                                                    $this->db->from('tbl_hps_penyedia_kontrak_addendum');
-                                                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
-                                                                                                                                    $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                                    $this->db->limit(1);
-                                                                                                                                    $get_addendum_kontrak = $this->db->get()->result_array() ?>
-                                                                                                                                    <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
-                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                                    <?php
-                                                                                                                                    if ($get_addendum_kontrak) { ?>
-                                                                                                                                        <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
-                                                                                                                                        <?php } ?>
-                                                                                                                                    <?php } else { ?>
-                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
-                                                                                                                                    <?php } ?>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax">
-                                                                                                                                        <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
-                                                                                                                                        <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
-                                                                                                                                        <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+                        if (round($total_margin) < 2) {
+                            $fee_owner  =  $total_efisiensi * 100  / 100;
+                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                            $fee_owner  =  $total_efisiensi * 50  / 100;
+                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                            $fee_owner  =  $total_efisiensi * 30 / 100;
+                        } else if (round($total_margin) >= 8) {
+                            $fee_owner  =  $total_efisiensi * 10  / 100;
+                        }
+                        $total_kontrak_awal_vendor_atas = 0;
+                        $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                        $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
+                        $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                        ?>
+                        <tr>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                            <!-- ambil kontrak awal / addendum -->
+                            <?php
+                            // capex
+                            $this->db->select('*');
+                            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                            $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                            $this->db->limit(1);
+                            $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                            <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                            <?php
+                            if ($get_addendum_kontrak) { ?>
+                                <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                            <?php } ?>
+                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                            <?php   } else { ?>
+                                <td class="tg-0l"></td>
+                            <?php   }  ?>
+                            <td class="tg-0lax">
+                                <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                            </td>
+                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                <!-- gila2 -->
+                                <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                <!-- gila -->
+                            <?php   } else { ?>
+                                <td class="tg-0lax"></td>
+                            <?php   }  ?>
+                            <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                            <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                <td class="tg-0l">AtCost</td>
+                            <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                <td class="tg-0l">LumpSump</td>
+                            <?php   } else { ?>
+                                <td class="tg-01"></td>
+                            <?php }  ?>
+                            <td class="tg-0lax">
+                                <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
 
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                            <?php } ?>
+                            </td>
+                        </tr>
+                    <?php } ?>
 
-                                                                                                                            <?php
-                                                                                                                            // _3
-                                                                                                                            // _4
-                                                                                                                            $this->db->select('*');
-                                                                                                                            $this->db->from('tbl_detail_capex_4');
-                                                                                                                            $this->db->where('tbl_detail_capex_4.id_detail_capex_3', $id_detail_capex_3);
-                                                                                                                            $this->db->order_by('CAST(no_urut_4_capex AS DECIMAL(10,6)) ASC');
-                                                                                                                            $query_result_capex_detail_4 = $this->db->get() ?>
-                                                                                                                            <?php
-                                                                                                                            foreach ($query_result_capex_detail_4->result_array() as $value_capex_detail_4) { ?>
-                                                                                                                                <?php $id_detail_capex_4 = $value_capex_detail_4['id_detail_capex_4'];  ?>
-                                                                                                                                <?php $nama_uraian_capex_detail_4 = $value_capex_detail_4['nama_uraian_4_capex']; ?>
-                                                                                                                                <tr>
-                                                                                                                                    <td class="tg-0lax"><?= $value_capex_detail_4['no_urut_4_capex'] ?></td>
-                                                                                                                                    <td class="tg-0lax"><?= $value_capex_detail_4['nama_uraian_4_capex']; ?></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                </tr>
-                                                                                                                                <?php
-                                                                                                                                $this->db->select('*');
-                                                                                                                                $this->db->from('tbl_sub_detail_program_penyedia_jasa');
-                                                                                                                                $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
-                                                                                                                                $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail_4);
-                                                                                                                                if ($id_departemen == 4) {
-                                                                                                                                } else {
-                                                                                                                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
-                                                                                                                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
-                                                                                                                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
-                                                                                                                                }
-                                                                                                                                $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                                $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
-                                                                                                                                $result_program = $this->db->get() ?>
-                                                                                                                                <?php
-                                                                                                                                foreach ($result_program->result_array() as $value_program) { ?>
-                                                                                                                                    <?php
-                                                                                                                                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                    $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                    ?>
-                                                                                                                                    <?php
-                                                                                                                                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                    ?>
-                                                                                                                                    <?php
-                                                                                                                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                    ?>
-                                                                                                                                    <?php
-                                                                                                                                    // 
-                                                                                                                                    if (round($total_margin) < 2) {
-                                                                                                                                        $fee_jmtm  =  $total_efisiensi * 0  / 100;
-                                                                                                                                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                                        $fee_jmtm  =  $total_efisiensi * 50  / 100;
-                                                                                                                                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                                        $fee_jmtm  =  $total_efisiensi * 70  / 100;
-                                                                                                                                    } else if (round($total_margin) >= 8) {
-                                                                                                                                        $fee_jmtm  =  $total_efisiensi * 90  / 100;
-                                                                                                                                    }
+                    <?php
+                    // _3
+                    // _4
+                    $this->db->select('*');
+                    $this->db->from('tbl_detail_capex_4');
+                    $this->db->where('tbl_detail_capex_4.id_detail_capex_3', $id_detail_capex_3);
+                    $this->db->order_by('CAST(no_urut_4_capex AS DECIMAL(10,6)) ASC');
+                    $query_result_capex_detail_4 = $this->db->get() ?>
+                    <?php
+                    foreach ($query_result_capex_detail_4->result_array() as $value_capex_detail_4) { ?>
+                        <?php $id_detail_capex_4 = $value_capex_detail_4['id_detail_capex_4'];  ?>
+                        <?php $nama_uraian_capex_detail_4 = $value_capex_detail_4['nama_uraian_4_capex']; ?>
+                        <tr>
+                            <td class="tg-0lax"><?= $value_capex_detail_4['no_urut_4_capex'] ?></td>
+                            <td class="tg-0lax"><?= $value_capex_detail_4['nama_uraian_4_capex']; ?></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                        </tr>
+                        <?php
+                        $this->db->select('*');
+                        $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                        $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                        $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail_4);
+                        if ($id_departemen == 4) {
+                        } else {
+                            $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                            $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                            $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                        }
+                        $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                        $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                        $result_program = $this->db->get() ?>
+                        <?php
+                        foreach ($result_program->result_array() as $value_program) { ?>
+                            <?php
+                            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                            $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                            ?>
+                            <?php
+                            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                            ?>
+                            <?php
+                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                            ?>
+                            <?php
+                            // 
+                            if (round($total_margin) < 2) {
+                                $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                            } else if (round($total_margin) >= 8) {
+                                $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                            }
 
-                                                                                                                                    if (round($total_margin) < 2) {
-                                                                                                                                        $fee_owner  =  $total_efisiensi * 100  / 100;
-                                                                                                                                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                                        $fee_owner  =  $total_efisiensi * 50  / 100;
-                                                                                                                                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                                        $fee_owner  =  $total_efisiensi * 30 / 100;
-                                                                                                                                    } else if (round($total_margin) >= 8) {
-                                                                                                                                        $fee_owner  =  $total_efisiensi * 10  / 100;
-                                                                                                                                    }
-                                                                                                                                    $total_kontrak_awal_vendor_atas = 0;
-                                                                                                                                    $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
-                                                                                                                                    $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
-                                                                                                                                    $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
-                                                                                                                                    ?>
-                                                                                                                                    <tr>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
-                                                                                                                                        <!-- ambil kontrak awal / addendum -->
-                                                                                                                                        <?php
-                                                                                                                                        // capex
-                                                                                                                                        $this->db->select('*');
-                                                                                                                                        $this->db->from('tbl_hps_penyedia_kontrak_addendum');
-                                                                                                                                        $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
-                                                                                                                                        $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                                        $this->db->limit(1);
-                                                                                                                                        $get_addendum_kontrak = $this->db->get()->result_array() ?>
-                                                                                                                                        <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
-                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                                        <?php
-                                                                                                                                        if ($get_addendum_kontrak) { ?>
-                                                                                                                                            <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
-                                                                                                                                            <?php } ?>
-                                                                                                                                        <?php } else { ?>
-                                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
-                                                                                                                                        <?php } ?>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax">
-                                                                                                                                            <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
-                                                                                                                                            <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
-                                                                                                                                            <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+                            if (round($total_margin) < 2) {
+                                $fee_owner  =  $total_efisiensi * 100  / 100;
+                            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                $fee_owner  =  $total_efisiensi * 50  / 100;
+                            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                $fee_owner  =  $total_efisiensi * 30 / 100;
+                            } else if (round($total_margin) >= 8) {
+                                $fee_owner  =  $total_efisiensi * 10  / 100;
+                            }
+                            $total_kontrak_awal_vendor_atas = 0;
+                            $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                            $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
+                            $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                            ?>
+                            <tr>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                <!-- ambil kontrak awal / addendum -->
+                                <?php
+                                // capex
+                                $this->db->select('*');
+                                $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                $this->db->limit(1);
+                                $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                <?php
+                                if ($get_addendum_kontrak) { ?>
+                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                    <?php } ?>
+                                <?php } else { ?>
+                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                <?php } ?>
+                                <?php if ($value_program['persen_progres_fisik']) { ?>
+                                    <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                <?php   } else { ?>
+                                    <td class="tg-0l"></td>
+                                <?php   }  ?>
+                                <td class="tg-0lax">
+                                    <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                </td>
+                                <?php if ($value_program['persen_progres_fisik']) { ?>
+                                    <!-- gila2 -->
+                                    <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                    <!-- gila -->
+                                <?php   } else { ?>
+                                    <td class="tg-0lax"></td>
+                                <?php   }  ?>
+                                <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                    <td class="tg-0l">AtCost</td>
+                                <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                    <td class="tg-0l">LumpSump</td>
+                                <?php   } else { ?>
+                                    <td class="tg-01"></td>
+                                <?php }  ?>
+                                <td class="tg-0lax">
+                                    <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                    <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                    <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
 
-                                                                                                                                        </td>
-                                                                                                                                    </tr>
-                                                                                                                                <?php } ?>
+                                </td>
+                            </tr>
+                        <?php } ?>
 
-                                                                                                                                <?php
-                                                                                                                                // _4
-                                                                                                                                // _5
-                                                                                                                                $this->db->select('*');
-                                                                                                                                $this->db->from('tbl_detail_capex_5');
-                                                                                                                                $this->db->where('tbl_detail_capex_5.id_detail_capex_4', $id_detail_capex_4);
-                                                                                                                                $this->db->order_by('CAST(no_urut_5_capex AS DECIMAL(10,6)) ASC');
-                                                                                                                                $query_result_capex_detail_5 = $this->db->get() ?>
-                                                                                                                                <?php
-                                                                                                                                foreach ($query_result_capex_detail_5->result_array() as $value_capex_detail_5) { ?>
-                                                                                                                                    <?php $id_detail_capex_5 = $value_capex_detail_5['id_detail_capex_5'];  ?>
-                                                                                                                                    <?php $nama_uraian_capex_detail_5 = $value_capex_detail_5['nama_uraian_5_capex']; ?>
-                                                                                                                                    <tr>
-                                                                                                                                        <td class="tg-0lax"><?= $value_capex_detail_5['no_urut_5_capex'] ?></td>
-                                                                                                                                        <td class="tg-0lax"><?= $value_capex_detail_5['nama_uraian_5_capex']; ?></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                        <td class="tg-0lax"></td>
-                                                                                                                                    </tr>
-                                                                                                                                    <?php
-                                                                                                                                    $this->db->select('*');
-                                                                                                                                    $this->db->from('tbl_sub_detail_program_penyedia_jasa');
-                                                                                                                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
-                                                                                                                                    $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail_5);
-                                                                                                                                    if ($id_departemen == 4) {
-                                                                                                                                    } else {
-                                                                                                                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
-                                                                                                                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
-                                                                                                                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
-                                                                                                                                    }
-                                                                                                                                    $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                                    $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
-                                                                                                                                    $result_program = $this->db->get() ?>
-                                                                                                                                    <?php
-                                                                                                                                    foreach ($result_program->result_array() as $value_program) { ?>
-                                                                                                                                        <?php
-                                                                                                                                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                        $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                        ?>
-                                                                                                                                        <?php
-                                                                                                                                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                        ?>
-                                                                                                                                        <?php
-                                                                                                                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                        ?>
-                                                                                                                                        <?php
-                                                                                                                                        // 
-                                                                                                                                        if (round($total_margin) < 2) {
-                                                                                                                                            $fee_jmtm  =  $total_efisiensi * 0  / 100;
-                                                                                                                                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                                            $fee_jmtm  =  $total_efisiensi * 50  / 100;
-                                                                                                                                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                                            $fee_jmtm  =  $total_efisiensi * 70  / 100;
-                                                                                                                                        } else if (round($total_margin) >= 8) {
-                                                                                                                                            $fee_jmtm  =  $total_efisiensi * 90  / 100;
-                                                                                                                                        }
+                        <?php
+                        // _4
+                        // _5
+                        $this->db->select('*');
+                        $this->db->from('tbl_detail_capex_5');
+                        $this->db->where('tbl_detail_capex_5.id_detail_capex_4', $id_detail_capex_4);
+                        $this->db->order_by('CAST(no_urut_5_capex AS DECIMAL(10,6)) ASC');
+                        $query_result_capex_detail_5 = $this->db->get() ?>
+                        <?php
+                        foreach ($query_result_capex_detail_5->result_array() as $value_capex_detail_5) { ?>
+                            <?php $id_detail_capex_5 = $value_capex_detail_5['id_detail_capex_5'];  ?>
+                            <?php $nama_uraian_capex_detail_5 = $value_capex_detail_5['nama_uraian_5_capex']; ?>
+                            <tr>
+                                <td class="tg-0lax"><?= $value_capex_detail_5['no_urut_5_capex'] ?></td>
+                                <td class="tg-0lax"><?= $value_capex_detail_5['nama_uraian_5_capex']; ?></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                            </tr>
+                            <?php
+                            $this->db->select('*');
+                            $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                            $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                            $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail_5);
+                            if ($id_departemen == 4) {
+                            } else {
+                                $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                                $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                                $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                            }
+                            $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                            $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                            $result_program = $this->db->get() ?>
+                            <?php
+                            foreach ($result_program->result_array() as $value_program) { ?>
+                                <?php
+                                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                ?>
+                                <?php
+                                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                ?>
+                                <?php
+                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                ?>
+                                <?php
+                                // 
+                                if (round($total_margin) < 2) {
+                                    $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                    $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                    $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                                } else if (round($total_margin) >= 8) {
+                                    $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                                }
 
-                                                                                                                                        if (round($total_margin) < 2) {
-                                                                                                                                            $fee_owner  =  $total_efisiensi * 100  / 100;
-                                                                                                                                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                                            $fee_owner  =  $total_efisiensi * 50  / 100;
-                                                                                                                                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                                            $fee_owner  =  $total_efisiensi * 30 / 100;
-                                                                                                                                        } else if (round($total_margin) >= 8) {
-                                                                                                                                            $fee_owner  =  $total_efisiensi * 10  / 100;
-                                                                                                                                        }
-                                                                                                                                        $total_kontrak_awal_vendor_atas = 0;
-                                                                                                                                        $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
-                                                                                                                                        $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
-                                                                                                                                        $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
-                                                                                                                                        ?>
-                                                                                                                                        <tr>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
-                                                                                                                                            <!-- ambil kontrak awal / addendum -->
-                                                                                                                                            <?php
-                                                                                                                                            // capex
-                                                                                                                                            $this->db->select('*');
-                                                                                                                                            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
-                                                                                                                                            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
-                                                                                                                                            $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                                            $this->db->limit(1);
-                                                                                                                                            $get_addendum_kontrak = $this->db->get()->result_array() ?>
-                                                                                                                                            <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
-                                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                                            <?php
-                                                                                                                                            if ($get_addendum_kontrak) { ?>
-                                                                                                                                                <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
-                                                                                                                                                <?php } ?>
-                                                                                                                                            <?php } else { ?>
-                                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
-                                                                                                                                            <?php } ?>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax">
-                                                                                                                                                <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
-                                                                                                                                                <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
-                                                                                                                                                <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+                                if (round($total_margin) < 2) {
+                                    $fee_owner  =  $total_efisiensi * 100  / 100;
+                                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                    $fee_owner  =  $total_efisiensi * 50  / 100;
+                                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                    $fee_owner  =  $total_efisiensi * 30 / 100;
+                                } else if (round($total_margin) >= 8) {
+                                    $fee_owner  =  $total_efisiensi * 10  / 100;
+                                }
+                                $total_kontrak_awal_vendor_atas = 0;
+                                $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                                $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
+                                $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                                ?>
+                                <tr>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                    <!-- ambil kontrak awal / addendum -->
+                                    <?php
+                                    // capex
+                                    $this->db->select('*');
+                                    $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                    $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                    $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                    $this->db->limit(1);
+                                    $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                    <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                    <?php
+                                    if ($get_addendum_kontrak) { ?>
+                                        <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                        <?php } ?>
+                                    <?php } else { ?>
+                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                    <?php } ?>
+                                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                                        <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                    <?php   } else { ?>
+                                        <td class="tg-0l"></td>
+                                    <?php   }  ?>
+                                    <td class="tg-0lax">
+                                        <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                    </td>
+                                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                                        <!-- gila2 -->
+                                        <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                        <!-- gila -->
+                                    <?php   } else { ?>
+                                        <td class="tg-0lax"></td>
+                                    <?php   }  ?>
+                                    <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                    <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                        <td class="tg-0l">AtCost</td>
+                                    <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                        <td class="tg-0l">LumpSump</td>
+                                    <?php   } else { ?>
+                                        <td class="tg-01"></td>
+                                    <?php }  ?>
+                                    <td class="tg-0lax">
+                                        <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                        <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                        <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
 
-                                                                                                                                            </td>
-                                                                                                                                        </tr>
-                                                                                                                                    <?php } ?>
-                                                                                                                                    <?php
-                                                                                                                                    // _5
-                                                                                                                                    // _6
-                                                                                                                                    $this->db->select('*');
-                                                                                                                                    $this->db->from('tbl_detail_capex_6');
-                                                                                                                                    $this->db->where('tbl_detail_capex_6.id_detail_capex_5', $id_detail_capex_5);
-                                                                                                                                    $this->db->order_by('CAST(no_urut_6_capex AS DECIMAL(10,6)) ASC');
-                                                                                                                                    $query_result_capex_detail_6 = $this->db->get() ?>
-                                                                                                                                    <?php
-                                                                                                                                    foreach ($query_result_capex_detail_6->result_array() as $value_capex_detail_6) { ?>
-                                                                                                                                        <?php $id_detail_capex_6 = $value_capex_detail_6['id_detail_capex_6'];  ?>
-                                                                                                                                        <?php $nama_uraian_capex_detail_6 = $value_capex_detail_6['nama_uraian_6_capex']; ?>
-                                                                                                                                        <tr>
-                                                                                                                                            <td class="tg-0lax"><?= $value_capex_detail_6['no_urut_6_capex'] ?></td>
-                                                                                                                                            <td class="tg-0lax"><?= $value_capex_detail_6['nama_uraian_6_capex']; ?></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                            <td class="tg-0lax"></td>
-                                                                                                                                        </tr>
-                                                                                                                                        <?php
-                                                                                                                                        $this->db->select('*');
-                                                                                                                                        $this->db->from('tbl_sub_detail_program_penyedia_jasa');
-                                                                                                                                        $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
-                                                                                                                                        $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail_6);
-                                                                                                                                        if ($id_departemen == 4) {
-                                                                                                                                        } else {
-                                                                                                                                            $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
-                                                                                                                                            $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
-                                                                                                                                            $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
-                                                                                                                                        }
-                                                                                                                                        $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                                        $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
-                                                                                                                                        $result_program = $this->db->get() ?>
-                                                                                                                                        <?php
-                                                                                                                                        foreach ($result_program->result_array() as $value_program) { ?>
-                                                                                                                                            <?php
-                                                                                                                                            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                            $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                            ?>
-                                                                                                                                            <?php
-                                                                                                                                            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                            ?>
-                                                                                                                                            <?php
-                                                                                                                                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                            ?>
-                                                                                                                                            <?php
-                                                                                                                                            // 
-                                                                                                                                            if (round($total_margin) < 2) {
-                                                                                                                                                $fee_jmtm  =  $total_efisiensi * 0  / 100;
-                                                                                                                                            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                                                $fee_jmtm  =  $total_efisiensi * 50  / 100;
-                                                                                                                                            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                                                $fee_jmtm  =  $total_efisiensi * 70  / 100;
-                                                                                                                                            } else if (round($total_margin) >= 8) {
-                                                                                                                                                $fee_jmtm  =  $total_efisiensi * 90  / 100;
-                                                                                                                                            }
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                            <?php
+                            // _5
+                            // _6
+                            $this->db->select('*');
+                            $this->db->from('tbl_detail_capex_6');
+                            $this->db->where('tbl_detail_capex_6.id_detail_capex_5', $id_detail_capex_5);
+                            $this->db->order_by('CAST(no_urut_6_capex AS DECIMAL(10,6)) ASC');
+                            $query_result_capex_detail_6 = $this->db->get() ?>
+                            <?php
+                            foreach ($query_result_capex_detail_6->result_array() as $value_capex_detail_6) { ?>
+                                <?php $id_detail_capex_6 = $value_capex_detail_6['id_detail_capex_6'];  ?>
+                                <?php $nama_uraian_capex_detail_6 = $value_capex_detail_6['nama_uraian_6_capex']; ?>
+                                <tr>
+                                    <td class="tg-0lax"><?= $value_capex_detail_6['no_urut_6_capex'] ?></td>
+                                    <td class="tg-0lax"><?= $value_capex_detail_6['nama_uraian_6_capex']; ?></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                </tr>
+                                <?php
+                                $this->db->select('*');
+                                $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                                $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                                $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail_6);
+                                if ($id_departemen == 4) {
+                                } else {
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                                }
+                                $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                                $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                                $result_program = $this->db->get() ?>
+                                <?php
+                                foreach ($result_program->result_array() as $value_program) { ?>
+                                    <?php
+                                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                    $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                    ?>
+                                    <?php
+                                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                    ?>
+                                    <?php
+                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                    ?>
+                                    <?php
+                                    // 
+                                    if (round($total_margin) < 2) {
+                                        $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                        $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                        $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                                    } else if (round($total_margin) >= 8) {
+                                        $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                                    }
 
-                                                                                                                                            if (round($total_margin) < 2) {
-                                                                                                                                                $fee_owner  =  $total_efisiensi * 100  / 100;
-                                                                                                                                            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                                                $fee_owner  =  $total_efisiensi * 50  / 100;
-                                                                                                                                            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                                                $fee_owner  =  $total_efisiensi * 30 / 100;
-                                                                                                                                            } else if (round($total_margin) >= 8) {
-                                                                                                                                                $fee_owner  =  $total_efisiensi * 10  / 100;
-                                                                                                                                            }
-                                                                                                                                            $total_kontrak_awal_vendor_atas = 0;
-                                                                                                                                            $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
-                                                                                                                                            $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
-                                                                                                                                            $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
-                                                                                                                                            ?>
-                                                                                                                                            <tr>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
-                                                                                                                                                <!-- ambil kontrak awal / addendum -->
-                                                                                                                                                <?php
-                                                                                                                                                // capex
-                                                                                                                                                $this->db->select('*');
-                                                                                                                                                $this->db->from('tbl_hps_penyedia_kontrak_addendum');
-                                                                                                                                                $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
-                                                                                                                                                $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                                                $this->db->limit(1);
-                                                                                                                                                $get_addendum_kontrak = $this->db->get()->result_array() ?>
-                                                                                                                                                <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
-                                                                                                                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                                                <?php
-                                                                                                                                                if ($get_addendum_kontrak) { ?>
-                                                                                                                                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
-                                                                                                                                                    <?php } ?>
-                                                                                                                                                <?php } else { ?>
-                                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
-                                                                                                                                                <?php } ?>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax">
-                                                                                                                                                    <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
-                                                                                                                                                    <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
-                                                                                                                                                    <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+                                    if (round($total_margin) < 2) {
+                                        $fee_owner  =  $total_efisiensi * 100  / 100;
+                                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                        $fee_owner  =  $total_efisiensi * 50  / 100;
+                                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                        $fee_owner  =  $total_efisiensi * 30 / 100;
+                                    } else if (round($total_margin) >= 8) {
+                                        $fee_owner  =  $total_efisiensi * 10  / 100;
+                                    }
+                                    $total_kontrak_awal_vendor_atas = 0;
+                                    $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                                    $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
+                                    $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                                    ?>
+                                    <tr>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                        <!-- ambil kontrak awal / addendum -->
+                                        <?php
+                                        // capex
+                                        $this->db->select('*');
+                                        $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                        $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                        $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                        $this->db->limit(1);
+                                        $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                        <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                        <?php
+                                        if ($get_addendum_kontrak) { ?>
+                                            <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                            <?php } ?>
+                                        <?php } else { ?>
+                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                        <?php } ?>
+                                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                                            <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                        <?php   } else { ?>
+                                            <td class="tg-0l"></td>
+                                        <?php   }  ?>
+                                        <td class="tg-0lax">
+                                            <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                        </td>
+                                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                                            <!-- gila2 -->
+                                            <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                            <!-- gila -->
+                                        <?php   } else { ?>
+                                            <td class="tg-0lax"></td>
+                                        <?php   }  ?>
+                                        <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                        <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                            <td class="tg-0l">AtCost</td>
+                                        <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                            <td class="tg-0l">LumpSump</td>
+                                        <?php   } else { ?>
+                                            <td class="tg-01"></td>
+                                        <?php }  ?>
+                                        <td class="tg-0lax">
+                                            <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                            <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                            <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
 
-                                                                                                                                                </td>
-                                                                                                                                            </tr>
-                                                                                                                                        <?php } ?>
-                                                                                                                                        <?php
-                                                                                                                                        // _6
-                                                                                                                                        // _7
-                                                                                                                                        $this->db->select('*');
-                                                                                                                                        $this->db->from('tbl_detail_capex_7');
-                                                                                                                                        $this->db->where('tbl_detail_capex_7.id_detail_capex_6', $id_detail_capex_6);
-                                                                                                                                        $this->db->order_by('CAST(no_urut_7_capex AS DECIMAL(10,6)) ASC');
-                                                                                                                                        $query_result_capex_detail_7 = $this->db->get() ?>
-                                                                                                                                        <?php
-                                                                                                                                        foreach ($query_result_capex_detail_7->result_array() as $value_capex_detail_7) { ?>
-                                                                                                                                            <?php $id_detail_capex_7 = $value_capex_detail_7['id_detail_capex_7'];  ?>
-                                                                                                                                            <?php $nama_uraian_capex_detail_7 = $value_capex_detail_7['nama_uraian_7_capex']; ?>
-                                                                                                                                            <tr>
-                                                                                                                                                <td class="tg-0lax"><?= $value_capex_detail_7['no_urut_7_capex'] ?></td>
-                                                                                                                                                <td class="tg-0lax"><?= $value_capex_detail_7['nama_uraian_7_capex']; ?></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                                <td class="tg-0lax"></td>
-                                                                                                                                            </tr>
-                                                                                                                                            <?php
-                                                                                                                                            $this->db->select('*');
-                                                                                                                                            $this->db->from('tbl_sub_detail_program_penyedia_jasa');
-                                                                                                                                            $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
-                                                                                                                                            $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail_7);
-                                                                                                                                            if ($id_departemen == 4) {
-                                                                                                                                            } else {
-                                                                                                                                                $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
-                                                                                                                                                $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
-                                                                                                                                                $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
-                                                                                                                                            }
-                                                                                                                                            $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                                            $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
-                                                                                                                                            $result_program = $this->db->get() ?>
-                                                                                                                                            <?php
-                                                                                                                                            foreach ($result_program->result_array() as $value_program) { ?>
-                                                                                                                                                <?php
-                                                                                                                                                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                                $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                                ?>
-                                                                                                                                                <?php
-                                                                                                                                                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
-                                                                                                                                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                                ?>
-                                                                                                                                                <?php
-                                                                                                                                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
-                                                                                                                                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
-                                                                                                                                                ?>
-                                                                                                                                                <?php
-                                                                                                                                                // 
-                                                                                                                                                if (round($total_margin) < 2) {
-                                                                                                                                                    $fee_jmtm  =  $total_efisiensi * 0  / 100;
-                                                                                                                                                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                                                    $fee_jmtm  =  $total_efisiensi * 50  / 100;
-                                                                                                                                                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                                                    $fee_jmtm  =  $total_efisiensi * 70  / 100;
-                                                                                                                                                } else if (round($total_margin) >= 8) {
-                                                                                                                                                    $fee_jmtm  =  $total_efisiensi * 90  / 100;
-                                                                                                                                                }
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                                <?php
+                                // _6
+                                // _7
+                                $this->db->select('*');
+                                $this->db->from('tbl_detail_capex_7');
+                                $this->db->where('tbl_detail_capex_7.id_detail_capex_6', $id_detail_capex_6);
+                                $this->db->order_by('CAST(no_urut_7_capex AS DECIMAL(10,6)) ASC');
+                                $query_result_capex_detail_7 = $this->db->get() ?>
+                                <?php
+                                foreach ($query_result_capex_detail_7->result_array() as $value_capex_detail_7) { ?>
+                                    <?php $id_detail_capex_7 = $value_capex_detail_7['id_detail_capex_7'];  ?>
+                                    <?php $nama_uraian_capex_detail_7 = $value_capex_detail_7['nama_uraian_7_capex']; ?>
+                                    <tr>
+                                        <td class="tg-0lax"><?= $value_capex_detail_7['no_urut_7_capex'] ?></td>
+                                        <td class="tg-0lax"><?= $value_capex_detail_7['nama_uraian_7_capex']; ?></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                    </tr>
+                                    <?php
+                                    $this->db->select('*');
+                                    $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                                    $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_capex_detail_7);
+                                    if ($id_departemen == 4) {
+                                    } else {
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                                    }
+                                    $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                                    $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                                    $result_program = $this->db->get() ?>
+                                    <?php
+                                    foreach ($result_program->result_array() as $value_program) { ?>
+                                        <?php
+                                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                        $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                        ?>
+                                        <?php
+                                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                        ?>
+                                        <?php
+                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                        ?>
+                                        <?php
+                                        // 
+                                        if (round($total_margin) < 2) {
+                                            $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                            $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                            $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                                        } else if (round($total_margin) >= 8) {
+                                            $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                                        }
 
-                                                                                                                                                if (round($total_margin) < 2) {
-                                                                                                                                                    $fee_owner  =  $total_efisiensi * 100  / 100;
-                                                                                                                                                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
-                                                                                                                                                    $fee_owner  =  $total_efisiensi * 50  / 100;
-                                                                                                                                                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
-                                                                                                                                                    $fee_owner  =  $total_efisiensi * 30 / 100;
-                                                                                                                                                } else if (round($total_margin) >= 8) {
-                                                                                                                                                    $fee_owner  =  $total_efisiensi * 10  / 100;
-                                                                                                                                                }
-                                                                                                                                                $total_kontrak_awal_vendor_atas = 0;
-                                                                                                                                                $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
-                                                                                                                                                $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
-                                                                                                                                                $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
-                                                                                                                                                ?>
-                                                                                                                                                <tr>
-                                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                                    <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
-                                                                                                                                                    <!-- ambil kontrak awal / addendum -->
-                                                                                                                                                    <?php
-                                                                                                                                                    // capex
-                                                                                                                                                    $this->db->select('*');
-                                                                                                                                                    $this->db->from('tbl_hps_penyedia_kontrak_addendum');
-                                                                                                                                                    $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
-                                                                                                                                                    $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
-                                                                                                                                                    $this->db->limit(1);
-                                                                                                                                                    $get_addendum_kontrak = $this->db->get()->result_array() ?>
-                                                                                                                                                    <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
-                                                                                                                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
-                                                                                                                                                    <?php
-                                                                                                                                                    if ($get_addendum_kontrak) { ?>
-                                                                                                                                                        <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
-                                                                                                                                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
-                                                                                                                                                        <?php } ?>
-                                                                                                                                                    <?php } else { ?>
-                                                                                                                                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
-                                                                                                                                                    <?php } ?>
-                                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                                    <td class="tg-0lax"></td>
-                                                                                                                                                    <td class="tg-0lax">
-                                                                                                                                                        <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
-                                                                                                                                                        <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
-                                                                                                                                                        <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+                                        if (round($total_margin) < 2) {
+                                            $fee_owner  =  $total_efisiensi * 100  / 100;
+                                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                            $fee_owner  =  $total_efisiensi * 50  / 100;
+                                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                            $fee_owner  =  $total_efisiensi * 30 / 100;
+                                        } else if (round($total_margin) >= 8) {
+                                            $fee_owner  =  $total_efisiensi * 10  / 100;
+                                        }
+                                        $total_kontrak_awal_vendor_atas = 0;
+                                        $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                                        $total_ke_atas_capex = $value_program['total_hps_mata_anggaran'];
+                                        $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                                        ?>
+                                        <tr>
+                                            <td class="tg-0lax"></td>
+                                            <td class="tg-0lax"></td>
+                                            <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                            <!-- ambil kontrak awal / addendum -->
+                                            <?php
+                                            // capex
+                                            $this->db->select('*');
+                                            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                            $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                            $this->db->limit(1);
+                                            $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                            <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                            <?php
+                                            if ($get_addendum_kontrak) { ?>
+                                                <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                <?php } ?>
+                                            <?php } else { ?>
+                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                            <?php } ?>
+                                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                                <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                            <?php   } else { ?>
+                                                <td class="tg-0l"></td>
+                                            <?php   }  ?>
+                                            <td class="tg-0lax">
+                                                <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                            </td>
+                                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                                <!-- gila2 -->
+                                                <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                                <!-- gila -->
+                                            <?php   } else { ?>
+                                                <td class="tg-0lax"></td>
+                                            <?php   }  ?>
+                                            <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                            <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                                <td class="tg-0l">AtCost</td>
+                                            <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                                <td class="tg-0l">LumpSump</td>
+                                            <?php   } else { ?>
+                                                <td class="tg-01"></td>
+                                            <?php }  ?>
+                                            <td class="tg-0lax">
+                                                <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                                <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                                <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
 
-                                                                                                                                                    </td>
-                                                                                                                                                </tr>
-                                                                                                                                            <?php } ?>
-                                                                                                                                        <?php } ?>
-                                                                                                                                    <?php } ?>
-                                                                                                                                <?php } ?>
-                                                                                                                            <?php } ?>
-                                                                                                                        <?php } ?>
-                                                                                                                    <?php } ?>
-                                                                                                                <?php } ?>
-                                                                                                            <?php } ?>
-                                                                                                        <?php } ?>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                <?php } ?>
+                            <?php } ?>
+                        <?php } ?>
+                    <?php } ?>
+                <?php } ?>
+            <?php } ?>
+        <?php } ?>
+    <?php } ?>
+<?php } ?>
+
+<?php
+// opex
+$this->db->select('*');
+$this->db->from('tbl_opex');
+$this->db->where('tbl_opex.id_kontrak', $row_kontrak['id_kontrak']);
+$this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
+$query_result_opex = $this->db->get() ?>
+<?php
+foreach ($query_result_opex->result_array() as $value_opex) { ?>
+    <?php $id_opex = $value_opex['id_opex'];   ?>
+    <?php $nama_uraian_opex = $value_opex['nama_uraian']; ?>
+    <tr>
+        <td class="tg-0lax"><?= $value_opex['no_urut'] ?></td>
+        <td class="tg-0lax"><?= $value_opex['nama_uraian']; ?></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+    </tr>
+    <?php
+    $this->db->select('*');
+    $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+    $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+    $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_opex);
+    if ($id_departemen == 4) {
+    } else {
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+    }
+    $result_program = $this->db->get() ?>
+    <?php
+    foreach ($result_program->result_array() as $value_program) { ?>
+        <?php
+        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+        $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+        ?>
+        <?php
+        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+        ?>
+        <?php
+        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+        ?>
+        <?php
+        // 
+        if (round($total_margin) < 2) {
+            $fee_jmtm  =  $total_efisiensi * 0  / 100;
+        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+            $fee_jmtm  =  $total_efisiensi * 50  / 100;
+        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+            $fee_jmtm  =  $total_efisiensi * 70  / 100;
+        } else if (round($total_margin) >= 8) {
+            $fee_jmtm  =  $total_efisiensi * 90  / 100;
+        }
+
+        if (round($total_margin) < 2) {
+            $fee_owner  =  $total_efisiensi * 100  / 100;
+        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+            $fee_owner  =  $total_efisiensi * 50  / 100;
+        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+            $fee_owner  =  $total_efisiensi * 30 / 100;
+        } else if (round($total_margin) >= 8) {
+            $fee_owner  =  $total_efisiensi * 10  / 100;
+        }
+        $total_kontrak_awal_vendor_atas = 0;
+        $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+        $total_ke_atas_opex = $value_program['total_hps_mata_anggaran'];
+        $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+        ?>
+        <tr>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+            <!-- ambil kontrak awal / addendum -->
+            <?php
+            // opex
+            $this->db->select('*');
+            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+            $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+            $this->db->limit(1);
+            $get_addendum_kontrak = $this->db->get()->result_array() ?>
+            <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+            <?php
+            if ($get_addendum_kontrak) { ?>
+                <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                <?php } ?>
+            <?php } else { ?>
+                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+            <?php } ?>
+            <?php if ($value_program['persen_progres_fisik']) { ?>
+                <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+            <?php   } else { ?>
+                <td class="tg-0l"></td>
+            <?php   }  ?>
+            <td class="tg-0lax">
+                <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+            </td>
+            <?php if ($value_program['persen_progres_fisik']) { ?>
+                <!-- gila2 -->
+                <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                <!-- gila -->
+            <?php   } else { ?>
+                <td class="tg-0lax"></td>
+            <?php   }  ?>
+            <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+            <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                <td class="tg-0l">AtCost</td>
+            <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                <td class="tg-0l">LumpSump</td>
+            <?php   } else { ?>
+                <td class="tg-01"></td>
+            <?php }  ?>
+            <td class="tg-0lax">
+                <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+            </td>
+        </tr>
+    <?php } ?>
+    <?php
+    $this->db->select('*');
+    $this->db->from('tbl_opex_detail');
+    $this->db->where('tbl_opex_detail.id_opex', $id_opex);
+    $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
+    $query_result_opex_detail = $this->db->get() ?>
+    <?php
+    foreach ($query_result_opex_detail->result_array() as $value_opex_detail) { ?>
+        <?php $id_opex_detail = $value_opex_detail['id_opex_detail'];  ?>
+        <?php $nama_uraian_opex_detail = $value_opex_detail['nama_uraian']; ?>
+        <tr>
+            <td class="tg-0lax"><?= $value_opex_detail['no_urut'] ?></td>
+            <td class="tg-0lax"><?= $value_opex_detail['nama_uraian']; ?></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+        </tr>
+        <?php
+        $this->db->select('*');
+        $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+        $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+        $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_opex_detail);
+        if ($id_departemen == 4) {
+        } else {
+            $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+            $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+            $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+        }
+        $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+        $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+        $result_program = $this->db->get() ?>
+        <?php
+        foreach ($result_program->result_array() as $value_program) { ?>
+            <?php
+            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+            $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+            ?>
+            <?php
+            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+            ?>
+            <?php
+            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+            ?>
+            <?php
+            // 
+            if (round($total_margin) < 2) {
+                $fee_jmtm  =  $total_efisiensi * 0  / 100;
+            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                $fee_jmtm  =  $total_efisiensi * 50  / 100;
+            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                $fee_jmtm  =  $total_efisiensi * 70  / 100;
+            } else if (round($total_margin) >= 8) {
+                $fee_jmtm  =  $total_efisiensi * 90  / 100;
+            }
+
+            if (round($total_margin) < 2) {
+                $fee_owner  =  $total_efisiensi * 100  / 100;
+            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                $fee_owner  =  $total_efisiensi * 50  / 100;
+            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                $fee_owner  =  $total_efisiensi * 30 / 100;
+            } else if (round($total_margin) >= 8) {
+                $fee_owner  =  $total_efisiensi * 10  / 100;
+            }
+            $total_kontrak_awal_vendor_atas = 0;
+            $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+            $total_ke_atas_opex = $value_program['total_hps_mata_anggaran'];
+            $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+            ?>
+            <tr>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                <!-- ambil kontrak awal / addendum -->
+                <?php
+                // opex
+                $this->db->select('*');
+                $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                $this->db->limit(1);
+                $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                <?php
+                if ($get_addendum_kontrak) { ?>
+                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                    <?php } ?>
+                <?php } else { ?>
+                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                <?php } ?>
+                <?php if ($value_program['persen_progres_fisik']) { ?>
+                    <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                <?php   } else { ?>
+                    <td class="tg-0l"></td>
+                <?php   }  ?>
+                <td class="tg-0lax">
+                    <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                </td>
+                <?php if ($value_program['persen_progres_fisik']) { ?>
+                    <!-- gila2 -->
+                    <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                    <!-- gila -->
+                <?php   } else { ?>
+                    <td class="tg-0lax"></td>
+                <?php   }  ?>
+                <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                    <td class="tg-0l">AtCost</td>
+                <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                    <td class="tg-0l">LumpSump</td>
+                <?php   } else { ?>
+                    <td class="tg-01"></td>
+                <?php }  ?>
+                <td class="tg-0lax">
+                    <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                    <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                    <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                </td>
+            </tr>
+        <?php } ?>
+        <!-- _1_ -->
+        <?php
+        $this->db->select('*');
+        $this->db->from('tbl_detail_opex_1');
+        $this->db->where('tbl_detail_opex_1.id_opex_detail', $id_opex_detail);
+        $this->db->order_by('CAST(no_urut_1_opex AS DECIMAL(10,6)) ASC');
+        $query_result_opex_detail_1 = $this->db->get() ?>
+        <?php
+        foreach ($query_result_opex_detail_1->result_array() as $value_opex_detail_1) { ?>
+            <?php $id_detail_opex_1 = $value_opex_detail_1['id_detail_opex_1'];  ?>
+            <?php $nama_uraian_opex_detail_1 = $value_opex_detail_1['nama_uraian_1_opex']; ?>
+            <tr>
+                <td class="tg-0lax"><?= $value_opex_detail_1['no_urut_1_opex'] ?></td>
+                <td class="tg-0lax"><?= $value_opex_detail_1['nama_uraian_1_opex']; ?></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+            </tr>
+            <?php
+            $this->db->select('*');
+            $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+            $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+            $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_opex_detail_1);
+            if ($id_departemen == 4) {
+            } else {
+                $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+            }
+            $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+            $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+            $result_program = $this->db->get() ?>
+            <?php
+            foreach ($result_program->result_array() as $value_program) { ?>
+                <?php
+                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                ?>
+                <?php
+                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                ?>
+                <?php
+                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                ?>
+                <?php
+                // 
+                if (round($total_margin) < 2) {
+                    $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                    $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                    $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                } else if (round($total_margin) >= 8) {
+                    $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                }
+
+                if (round($total_margin) < 2) {
+                    $fee_owner  =  $total_efisiensi * 100  / 100;
+                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                    $fee_owner  =  $total_efisiensi * 50  / 100;
+                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                    $fee_owner  =  $total_efisiensi * 30 / 100;
+                } else if (round($total_margin) >= 8) {
+                    $fee_owner  =  $total_efisiensi * 10  / 100;
+                }
+                $total_kontrak_awal_vendor_atas = 0;
+                $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                $total_ke_atas_opex = $value_program['total_hps_mata_anggaran'];
+                $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                ?>
+                <tr>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                    <!-- ambil kontrak awal / addendum -->
+                    <?php
+                    // opex
+                    $this->db->select('*');
+                    $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                    $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                    $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                    $this->db->limit(1);
+                    $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                    <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                    <?php
+                    if ($get_addendum_kontrak) { ?>
+                        <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                    <?php } ?>
+                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                        <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                    <?php   } else { ?>
+                        <td class="tg-0l"></td>
+                    <?php   }  ?>
+                    <td class="tg-0lax">
+                        <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                    </td>
+                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                        <!-- gila2 -->
+                        <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                        <!-- gila -->
+                    <?php   } else { ?>
+                        <td class="tg-0lax"></td>
+                    <?php   }  ?>
+                    <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                    <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                        <td class="tg-0l">AtCost</td>
+                    <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                        <td class="tg-0l">LumpSump</td>
+                    <?php   } else { ?>
+                        <td class="tg-01"></td>
+                    <?php }  ?>
+                    <td class="tg-0lax">
+                        <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                        <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                        <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                    </td>
+                </tr>
+            <?php } ?>
+            <?php
+            // _1
+            // _2
+            $this->db->select('*');
+            $this->db->from('tbl_detail_opex_2');
+            $this->db->where('tbl_detail_opex_2.id_detail_opex_1', $id_detail_opex_1);
+            $this->db->order_by('CAST(no_urut_2_opex AS DECIMAL(10,6)) ASC');
+            $query_result_opex_detail_2 = $this->db->get() ?>
+            <?php
+            foreach ($query_result_opex_detail_2->result_array() as $value_opex_detail_2) { ?>
+                <?php $id_detail_opex_2 = $value_opex_detail_2['id_detail_opex_2'];  ?>
+                <?php $nama_uraian_opex_detail_2 = $value_opex_detail_2['nama_uraian_2_opex']; ?>
+                <tr>
+                    <td class="tg-0lax"><?= $value_opex_detail_2['no_urut_2_opex'] ?></td>
+                    <td class="tg-0lax"><?= $value_opex_detail_2['nama_uraian_2_opex']; ?></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                </tr>
+                <?php
+                $this->db->select('*');
+                $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_opex_detail_2);
+                if ($id_departemen == 4) {
+                } else {
+                    $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                    $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                    $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                }
+                $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                $result_program = $this->db->get() ?>
+                <?php
+                foreach ($result_program->result_array() as $value_program) { ?>
+                    <?php
+                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                    $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                    ?>
+                    <?php
+                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                    ?>
+                    <?php
+                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                    ?>
+                    <?php
+                    // 
+                    if (round($total_margin) < 2) {
+                        $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                        $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                        $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                    } else if (round($total_margin) >= 8) {
+                        $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                    }
+
+                    if (round($total_margin) < 2) {
+                        $fee_owner  =  $total_efisiensi * 100  / 100;
+                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                        $fee_owner  =  $total_efisiensi * 50  / 100;
+                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                        $fee_owner  =  $total_efisiensi * 30 / 100;
+                    } else if (round($total_margin) >= 8) {
+                        $fee_owner  =  $total_efisiensi * 10  / 100;
+                    }
+                    $total_kontrak_awal_vendor_atas = 0;
+                    $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                    $total_ke_atas_opex = $value_program['total_hps_mata_anggaran'];
+                    $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                    ?>
+                    <tr>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                        <!-- ambil kontrak awal / addendum -->
+                        <?php
+                        // opex
+                        $this->db->select('*');
+                        $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                        $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                        $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                        $this->db->limit(1);
+                        $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                        <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                        <?php
+                        if ($get_addendum_kontrak) { ?>
+                            <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                        <?php } ?>
+                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                            <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                        <?php   } else { ?>
+                            <td class="tg-0l"></td>
+                        <?php   }  ?>
+                        <td class="tg-0lax">
+                            <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                        </td>
+                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                            <!-- gila2 -->
+                            <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                            <!-- gila -->
+                        <?php   } else { ?>
+                            <td class="tg-0lax"></td>
+                        <?php   }  ?>
+                        <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                        <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                            <td class="tg-0l">AtCost</td>
+                        <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                            <td class="tg-0l">LumpSump</td>
+                        <?php   } else { ?>
+                            <td class="tg-01"></td>
+                        <?php }  ?>
+                        <td class="tg-0lax">
+                            <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                            <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                            <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                        </td>
+                    </tr>
+                <?php } ?>
+                <?php
+                // _2
+                // _3
+                $this->db->select('*');
+                $this->db->from('tbl_detail_opex_3');
+                $this->db->where('tbl_detail_opex_3.id_detail_opex_2', $id_detail_opex_2);
+                $this->db->order_by('CAST(no_urut_3_opex AS DECIMAL(10,6)) ASC');
+                $query_result_opex_detail_3 = $this->db->get() ?>
+                <?php
+                foreach ($query_result_opex_detail_3->result_array() as $value_opex_detail_3) { ?>
+                    <?php $id_detail_opex_3 = $value_opex_detail_3['id_detail_opex_3'];  ?>
+                    <?php $nama_uraian_opex_detail_3 = $value_opex_detail_3['nama_uraian_3_opex']; ?>
+                    <tr>
+                        <td class="tg-0lax"><?= $value_opex_detail_3['no_urut_3_opex'] ?></td>
+                        <td class="tg-0lax"><?= $value_opex_detail_3['nama_uraian_3_opex']; ?></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                    </tr>
+                    <?php
+                    $this->db->select('*');
+                    $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                    $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                    $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_opex_detail_3);
+                    if ($id_departemen == 4) {
+                    } else {
+                        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                    }
+                    $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                    $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                    $result_program = $this->db->get() ?>
+                    <?php
+                    foreach ($result_program->result_array() as $value_program) { ?>
+                        <?php
+                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                        $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                        ?>
+                        <?php
+                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                        ?>
+                        <?php
+                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                        ?>
+                        <?php
+                        // 
+                        if (round($total_margin) < 2) {
+                            $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                            $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                            $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                        } else if (round($total_margin) >= 8) {
+                            $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                        }
+
+                        if (round($total_margin) < 2) {
+                            $fee_owner  =  $total_efisiensi * 100  / 100;
+                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                            $fee_owner  =  $total_efisiensi * 50  / 100;
+                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                            $fee_owner  =  $total_efisiensi * 30 / 100;
+                        } else if (round($total_margin) >= 8) {
+                            $fee_owner  =  $total_efisiensi * 10  / 100;
+                        }
+                        $total_kontrak_awal_vendor_atas = 0;
+                        $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                        $total_ke_atas_opex = $value_program['total_hps_mata_anggaran'];
+                        $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                        ?>
+                        <tr>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                            <!-- ambil kontrak awal / addendum -->
+                            <?php
+                            // opex
+                            $this->db->select('*');
+                            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                            $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                            $this->db->limit(1);
+                            $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                            <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                            <?php
+                            if ($get_addendum_kontrak) { ?>
+                                <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                            <?php } ?>
+                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                            <?php   } else { ?>
+                                <td class="tg-0l"></td>
+                            <?php   }  ?>
+                            <td class="tg-0lax">
+                                <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                            </td>
+                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                <!-- gila2 -->
+                                <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                <!-- gila -->
+                            <?php   } else { ?>
+                                <td class="tg-0lax"></td>
+                            <?php   }  ?>
+                            <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                            <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                <td class="tg-0l">AtCost</td>
+                            <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                <td class="tg-0l">LumpSump</td>
+                            <?php   } else { ?>
+                                <td class="tg-01"></td>
+                            <?php }  ?>
+                            <td class="tg-0lax">
+                                <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                            </td>
+                        </tr>
+                    <?php } ?>
+
+                    <?php
+                    // _3
+                    // _4
+                    $this->db->select('*');
+                    $this->db->from('tbl_detail_opex_4');
+                    $this->db->where('tbl_detail_opex_4.id_detail_opex_3', $id_detail_opex_3);
+                    $this->db->order_by('CAST(no_urut_4_opex AS DECIMAL(10,6)) ASC');
+                    $query_result_opex_detail_4 = $this->db->get() ?>
+                    <?php
+                    foreach ($query_result_opex_detail_4->result_array() as $value_opex_detail_4) { ?>
+                        <?php $id_detail_opex_4 = $value_opex_detail_4['id_detail_opex_4'];  ?>
+                        <?php $nama_uraian_opex_detail_4 = $value_opex_detail_4['nama_uraian_4_opex']; ?>
+                        <tr>
+                            <td class="tg-0lax"><?= $value_opex_detail_4['no_urut_4_opex'] ?></td>
+                            <td class="tg-0lax"><?= $value_opex_detail_4['nama_uraian_4_opex']; ?></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                        </tr>
+                        <?php
+                        $this->db->select('*');
+                        $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                        $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                        $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_opex_detail_4);
+                        if ($id_departemen == 4) {
+                        } else {
+                            $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                            $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                            $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                        }
+                        $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                        $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                        $result_program = $this->db->get() ?>
+                        <?php
+                        foreach ($result_program->result_array() as $value_program) { ?>
+                            <?php
+                            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                            $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                            ?>
+                            <?php
+                            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                            ?>
+                            <?php
+                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                            ?>
+                            <?php
+                            // 
+                            if (round($total_margin) < 2) {
+                                $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                            } else if (round($total_margin) >= 8) {
+                                $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                            }
+
+                            if (round($total_margin) < 2) {
+                                $fee_owner  =  $total_efisiensi * 100  / 100;
+                            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                $fee_owner  =  $total_efisiensi * 50  / 100;
+                            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                $fee_owner  =  $total_efisiensi * 30 / 100;
+                            } else if (round($total_margin) >= 8) {
+                                $fee_owner  =  $total_efisiensi * 10  / 100;
+                            }
+                            $total_kontrak_awal_vendor_atas = 0;
+                            $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                            $total_ke_atas_opex = $value_program['total_hps_mata_anggaran'];
+                            $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                            ?>
+                            <tr>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                <!-- ambil kontrak awal / addendum -->
+                                <?php
+                                // opex
+                                $this->db->select('*');
+                                $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                $this->db->limit(1);
+                                $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                <?php
+                                if ($get_addendum_kontrak) { ?>
+                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                    <?php } ?>
+                                <?php } else { ?>
+                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                <?php } ?>
+                                <?php if ($value_program['persen_progres_fisik']) { ?>
+                                    <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                <?php   } else { ?>
+                                    <td class="tg-0l"></td>
+                                <?php   }  ?>
+                                <td class="tg-0lax">
+                                    <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                </td>
+                                <?php if ($value_program['persen_progres_fisik']) { ?>
+                                    <!-- gila2 -->
+                                    <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                    <!-- gila -->
+                                <?php   } else { ?>
+                                    <td class="tg-0lax"></td>
+                                <?php   }  ?>
+                                <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                    <td class="tg-0l">AtCost</td>
+                                <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                    <td class="tg-0l">LumpSump</td>
+                                <?php   } else { ?>
+                                    <td class="tg-01"></td>
+                                <?php }  ?>
+                                <td class="tg-0lax">
+                                    <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                    <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                    <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                                </td>
+                            </tr>
+                        <?php } ?>
+
+                        <?php
+                        // _4
+                        // _5
+                        $this->db->select('*');
+                        $this->db->from('tbl_detail_opex_5');
+                        $this->db->where('tbl_detail_opex_5.id_detail_opex_4', $id_detail_opex_4);
+                        $this->db->order_by('CAST(no_urut_5_opex AS DECIMAL(10,6)) ASC');
+                        $query_result_opex_detail_5 = $this->db->get() ?>
+                        <?php
+                        foreach ($query_result_opex_detail_5->result_array() as $value_opex_detail_5) { ?>
+                            <?php $id_detail_opex_5 = $value_opex_detail_5['id_detail_opex_5'];  ?>
+                            <?php $nama_uraian_opex_detail_5 = $value_opex_detail_5['nama_uraian_5_opex']; ?>
+                            <tr>
+                                <td class="tg-0lax"><?= $value_opex_detail_5['no_urut_5_opex'] ?></td>
+                                <td class="tg-0lax"><?= $value_opex_detail_5['nama_uraian_5_opex']; ?></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                            </tr>
+                            <?php
+                            $this->db->select('*');
+                            $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                            $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                            $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_opex_detail_5);
+                            if ($id_departemen == 4) {
+                            } else {
+                                $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                                $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                                $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                            }
+                            $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                            $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                            $result_program = $this->db->get() ?>
+                            <?php
+                            foreach ($result_program->result_array() as $value_program) { ?>
+                                <?php
+                                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                ?>
+                                <?php
+                                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                ?>
+                                <?php
+                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                ?>
+                                <?php
+                                // 
+                                if (round($total_margin) < 2) {
+                                    $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                    $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                    $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                                } else if (round($total_margin) >= 8) {
+                                    $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                                }
+
+                                if (round($total_margin) < 2) {
+                                    $fee_owner  =  $total_efisiensi * 100  / 100;
+                                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                    $fee_owner  =  $total_efisiensi * 50  / 100;
+                                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                    $fee_owner  =  $total_efisiensi * 30 / 100;
+                                } else if (round($total_margin) >= 8) {
+                                    $fee_owner  =  $total_efisiensi * 10  / 100;
+                                }
+                                $total_kontrak_awal_vendor_atas = 0;
+                                $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                                $total_ke_atas_opex = $value_program['total_hps_mata_anggaran'];
+                                $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                                ?>
+                                <tr>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                    <!-- ambil kontrak awal / addendum -->
+                                    <?php
+                                    // opex
+                                    $this->db->select('*');
+                                    $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                    $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                    $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                    $this->db->limit(1);
+                                    $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                    <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                    <?php
+                                    if ($get_addendum_kontrak) { ?>
+                                        <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                        <?php } ?>
+                                    <?php } else { ?>
+                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                    <?php } ?>
+                                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                                        <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                    <?php   } else { ?>
+                                        <td class="tg-0l"></td>
+                                    <?php   }  ?>
+                                    <td class="tg-0lax">
+                                        <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                    </td>
+                                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                                        <!-- gila2 -->
+                                        <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                        <!-- gila -->
+                                    <?php   } else { ?>
+                                        <td class="tg-0lax"></td>
+                                    <?php   }  ?>
+                                    <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                    <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                        <td class="tg-0l">AtCost</td>
+                                    <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                        <td class="tg-0l">LumpSump</td>
+                                    <?php   } else { ?>
+                                        <td class="tg-01"></td>
+                                    <?php }  ?>
+                                    <td class="tg-0lax">
+                                        <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                        <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                        <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                            <?php
+                            // _5
+                            // _6
+                            $this->db->select('*');
+                            $this->db->from('tbl_detail_opex_6');
+                            $this->db->where('tbl_detail_opex_6.id_detail_opex_5', $id_detail_opex_5);
+                            $this->db->order_by('CAST(no_urut_6_opex AS DECIMAL(10,6)) ASC');
+                            $query_result_opex_detail_6 = $this->db->get() ?>
+                            <?php
+                            foreach ($query_result_opex_detail_6->result_array() as $value_opex_detail_6) { ?>
+                                <?php $id_detail_opex_6 = $value_opex_detail_6['id_detail_opex_6'];  ?>
+                                <?php $nama_uraian_opex_detail_6 = $value_opex_detail_6['nama_uraian_6_opex']; ?>
+                                <tr>
+                                    <td class="tg-0lax"><?= $value_opex_detail_6['no_urut_6_opex'] ?></td>
+                                    <td class="tg-0lax"><?= $value_opex_detail_6['nama_uraian_6_opex']; ?></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                </tr>
+                                <?php
+                                $this->db->select('*');
+                                $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                                $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                                $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_opex_detail_6);
+                                if ($id_departemen == 4) {
+                                } else {
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                                }
+                                $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                                $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                                $result_program = $this->db->get() ?>
+                                <?php
+                                foreach ($result_program->result_array() as $value_program) { ?>
+                                    <?php
+                                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                    $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                    ?>
+                                    <?php
+                                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                    ?>
+                                    <?php
+                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                    ?>
+                                    <?php
+                                    // 
+                                    if (round($total_margin) < 2) {
+                                        $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                        $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                        $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                                    } else if (round($total_margin) >= 8) {
+                                        $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                                    }
+
+                                    if (round($total_margin) < 2) {
+                                        $fee_owner  =  $total_efisiensi * 100  / 100;
+                                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                        $fee_owner  =  $total_efisiensi * 50  / 100;
+                                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                        $fee_owner  =  $total_efisiensi * 30 / 100;
+                                    } else if (round($total_margin) >= 8) {
+                                        $fee_owner  =  $total_efisiensi * 10  / 100;
+                                    }
+                                    $total_kontrak_awal_vendor_atas = 0;
+                                    $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                                    $total_ke_atas_opex = $value_program['total_hps_mata_anggaran'];
+                                    $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                                    ?>
+                                    <tr>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                        <!-- ambil kontrak awal / addendum -->
+                                        <?php
+                                        // opex
+                                        $this->db->select('*');
+                                        $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                        $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                        $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                        $this->db->limit(1);
+                                        $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                        <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                        <?php
+                                        if ($get_addendum_kontrak) { ?>
+                                            <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                            <?php } ?>
+                                        <?php } else { ?>
+                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                        <?php } ?>
+                                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                                            <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                        <?php   } else { ?>
+                                            <td class="tg-0l"></td>
+                                        <?php   }  ?>
+                                        <td class="tg-0lax">
+                                            <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                        </td>
+                                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                                            <!-- gila2 -->
+                                            <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                            <!-- gila -->
+                                        <?php   } else { ?>
+                                            <td class="tg-0lax"></td>
+                                        <?php   }  ?>
+                                        <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                        <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                            <td class="tg-0l">AtCost</td>
+                                        <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                            <td class="tg-0l">LumpSump</td>
+                                        <?php   } else { ?>
+                                            <td class="tg-01"></td>
+                                        <?php }  ?>
+                                        <td class="tg-0lax">
+                                            <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                            <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                            <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                                <?php
+                                // _6
+                                // _7
+                                $this->db->select('*');
+                                $this->db->from('tbl_detail_opex_7');
+                                $this->db->where('tbl_detail_opex_7.id_detail_opex_6', $id_detail_opex_6);
+                                $this->db->order_by('CAST(no_urut_7_opex AS DECIMAL(10,6)) ASC');
+                                $query_result_opex_detail_7 = $this->db->get() ?>
+                                <?php
+                                foreach ($query_result_opex_detail_7->result_array() as $value_opex_detail_7) { ?>
+                                    <?php $id_detail_opex_7 = $value_opex_detail_7['id_detail_opex_7'];  ?>
+                                    <?php $nama_uraian_opex_detail_7 = $value_opex_detail_7['nama_uraian_7_opex']; ?>
+                                    <tr>
+                                        <td class="tg-0lax"><?= $value_opex_detail_7['no_urut_7_opex'] ?></td>
+                                        <td class="tg-0lax"><?= $value_opex_detail_7['nama_uraian_7_opex']; ?></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                    </tr>
+                                    <?php
+                                    $this->db->select('*');
+                                    $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                                    $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_opex_detail_7);
+                                    if ($id_departemen == 4) {
+                                    } else {
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                                    }
+                                    $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                                    $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                                    $result_program = $this->db->get() ?>
+                                    <?php
+                                    foreach ($result_program->result_array() as $value_program) { ?>
+                                        <?php
+                                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                        $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                        ?>
+                                        <?php
+                                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                        ?>
+                                        <?php
+                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                        ?>
+                                        <?php
+                                        // 
+                                        if (round($total_margin) < 2) {
+                                            $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                            $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                            $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                                        } else if (round($total_margin) >= 8) {
+                                            $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                                        }
+
+                                        if (round($total_margin) < 2) {
+                                            $fee_owner  =  $total_efisiensi * 100  / 100;
+                                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                            $fee_owner  =  $total_efisiensi * 50  / 100;
+                                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                            $fee_owner  =  $total_efisiensi * 30 / 100;
+                                        } else if (round($total_margin) >= 8) {
+                                            $fee_owner  =  $total_efisiensi * 10  / 100;
+                                        }
+                                        $total_kontrak_awal_vendor_atas = 0;
+                                        $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                                        $total_ke_atas_opex = $value_program['total_hps_mata_anggaran'];
+                                        $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                                        ?>
+                                        <tr>
+                                            <td class="tg-0lax"></td>
+                                            <td class="tg-0lax"></td>
+                                            <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                            <!-- ambil kontrak awal / addendum -->
+                                            <?php
+                                            // opex
+                                            $this->db->select('*');
+                                            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                            $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                            $this->db->limit(1);
+                                            $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                            <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                            <?php
+                                            if ($get_addendum_kontrak) { ?>
+                                                <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                <?php } ?>
+                                            <?php } else { ?>
+                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                            <?php } ?>
+                                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                                <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                            <?php   } else { ?>
+                                                <td class="tg-0l"></td>
+                                            <?php   }  ?>
+                                            <td class="tg-0lax">
+                                                <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                            </td>
+                                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                                <!-- gila2 -->
+                                                <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                                <!-- gila -->
+                                            <?php   } else { ?>
+                                                <td class="tg-0lax"></td>
+                                            <?php   }  ?>
+                                            <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                            <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                                <td class="tg-0l">AtCost</td>
+                                            <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                                <td class="tg-0l">LumpSump</td>
+                                            <?php   } else { ?>
+                                                <td class="tg-01"></td>
+                                            <?php }  ?>
+                                            <td class="tg-0lax">
+                                                <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                                <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                                <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                <?php } ?>
+                            <?php } ?>
+                        <?php } ?>
+                    <?php } ?>
+                <?php } ?>
+            <?php } ?>
+        <?php } ?>
+    <?php } ?>
+<?php } ?>
+
+<?php
+// bua
+$this->db->select('*');
+$this->db->from('tbl_bua');
+$this->db->where('tbl_bua.id_kontrak', $row_kontrak['id_kontrak']);
+$this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
+$query_result_bua = $this->db->get() ?>
+<?php
+foreach ($query_result_bua->result_array() as $value_bua) { ?>
+    <?php $id_bua = $value_bua['id_bua'];   ?>
+    <?php $nama_uraian_bua = $value_bua['nama_uraian']; ?>
+    <tr>
+        <td class="tg-0lax"><?= $value_bua['no_urut'] ?></td>
+        <td class="tg-0lax"><?= $value_bua['nama_uraian']; ?></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+    </tr>
+    <?php
+    $this->db->select('*');
+    $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+    $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+    $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_bua);
+    if ($id_departemen == 4) {
+    } else {
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+    }
+    $result_program = $this->db->get() ?>
+    <?php
+    foreach ($result_program->result_array() as $value_program) { ?>
+        <?php
+        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+        $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+        ?>
+        <?php
+        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+        ?>
+        <?php
+        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+        ?>
+        <?php
+        // 
+        if (round($total_margin) < 2) {
+            $fee_jmtm  =  $total_efisiensi * 0  / 100;
+        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+            $fee_jmtm  =  $total_efisiensi * 50  / 100;
+        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+            $fee_jmtm  =  $total_efisiensi * 70  / 100;
+        } else if (round($total_margin) >= 8) {
+            $fee_jmtm  =  $total_efisiensi * 90  / 100;
+        }
+
+        if (round($total_margin) < 2) {
+            $fee_owner  =  $total_efisiensi * 100  / 100;
+        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+            $fee_owner  =  $total_efisiensi * 50  / 100;
+        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+            $fee_owner  =  $total_efisiensi * 30 / 100;
+        } else if (round($total_margin) >= 8) {
+            $fee_owner  =  $total_efisiensi * 10  / 100;
+        }
+        $total_kontrak_awal_vendor_atas = 0;
+        $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+        $total_ke_atas_bua = $value_program['total_hps_mata_anggaran'];
+        $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+        ?>
+        <tr>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+            <!-- ambil kontrak awal / addendum -->
+            <?php
+            // bua
+            $this->db->select('*');
+            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+            $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+            $this->db->limit(1);
+            $get_addendum_kontrak = $this->db->get()->result_array() ?>
+            <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+            <?php
+            if ($get_addendum_kontrak) { ?>
+                <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                <?php } ?>
+            <?php } else { ?>
+                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+            <?php } ?>
+            <?php if ($value_program['persen_progres_fisik']) { ?>
+                <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+            <?php   } else { ?>
+                <td class="tg-0l"></td>
+            <?php   }  ?>
+            <td class="tg-0lax">
+                <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+            </td>
+            <?php if ($value_program['persen_progres_fisik']) { ?>
+                <!-- gila2 -->
+                <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                <!-- gila -->
+            <?php   } else { ?>
+                <td class="tg-0lax"></td>
+            <?php   }  ?>
+            <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+            <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                <td class="tg-0l">AtCost</td>
+            <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                <td class="tg-0l">LumpSump</td>
+            <?php   } else { ?>
+                <td class="tg-01"></td>
+            <?php }  ?>
+            <td class="tg-0lax">
+                <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+            </td>
+        </tr>
+    <?php } ?>
+    <?php
+    $this->db->select('*');
+    $this->db->from('tbl_bua_detail');
+    $this->db->where('tbl_bua_detail.id_bua', $id_bua);
+    $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
+    $query_result_bua_detail = $this->db->get() ?>
+    <?php
+    foreach ($query_result_bua_detail->result_array() as $value_bua_detail) { ?>
+        <?php $id_bua_detail = $value_bua_detail['id_bua_detail'];  ?>
+        <?php $nama_uraian_bua_detail = $value_bua_detail['nama_uraian']; ?>
+        <tr>
+            <td class="tg-0lax"><?= $value_bua_detail['no_urut'] ?></td>
+            <td class="tg-0lax"><?= $value_bua_detail['nama_uraian']; ?></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+        </tr>
+        <?php
+        $this->db->select('*');
+        $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+        $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+        $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_bua_detail);
+        if ($id_departemen == 4) {
+        } else {
+            $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+            $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+            $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+        }
+        $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+        $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+        $result_program = $this->db->get() ?>
+        <?php
+        foreach ($result_program->result_array() as $value_program) { ?>
+            <?php
+            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+            $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+            ?>
+            <?php
+            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+            ?>
+            <?php
+            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+            ?>
+            <?php
+            // 
+            if (round($total_margin) < 2) {
+                $fee_jmtm  =  $total_efisiensi * 0  / 100;
+            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                $fee_jmtm  =  $total_efisiensi * 50  / 100;
+            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                $fee_jmtm  =  $total_efisiensi * 70  / 100;
+            } else if (round($total_margin) >= 8) {
+                $fee_jmtm  =  $total_efisiensi * 90  / 100;
+            }
+
+            if (round($total_margin) < 2) {
+                $fee_owner  =  $total_efisiensi * 100  / 100;
+            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                $fee_owner  =  $total_efisiensi * 50  / 100;
+            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                $fee_owner  =  $total_efisiensi * 30 / 100;
+            } else if (round($total_margin) >= 8) {
+                $fee_owner  =  $total_efisiensi * 10  / 100;
+            }
+            $total_kontrak_awal_vendor_atas = 0;
+            $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+            $total_ke_atas_bua = $value_program['total_hps_mata_anggaran'];
+            $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+            ?>
+            <tr>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                <!-- ambil kontrak awal / addendum -->
+                <?php
+                // bua
+                $this->db->select('*');
+                $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                $this->db->limit(1);
+                $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                <?php
+                if ($get_addendum_kontrak) { ?>
+                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                    <?php } ?>
+                <?php } else { ?>
+                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                <?php } ?>
+                <?php if ($value_program['persen_progres_fisik']) { ?>
+                    <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                <?php   } else { ?>
+                    <td class="tg-0l"></td>
+                <?php   }  ?>
+                <td class="tg-0lax">
+                    <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                </td>
+                <?php if ($value_program['persen_progres_fisik']) { ?>
+                    <!-- gila2 -->
+                    <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                    <!-- gila -->
+                <?php   } else { ?>
+                    <td class="tg-0lax"></td>
+                <?php   }  ?>
+                <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                    <td class="tg-0l">AtCost</td>
+                <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                    <td class="tg-0l">LumpSump</td>
+                <?php   } else { ?>
+                    <td class="tg-01"></td>
+                <?php }  ?>
+                <td class="tg-0lax">
+                    <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                    <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                    <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                </td>
+            </tr>
+        <?php } ?>
+        <!-- _1_ -->
+        <?php
+        $this->db->select('*');
+        $this->db->from('tbl_detail_bua_1');
+        $this->db->where('tbl_detail_bua_1.id_bua_detail', $id_bua_detail);
+        $this->db->order_by('CAST(no_urut_1_bua AS DECIMAL(10,6)) ASC');
+        $query_result_bua_detail_1 = $this->db->get() ?>
+        <?php
+        foreach ($query_result_bua_detail_1->result_array() as $value_bua_detail_1) { ?>
+            <?php $id_detail_bua_1 = $value_bua_detail_1['id_detail_bua_1'];  ?>
+            <?php $nama_uraian_bua_detail_1 = $value_bua_detail_1['nama_uraian_1_bua']; ?>
+            <tr>
+                <td class="tg-0lax"><?= $value_bua_detail_1['no_urut_1_bua'] ?></td>
+                <td class="tg-0lax"><?= $value_bua_detail_1['nama_uraian_1_bua']; ?></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+            </tr>
+            <?php
+            $this->db->select('*');
+            $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+            $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+            $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_bua_detail_1);
+            if ($id_departemen == 4) {
+            } else {
+                $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+            }
+            $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+            $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+            $result_program = $this->db->get() ?>
+            <?php
+            foreach ($result_program->result_array() as $value_program) { ?>
+                <?php
+                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                ?>
+                <?php
+                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                ?>
+                <?php
+                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                ?>
+                <?php
+                // 
+                if (round($total_margin) < 2) {
+                    $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                    $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                    $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                } else if (round($total_margin) >= 8) {
+                    $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                }
+
+                if (round($total_margin) < 2) {
+                    $fee_owner  =  $total_efisiensi * 100  / 100;
+                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                    $fee_owner  =  $total_efisiensi * 50  / 100;
+                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                    $fee_owner  =  $total_efisiensi * 30 / 100;
+                } else if (round($total_margin) >= 8) {
+                    $fee_owner  =  $total_efisiensi * 10  / 100;
+                }
+                $total_kontrak_awal_vendor_atas = 0;
+                $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                $total_ke_atas_bua = $value_program['total_hps_mata_anggaran'];
+                $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                ?>
+                <tr>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                    <!-- ambil kontrak awal / addendum -->
+                    <?php
+                    // bua
+                    $this->db->select('*');
+                    $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                    $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                    $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                    $this->db->limit(1);
+                    $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                    <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                    <?php
+                    if ($get_addendum_kontrak) { ?>
+                        <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                    <?php } ?>
+                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                        <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                    <?php   } else { ?>
+                        <td class="tg-0l"></td>
+                    <?php   }  ?>
+                    <td class="tg-0lax">
+                        <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                    </td>
+                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                        <!-- gila2 -->
+                        <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                        <!-- gila -->
+                    <?php   } else { ?>
+                        <td class="tg-0lax"></td>
+                    <?php   }  ?>
+                    <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                    <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                        <td class="tg-0l">AtCost</td>
+                    <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                        <td class="tg-0l">LumpSump</td>
+                    <?php   } else { ?>
+                        <td class="tg-01"></td>
+                    <?php }  ?>
+                    <td class="tg-0lax">
+                        <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                        <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                        <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                    </td>
+                </tr>
+            <?php } ?>
+            <?php
+            // _1
+            // _2
+            $this->db->select('*');
+            $this->db->from('tbl_detail_bua_2');
+            $this->db->where('tbl_detail_bua_2.id_detail_bua_1', $id_detail_bua_1);
+            $this->db->order_by('CAST(no_urut_2_bua AS DECIMAL(10,6)) ASC');
+            $query_result_bua_detail_2 = $this->db->get() ?>
+            <?php
+            foreach ($query_result_bua_detail_2->result_array() as $value_bua_detail_2) { ?>
+                <?php $id_detail_bua_2 = $value_bua_detail_2['id_detail_bua_2'];  ?>
+                <?php $nama_uraian_bua_detail_2 = $value_bua_detail_2['nama_uraian_2_bua']; ?>
+                <tr>
+                    <td class="tg-0lax"><?= $value_bua_detail_2['no_urut_2_bua'] ?></td>
+                    <td class="tg-0lax"><?= $value_bua_detail_2['nama_uraian_2_bua']; ?></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                </tr>
+                <?php
+                $this->db->select('*');
+                $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_bua_detail_2);
+                if ($id_departemen == 4) {
+                } else {
+                    $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                    $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                    $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                }
+                $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                $result_program = $this->db->get() ?>
+                <?php
+                foreach ($result_program->result_array() as $value_program) { ?>
+                    <?php
+                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                    $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                    ?>
+                    <?php
+                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                    ?>
+                    <?php
+                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                    ?>
+                    <?php
+                    // 
+                    if (round($total_margin) < 2) {
+                        $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                        $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                        $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                    } else if (round($total_margin) >= 8) {
+                        $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                    }
+
+                    if (round($total_margin) < 2) {
+                        $fee_owner  =  $total_efisiensi * 100  / 100;
+                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                        $fee_owner  =  $total_efisiensi * 50  / 100;
+                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                        $fee_owner  =  $total_efisiensi * 30 / 100;
+                    } else if (round($total_margin) >= 8) {
+                        $fee_owner  =  $total_efisiensi * 10  / 100;
+                    }
+                    $total_kontrak_awal_vendor_atas = 0;
+                    $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                    $total_ke_atas_bua = $value_program['total_hps_mata_anggaran'];
+                    $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                    ?>
+                    <tr>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                        <!-- ambil kontrak awal / addendum -->
+                        <?php
+                        // bua
+                        $this->db->select('*');
+                        $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                        $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                        $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                        $this->db->limit(1);
+                        $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                        <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                        <?php
+                        if ($get_addendum_kontrak) { ?>
+                            <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                        <?php } ?>
+                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                            <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                        <?php   } else { ?>
+                            <td class="tg-0l"></td>
+                        <?php   }  ?>
+                        <td class="tg-0lax">
+                            <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                        </td>
+                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                            <!-- gila2 -->
+                            <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                            <!-- gila -->
+                        <?php   } else { ?>
+                            <td class="tg-0lax"></td>
+                        <?php   }  ?>
+                        <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                        <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                            <td class="tg-0l">AtCost</td>
+                        <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                            <td class="tg-0l">LumpSump</td>
+                        <?php   } else { ?>
+                            <td class="tg-01"></td>
+                        <?php }  ?>
+                        <td class="tg-0lax">
+                            <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                            <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                            <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                        </td>
+                    </tr>
+                <?php } ?>
+                <?php
+                // _2
+                // _3
+                $this->db->select('*');
+                $this->db->from('tbl_detail_bua_3');
+                $this->db->where('tbl_detail_bua_3.id_detail_bua_2', $id_detail_bua_2);
+                $this->db->order_by('CAST(no_urut_3_bua AS DECIMAL(10,6)) ASC');
+                $query_result_bua_detail_3 = $this->db->get() ?>
+                <?php
+                foreach ($query_result_bua_detail_3->result_array() as $value_bua_detail_3) { ?>
+                    <?php $id_detail_bua_3 = $value_bua_detail_3['id_detail_bua_3'];  ?>
+                    <?php $nama_uraian_bua_detail_3 = $value_bua_detail_3['nama_uraian_3_bua']; ?>
+                    <tr>
+                        <td class="tg-0lax"><?= $value_bua_detail_3['no_urut_3_bua'] ?></td>
+                        <td class="tg-0lax"><?= $value_bua_detail_3['nama_uraian_3_bua']; ?></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                    </tr>
+                    <?php
+                    $this->db->select('*');
+                    $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                    $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                    $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_bua_detail_3);
+                    if ($id_departemen == 4) {
+                    } else {
+                        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                    }
+                    $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                    $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                    $result_program = $this->db->get() ?>
+                    <?php
+                    foreach ($result_program->result_array() as $value_program) { ?>
+                        <?php
+                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                        $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                        ?>
+                        <?php
+                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                        ?>
+                        <?php
+                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                        ?>
+                        <?php
+                        // 
+                        if (round($total_margin) < 2) {
+                            $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                            $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                            $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                        } else if (round($total_margin) >= 8) {
+                            $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                        }
+
+                        if (round($total_margin) < 2) {
+                            $fee_owner  =  $total_efisiensi * 100  / 100;
+                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                            $fee_owner  =  $total_efisiensi * 50  / 100;
+                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                            $fee_owner  =  $total_efisiensi * 30 / 100;
+                        } else if (round($total_margin) >= 8) {
+                            $fee_owner  =  $total_efisiensi * 10  / 100;
+                        }
+                        $total_kontrak_awal_vendor_atas = 0;
+                        $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                        $total_ke_atas_bua = $value_program['total_hps_mata_anggaran'];
+                        $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                        ?>
+                        <tr>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                            <!-- ambil kontrak awal / addendum -->
+                            <?php
+                            // bua
+                            $this->db->select('*');
+                            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                            $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                            $this->db->limit(1);
+                            $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                            <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                            <?php
+                            if ($get_addendum_kontrak) { ?>
+                                <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                            <?php } ?>
+                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                            <?php   } else { ?>
+                                <td class="tg-0l"></td>
+                            <?php   }  ?>
+                            <td class="tg-0lax">
+                                <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                            </td>
+                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                <!-- gila2 -->
+                                <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                <!-- gila -->
+                            <?php   } else { ?>
+                                <td class="tg-0lax"></td>
+                            <?php   }  ?>
+                            <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                            <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                <td class="tg-0l">AtCost</td>
+                            <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                <td class="tg-0l">LumpSump</td>
+                            <?php   } else { ?>
+                                <td class="tg-01"></td>
+                            <?php }  ?>
+                            <td class="tg-0lax">
+                                <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                            </td>
+                        </tr>
+                    <?php } ?>
+
+                    <?php
+                    // _3
+                    // _4
+                    $this->db->select('*');
+                    $this->db->from('tbl_detail_bua_4');
+                    $this->db->where('tbl_detail_bua_4.id_detail_bua_3', $id_detail_bua_3);
+                    $this->db->order_by('CAST(no_urut_4_bua AS DECIMAL(10,6)) ASC');
+                    $query_result_bua_detail_4 = $this->db->get() ?>
+                    <?php
+                    foreach ($query_result_bua_detail_4->result_array() as $value_bua_detail_4) { ?>
+                        <?php $id_detail_bua_4 = $value_bua_detail_4['id_detail_bua_4'];  ?>
+                        <?php $nama_uraian_bua_detail_4 = $value_bua_detail_4['nama_uraian_4_bua']; ?>
+                        <tr>
+                            <td class="tg-0lax"><?= $value_bua_detail_4['no_urut_4_bua'] ?></td>
+                            <td class="tg-0lax"><?= $value_bua_detail_4['nama_uraian_4_bua']; ?></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                        </tr>
+                        <?php
+                        $this->db->select('*');
+                        $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                        $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                        $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_bua_detail_4);
+                        if ($id_departemen == 4) {
+                        } else {
+                            $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                            $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                            $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                        }
+                        $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                        $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                        $result_program = $this->db->get() ?>
+                        <?php
+                        foreach ($result_program->result_array() as $value_program) { ?>
+                            <?php
+                            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                            $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                            ?>
+                            <?php
+                            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                            ?>
+                            <?php
+                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                            ?>
+                            <?php
+                            // 
+                            if (round($total_margin) < 2) {
+                                $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                            } else if (round($total_margin) >= 8) {
+                                $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                            }
+
+                            if (round($total_margin) < 2) {
+                                $fee_owner  =  $total_efisiensi * 100  / 100;
+                            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                $fee_owner  =  $total_efisiensi * 50  / 100;
+                            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                $fee_owner  =  $total_efisiensi * 30 / 100;
+                            } else if (round($total_margin) >= 8) {
+                                $fee_owner  =  $total_efisiensi * 10  / 100;
+                            }
+                            $total_kontrak_awal_vendor_atas = 0;
+                            $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                            $total_ke_atas_bua = $value_program['total_hps_mata_anggaran'];
+                            $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                            ?>
+                            <tr>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                <!-- ambil kontrak awal / addendum -->
+                                <?php
+                                // bua
+                                $this->db->select('*');
+                                $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                $this->db->limit(1);
+                                $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                <?php
+                                if ($get_addendum_kontrak) { ?>
+                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                    <?php } ?>
+                                <?php } else { ?>
+                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                <?php } ?>
+                                <?php if ($value_program['persen_progres_fisik']) { ?>
+                                    <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                <?php   } else { ?>
+                                    <td class="tg-0l"></td>
+                                <?php   }  ?>
+                                <td class="tg-0lax">
+                                    <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                </td>
+                                <?php if ($value_program['persen_progres_fisik']) { ?>
+                                    <!-- gila2 -->
+                                    <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                    <!-- gila -->
+                                <?php   } else { ?>
+                                    <td class="tg-0lax"></td>
+                                <?php   }  ?>
+                                <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                    <td class="tg-0l">AtCost</td>
+                                <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                    <td class="tg-0l">LumpSump</td>
+                                <?php   } else { ?>
+                                    <td class="tg-01"></td>
+                                <?php }  ?>
+                                <td class="tg-0lax">
+                                    <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                    <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                    <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                                </td>
+                            </tr>
+                        <?php } ?>
+
+                        <?php
+                        // _4
+                        // _5
+                        $this->db->select('*');
+                        $this->db->from('tbl_detail_bua_5');
+                        $this->db->where('tbl_detail_bua_5.id_detail_bua_4', $id_detail_bua_4);
+                        $this->db->order_by('CAST(no_urut_5_bua AS DECIMAL(10,6)) ASC');
+                        $query_result_bua_detail_5 = $this->db->get() ?>
+                        <?php
+                        foreach ($query_result_bua_detail_5->result_array() as $value_bua_detail_5) { ?>
+                            <?php $id_detail_bua_5 = $value_bua_detail_5['id_detail_bua_5'];  ?>
+                            <?php $nama_uraian_bua_detail_5 = $value_bua_detail_5['nama_uraian_5_bua']; ?>
+                            <tr>
+                                <td class="tg-0lax"><?= $value_bua_detail_5['no_urut_5_bua'] ?></td>
+                                <td class="tg-0lax"><?= $value_bua_detail_5['nama_uraian_5_bua']; ?></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                            </tr>
+                            <?php
+                            $this->db->select('*');
+                            $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                            $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                            $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_bua_detail_5);
+                            if ($id_departemen == 4) {
+                            } else {
+                                $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                                $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                                $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                            }
+                            $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                            $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                            $result_program = $this->db->get() ?>
+                            <?php
+                            foreach ($result_program->result_array() as $value_program) { ?>
+                                <?php
+                                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                ?>
+                                <?php
+                                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                ?>
+                                <?php
+                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                ?>
+                                <?php
+                                // 
+                                if (round($total_margin) < 2) {
+                                    $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                    $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                    $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                                } else if (round($total_margin) >= 8) {
+                                    $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                                }
+
+                                if (round($total_margin) < 2) {
+                                    $fee_owner  =  $total_efisiensi * 100  / 100;
+                                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                    $fee_owner  =  $total_efisiensi * 50  / 100;
+                                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                    $fee_owner  =  $total_efisiensi * 30 / 100;
+                                } else if (round($total_margin) >= 8) {
+                                    $fee_owner  =  $total_efisiensi * 10  / 100;
+                                }
+                                $total_kontrak_awal_vendor_atas = 0;
+                                $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                                $total_ke_atas_bua = $value_program['total_hps_mata_anggaran'];
+                                $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                                ?>
+                                <tr>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                    <!-- ambil kontrak awal / addendum -->
+                                    <?php
+                                    // bua
+                                    $this->db->select('*');
+                                    $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                    $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                    $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                    $this->db->limit(1);
+                                    $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                    <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                    <?php
+                                    if ($get_addendum_kontrak) { ?>
+                                        <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                        <?php } ?>
+                                    <?php } else { ?>
+                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                    <?php } ?>
+                                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                                        <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                    <?php   } else { ?>
+                                        <td class="tg-0l"></td>
+                                    <?php   }  ?>
+                                    <td class="tg-0lax">
+                                        <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                    </td>
+                                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                                        <!-- gila2 -->
+                                        <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                        <!-- gila -->
+                                    <?php   } else { ?>
+                                        <td class="tg-0lax"></td>
+                                    <?php   }  ?>
+                                    <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                    <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                        <td class="tg-0l">AtCost</td>
+                                    <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                        <td class="tg-0l">LumpSump</td>
+                                    <?php   } else { ?>
+                                        <td class="tg-01"></td>
+                                    <?php }  ?>
+                                    <td class="tg-0lax">
+                                        <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                        <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                        <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                            <?php
+                            // _5
+                            // _6
+                            $this->db->select('*');
+                            $this->db->from('tbl_detail_bua_6');
+                            $this->db->where('tbl_detail_bua_6.id_detail_bua_5', $id_detail_bua_5);
+                            $this->db->order_by('CAST(no_urut_6_bua AS DECIMAL(10,6)) ASC');
+                            $query_result_bua_detail_6 = $this->db->get() ?>
+                            <?php
+                            foreach ($query_result_bua_detail_6->result_array() as $value_bua_detail_6) { ?>
+                                <?php $id_detail_bua_6 = $value_bua_detail_6['id_detail_bua_6'];  ?>
+                                <?php $nama_uraian_bua_detail_6 = $value_bua_detail_6['nama_uraian_6_bua']; ?>
+                                <tr>
+                                    <td class="tg-0lax"><?= $value_bua_detail_6['no_urut_6_bua'] ?></td>
+                                    <td class="tg-0lax"><?= $value_bua_detail_6['nama_uraian_6_bua']; ?></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                </tr>
+                                <?php
+                                $this->db->select('*');
+                                $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                                $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                                $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_bua_detail_6);
+                                if ($id_departemen == 4) {
+                                } else {
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                                }
+                                $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                                $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                                $result_program = $this->db->get() ?>
+                                <?php
+                                foreach ($result_program->result_array() as $value_program) { ?>
+                                    <?php
+                                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                    $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                    ?>
+                                    <?php
+                                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                    ?>
+                                    <?php
+                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                    ?>
+                                    <?php
+                                    // 
+                                    if (round($total_margin) < 2) {
+                                        $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                        $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                        $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                                    } else if (round($total_margin) >= 8) {
+                                        $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                                    }
+
+                                    if (round($total_margin) < 2) {
+                                        $fee_owner  =  $total_efisiensi * 100  / 100;
+                                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                        $fee_owner  =  $total_efisiensi * 50  / 100;
+                                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                        $fee_owner  =  $total_efisiensi * 30 / 100;
+                                    } else if (round($total_margin) >= 8) {
+                                        $fee_owner  =  $total_efisiensi * 10  / 100;
+                                    }
+                                    $total_kontrak_awal_vendor_atas = 0;
+                                    $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                                    $total_ke_atas_bua = $value_program['total_hps_mata_anggaran'];
+                                    $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                                    ?>
+                                    <tr>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                        <!-- ambil kontrak awal / addendum -->
+                                        <?php
+                                        // bua
+                                        $this->db->select('*');
+                                        $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                        $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                        $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                        $this->db->limit(1);
+                                        $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                        <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                        <?php
+                                        if ($get_addendum_kontrak) { ?>
+                                            <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                            <?php } ?>
+                                        <?php } else { ?>
+                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                        <?php } ?>
+                                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                                            <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                        <?php   } else { ?>
+                                            <td class="tg-0l"></td>
+                                        <?php   }  ?>
+                                        <td class="tg-0lax">
+                                            <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                        </td>
+                                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                                            <!-- gila2 -->
+                                            <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                            <!-- gila -->
+                                        <?php   } else { ?>
+                                            <td class="tg-0lax"></td>
+                                        <?php   }  ?>
+                                        <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                        <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                            <td class="tg-0l">AtCost</td>
+                                        <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                            <td class="tg-0l">LumpSump</td>
+                                        <?php   } else { ?>
+                                            <td class="tg-01"></td>
+                                        <?php }  ?>
+                                        <td class="tg-0lax">
+                                            <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                            <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                            <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                                <?php
+                                // _6
+                                // _7
+                                $this->db->select('*');
+                                $this->db->from('tbl_detail_bua_7');
+                                $this->db->where('tbl_detail_bua_7.id_detail_bua_6', $id_detail_bua_6);
+                                $this->db->order_by('CAST(no_urut_7_bua AS DECIMAL(10,6)) ASC');
+                                $query_result_bua_detail_7 = $this->db->get() ?>
+                                <?php
+                                foreach ($query_result_bua_detail_7->result_array() as $value_bua_detail_7) { ?>
+                                    <?php $id_detail_bua_7 = $value_bua_detail_7['id_detail_bua_7'];  ?>
+                                    <?php $nama_uraian_bua_detail_7 = $value_bua_detail_7['nama_uraian_7_bua']; ?>
+                                    <tr>
+                                        <td class="tg-0lax"><?= $value_bua_detail_7['no_urut_7_bua'] ?></td>
+                                        <td class="tg-0lax"><?= $value_bua_detail_7['nama_uraian_7_bua']; ?></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                    </tr>
+                                    <?php
+                                    $this->db->select('*');
+                                    $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                                    $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_bua_detail_7);
+                                    if ($id_departemen == 4) {
+                                    } else {
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                                    }
+                                    $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                                    $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                                    $result_program = $this->db->get() ?>
+                                    <?php
+                                    foreach ($result_program->result_array() as $value_program) { ?>
+                                        <?php
+                                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                        $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                        ?>
+                                        <?php
+                                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                        ?>
+                                        <?php
+                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                        ?>
+                                        <?php
+                                        // 
+                                        if (round($total_margin) < 2) {
+                                            $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                            $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                            $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                                        } else if (round($total_margin) >= 8) {
+                                            $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                                        }
+
+                                        if (round($total_margin) < 2) {
+                                            $fee_owner  =  $total_efisiensi * 100  / 100;
+                                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                            $fee_owner  =  $total_efisiensi * 50  / 100;
+                                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                            $fee_owner  =  $total_efisiensi * 30 / 100;
+                                        } else if (round($total_margin) >= 8) {
+                                            $fee_owner  =  $total_efisiensi * 10  / 100;
+                                        }
+                                        $total_kontrak_awal_vendor_atas = 0;
+                                        $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                                        $total_ke_atas_bua = $value_program['total_hps_mata_anggaran'];
+                                        $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                                        ?>
+                                        <tr>
+                                            <td class="tg-0lax"></td>
+                                            <td class="tg-0lax"></td>
+                                            <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                            <!-- ambil kontrak awal / addendum -->
+                                            <?php
+                                            // bua
+                                            $this->db->select('*');
+                                            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                            $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                            $this->db->limit(1);
+                                            $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                            <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                            <?php
+                                            if ($get_addendum_kontrak) { ?>
+                                                <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                <?php } ?>
+                                            <?php } else { ?>
+                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                            <?php } ?>
+                                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                                <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                            <?php   } else { ?>
+                                                <td class="tg-0l"></td>
+                                            <?php   }  ?>
+                                            <td class="tg-0lax">
+                                                <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                            </td>
+                                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                                <!-- gila2 -->
+                                                <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                                <!-- gila -->
+                                            <?php   } else { ?>
+                                                <td class="tg-0lax"></td>
+                                            <?php   }  ?>
+                                            <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                            <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                                <td class="tg-0l">AtCost</td>
+                                            <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                                <td class="tg-0l">LumpSump</td>
+                                            <?php   } else { ?>
+                                                <td class="tg-01"></td>
+                                            <?php }  ?>
+                                            <td class="tg-0lax">
+                                                <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                                <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                                <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                <?php } ?>
+                            <?php } ?>
+                        <?php } ?>
+                    <?php } ?>
+                <?php } ?>
+            <?php } ?>
+        <?php } ?>
+    <?php } ?>
+<?php } ?>
+<?php
+// sdm
+$this->db->select('*');
+$this->db->from('tbl_sdm');
+$this->db->where('tbl_sdm.id_kontrak', $row_kontrak['id_kontrak']);
+$this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
+$query_result_sdm = $this->db->get() ?>
+<?php
+foreach ($query_result_sdm->result_array() as $value_sdm) { ?>
+    <?php $id_sdm = $value_sdm['id_sdm'];   ?>
+    <?php $nama_uraian_sdm = $value_sdm['nama_uraian']; ?>
+    <tr>
+        <td class="tg-0lax"><?= $value_sdm['no_urut'] ?></td>
+        <td class="tg-0lax"><?= $value_sdm['nama_uraian']; ?></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+        <td class="tg-0lax"></td>
+    </tr>
+    <?php
+    $this->db->select('*');
+    $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+    $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+    $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_sdm);
+    if ($id_departemen == 4) {
+    } else {
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+    }
+    $result_program = $this->db->get() ?>
+    <?php
+    foreach ($result_program->result_array() as $value_program) { ?>
+        <?php
+        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+        $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+        ?>
+        <?php
+        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+        ?>
+        <?php
+        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+        ?>
+        <?php
+        // 
+        if (round($total_margin) < 2) {
+            $fee_jmtm  =  $total_efisiensi * 0  / 100;
+        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+            $fee_jmtm  =  $total_efisiensi * 50  / 100;
+        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+            $fee_jmtm  =  $total_efisiensi * 70  / 100;
+        } else if (round($total_margin) >= 8) {
+            $fee_jmtm  =  $total_efisiensi * 90  / 100;
+        }
+
+        if (round($total_margin) < 2) {
+            $fee_owner  =  $total_efisiensi * 100  / 100;
+        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+            $fee_owner  =  $total_efisiensi * 50  / 100;
+        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+            $fee_owner  =  $total_efisiensi * 30 / 100;
+        } else if (round($total_margin) >= 8) {
+            $fee_owner  =  $total_efisiensi * 10  / 100;
+        }
+        $total_kontrak_awal_vendor_atas = 0;
+        $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+        $total_ke_atas_sdm = $value_program['total_hps_mata_anggaran'];
+        $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+        ?>
+        <tr>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+            <!-- ambil kontrak awal / addendum -->
+            <?php
+            // sdm
+            $this->db->select('*');
+            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+            $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+            $this->db->limit(1);
+            $get_addendum_kontrak = $this->db->get()->result_array() ?>
+            <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+            <?php
+            if ($get_addendum_kontrak) { ?>
+                <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                <?php } ?>
+            <?php } else { ?>
+                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+            <?php } ?>
+            <?php if ($value_program['persen_progres_fisik']) { ?>
+                <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+            <?php   } else { ?>
+                <td class="tg-0l"></td>
+            <?php   }  ?>
+            <td class="tg-0lax">
+                <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+            </td>
+            <?php if ($value_program['persen_progres_fisik']) { ?>
+                <!-- gila2 -->
+                <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                <!-- gila -->
+            <?php   } else { ?>
+                <td class="tg-0lax"></td>
+            <?php   }  ?>
+            <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+            <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                <td class="tg-0l">AtCost</td>
+            <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                <td class="tg-0l">LumpSump</td>
+            <?php   } else { ?>
+                <td class="tg-01"></td>
+            <?php }  ?>
+            <td class="tg-0lax">
+                <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+            </td>
+        </tr>
+    <?php } ?>
+    <?php
+    $this->db->select('*');
+    $this->db->from('tbl_sdm_detail');
+    $this->db->where('tbl_sdm_detail.id_sdm', $id_sdm);
+    $this->db->order_by('CAST(no_urut AS DECIMAL(10,6)) ASC');
+    $query_result_sdm_detail = $this->db->get() ?>
+    <?php
+    foreach ($query_result_sdm_detail->result_array() as $value_sdm_detail) { ?>
+        <?php $id_sdm_detail = $value_sdm_detail['id_sdm_detail'];  ?>
+        <?php $nama_uraian_sdm_detail = $value_sdm_detail['nama_uraian']; ?>
+        <tr>
+            <td class="tg-0lax"><?= $value_sdm_detail['no_urut'] ?></td>
+            <td class="tg-0lax"><?= $value_sdm_detail['nama_uraian']; ?></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+        </tr>
+        <?php
+        $this->db->select('*');
+        $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+        $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+        $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_sdm_detail);
+        if ($id_departemen == 4) {
+        } else {
+            $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+            $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+            $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+        }
+        $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+        $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+        $result_program = $this->db->get() ?>
+        <?php
+        foreach ($result_program->result_array() as $value_program) { ?>
+            <?php
+            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+            $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+            ?>
+            <?php
+            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+            ?>
+            <?php
+            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+            ?>
+            <?php
+            // 
+            if (round($total_margin) < 2) {
+                $fee_jmtm  =  $total_efisiensi * 0  / 100;
+            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                $fee_jmtm  =  $total_efisiensi * 50  / 100;
+            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                $fee_jmtm  =  $total_efisiensi * 70  / 100;
+            } else if (round($total_margin) >= 8) {
+                $fee_jmtm  =  $total_efisiensi * 90  / 100;
+            }
+
+            if (round($total_margin) < 2) {
+                $fee_owner  =  $total_efisiensi * 100  / 100;
+            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                $fee_owner  =  $total_efisiensi * 50  / 100;
+            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                $fee_owner  =  $total_efisiensi * 30 / 100;
+            } else if (round($total_margin) >= 8) {
+                $fee_owner  =  $total_efisiensi * 10  / 100;
+            }
+            $total_kontrak_awal_vendor_atas = 0;
+            $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+            $total_ke_atas_sdm = $value_program['total_hps_mata_anggaran'];
+            $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+            ?>
+            <tr>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                <!-- ambil kontrak awal / addendum -->
+                <?php
+                // sdm
+                $this->db->select('*');
+                $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                $this->db->limit(1);
+                $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                <?php
+                if ($get_addendum_kontrak) { ?>
+                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                    <?php } ?>
+                <?php } else { ?>
+                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                <?php } ?>
+                <?php if ($value_program['persen_progres_fisik']) { ?>
+                    <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                <?php   } else { ?>
+                    <td class="tg-0l"></td>
+                <?php   }  ?>
+                <td class="tg-0lax">
+                    <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                </td>
+                <?php if ($value_program['persen_progres_fisik']) { ?>
+                    <!-- gila2 -->
+                    <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                    <!-- gila -->
+                <?php   } else { ?>
+                    <td class="tg-0lax"></td>
+                <?php   }  ?>
+                <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                    <td class="tg-0l">AtCost</td>
+                <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                    <td class="tg-0l">LumpSump</td>
+                <?php   } else { ?>
+                    <td class="tg-01"></td>
+                <?php }  ?>
+                <td class="tg-0lax">
+                    <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                    <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                    <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                </td>
+            </tr>
+        <?php } ?>
+        <!-- _1_ -->
+        <?php
+        $this->db->select('*');
+        $this->db->from('tbl_detail_sdm_1');
+        $this->db->where('tbl_detail_sdm_1.id_sdm_detail', $id_sdm_detail);
+        $this->db->order_by('CAST(no_urut_1_sdm AS DECIMAL(10,6)) ASC');
+        $query_result_sdm_detail_1 = $this->db->get() ?>
+        <?php
+        foreach ($query_result_sdm_detail_1->result_array() as $value_sdm_detail_1) { ?>
+            <?php $id_detail_sdm_1 = $value_sdm_detail_1['id_detail_sdm_1'];  ?>
+            <?php $nama_uraian_sdm_detail_1 = $value_sdm_detail_1['nama_uraian_1_sdm']; ?>
+            <tr>
+                <td class="tg-0lax"><?= $value_sdm_detail_1['no_urut_1_sdm'] ?></td>
+                <td class="tg-0lax"><?= $value_sdm_detail_1['nama_uraian_1_sdm']; ?></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+                <td class="tg-0lax"></td>
+            </tr>
+            <?php
+            $this->db->select('*');
+            $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+            $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+            $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_sdm_detail_1);
+            if ($id_departemen == 4) {
+            } else {
+                $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+            }
+            $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+            $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+            $result_program = $this->db->get() ?>
+            <?php
+            foreach ($result_program->result_array() as $value_program) { ?>
+                <?php
+                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                ?>
+                <?php
+                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                ?>
+                <?php
+                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                ?>
+                <?php
+                // 
+                if (round($total_margin) < 2) {
+                    $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                    $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                    $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                } else if (round($total_margin) >= 8) {
+                    $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                }
+
+                if (round($total_margin) < 2) {
+                    $fee_owner  =  $total_efisiensi * 100  / 100;
+                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                    $fee_owner  =  $total_efisiensi * 50  / 100;
+                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                    $fee_owner  =  $total_efisiensi * 30 / 100;
+                } else if (round($total_margin) >= 8) {
+                    $fee_owner  =  $total_efisiensi * 10  / 100;
+                }
+                $total_kontrak_awal_vendor_atas = 0;
+                $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                $total_ke_atas_sdm = $value_program['total_hps_mata_anggaran'];
+                $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                ?>
+                <tr>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                    <!-- ambil kontrak awal / addendum -->
+                    <?php
+                    // sdm
+                    $this->db->select('*');
+                    $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                    $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                    $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                    $this->db->limit(1);
+                    $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                    <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                    <?php
+                    if ($get_addendum_kontrak) { ?>
+                        <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                    <?php } ?>
+                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                        <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                    <?php   } else { ?>
+                        <td class="tg-0l"></td>
+                    <?php   }  ?>
+                    <td class="tg-0lax">
+                        <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                    </td>
+                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                        <!-- gila2 -->
+                        <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                        <!-- gila -->
+                    <?php   } else { ?>
+                        <td class="tg-0lax"></td>
+                    <?php   }  ?>
+                    <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                    <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                        <td class="tg-0l">AtCost</td>
+                    <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                        <td class="tg-0l">LumpSump</td>
+                    <?php   } else { ?>
+                        <td class="tg-01"></td>
+                    <?php }  ?>
+                    <td class="tg-0lax">
+                        <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                        <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                        <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                    </td>
+                </tr>
+            <?php } ?>
+            <?php
+            // _1
+            // _2
+            $this->db->select('*');
+            $this->db->from('tbl_detail_sdm_2');
+            $this->db->where('tbl_detail_sdm_2.id_detail_sdm_1', $id_detail_sdm_1);
+            $this->db->order_by('CAST(no_urut_2_sdm AS DECIMAL(10,6)) ASC');
+            $query_result_sdm_detail_2 = $this->db->get() ?>
+            <?php
+            foreach ($query_result_sdm_detail_2->result_array() as $value_sdm_detail_2) { ?>
+                <?php $id_detail_sdm_2 = $value_sdm_detail_2['id_detail_sdm_2'];  ?>
+                <?php $nama_uraian_sdm_detail_2 = $value_sdm_detail_2['nama_uraian_2_sdm']; ?>
+                <tr>
+                    <td class="tg-0lax"><?= $value_sdm_detail_2['no_urut_2_sdm'] ?></td>
+                    <td class="tg-0lax"><?= $value_sdm_detail_2['nama_uraian_2_sdm']; ?></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                </tr>
+                <?php
+                $this->db->select('*');
+                $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_sdm_detail_2);
+                if ($id_departemen == 4) {
+                } else {
+                    $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                    $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                    $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                }
+                $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                $result_program = $this->db->get() ?>
+                <?php
+                foreach ($result_program->result_array() as $value_program) { ?>
+                    <?php
+                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                    $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                    ?>
+                    <?php
+                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                    ?>
+                    <?php
+                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                    ?>
+                    <?php
+                    // 
+                    if (round($total_margin) < 2) {
+                        $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                        $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                        $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                    } else if (round($total_margin) >= 8) {
+                        $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                    }
+
+                    if (round($total_margin) < 2) {
+                        $fee_owner  =  $total_efisiensi * 100  / 100;
+                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                        $fee_owner  =  $total_efisiensi * 50  / 100;
+                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                        $fee_owner  =  $total_efisiensi * 30 / 100;
+                    } else if (round($total_margin) >= 8) {
+                        $fee_owner  =  $total_efisiensi * 10  / 100;
+                    }
+                    $total_kontrak_awal_vendor_atas = 0;
+                    $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                    $total_ke_atas_sdm = $value_program['total_hps_mata_anggaran'];
+                    $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                    ?>
+                    <tr>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                        <!-- ambil kontrak awal / addendum -->
+                        <?php
+                        // sdm
+                        $this->db->select('*');
+                        $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                        $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                        $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                        $this->db->limit(1);
+                        $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                        <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                        <?php
+                        if ($get_addendum_kontrak) { ?>
+                            <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                        <?php } ?>
+                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                            <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                        <?php   } else { ?>
+                            <td class="tg-0l"></td>
+                        <?php   }  ?>
+                        <td class="tg-0lax">
+                            <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                        </td>
+                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                            <!-- gila2 -->
+                            <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                            <!-- gila -->
+                        <?php   } else { ?>
+                            <td class="tg-0lax"></td>
+                        <?php   }  ?>
+                        <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                        <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                            <td class="tg-0l">AtCost</td>
+                        <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                            <td class="tg-0l">LumpSump</td>
+                        <?php   } else { ?>
+                            <td class="tg-01"></td>
+                        <?php }  ?>
+                        <td class="tg-0lax">
+                            <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                            <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                            <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                        </td>
+                    </tr>
+                <?php } ?>
+                <?php
+                // _2
+                // _3
+                $this->db->select('*');
+                $this->db->from('tbl_detail_sdm_3');
+                $this->db->where('tbl_detail_sdm_3.id_detail_sdm_2', $id_detail_sdm_2);
+                $this->db->order_by('CAST(no_urut_3_sdm AS DECIMAL(10,6)) ASC');
+                $query_result_sdm_detail_3 = $this->db->get() ?>
+                <?php
+                foreach ($query_result_sdm_detail_3->result_array() as $value_sdm_detail_3) { ?>
+                    <?php $id_detail_sdm_3 = $value_sdm_detail_3['id_detail_sdm_3'];  ?>
+                    <?php $nama_uraian_sdm_detail_3 = $value_sdm_detail_3['nama_uraian_3_sdm']; ?>
+                    <tr>
+                        <td class="tg-0lax"><?= $value_sdm_detail_3['no_urut_3_sdm'] ?></td>
+                        <td class="tg-0lax"><?= $value_sdm_detail_3['nama_uraian_3_sdm']; ?></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                    </tr>
+                    <?php
+                    $this->db->select('*');
+                    $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                    $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                    $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_sdm_detail_3);
+                    if ($id_departemen == 4) {
+                    } else {
+                        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                    }
+                    $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                    $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                    $result_program = $this->db->get() ?>
+                    <?php
+                    foreach ($result_program->result_array() as $value_program) { ?>
+                        <?php
+                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                        $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                        ?>
+                        <?php
+                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                        ?>
+                        <?php
+                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                        ?>
+                        <?php
+                        // 
+                        if (round($total_margin) < 2) {
+                            $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                            $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                            $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                        } else if (round($total_margin) >= 8) {
+                            $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                        }
+
+                        if (round($total_margin) < 2) {
+                            $fee_owner  =  $total_efisiensi * 100  / 100;
+                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                            $fee_owner  =  $total_efisiensi * 50  / 100;
+                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                            $fee_owner  =  $total_efisiensi * 30 / 100;
+                        } else if (round($total_margin) >= 8) {
+                            $fee_owner  =  $total_efisiensi * 10  / 100;
+                        }
+                        $total_kontrak_awal_vendor_atas = 0;
+                        $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                        $total_ke_atas_sdm = $value_program['total_hps_mata_anggaran'];
+                        $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                        ?>
+                        <tr>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                            <!-- ambil kontrak awal / addendum -->
+                            <?php
+                            // sdm
+                            $this->db->select('*');
+                            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                            $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                            $this->db->limit(1);
+                            $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                            <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                            <?php
+                            if ($get_addendum_kontrak) { ?>
+                                <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                            <?php } ?>
+                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                            <?php   } else { ?>
+                                <td class="tg-0l"></td>
+                            <?php   }  ?>
+                            <td class="tg-0lax">
+                                <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                            </td>
+                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                <!-- gila2 -->
+                                <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                <!-- gila -->
+                            <?php   } else { ?>
+                                <td class="tg-0lax"></td>
+                            <?php   }  ?>
+                            <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                            <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                <td class="tg-0l">AtCost</td>
+                            <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                <td class="tg-0l">LumpSump</td>
+                            <?php   } else { ?>
+                                <td class="tg-01"></td>
+                            <?php }  ?>
+                            <td class="tg-0lax">
+                                <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                            </td>
+                        </tr>
+                    <?php } ?>
+
+                    <?php
+                    // _3
+                    // _4
+                    $this->db->select('*');
+                    $this->db->from('tbl_detail_sdm_4');
+                    $this->db->where('tbl_detail_sdm_4.id_detail_sdm_3', $id_detail_sdm_3);
+                    $this->db->order_by('CAST(no_urut_4_sdm AS DECIMAL(10,6)) ASC');
+                    $query_result_sdm_detail_4 = $this->db->get() ?>
+                    <?php
+                    foreach ($query_result_sdm_detail_4->result_array() as $value_sdm_detail_4) { ?>
+                        <?php $id_detail_sdm_4 = $value_sdm_detail_4['id_detail_sdm_4'];  ?>
+                        <?php $nama_uraian_sdm_detail_4 = $value_sdm_detail_4['nama_uraian_4_sdm']; ?>
+                        <tr>
+                            <td class="tg-0lax"><?= $value_sdm_detail_4['no_urut_4_sdm'] ?></td>
+                            <td class="tg-0lax"><?= $value_sdm_detail_4['nama_uraian_4_sdm']; ?></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                        </tr>
+                        <?php
+                        $this->db->select('*');
+                        $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                        $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                        $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_sdm_detail_4);
+                        if ($id_departemen == 4) {
+                        } else {
+                            $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                            $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                            $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                        }
+                        $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                        $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                        $result_program = $this->db->get() ?>
+                        <?php
+                        foreach ($result_program->result_array() as $value_program) { ?>
+                            <?php
+                            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                            $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                            ?>
+                            <?php
+                            $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                            ?>
+                            <?php
+                            $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                            $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                            ?>
+                            <?php
+                            // 
+                            if (round($total_margin) < 2) {
+                                $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                            } else if (round($total_margin) >= 8) {
+                                $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                            }
+
+                            if (round($total_margin) < 2) {
+                                $fee_owner  =  $total_efisiensi * 100  / 100;
+                            } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                $fee_owner  =  $total_efisiensi * 50  / 100;
+                            } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                $fee_owner  =  $total_efisiensi * 30 / 100;
+                            } else if (round($total_margin) >= 8) {
+                                $fee_owner  =  $total_efisiensi * 10  / 100;
+                            }
+                            $total_kontrak_awal_vendor_atas = 0;
+                            $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                            $total_ke_atas_sdm = $value_program['total_hps_mata_anggaran'];
+                            $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                            ?>
+                            <tr>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                <!-- ambil kontrak awal / addendum -->
+                                <?php
+                                // sdm
+                                $this->db->select('*');
+                                $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                $this->db->limit(1);
+                                $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                <?php
+                                if ($get_addendum_kontrak) { ?>
+                                    <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                    <?php } ?>
+                                <?php } else { ?>
+                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                <?php } ?>
+                                <?php if ($value_program['persen_progres_fisik']) { ?>
+                                    <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                <?php   } else { ?>
+                                    <td class="tg-0l"></td>
+                                <?php   }  ?>
+                                <td class="tg-0lax">
+                                    <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                </td>
+                                <?php if ($value_program['persen_progres_fisik']) { ?>
+                                    <!-- gila2 -->
+                                    <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                    <!-- gila -->
+                                <?php   } else { ?>
+                                    <td class="tg-0lax"></td>
+                                <?php   }  ?>
+                                <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                    <td class="tg-0l">AtCost</td>
+                                <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                    <td class="tg-0l">LumpSump</td>
+                                <?php   } else { ?>
+                                    <td class="tg-01"></td>
+                                <?php }  ?>
+                                <td class="tg-0lax">
+                                    <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                    <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                    <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                                </td>
+                            </tr>
+                        <?php } ?>
+
+                        <?php
+                        // _4
+                        // _5
+                        $this->db->select('*');
+                        $this->db->from('tbl_detail_sdm_5');
+                        $this->db->where('tbl_detail_sdm_5.id_detail_sdm_4', $id_detail_sdm_4);
+                        $this->db->order_by('CAST(no_urut_5_sdm AS DECIMAL(10,6)) ASC');
+                        $query_result_sdm_detail_5 = $this->db->get() ?>
+                        <?php
+                        foreach ($query_result_sdm_detail_5->result_array() as $value_sdm_detail_5) { ?>
+                            <?php $id_detail_sdm_5 = $value_sdm_detail_5['id_detail_sdm_5'];  ?>
+                            <?php $nama_uraian_sdm_detail_5 = $value_sdm_detail_5['nama_uraian_5_sdm']; ?>
+                            <tr>
+                                <td class="tg-0lax"><?= $value_sdm_detail_5['no_urut_5_sdm'] ?></td>
+                                <td class="tg-0lax"><?= $value_sdm_detail_5['nama_uraian_5_sdm']; ?></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                            </tr>
+                            <?php
+                            $this->db->select('*');
+                            $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                            $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                            $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_sdm_detail_5);
+                            if ($id_departemen == 4) {
+                            } else {
+                                $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                                $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                                $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                            }
+                            $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                            $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                            $result_program = $this->db->get() ?>
+                            <?php
+                            foreach ($result_program->result_array() as $value_program) { ?>
+                                <?php
+                                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                ?>
+                                <?php
+                                $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                ?>
+                                <?php
+                                $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                ?>
+                                <?php
+                                // 
+                                if (round($total_margin) < 2) {
+                                    $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                    $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                    $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                                } else if (round($total_margin) >= 8) {
+                                    $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                                }
+
+                                if (round($total_margin) < 2) {
+                                    $fee_owner  =  $total_efisiensi * 100  / 100;
+                                } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                    $fee_owner  =  $total_efisiensi * 50  / 100;
+                                } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                    $fee_owner  =  $total_efisiensi * 30 / 100;
+                                } else if (round($total_margin) >= 8) {
+                                    $fee_owner  =  $total_efisiensi * 10  / 100;
+                                }
+                                $total_kontrak_awal_vendor_atas = 0;
+                                $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                                $total_ke_atas_sdm = $value_program['total_hps_mata_anggaran'];
+                                $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                                ?>
+                                <tr>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                    <!-- ambil kontrak awal / addendum -->
+                                    <?php
+                                    // sdm
+                                    $this->db->select('*');
+                                    $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                    $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                    $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                    $this->db->limit(1);
+                                    $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                    <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                    <?php
+                                    if ($get_addendum_kontrak) { ?>
+                                        <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                        <?php } ?>
+                                    <?php } else { ?>
+                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                    <?php } ?>
+                                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                                        <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                    <?php   } else { ?>
+                                        <td class="tg-0l"></td>
+                                    <?php   }  ?>
+                                    <td class="tg-0lax">
+                                        <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                    </td>
+                                    <?php if ($value_program['persen_progres_fisik']) { ?>
+                                        <!-- gila2 -->
+                                        <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                        <!-- gila -->
+                                    <?php   } else { ?>
+                                        <td class="tg-0lax"></td>
+                                    <?php   }  ?>
+                                    <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                    <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                        <td class="tg-0l">AtCost</td>
+                                    <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                        <td class="tg-0l">LumpSump</td>
+                                    <?php   } else { ?>
+                                        <td class="tg-01"></td>
+                                    <?php }  ?>
+                                    <td class="tg-0lax">
+                                        <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                        <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                        <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                            <?php
+                            // _5
+                            // _6
+                            $this->db->select('*');
+                            $this->db->from('tbl_detail_sdm_6');
+                            $this->db->where('tbl_detail_sdm_6.id_detail_sdm_5', $id_detail_sdm_5);
+                            $this->db->order_by('CAST(no_urut_6_sdm AS DECIMAL(10,6)) ASC');
+                            $query_result_sdm_detail_6 = $this->db->get() ?>
+                            <?php
+                            foreach ($query_result_sdm_detail_6->result_array() as $value_sdm_detail_6) { ?>
+                                <?php $id_detail_sdm_6 = $value_sdm_detail_6['id_detail_sdm_6'];  ?>
+                                <?php $nama_uraian_sdm_detail_6 = $value_sdm_detail_6['nama_uraian_6_sdm']; ?>
+                                <tr>
+                                    <td class="tg-0lax"><?= $value_sdm_detail_6['no_urut_6_sdm'] ?></td>
+                                    <td class="tg-0lax"><?= $value_sdm_detail_6['nama_uraian_6_sdm']; ?></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                    <td class="tg-0lax"></td>
+                                </tr>
+                                <?php
+                                $this->db->select('*');
+                                $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                                $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                                $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_sdm_detail_6);
+                                if ($id_departemen == 4) {
+                                } else {
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                                }
+                                $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                                $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                                $result_program = $this->db->get() ?>
+                                <?php
+                                foreach ($result_program->result_array() as $value_program) { ?>
+                                    <?php
+                                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                    $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                    ?>
+                                    <?php
+                                    $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                    ?>
+                                    <?php
+                                    $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                    $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                    ?>
+                                    <?php
+                                    // 
+                                    if (round($total_margin) < 2) {
+                                        $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                        $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                        $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                                    } else if (round($total_margin) >= 8) {
+                                        $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                                    }
+
+                                    if (round($total_margin) < 2) {
+                                        $fee_owner  =  $total_efisiensi * 100  / 100;
+                                    } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                        $fee_owner  =  $total_efisiensi * 50  / 100;
+                                    } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                        $fee_owner  =  $total_efisiensi * 30 / 100;
+                                    } else if (round($total_margin) >= 8) {
+                                        $fee_owner  =  $total_efisiensi * 10  / 100;
+                                    }
+                                    $total_kontrak_awal_vendor_atas = 0;
+                                    $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                                    $total_ke_atas_sdm = $value_program['total_hps_mata_anggaran'];
+                                    $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                                    ?>
+                                    <tr>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                        <!-- ambil kontrak awal / addendum -->
+                                        <?php
+                                        // sdm
+                                        $this->db->select('*');
+                                        $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                        $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                        $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                        $this->db->limit(1);
+                                        $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                        <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                        <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                        <?php
+                                        if ($get_addendum_kontrak) { ?>
+                                            <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                            <?php } ?>
+                                        <?php } else { ?>
+                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                        <?php } ?>
+                                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                                            <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                        <?php   } else { ?>
+                                            <td class="tg-0l"></td>
+                                        <?php   }  ?>
+                                        <td class="tg-0lax">
+                                            <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                        </td>
+                                        <?php if ($value_program['persen_progres_fisik']) { ?>
+                                            <!-- gila2 -->
+                                            <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                            <!-- gila -->
+                                        <?php   } else { ?>
+                                            <td class="tg-0lax"></td>
+                                        <?php   }  ?>
+                                        <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                        <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                            <td class="tg-0l">AtCost</td>
+                                        <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                            <td class="tg-0l">LumpSump</td>
+                                        <?php   } else { ?>
+                                            <td class="tg-01"></td>
+                                        <?php }  ?>
+                                        <td class="tg-0lax">
+                                            <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                            <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                            <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                                <?php
+                                // _6
+                                // _7
+                                $this->db->select('*');
+                                $this->db->from('tbl_detail_sdm_7');
+                                $this->db->where('tbl_detail_sdm_7.id_detail_sdm_6', $id_detail_sdm_6);
+                                $this->db->order_by('CAST(no_urut_7_sdm AS DECIMAL(10,6)) ASC');
+                                $query_result_sdm_detail_7 = $this->db->get() ?>
+                                <?php
+                                foreach ($query_result_sdm_detail_7->result_array() as $value_sdm_detail_7) { ?>
+                                    <?php $id_detail_sdm_7 = $value_sdm_detail_7['id_detail_sdm_7'];  ?>
+                                    <?php $nama_uraian_sdm_detail_7 = $value_sdm_detail_7['nama_uraian_7_sdm']; ?>
+                                    <tr>
+                                        <td class="tg-0lax"><?= $value_sdm_detail_7['no_urut_7_sdm'] ?></td>
+                                        <td class="tg-0lax"><?= $value_sdm_detail_7['nama_uraian_7_sdm']; ?></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                        <td class="tg-0lax"></td>
+                                    </tr>
+                                    <?php
+                                    $this->db->select('*');
+                                    $this->db->from('tbl_sub_detail_program_penyedia_jasa');
+                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'left');
+                                    $this->db->where('tbl_sub_detail_program_penyedia_jasa.nama_program_mata_anggaran', $nama_uraian_sdm_detail_7);
+                                    if ($id_departemen == 4) {
+                                    } else {
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_departemen', $row_kontrak['id_departemen']);
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_area', $row_kontrak['id_area']);
+                                        $this->db->where('tbl_detail_program_penyedia_jasa.id_sub_area', $row_kontrak['id_sub_area']);
+                                    }
+                                    $this->db->order_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', 'ASC');
+                                    $this->db->group_by('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa');
+                                    $result_program = $this->db->get() ?>
+                                    <?php
+                                    foreach ($result_program->result_array() as $value_program) { ?>
+                                        <?php
+                                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                        $total_relasi_beban = ($value_program['prognosa_beban'] * $value_program['persen_progres_fisik']) / 100;
+                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                        ?>
+                                        <?php
+                                        $total_relasi_pendapatan  =  ($value_program['nilai_program_mata_anggran'] * $value_program['persen_progres_fisik']) / 100;
+                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                        ?>
+                                        <?php
+                                        $total_efisiensi =  $value_program['nilai_program_mata_anggran'] - $value_program['prognosa_beban'];
+                                        $total_margin = ($total_efisiensi / $value_program['nilai_program_mata_anggran']) * 100;
+                                        ?>
+                                        <?php
+                                        // 
+                                        if (round($total_margin) < 2) {
+                                            $fee_jmtm  =  $total_efisiensi * 0  / 100;
+                                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                            $fee_jmtm  =  $total_efisiensi * 50  / 100;
+                                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                            $fee_jmtm  =  $total_efisiensi * 70  / 100;
+                                        } else if (round($total_margin) >= 8) {
+                                            $fee_jmtm  =  $total_efisiensi * 90  / 100;
+                                        }
+
+                                        if (round($total_margin) < 2) {
+                                            $fee_owner  =  $total_efisiensi * 100  / 100;
+                                        } else if (round($total_margin) >= 2 && round($total_margin) <= 4) {
+                                            $fee_owner  =  $total_efisiensi * 50  / 100;
+                                        } else if (round($total_margin) >= 4 && round($total_margin) <= 8) {
+                                            $fee_owner  =  $total_efisiensi * 30 / 100;
+                                        } else if (round($total_margin) >= 8) {
+                                            $fee_owner  =  $total_efisiensi * 10  / 100;
+                                        }
+                                        $total_kontrak_awal_vendor_atas = 0;
+                                        $total_kontrak_awal_vendor_atas += $value_program['nilai_sub_kontrak_penyedia'];
+                                        $total_ke_atas_sdm = $value_program['total_hps_mata_anggaran'];
+                                        $prognoa_beban_tahunan = $value_program['nilai_sub_kontrak_penyedia'] +  $fee_owner;
+                                        ?>
+                                        <tr>
+                                            <td class="tg-0lax"></td>
+                                            <td class="tg-0lax"></td>
+                                            <td class="tg-0lax"><?= $value_program['nama_pekerjaan_program_mata_anggaran']; ?></td>
+                                            <!-- ambil kontrak awal / addendum -->
+                                            <?php
+                                            // sdm
+                                            $this->db->select('*');
+                                            $this->db->from('tbl_hps_penyedia_kontrak_addendum');
+                                            $this->db->where('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', $value_program['id_detail_program_penyedia_jasa']);
+                                            $this->db->order_by('tbl_hps_penyedia_kontrak_addendum.id_detail_program_penyedia_jasa', 'ASC');
+                                            $this->db->limit(1);
+                                            $get_addendum_kontrak = $this->db->get()->result_array() ?>
+                                            <td class="tg-0lax"><?= $value_program['nama_penyedia']; ?></td>
+                                            <td class="tg-0lax"> <?= "Rp " . number_format($value_program['nilai_sub_kontrak_penyedia'], 2, ',', '.') ?></td>
+                                            <?php
+                                            if ($get_addendum_kontrak) { ?>
+                                                <?php foreach ($get_addendum_kontrak as $value_addendum_kontrak) { ?>
+                                                    <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak_addendum_' . $value_addendum_kontrak['no_addendum']], 2, ',', '.') ?></td>
+                                                <?php } ?>
+                                            <?php } else { ?>
+                                                <td class="tg-0lax"> <?= "Rp " . number_format($value_program['total_kontrak'], 2, ',', '.') ?></td>
+                                            <?php } ?>
+                                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                                <td class="tg-0l"><?= "Rp " . number_format($total_relasi_pendapatan, 2, ',', '.') ?></td>
+                                            <?php   } else { ?>
+                                                <td class="tg-0l"></td>
+                                            <?php   }  ?>
+                                            <td class="tg-0lax">
+                                                <?= "Rp " . number_format($value_program['prognosa_beban'], 2, ',', '.') ?>
+                                            </td>
+                                            <?php if ($value_program['persen_progres_fisik']) { ?>
+                                                <!-- gila2 -->
+                                                <td class="tg-0lax"><?= number_format($value_program['persen_progres_fisik'], 2) ?>%</td>
+                                                <!-- gila -->
+                                            <?php   } else { ?>
+                                                <td class="tg-0lax"></td>
+                                            <?php   }  ?>
+                                            <td class="tg-0lax"> <?= $value_program['keterangan_laporan'] ?></td>
+                                            <?php if ($value_program['formula_fee_jmtm'] == 1) { ?>
+                                                <td class="tg-0l">AtCost</td>
+                                            <?php   } else if ($value_program['formula_fee_jmtm'] == 2) { ?>
+                                                <td class="tg-0l">LumpSump</td>
+                                            <?php   } else { ?>
+                                                <td class="tg-01"></td>
+                                            <?php }  ?>
+                                            <td class="tg-0lax">
+                                                <a href="javascript:;" onclick="ProgresFisik(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-primary btn-block"><i class="fas fa fa-file"></i> Keloa Progres Fisik</a>
+                                                <a href="javascript:;" onclick="Keterangan(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-secondary btn-block mt-2"><i class="fas fa fa-file"></i> Buat Keterangan</a>
+                                                <a href="javascript:;" onclick="PilihFormula(<?= $value_program['id_detail_sub_program_penyedia_jasa'] ?>)" style="font-size: 10px;" class="btn btn-sm btn-outline-warning btn-block mt-2"><i class="fas fa fa-file"></i> Pilih Formula</a>
+
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                <?php } ?>
+                            <?php } ?>
+                        <?php } ?>
+                    <?php } ?>
+                <?php } ?>
+            <?php } ?>
+        <?php } ?>
+    <?php } ?>
+<?php } ?>
+
                                                                                                     </tbody>
                                                                                                 </table>
                                                                                             </div>
@@ -6525,14 +10638,561 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                 <div class="tab-pane fade show" id="custom-tabs-history_bulanan" role="tabpanel" aria-labelledby="custom-tabs-history_bulanan-tab">
                                                                                     <div class="card card-outline card-primary">
                                                                                         <div class="card-header">
-                                                                                            <h3 class="card-title">
-                                                                                                History Penyimpanan Bulanan
-                                                                                            </h3>
+                                                                                            <a href="javascript:;" onclick="Buat_periode(<?= $row_kontrak['id_kontrak'] ?>)" class="btn-sm btn btn-success"><i class="fa fa-plus-circle" aria-hidden="true"></i> Buat Periode Laporan</a>
+                                                                                            <a href="javascript:;" onclick="Upload_laporan(<?= $row_kontrak['id_kontrak'] ?>)" class="btn-sm btn btn-danger"><i class="fa fa-file" aria-hidden="true"></i> Upload Periode Laporan</a>
+
+
                                                                                         </div>
                                                                                         <br>
                                                                                         <div class="card-body">
-                                                                                            <a href="javascript:;" onclick="Buat_periode(<?= $row_kontrak['id_kontrak'] ?>)" class="btn-sm btn btn-success"><i class="fa fa-plus-circle" aria-hidden="true"></i> Buat Periode Laporan</a>
-                                                                                            <a href="javascript:;" onclick="Upload_laporan(<?= $row_kontrak['id_kontrak'] ?>)" class="btn-sm btn btn-danger"><i class="fa fa-file" aria-hidden="true"></i> Upload Periode Laporan</a>
+                                                                                            <div class="tab-content" id="custom-tabs-two-tabContent">
+                                                                                                <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
+                                                                                                    <li class="nav-item">
+                                                                                                        <a class="nav-link" id="custom-tabs-two-januari-tab" data-toggle="pill" href="#custom-tabs-two-januari" role="tab" aria-controls="custom-tabs-two-januari" aria-selected="false"><i class="fa fa-calendar" aria-hidden="true"></i> Januari</a>
+                                                                                                    </li>
+                                                                                                    <li class="nav-item">
+                                                                                                        <a class="nav-link" id="custom-tabs-two-februari-tab" data-toggle="pill" href="#custom-tabs-two-februari" role="tab" aria-controls="custom-tabs-two-februari" aria-selected="false"><i class="fa fa-calendar" aria-hidden="true"></i> Februari</a>
+                                                                                                    </li>
+                                                                                                    <li class="nav-item">
+                                                                                                        <a class="nav-link" id="custom-tabs-two-maret-tab" data-toggle="pill" href="#custom-tabs-two-maret" role="tab" aria-controls="custom-tabs-two-maret" aria-selected="false"><i class="fa fa-calendar" aria-hidden="true"></i> Maret</a>
+                                                                                                    </li>
+                                                                                                    <li class="nav-item">
+                                                                                                        <a class="nav-link" id="custom-tabs-two-april-tab" data-toggle="pill" href="#custom-tabs-two-april" role="tab" aria-controls="custom-tabs-two-april" aria-selected="false"><i class="fa fa-calendar" aria-hidden="true"></i> April</a>
+                                                                                                    </li>
+                                                                                                    <li class="nav-item">
+                                                                                                        <a class="nav-link" id="custom-tabs-two-mei-tab" data-toggle="pill" href="#custom-tabs-two-mei" role="tab" aria-controls="custom-tabs-two-mei" aria-selected="false"><i class="fa fa-calendar" aria-hidden="true"></i> Mei</a>
+                                                                                                    </li>
+                                                                                                    <li class="nav-item">
+                                                                                                        <a class="nav-link" id="custom-tabs-two-juni-tab" data-toggle="pill" href="#custom-tabs-two-juni" role="tab" aria-controls="custom-tabs-two-juni" aria-selected="false"><i class="fa fa-calendar" aria-hidden="true"></i> Juni</a>
+                                                                                                    </li>
+                                                                                                    <li class="nav-item">
+                                                                                                        <a class="nav-link" id="custom-tabs-two-juli-tab" data-toggle="pill" href="#custom-tabs-two-juli" role="tab" aria-controls="custom-tabs-two-juli" aria-selected="false"><i class="fa fa-calendar" aria-hidden="true"></i> Juli</a>
+                                                                                                    </li>
+                                                                                                    <li class="nav-item">
+                                                                                                        <a class="nav-link" id="custom-tabs-two-agustus-tab" data-toggle="pill" href="#custom-tabs-two-agustus" role="tab" aria-controls="custom-tabs-two-agustus" aria-selected="false"><i class="fa fa-calendar" aria-hidden="true"></i> Agustus</a>
+                                                                                                    </li>
+                                                                                                    <li class="nav-item">
+                                                                                                        <a class="nav-link" id="custom-tabs-two-september-tab" data-toggle="pill" href="#custom-tabs-two-september" role="tab" aria-controls="custom-tabs-two-september" aria-selected="false"><i class="fa fa-calendar" aria-hidden="true"></i> September</a>
+                                                                                                    </li>
+                                                                                                    <li class="nav-item">
+                                                                                                        <a class="nav-link" id="custom-tabs-two-oktober-tab" data-toggle="pill" href="#custom-tabs-two-oktober" role="tab" aria-controls="custom-tabs-two-oktober" aria-selected="false"><i class="fa fa-calendar" aria-hidden="true"></i> Oktober</a>
+                                                                                                    </li>
+                                                                                                    <li class="nav-item">
+                                                                                                        <a class="nav-link" id="custom-tabs-two-november-tab" data-toggle="pill" href="#custom-tabs-two-november" role="tab" aria-controls="custom-tabs-two-november" aria-selected="false"><i class="fa fa-calendar" aria-hidden="true"></i> November</a>
+                                                                                                    </li>
+                                                                                                    <li class="nav-item">
+                                                                                                        <a class="nav-link" id="custom-tabs-two-desember-tab" data-toggle="pill" href="#custom-tabs-two-desember" role="tab" aria-controls="custom-tabs-two-desember" aria-selected="false"><i class="fa fa-calendar" aria-hidden="true"></i> Desember</a>
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                                <!-- JANUARI -->
+                                                                                                <div class="tab-pane fade show" id="custom-tabs-two-januari" role="tabpanel" aria-labelledby="custom-tabs-two-januari-tab">
+                                                                                                    <div class="card card-outline card-primary">
+                                                                                                        <div class="card-header">
+                                                                                                            <h3 class="card-title">
+                                                                                                                Laporan Kinerja Priode Januari
+                                                                                                            </h3>
+                                                                                                        </div>
+                                                                                                        <br>
+                                                                                                        <div class="card-body">
+                                                                                                            <table class="table table-striped table-bordered">
+                                                                                                                <thead class="bg-primary">
+                                                                                                                    <tr>
+                                                                                                                        <th class="text-white">No</th>
+                                                                                                                        <th class="text-white">Tanggal / Bulan Periode</th>
+                                                                                                                        <th class="text-white">Keterangan</th>
+                                                                                                                        <th class="text-white">Aksi</th>
+                                                                                                                    </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                    <?php
+                                                                                                                    $this->db->select('*');
+                                                                                                                    $this->db->from('tbl_laporan_periode_kinerja');
+                                                                                                                    $this->db->where('tbl_laporan_periode_kinerja.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                                                                    $this->db->where('MONTH(tbl_laporan_periode_kinerja.tanggal_bulan_periode)', 01);
+                                                                                                                    $result_laporan_periode = $this->db->get();
+                                                                                                                    ?>
+                                                                                                                    <?php $i = 1;
+                                                                                                                    foreach ($result_laporan_periode->result_array() as $value) { ?>
+                                                                                                                        <tr class="text-center">
+                                                                                                                            <td scope="row"><?= $i++ ?></td>
+                                                                                                                            <td><?= $value['tanggal_bulan_periode'] ?></td>
+                                                                                                                            <td><?= $value['keterangan_periode'] ?></td>
+                                                                                                                            <td><a class="btn btn-primary btn-sm" href="<?= base_url('laporan_kinerja/view_laporan_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-eye"></i> View Laporan</a> <a class="btn btn-success btn-sm" href="<?= base_url('laporan_kinerja/buat_excel_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-file"></i> Download Excel</a> <a class="btn btn-danger btn-sm" href="<?= base_url('laporan_kinerja/hapus_laporan_periode/') . $value['id_laporan_periode'] ?>"><i class="fas fa fa-trash"></i> Hapus Laporan</a></td>
+                                                                                                                        </tr>
+                                                                                                                    <?php } ?>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <!-- FEBRUARI -->
+                                                                                                <div class="tab-pane fade show" id="custom-tabs-two-februari" role="tabpanel" aria-labelledby="custom-tabs-two-februari-tab">
+                                                                                                    <div class="card card-outline card-primary">
+                                                                                                        <div class="card-header">
+                                                                                                            <h3 class="card-title">
+                                                                                                                Laporan Kinerja Priode Februari
+                                                                                                            </h3>
+                                                                                                        </div>
+                                                                                                        <br>
+                                                                                                        <div class="card-body">
+                                                                                                            <table class="table table-striped table-bordered">
+                                                                                                                <thead class="bg-primary">
+                                                                                                                    <tr>
+                                                                                                                        <th class="text-white">No</th>
+                                                                                                                        <th class="text-white">Tanggal / Bulan Periode</th>
+                                                                                                                        <th class="text-white">Keterangan</th>
+                                                                                                                        <th class="text-white">Aksi</th>
+                                                                                                                    </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                    <?php
+                                                                                                                    $this->db->select('*');
+                                                                                                                    $this->db->from('tbl_laporan_periode_kinerja');
+                                                                                                                    $this->db->where('tbl_laporan_periode_kinerja.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                                                                    $this->db->where('MONTH(tbl_laporan_periode_kinerja.tanggal_bulan_periode)', 02);
+                                                                                                                    $result_laporan_periode = $this->db->get();
+                                                                                                                    ?>
+                                                                                                                    <?php $i = 1;
+                                                                                                                    foreach ($result_laporan_periode->result_array() as $value) { ?>
+                                                                                                                        <tr class="text-center">
+                                                                                                                            <td scope="row"><?= $i++ ?></td>
+                                                                                                                            <td><?= $value['tanggal_bulan_periode'] ?></td>
+                                                                                                                            <td><?= $value['keterangan_periode'] ?></td>
+                                                                                                                            <td><a class="btn btn-primary btn-sm" href="<?= base_url('laporan_kinerja/view_laporan_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-eye"></i> View Laporan</a> <a class="btn btn-success btn-sm" href="<?= base_url('laporan_kinerja/buat_excel_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-file"></i> Download Excel</a> <a class="btn btn-danger btn-sm" href="<?= base_url('laporan_kinerja/hapus_laporan_periode/') . $value['id_laporan_periode'] ?>"><i class="fas fa fa-trash"></i> Hapus Laporan</a></td>
+                                                                                                                        </tr>
+                                                                                                                    <?php } ?>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <!-- MARET -->
+                                                                                                <div class="tab-pane fade show" id="custom-tabs-two-maret" role="tabpanel" aria-labelledby="custom-tabs-two-maret-tab">
+                                                                                                    <div class="card card-outline card-primary">
+                                                                                                        <div class="card-header">
+                                                                                                            <h3 class="card-title">
+                                                                                                                Laporan Kinerja Priode Maret
+                                                                                                            </h3>
+                                                                                                        </div>
+                                                                                                        <br>
+                                                                                                        <div class="card-body">
+                                                                                                            <table class="table table-striped table-bordered">
+                                                                                                                <thead class="bg-primary">
+                                                                                                                    <tr>
+                                                                                                                        <th class="text-white">No</th>
+                                                                                                                        <th class="text-white">Tanggal / Bulan Periode</th>
+                                                                                                                        <th class="text-white">Keterangan</th>
+                                                                                                                        <th class="text-white">Aksi</th>
+                                                                                                                    </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                    <?php
+                                                                                                                    $this->db->select('*');
+                                                                                                                    $this->db->from('tbl_laporan_periode_kinerja');
+                                                                                                                    $this->db->where('tbl_laporan_periode_kinerja.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                                                                    $this->db->where('MONTH(tbl_laporan_periode_kinerja.tanggal_bulan_periode)', 03);
+                                                                                                                    $result_laporan_periode = $this->db->get();
+                                                                                                                    ?>
+                                                                                                                    <?php $i = 1;
+                                                                                                                    foreach ($result_laporan_periode->result_array() as $value) { ?>
+                                                                                                                        <tr class="text-center">
+                                                                                                                            <td scope="row"><?= $i++ ?></td>
+                                                                                                                            <td><?= $value['tanggal_bulan_periode'] ?></td>
+                                                                                                                            <td><?= $value['keterangan_periode'] ?></td>
+                                                                                                                            <td><a class="btn btn-primary btn-sm" href="<?= base_url('laporan_kinerja/view_laporan_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-eye"></i> View Laporan</a> <a class="btn btn-success btn-sm" href="<?= base_url('laporan_kinerja/buat_excel_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-file"></i> Download Excel</a> <a class="btn btn-danger btn-sm" href="<?= base_url('laporan_kinerja/hapus_laporan_periode/') . $value['id_laporan_periode'] ?>"><i class="fas fa fa-trash"></i> Hapus Laporan</a></td>
+                                                                                                                        </tr>
+                                                                                                                    <?php } ?>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <!-- APRIL -->
+                                                                                                <div class="tab-pane fade show" id="custom-tabs-two-april" role="tabpanel" aria-labelledby="custom-tabs-two-april-tab">
+                                                                                                    <div class="card card-outline card-primary">
+                                                                                                        <div class="card-header">
+                                                                                                            <h3 class="card-title">
+                                                                                                                Laporan Kinerja Priode April
+                                                                                                            </h3>
+                                                                                                        </div>
+                                                                                                        <br>
+                                                                                                        <div class="card-body">
+                                                                                                            <table class="table table-striped table-bordered">
+                                                                                                                <thead class="bg-primary">
+                                                                                                                    <tr>
+                                                                                                                        <th class="text-white">No</th>
+                                                                                                                        <th class="text-white">Tanggal / Bulan Periode</th>
+                                                                                                                        <th class="text-white">Keterangan</th>
+                                                                                                                        <th class="text-white">Aksi</th>
+                                                                                                                    </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                    <?php
+                                                                                                                    $this->db->select('*');
+                                                                                                                    $this->db->from('tbl_laporan_periode_kinerja');
+                                                                                                                    $this->db->where('tbl_laporan_periode_kinerja.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                                                                    $this->db->where('MONTH(tbl_laporan_periode_kinerja.tanggal_bulan_periode)', 04);
+                                                                                                                    $result_laporan_periode = $this->db->get();
+                                                                                                                    ?>
+                                                                                                                    <?php $i = 1;
+                                                                                                                    foreach ($result_laporan_periode->result_array() as $value) { ?>
+                                                                                                                        <tr class="text-center">
+                                                                                                                            <td scope="row"><?= $i++ ?></td>
+                                                                                                                            <td><?= $value['tanggal_bulan_periode'] ?></td>
+                                                                                                                            <td><?= $value['keterangan_periode'] ?></td>
+                                                                                                                            <td><a class="btn btn-primary btn-sm" href="<?= base_url('laporan_kinerja/view_laporan_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-eye"></i> View Laporan</a> <a class="btn btn-success btn-sm" href="<?= base_url('laporan_kinerja/buat_excel_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-file"></i> Download Excel</a> <a class="btn btn-danger btn-sm" href="<?= base_url('laporan_kinerja/hapus_laporan_periode/') . $value['id_laporan_periode'] ?>"><i class="fas fa fa-trash"></i> Hapus Laporan</a></td>
+                                                                                                                        </tr>
+                                                                                                                    <?php } ?>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+
+                                                                                                <!-- MEI -->
+                                                                                                <div class="tab-pane fade show" id="custom-tabs-two-mei" role="tabpanel" aria-labelledby="custom-tabs-two-mei-tab">
+                                                                                                    <div class="card card-outline card-primary">
+                                                                                                        <div class="card-header">
+                                                                                                            <h3 class="card-title">
+                                                                                                                Laporan Kinerja Priode Mei
+                                                                                                            </h3>
+                                                                                                        </div>
+                                                                                                        <br>
+                                                                                                        <div class="card-body">
+                                                                                                            <table class="table table-striped table-bordered">
+                                                                                                                <thead class="bg-primary">
+                                                                                                                    <tr>
+                                                                                                                        <th class="text-white">No</th>
+                                                                                                                        <th class="text-white">Tanggal / Bulan Periode</th>
+                                                                                                                        <th class="text-white">Keterangan</th>
+                                                                                                                        <th class="text-white">Aksi</th>
+                                                                                                                    </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                    <?php
+                                                                                                                    $this->db->select('*');
+                                                                                                                    $this->db->from('tbl_laporan_periode_kinerja');
+                                                                                                                    $this->db->where('tbl_laporan_periode_kinerja.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                                                                    $this->db->where('MONTH(tbl_laporan_periode_kinerja.tanggal_bulan_periode)', 05);
+                                                                                                                    $result_laporan_periode = $this->db->get();
+                                                                                                                    ?>
+                                                                                                                    <?php $i = 1;
+                                                                                                                    foreach ($result_laporan_periode->result_array() as $value) { ?>
+                                                                                                                        <tr class="text-center">
+                                                                                                                            <td scope="row"><?= $i++ ?></td>
+                                                                                                                            <td><?= $value['tanggal_bulan_periode'] ?></td>
+                                                                                                                            <td><?= $value['keterangan_periode'] ?></td>
+                                                                                                                            <td><a class="btn btn-primary btn-sm" href="<?= base_url('laporan_kinerja/view_laporan_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-eye"></i> View Laporan</a> <a class="btn btn-success btn-sm" href="<?= base_url('laporan_kinerja/buat_excel_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-file"></i> Download Excel</a> <a class="btn btn-danger btn-sm" href="<?= base_url('laporan_kinerja/hapus_laporan_periode/') . $value['id_laporan_periode'] ?>"><i class="fas fa fa-trash"></i> Hapus Laporan</a></td>
+                                                                                                                        </tr>
+                                                                                                                    <?php } ?>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <!-- JUNI -->
+                                                                                                <div class="tab-pane fade show" id="custom-tabs-two-juni" role="tabpanel" aria-labelledby="custom-tabs-two-juni-tab">
+                                                                                                    <div class="card card-outline card-primary">
+                                                                                                        <div class="card-header">
+                                                                                                            <h3 class="card-title">
+                                                                                                                Laporan Kinerja Priode Juni
+                                                                                                            </h3>
+                                                                                                        </div>
+                                                                                                        <br>
+                                                                                                        <div class="card-body">
+                                                                                                            <table class="table table-striped table-bordered">
+                                                                                                                <thead class="bg-primary">
+                                                                                                                    <tr>
+                                                                                                                        <th class="text-white">No</th>
+                                                                                                                        <th class="text-white">Tanggal / Bulan Periode</th>
+                                                                                                                        <th class="text-white">Keterangan</th>
+                                                                                                                        <th class="text-white">Aksi</th>
+                                                                                                                    </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                    <?php
+                                                                                                                    $this->db->select('*');
+                                                                                                                    $this->db->from('tbl_laporan_periode_kinerja');
+                                                                                                                    $this->db->where('tbl_laporan_periode_kinerja.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                                                                    $this->db->where('MONTH(tbl_laporan_periode_kinerja.tanggal_bulan_periode)', 06);
+                                                                                                                    $result_laporan_periode = $this->db->get();
+                                                                                                                    ?>
+                                                                                                                    <?php $i = 1;
+                                                                                                                    foreach ($result_laporan_periode->result_array() as $value) { ?>
+                                                                                                                        <tr class="text-center">
+                                                                                                                            <td scope="row"><?= $i++ ?></td>
+                                                                                                                            <td><?= $value['tanggal_bulan_periode'] ?></td>
+                                                                                                                            <td><?= $value['keterangan_periode'] ?></td>
+                                                                                                                            <td><a class="btn btn-primary btn-sm" href="<?= base_url('laporan_kinerja/view_laporan_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-eye"></i> View Laporan</a> <a class="btn btn-success btn-sm" href="<?= base_url('laporan_kinerja/buat_excel_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-file"></i> Download Excel</a> <a class="btn btn-danger btn-sm" href="<?= base_url('laporan_kinerja/hapus_laporan_periode/') . $value['id_laporan_periode'] ?>"><i class="fas fa fa-trash"></i> Hapus Laporan</a></td>
+                                                                                                                        </tr>
+                                                                                                                    <?php } ?>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <!-- JULI -->
+                                                                                                <div class="tab-pane fade show" id="custom-tabs-two-juli" role="tabpanel" aria-labelledby="custom-tabs-two-juli-tab">
+                                                                                                    <div class="card card-outline card-primary">
+                                                                                                        <div class="card-header">
+                                                                                                            <h3 class="card-title">
+                                                                                                                Laporan Kinerja Priode Juli
+                                                                                                            </h3>
+                                                                                                        </div>
+                                                                                                        <br>
+                                                                                                        <div class="card-body">
+                                                                                                            <table class="table table-striped table-bordered">
+                                                                                                                <thead class="bg-primary">
+                                                                                                                    <tr>
+                                                                                                                        <th class="text-white">No</th>
+                                                                                                                        <th class="text-white">Tanggal / Bulan Periode</th>
+                                                                                                                        <th class="text-white">Keterangan</th>
+                                                                                                                        <th class="text-white">Aksi</th>
+                                                                                                                    </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                    <?php
+                                                                                                                    $this->db->select('*');
+                                                                                                                    $this->db->from('tbl_laporan_periode_kinerja');
+                                                                                                                    $this->db->where('tbl_laporan_periode_kinerja.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                                                                    $this->db->where('MONTH(tbl_laporan_periode_kinerja.tanggal_bulan_periode)', 07);
+                                                                                                                    $result_laporan_periode = $this->db->get();
+                                                                                                                    ?>
+                                                                                                                    <?php $i = 1;
+                                                                                                                    foreach ($result_laporan_periode->result_array() as $value) { ?>
+                                                                                                                        <tr class="text-center">
+                                                                                                                            <td scope="row"><?= $i++ ?></td>
+                                                                                                                            <td><?= $value['tanggal_bulan_periode'] ?></td>
+                                                                                                                            <td><?= $value['keterangan_periode'] ?></td>
+                                                                                                                            <td><a class="btn btn-primary btn-sm" href="<?= base_url('laporan_kinerja/view_laporan_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-eye"></i> View Laporan</a> <a class="btn btn-success btn-sm" href="<?= base_url('laporan_kinerja/buat_excel_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-file"></i> Download Excel</a> <a class="btn btn-danger btn-sm" href="<?= base_url('laporan_kinerja/hapus_laporan_periode/') . $value['id_laporan_periode'] ?>"><i class="fas fa fa-trash"></i> Hapus Laporan</a></td>
+                                                                                                                        </tr>
+                                                                                                                    <?php } ?>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+
+                                                                                                <!-- agustus -->
+                                                                                                <div class="tab-pane fade show" id="custom-tabs-two-agustus" role="tabpanel" aria-labelledby="custom-tabs-two-agustus-tab">
+                                                                                                    <div class="card card-outline card-primary">
+                                                                                                        <div class="card-header">
+                                                                                                            <h3 class="card-title">
+                                                                                                                Laporan Kinerja Priode Agustus
+                                                                                                            </h3>
+                                                                                                        </div>
+                                                                                                        <br>
+                                                                                                        <div class="card-body">
+                                                                                                            <table class="table table-striped table-bordered">
+                                                                                                                <thead class="bg-primary">
+                                                                                                                    <tr>
+                                                                                                                        <th class="text-white">No</th>
+                                                                                                                        <th class="text-white">Tanggal / Bulan Periode</th>
+                                                                                                                        <th class="text-white">Keterangan</th>
+                                                                                                                        <th class="text-white">Aksi</th>
+                                                                                                                    </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                    <?php
+                                                                                                                    $this->db->select('*');
+                                                                                                                    $this->db->from('tbl_laporan_periode_kinerja');
+                                                                                                                    $this->db->where('tbl_laporan_periode_kinerja.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                                                                    $this->db->where('MONTH(tbl_laporan_periode_kinerja.tanggal_bulan_periode)', '08');
+                                                                                                                    $result_laporan_periode = $this->db->get();
+                                                                                                                    ?>
+                                                                                                                    <?php $i = 1;
+                                                                                                                    foreach ($result_laporan_periode->result_array() as $value) { ?>
+                                                                                                                        <tr class="text-center">
+                                                                                                                            <td scope="row"><?= $i++ ?></td>
+                                                                                                                            <td><?= $value['tanggal_bulan_periode'] ?></td>
+                                                                                                                            <td><?= $value['keterangan_periode'] ?></td>
+                                                                                                                            <td><a class="btn btn-primary btn-sm" href="<?= base_url('laporan_kinerja/view_laporan_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-eye"></i> View Laporan</a> <a class="btn btn-success btn-sm" href="<?= base_url('laporan_kinerja/buat_excel_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-file"></i> Download Excel</a> <a class="btn btn-danger btn-sm" href="<?= base_url('laporan_kinerja/hapus_laporan_periode/') . $value['id_laporan_periode'] ?>"><i class="fas fa fa-trash"></i> Hapus Laporan</a></td>
+                                                                                                                        </tr>
+                                                                                                                    <?php } ?>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <!-- september -->
+                                                                                                <div class="tab-pane fade show" id="custom-tabs-two-september" role="tabpanel" aria-labelledby="custom-tabs-two-september-tab">
+                                                                                                    <div class="card card-outline card-primary">
+                                                                                                        <div class="card-header">
+                                                                                                            <h3 class="card-title">
+                                                                                                                Laporan Kinerja Priode September
+                                                                                                            </h3>
+                                                                                                        </div>
+                                                                                                        <br>
+                                                                                                        <div class="card-body">
+                                                                                                            <table class="table table-striped table-bordered">
+                                                                                                                <thead class="bg-primary">
+                                                                                                                    <tr>
+                                                                                                                        <th class="text-white">No</th>
+                                                                                                                        <th class="text-white">Tanggal / Bulan Periode</th>
+                                                                                                                        <th class="text-white">Keterangan</th>
+                                                                                                                        <th class="text-white">Aksi</th>
+                                                                                                                    </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                    <?php
+                                                                                                                    $this->db->select('*');
+                                                                                                                    $this->db->from('tbl_laporan_periode_kinerja');
+                                                                                                                    $this->db->where('tbl_laporan_periode_kinerja.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                                                                    $this->db->where('MONTH(tbl_laporan_periode_kinerja.tanggal_bulan_periode)', '09');
+                                                                                                                    $result_laporan_periode = $this->db->get();
+                                                                                                                    ?>
+                                                                                                                    <?php $i = 1;
+                                                                                                                    foreach ($result_laporan_periode->result_array() as $value) { ?>
+                                                                                                                        <tr class="text-center">
+                                                                                                                            <td scope="row"><?= $i++ ?></td>
+                                                                                                                            <td><?= $value['tanggal_bulan_periode'] ?></td>
+                                                                                                                            <td><?= $value['keterangan_periode'] ?></td>
+                                                                                                                            <td><a class="btn btn-primary btn-sm" href="<?= base_url('laporan_kinerja/view_laporan_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-eye"></i> View Laporan</a> <a class="btn btn-success btn-sm" href="<?= base_url('laporan_kinerja/buat_excel_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-file"></i> Download Excel</a> <a class="btn btn-danger btn-sm" href="<?= base_url('laporan_kinerja/hapus_laporan_periode/') . $value['id_laporan_periode'] ?>"><i class="fas fa fa-trash"></i> Hapus Laporan</a></td>
+                                                                                                                        </tr>
+                                                                                                                    <?php } ?>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+
+                                                                                                <!-- oktober -->
+                                                                                                <div class="tab-pane fade show" id="custom-tabs-two-oktober" role="tabpanel" aria-labelledby="custom-tabs-two-oktober-tab">
+                                                                                                    <div class="card card-outline card-primary">
+                                                                                                        <div class="card-header">
+                                                                                                            <h3 class="card-title">
+                                                                                                                Laporan Kinerja Priode Oktober
+                                                                                                            </h3>
+                                                                                                        </div>
+                                                                                                        <br>
+                                                                                                        <div class="card-body">
+                                                                                                            <table class="table table-striped table-bordered">
+                                                                                                                <thead class="bg-primary">
+                                                                                                                    <tr>
+                                                                                                                        <th class="text-white">No</th>
+                                                                                                                        <th class="text-white">Tanggal / Bulan Periode</th>
+                                                                                                                        <th class="text-white">Keterangan</th>
+                                                                                                                        <th class="text-white">Aksi</th>
+                                                                                                                    </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                    <?php
+                                                                                                                    $this->db->select('*');
+                                                                                                                    $this->db->from('tbl_laporan_periode_kinerja');
+                                                                                                                    $this->db->where('tbl_laporan_periode_kinerja.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                                                                    $this->db->where('MONTH(tbl_laporan_periode_kinerja.tanggal_bulan_periode)', 10);
+                                                                                                                    $result_laporan_periode = $this->db->get();
+                                                                                                                    ?>
+                                                                                                                    <?php $i = 1;
+                                                                                                                    foreach ($result_laporan_periode->result_array() as $value) { ?>
+                                                                                                                        <tr class="text-center">
+                                                                                                                            <td scope="row"><?= $i++ ?></td>
+                                                                                                                            <td><?= $value['tanggal_bulan_periode'] ?></td>
+                                                                                                                            <td><?= $value['keterangan_periode'] ?></td>
+                                                                                                                            <td><a class="btn btn-primary btn-sm" href="<?= base_url('laporan_kinerja/view_laporan_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-eye"></i> View Laporan</a> <a class="btn btn-success btn-sm" href="<?= base_url('laporan_kinerja/buat_excel_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-file"></i> Download Excel</a> <a class="btn btn-danger btn-sm" href="<?= base_url('laporan_kinerja/hapus_laporan_periode/') . $value['id_laporan_periode'] ?>"><i class="fas fa fa-trash"></i> Hapus Laporan</a></td>
+                                                                                                                        </tr>
+                                                                                                                    <?php } ?>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+
+                                                                                                <!-- november -->
+                                                                                                <div class="tab-pane fade show" id="custom-tabs-two-november" role="tabpanel" aria-labelledby="custom-tabs-two-november-tab">
+                                                                                                    <div class="card card-outline card-primary">
+                                                                                                        <div class="card-header">
+                                                                                                            <h3 class="card-title">
+                                                                                                                Laporan Kinerja Priode November
+                                                                                                            </h3>
+                                                                                                        </div>
+                                                                                                        <br>
+                                                                                                        <div class="card-body">
+                                                                                                            <table class="table table-striped table-bordered">
+                                                                                                                <thead class="bg-primary">
+                                                                                                                    <tr>
+                                                                                                                        <th class="text-white">No</th>
+                                                                                                                        <th class="text-white">Tanggal / Bulan Periode</th>
+                                                                                                                        <th class="text-white">Keterangan</th>
+                                                                                                                        <th class="text-white">Aksi</th>
+                                                                                                                    </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                    <?php
+                                                                                                                    $this->db->select('*');
+                                                                                                                    $this->db->from('tbl_laporan_periode_kinerja');
+                                                                                                                    $this->db->where('tbl_laporan_periode_kinerja.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                                                                    $this->db->where('MONTH(tbl_laporan_periode_kinerja.tanggal_bulan_periode)', 11);
+                                                                                                                    $result_laporan_periode = $this->db->get();
+                                                                                                                    ?>
+                                                                                                                    <?php $i = 1;
+                                                                                                                    foreach ($result_laporan_periode->result_array() as $value) { ?>
+                                                                                                                        <tr class="text-center">
+                                                                                                                            <td scope="row"><?= $i++ ?></td>
+                                                                                                                            <td><?= $value['tanggal_bulan_periode'] ?></td>
+                                                                                                                            <td><?= $value['keterangan_periode'] ?></td>
+                                                                                                                            <td><a class="btn btn-primary btn-sm" href="<?= base_url('laporan_kinerja/view_laporan_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-eye"></i> View Laporan</a> <a class="btn btn-success btn-sm" href="<?= base_url('laporan_kinerja/buat_excel_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-file"></i> Download Excel</a> <a class="btn btn-danger btn-sm" href="<?= base_url('laporan_kinerja/hapus_laporan_periode/') . $value['id_laporan_periode'] ?>"><i class="fas fa fa-trash"></i> Hapus Laporan</a></td>
+                                                                                                                        </tr>
+                                                                                                                    <?php } ?>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+
+                                                                                                <!-- desember -->
+                                                                                                <div class="tab-pane fade show" id="custom-tabs-two-desember" role="tabpanel" aria-labelledby="custom-tabs-two-desember-tab">
+                                                                                                    <div class="card card-outline card-primary">
+                                                                                                        <div class="card-header">
+                                                                                                            <h3 class="card-title">
+                                                                                                                Laporan Kinerja Priode Desember
+                                                                                                            </h3>
+                                                                                                        </div>
+                                                                                                        <br>
+                                                                                                        <div class="card-body">
+                                                                                                            <table class="table table-striped table-bordered">
+                                                                                                                <thead class="bg-primary">
+                                                                                                                    <tr>
+                                                                                                                        <th class="text-white">No</th>
+                                                                                                                        <th class="text-white">Tanggal / Bulan Periode</th>
+                                                                                                                        <th class="text-white">Keterangan</th>
+                                                                                                                        <th class="text-white">Aksi</th>
+                                                                                                                    </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                    <?php
+                                                                                                                    $this->db->select('*');
+                                                                                                                    $this->db->from('tbl_laporan_periode_kinerja');
+                                                                                                                    $this->db->where('tbl_laporan_periode_kinerja.id_kontrak', $row_kontrak['id_kontrak']);
+                                                                                                                    $this->db->where('MONTH(tbl_laporan_periode_kinerja.tanggal_bulan_periode)', 12);
+                                                                                                                    $result_laporan_periode = $this->db->get();
+                                                                                                                    ?>
+                                                                                                                    <?php $i = 1;
+                                                                                                                    foreach ($result_laporan_periode->result_array() as $value) { ?>
+                                                                                                                        <tr class="text-center">
+                                                                                                                            <td scope="row"><?= $i++ ?></td>
+                                                                                                                            <td><?= $value['tanggal_bulan_periode'] ?></td>
+                                                                                                                            <td><?= $value['keterangan_periode'] ?></td>
+                                                                                                                            <td><a class="btn btn-primary btn-sm" href="<?= base_url('laporan_kinerja/view_laporan_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-eye"></i> View Laporan</a> <a class="btn btn-success btn-sm" href="<?= base_url('laporan_kinerja/buat_excel_periode/') . $value['id_laporan_periode'] ?>" target="_blank"><i class="fas fa fa-file"></i> Download Excel</a> <a class="btn btn-danger btn-sm" href="<?= base_url('laporan_kinerja/hapus_laporan_periode/') . $value['id_laporan_periode'] ?>"><i class="fas fa fa-trash"></i> Hapus Laporan</a></td>
+                                                                                                                        </tr>
+                                                                                                                    <?php } ?>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
 
                                                                                         </div>
                                                                                     </div>
@@ -6615,9 +11275,9 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                 <input type="number" name="persen_progres_fisik" id="" class="form-control" placeholder="Masukan Nilai Persen %">
                                                 <br>
                                                 <div style="display: none;">
-                                                <label for="">Nilai Kontrak Management</label>
-                                                <input type="number" name="nilai_program_mata_anggran" id="" class="form-control" placeholder="Masukan Nilai Km">
-                                                <br>
+                                                    <label for="">Nilai Kontrak Management</label>
+                                                    <input type="number" name="nilai_program_mata_anggran" id="" class="form-control" placeholder="Masukan Nilai Km">
+                                                    <br>
                                                 </div>
                                                 <label for="">Nilai Prognosa Beban</label>
                                                 <input type="number" name="prognosa_beban" id="" class="form-control" placeholder="Masukan Nilai Prognosa_beban">

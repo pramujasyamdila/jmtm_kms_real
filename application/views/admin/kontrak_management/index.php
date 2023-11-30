@@ -151,7 +151,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                             <?php } ?>
                         <?php } ?>
                         <div class="col-md-2 mt-2">
-                            <a href="javascript:;" onclick="Filter()" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</a>
+                            <a href="javascript:;" style="font-family: RNSSanz-Black;text-transform: uppercase;" onclick="Filter()" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</a>
                         </div>
                     </div>
 
@@ -160,17 +160,66 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 
             </div>
         </div>
+
+        <div class="card" style="margin-top: -20px; padding-top: 10px; padding-left: 20px">
+            <h5 style="font-family: 'Poppins', sans-serif;"><b>CHECKLIST DAN TO DO LIST </b></h5>
+            <div class="row" style="padding-left:90px">
+                <div class="col-md-4">
+                    <div class="card bg-success" style="margin-top: 20px; padding-top: 10px; padding-left: 20px; border-radius:10px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <center>
+                                    <h5 style="font-family: 'Poppins', sans-serif;">Done</h5>
+                                </center>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card bg-warning" style="font-family: 'Poppins', sans-serif;">
+                                    <center>
+                                        <h5><?= $m1_dok_selesai ?></h5>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-warning" style="margin-top: 20px; padding-top: 10px; padding-left: 20px; border-radius:10px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <center>
+                                    <h5 style="font-family: 'Poppins', sans-serif;">On Progres</h5>
+                                </center>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card bg-success" style="font-family: 'Poppins', sans-serif;">
+                                    <center>
+                                        <h5><?= $m1_dok_progres2 ?></h5>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a href="javascirpt:;" class="btn btn-primary" data-toggle="modal" data-target="#modal_m1" class="btn btn-xl btn-primary" style="font-family: RNSSanz-Black;text-transform: uppercase;padding-left: 50px;padding-right: 50px;background-color: #302B63;margin-top:30px">Lihat Detail</a>
+                </div>
+            </div>
+        </div>
         <!-- Content Header (Page header) -->
         <div class="card" style="margin-top: -20px; padding: 20px">
             <div class="row">
                 <div class="col-md-12 mt-2">
 
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-sm btn-outline-primary btn-block " data-toggle="modal" data-target="#tambah_program" style="margin-left: -13px;margin-top: -20px;margin-bottom: 10px">
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-sm btn-outline-primary btn-block " data-toggle="modal" data-target="#tambah_program" style="font-family: RNSSanz-Black;text-transform: uppercase;margin-left: -13px;margin-top: -20px;margin-bottom: 10px">
                             <i class="fas fa-plus"></i>
                             Tambah Kontrak
                         </button>
                     </div>
+                    <br>
+                    <a style="width: 200px;margin-left:10px;float:right" target="_blank" href="<?= base_url('export_pdf/buat_pdf/print_kontrak') ?>" class="btn btn-info mb-3"> <i class="fas fa fa-file"></i> Report Print To PDF</a>
 
                     <!-- /.card-header -->
                     <table id="table" class="table-bordered table-striped">
@@ -240,14 +289,14 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 </div>
 </section>
 </div>
-<div class="modal fade" id="tambah_program">
+<div class="modal fade" style="font-family: RNSSanz-Black;text-transform: uppercase;" id="tambah_program">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h6 class="modal-title">
-                    <i class="fas fa-briefcase"></i>
+                <h4 class="modal-title">
+                    <i class="fas fa-briefcase" style="font-size: 20px;"></i>
                     Tambah Kontrak
-                </h6>
+                </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -257,9 +306,9 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                     <div class="col-md-12">
                         <div class="card card card-outline card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">
+                                <h6 class="card-title">
                                     Form Input Kontrak
-                                </h3>
+                                </h6>
                             </div>
                             <form id="form_tambah_kontrak">
                                 <div class="card-body">
@@ -278,7 +327,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                             </div>
 
                                             <div class="col-md-6">
-                                                <label for="">Tahuh Anggaran</label>
+                                                <label for="">Tahun Anggaran</label>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">
@@ -287,7 +336,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                     </div>
                                                     <select name="tahun_anggaran" class="form-control" id="">
                                                         <?php $i = 0;
-                                                        for ($i = 20; $i < 30; $i++) {  ?>
+                                                        for ($i = 16; $i <= 30; $i++) {  ?>
                                                             <option value="20<?= $i ?>">20<?= $i ?></option>
                                                         <?php  } ?>
 
@@ -325,7 +374,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="">Priode Kontrak</label>
+                                                <label for="">Periode Kontrak</label>
                                                 <select class="form-control" name="no_adendum_post_kontrak" onchange="pilih_addendum()">
                                                     <option>-- Pilih Periode --</option>
                                                     <option value="Kontrak Awal">Kontrak Awal</option>
@@ -349,6 +398,16 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                     <option value="18">XVIII</option>
                                                     <option value="19">XIX</option>
                                                     <option value="20">XX</option>
+                                                    <option value="21">XXI</option>
+                                                    <option value="22">XXII</option>
+                                                    <option value="23">XXIII</option>
+                                                    <option value="24">XXIV</option>
+                                                    <option value="25">XXV</option>
+                                                    <option value="26">XXVI</option>
+                                                    <option value="27">XXVII</option>
+                                                    <option value="28">XXVIII</option>
+                                                    <option value="29">XXIX</option>
+                                                    <option value="30">XXX</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6" style="display: none;" id="tanggal_adendum_kontrak">
@@ -569,6 +628,68 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary text-white">Tambah Uraian</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="modal_m1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">MODUL 1 - DOKUMEN KONTRAK MANAJEMEN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="overflow-x: auto;">
+                    <table style="font-family: RNSSanz-Black;text-transform: uppercase;" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kontrak Manajemen</th>
+                                <th>Sub Area</th>
+                                <th>No Kontrak</th>
+                                <th>Tanggal Kontrak</th>
+                                <th>Tahun Anggaran</th>
+                                <th>Done</th>
+                                <th>On Progres</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1;
+                            foreach ($data_kontrak as $key => $value) { ?>
+                                <tr>
+                                    <td><?= $i++ ?></td>
+                                    <td><?= $value['nama_kontrak'] ?></td>
+                                    <td><?= $value['nama_sub_area'] ?></td>
+                                    <td><?= $value['no_kontrak'] ?></td>
+                                    <td><?= $value['tahun_kontrak'] ?></td>
+                                    <td><?= $value['tahun_anggaran'] ?></td>
+                                    <td>
+                                        <?php $this->db->select('*');
+                                        $this->db->from('tbl_dokumen_penunjang');
+                                        $this->db->where('tbl_dokumen_penunjang.id_kontrak', $value['id_kontrak']);
+                                        $this->db->limit(1);
+                                        $query = $this->db->count_all_results();
+                                        ?>
+                                        <?= $query ?>
+                                    </td>
+                                    <td>
+                                        <?php $this->db->select('*');
+                                        $this->db->from('mst_kontrak');
+                                        $this->db->join('table_adendum', 'mst_kontrak.id_kontrak = table_adendum.id_kontrak');
+                                        $this->db->where('mst_kontrak.id_kontrak', $value['id_kontrak']);
+                                        $query2 =  $this->db->count_all_results();
+                                        ?>
+                                        <?= $query2 - $query  ?>
+                                    </td>
+                                </tr>
+                            <?php   } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

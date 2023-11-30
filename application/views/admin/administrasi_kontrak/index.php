@@ -10,7 +10,17 @@
             <!-- Content Header (Page header) -->
 
             <!-- /.content-header -->
+            <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
+  position: fixed; top:50px;  padding-bottom: -10px;">
+                <b style="margin-left: auto; font-weight:1000" class="text-black">Modul 3 : Administrasi Tagihan</b>
+            </nav>
 
+            <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
+background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
+                <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 3 - Administrasi Tagihan </b></h4>
+                <h6 style="font-family: 'Poppins', sans-serif;">Modul Ini Terkait Informasi Tagihan Penyedia Jasa</h6>
+
+            </div>
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">

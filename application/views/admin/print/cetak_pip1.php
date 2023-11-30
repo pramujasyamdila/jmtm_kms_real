@@ -15,8 +15,9 @@
 
 </head>
 
-<body style="font-size: 13px;">
+<body style="font-size: 13px;margin: 25mm 25mm 25mm 25mm;">
     <div class="container">
+        <img src="https://www.jmtm.co.id/assets/img-jmtm/logojmtm.png" width="200px" alt="">
         <!-- <a target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip1/' . $row_program['id_detail_program_penyedia_jasa']) ?>" class="btn btn-sm btn-primary">Cetak <i class="fa fa-print"></i></a> -->
         <div class="row">
             <div class="col-md-6">
@@ -40,7 +41,7 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-2">
-                <label><?= $row_program_detail['tgl_surat_pip_ca_ke_gm'] ?></label>
+                <label><?= $this->jam_tgl->tgl_indo($row_program_detail['tgl_surat_pip_ca_ke_gm']) ?></label>
 
             </div>
         </div>
@@ -52,7 +53,7 @@
                 <label for="" style="margin-right: auto;"> :</label>
             </div>
             <div class="col-md-4">
-                <label for="" style="margin-left: -90px;">Lampiran : 1 (Satu) Berkas</label>
+                <label for="" style="margin-left: -90px;">1 (Satu) Berkas</label>
             </div>
             <div class="col-md-2">
             </div>
@@ -74,7 +75,7 @@
         <div class="mt-5">
             Yth.
             <br>
-            <b> <label for=""><?= $row_program_detail['nama_departemen'] ?></label> General Manager</b> <br>
+            <b> <label for=""><?= $row_program_detail['jabatan_penerima_pip_ca_ke_gm'] ?></label></b> <br>
             PT Jasamarga Tollroad Maintenance <br>
             Gedung C PT Jasa Marga (Persero) Tbk, Lt.1 <br>
             Plaza Tol Taman Mini Indonesia Indah, Jakarta 13550
@@ -84,9 +85,9 @@
         <div class="mt-4">
             <div class="row">
                 <div class="col-md-12">
-                    Sehubungan deengan akan dilaksanakannya <b>Pengadaan <b for="" class="jenis_pengadaan"></b>
-                        <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label>, bersama ini kami mengajukan permohonan izin
-                        prinsip pengadaan pekerjaan dimaksud dengan penjelasan sebagai berikut :
+                    Sehubungan dengan akan dilaksanakannya <b>Pengadaan </b><b for="" class="jenis_pengadaan"></b><b>
+                        <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label></b>, bersama ini kami mengajukan permohonan izin
+                    prinsip pengadaan pekerjaan dimaksud dengan penjelasan sebagai berikut :
                 </div>
             </div>
         </div>
@@ -99,7 +100,7 @@
                     <label for="">1. Lokasi Pekerjaan</label>
                 </div>
                 <div class="col-md-10">
-                    <label for="">: Ruas Jalan Tol <label><?= $row_program_detail['nama_area'] ?></label></label>
+                    <label for="">: Ruas Jalan Tol <label><?= $row_program_detail['lokasi_pekerjaan_surat'] ?></label></label>
                 </div>
             </div>
             <div class="row">
@@ -107,22 +108,18 @@
                     <label for="">2. Sasaran Pekerjaan</label>
                 </div>
                 <div class="col-md-10">
-                    <label for="">: Pemenuhan Standar Pelayanan Minimal (SPM) Subtansi Pelayanan
-                        <!-- <br> -->
-                        <?php foreach ($data_spm as $key => $value) { ?>
-                            <label for=""><?= $value['nama_spm'] ?></label>,
-                        <?php } ?>
+                    <label for="">:
+                        <label><?= $row_program_detail['spm_surat'] ?></label>
                     </label>
                 </div>
             </div>
         </div>
-
         <center class="mt-4">
             <b>II. KETERANGAN PEMBIAYAAN</b>
         </center>
         <div class="mt-3">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="">1. Pekerjaan</label>
                 </div>
                 <div class="col-md-9">
@@ -130,8 +127,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
-                    <label for="">2. Pagu Biaya RKAP</label>
+                <div class="col-md-2">
+                    <label for="">2. Pagu Biaya</label>
                 </div>
                 <div class="col-md-9">
                     <?php
@@ -185,22 +182,23 @@
                         $total_hps += $value['nilai_hps'];
                         ?>
                     <?php  } ?>
-                    <label for="">: <b><?= number_format($total_pagu, 2, ',', '.'); ?> </b> (<?= terbilang($total_pagu) ?>) termasuk PPN 11%</label>
+                    <label for="">: <b>Rp.<?= number_format($total_pagu, 2, ',', '.'); ?> </b> (<?= terbilang($total_pagu) ?> Rupiah) termasuk PPN <?= $row_program_detail['ppn_surat'] ?></label>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="">3. Perkiraan Biaya</label>
                 </div>
                 <div class="col-md-9">
                     <input type="hidden" name="perkiraan_biaya_pip">
                     <label for="">:
                         <!-- <b class="total_hps_mata_anggaran"></b> -->
-                        <b class="terbilang_hps"> <?= number_format($total_hps, 2, ',', '.'); ?></b> (<?= terbilang($total_hps) ?>) termasuk PPN 11%</label>
+                        <b class="terbilang_hps"> Rp.<?= number_format($total_hps, 2, ',', '.'); ?></b> (<?= terbilang($total_hps) ?> Rupiah) termasuk PPN <?= $row_program_detail['ppn_surat'] ?>
+                    </label>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                 </div>
                 <div class="col-md-9" style="display: none;" id="multi_years_jika_ada">
                     <div class="card card-outline card-primary">
@@ -390,50 +388,34 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="">4. Waktu Pelaksanaan</label>
                 </div>
                 <div class="col-md-9">
-                    <label for="">: <?= $row_program_detail['waktu_pelaksanaan_pip'] ?> (<?= terbilang($row_program_detail['waktu_pelaksanaan_pip']) ?>) Hari kalender</label>
+                    <label for="">: <?= $row_program_detail['waktu_pelaksanaan_pip'] ?> (<?= terbilang($row_program_detail['waktu_pelaksanaan_pip']) ?>) <?= $row_program_detail['satuan_pelaksanaan_surat'] ?></label>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="">5. Waktu Pemeliharaan</label>
                 </div>
-                <div class="col-md-9"><label for="">: <?= $row_program_detail['waktu_pemeliharaan_pip'] ?> (<?= terbilang($row_program_detail['waktu_pemeliharaan_pip']) ?>) Hari kalender</label>
+                <div class="col-md-9"><label for="">: <?= $row_program_detail['waktu_pemeliharaan_pip'] ?> (<?= terbilang($row_program_detail['waktu_pemeliharaan_pip']) ?>) <?= $row_program_detail['satuan_pemeliharaan_surat'] ?></label>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="">6. Metode Pengadaan</label>
                 </div>
                 <div class="col-md-9">
-                    <label for="">: <?= $row_program_detail['metode_pengadaan_sk'] ?> dengan Pra/Pasca Kualifikasi secara Elektronik (E-Procurement)</label>
+                    <label for="">: <?= $row_program_detail['metode_pengadaan_sk'] ?> Dengan <?= $row_program_detail['pra_pasca_surat'] ?></label>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="">7. Pembebanan Biaya</label>
                 </div>
                 <div class="col-md-9">
-                    <label for="">: Mata Anggaran <?= $row_program_detail['jenis_anggaran'] ?> PT Jasamarga Tollroad Maintenance Area <?= $row_program_detail['nama_area']  ?></label>
-                    <!-- <label for="">:
-                        <?php if ($row_program_detail['sts_tahun_pembebanan'] == 'single_years') { ?>
-                                                                        <label for="">Single Years</label>
-                        <?php } else { ?>
-                                                                        <label for="">Multi Years</label>
-                        <?php } ?>
-                    </label>
-                    <br>
-                    <?php if ($row_program_detail['sts_tahun_pembebanan'] == 'single_years') { ?>
-
-                    <?php } else { ?>
-                                                                    <?php foreach ($data_multi_years as $key => $value) { ?>
-                                                                                                                    <label for=""><?= $value['tahun_multiyers'] ?></label>,
-                                                                    <?php } ?>
-                    <?php } ?> -->
-
+                    <label for="">: Mata Anggaran <?= $row_program_detail['mata_anggaran_surat'] ?> <br> &nbsp; PT Jasamarga Tollroad Maintenance Area <?= $row_program_detail['lokasi_pekerjaan_surat']  ?>  <br> <?= $row_program_detail['tahun_anggaran_surat']  ?></label>
                 </div>
             </div>
         </div>
@@ -449,10 +431,10 @@
         </div>
 
         <div style="margin-left: 40px;">
-            <?php $i = 0;
+            <?php $i = 1;
             foreach ($data_administrasi as $value) { ?>
                 <div class="row">
-                    <div class="col-md-1">1.<?= $i + 1 ?></div>
+                    <div class="col-md-1">1.<?= $i++ ?></div>
                     <div class="col-md-11" style="margin-left: -40px;">
                         <?= $value['nama_alasan'] ?>
                     </div>
@@ -466,10 +448,10 @@
             </div>
         </div>
         <div style="margin-left: 40px;">
-            <?php $i = 0;
+            <?php $i = 1;
             foreach ($data_teknis as $value) { ?>
                 <div class="row">
-                    <div class="col-md-1">2.<?= $i + 1 ?></div>
+                    <div class="col-md-1">2.<?= $i++ ?></div>
                     <div class="col-md-11" style="margin-left: -40px;">
                         <?= $value['nama_alasan'] ?>
                     </div>
@@ -479,19 +461,20 @@
         <br>
         <br>
         <br>
-        Demikian disampaikan, atas perhatian dan persetujuan Bapak, kami ucapkan Terima kasih.
+        Demikian disampaikan, atas perhatian dan persetujuannya kami ucapkan terima kasih.
         <br><br>
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <center>
+                    <h6>PT Jasamarga Tollroad Maintenance</h6>
                     <br>
                     <br>
                     <br><br><br><br>
-                    <h5> <u style="text-transform: capitalize;"><?= $row_program_detail['pengirim_pip_ca_ke_gm'] ?></u></h5>
-                    <h5>Coordinator Area
-                    </h5>
+                    <h6> <u style="text-transform: capitalize;"><?= $row_program_detail['pengirim_pip_ca_ke_gm'] ?></u></h6>
+                    <h6><?= $row_program_detail['jabatan_pengirim_pip_ca_ke_gm'] ?>
+                    </h6>
 
                 </center>
             </div>
@@ -875,7 +858,7 @@
                     var html3 = '';
                     var x;
                     for (x = 0; x < response['data_teknis'].length; x++) {
-                        html3 += '<div class="row"><div class="col-md-1">2.' + [x + 1] + '</div>' +
+                        html3 += '<div class="row"><div class="col-md-1">2.' + ++x + '</div>' +
                             '<div class="col-md-11" style="margin-left: -40px;">' +
                             '<b>' + response['data_teknis'][x].nama_alasan + '</b>' +
                             '&nbsp;<a href="javascript:;" onclick="hapus_teknis(' + response['data_teknis'][x].id_alasan_teknis + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a>' +
@@ -887,7 +870,7 @@
                     var html4 = '';
                     var o;
                     for (o = 0; o < response['data_administrasi'].length; o++) {
-                        html4 += '<div class="row"><div class="col-md-1">1.' + [o + 1] + '</div>' +
+                        html4 += '<div class="row"><div class="col-md-1">1.' + ++o + '</div>' +
                             '<div class="col-md-11" style="margin-left: -40px;">' +
                             '<b>' + response['data_administrasi'][o].nama_alasan + '</b>' +
                             '&nbsp;<a href="javascript:;" onclick="hapus_administrasi(' + response['data_administrasi'][o].id_alasan_administrasi + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a>' +

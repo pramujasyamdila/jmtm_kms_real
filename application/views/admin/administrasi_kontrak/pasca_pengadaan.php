@@ -8,15 +8,67 @@
                 <div class="breadcrumb-item active"><a href="">LIST PROGRAM</a></div>
             </div>
         </div> -->
-        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#FFFF00;height:50px;
-  position: fixed; top:50px">
-            <h6><?= $nama_kontrak ?></h6>
-            <h6 style="margin-left: auto;"> Pasca Pengadaan</h6>
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
+  position: fixed; top:50px;  padding-bottom: -10px;">
+            <b style="margin-left: auto; font-weight:1000" class="text-black"><?= $nama_kontrak['nama_kontrak'] ?> - <?= $nama_kontrak['tahun_anggaran'] ?> - Lembar Kerja - Pasca Pengadaan</b>
         </nav>
+        <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
+background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
+            <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 2 - PASCA PENGADAAN </b></h4>
+            <h6 style="font-family: 'Poppins', sans-serif;"><b> Modul ini bertujuan untuk mengelola Administrasi Kontrak Program Pekerjaan yang sudah melalui Proses Pengadaan
+                </b></h6>
+        </div>
+
+        <br>
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <!-- /.content-header -->
+            <div class="card" style="margin-top: -20px; padding-top: 10px; padding-left: 20px">
+                <h5 style="font-family: 'Poppins', sans-serif;"><b>CHECKLIST DAN TO DO LIST </b></h5>
+                <div class="row" style="padding-left:90px">
+                    <div class="col-md-4">
+                        <div class="card bg-success" style="margin-top: 20px; padding-top: 10px; padding-left: 20px; border-radius:10px">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <center>
+                                        <h5 style="font-family: 'Poppins', sans-serif;">Done</h5>
+                                    </center>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card bg-warning" style="font-family: 'Poppins', sans-serif;">
+                                        <center>
+                                            <h5><?= $m2_dok_selesai_pasca_final ?></h5>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-warning" style="margin-top: 20px; padding-top: 10px; padding-left: 20px; border-radius:10px">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <center>
+                                        <h5 style="font-family: 'Poppins', sans-serif;">On Progres</h5>
+                                    </center>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card bg-success" style="font-family: 'Poppins', sans-serif;">
+                                        <center>
+                                            <h5><?= $m2_final_pasca ?></h5>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="javascirpt:;" class="btn btn-primary" data-toggle="modal" data-target="#modal_m2_pasca" class="btn btn-xl btn-primary" style="font-family: RNSSanz-Black;text-transform: uppercase;padding-left: 50px;padding-right: 50px;background-color: #302B63;margin-top:30px">Lihat Detail</a>
+                    </div>
+                </div>
+            </div>
             <!-- Main content -->
             <section class="content">
                 <div class="ads">
@@ -48,15 +100,15 @@
                                                     <tr style="background-color: #193B53;">
                                                         <th class="text-center text-white" style="font-size: 13px;" rowspan="3">No</th>
                                                         <th class="text-center text-white" style="font-size: 13px;">Nama Pekerjaan</th>
-                                                        <th class="text-center text-white" style="font-size: 13px;">Nomor Kontrak</th>
-                                                        <th class="text-center text-white" style="font-size: 13px;">Hps</th>
-                                                        <th class="text-center text-white" style="font-size: 13px;">Nilai Kontrak</th>
                                                         <th class="text-center text-white" style="font-size: 13px;">Penyedia</th>
-                                                        <th class="text-center text-white" style="font-size: 13px;">Gunning</th>
-                                                        <th class="text-center text-white" style="font-size: 13px;">Loi</th>
-                                                        <th class="text-center text-white" style="font-size: 13px;">Sho</th>
-                                                        <th class="text-center text-white" style="font-size: 13px;">Smk</th>
+                                                        <th class="text-center text-white" style="font-size: 13px;">Nomor Kontrak</th>
                                                         <th class="text-center text-white" style="font-size: 13px;">Tanggal Kontrak</th>
+                                                        <th class="text-center text-white" style="font-size: 13px;">Nilai Hps</th>
+                                                        <th class="text-center text-white" style="font-size: 13px;">Nilai Kontrak</th>
+                                                        <!-- <th class="text-center text-white" style="font-size: 13px;">Gunning</th> -->
+                                                        <!-- <th class="text-center text-white" style="font-size: 13px;">Loi</th> -->
+                                                        <!-- <th class="text-center text-white" style="font-size: 13px;">Sho</th> -->
+                                                        <!-- <th class="text-center text-white" style="font-size: 13px;">Smk</th> -->
                                                         <th class="text-center text-white" style="font-size: 13px;">Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -78,16 +130,24 @@
                                                         ?>
                                                         <?php } ?>
                                                         <tr style="font-size: 11px;">
-                                                            <td><?= $i++ ?></td>
-                                                            <td> <label for=""><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></label> </td>
+                                                            <td class="table-warning"><?= $i++ ?></td>
+                                                            <td class="table-warning"> <label for=""><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></label> </td>
+                                                            <td><?= $value['nama_penyedia'] ?>
                                                             <td> <?= $value['no_kontrak_penyedia'] ?>
                                                             </td>
+                                                            <?php if (!$value['tanggal_kontrak_program']) { ?>
+                                                                <td> Belum Dibuat
+                                                                </td>
+                                                            <?php  } else { ?>
+                                                                <td> <?= $value['tanggal_kontrak_program'] ?>
+                                                                </td>
+                                                            <?php   } ?>
                                                             <td> <?= "Rp " . number_format($total_kontrak, 2, ',', '.') ?>
                                                             </td>
-                                                            <td> <?= "Rp " . number_format($value['total_kontrak'], 2, ',', '.') ?>
+                                                            <td> <?= "Rp " . number_format($value['total_kontrak'], 2, ',', '.') ?> asdasd
                                                             </td>
-                                                            <td><?= $value['nama_penyedia'] ?>
-                                                            <td>
+
+                                                            <!-- <td>
                                                                 <?php if (!$value['tanggal_gunning']) { ?>
                                                                     <label for="">Belum Upload</label>
                                                                 <?php  } else { ?>
@@ -114,14 +174,8 @@
                                                                 <?php  } else { ?>
                                                                     <label for=""><?= $value['tanggal_smk'] ?></label>
                                                                 <?php   } ?>
-                                                            </td>
-                                                            <?php if (!$value['tanggal_kontrak_program']) { ?>
-                                                                <td> Belum Dibuat
-                                                                </td>
-                                                            <?php  } else { ?>
-                                                                <td> <?= $value['tanggal_kontrak_program'] ?>
-                                                                </td>
-                                                            <?php   } ?>
+                                                            </td> -->
+
 
                                                             <td>
                                                                 <div class="btn-group">
@@ -156,6 +210,8 @@
                                                                 <td class=""></td>
                                                                 <td class=""><?= $value_sub_detail_program['nama_program_mata_anggaran'] ?></td>
                                                                 <td class=""></td>
+                                                                <td class=""></td>
+                                                                <td class=""></td>
                                                                 <td>
                                                                     <div style="width:150px">
                                                                         <?= "Rp " . number_format($value_sub_detail_program['nilai_hps'], 2, ',', '.') ?>
@@ -185,12 +241,28 @@
                                 <!-- /.card-footer -->
                             </div>
                         </div>
+                        <br>
+                        <div class="card" style="margin-top: -18px; padding: 20px;width:100%;">
+                            <h4 style="text-transform: uppercase;font-family: 'Poppins', sans-serif;">PETUNJUK UMUM</h4>
+                            <b>
+                                <h6 style="text-transform: capitalize;;font-family: 'Poppins', sans-serif;">*Seluruh Nilai yang ada pada Tabel di atas adalah Nilai Setelah PPN</h6>
+                            </b>
+                            <b>
+                                <h6 style="text-transform: capitalize;;font-family: 'Poppins', sans-serif;">*Nama Penyedia Jasa adalah Penyedia Jasa yang sudah terdaftar pada e-Procurement</h6>
+                            </b>
+                            <b>
+                                <h6 style="text-transform: capitalize;;font-family: 'Poppins', sans-serif;">*Nomor Kontrak dan Tanggal Kontrak diambil dari Button Aksi Kelola Surat</h6>
+                            </b>
+                            <b>
+                                <h6 style="text-transform: capitalize;;font-family: 'Poppins', sans-serif;">*Nilai Kontrak diambil dari Button Aksi Kelola Nilai Kontrak</h6>
+                            </b>
 
+                        </div>
                         <!-- Button trigger modal -->
                         <!-- Modal -->
 
 
-                        <div class="modal fade" data-backdrop="false" id="modal_edit_global" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal fade" data-backdrop="false" id="modal_edit_global" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header bg-primary text-white">
@@ -217,9 +289,7 @@
                                                         <!-- PIP -->
                                                         <div class="tab-pane fade show active" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
                                                             <div class="row">
-                                                                <div class="col-md-3">
-                                                                </div>
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-12">
                                                                     <div class="card card-outline card-primary">
                                                                         <div class="card-header">
                                                                             <h3 class="card-title">
@@ -232,19 +302,19 @@
                                                                                 <div class="row">
                                                                                     <div class="col-md-12">
                                                                                         <label for="">Nama Penyyedia</label>
-                                                                                        <div class="input-group mb-6">
-                                                                                            <div class="input-group-prepend">
+                                                                                        <div class="input-group mb-12">
+                                                                                            <div class="input-group-prepend" style="width: 100%;">
                                                                                                 <span class="input-group-text">
                                                                                                     <i class="far fa-user"> </i>
                                                                                                 </span>
                                                                                                 <select name="id_identitas_prusahaan" class="form-control select2">
                                                                                                     <option value="">-- Pilih Penyedia --</option>
-                                                                                                <?php foreach ($get_penyedia as $key => $value) { ?>
-                                                                                                    <option value="<?= $value['id_identitas_prusahaan']?>"><?= $value['nama_usaha']?></option>
-                                                                                                <?php  } ?>
-                                                                                            </select>
+                                                                                                    <?php foreach ($get_penyedia as $key => $value) { ?>
+                                                                                                        <option value="<?= $value['id_identitas_prusahaan'] ?>"><?= $value['nama_usaha'] ?></option>
+                                                                                                    <?php  } ?>
+                                                                                                </select>
                                                                                             </div>
-                                                                                         
+
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -252,8 +322,6 @@
                                                                         </form>
                                                                     </div>
                                                                     <button type="button" onclick="simpan_data()" class="btn btn-sm btn-success float-right"><i class="fa fa-paper-plane" aria-hidden="true"></i> Simpan</button>
-                                                                </div>
-                                                                <div class="col-md-3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -276,4 +344,78 @@
             <!-- /.content -->
         </div>
     </section>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="modal_m2_pasca" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">MODUL 2 - DOKUMEN PRA PENGADAAN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Uraian Pekerjaan</th>
+                            <th>Done</th>
+                            <th>On Progres</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1;
+                        foreach ($data_pekerjaan as $key => $value) { ?>
+                            <tr>
+                                <td><?= $i++ ?></td>
+                                <td><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></td>
+                                <td>
+                                    <?php
+                                    $this->db->select('*');
+                                    $this->db->from('mst_kontrak');
+                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
+                                    $this->db->join('tbl_dokumen_surat_pasca', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_dokumen_surat_pasca.id_detail_program_penyedia_jasa');
+                                    $this->db->where('tbl_dokumen_surat_pasca.file !=', NULL);
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                    $query_pasca1 = $this->db->count_all_results();
+
+                                    $this->db->select('*');
+                                    $this->db->from('mst_kontrak');
+                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
+                                    $this->db->join('tbl_dokumen_kontrak_hps', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_dokumen_kontrak_hps.id_detail_program_penyedia_jasa');
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                    $this->db->where('tbl_dokumen_kontrak_hps.nama_file !=', NULL);
+                                    $query_pasca2 = $this->db->count_all_results();
+                                    ?>
+                                    <?= $query_pasca1 + $query_pasca2 ?>
+                                    <?php $total_done = $query_pasca1 + $query_pasca2 ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    $this->db->select('*');
+                                    $this->db->from('mst_kontrak');
+                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
+                                    $this->db->join('tbl_dokumen_surat_pasca', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_dokumen_surat_pasca.id_detail_program_penyedia_jasa');
+                                    $this->db->where('tbl_dokumen_surat_pasca.file', NULL);
+                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                    $query_pasca1_progres = $this->db->count_all_results();
+
+                                    $this->db->select('*');
+                                    $this->db->from('mst_kontrak');
+                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
+                                    $this->db->join('tbl_dokumen_kontrak_hps', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_dokumen_kontrak_hps.id_detail_program_penyedia_jasa');
+                                    $this->db->where('tbl_dokumen_kontrak_hps.nama_file', NULL);
+                                    $query_pasca2_progres = $this->db->count_all_results();
+                                    ?>
+                                    <?= $query_pasca1_progres + $query_pasca2_progres - $total_done + 1 ?>
+                                </td>
+                            </tr>
+                        <?php   } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

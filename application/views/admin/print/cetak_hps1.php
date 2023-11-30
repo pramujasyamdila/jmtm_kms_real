@@ -39,8 +39,7 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-2">
-                <label><?= $row_program_detail['tgl_surat_hps_ca_ke_gm'] ?></label>
-
+                <label><?= $this->jam_tgl->tgl_indo($row_program_detail['tgl_surat_hps_ca_ke_gm']) ?></label>
             </div>
         </div>
         <div class="row">
@@ -51,7 +50,7 @@
                 <label for="" style="margin-right: auto;"> :</label>
             </div>
             <div class="col-md-4">
-                <label for="" style="margin-left: -90px;">Lampiran : 1 (Satu) Berkas</label>
+                <label for="" style="margin-left: -90px;"> 1 (Satu) Berkas</label>
             </div>
             <div class="col-md-2">
             </div>
@@ -66,14 +65,14 @@
             </div>
             <div class="col-md-11">
                 <label for="" style="margin-left: auto;">
-                    : <b> Permohonan HPS Pengadaan <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label> </b></b>
+                    : <b> Permohonan Harga Perkiraan Sendiri (HPS) Pengadaan <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label> </b></b>
                 </label>
             </div>
         </div>
         <div class="mt-5">
             Yth.
             <br>
-            <b> <label for=""><?= $row_program_detail['nama_departemen'] ?></label> General Manager</b> <br>
+            <b> <label for=""><?= $row_program_detail['jabatan_penerima_hps_ca_ke_gm'] ?></label></b> <br>
             PT Jasamarga Tollroad Maintenance <br>
             Gedung C PT Jasa Marga (Persero) Tbk, Lt.1 <br>
             Plaza Tol Taman Mini Indonesia Indah, Jakarta 13550
@@ -134,10 +133,10 @@
         <div class="mt-4">
             <div class="row">
                 <div class="col-md-12">
-                    Sehubungan dengan kegiatan Pengadaan <?= $row_program_detail['jenis_pengadaan'] ?> <?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?>, bersama ini kami sampaikan permohonan Harga Perkiraan Sendiri (HPS) untuk pekerjaan dimaksud dengan nilai sebesar, <b><?= number_format($total_hps, 2, ',', '.'); ?> (<?= terbilang($total_hps) ?>)</b> termasuk PPN 10/11/12%.
+                    Sehubungan dengan kegiatan Pengadaan <?= $row_program_detail['jenis_pengadaan'] ?> <?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?>, bersama ini kami sampaikan permohonan Harga Perkiraan Sendiri (HPS) untuk pekerjaan dimaksud dengan nilai sebesar, <b>Rp. <?= number_format($total_hps, 2, ',', '.'); ?> (<?= terbilang($total_hps) ?> Rupiah)</b> termasuk PPN <?= $row_program_detail['ppn_surat'] ?>.
                     <br>
                     <br>
-                    Demikian disampaikan, atas perhatian dan Permohonan Bapak kami ucapkan terima kasih.
+                    Demikian disampaikan, atas perhatian dan persetujuannya kami ucapkan terima kasih.
                 </div>
             </div>
         </div>
@@ -147,14 +146,14 @@
             <div class="col-md-4"></div>
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                <center>
-                    PT Jasamarga Tollroad Maintenance
+            <center>
+                    <h6>PT Jasamarga Tollroad Maintenance</h6>
                     <br>
                     <br>
                     <br><br><br><br>
-                    <h5> <u style="text-transform: capitalize;"><?= $row_program_detail['pengirim_hps_ca_ke_gm'] ?></u></h5>
-                    <h5>Cordinator Area
-                    </h5>
+                    <h6> <u style="text-transform: capitalize;"><?= $row_program_detail['pengirim_hps_ca_ke_gm'] ?></u></h6>
+                    <h6><?= $row_program_detail['jabatan_pengirim_hps_ca_ke_gm'] ?>
+                    </h6>
 
                 </center>
             </div>
