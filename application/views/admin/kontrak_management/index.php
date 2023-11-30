@@ -270,11 +270,16 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
         </div>
 
         <div class="card" style="margin-top: -18px; padding: 20px">
-            <h4>Petunjuk Umum</h4>
-            <h6>*Tanggal Kontrak adalah Tanggal Kontrak Manajemen di Tanda Tangani Para Pihak</h6>
-            <h6>*Tahun Anggaran adalah Data untuk 1 Tahun Anggaran tertentu di dalam Kontrak Manajemen</h6>
-            <h6>*Informasi Addendum Terakhir adalah Informasi Nilai, Tanggal, dan Periode Addendum terakhir yang telah diinput di dalam Kelola Level Kontrak Manajemen</h6>
-
+            <h4 style="text-transform: uppercase;font-family: 'Poppins', sans-serif;">PETUNJUK UMUM</h4>
+            <b>
+                <h6 style="font-family: 'Poppins', sans-serif;">*Tanggal Kontrak Adalah Tanggal Kontrak Manajemen Di Tanda Tangani Para Pihak</h6>
+            </b>
+            <b>
+                <h6 style="font-family: 'Poppins', sans-serif;">*Tahun Anggaran Adalah Data Untuk 1 Tahun Anggaran Tertentu Di Dalam Kontrak Manajemen</h6>
+            </b>
+            <b>
+                <h6 style="font-family: 'Poppins', sans-serif;">*Informasi Addendum Terakhir Adalah Informasi Nilai, Tanggal, Dan Periode Addendum Terakhir Yang Telah Diinput Di Dalam Kelola Level Kontrak Manajemen</h6>
+            </b>
         </div>
         <!-- /.content-header -->
 

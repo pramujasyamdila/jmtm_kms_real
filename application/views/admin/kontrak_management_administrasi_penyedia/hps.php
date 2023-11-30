@@ -390,6 +390,9 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                 <td><?= "Rp " . number_format($value['total_sebelum_ppn'], 2, ',', '.') ?></td>
                                                 <td><?= "Rp " . number_format($value['ppn'], 2, ',', '.') ?></td>
                                                 <td><?= "Rp " . number_format($value['total_setelah_ppn'], 2, ',', '.') ?></td>
+                                                <td><?= "Rp " . number_format($value['total_sebelum_tkdn'], 2, ',', '.') ?></td>
+                                                <td><?= "Rp " . number_format($value['tkdn'], 2, ',', '.') ?></td>
+                                                <td><?= "Rp " . number_format($value['total_setelah_tkdn'], 2, ',', '.') ?></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

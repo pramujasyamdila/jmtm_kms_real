@@ -123,7 +123,6 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                 } else {
                                                                                     $romawi_add = 'Kontrak Awal';
                                                                                 }
-
                                                                                 ?>
                                                                                 <option value="<?= $value['no_adendum'] ?>"><?= $romawi_add ?></option>
                                                                             <?php   } ?>
@@ -726,7 +725,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                          <tr style="font-family: RNSSanz-Bold;font-size:13px;">
                                                                             <td class="tg-0lax">
                                                                                 <?= $value_detail_capex['no_urut'] ?> </td>
-                                                                            <td class="tg-0lax">&nbsp;&nbsp;&nbsp; <?= $value_detail_capex['nama_uraian'] ?></td>
+                                                                            <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?= $value_detail_capex['nama_uraian'] ?></td>
                                                                             <?php if ($adendum_result) { ?>
                                                                                 <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                     <?php
@@ -1044,7 +1043,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                 <td class="tg-0lax">
                                                                                     <?= $value_detail_capex_1['no_urut_1_capex'] ?> </td>
                                                                                 </td>
-                                                                                <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp; <?= $value_detail_capex_1['nama_uraian_1_capex'] ?></td>
+                                                                                <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?= $value_detail_capex_1['nama_uraian_1_capex'] ?></td>
                                                                                 <?php if ($adendum_result) { ?>
                                                                                     <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                         <?php
@@ -1321,7 +1320,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                     <td class="tg-0lax">
                                                                                         <?= $value_detail_capex_2['no_urut_2_capex'] ?></td>
                                                                                     </td>
-                                                                                    <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp; <?= $value_detail_capex_2['nama_uraian_2_capex'] ?></td>
+                                                                                    <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?= $value_detail_capex_2['nama_uraian_2_capex'] ?></td>
                                                                                     <?php if ($adendum_result) { ?>
                                                                                         <!-- detail_2 -->
                                                                                         <!-- capex_2 -->
@@ -1609,7 +1608,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                         <td class="tg-0lax">
                                                                                             <?= $value_detail_capex_3['no_urut_3_capex'] ?> </td>
                                                                                         </td>
-                                                                                        <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp; <?= $value_detail_capex_3['nama_uraian_3_capex'] ?></td>
+                                                                                        <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?= $value_detail_capex_3['nama_uraian_3_capex'] ?></td>
                                                                                         <?php if ($adendum_result) { ?>
                                                                                             <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                 <?php
@@ -1901,7 +1900,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                             <td class="tg-0lax">
                                                                                                 <?= $value_detail_capex_4['no_urut_4_capex'] ?> </td>
                                                                                             </td>
-                                                                                            <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp; <?= $value_detail_capex_4['nama_uraian_4_capex'] ?></td>
+                                                                                            <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?= $value_detail_capex_4['nama_uraian_4_capex'] ?></td>
                                                                                             <?php if ($adendum_result) { ?>
                                                                                                 <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                     <?php
@@ -2191,7 +2190,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                                                 <td class="tg-0lax">
                                                                                                     <?= $value_detail_capex_5['no_urut_5_capex'] ?> </td>
                                                                                                 </td>
-                                                                                                <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp; <?= $value_detail_capex_5['nama_uraian_5_capex'] ?></td>
+                                                                                                <td class="tg-0lax">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?= $value_detail_capex_5['nama_uraian_5_capex'] ?></td>
                                                                                                 <?php if ($adendum_result) { ?>
                                                                                                     <?php foreach ($adendum_result as $key => $value) { ?>
                                                                                                         <?php

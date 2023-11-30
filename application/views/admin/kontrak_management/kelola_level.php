@@ -73,6 +73,14 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
 
         <div class="card" style="margin-top: -20px; padding-bottom: 30px; padding-top: 2px;padding-left:20px;padding-right:20px">
             <br>
+            <?php if ($this->session->flashdata('error')) {
+                echo '  <div class="alert alert-danger alert-dismissible">
+               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+               <h5><i class="icon fas fa-exclamation-triangle"></i> Kesalah Pada Upload File!</h5>';
+                echo  $this->session->flashdata('error');
+                echo ' </div>';
+            } ?>
+            <br>
             <button style="font-family: RNSSanz-Black;text-transform: uppercase;" type="button" class="btn btn-outline-primary btn-sm btn-lg mb-2 mt-4" data-toggle="modal" data-target="#tambah_addendum">
                 <i class="fas fa fa-plus"></i> Tambah Addendum
             </button>
@@ -2340,7 +2348,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                     <button type="submit" id="upload" name="upload" class="input-group-text  btn-grad100"><i class="fas fa-upload"></i></button>
                                 </div>
                             </div>
-                            
+
                         </form>
                         <div style="display: none;" id="error_file" class="alert alert-danger" role="alert">
                             ANDA BELUM MENGISI FILE !!!
@@ -2362,7 +2370,6 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                             <thead>
                                 <tr class="btn-grad100">
                                     <th>No</th>
-                                    <th>Nama Dokumen</th>
                                     <th>Nama File</th>
                                     <th>File</th>
                                     <th><i class="fa fa-cogs" aria-hidden="true"></i></th>

@@ -1846,12 +1846,14 @@ class Administrasi_penyedia extends CI_Controller
         $this->db->where('tbl_hps_penyedia_1.harga_satuan_hps !=', null);
         $query_tbl_hps = $this->db->get();
         $total_hps_penyedia_1 = 0;
+        $total_jumlah_harga_tkdn = 0;
         $total_hps_penyedia_2 = 0;
         $total_hps_penyedia_3 = 0;
         $total_hps_penyedia_4 = 0;
         $total_hps_penyedia_5 = 0;
         foreach ($query_tbl_hps->result_array() as $key => $value_hps_penyedia_1) {
             $total_hps_penyedia_1 += $value_hps_penyedia_1['total_harga'];
+            $total_jumlah_harga_tkdn += $value_hps_penyedia_1['jumlah_harga_tkdn'];
             $id_hps_penyedia_1 = $value_hps_penyedia_1['id_hps_penyedia_1'];
             // batas tbl_hps_penyedia_2
             $this->db->select('*');
@@ -1898,6 +1900,9 @@ class Administrasi_penyedia extends CI_Controller
         ];
         $total_ppn = ($ppn_hps * $total_hps_penyedia_1) / 100;
         $total_setalah_ppn = $total_ppn + $total_hps_penyedia_1;
+
+        $total_tkdn = ($ppn_hps * $total_jumlah_harga_tkdn) / 100;
+        $total_setalah_tkdn = $total_tkdn + $total_jumlah_harga_tkdn;
         $data = [
             'nilai_hps' => $total_setalah_ppn,
             'nilai_sub_kontrak_penyedia' => $total_setalah_ppn
@@ -1906,7 +1911,10 @@ class Administrasi_penyedia extends CI_Controller
         $data = [
             'ppn' => $total_ppn,
             'total_sebelum_ppn' => $total_hps_penyedia_1,
-            'total_setelah_ppn' => $total_setalah_ppn
+            'total_setelah_ppn' => $total_setalah_ppn,
+            'total_sebelum_tkdn' => $total_jumlah_harga_tkdn,
+            'total_setelah_tkdn' => $total_setalah_tkdn,
+            'tkdn' => $total_tkdn,
         ];
         $this->Data_kontrak_model->update_ke_tbl_rekap_hps($where, $data);
         $this->db->select('*');
@@ -3690,7 +3698,7 @@ class Administrasi_penyedia extends CI_Controller
         $data['m2_dok_progres_pasca_final'] = $data['m2_dok_progres_pasca'] + $data['m2_dok_progres_pasca_kontrak'] + 1;
         $data['m2_final_pasca'] = $data['m2_dok_progres_pasca_final'] - $data['m2_dok_selesai_pasca_final'];
 
-        
+
 
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
@@ -4095,7 +4103,7 @@ class Administrasi_penyedia extends CI_Controller
     {
         $id_dokumen_surat_pra = $this->input->post('id_dokumen_surat_pra');
         $config['upload_path'] = './file_surat_prakualifikasi/';
-        $config['allowed_types'] = 'pdf';
+        $config['allowed_types'] = 'pdf|xlsx|word|doc|docx|ppt|pptx';
         $config['max_size'] = 0;
         $this->load->library('upload', $config);
         if ($this->upload->do_upload('file')) {
@@ -4156,7 +4164,7 @@ class Administrasi_penyedia extends CI_Controller
     {
         $id_dokumen_surat_pasca = $this->input->post('id_dokumen_surat_pasca');
         $config['upload_path'] = './file_surat_pascakualifikasi/';
-        $config['allowed_types'] = 'pdf';
+        $config['allowed_types'] = 'pdf|xlsx|word|doc|docx|ppt|pptx';
         $config['max_size'] = 0;
         $this->load->library('upload', $config);
         if ($this->upload->do_upload('file')) {
@@ -4180,7 +4188,7 @@ class Administrasi_penyedia extends CI_Controller
     {
         $sts_file = $this->input->post('sts_dokumen');
         $config['upload_path'] = './file_kontrak/';
-        $config['allowed_types'] = 'pdf';
+        $config['allowed_types'] = 'pdf|xlsx|word|doc|docx|ppt|pptx';
         $config['max_size'] = 0;
         $this->load->library('upload', $config);
         if ($this->upload->do_upload('nama_file')) {

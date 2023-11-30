@@ -1063,7 +1063,7 @@
             data: form_buat_adendum.serialize(),
             dataType: "JSON",
             beforeSend: function() {
-                $('.button_simpan').addClass('disabled');
+                // $('.button_simpan').addClass('disabled');
             },
             success: function(response) {
                 if (response == 'success') {

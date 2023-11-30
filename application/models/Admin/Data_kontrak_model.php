@@ -5161,16 +5161,17 @@ class Data_kontrak_model extends CI_Model
         return $result;
     }
 
-    public function select_max_addendum_row($id_kontrak)
+    public function select_max_addendum_row($row_max_add, $id_kontrak)
     {
-        
-        $this->db->select_max('CAST(no_adendum AS DECIMAL(10,6)) ASC');
+
+        $this->db->select('*');
         $this->db->from('table_adendum');
         $this->db->where('id_kontrak', $id_kontrak);
+        $this->db->where('no_adendum', $row_max_add);
         $query = $this->db->get();
         return $query->row_array();
     }
-    
+
     // addendum administarsi trakhir
     public function get_row_addendum_administrasi_terakhir($id_detail_program_penyedia_jasa)
     {
@@ -7229,5 +7230,4 @@ class Data_kontrak_model extends CI_Model
         $this->db->update('table_adendum', $data, $where);
         return $this->db->affected_rows();
     }
-    
 }

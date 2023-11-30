@@ -39,7 +39,7 @@ class Data_kontrak extends CI_Controller
         $data['data_kontrak'] = $this->M_analisis->get_kontrak();
         $data['data_pekerjaan'] = $this->M_analisis->get_pekerjaan();
         $data['data_mc'] = $this->M_analisis->get_mc();
-        
+
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('admin/kontrak_management/index', $data);
@@ -1573,7 +1573,8 @@ class Data_kontrak extends CI_Controller
             $this->Data_kontrak_model->update_kontrak($ehere_add, $dataadd);
             // ini max Addendum
             $row_max_add = $this->Data_kontrak_model->select_max_addendum($id_kontrak);
-            $row_max_add_row = $this->Data_kontrak_model->select_max_addendum_row($id_kontrak);
+            $row_max_add_row = $this->Data_kontrak_model->select_max_addendum_row($row_max_add, $id_kontrak);
+            // var_dump($row_max_add_row);die;
             $where_kontrak = [
                 'id_kontrak' => $id_kontrak
             ];
@@ -7218,7 +7219,6 @@ class Data_kontrak extends CI_Controller
         foreach ($resultss as $angga) {
             $row = array();
             $row[] = ++$no;
-            $row[] = $angga->nama_file_dok_penunjang;
             $row[] = $angga->file_dokumen_penunjang;
             $row[] = '<a target="_blank" href=' . base_url('/file_dokumen_penunjang' . '/' . $angga->file_dokumen_penunjang) . '>' . '<img width="30px" src="https://cdn-icons-png.flaticon.com/512/124/124837.png">' . '</a>';
             $row[] = '<a href="javascript:;" class="btn btn-danger  btn-block btn-sm" onClick="hapus_dok_penunjang(' . "'" . $angga->id_dokumen_penunjang . "','hapus_dok_penunjang'" . ')">  <i class="fas fa-trash"></i> Hapus</a>';
@@ -7239,9 +7239,8 @@ class Data_kontrak extends CI_Controller
         $sts_dokumen = $this->input->post('sts_dokumen');
         $nama_file_dok_penunjang = $this->input->post('nama_file_dok_penunjang');
         $config['upload_path'] = './file_dokumen_penunjang/';
-        $config['allowed_types'] = 'pdf|xlsx|word|doc|docx';
-        $config['max_size'] = 0;
-
+        $config['allowed_types'] = 'pdf|xlsx|word|doc|docx|ppt|pptx';
+        $config['max_size'] = 2097152;
         $this->load->library('upload', $config);
 
         if ($this->upload->do_upload('file_dokumen_penunjang')) {
@@ -7256,7 +7255,7 @@ class Data_kontrak extends CI_Controller
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
         } else {
             $this->session->set_flashdata('error', $this->upload->display_errors());
-            redirect(base_url('upload'));
+            redirect('admin/data_kontrak/kelola_level/' . $id_kontrak);
         }
     }
     public function hapus_dok_penunjang($id_dokumen_penunjang)
@@ -7275,9 +7274,10 @@ class Data_kontrak extends CI_Controller
             'no_adendum' => $type_add,
         ];
         $this->Data_kontrak_model->delete_addendum($where);
+        // ini max Addendum
         $row_max_add = $this->Data_kontrak_model->select_max_addendum($id_kontrak);
-        $row_max_add_row = $this->Data_kontrak_model->select_max_addendum_row($id_kontrak);
-        var_dump($row_max_add_row);die;
+        $row_max_add_row = $this->Data_kontrak_model->select_max_addendum_row($row_max_add, $id_kontrak);
+        // var_dump($row_max_add_row);die;
         $where_kontrak = [
             'id_kontrak' => $id_kontrak
         ];
@@ -7291,7 +7291,6 @@ class Data_kontrak extends CI_Controller
                 'tanggal_add' => $row_max_add_row['tanggal'],
             ];
         }
-        // end ini max Addendum
         $this->Data_kontrak_model->update_kontrak($where_kontrak, $data_kontrak);
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
