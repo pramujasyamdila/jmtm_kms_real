@@ -451,6 +451,10 @@
         }
     </script>
 
-</body>
+</body>   <script>
+        setTimeout(() => {
+            window.print();
+        }, 1000);
+    </script>
 
 </html>

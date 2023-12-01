@@ -497,12 +497,12 @@
 
                                                 <div class="tab-pane fade show active" id="custom-tabs-two-masterdata" role="tabpanel" aria-labelledby="custom-tabs-two-masterdata-tab">
                                                     <div class="row">
-                                                        <div class="container">
+                                                        <div class="container-fluid">
                                                             <div class="row">
                                                                 <div onscroll='scroller("scroller", "scrollme")' style="overflow:scroll; height: 10;overflow-y: hidden;" id=scroller>
-                                                                    <img src="" height=1 width=2066 style="width:2066px;">
+                                                                    <img src="" height=1 width=2066 style="width:3000px;">
                                                                 </div>
-                                                                <div onscroll='scroller("scrollme", "scroller")' style="overflow:scroll; height:500px" id="scrollme">
+                                                                <div onscroll='scroller("scrollme", "scroller")' style="overflow:scroll; height:500px; width:3000px" id="scrollme">
                                                                     <table id="customers" class="tableFixHead" style="font-size: 14px;">
                                                                         <thead>
                                                                             <tr>
@@ -909,7 +909,7 @@
                                                                 color: white;
                                                             }
                                                         </style>
-                                                        <div class="container">
+                                                        <div class="container-fluid">
                                                             <div class="row">
                                                                 <div onscroll='scroller("scroller", "scrollme")' style="overflow:scroll; height: 10;overflow-y: hidden;" id=scroller>
                                                                     <img src="" height=1 width=2066 style="width:2066px;">
