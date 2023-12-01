@@ -155,6 +155,7 @@
                                                             <td>PPN</td>
                                                             <td><input type="text" class="form-control mt-2 mb-2" readonly value="<?= $row_mc['persen_ppn'] ?>%"></td>
                                                         </tr>
+                                                        <!-- kirun -->
                                                         <tr>
                                                             <td>View Surat PO</td>
                                                             <td><a href="javascript:;" class="btn btn-warning mt-2 mb-2" onclick="View_surat_mc('po')">Lihat Surat</a></td>
