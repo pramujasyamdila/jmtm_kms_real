@@ -1,21 +1,66 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="main-content">
     <section class="section">
-        <div class="section-header">
-            <h1><i class="fa fa-book"></i> Kelola Surat Kontrak</h1>
-            <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="<?= base_url('admin/administrasi_penyedia') ?>">Kelola Surat</a></div>
+        <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
+  position: fixed; top:50px;  padding-bottom: -10px;">
+            <b style="margin-left: auto; font-weight:1000" class="text-black">Kelola Surat</b>
+        </nav>
+        <br>
+        <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
+background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
+            <h4 style="font-family: 'Poppins', sans-serif;"><b> MODUL 2 - KELOLA SURAT PASCA</b></h4>
+            <h6 style="font-family: 'Poppins', sans-serif;">Modul ini bertujuan untuk mengelola Administrasi Kontrak Program Pekerjaan yang sudah melalui Proses Pengadaan
+            </h6>
+
+        </div>
+        <!-- Content Header (Page header) -->
+        <!-- /.content-header -->
+        <div class="card" style="margin-top: -20px; padding-top: 10px; padding-left: 20px">
+            <h5 style="font-family: 'Poppins', sans-serif;"><b>CHECKLIST DAN TO DO LIST </b></h5>
+            <div class="row" style="padding-left:90px">
+                <div class="col-md-4">
+                    <div class="card bg-success" style="margin-top: 20px; padding-top: 10px; padding-left: 20px; border-radius:10px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <center>
+                                    <h5 style="font-family: 'Poppins', sans-serif;">Done</h5>
+                                </center>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card bg-warning" style="font-family: 'Poppins', sans-serif;">
+                                    <center>
+                                        <h5><?= $total_final_dok_pasca_baru ?></h5>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-warning" style="margin-top: 20px; padding-top: 10px; padding-left: 20px; border-radius:10px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <center>
+                                    <h5 style="font-family: 'Poppins', sans-serif;">On Progres</h5>
+                                </center>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card bg-success" style="font-family: 'Poppins', sans-serif;">
+                                    <center>
+                                        <h5><?= $total_final_progres ?></h5>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
         <div class="content-wrapper" style="background-color:white">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
+            <br>
+
             <input type="hidden" name="id_detail_program_penyedia_jasa" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>">
             <!-- /.content-header -->
             <!-- Main content -->
@@ -25,869 +70,146 @@
                         <div class="col-md-12">
                             <div class="col-sm-12">
                                 <div class="card card-outline card-warning">
+                                    <br>
                                     <div class="card-header">
                                         <h5><i class="fa fa-book"></i> Kelola Surat Kontrak</h5>
                                     </div>
                                     <div class="card-body">
-                                        <div class="container-fluid">
-                                            <div class="card card-primary card-tabs">
-                                                <div class="card-header p-0 pt-1">
-                                                    <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
-                                                        <li class="pt-2 px-3">
-                                                            <h3 class="card-title"><i class="fas fa fa-envelope"></i></h3>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link active" id="custom-tabs-two-masterdata-tab" data-toggle="pill" href="#custom-tabs-two-masterdata" role="tab" aria-controls="custom-tabs-two-masterdata" aria-selected="true">Masterdata</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" id="custom-tabs-two-persuratan-tab" data-toggle="pill" href="#custom-tabs-two-persuratan" role="tab" aria-controls="custom-tabs-two-persuratan" aria-selected="true">Persuratan</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" id="custom-tabs-two-kontrak-tab" data-toggle="pill" href="#custom-tabs-two-kontrak" role="tab" aria-controls="custom-tabs-two-kontrak" aria-selected="false">Kontrak</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" id="custom-tabs-two-surat_pasca-tab" data-toggle="pill" onclick="Update_Surat_Pasca()" href="#custom-tabs-two-surat_pasca" role="tab" aria-controls="custom-tabs-two-surat_pasca" aria-selected="false">Upload Surat</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="tab-content" id="custom-tabs-two-tabContent">
-                                                        <div class="tab-pane fade show active" id="custom-tabs-two-masterdata" role="tabpanel" aria-labelledby="custom-tabs-two-masterdata-tab">
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="card card-outline card-info">
-                                                                        <div class="card-header">
-                                                                            <h3 class="card-title">
-                                                                                Masterdata
-                                                                            </h3>
-                                                                        </div>
-                                                                        <style>
-                                                                            .wrapper1,
-                                                                            .wrapper2 {
-                                                                                width: 300px;
-                                                                                overflow-x: scroll;
-                                                                                overflow-y: hidden;
-                                                                            }
-
-                                                                            .wrapper1 {
-                                                                                height: 20px;
-                                                                            }
-
-                                                                            .wrapper2 {
-                                                                                height: 200px;
-                                                                            }
-
-                                                                            .div1 {
-                                                                                width: 1000px;
-                                                                                height: 20px;
-                                                                            }
-
-                                                                            .div2 {
-                                                                                width: 1000px;
-                                                                                height: 200px;
-                                                                                overflow: auto;
-                                                                            }
-
-                                                                            .tableFixHead {
-                                                                                font-family: 'RNSSanz-ExtraBold';
-                                                                                overflow: auto;
-                                                                                height: 100px;
-
-                                                                            }
-
-                                                                            .tableFixHead thead th {
-                                                                                background-color: #302B63;
-                                                                                font-family: 'RNSSanz-ExtraBold';
-                                                                                color: 'white';
-                                                                                position: sticky;
-                                                                                top: 0;
-                                                                            }
-
-                                                                            #customers {
-                                                                                font-family: Arial, Helvetica, sans-serif;
-                                                                                border-collapse: collapse;
-                                                                                width: 100%;
-                                                                            }
-
-                                                                            #customers td,
-                                                                            #customers th {
-                                                                                border: 1px solid #ddd;
-                                                                                padding: 8px;
-                                                                            }
-
-                                                                            #customers tr:nth-child(even) {
-                                                                                background-color: #f2f2f2;
-                                                                            }
-
-                                                                            #customers tr:hover {
-                                                                                background-color: #ddd;
-                                                                            }
-
-                                                                            #customers th {
-                                                                                padding-top: 2px;
-                                                                                padding-bottom: 2px;
-                                                                                text-align: left;
-                                                                                background-color: #302B63;
-                                                                                color: white;
-                                                                            }
-                                                                        </style>
-                                                                        <div class="card-body">
-                                                                            <div class="container">
-                                                                                <div class="row">
-                                                                                    <table id="customers" class="tableFixHead" style="font-size: 14px;">
-                                                                                        <thead>
-                                                                                            <tr>
-                                                                                                <th>No</th>
-                                                                                                <th>Uraian</th>
-                                                                                                <th>Uraian Otomatisasi</th>
-                                                                                                <th>Keterangan</th>
-                                                                                            </tr>
-                                                                                        </thead>
-                                                                                        <tbody>
-                                                                                            <tr>
-                                                                                                <td>1</td>
-                                                                                                <td scope="row">TKDN %</td>
-                                                                                                <td>
-                                                                                                    <input type="number" onkeyup="isi_master_pra('tkdn_pra')" name="tkdn_pra" placeholder="TKDN %.." class="form-control">
-                                                                                                </td>
-                                                                                                <td></td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>2</td>
-                                                                                                <td>Nama Pekerjaan</td>
-                                                                                                <td><?= $row_program['nama_pekerjaan_program_mata_anggaran'] ?></td>
-                                                                                                <td><i class="fa fa-info-circle text-info" aria-hidden="true" title="Nama Pekerjaan Diambil Dari Pra Pengadaan"></i></td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>3</td>
-                                                                                                <td scope="row">
-                                                                                                    Nilai Kontrak <br>
-                                                                                                    Terbilang
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class="form-group" style="margin-bottom:-2px">
-                                                                                                        <div class="input-group colorpickerinput">
-                                                                                                            <input type="number" onkeyup="isi_master_pra('harga_penawaran_terkoreksi')" placeholder="Harga Penawaran Terkoreksi..." name="harga_penawaran_terkoreksi" class="form-control">
-                                                                                                            <div class="input-group-append">
-                                                                                                                <div class="input-group-text">
-                                                                                                                    <label for="" class="rupiah_harga_penawaran"></label>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <label for="" class="terbilang_rupiah_harga_penawaran"></label>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                                <td></td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>4</td>
-                                                                                                <td scope="row">Jaminan Pelaksanaan</td>
-                                                                                                <td>
-                                                                                                    <select class="form-control" name="status_jaminan_gunning" onchange="status_jaminan_gunning('status_jaminan_gunning')" id="">
-                                                                                                        <option value="">-- Pilih Jaminan Pelaksanaan --</option>
-                                                                                                        <option value="Perlu Jaminan Pelaksanan">Perlu Jaminan Pelaksanan</option>
-                                                                                                        <option value="Tidak Perlu Jaminan Pelaksanan">Tidak Perlu Jaminan Pelaksanan</option>
-                                                                                                    </select>
-                                                                                                    <div class="jika_jaminan">
-                                                                                                        <div class="form-group" style="margin-bottom:-2px">
-                                                                                                            <input type="number" onkeyup="isi_master_pra('persentase_jaminan_gunning')" name="persentase_jaminan_gunning" placeholder="Persentase Jaminan Pelaksanaan" class="form-control">
-                                                                                                            <div class="input-group colorpickerinput">
-                                                                                                                <input type="number" onkeyup="isi_master_pra('masa_berlaku_persentase_jaminan_gunning')" placeholder="Masa Berlaku Jaminan Pelaksanaan..." name="masa_berlaku_persentase_jaminan_gunning" class="form-control">
-                                                                                                                <div class="input-group-append">
-                                                                                                                    <div class="input-group-text">
-                                                                                                                        <label for=""> Hari Kalender</label>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="jika_tidak_jaminan">
-
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                                <td></td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>5</td>
-                                                                                                <td scope="row">Syarat Ketentuan (Letter of Intent) </td>
-                                                                                                <td>
-                                                                                                    <div class="row">
-                                                                                                        <div class="col-md-9">
-                                                                                                            <textarea class="form-control" name="ketentuan"></textarea>
-                                                                                                        </div>
-                                                                                                        <div class="col-md-2" style="margin-top: 10px;">
-                                                                                                            <label for=""><a href="javascript:;" class="btn btn-primary btn-sm" onclick="Simpan_ketentuan('ketentuan')">Simpan</a></label>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <br>
-                                                                                                    <div id="ketentuan"></div>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <!-- Button trigger modal -->
-                                                                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_copy_ketentuan">
-                                                                                                        <i class="fa fa-clipboard"></i> Contoh & Copy
-                                                                                                    </button>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                        </tbody>
-                                                                                    </table>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="tab-pane fade show" id="custom-tabs-two-persuratan" role="tabpanel" aria-labelledby="custom-tabs-two-persuratan-tab">
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="card card-outline card-info">
-                                                                        <div class="card-header">
-                                                                            <h3 class="card-title">
-                                                                                Master Persuratan
-                                                                            </h3>
-                                                                        </div>
-                                                                        <style>
-                                                                            .wrapper1,
-                                                                            .wrapper2 {
-                                                                                width: 300px;
-                                                                                overflow-x: scroll;
-                                                                                overflow-y: hidden;
-                                                                            }
-
-                                                                            .wrapper1 {
-                                                                                height: 20px;
-                                                                            }
-
-                                                                            .wrapper2 {
-                                                                                height: 200px;
-                                                                            }
-
-                                                                            .div1 {
-                                                                                width: 1000px;
-                                                                                height: 20px;
-                                                                            }
-
-                                                                            .div2 {
-                                                                                width: 1000px;
-                                                                                height: 200px;
-                                                                                overflow: auto;
-                                                                            }
-
-                                                                            .tableFixHead {
-                                                                                font-family: 'RNSSanz-ExtraBold';
-                                                                                overflow: auto;
-                                                                                height: 100px;
-
-                                                                            }
-
-                                                                            .tableFixHead thead th {
-                                                                                background-color: #302B63;
-                                                                                font-family: 'RNSSanz-ExtraBold';
-                                                                                color: 'white';
-                                                                                position: sticky;
-                                                                                top: 0;
-                                                                            }
-
-                                                                            #customers {
-                                                                                font-family: Arial, Helvetica, sans-serif;
-                                                                                border-collapse: collapse;
-                                                                                width: 100%;
-                                                                            }
-
-                                                                            #customers td,
-                                                                            #customers th {
-                                                                                border: 1px solid #ddd;
-                                                                                padding: 8px;
-                                                                            }
-
-                                                                            #customers tr:nth-child(even) {
-                                                                                background-color: #f2f2f2;
-                                                                            }
-
-                                                                            #customers tr:hover {
-                                                                                background-color: #ddd;
-                                                                            }
-
-                                                                            #customers th {
-                                                                                padding-top: 2px;
-                                                                                padding-bottom: 2px;
-                                                                                text-align: left;
-                                                                                background-color: #302B63;
-                                                                                color: white;
-                                                                            }
-
-                                                                            #customers2 {
-                                                                                font-family: Arial, Helvetica, sans-serif;
-                                                                                border-collapse: collapse;
-                                                                                width: 100%;
-                                                                            }
-
-                                                                            #customers2 td,
-                                                                            #customers2 th {
-                                                                                border: 1px solid #ddd;
-                                                                                padding: 8px;
-                                                                            }
-
-                                                                            #customers2 tr:nth-child(even) {
-                                                                                background-color: #f2f2f2;
-                                                                            }
-
-                                                                            #customers2 tr:hover {
-                                                                                background-color: #ddd;
-                                                                            }
-
-                                                                            #customers2 th {
-                                                                                padding-top: 2px;
-                                                                                padding-bottom: 2px;
-                                                                                text-align: left;
-                                                                                background-color: #302B63;
-                                                                                color: white;
-                                                                            }
-                                                                        </style>
-                                                                        <div class="card-body">
-                                                                            <input type="hidden" name="id_detail_program_penyedia_jasa_danang" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>">
-                                                                            <div class="container">
-                                                                                <div class="row">
-                                                                                    <div onscroll='scroller("scroller", "scrollme")' style="overflow:scroll; height: 10;overflow-y: hidden;" id=scroller>
-                                                                                        <img src="" height=1 width=2066 style="width:2066px;">
-                                                                                    </div>
-                                                                                    <div onscroll='scroller("scrollme", "scroller")' style="overflow:scroll; height:500px" id="scrollme">
-                                                                                        <hr>
-                                                                                        <center>
-                                                                                            <h4>UPLOAD KONTRAK</h4>
-                                                                                        </center>
-                                                                                        <br>
-                                                                                        <table id="customers2" class="tableFixHead" style="font-size: 14px;">
-                                                                                            <thead class="text-center">
-                                                                                                <tr>
-                                                                                                    <th class="text-white">No Kontrak</th>
-                                                                                                    <th class="text-white">Tanggal Kontrak</th>
-                                                                                                    <th class="text-white">Tahun Kontrak</th>
-                                                                                                    <th class="text-white">Upload Kontrak</th>
-                                                                                                    <th class="text-white">Download Word/Pdf</th>
-                                                                                                </tr>
-
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                <tr>
-                                                                                                    <td>
-                                                                                                        <div class="input-group ">
-                                                                                                            <div class="input-group-prepend">
-                                                                                                                <span class="input-group-text">
-                                                                                                                    <i class="far fa-file"> </i>
-                                                                                                                </span>
-                                                                                                            </div>
-                                                                                                            <input type="text" onkeyup="update_no_kontrak()" class="form-control" name="no_kontrak_penyedia" placeholder="No Kontrak" value="<?= $row_program['no_kontrak_penyedia'] ?>">
-                                                                                                        </div>
-                                                                                                    </td>
-                                                                                                    <td>
-                                                                                                        <div class="input-group ">
-                                                                                                            <div class="input-group-prepend">
-                                                                                                                <span class="input-group-text">
-                                                                                                                    <i class="far fa-file"> </i>
-                                                                                                                </span>
-                                                                                                            </div>
-                                                                                                            <input type="date" onchange="update_tanggal_kontrak_program()" class="form-control" name="tanggal_kontrak_program" placeholder="No Kontrak" value="<?= $row_program['tanggal_kontrak_program'] ?>">
-                                                                                                        </div>
-                                                                                                    </td>
-                                                                                                    <td>
-                                                                                                        <select name="tahun_kontrak_program" onchange="update_tahun_kontrak_program()" class="form-control">
-                                                                                                            <?php if (!$row_program['tahun_kontrak_program']) { ?>
-                                                                                                                <option value="">--Pilih--</option>
-                                                                                                            <?php } else { ?>
-                                                                                                                <option value="<?= $row_program['tahun_kontrak_program'] ?>"><?= $row_program['tahun_kontrak_program'] ?></option>
-                                                                                                            <?php   }
-                                                                                                            ?>
-                                                                                                            <option value="2020">2020</option>
-                                                                                                            <option value="2021">2021</option>
-                                                                                                            <option value="2022">2022</option>
-                                                                                                            <option value="2023">2023</option>
-                                                                                                            <option value="2024">2024</option>
-                                                                                                            <option value="2025">2025</option>
-                                                                                                            <option value="2026">2026</option>
-                                                                                                            <option value="2027">2027</option>
-                                                                                                            <option value="2028">2028</option>
-                                                                                                            <option value="2029">2029</option>
-                                                                                                        </select>
-                                                                                                    </td>
-                                                                                                    <td>
-                                                                                                        <a href="javascript:;" class="btn btn-sm btn-danger" onclick="upload_kontrak_hps('1')">Upload</a>
-                                                                                                    </td>
-                                                                                                    <td>
-                                                                                                        <?php
-                                                                                                        $this->db->select('*');
-                                                                                                        $this->db->from('tbl_dokumen_kontrak_hps');
-                                                                                                        $this->db->where('id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
-                                                                                                        $query_dok_kontrak = $this->db->get()->row_array();
-                                                                                                        ?>
-                                                                                                        <?php if (!$query_dok_kontrak) { ?>
-                                                                                                            <span class="badge badge-warning badge-sm">Belum Upload Kontrak!</span>
-                                                                                                        <?php } else { ?>
-                                                                                                            <a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('file_kontrak/' . $query_dok_kontrak['nama_file']) ?>"> <i class="fas fa fa-file"></i> Lihat Kontrak</a>
-                                                                                                        <?php  } ?>
-
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-
-                                                                                        <br>
-                                                                                        <hr>
-                                                                                        <center>
-                                                                                            <h4>MASTER PERSURATAN GUNNING</h4>
-                                                                                        </center>
-                                                                                        <br>
-                                                                                        <table id="customers" class="tableFixHead" style="font-size: 14px;">
-                                                                                            <thead class="text-center">
-                                                                                                <tr>
-                                                                                                    <th class="text-white">No</th>
-                                                                                                    <th class="text-white" style="width: 200px;">Nama Persuratan</th>
-                                                                                                    <th class="text-white">No Surat</th>
-                                                                                                    <th class="text-white">Tgl Surat</th>
-                                                                                                    <th class="text-white">No Surat Pengumuman Pemenang</th>
-                                                                                                    <th class="text-white">Tgl Surat Pengumuman Pemenang</th>
-                                                                                                    <th class="text-white">No Surat Penetapan Pemenang</th>
-                                                                                                    <th class="text-white">Tgl Surat Penetapan Pemenang</th>
-                                                                                                    <th class="text-white">Dari Nama Penetapan</th>
-                                                                                                    <th class="text-white">Dari Nama</th>
-                                                                                                    <th class="text-white">Jabatan</th>
-                                                                                                    <th class="text-white">Ke Nama</th>
-                                                                                                    <th class="text-white">Jabatan</th>
-                                                                                                    <th class="text-white">Informasi</th>
-                                                                                                    <th class="text-white">View</th>
-                                                                                                    <th class="text-white">Download Word/Pdf</th>
-                                                                                                </tr>
-
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                <tr>
-                                                                                                    <td scope="row">1</td>
-                                                                                                    <td>GUNNING</td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_gunning')" value="<?= $row_program['no_surat_gunning'] ?>" name="no_surat_gunning" placeholder="No Surat"></td>
-                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tanggal_gunning')" value="<?= $row_program['tanggal_gunning'] ?>" name="tanggal_gunning" placeholder="Tanggal Surat"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_pengumuman_gunning')" value="<?= $row_program['no_surat_pengumuman_gunning'] ?>" name="no_surat_pengumuman_gunning" placeholder="No Surat Penetapan"></td>
-                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tanggal_surat_pengumuman_gunning')" value="<?= $row_program['tanggal_surat_pengumuman_gunning'] ?>" name="tanggal_surat_pengumuman_gunning" placeholder="Tanggal Surat Penetapan"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_penetapan_gunning')" value="<?= $row_program['no_surat_penetapan_gunning'] ?>" name="no_surat_penetapan_gunning" placeholder="No Surat Penetapan"></td>
-                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tanggal_surat_penetapan_gunning')" value="<?= $row_program['tanggal_surat_penetapan_gunning'] ?>" name="tanggal_surat_penetapan_gunning" placeholder="Tanggal Surat Penetapan"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('nama_penetapan_dari')" value="<?= $row_program['nama_penetapan_dari'] ?>" name="nama_penetapan_dari" placeholder="Penetapan Pemenang Dari"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_gunning')" value="<?= $row_program['pengirim_gunning'] ?>" name="pengirim_gunning" placeholder="Dari Nama"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_gunning')" value="<?= $row_program['jabatan_pengirim_gunning'] ?>" name="jabatan_pengirim_gunning" placeholder="Ke Nama Jabatan"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_gunning')" value="<?= $row_program['penerima_gunning'] ?>" name="penerima_gunning" placeholder="Ke Nama"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_gunning')" value="<?= $row_program['jabatan_penerima_gunning'] ?>" name="jabatan_penerima_gunning" placeholder="Ke Nama Jabatan"></td>
-                                                                                                    <td></td>
-                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_gunning/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
-                                                                                                    <td></td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-
-                                                                                        <br>
-                                                                                        <hr>
-                                                                                        <center>
-                                                                                            <h4>MASTER PERSURATAN LOI</h4>
-                                                                                        </center>
-                                                                                        <br>
-                                                                                        <table id="customers2" class="tableFixHead" style="font-size: 14px;">
-                                                                                            <thead class="text-center">
-                                                                                                <tr>
-                                                                                                    <th class="text-white">No</th>
-                                                                                                    <th class="text-white" style="width: 200px;">Nama Persuratan</th>
-                                                                                                    <th class="text-white">No Surat</th>
-                                                                                                    <th class="text-white">Tgl Surat</th>
-                                                                                                    <th class="text-white">No Surat Penunjukan</th>
-                                                                                                    <th class="text-white">Tgl Surat Penunjukan</th>
-                                                                                                    <th class="text-white">Dari Nama</th>
-                                                                                                    <th class="text-white">Jabatan</th>
-                                                                                                    <th class="text-white">Ke Nama</th>
-                                                                                                    <th class="text-white">Jabatan</th>
-                                                                                                    <th class="text-white">Informasi</th>
-                                                                                                    <th class="text-white">View</th>
-                                                                                                    <th class="text-white">Download Word/Pdf</th>
-                                                                                                </tr>
-
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                <tr>
-                                                                                                    <td scope="row">2</td>
-                                                                                                    <td>LOI</td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_loi')" value="<?= $row_program['no_surat_loi'] ?>" name="no_surat_loi" placeholder="No Surat"></td>
-                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tanggal_loi')" value="<?= $row_program['tanggal_loi'] ?>" name="tanggal_loi" placeholder="Tanggal Surat"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_penunjukan_loi')" value="<?= $row_program['no_surat_penunjukan_loi'] ?>" name="no_surat_penunjukan_loi" placeholder="No Surat Penunjukan"></td>
-                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tanggal_surat_penunjukan_loi')" value="<?= $row_program['tanggal_surat_penunjukan_loi'] ?>" name="tanggal_surat_penunjukan_loi" placeholder="Tanggal Surat Penunjukan"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_loi')" value="<?= $row_program['pengirim_loi'] ?>" name="pengirim_loi" placeholder="Dari Nama"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_loi')" value="<?= $row_program['jabatan_pengirim_loi'] ?>" name="jabatan_pengirim_loi" placeholder="Ke Nama Jabatan"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_loi')" value="<?= $row_program['penerima_loi'] ?>" name="penerima_loi" placeholder="Ke Nama"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_loi')" value="<?= $row_program['jabatan_penerima_loi'] ?>" name="jabatan_penerima_loi" placeholder="Ke Nama Jabatan"></td>
-                                                                                                    <td><label for="" title="Struktur Organisasi" class="badge badge-info"><i class="fa fa-info-circle" aria-hidden="true"></i></label></td>
-                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_loi/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
-                                                                                                    <td></td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-
-                                                                                        <br>
-                                                                                        <hr>
-                                                                                        <center>
-                                                                                            <h4>MASTER PERSURATAN SHO</h4>
-                                                                                        </center>
-                                                                                        <br>
-                                                                                        <table id="customers2" class="tableFixHead" style="font-size: 14px;">
-                                                                                            <thead class="text-center">
-                                                                                                <tr>
-                                                                                                    <th class="text-white">No</th>
-                                                                                                    <th class="text-white" style="width: 200px;">Nama Persuratan</th>
-                                                                                                    <th class="text-white">No Surat</th>
-                                                                                                    <th class="text-white">Tgl Surat</th>
-                                                                                                    <th class="text-white">Dari Nama</th>
-                                                                                                    <th class="text-white">Jabatan</th>
-                                                                                                    <th class="text-white">Ke Nama</th>
-                                                                                                    <th class="text-white">Jabatan</th>
-                                                                                                    <th class="text-white">Informasi</th>
-                                                                                                    <th class="text-white">View</th>
-                                                                                                    <th class="text-white">Download Word/Pdf</th>
-                                                                                                </tr>
-
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                <tr>
-                                                                                                    <td scope="row">3</td>
-                                                                                                    <td>SHO</td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_sho')" value="<?= $row_program['no_surat_sho'] ?>" name="no_surat_sho" placeholder="No Surat"></td>
-                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tanggal_sho')" value="<?= $row_program['tanggal_sho'] ?>" name="tanggal_sho" placeholder="Tanggal Surat"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_sho')" value="<?= $row_program['pengirim_sho'] ?>" name="pengirim_sho" placeholder="Dari Nama"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_sho')" value="<?= $row_program['jabatan_pengirim_sho'] ?>" name="jabatan_pengirim_sho" placeholder="Ke Nama Jabatan"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_sho')" value="<?= $row_program['penerima_sho'] ?>" name="penerima_sho" placeholder="Ke Nama"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_sho')" value="<?= $row_program['jabatan_penerima_sho'] ?>" name="jabatan_penerima_sho" placeholder="Ke Nama Jabatan"></td>
-                                                                                                    <td><label for="" title="Struktur Organisasi" class="badge badge-info"><i class="fa fa-info-circle" aria-hidden="true"></i></label></td>
-                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_sho/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
-                                                                                                    <td></td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-
-                                                                                        <br>
-                                                                                        <hr>
-                                                                                        <center>
-                                                                                            <h4>MASTER PERSURATAN SPMK</h4>
-                                                                                        </center>
-                                                                                        <br>
-                                                                                        <table id="customers2" class="tableFixHead" style="font-size: 14px;">
-                                                                                            <thead class="text-center">
-                                                                                                <tr>
-                                                                                                    <th class="text-white">No</th>
-                                                                                                    <th class="text-white" style="width: 200px;">Nama Persuratan</th>
-                                                                                                    <th class="text-white">No Surat</th>
-                                                                                                    <th class="text-white">Tgl Surat</th>
-                                                                                                    <th class="text-white">Dari Nama</th>
-                                                                                                    <th class="text-white">Jabatan</th>
-                                                                                                    <th class="text-white">Ke Nama</th>
-                                                                                                    <th class="text-white">Jabatan</th>
-                                                                                                    <th class="text-white">Informasi</th>
-                                                                                                    <th class="text-white">View</th>
-                                                                                                    <th class="text-white">Download Word/Pdf</th>
-                                                                                                </tr>
-
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                <tr>
-                                                                                                    <td scope="row">4</td>
-                                                                                                    <td>SPMK</td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_spmk')" value="<?= $row_program['no_surat_spmk'] ?>" name="no_surat_spmk" placeholder="No Surat"></td>
-                                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tanggal_spmk')" value="<?= $row_program['tanggal_spmk'] ?>" name="tanggal_spmk" placeholder="Tanggal Surat"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_spmk')" value="<?= $row_program['pengirim_spmk'] ?>" name="pengirim_spmk" placeholder="Dari Nama"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_spmk')" value="<?= $row_program['jabatan_pengirim_spmk'] ?>" name="jabatan_pengirim_spmk" placeholder="Ke Nama Jabatan"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_spmk')" value="<?= $row_program['penerima_spmk'] ?>" name="penerima_spmk" placeholder="Ke Nama"></td>
-                                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_spmk')" value="<?= $row_program['jabatan_penerima_spmk'] ?>" name="jabatan_penerima_spmk" placeholder="Ke Nama Jabatan"></td>
-                                                                                                    <td><label for="" title="Struktur Organisasi" class="badge badge-info"><i class="fa fa-info-circle" aria-hidden="true"></i></label></td>
-                                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_spmk/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
-                                                                                                    <td></td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-pane" id="custom-tabs-two-kontrak" role="tabpanel" aria-labelledby="custom-tabs-two-kontrak-tab">
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="card card-outline card-info">
-                                                                        <div class="card-header">
-                                                                            <h5 class="card-title">
-                                                                                Kontrak
-                                                                            </h5>
-                                                                        </div>
-                                                                        <div class="card-body">
-                                                                            <div class="container">
-                                                                                <div class="card card-outline card-primary">
-                                                                                    <div class="card-header">
-                                                                                        <h3 class="card-title">
-                                                                                            No Kontrak
-                                                                                        </h3>
-                                                                                    </div>
-                                                                                    <form id="form_no_kontrak_penyedia" action="javascript;;">
-                                                                                        <input type="hidden" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>" name="id_detail_program_penyedia_jasa">
-                                                                                        <div class="card-body">
-                                                                                            <div class="row">
-                                                                                                <div class="col-md-4">
-                                                                                                    <label for="">No Kontrak</label>
-                                                                                                    <div class="input-group mb-4">
-                                                                                                        <div class="input-group-prepend">
-                                                                                                            <span class="input-group-text">
-                                                                                                                <i class="far fa-file"> </i>
-                                                                                                            </span>
-                                                                                                        </div>
-                                                                                                        <input type="text" class="form-control" name="no_kontrak_penyedia" placeholder="No Kontrak">
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="col-md-4">
-                                                                                                    <label for="">Tanggal Kontrak</label>
-                                                                                                    <div class="input-group">
-                                                                                                        <div class="input-group-prepend">
-                                                                                                            <span class="input-group-text">
-                                                                                                                <i class="far fa-file"> </i>
-                                                                                                            </span>
-                                                                                                        </div>
-                                                                                                        <input type="date" class="form-control" name="tanggal_kontrak_program" placeholder="No Kontrak">
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="col-md-4">
-                                                                                                    <label for="">Tahun Kontrak</label>
-                                                                                                    <div class="input-group mb-4">
-                                                                                                        <div class="input-group-prepend">
-                                                                                                            <span class="input-group-text">
-                                                                                                                <i class="far fa-file"> </i>
-                                                                                                            </span>
-                                                                                                        </div>
-                                                                                                        <select name="tahun_kontrak_program" class="form-control">
-                                                                                                            <?php $i = 0;
-                                                                                                            for ($i = 20; $i < 30; $i++) {  ?>
-                                                                                                                <option value="20<?= $i ?>">20<?= $i ?></option>
-                                                                                                            <?php  } ?>
-
-                                                                                                        </select>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <br>
-                                                                                            <div class="row">
-                                                                                                <div class="col-md-12">
-                                                                                                    <div class="card card-outline card-info">
-                                                                                                        <div class="card-header">
-                                                                                                            <h3 class="card-title">
-                                                                                                                <!-- danang -->
-                                                                                                                Upload Kontrak
-                                                                                                            </h3>
-                                                                                                        </div>
-                                                                                                        <div class="card-body">
-                                                                                                            <div class="container">
-                                                                                                                <div class="row">
-                                                                                                                    <div class="col-md-12">
-                                                                                                                        <div class="card card-outline card-primary">
-                                                                                                                            <div class="card-header">
-                                                                                                                                <div class="row">
-                                                                                                                                    <div class="col-md-10">
-                                                                                                                                        Upload Kontrak
-                                                                                                                                    </div>
-                                                                                                                                    <div class="col-md-2">
-                                                                                                                                        <a href="javascript:;" class="btn btn-sm btn-danger" onclick="upload_kontrak_hps('1')">Upload</a>
-                                                                                                                                    </div>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                            <div class="card-body">
-                                                                                                                                <table class="table">
-                                                                                                                                    <thead>
-                                                                                                                                        <tr>
-                                                                                                                                            <th>File</th>
-                                                                                                                                            <th>Aksi</th>
-                                                                                                                                        </tr>
-                                                                                                                                    </thead>
-                                                                                                                                    <tbody id="tbl_upload_kontrak">
-
-                                                                                                                                    </tbody>
-                                                                                                                                </table>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </form>
-                                                                                </div>
-                                                                                <button type="button" onclick="simpan_data_no_kontrak()" class="btn btn-sm btn-success float-right"><i class="fa fa-paper-plane" aria-hidden="true"></i> Simpan</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-pane" id="custom-tabs-two-surat_pasca" role="tabpanel" aria-labelledby="custom-tabs-two-surat_pasca-tab">
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="card card-outline card-info">
-                                                                        <div class="card-header">
-                                                                            <h5 class="card-title">
-                                                                                Upload Surat
-                                                                            </h5>
-                                                                        </div>
-                                                                        <div class="card-body">
-                                                                            <div class="container">
-                                                                                <div class="row">
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="card card-outline card-primary">
-                                                                                            <div class="card-header">
-                                                                                                Gunning
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <table class="table table-striped">
-                                                                                                    <thead class="text-center">
-                                                                                                        <tr>
-                                                                                                            <th>Nama Surat</th>
-                                                                                                            <th>File</th>
-                                                                                                            <th>Aksi</th>
-                                                                                                        </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody class="text-center" id="result_dokumen_gunning">
-
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="card card-outline card-primary">
-                                                                                            <div class="card-header">
-                                                                                                Loi
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <table class="table table-striped">
-                                                                                                    <thead class="text-center">
-                                                                                                        <tr>
-                                                                                                            <th>Nama Surat</th>
-                                                                                                            <th>File</th>
-                                                                                                            <th>Aksi</th>
-                                                                                                        </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody class="text-center" id="result_dokumen_loi">
-
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="card card-outline card-primary">
-                                                                                            <div class="card-header">
-                                                                                                Sho
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <table class="table table-striped">
-                                                                                                    <thead class="text-center">
-                                                                                                        <tr>
-                                                                                                            <th>Nama Surat</th>
-                                                                                                            <th>File</th>
-                                                                                                            <th>Aksi</th>
-                                                                                                        </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody class="text-center" id="result_dokumen_sho">
-
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="card card-outline card-primary">
-                                                                                            <div class="card-header">
-                                                                                                Spmk
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <table class="table table-striped">
-                                                                                                    <thead class="text-center">
-                                                                                                        <tr>
-                                                                                                            <th>Nama Surat</th>
-                                                                                                            <th>File</th>
-                                                                                                            <th>Aksi</th>
-                                                                                                        </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody class="text-center" id="result_dokumen_spmk">
-
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" data-backdrop="false" id="modal_upload_dokumen_pasca" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-primary text-white">
-                                                <h5 class="modal-title"> Upload Surat <label for="" id="name_file"></label></h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="container-fluid">
-                                                    <center>
-                                                        <form id="form_upload_surat_pasca" enctype="multipart/form-data">
-                                                            <input type="hidden" name="id_dokumen_surat_pasca">
-                                                            <div class="input-group col-md-12">
-                                                                <div class="input-group-append">
-                                                                    <button class="input-group-text attach_btn btn-grad100" type="button" id="loadFileXml" value="loadXml" onclick="document.getElementById('file').click();"><i class="fas fa-paperclip"></i></button>
-                                                                    <input type="file" style="display:none;" id="file" class="file" name="file" />
-                                                                </div>
-                                                                <input type="text" name="nama_file" class="form-control" disabled>
-                                                                <div class="input-group-append">
-                                                                    <button type="submit" id="upload" name="upload" class="input-group-text  btn-grad100"><i class="fas fa-upload"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                        <br>
-                                                        <div style="display: none;" id="error_file" class="alert alert-danger" role="alert">
-                                                            ANDA BELUM MENGISI FILE !!!
-                                                        </div>
-                                                    </center>
-                                                    <br>
-                                                    <center>
-                                                        <div class="form-group col-md-6" id="process" style="display:none;">
-                                                            <small for="" style="display:none;" id="sedang_dikirim">Sedang Mengupload....</small>
-                                                            <div class="progress">
-                                                                <div class="progress-bar progress-bar-striped active progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </center>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            </div>
+                                        <div class="container">
+                                            <table class="table table-striped table-bordered" style="font-family: RNSSanz-Black;text-transform: uppercase;">
+                                                <thead>
+                                                    <tr style="background-color: #193B53;">
+                                                        <th class="text-white">No</th>
+                                                        <th class="text-white">Uraian</th>
+                                                        <th class="text-white">Nomor Surat</th>
+                                                        <th class="text-white">Tanggal Surat</th>
+                                                        <th class="text-white">Upload Surat</th>
+                                                        <th class="text-white">Status Upload</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Gunning</td>
+                                                        <td><input onkeyup="isi_master_pra('no_surat_gunning')" name="no_surat_gunning" value="<?= $row_program['no_surat_gunning'] ?>" type="text" class="form-control" style="width: 200px;" placeholder="Nomor Surat"></td>
+                                                        <td><input value="<?= $row_program['tanggal_gunning'] ?>" onchange="isi_master_pra('tanggal_gunning')" name="tanggal_gunning" type="date" class="form-control" style="width: 200px;" placeholder="Tanggal Surat"></td>
+                                                        <td><a href="javascript:;" onclick="Upload_dokumen_pasca('gunning')" class="btn btn-danger">Upload Surat</a></td>
+                                                        <?php
+                                                        $this->db->select('*');
+                                                        $this->db->from('tbl_dokumen_pasca');
+                                                        $this->db->where('id_kontrak', $row_program['id_kontrak']);
+                                                        $this->db->where('id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                        $this->db->where('type_dok', 'gunning');
+                                                        $data_gunning = $this->db->get()->result_array();
+                                                        ?>
+                                                        <?php if ($data_gunning) { ?>
+                                                            <td><label class="badge bg-success text-white" for="">Sudah Upload</label> </td>
+                                                        <?php } else { ?>
+                                                            <td><label for="" class="badge bg-danger text-white">Belum Upload</label> </td>
+                                                        <?php } ?>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>Letter Of Intent (LOI)</td>
+                                                        <td><input value="<?= $row_program['no_surat_loi'] ?>" onkeyup="isi_master_pra('no_surat_loi')" name="no_surat_loi" type="text" class="form-control" style="width: 200px;" placeholder="Nomor Surat"></td>
+                                                        <td><input value="<?= $row_program['tanggal_loi'] ?>" onchange="isi_master_pra('tanggal_loi')" name="tanggal_loi" type="date" class="form-control" style="width: 200px;" placeholder="Tanggal Surat"></td>
+                                                        <td><a href="javascript:;" onclick="Upload_dokumen_pasca('loi')" class="btn btn-danger">Upload Surat</a></td>
+                                                        <?php
+                                                        $this->db->select('*');
+                                                        $this->db->from('tbl_dokumen_pasca');
+                                                        $this->db->where('id_kontrak', $row_program['id_kontrak']);
+                                                        $this->db->where('id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                        $this->db->where('type_dok', 'loi');
+                                                        $data_gunning = $this->db->get()->result_array();
+                                                        ?>
+                                                        <?php if ($data_gunning) { ?>
+                                                            <td><label class="badge bg-success text-white" for="">Sudah Upload</label> </td>
+                                                        <?php } else { ?>
+                                                            <td><label for="" class="badge bg-danger text-white">Belum Upload</label> </td>
+                                                        <?php } ?>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>Site Hand Over (SHO)</td>
+                                                        <td><input value="<?= $row_program['no_surat_sho'] ?>" onkeyup="isi_master_pra('no_surat_sho')" name="no_surat_sho" type="text" class="form-control" style="width: 200px;" placeholder="Nomor Surat"></td>
+                                                        <td><input value="<?= $row_program['tanggal_sho'] ?>" onchange="isi_master_pra('tanggal_sho')" name="tanggal_sho" type="date" class="form-control" style="width: 200px;" placeholder="Tanggal Surat"></td>
+                                                        <td><a href="javascript:;" onclick="Upload_dokumen_pasca('sho')" class="btn btn-danger">Upload Surat</a></td>
+                                                        <?php
+                                                        $this->db->select('*');
+                                                        $this->db->from('tbl_dokumen_pasca');
+                                                        $this->db->where('id_kontrak', $row_program['id_kontrak']);
+                                                        $this->db->where('id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                        $this->db->where('type_dok', 'sho');
+                                                        $data_gunning = $this->db->get()->result_array();
+                                                        ?>
+                                                        <?php if ($data_gunning) { ?>
+                                                            <td><label class="badge bg-success text-white" for="">Sudah Upload</label> </td>
+                                                        <?php } else { ?>
+                                                            <td><label for="" class="badge bg-danger text-white">Belum Upload</label> </td>
+                                                        <?php } ?>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>Kontrak</td>
+                                                        <td><input value="<?= $row_program['no_surat_kontrak'] ?>" onkeyup="isi_master_pra('no_surat_kontrak')" name="no_surat_kontrak" type="text" class="form-control" style="width: 200px;" placeholder="Nomor Surat"></td>
+                                                        <td><input value="<?= $row_program['tanggal_surat_kontrak'] ?>" onchange="isi_master_pra('tanggal_surat_kontrak')" name="tanggal_surat_kontrak" type="date" class="form-control" style="width: 200px;" placeholder="Tanggal Surat"></td>
+                                                        <td><a href="javascript:;" onclick="Upload_dokumen_pasca('kontrak')" class="btn btn-danger">Upload Surat</a></td>
+                                                        <?php
+                                                        $this->db->select('*');
+                                                        $this->db->from('tbl_dokumen_pasca');
+                                                        $this->db->where('id_kontrak', $row_program['id_kontrak']);
+                                                        $this->db->where('id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                        $this->db->where('type_dok', 'kontrak');
+                                                        $data_gunning = $this->db->get()->result_array();
+                                                        ?>
+                                                        <?php if ($data_gunning) { ?>
+                                                            <td><label class="badge bg-success text-white" for="">Sudah Upload</label> </td>
+                                                        <?php } else { ?>
+                                                            <td><label for="" class="badge bg-danger text-white">Belum Upload</label> </td>
+                                                        <?php } ?>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td>Surat Perintah Mulai Kerja (SPMK)</td>
+                                                        <td><input value="<?= $row_program['no_surat_spmk'] ?>" onkeyup="isi_master_pra('no_surat_spmk')" name="no_surat_spmk" type="text" class="form-control" style="width: 200px;" placeholder="Nomor Surat"></td>
+                                                        <td><input value="<?= $row_program['tanggal_spmk'] ?>" onchange="isi_master_pra('tanggal_spmk')" name="tanggal_spmk" type="date" class="form-control" style="width: 200px;" placeholder="Tanggal Surat"></td>
+                                                        <td><a href="javascript:;" onclick="Upload_dokumen_pasca('spmk')" class="btn btn-danger">Upload Surat</a></td>
+                                                        <?php
+                                                        $this->db->select('*');
+                                                        $this->db->from('tbl_dokumen_pasca');
+                                                        $this->db->where('id_kontrak', $row_program['id_kontrak']);
+                                                        $this->db->where('id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                        $this->db->where('type_dok', 'spmk');
+                                                        $data_gunning = $this->db->get()->result_array();
+                                                        ?>
+                                                        <?php if ($data_gunning) { ?>
+                                                            <td><label class="badge bg-success text-white" for="">Sudah Upload</label> </td>
+                                                        <?php } else { ?>
+                                                            <td><label for="" class="badge bg-danger text-white">Belum Upload</label> </td>
+                                                        <?php } ?>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>6</td>
+                                                        <td>Jaminan Pelaksanaan Kontrak Awal</td>
+                                                        <td><input value="<?= $row_program['no_surat_jaminan_kontrak'] ?>" onkeyup="isi_master_pra('no_surat_jaminan_kontrak')" name="no_surat_jaminan_kontrak" type="text" class="form-control" style="width: 200px;" placeholder="Nomor Surat"></td>
+                                                        <td><input value="<?= $row_program['tanggal_surat_jaminan_kontrak'] ?>" onchange="isi_master_pra('tanggal_surat_jaminan_kontrak')" name="tanggal_surat_jaminan_kontrak" type="date" class="form-control" style="width: 200px;" placeholder="Tanggal Surat"></td>
+                                                        <td><a href="javascript:;" onclick="Upload_dokumen_pasca('jaminan')" class="btn btn-danger">Upload Surat</a></td>
+                                                        <?php
+                                                        $this->db->select('*');
+                                                        $this->db->from('tbl_dokumen_pasca');
+                                                        $this->db->where('id_kontrak', $row_program['id_kontrak']);
+                                                        $this->db->where('id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                        $this->db->where('type_dok', 'jaminan');
+                                                        $data_gunning = $this->db->get()->result_array();
+                                                        ?>
+                                                        <?php if ($data_gunning) { ?>
+                                                            <td><label class="badge bg-success text-white" for="">Sudah Upload</label> </td>
+                                                        <?php } else { ?>
+                                                            <td><label for="" class="badge bg-danger text-white">Belum Upload</label> </td>
+                                                        <?php } ?>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -905,46 +227,6 @@
 </div>
 </div>
 
-<div class="modal fade" data-backdrop="false" id="modal_upload_dokumen_kontrak_hps" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title"> Upload <label for="" id="kontrak_hps"></label></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form id="form_upload_kontrak_hps" enctype="multipart/form-data">
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <center>
-                            <input type="hidden" name="sts_dokumen">
-                            <input type="hidden" name="id_detail_program_penyedia_jasa" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>">
-                            <input type="file" name="nama_file" class="form-control">
-                            <div style="display: none;" id="error_file1" class="alert alert-danger" role="alert">
-                                ANDA BELUM MENGISI FILE !!!
-                            </div>
-                        </center>
-                        <br>
-                        <center>
-                            <div class="form-group col-md-6" id="process_kontrakhps" style="display:none;">
-                                <small for="" style="display:none;" id="sedang_dikirim_kontrakhps">Sedang Mengupload....</small>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped active progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                    </div>
-                                </div>
-                            </div>
-                        </center>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 
 <!-- Modal -->
@@ -963,6 +245,73 @@
                 <p>
                     2. Pekerjaan tersebut harus dilaksanakan sesuai dengan persyaratan pelaksanaan pekerjaan (syarat-syarat umum, administrasi, spesifikasi maupun gambar rencana) yang telah ditetapkan dalam Dokumen Pengadaan.
                 </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal_upload_dokumen_pasca_baru" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Upload Dokumen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <form id="form_dok_pasca_baru" enctype="multipart/form-data">
+                        <input type="hidden" name="id_kontrak" value="<?= $row_program['id_kontrak'] ?>">
+                        <input type="hidden" name="type_upload">
+                        <input type="hidden" name="id_detail_program_penyedia_jasa" value="<?= $row_program['id_detail_program_penyedia_jasa'] ?>">
+                        <div class="input-group col-md-12">
+                            <div class="input-group-append">
+                                <button class="input-group-text attach_btn btn-grad100" type="button" id="loadFileXml" value="loadXml" onclick="document.getElementById('file').click();"><i class="fas fa-paperclip"></i></button>
+                                <input type="file" style="display:none;" id="file" class="file_dok" name="file_dok" />
+                            </div>
+                            <input type="text" name="type_upload" readonly class="form-control form-control" placeholder="Nama Dokumen">
+                            <div class="input-group-append">
+                                <button type="submit" id="upload" name="upload" class="input-group-text"><i class="fas fa-upload"></i></button>
+                            </div>
+                        </div>
+
+                    </form>
+                    <div style="display: none;" id="error_file" class="alert alert-danger" role="alert">
+                        ANDA BELUM MENGISI FILE !!!
+                    </div>
+                    <small class="text-danger" style="text-transform: capitalize;;font-family: 'Poppins', sans-serif;font-size:14px">*Masimal Ukuran Dokumen Yang Bisa Diupload Adalah 20Mb Setiap Dokumen</small>
+                </center>
+                <br>
+                <center>
+                    <div class="form-group col-md-6" id="process" style="display:none;">
+                        <small for="" style="display:none;" id="sedang_dikirim">Sedang Mengupload....</small>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped active progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="">
+                            </div>
+                        </div>
+                    </div>
+                </center>
+                <div style="overflow-x: auto;">
+                    <table style="font-family: RNSSanz-Black;text-transform: uppercase;" class="table table-hover" id="table_dok_pasca_baru">
+                        <thead>
+                            <tr class="btn-grad100">
+                                <th>No</th>
+                                <th>Nama File</th>
+                                <th>File</th>
+                                <th><i class="fa fa-cogs" aria-hidden="true"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

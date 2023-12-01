@@ -117,19 +117,17 @@
                                 var nama_vendor = ''
                             }
                         }
-
-
                         if (response['get_detail_taggihan'][i].status_penaggihan == 1) {
-                            var action = '<a style="font-size:10px" class="btn btn-sm btn-block btn-primary text-white" onclick="Traking_area2(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-eye" aria-hidden="true"></i> View Traking</a><a style="font-size:10px" class="btn btn-sm btn-block btn-warning text-white" onclick="Edit_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Kelola Mc</a>'
+                            var action = '<a style="font-size:10px" class="btn btn-sm btn-block btn-primary text-white" onclick="Traking_area2(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-eye" aria-hidden="true"></i> View Traking</a><a style="font-size:10px" class="btn btn-sm btn-block btn-warning text-white" onclick="Edit_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Kelola Mc</a><a style="font-size:10px" class="btn btn-sm btn-block btn-info text-white" onclick="Open_edit_mc(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Edit Mc</a><a style="font-size:10px" class="btn btn-sm btn-block btn-warning text-white" onclick="pr_po_pp(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> PR-PO-PP </a>'
                         } else {
                             if (response['get_detail_taggihan'][i].status_penaggihan == 2 || response['get_detail_taggihan'][i].status_terakhir == 'Pencairan') {
                                 if (response['get_detail_taggihan'][i].status_pencairan == 1) {
-                                    var action = '<a style="font-size:10px" class="btn btn-sm btn-block btn-block btn-primary text-white" onclick="Traking_area2(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-eye" aria-hidden="true"></i> View Traking</a><a style="font-size:10px" class="btn btn-block btn-sm btn-warning text-white" onclick="Edit_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Kelola Mc</a><a style="font-size:10px" class="btn btn-block btn-sm btn-secondary text-white" href="<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/dokumen_mc/') ?>' + response['get_detail_taggihan'][i].id_mc + '"><i class="fa fa-file" aria-hidden="true"></i> Dokumen Taggihan</a><a style="font-size:10px" class="btn btn-block btn-sm btn-danger text-white" onclick="Hapus_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-trash" aria-hidden="true"></i> Hapus Mc</a>'
+                                    var action = '<a style="font-size:10px" class="btn btn-sm btn-block btn-block btn-primary text-white" onclick="Traking_area2(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-eye" aria-hidden="true"></i> View Traking</a><a style="font-size:10px" class="btn btn-block btn-sm btn-warning text-white" onclick="Edit_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Kelola Mc</a><a style="font-size:10px" class="btn btn-sm btn-block btn-info text-white" onclick="Open_edit_mc(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Edit Mc</a><a style="font-size:10px" class="btn btn-block btn-sm btn-secondary text-white" href="<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/dokumen_mc/') ?>' + response['get_detail_taggihan'][i].id_mc + '"><i class="fa fa-file" aria-hidden="true"></i> Dokumen Taggihan</a><a style="font-size:10px" class="btn btn-block btn-sm btn-danger text-white" onclick="Hapus_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-trash" aria-hidden="true"></i> Hapus Mc</a><a style="font-size:10px" class="btn btn-sm btn-block btn-warning text-white" onclick="pr_po_pp(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> PR-PO-PP </a>'
                                 } else {
-                                    var action = '<a style="font-size:10px" class="btn btn-sm btn-block btn-block btn-primary text-white" onclick="Traking_area2(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-eye" aria-hidden="true"></i> View Traking</a><a style="font-size:10px" class="btn btn-block btn-sm btn-success text-white" onclick="Pencairan(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-credit-card" aria-hidden="true"></i> Pencairan</a> <a style="font-size:10px" class="btn btn-block btn-sm btn-warning text-white" onclick="Edit_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Kelola Mc</a><a style="font-size:10px" class="btn btn-block btn-sm btn-secondary text-white" href="<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/dokumen_mc/') ?>' + response['get_detail_taggihan'][i].id_mc + '"><i class="fa fa-file" aria-hidden="true"></i> Dokumen Taggihan</a><a style="font-size:10px" class="btn btn-block btn-sm btn-danger text-white" onclick="Hapus_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-trash" aria-hidden="true"></i> Hapus Mc</a>'
+                                    var action = '<a style="font-size:10px" class="btn btn-sm btn-block btn-block btn-primary text-white" onclick="Traking_area2(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-eye" aria-hidden="true"></i> View Traking</a><a style="font-size:10px" class="btn btn-block btn-sm btn-success text-white" onclick="Pencairan(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-credit-card" aria-hidden="true"></i> Pencairan</a> <a style="font-size:10px" class="btn btn-block btn-sm btn-warning text-white" onclick="Edit_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Kelola Mc</a><a style="font-size:10px" class="btn btn-sm btn-block btn-info text-white" onclick="Open_edit_mc(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Edit Mc</a><a style="font-size:10px" class="btn btn-block btn-sm btn-secondary text-white" href="<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/dokumen_mc/') ?>' + response['get_detail_taggihan'][i].id_mc + '"><i class="fa fa-file" aria-hidden="true"></i> Dokumen Taggihan</a><a style="font-size:10px" class="btn btn-block btn-sm btn-danger text-white" onclick="Hapus_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-trash" aria-hidden="true"></i> Hapus Mc</a><a style="font-size:10px" class="btn btn-sm btn-block btn-warning text-white" onclick="pr_po_pp(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> PR-PO-PP </a>'
                                 }
                             } else {
-                                var action = '<a style="font-size:10px" class="btn btn-sm btn-block btn-primary text-white" onclick="Traking_area2(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-eye" aria-hidden="true"></i> View Traking</a><a style="font-size:10px" class="btn btn-sm btn-block btn-warning text-white" onclick="Edit_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Kelola Mc</a><a style="font-size:10px" class="btn btn-block btn-sm btn-secondary text-white" href="<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/dokumen_mc/') ?>' + response['get_detail_taggihan'][i].id_mc + '"><i class="fa fa-file" aria-hidden="true"></i> Dokumen Taggihan</a><a style="font-size:10px" class="btn btn-block btn-sm btn-danger text-white" onclick="Hapus_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-trash" aria-hidden="true"></i> Hapus Mc</a>'
+                                var action = '<a style="font-size:10px" class="btn btn-sm btn-block btn-primary text-white" onclick="Traking_area2(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-eye" aria-hidden="true"></i> View Traking</a><a style="font-size:10px" class="btn btn-sm btn-block btn-warning text-white" onclick="Edit_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Kelola Mc</a><a style="font-size:10px" class="btn btn-sm btn-block btn-info text-white" onclick="Open_edit_mc(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> Edit Mc</a><a style="font-size:10px" class="btn btn-block btn-sm btn-secondary text-white" href="<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/dokumen_mc/') ?>' + response['get_detail_taggihan'][i].id_mc + '"><i class="fa fa-file" aria-hidden="true"></i> Dokumen Taggihan</a><a style="font-size:10px" class="btn btn-block btn-sm btn-danger text-white" onclick="Hapus_traking(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-trash" aria-hidden="true"></i> Hapus Mc</a><a style="font-size:10px" class="btn btn-sm btn-block btn-warning text-white" onclick="pr_po_pp(' + response['get_detail_taggihan'][i].id_mc + ')" href="javascript:;"><i class="fa fa-cog" aria-hidden="true"></i> PR-PO-PP </a>'
                             }
                         }
 
@@ -233,11 +231,17 @@
         }
     }
 
+    function Open_edit_mc(id) {
+        window.open('<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/kelola_mc/') ?>' + id, '_blank');
+    }
 
+
+    function pr_po_pp(id) {
+        window.open('<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/pr_po_pp/') ?>' + id, '_blank');
+    }
 
 
     function Edit_traking(id) {
-        // window.open('<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/kelola_mc/') ?>' + id, '_blank');
         var edit_mc = $('#edit_mc')
         edit_mc.modal('show');
         $.ajax({
@@ -374,14 +378,8 @@
                         $('#modelId').modal('hide');
                         message('Berhasil!', 'success', 'Data Berhasil Disimpan!')
                         cari_id_detail_program_penyedia_jasa(id_detail_program_penyedia_jasa)
-                    } else {
-                        // $(".eror_password2").html(response.password2);
-                        // $(".eror_password").html(response.password);
-                        // $(".eror_username").html(response.username);
-                        // $(".eror_nama_pegawai").html(response.nama_pegawai);
-                        // $(".eror_email").html(response.email);
-                        // $(".eror_nip").html(response.nip);
-                    }
+                        location.reload()
+                    } else {}
                 }
             })
         }
@@ -400,14 +398,7 @@
                     $('#edit_mc').modal('hide');
                     message('Berhasil!', 'success', 'Data Berhasil Update!')
                     cari_id_detail_program_penyedia_jasa(id_detail_program_penyedia_jasa)
-                } else {
-                    // $(".eror_password2").html(response.password2);
-                    // $(".eror_password").html(response.password);
-                    // $(".eror_username").html(response.username);
-                    // $(".eror_nama_pegawai").html(response.nama_pegawai);
-                    // $(".eror_email").html(response.email);
-                    // $(".eror_nip").html(response.nip);
-                }
+                } else {}
             }
         })
     }
@@ -3286,7 +3277,7 @@
                 ['10 Rows', '25 Rows', '50 Rows', 'Back']
             ],
             dom: 'Bfrtip',
-            buttons: [  {
+            buttons: [{
                 extend: 'excel',
                 text: ' Export a EXCEL'
             }],
@@ -3314,7 +3305,7 @@
                 ['10 Rows', '25 Rows', '50 Rows', 'Back']
             ],
             dom: 'Bfrtip',
-            buttons: [ {
+            buttons: [{
                 extend: 'excel',
                 exportOption: {
                     columns: [0, 1, 2, 3]
@@ -3358,4 +3349,138 @@
         $('.qr_view').html('<img src="https://jmtm-ams2.kintekindo.net/render_qr/qrcode_kms_mc/' + id_detail_program_penyedia_jasa + '" alt="Admin" width="200" height="200">');
         // $('.button_view_langsung').html('<a href="<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/buat_tagihan/') ?>' + id_detail_program_penyedia_jasa + '" class="btn btn-sm btn-primary btn-block">Kelola Taggihan Kontrak</a>');
     }
+</script>
+
+<script>
+    function Simpan_mc_pr_po_pp(type) {
+        var type_post_name = $('[name="' + type + '"]').val();
+        var id_mc = $('[name="id_mc"]').val();
+        $.ajax({
+            method: "POST",
+            url: "<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/simpan_master_persuratan_mc') ?>",
+            data: {
+                type: type,
+                type_post_name: type_post_name,
+                id_mc: id_mc,
+            },
+            dataType: "JSON",
+            success: function(response) {
+            }
+        })
+    }
+</script>
+
+<script>
+    var form_dok_mc_baru = $('#form_dok_mc_baru');
+    var modal_upload_dokumen_mc_baru = $('#modal_upload_dokumen_mc_baru');
+
+    function Upload_po_pr_pp (type) {
+        modal_upload_dokumen_mc_baru.modal('show');
+        var table_dok_mc_baru = $('#table_dok_mc_baru');
+        $('[name="type_upload"]').val(type);
+        var id_mc = $('[name="id_mc"]').val();
+        var id_detail_program_penyedia_jasa = $('[name="id_detail_program_penyedia_jasa"]').val();
+        table_dok_mc_baru.DataTable({
+            "responsive": true,
+            "autoWidth": false,
+            "processing": true,
+            "serverSide": true,
+            "bDestroy": true,
+            "order": [],
+            "ajax": {
+                "url": "<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/data_get_dok_mc_baru') ?>",
+                "type": "POST",
+                data: {
+                    type_upload: type,
+                    id_mc: id_mc,
+                    id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
+                }
+            },
+            "columnDefs": [{
+                "target": [-1],
+                "orderable": true
+            }],
+            "oLanguage": {
+                "sSearch": "Pencarian : ",
+                "sEmptyTable": "Data Tidak Tersedia",
+                "sLoadingRecords": "Silahkan Tunggu - loading...",
+                "sLengthMenu": "Menampilkan &nbsp;  _MENU_  &nbsp;   Data",
+                "sZeroRecords": "Moho Maaf Tidak Ada Data Paket Yang Di Cari",
+                "sProcessing": "Memuat Data...."
+            }
+        });
+    }
+
+    form_dok_mc_baru.on('submit', function(e) {
+        e.preventDefault();
+        if ($('.file_dok').val() == '') {
+            $('#error_file').show();
+            setTimeout(function() {
+                $('#error_file').hide();
+            }, 4000);
+        } else {
+            $.ajax({
+                url: "<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/add_dok_mc_baru') ?>",
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    $('#upload').attr('disabled', 'disabled');
+                    $('#process').css('display', 'block');
+                    $('#sedang_dikirim').show();
+                },
+                success: function(response) {
+                    var percentage = 0;
+                    var timer = setInterval(function() {
+                        percentage = percentage + 20;
+                        progress_bar_process_dok_penunjang(percentage, timer);
+                    }, 1000);
+                }
+            });
+        }
+    });
+
+
+    function progress_bar_process_dok_penunjang(percentage, timer) {
+        $('.progress-bar').css('width', percentage + '%');
+        if (percentage > 100) {
+            clearInterval(timer);
+            $('#form_dok_mc_baru ')[0].reset();
+            $('#process').css('display', 'none');
+            $('#sedang_dikirim').show();
+            $('.progress-bar').css('width', percentage + '%');
+            $('#upload').attr('disabled', false);
+            message('success', 'Data Berhasil Di Tambah!', 'Berhasil')
+            location.reload()
+        }
+    }
+
+    function hapus_dok_mc_baru(id) {
+        Swal.fire({
+            title: "Apakah Anda Yakin!?",
+            text: 'Ingin Menghapus Data ?',
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/hapus_dok_mc_baru/') ?>" + id,
+                    dataType: "JSON",
+                    success: function(response) {
+                        if (response == 'success') {
+                            message('success', 'Berhasil!', 'Data Berhasil Di Hapus')
+                            location.reload()
+                        }
+                    }
+                })
+            } else {
+                message('success', 'Berhasil!', 'Data Tidak Jadi Di Hapus')
+            }
+        });
+    }
+
 </script>

@@ -10,7 +10,7 @@
         </div> -->
         <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
   position: fixed; top:50px;  padding-bottom: -10px;">
-            <b style="margin-left: auto; font-weight:1000" class="text-black"><?= $nama_kontrak['nama_kontrak'] ?> - <?= $nama_kontrak['tahun_anggaran'] ?> - Lembar Kerja - Pasca Pengadaan</b>
+            <b style="margin-left: auto; font-weight:1000" class="text-black"><?= $row_kontrak['nama_kontrak'] ?> - <?= $row_kontrak['tahun_anggaran'] ?> - Lembar Kerja - Pasca Pengadaan</b>
         </nav>
         <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
 background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%); color:white">
@@ -37,7 +37,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                 <div class="col-md-6">
                                     <div class="card bg-warning" style="font-family: 'Poppins', sans-serif;">
                                         <center>
-                                            <h5><?= $m2_dok_selesai_pasca_final ?></h5>
+                                            <h5><?= $total_final_dok_pasca_baru ?></h5>
                                         </center>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                 <div class="col-md-6">
                                     <div class="card bg-success" style="font-family: 'Poppins', sans-serif;">
                                         <center>
-                                            <h5><?= $m2_final_pasca ?></h5>
+                                            <h5><?= $total_final_progres ?></h5>
                                         </center>
                                     </div>
                                 </div>
@@ -374,42 +374,46 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                 <td>
                                     <?php
                                     $this->db->select('*');
-                                    $this->db->from('mst_kontrak');
-                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
-                                    $this->db->join('tbl_dokumen_surat_pasca', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_dokumen_surat_pasca.id_detail_program_penyedia_jasa');
-                                    $this->db->where('tbl_dokumen_surat_pasca.file !=', NULL);
-                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
-                                    $query_pasca1 = $this->db->count_all_results();
+                                    $this->db->from('tbl_dokumen_pasca');
+                                    $this->db->where('tbl_dokumen_pasca.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                    $this->db->where('type_dok', 'gunning');
+                                    $query_guning = $this->db->count_all_results();
 
                                     $this->db->select('*');
-                                    $this->db->from('mst_kontrak');
-                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
-                                    $this->db->join('tbl_dokumen_kontrak_hps', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_dokumen_kontrak_hps.id_detail_program_penyedia_jasa');
-                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
-                                    $this->db->where('tbl_dokumen_kontrak_hps.nama_file !=', NULL);
-                                    $query_pasca2 = $this->db->count_all_results();
+                                    $this->db->from('tbl_dokumen_pasca');
+                                    $this->db->where('tbl_dokumen_pasca.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                    $this->db->where('type_dok', 'loi');
+                                    $query_loi = $this->db->count_all_results();
+
+                                    $this->db->select('*');
+                                    $this->db->from('tbl_dokumen_pasca');
+                                    $this->db->where('tbl_dokumen_pasca.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                    $this->db->where('type_dok', 'sho');
+                                    $query_sho = $this->db->count_all_results();
+
+                                    $this->db->select('*');
+                                    $this->db->from('tbl_dokumen_pasca');
+                                    $this->db->where('tbl_dokumen_pasca.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                    $this->db->where('type_dok', 'kontrak');
+                                    $query_kontrak = $this->db->count_all_results();
+
+                                    $this->db->select('*');
+                                    $this->db->from('tbl_dokumen_pasca');
+                                    $this->db->where('tbl_dokumen_pasca.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                    $this->db->where('type_dok', 'spmk');
+                                    $query_spmk = $this->db->count_all_results();
+
+                                    $this->db->select('*');
+                                    $this->db->from('tbl_dokumen_pasca');
+                                    $this->db->where('tbl_dokumen_pasca.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
+                                    $this->db->where('type_dok', 'jaminan');
+                                    $query_jaminan = $this->db->count_all_results();
                                     ?>
-                                    <?= $query_pasca1 + $query_pasca2 ?>
-                                    <?php $total_done = $query_pasca1 + $query_pasca2 ?>
+                                    <?= $query_guning + $query_loi + $query_sho + $query_kontrak + $query_spmk + $query_jaminan ?>
+                                    <?php $total_done = $query_guning + $query_loi + $query_sho + $query_kontrak + $query_spmk + $query_jaminan ?>
                                 </td>
                                 <td>
-                                    <?php
-                                    $this->db->select('*');
-                                    $this->db->from('mst_kontrak');
-                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
-                                    $this->db->join('tbl_dokumen_surat_pasca', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_dokumen_surat_pasca.id_detail_program_penyedia_jasa');
-                                    $this->db->where('tbl_dokumen_surat_pasca.file', NULL);
-                                    $this->db->where('tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $value['id_detail_program_penyedia_jasa']);
-                                    $query_pasca1_progres = $this->db->count_all_results();
-
-                                    $this->db->select('*');
-                                    $this->db->from('mst_kontrak');
-                                    $this->db->join('tbl_detail_program_penyedia_jasa', 'mst_kontrak.id_kontrak = tbl_detail_program_penyedia_jasa.id_kontrak');
-                                    $this->db->join('tbl_dokumen_kontrak_hps', 'tbl_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa = tbl_dokumen_kontrak_hps.id_detail_program_penyedia_jasa');
-                                    $this->db->where('tbl_dokumen_kontrak_hps.nama_file', NULL);
-                                    $query_pasca2_progres = $this->db->count_all_results();
-                                    ?>
-                                    <?= $query_pasca1_progres + $query_pasca2_progres - $total_done + 1 ?>
+                                    <?= 6 - $total_done ?>
                                 </td>
                             </tr>
                         <?php   } ?>

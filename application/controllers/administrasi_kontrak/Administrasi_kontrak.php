@@ -146,12 +146,11 @@ class Administrasi_kontrak extends CI_Controller
 
     public function list_program($id_kontrak)
     {
-
-
         $keyword = $this->input->post('keyword');
         $data['active_kontrak'] = 'active';
         $data['menu_open_kontrak'] = 'menu-open';
         $row_kontrak =  $this->Data_kontrak_model->get_row_kontrak($id_kontrak);
+        $data['row_kontrak'] =  $this->Data_kontrak_model->get_row_kontrak($id_kontrak);
         $id_departemen = $row_kontrak['id_departemen'];
         $id_area = $row_kontrak['id_area'];
         $id_sub_area = $row_kontrak['id_sub_area'];
@@ -160,26 +159,25 @@ class Administrasi_kontrak extends CI_Controller
         $data['get_penyedia'] = $this->Data_kontrak_model->get_penyedia();
         $data['id_kontrak'] = $id_kontrak;
         $data['nama_kontrak'] = $row_kontrak['nama_kontrak'];
-        $data['m1_dok_selesai'] = $this->M_analisis->m1_dok_selesai();
-        $data['m1_dok_progres'] = $this->M_analisis->m1_dok_progres();
-        $data['m1_dok_progres2'] = $data['m1_dok_progres'] - $data['m1_dok_selesai'];
-
-
-        $data['m2_dok_selesai'] = $this->M_analisis->m2_dok_selesai();
-        $data['m2_dok_progres'] = $this->M_analisis->m2_dok_progres();
-
-        $data['m2_dok_selesai_pasca'] = $this->M_analisis->m2_dok_selesai_pasca();
-        $data['m2_dok_progres_pasca'] = $this->M_analisis->m2_dok_progres_pasca();
-
-
-        $data['m2_dok_selesai_pasca_kontrak'] = $this->M_analisis->m2_dok_selesai_pasca_kontrak();
-        $data['m2_dok_progres_pasca_kontrak'] = $this->M_analisis->m2_dok_progres_pasca_kontrak();
-
-
-        $data['m2_dok_selesai_pasca_final'] = $data['m2_dok_selesai_pasca'] + $data['m2_dok_selesai_pasca_kontrak'];
-        $data['m2_dok_progres_pasca_final'] = $data['m2_dok_progres_pasca'] + $data['m2_dok_progres_pasca_kontrak'] + 1;
-        $data['m2_final_pasca'] = $data['m2_dok_progres_pasca_final'] - $data['m2_dok_selesai_pasca_final'];
         $data['data_pekerjaan'] = $this->M_analisis->get_pekerjaan_pra($id_kontrak);
+        // dok_pasca_baru
+        // gunning
+        $data['dok_pasca_baru_gunning'] = $this->M_analisis->dok_pasca_baru_gunning_all($id_kontrak, $data['get_mata_anggaran']);
+        // loi
+        $data['dok_pasca_baru_loi'] = $this->M_analisis->dok_pasca_baru_loi_all($id_kontrak, $data['get_mata_anggaran']);
+        // sho
+        $data['dok_pasca_baru_sho'] = $this->M_analisis->dok_pasca_baru_sho_all($id_kontrak, $data['get_mata_anggaran']);
+        // kontrak
+        $data['dok_pasca_baru_kontrak'] = $this->M_analisis->dok_pasca_baru_kontrak_all($id_kontrak, $data['get_mata_anggaran']);
+        // spmk
+        $data['dok_pasca_baru_spmk'] = $this->M_analisis->dok_pasca_baru_spmk_all($id_kontrak, $data['get_mata_anggaran']);
+        // jaminan
+        $data['dok_pasca_baru_jaminan'] = $this->M_analisis->dok_pasca_baru_jaminan_all($id_kontrak, $data['get_mata_anggaran']);
+        // cek jumlah program
+        $data['cek_jumlah_program'] = $this->M_analisis->cek_jumlah_program($id_kontrak, $data['get_mata_anggaran']);
+        $data['total_final_dok_pasca_baru'] = $data['dok_pasca_baru_gunning'] +  $data['dok_pasca_baru_loi'] + $data['dok_pasca_baru_sho'] + $data['dok_pasca_baru_kontrak'] + $data['dok_pasca_baru_kontrak'] + $data['dok_pasca_baru_spmk'] + $data['dok_pasca_baru_jaminan'];
+        $data['total_final_progres'] = ($data['cek_jumlah_program'] * 6) - $data['total_final_dok_pasca_baru'];
+
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('admin/administrasi_kontrak/pasca_pengadaan', $data);

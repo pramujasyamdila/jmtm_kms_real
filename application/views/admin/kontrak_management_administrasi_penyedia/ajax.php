@@ -1964,9 +1964,7 @@
                 id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
             },
             dataType: "JSON",
-            success: function(response) {
-                Kelola_surat()
-            }
+            success: function(response) {}
         })
     }
 
@@ -1988,6 +1986,121 @@
             }
         })
     }
+</script>
+
+<script>
+    var form_dok_pasca_baru = $('#form_dok_pasca_baru');
+    var modal_upload_dokumen_pasca_baru = $('#modal_upload_dokumen_pasca_baru');
+
+    function Upload_dokumen_pasca(type) {
+        modal_upload_dokumen_pasca_baru.modal('show');
+        var table_dok_pasca_baru = $('#table_dok_pasca_baru');
+        $('[name="type_upload"]').val(type);
+        var id_kontrak = $('[name="id_kontrak"]').val();
+        var id_detail_program_penyedia_jasa = $('[name="id_detail_program_penyedia_jasa"]').val();
+        table_dok_pasca_baru.DataTable({
+            "responsive": true,
+            "autoWidth": false,
+            "processing": true,
+            "serverSide": true,
+            "bDestroy": true,
+            "order": [],
+            "ajax": {
+                "url": "<?= base_url('admin/administrasi_penyedia/data_get_dok_pasca_baru') ?>",
+                "type": "POST",
+                data: {
+                    type_upload: type,
+                    id_kontrak: id_kontrak,
+                    id_detail_program_penyedia_jasa: id_detail_program_penyedia_jasa,
+                }
+            },
+            "columnDefs": [{
+                "target": [-1],
+                "orderable": true
+            }],
+            "oLanguage": {
+                "sSearch": "Pencarian : ",
+                "sEmptyTable": "Data Tidak Tersedia",
+                "sLoadingRecords": "Silahkan Tunggu - loading...",
+                "sLengthMenu": "Menampilkan &nbsp;  _MENU_  &nbsp;   Data",
+                "sZeroRecords": "Moho Maaf Tidak Ada Data Paket Yang Di Cari",
+                "sProcessing": "Memuat Data...."
+            }
+        });
+    }
+
+    form_dok_pasca_baru.on('submit', function(e) {
+        e.preventDefault();
+        if ($('.file_dok').val() == '') {
+            $('#error_file').show();
+            setTimeout(function() {
+                $('#error_file').hide();
+            }, 4000);
+        } else {
+            $.ajax({
+                url: "<?= base_url('admin/administrasi_penyedia/add_dok_pasca_baru') ?>",
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    $('#upload').attr('disabled', 'disabled');
+                    $('#process').css('display', 'block');
+                    $('#sedang_dikirim').show();
+                },
+                success: function(response) {
+                    var percentage = 0;
+                    var timer = setInterval(function() {
+                        percentage = percentage + 20;
+                        progress_bar_process_dok_penunjang(percentage, timer);
+                    }, 1000);
+                }
+            });
+        }
+    });
+
+
+    function progress_bar_process_dok_penunjang(percentage, timer) {
+        $('.progress-bar').css('width', percentage + '%');
+        if (percentage > 100) {
+            clearInterval(timer);
+            $('#form_dok_pasca_baru ')[0].reset();
+            $('#process').css('display', 'none');
+            $('#sedang_dikirim').show();
+            $('.progress-bar').css('width', percentage + '%');
+            $('#upload').attr('disabled', false);
+            message('success', 'Data Berhasil Di Tambah!', 'Berhasil')
+            location.reload()
+        }
+    }
+
+    function hapus_dok_pasca_baru(id) {
+        Swal.fire({
+            title: "Apakah Anda Yakin!?",
+            text: 'Ingin Menghapus Data ?',
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('admin/administrasi_penyedia/hapus_dok_pasca_baru/') ?>" + id,
+                    dataType: "JSON",
+                    success: function(response) {
+                        if (response == 'success') {
+                            message('success', 'Berhasil!', 'Data Berhasil Di Hapus')
+                            location.reload()
+                        }
+                    }
+                })
+            } else {
+                message('success', 'Berhasil!', 'Data Tidak Jadi Di Hapus')
+            }
+        });
+    }
+
 </script>
 
 <script>

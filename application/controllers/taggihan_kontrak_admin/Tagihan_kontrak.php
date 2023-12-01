@@ -16,12 +16,13 @@ class Tagihan_kontrak extends CI_Controller
         $this->load->model('Tagihan_kontrak_admin/Taggihan_kontrak_admin_model');
         $this->load->model('Tagihan_kontrak/Tagihan_kontrak_model');
         $this->load->model('Admin/Data_kontrak_model');
+        $this->load->model('Admin/Administrasi_kontrak_model');
         $this->load->model('Admin/Data_excelisasi_model');
         $this->load->model('Auth_model');
         $session = $this->session->userdata('id_pegawai');
-		if (!$session) {
-			redirect('auth');
-		}
+        if (!$session) {
+            redirect('auth');
+        }
     }
     public function buat_tagihan($id_detail_program_penyedia_jasa)
     {
@@ -198,7 +199,7 @@ class Tagihan_kontrak extends CI_Controller
                 'bobot' => $bobot,
                 'denda' => $denda,
                 // nilai_uang_muka
-                
+
                 'nilai_uang_muka' => $nilai_uang_muka,
             ];
         } else {
@@ -849,8 +850,6 @@ class Tagihan_kontrak extends CI_Controller
                 if ($data_no_mc == 1) {
                     # code...
                 } else {
-                    var_dump('masuk_kesini');
-                    die;
                     $data_mc = $this->Taggihan_kontrak_admin_model->generate_update($ambil_kontrak_edit, $ambil_no_mc_edit);
                     // array_bulan_ini
                     $sd_bulan_ini0 = $data_mc[0]['sd_bulan_ini'];
@@ -2977,6 +2976,227 @@ class Tagihan_kontrak extends CI_Controller
     }
 
 
+    public function pr_po_pp($id_mc)
+    {
+        $mc_row = $this->Taggihan_kontrak_admin_model->cek_row_mc($id_mc);
+        $row_traking = $this->Taggihan_kontrak_admin_model->cek_mc_traking($id_mc);
+        $get_traking_vendor = $this->Taggihan_kontrak_admin_model->get_traking_vendor($id_mc);
+        $get_traking_area = $this->Taggihan_kontrak_admin_model->get_traking_area($id_mc);
+        $get_traking_pusat = $this->Taggihan_kontrak_admin_model->get_traking_pusat($id_mc);
+        $get_traking_finance = $this->Taggihan_kontrak_admin_model->get_traking_finance($id_mc);
+        $get_traking_data = $this->Taggihan_kontrak_admin_model->get_traking_data($id_mc);
+
+        $id_detail_program_penyedia_jasa = $mc_row['id_detail_program_penyedia_jasa'];
+        $row_program = $this->Administrasi_kontrak_model->get_by_program_penyedia($id_detail_program_penyedia_jasa);
+        $get_kode_mc = $this->Taggihan_kontrak_admin_model->get_kode_mc($id_detail_program_penyedia_jasa);
+
+        $urutku = $get_kode_mc + 1;
+        $data_urut = $urutku++;
+
+        $tanggal_mc = $mc_row['tanggal_mc'];
+        $date = date_create($tanggal_mc);
+        date_modify($date, '+10 day');
+
+        // ini untuk edit mc 
+        $data_tbl_kontrak = $this->Taggihan_kontrak_admin_model->GetByIdKontrak($id_detail_program_penyedia_jasa);
+        $data_detail_taggihan = $this->Taggihan_kontrak_admin_model->GetByIdKontrakDetail($id_detail_program_penyedia_jasa);
+        $count = $this->db->query("SELECT COUNT(id_detail_program_penyedia_jasa) AS total  FROM tbl_mc WHERE id_detail_program_penyedia_jasa = '$id_detail_program_penyedia_jasa'")->row();
+
+        $cekkontrak = $this->Taggihan_kontrak_admin_model->cekKontrak($id_detail_program_penyedia_jasa);
+
+        $cek_pertama_mc_apa = $this->Taggihan_kontrak_admin_model->cek_pertama_mc_apa($id_detail_program_penyedia_jasa);
+        $vendor_session = $this->session->userdata('id_vendor');
+        $pegawai = $this->session->userdata('id_departemen');
+
+        $get_kode_mc = $this->Taggihan_kontrak_admin_model->get_kode_mc($id_detail_program_penyedia_jasa);
+        $urutku = $get_kode_mc + 1;
+        $data_urut = $urutku++;
+
+        $jika_ada_um = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
+        $select_max_mc1 = $this->Taggihan_kontrak_admin_model->get_last_mc($id_detail_program_penyedia_jasa);
+
+        $select_max_mc2 = $this->Taggihan_kontrak_admin_model->get_last_mc_jumlah($id_detail_program_penyedia_jasa);
+        $cek_nilai_kontrak_mc = $this->Taggihan_kontrak_admin_model->cek_nilai_kontrak_mc_1($id_detail_program_penyedia_jasa, $id_mc);
+        $row_kontrak = $this->Taggihan_kontrak_admin_model->get_row_kontrak($id_detail_program_penyedia_jasa);
+        $result_sub_program  = $this->Data_kontrak_model->get_sub_program($id_detail_program_penyedia_jasa);
+
+        // result addendumn =
+        $addendum_result = $this->Data_kontrak_model->get_addendum_by_result_penyedia_kontrak($id_detail_program_penyedia_jasa);
+        if ($mc_row['no_mc'] == 'um') {
+            $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
+            $data = [
+                'row_mc' => $mc_row,
+                'row_program' => $row_program,
+                'traking' => $row_traking,
+                'data_selesai' =>  date_format($date, 'Y-m-d'),
+                'get_traking_vendor' => $get_traking_vendor,
+                'get_traking_area' => $get_traking_area,
+                'get_traking_pusat' => $get_traking_pusat,
+                'get_traking_finance' => $get_traking_finance,
+                'get_traking_data' => $get_traking_data,
+                'no_urut_mc' => $data_urut,
+                'jika_ada_um_edit' => $jika_ada_um_edit,
+                'datakontrak' => $data_tbl_kontrak,
+                'get_detail_taggihan' => $data_detail_taggihan,
+                'cekkontrak' => $cekkontrak,
+                'total_kontrak' => $count,
+                'selact_max1' => $select_max_mc1,
+                'selact_max2' => $select_max_mc2,
+                'vendor_session' => $vendor_session,
+                'pegawai' => $pegawai,
+                'cek_pertama_mc_apa' => $cek_pertama_mc_apa,
+                'no_urut_mc' => $data_urut,
+                'jika_ada_um' => $jika_ada_um,
+                'row_kontrak' => $row_kontrak,
+                'cek_nilai_kontrak_mc' => $cek_nilai_kontrak_mc,
+                'result_sub_program' => $result_sub_program,
+                'addendum_result' => $addendum_result
+            ];
+        } else  if ($mc_row['no_mc'] == '1') {
+            $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
+            $data = [
+                'row_mc' => $mc_row,
+                'row_program' => $row_program,
+                'traking' => $row_traking,
+                'data_selesai' =>  date_format($date, 'Y-m-d'),
+                'get_traking_vendor' => $get_traking_vendor,
+                'get_traking_area' => $get_traking_area,
+                'get_traking_pusat' => $get_traking_pusat,
+                'get_traking_finance' => $get_traking_finance,
+                'get_traking_data' => $get_traking_data,
+                'no_urut_mc' => $data_urut,
+                'jika_ada_um_edit' => $jika_ada_um_edit,
+                'datakontrak' => $data_tbl_kontrak,
+                'get_detail_taggihan' => $data_detail_taggihan,
+                'cekkontrak' => $cekkontrak,
+                'total_kontrak' => $count,
+                'selact_max1' => $select_max_mc1,
+                'selact_max2' => $select_max_mc2,
+                'vendor_session' => $vendor_session,
+                'pegawai' => $pegawai,
+                'cek_pertama_mc_apa' => $cek_pertama_mc_apa,
+                'no_urut_mc' => $data_urut,
+                'jika_ada_um' => $jika_ada_um,
+                'row_kontrak' => $row_kontrak,
+                'cek_nilai_kontrak_mc' => $cek_nilai_kontrak_mc,
+                'result_sub_program' => $result_sub_program,
+                'addendum_result' => $addendum_result
+            ];
+        } else {
+            $kontrak_sebelum_edit = $mc_row['id_detail_program_penyedia_jasa'];
+            $no_mc_sebelum_edit = (int) $mc_row['no_mc'] - 1;
+            $data_mc_sebelum_row_edit = $this->Taggihan_kontrak_admin_model->get_last_edit($kontrak_sebelum_edit, $no_mc_sebelum_edit);
+            $jika_ada_um_edit = $this->Taggihan_kontrak_admin_model->get_cek_um($id_detail_program_penyedia_jasa);
+            $data = [
+                'row_mc' => $mc_row,
+                'row_program' => $row_program,
+                'traking' => $row_traking,
+                'data_selesai' =>  date_format($date, 'Y-m-d'),
+                'get_traking_vendor' => $get_traking_vendor,
+                'get_traking_area' => $get_traking_area,
+                'get_traking_pusat' => $get_traking_pusat,
+                'get_traking_finance' => $get_traking_finance,
+                'get_traking_data' => $get_traking_data,
+                'no_urut_mc' => $data_urut,
+                'total_mc_sebelum_edit' => $data_mc_sebelum_row_edit,
+                'jika_ada_um_edit' => $jika_ada_um_edit,
+                'datakontrak' => $data_tbl_kontrak,
+                'get_detail_taggihan' => $data_detail_taggihan,
+                'cekkontrak' => $cekkontrak,
+                'total_kontrak' => $count,
+                'selact_max1' => $select_max_mc1,
+                'selact_max2' => $select_max_mc2,
+                'vendor_session' => $vendor_session,
+                'pegawai' => $pegawai,
+                'cek_pertama_mc_apa' => $cek_pertama_mc_apa,
+                'no_urut_mc' => $data_urut,
+                'jika_ada_um' => $jika_ada_um,
+                'row_kontrak' => $row_kontrak,
+                'cek_nilai_kontrak_mc' => $cek_nilai_kontrak_mc,
+                'result_sub_program' => $result_sub_program,
+                'addendum_result' => $addendum_result
+            ];
+        }
+        $data['title'] = 'Dashboard';
+        $this->load->view('template_stisla/header');
+        $this->load->view('template_stisla/sidebar');
+        $this->load->view('admin/Tagihan_kontrak_admin/pr_po_pp', $data);
+        $this->load->view('template_stisla/footer');
+        $this->load->view('admin/Tagihan_kontrak_admin/ajax', $data);
+    }
+
+
+    function simpan_master_persuratan_mc()
+    {
+        $id_mc = $this->input->post('id_mc');
+        $type_post_name = $this->input->post('type_post_name');
+        $type = $this->input->post('type');
+        $data = [
+            $type => $type_post_name,
+        ];
+        $this->Taggihan_kontrak_admin_model->update_mc($data, $id_mc);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
+
+    
+    public function data_get_dok_mc_baru()
+    {
+        $id_mc = $this->input->post('id_mc');
+        $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
+        $type_upload = $this->input->post('type_upload');
+        // get_data_dok_penunjang
+        $resultss = $this->Data_kontrak_model->get_dokumen_mc_baru($id_mc, $id_detail_program_penyedia_jasa, $type_upload);
+        $no = $_POST['start'];
+        $data = [];
+        foreach ($resultss as $angga) {
+            $row = array();
+            $row[] = ++$no;
+            $row[] = $angga->file_dok;
+            $row[] = '<a target="_blank" href=' . base_url('/file_dokumen_penunjang' . '/' . $angga->file_dok) . '>' . '<img width="30px" src="https://cdn-icons-png.flaticon.com/512/124/124837.png">' . '</a>';
+            $row[] = '<a href="javascript:;" class="btn btn-danger  btn-block btn-sm" onClick="hapus_dok_mc_baru(' . "'" . $angga->id_dokumen_mc_surat . "','hapus_dok_penunjang'" . ')">  <i class="fas fa-trash"></i> Hapus</a>';
+            $data[] = $row;
+        }
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->Data_kontrak_model->count_all_get_dokumen_mc_baru($id_mc, $id_detail_program_penyedia_jasa, $type_upload),
+            "recordsFiltered" => $this->Data_kontrak_model->count_filtered_get_dokumen_mc_baru($id_mc, $id_detail_program_penyedia_jasa, $type_upload),
+            "data" => $data,
+        );
+        $this->output->set_content_type('application/json')->set_output(json_encode($output));
+    }
+
+
+    public function add_dok_mc_baru()
+    {
+        $id_mc = $this->input->post('id_mc');
+        $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
+        $type_upload = $this->input->post('type_upload');
+        $config['upload_path'] = './file_dokumen_penunjang/';
+        $config['allowed_types'] = 'pdf|xlsx|word|doc|docx|ppt|pptx';
+        $config['max_size'] = 2097152;
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('file_dok')) {
+            $fileData = $this->upload->data();
+            $upload = [
+                'id_mc' => $id_mc,
+                'type_dok' => $type_upload,
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'file_dok' => $fileData['file_name'],
+            ];
+            $this->Data_kontrak_model->create_dok_mc_baru($upload);
+            $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+        } else {
+            $this->session->set_flashdata('error', $this->upload->display_errors());
+            redirect('taggihan_kontrak_admin/tagihan_kontrak/pr_po_pp/' . $id_mc);
+        }
+    }
+    public function hapus_dok_mc_baru($id_dokumen_mc)
+    {
+        $this->Data_kontrak_model->deletedata_dok_mc_baru($id_dokumen_mc);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
 
     public function get_data_nilai_kontrak_mc($id_detail_program_penyedia_jasa)
     {

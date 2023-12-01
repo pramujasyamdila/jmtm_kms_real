@@ -20,6 +20,9 @@ class M_analisis extends CI_Model
         return $this->db->count_all_results();
     }
 
+
+
+
     function m1_dok_progres_kontrak($id_kontrak)
     {
         $this->db->select('*');
@@ -54,7 +57,7 @@ class M_analisis extends CI_Model
         $this->db->where('tbl_dokumen_surat_pra.file !=', NULL);
         return $this->db->count_all_results();
     }
-    
+
 
 
     function m2_dok_progres()
@@ -457,6 +460,130 @@ class M_analisis extends CI_Model
     public function count_all_data_hps_kontrak()
     {
         $this->_get_data_query_hps_penyedia_kontrak_jasa();
+        return $this->db->count_all_results();
+    }
+
+    function dok_pasca_baru_gunning_detail($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dokumen_pasca');
+        $this->db->where('tbl_dokumen_pasca.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('type_dok', 'gunning');
+        $this->db->limit(1);
+        return $this->db->count_all_results();
+    }
+
+    function dok_pasca_baru_loi_detail($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dokumen_pasca');
+        $this->db->where('tbl_dokumen_pasca.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('type_dok', 'loi');
+        $this->db->limit(1);
+        return $this->db->count_all_results();
+    }
+
+    function dok_pasca_baru_sho_detail($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dokumen_pasca');
+        $this->db->where('tbl_dokumen_pasca.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('type_dok', 'sho');
+        $this->db->limit(1);
+        return $this->db->count_all_results();
+    }
+
+    function dok_pasca_baru_kontrak_detail($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dokumen_pasca');
+        $this->db->where('tbl_dokumen_pasca.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('type_dok', 'kontrak');
+        $this->db->limit(1);
+        return $this->db->count_all_results();
+    }
+
+    function dok_pasca_baru_spmk_detail($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dokumen_pasca');
+        $this->db->where('tbl_dokumen_pasca.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('type_dok', 'spmk');
+        $this->db->limit(1);
+        return $this->db->count_all_results();
+    }
+
+    function dok_pasca_baru_jaminan_detail($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dokumen_pasca');
+        $this->db->where('tbl_dokumen_pasca.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('type_dok', 'jaminan');
+        $this->db->limit(1);
+        return $this->db->count_all_results();
+    }
+
+
+    // all
+    function dok_pasca_baru_gunning_all($id_kontrak)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dokumen_pasca');
+        $this->db->where('tbl_dokumen_pasca.id_kontrak', $id_kontrak);
+        $this->db->where('type_dok', 'gunning');
+        return $this->db->count_all_results();
+    }
+
+    function dok_pasca_baru_loi_all($id_kontrak)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dokumen_pasca');
+        $this->db->where('tbl_dokumen_pasca.id_kontrak', $id_kontrak);
+        $this->db->where('type_dok', 'loi');
+        return $this->db->count_all_results();
+    }
+
+    function dok_pasca_baru_sho_all($id_kontrak)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dokumen_pasca');
+        $this->db->where('tbl_dokumen_pasca.id_kontrak', $id_kontrak);
+        $this->db->where('type_dok', 'sho');
+        return $this->db->count_all_results();
+    }
+
+    function dok_pasca_baru_kontrak_all($id_kontrak)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dokumen_pasca');
+        $this->db->where('tbl_dokumen_pasca.id_kontrak', $id_kontrak);
+        $this->db->where('type_dok', 'kontrak');
+        return $this->db->count_all_results();
+    }
+
+    function dok_pasca_baru_spmk_all($id_kontrak)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dokumen_pasca');
+        $this->db->where('tbl_dokumen_pasca.id_kontrak', $id_kontrak);
+        $this->db->where('type_dok', 'spmk');
+        return $this->db->count_all_results();
+    }
+
+    function dok_pasca_baru_jaminan_all($id_kontrak)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dokumen_pasca');
+        $this->db->where('tbl_dokumen_pasca.id_kontrak', $id_kontrak);
+        $this->db->where('type_dok', 'jaminan');
+        return $this->db->count_all_results();
+    }
+
+    function cek_jumlah_program($id_kontrak)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_detail_program_penyedia_jasa');
+        $this->db->where('tbl_detail_program_penyedia_jasa.id_kontrak', $id_kontrak);
         return $this->db->count_all_results();
     }
 }

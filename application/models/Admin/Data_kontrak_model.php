@@ -5133,15 +5133,97 @@ class Data_kontrak_model extends CI_Model
         $this->db->where('sts_dokumen', $sts_dokumen);
         return $this->db->count_all_results();
     }
+
+
+    // INI UNTUK DOK PENUNJANG
+    var $pdf_dok_pasca_baru = array('id_dokumen_pasca', 'file_dok', 'id_dokumen_pasca');
+    private function _get_dok_pasca_baru($id_kontrak, $id_detail_program_penyedia_jasa, $type_dok)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dokumen_pasca');
+        $this->db->where('id_kontrak', $id_kontrak);
+        $this->db->where('id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('type_dok', $type_dok);
+        $i = 0;
+        foreach ($this->pdf_dok_pasca_baru as $item) // looping awal
+        {
+            if ($_POST['search']['value']) // jika datatable mengirimkan pencarian dengan metode POST
+            {
+
+                if ($i === 0) // looping awal
+                {
+                    $this->db->group_start();
+                    $this->db->like($item, $_POST['search']['value']);
+                } else {
+                    $this->db->or_like(
+                        $item,
+                        $_POST['search']['value']
+                    );
+                }
+
+                if (count($this->pdf_dok_pasca_baru) - 1 == $i)
+                    $this->db->group_end();
+            }
+            $i++;
+        }
+        if (isset($_POST['order'])) {
+            $this->db->order_by($this->pdf_dok_pasca_baru[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        } else {
+            $this->db->order_by('id_dokumen_pasca', 'DESC');
+        }
+    }
+
+    public function get_dokumen_pasca_baru($id_kontrak, $id_detail_program_penyedia_jasa, $type_dok) //nam[ilin data pake ini
+    {
+        $this->_get_dok_pasca_baru($id_kontrak, $id_detail_program_penyedia_jasa, $type_dok); //ambil data dari get yg di atas
+        if ($_POST['length'] != -3) {
+            $this->db->limit($_POST['length'], $_POST['start']);
+        }
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function count_filtered_get_dokumen_pasca_baru($id_kontrak, $id_detail_program_penyedia_jasa, $type_dok)
+    {
+        $this->_get_dok_pasca_baru($id_kontrak, $id_detail_program_penyedia_jasa, $type_dok); //ambil data dari get yg di atas
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+    public function count_all_get_dokumen_pasca_baru($id_kontrak, $id_detail_program_penyedia_jasa, $type_dok)
+    {
+        $this->db->from('tbl_dokumen_pasca');
+        $this->db->where('id_kontrak', $id_kontrak);
+        $this->db->where('id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('type_dok', $type_dok);
+        return $this->db->count_all_results();
+    }
+
+
+    public function create_dok_pasca_baru($data)
+    {
+        $this->db->insert('tbl_dokumen_pasca', $data);
+        return $this->db->affected_rows();
+    }
+
+    public function deletedata_dok_pasca_baru($id_dokumen_pasca)
+    {
+        $this->db->delete('tbl_dokumen_pasca', ['id_dokumen_pasca' => $id_dokumen_pasca]);
+    }
+
+
+
     public function create_dok_penunjang($data)
     {
         $this->db->insert('tbl_dokumen_penunjang', $data);
         return $this->db->affected_rows();
     }
+
     public function deletedata_dok_penunjang($id_dokumen_penunjang)
     {
         $this->db->delete('tbl_dokumen_penunjang', ['id_dokumen_penunjang' => $id_dokumen_penunjang]);
     }
+
+
+
 
     public function delete_addendum($where)
     {
@@ -7230,4 +7312,79 @@ class Data_kontrak_model extends CI_Model
         $this->db->update('table_adendum', $data, $where);
         return $this->db->affected_rows();
     }
+
+
+        // INI UNTUK DOK PENUNJANG
+        var $pdf_dok_mc_baru = array('id_dokumen_mc', 'file_dok', 'id_dokumen_mc');
+        private function _get_dok_mc_baru($id_mc, $id_detail_program_penyedia_jasa, $type_dok)
+        {
+            $this->db->select('*');
+            $this->db->from('tbl_dokumen_mc_surat');
+            $this->db->where('id_mc', $id_mc);
+            $this->db->where('id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+            $this->db->where('type_dok', $type_dok);
+            $i = 0;
+            foreach ($this->pdf_dok_mc_baru as $item) // looping awal
+            {
+                if ($_POST['search']['value']) // jika datatable mengirimkan pencarian dengan metode POST
+                {
+    
+                    if ($i === 0) // looping awal
+                    {
+                        $this->db->group_start();
+                        $this->db->like($item, $_POST['search']['value']);
+                    } else {
+                        $this->db->or_like(
+                            $item,
+                            $_POST['search']['value']
+                        );
+                    }
+    
+                    if (count($this->pdf_dok_mc_baru) - 1 == $i)
+                        $this->db->group_end();
+                }
+                $i++;
+            }
+            if (isset($_POST['order'])) {
+                $this->db->order_by($this->pdf_dok_mc_baru[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+            } else {
+                $this->db->order_by('id_dokumen_mc_surat', 'DESC');
+            }
+        }
+    
+        public function get_dokumen_mc_baru($id_mc, $id_detail_program_penyedia_jasa, $type_dok) //nam[ilin data pake ini
+        {
+            $this->_get_dok_mc_baru($id_mc, $id_detail_program_penyedia_jasa, $type_dok); //ambil data dari get yg di atas
+            if ($_POST['length'] != -3) {
+                $this->db->limit($_POST['length'], $_POST['start']);
+            }
+            $query = $this->db->get();
+            return $query->result();
+        }
+        public function count_filtered_get_dokumen_mc_baru($id_mc, $id_detail_program_penyedia_jasa, $type_dok)
+        {
+            $this->_get_dok_mc_baru($id_mc, $id_detail_program_penyedia_jasa, $type_dok); //ambil data dari get yg di atas
+            $query = $this->db->get();
+            return $query->num_rows();
+        }
+        public function count_all_get_dokumen_mc_baru($id_mc, $id_detail_program_penyedia_jasa, $type_dok)
+        {
+            $this->db->from('tbl_dokumen_mc_surat');
+            $this->db->where('id_mc', $id_mc);
+            $this->db->where('id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+            $this->db->where('type_dok', $type_dok);
+            return $this->db->count_all_results();
+        }
+    
+    
+        public function create_dok_mc_baru($data)
+        {
+            $this->db->insert('tbl_dokumen_mc_surat', $data);
+            return $this->db->affected_rows();
+        }
+    
+        public function deletedata_dok_mc_baru($id_dokumen_mc_surat)
+        {
+            $this->db->delete('tbl_dokumen_mc_surat', ['id_dokumen_mc_surat' => $id_dokumen_mc_surat]);
+        }
 }

@@ -7,6 +7,10 @@
         </b>
         <b style="margin-left: auto;"> Administrasi Tagihan</b>
     </nav>
+    <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
+  position: fixed; top:50px;  padding-bottom: -10px;">
+            <b style="margin-left: auto; font-weight:1000" class="text-black"> Administrasi Tagihan</b>
+        </nav>
     <div class="row mt-5">
         <div class="col-md-9">
             <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
@@ -87,7 +91,6 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-outline card-success mb-4">
-                    <div class="card-header card-warning card-outline"><strong>Result Master Data Tagihan Penyedia Jasa</strong><span class="small ms-1"></span></div>
                     <div class="card-body">
                         <button style="display: none;" type="button" class="btn btn-sm btn-outline-primary create_mcku" data-toggle="modal" data-target="#modelId">
                             Tambah Master Data Tagihan Penyedia / MC +

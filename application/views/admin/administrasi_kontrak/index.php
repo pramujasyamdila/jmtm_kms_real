@@ -31,70 +31,10 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-5">
-                                                        <div class="form-group">
-                                                            <div class="input-group mb-3">
-                                                                <input type="text" placeholder="Cari Nama Pekerjaan" class="form-control rounded-0">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <div class="form-group">
-                                                            <div class="input-group mb-3">
-                                                                <input type="text" placeholder="Cari No Kontrak" class="form-control rounded-0">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-2 mt-1">
-                                                        <a href="#" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-search-plus" aria-hidden="true"></i> Filter Now</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- /.card-header -->
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <style type="text/css">
-                                                    .tg {
-                                                        border-collapse: collapse;
-                                                        border-spacing: 0;
-                                                    }
-
-                                                    .tg td {
-                                                        border-color: black;
-                                                        border-style: solid;
-                                                        border-width: 1px;
-                                                        font-family: Arial, sans-serif;
-                                                        font-size: 14px;
-                                                        overflow: hidden;
-                                                        padding: 10px 5px;
-                                                        word-break: normal;
-                                                    }
-
-                                                    .tg th {
-                                                        border-color: black;
-                                                        border-style: solid;
-                                                        border-width: 1px;
-                                                        font-family: Arial, sans-serif;
-                                                        font-size: 14px;
-                                                        font-weight: normal;
-                                                        overflow: hidden;
-                                                        padding: 10px 5px;
-                                                        word-break: normal;
-                                                    }
-
-                                                    .tg .tg-0pky {
-                                                        border-color: inherit;
-                                                        text-align: left;
-                                                        vertical-align: top
-                                                    }
-                                                </style>
-                                                <table class="table table-striped table-bordered" style="font-family: RNSSanz-Black;text-transform: uppercase;">
+                                                <table id="table_ku" class="table table-striped table-bordered" style="font-family: RNSSanz-Black;text-transform: uppercase;">
                                                     <thead>
                                                         <tr class="text-white" style="background-color: #193B53;">
-                                                            <th class="tg-0pky text-white" rowspan="3">No</th>
+                                                            <th class="tg-0pky text-white">No</th>
                                                             <th class="tg-0pky text-white">Nama Pekerjaan</th>
                                                             <th class="tg-0pky text-white">Nomor Kontrak</th>
                                                             <th class="tg-0pky text-white">Penyedia</th>
@@ -121,13 +61,13 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                             ?>
                                                             <?php } ?>
                                                             <tr>
-                                                                <td class="tg-0pky"><?= $i++ ?></td>
-                                                                <td class="tg-0pky"> <label for=""><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></label> </td>
-                                                                <td class="tg-0pky"> <?= $value['no_kontrak_penyedia'] ?>
+                                                                <td><?= $i++ ?></td>
+                                                                <td> <label for=""><?= $value['nama_pekerjaan_program_mata_anggaran'] ?></label> </td>
+                                                                <td> <?= $value['no_kontrak_penyedia'] ?>
                                                                 </td>
-                                                                <td class="tg-0pky"><?= $value['nama_penyedia'] ?>
+                                                                <td><?= $value['nama_penyedia'] ?>
                                                                 </td>
-                                                                <td class="tg-0pky"> <?= "Rp " . number_format($total_kontrak, 2, ',', '.') ?>
+                                                                <td> <?= "Rp " . number_format($total_kontrak, 2, ',', '.') ?>
                                                                 </td>
                                                                 <?php if (!$value['tanggal_kontrak_program']) { ?>
                                                                     <td> Belum Dibuat
@@ -136,35 +76,13 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                     <td> <?= $value['tanggal_kontrak_program'] ?>
                                                                     </td>
                                                                 <?php   } ?>
-                                                                <td class="tg-0pky">
+                                                                <td>
                                                                     <a href="<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/buat_tagihan/') . $value['id_detail_program_penyedia_jasa'] ?>" class="btn btn-sm btn-primary btn-block">Taggihan Kontrak</a>
                                                                 </td>
-
-                                                                </td>
                                                             </tr>
-                                                            <?php
-                                                            $this->db->select('*');
-                                                            $this->db->from('tbl_sub_detail_program_penyedia_jasa');
-                                                            $this->db->where('tbl_sub_detail_program_penyedia_jasa.id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
-                                                            // $this->db->order_by('display_order', 'ASC');
-                                                            $query_result_sub_detail_program = $this->db->get() ?>
-                                                            <?php
-                                                            $b = 1;
-                                                            foreach ($query_result_sub_detail_program->result_array() as $value_sub_detail_program) {
-
-                                                            ?>
-
-                                                                <tr>
-                                                                    <td class="tg-0pky"></td>
-                                                                    <td class="tg-0pky" colspan="6"><?= $value_sub_detail_program['nama_program_mata_anggaran'] ?>
-                                                                    </td>
-                                                                </tr>
-                                                            <?php } ?>
                                                         <?php } ?>
                                                     </tbody>
-
                                                 </table>
-
                                             </div>
                                             <!-- /.row -->
                                         </div>

@@ -3354,6 +3354,65 @@ class Administrasi_penyedia extends CI_Controller
     }
 
 
+
+    public function data_get_dok_pasca_baru()
+    {
+        $id_kontrak = $this->input->post('id_kontrak');
+        $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
+        $type_upload = $this->input->post('type_upload');
+        // get_data_dok_penunjang
+        $resultss = $this->Data_kontrak_model->get_dokumen_pasca_baru($id_kontrak, $id_detail_program_penyedia_jasa, $type_upload);
+        $no = $_POST['start'];
+        $data = [];
+        foreach ($resultss as $angga) {
+            $row = array();
+            $row[] = ++$no;
+            $row[] = $angga->file_dok;
+            $row[] = '<a target="_blank" href=' . base_url('/file_dokumen_penunjang' . '/' . $angga->file_dok) . '>' . '<img width="30px" src="https://cdn-icons-png.flaticon.com/512/124/124837.png">' . '</a>';
+            $row[] = '<a href="javascript:;" class="btn btn-danger  btn-block btn-sm" onClick="hapus_dok_pasca_baru(' . "'" . $angga->id_dokumen_pasca . "','hapus_dok_penunjang'" . ')">  <i class="fas fa-trash"></i> Hapus</a>';
+            $data[] = $row;
+        }
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->Data_kontrak_model->count_all_get_dokumen_pasca_baru($id_kontrak, $id_detail_program_penyedia_jasa, $type_upload),
+            "recordsFiltered" => $this->Data_kontrak_model->count_filtered_get_dokumen_pasca_baru($id_kontrak, $id_detail_program_penyedia_jasa, $type_upload),
+            "data" => $data,
+        );
+        $this->output->set_content_type('application/json')->set_output(json_encode($output));
+    }
+
+
+    public function add_dok_pasca_baru()
+    {
+        $id_kontrak = $this->input->post('id_kontrak');
+        $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
+        $type_upload = $this->input->post('type_upload');
+        $config['upload_path'] = './file_dokumen_penunjang/';
+        $config['allowed_types'] = 'pdf|xlsx|word|doc|docx|ppt|pptx';
+        $config['max_size'] = 2097152;
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('file_dok')) {
+            $fileData = $this->upload->data();
+            $upload = [
+                'id_kontrak' => $id_kontrak,
+                'type_dok' => $type_upload,
+                'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
+                'file_dok' => $fileData['file_name'],
+            ];
+            $this->Data_kontrak_model->create_dok_pasca_baru($upload);
+            $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+        } else {
+            $this->session->set_flashdata('error', $this->upload->display_errors());
+            redirect('admin/administrasi_penyedia/kelola_format_surat_pra/' . $id_detail_program_penyedia_jasa);
+        }
+    }
+    public function hapus_dok_pasca_baru($id_dokumen_pasca)
+    {
+        $this->Data_kontrak_model->deletedata_dok_pasca_baru($id_dokumen_pasca);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
     public function simpan_global_kelola_surat()
     {
         $id_detail_program_penyedia_jasa = $this->input->post('id_detail_program_penyedia_jasa');
@@ -3611,6 +3670,34 @@ class Administrasi_penyedia extends CI_Controller
         $id_kontrak =  $data['row_program']['id_kontrak'];
         $data['get_mata_anggaran']  = $this->Data_kontrak_model->get_mata_anggaran($id_departemen, $id_area, $id_sub_area, $keyword, $id_kontrak);
         $data['get_spm'] = $this->Data_kontrak_model->get_spm();
+        $data['data_pekerjaan'] = $this->M_analisis->get_pekerjaan_pra($id_kontrak);
+
+        $data['m2_dok_selesai_pasca'] = $this->M_analisis->m2_dok_selesai_pasca();
+        $data['m2_dok_progres_pasca'] = $this->M_analisis->m2_dok_progres_pasca();
+
+
+        $data['m2_dok_selesai_pasca_kontrak'] = $this->M_analisis->m2_dok_selesai_pasca_kontrak();
+        $data['m2_dok_progres_pasca_kontrak'] = $this->M_analisis->m2_dok_progres_pasca_kontrak();
+
+        $data['m2_dok_selesai_pasca_final'] = $data['m2_dok_selesai_pasca'] + $data['m2_dok_selesai_pasca_kontrak'];
+        $data['m2_dok_progres_pasca_final'] = $data['m2_dok_progres_pasca'] + $data['m2_dok_progres_pasca_kontrak'] + 1;
+        $data['m2_final_pasca'] = $data['m2_dok_progres_pasca_final'] - $data['m2_dok_selesai_pasca_final'];
+
+        // dok_pasca_baru
+        // gunning
+        $data['dok_pasca_baru_gunning'] = $this->M_analisis->dok_pasca_baru_gunning_detail($id_detail_program_penyedia_jasa);
+        // loi
+        $data['dok_pasca_baru_loi'] = $this->M_analisis->dok_pasca_baru_loi_detail($id_detail_program_penyedia_jasa);
+        // sho
+        $data['dok_pasca_baru_sho'] = $this->M_analisis->dok_pasca_baru_sho_detail($id_detail_program_penyedia_jasa);
+        // kontrak
+        $data['dok_pasca_baru_kontrak'] = $this->M_analisis->dok_pasca_baru_kontrak_detail($id_detail_program_penyedia_jasa);
+        // spmk
+        $data['dok_pasca_baru_spmk'] = $this->M_analisis->dok_pasca_baru_spmk_detail($id_detail_program_penyedia_jasa);
+        // jaminan
+        $data['dok_pasca_baru_jaminan'] = $this->M_analisis->dok_pasca_baru_jaminan_detail($id_detail_program_penyedia_jasa);
+        $data['total_final_dok_pasca_baru'] = $data['dok_pasca_baru_gunning'] +  $data['dok_pasca_baru_loi'] + $data['dok_pasca_baru_sho'] + $data['dok_pasca_baru_kontrak'] + $data['dok_pasca_baru_kontrak'] + $data['dok_pasca_baru_spmk'] + $data['dok_pasca_baru_jaminan'];
+        $data['total_final_progres'] = 6 - $data['total_final_dok_pasca_baru'];
         $this->load->view('template_stisla/header');
         $this->load->view('template_stisla/sidebar', $data);
         $this->load->view('admin/kontrak_management_administrasi_penyedia/kelola_format_surat_pra', $data);
