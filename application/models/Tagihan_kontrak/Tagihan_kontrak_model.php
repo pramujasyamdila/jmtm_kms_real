@@ -466,6 +466,69 @@ class Tagihan_kontrak_model extends CI_Model
         return $query->result_array();
     }
 
+    public function get_dok_mc_row($id_mc)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dok_mc');
+        $this->db->where('id_mc', $id_mc);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+    public function cek_dok_referensi_bank($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dok_mc_detail2');
+        $this->db->where('id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('jenis_dok', 'referensi_bank');
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+    public function cek_dok_ktp($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dok_mc_detail2');
+        $this->db->where('id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('jenis_dok', 'ktp');
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+
+    public function cek_dok_npwp($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dok_mc_detail2');
+        $this->db->where('id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('jenis_dok', 'npwp');
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+
+    public function cek_dok_sppkp($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dok_mc_detail2');
+        $this->db->where('id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('jenis_dok', 'sppkp');
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+    public function cek_dok_sbu_siujk_siup($id_detail_program_penyedia_jasa)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dok_mc_detail2');
+        $this->db->where('id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('jenis_dok', 'sbu_siujk_siup');
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+
+
     public function genrate_dok($data)
     {
         $this->db->insert('tbl_dok_mc', $data);
@@ -487,6 +550,11 @@ class Tagihan_kontrak_model extends CI_Model
         $this->db->insert('tbl_dok_mc_detail', $data);
     }
 
+    public function insert_dok_mc_detail2($data)
+    {
+        $this->db->insert('tbl_dok_mc_detail2', $data);
+    }
+
     public function update_dok_mc($data, $where)
     {
         $this->db->where($where);
@@ -497,6 +565,13 @@ class Tagihan_kontrak_model extends CI_Model
     {
         $this->db->where($where);
         $this->db->update('tbl_dok_mc_detail', $data);
+    }
+
+
+    public function update_dok_mc_detail2($data, $where)
+    {
+        $this->db->where($where);
+        $this->db->update('tbl_dok_mc_detail2', $data);
     }
 
     public function delete_dok_mc_detail($where)
@@ -568,5 +643,68 @@ class Tagihan_kontrak_model extends CI_Model
         return $this->db->count_all_results();
     }
 
-    
+
+
+    var $table2 = 'tbl_dok_mc_detail2';
+    var $field2 = array('id_dok_mc_detail2', 'user_uploaded', 'status_verifikasi', 'keterangan', 'tgl_periksa', 'file_dokumen');
+    private function _get_data_query2($id_detail_program_penyedia_jasa, $type)
+    {
+        $i = 0;
+        $this->db->select('*');
+        $this->db->from('tbl_dok_mc_detail2');
+        $this->db->where('id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('jenis_dok', $type);
+        foreach ($this->field2 as $item) // looping awal
+        {
+            if ($_POST['search']['value']) // jika datatable mengirimkan pencarian dengan metode POST
+            {
+
+                if ($i === 0) // looping awal
+                {
+                    $this->db->group_start();
+                    $this->db->like($item, $_POST['search']['value']);
+                } else {
+                    $this->db->or_like(
+                        $item,
+                        $_POST['search']['value']
+                    );
+                }
+
+                if (count($this->field2) - 1 == $i)
+                    $this->db->group_end();
+            }
+            $i++;
+        }
+        if (isset($_POST['order'])) {
+            $this->db->order_by($this->field2[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        } else {
+            $this->db->order_by('id_dok_mc_detail2', 'DESC');
+        }
+    }
+
+    public function getdatatable2($id_detail_program_penyedia_jasa, $type) //nam[ilin data pake ini
+    {
+        $this->_get_data_query2($id_detail_program_penyedia_jasa, $type); //ambil data dari get yg di atas
+        if ($_POST['length'] != -1) {
+            $this->db->limit($_POST['length'], $_POST['start']);
+        }
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function count_filtered_data2($id_detail_program_penyedia_jasa, $type)
+    {
+        $this->_get_data_query2($id_detail_program_penyedia_jasa, $type); //ambil data dari get yg di atas
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function count_all_data2($id_detail_program_penyedia_jasa, $type)
+    {
+        $this->db->select('*');
+        $this->db->from($this->table2);
+        $this->db->where('id_detail_program_penyedia_jasa', $id_detail_program_penyedia_jasa);
+        $this->db->where('jenis_dok', $type);
+        $this->db->get();
+        return $this->db->count_all_results();
+    }
 }
