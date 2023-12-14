@@ -976,247 +976,242 @@
                                                             </style>
                                                             <div class="container">
                                                                 <div class="row">
-                                                                    <div onscroll='scroller("scroller", "scrollme")' style="overflow:scroll; height: 10;overflow-y: hidden;" id=scroller>
-                                                                        <img src="" height=1 width=2066 style="width:2066px;">
-                                                                    </div>
-                                                                    <div onscroll='scroller("scrollme", "scroller")' style="overflow:scroll; height:500px" id="scrollme">
-                                                                        <table id="customers" class="tableFixHead" style="font-size: 14px;">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th class="text-white">No</th>
-                                                                                    <th class="text-white" style="width: 200px;">Nama Persuratan</th>
-                                                                                    <th class="text-white">Nomor Surat</th>
-                                                                                    <th class="text-white">Tanggal Surat</th>
-                                                                                    <th class="text-white">Dari Nama</th>
-                                                                                    <th class="text-white">Jabatan</th>
-                                                                                    <th class="text-white">Ke Nama</th>
-                                                                                    <th class="text-white">Jabatan</th>
-                                                                                    <th class="text-white">Informasi</th>
-                                                                                    <th class="text-white">View</th>
-                                                                                    <th>Upload</th>
-                                                                                    <th class="text-white">Status Upload</th>
-                                                                                </tr>
+                                                                    <div class="container-fluid">
+                                                                        <div class="row">
+                                                                            <div onscroll='scroller("scroller", "scrollme")' style="overflow:scroll; height: 10;overflow-y: hidden;" id=scroller>
+                                                                                <img src="" height=1 width=2066 style="width:2066px;">
+                                                                            </div>
+                                                                            <div onscroll='scroller("scrollme", "scroller")' style="overflow:scroll; height:500px" id="scrollme">
+                                                                                <table id="customers" class="tableFixHead" style="font-size: 14px;">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th class="text-white">No</th>
+                                                                                            <th class="text-white" style="width: 200px;">Nama Persuratan</th>
+                                                                                            <th class="text-white">Nomor Surat</th>
+                                                                                            <th class="text-white">Tanggal Surat</th>
+                                                                                            <th class="text-white">Dari Nama</th>
+                                                                                            <th class="text-white">Jabatan</th>
+                                                                                            <th class="text-white">Ke Nama</th>
+                                                                                            <th class="text-white">Jabatan</th>
+                                                                                            <th class="text-white">View</th>
+                                                                                            <th>Upload</th>
+                                                                                            <th class="text-white">Status Upload</th>
+                                                                                        </tr>
 
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td scope="row">1</td>
-                                                                                    <td>Permohonan Izin Prinsip Coordinator Area ke General Manager</td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_pip_ca_ke_gm')" name="no_surat_pip_ca_ke_gm" placeholder="No Surat"></td>
-                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_pip_ca_ke_gm')" name="tgl_surat_pip_ca_ke_gm" placeholder="Tanggal Surat"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_pip_ca_ke_gm')" name="pengirim_pip_ca_ke_gm" placeholder="Dari Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_pip_ca_ke_gm')" name="jabatan_pengirim_pip_ca_ke_gm" placeholder="Dari Nama Jabatan"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_pip_ca_ke_gm')" name="penerima_pip_ca_ke_gm" placeholder="Ke Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_pip_ca_ke_gm')" name="jabatan_penerima_pip_ca_ke_gm" placeholder="Ke Nama Jabatan"></td>
-                                                                                    <td><label for="" title="Struktur Organisasi" class="badge badge-info"><i class="fa fa-info-circle" aria-hidden="true"></i></label></td>
-                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip1/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
-                                                                                    <?php
-                                                                                    $this->db->select('*');
-                                                                                    $this->db->from('tbl_dokumen_surat_pra');
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Permohonan Ip Ca Ke Gm');
-                                                                                    $row_data_1 = $this->db->get()->row_array() ?>
-                                                                                    <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
-                                                                                    <?php if ($row_data_1['file']) { ?>
-                                                                                        <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
-                                                                                    <?php } else { ?>
-                                                                                        <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
-                                                                                    <?php }  ?>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td scope="row">2</td>
-                                                                                    <td>Permohonan Izin Prinsip General Manager ke Direktur Operasiops</td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_pip_gm_ke_dirops')" name="no_surat_pip_gm_ke_dirops" placeholder="No Surat"></td>
-                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_pip_gm_ke_dirops')" name="tgl_surat_pip_gm_ke_dirops" placeholder="Tanggal Surat"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_pip_gm_ke_dirops')" name="pengirim_pip_gm_ke_dirops" placeholder="Dari Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_pip_gm_ke_dirops')" name="jabatan_pengirim_pip_gm_ke_dirops" placeholder="Dari Nama Jabatan"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_pip_gm_ke_dirops')" name="penerima_pip_gm_ke_dirops" placeholder="Ke Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_pip_gm_ke_dirops')" name="jabatan_penerima_pip_gm_ke_dirops" placeholder="Ke Nama Jabatan"></td>
-                                                                                    <td></td>
-                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip2/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
-                                                                                    <?php
-                                                                                    $this->db->select('*');
-                                                                                    $this->db->from('tbl_dokumen_surat_pra');
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Permohonan Ip Gm Ke Dirops');
-                                                                                    $row_data_1 = $this->db->get()->row_array() ?>
-                                                                                    <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
-                                                                                    <?php if ($row_data_1['file']) { ?>
-                                                                                        <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
-                                                                                    <?php } else { ?>
-                                                                                        <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
-                                                                                    <?php }  ?>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td scope="row">3</td>
-                                                                                    <td>Permohonan Izin Prinsip Direktur Operasi ke Direktur Utama</td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_pip_dirops_ke_dirut')" name="no_surat_pip_dirops_ke_dirut" placeholder="No Surat"></td>
-                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_pip_dirops_ke_dirut')" name="tgl_surat_pip_dirops_ke_dirut" placeholder="Tanggal Surat"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_pip_dirops_ke_dirut')" name="pengirim_pip_dirops_ke_dirut" placeholder="Dari Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_pip_dirops_ke_dirut')" name="jabatan_pengirim_pip_dirops_ke_dirut" placeholder="Dari Nama Jabatan"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_pip_dirops_ke_dirut')" name="penerima_pip_dirops_ke_dirut" placeholder="Ke Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_pip_dirops_ke_dirut')" name="jabatan_penerima_pip_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
-                                                                                    <td></td>
-                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip3/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
-                                                                                    <?php
-                                                                                    $this->db->select('*');
-                                                                                    $this->db->from('tbl_dokumen_surat_pra');
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Permohonan Ip Dirops Ke Dirut');
-                                                                                    $row_data_1 = $this->db->get()->row_array() ?>
-                                                                                    <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
-                                                                                    <?php if ($row_data_1['file']) { ?>
-                                                                                        <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
-                                                                                    <?php } else { ?>
-                                                                                        <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
-                                                                                    <?php }  ?>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td scope="row">4</td>
-                                                                                    <td>Persetujuan Izin Prinsip Direktur Utama ke Direktur Operasi</td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_persetujuan_pip_dirops_ke_dirut')" name="no_surat_persetujuan_pip_dirops_ke_dirut" placeholder="No Surat"></td>
-                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_persetujuan_pip_dirops_ke_dirut')" name="tgl_surat_persetujuan_pip_dirops_ke_dirut" placeholder="Tanggal Surat"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_pengirim_pip_dirops_ke_dirut')" name="persetujuan_pengirim_pip_dirops_ke_dirut" placeholder="Dari Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_pengirim_pip_dirops_ke_dirut')" name="persetujuan_jabatan_pengirim_pip_dirops_ke_dirut" placeholder="Dari Nama Jabatan"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_penerima_pip_dirops_ke_dirut')" name="persetujuan_penerima_pip_dirops_ke_dirut" placeholder="Ke Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_penerima_pip_dirops_ke_dirut')" name="persetujuan_jabatan_penerima_pip_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
-                                                                                    <td></td>
-                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip_persetujuan/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
-                                                                                    <?php
-                                                                                    $this->db->select('*');
-                                                                                    $this->db->from('tbl_dokumen_surat_pra');
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Persetujuan Ip Dirops Ke Dirut');
-                                                                                    $row_data_1 = $this->db->get()->row_array() ?>
-                                                                                    <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
-                                                                                    <?php if ($row_data_1['file']) { ?>
-                                                                                        <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
-                                                                                    <?php } else { ?>
-                                                                                        <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
-                                                                                    <?php }  ?>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td scope="row">5</td>
-                                                                                    <td>Permohonan Harga Perkiraan Sendiri (HPS) Coordinator Area ke General Manager</td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_hps_ca_ke_gm')" name="no_surat_hps_ca_ke_gm" placeholder="No Surat"></td>
-                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_hps_ca_ke_gm')" name="tgl_surat_hps_ca_ke_gm" placeholder="Tanggal Surat"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_hps_ca_ke_gm')" name="pengirim_hps_ca_ke_gm" placeholder="Dari Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_hps_ca_ke_gm')" name="jabatan_pengirim_hps_ca_ke_gm" placeholder="Dari Nama Jabatan"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_hps_ca_ke_gm')" name="penerima_hps_ca_ke_gm" placeholder="Ke Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_hps_ca_ke_gm')" name="jabatan_penerima_hps_ca_ke_gm" placeholder="Ke Nama Jabatan"></td>
-                                                                                    <td></td>
-                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps1/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
-                                                                                    <?php
-                                                                                    $this->db->select('*');
-                                                                                    $this->db->from('tbl_dokumen_surat_pra');
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Permohonan HPS Ca Ke Gm');
-                                                                                    $row_data_1 = $this->db->get()->row_array() ?>
-                                                                                    <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
-                                                                                    <?php if ($row_data_1['file']) { ?>
-                                                                                        <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
-                                                                                    <?php } else { ?>
-                                                                                        <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
-                                                                                    <?php }  ?>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td scope="row">6</td>
-                                                                                    <td>Permohonan Harga Perkiraan Sendiri (HPS) General Manager ke Direktur Operasi</td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_hps_gm_ke_dirops')" name="no_surat_hps_gm_ke_dirops" placeholder="No Surat"></td>
-                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_hps_gm_ke_dirops')" name="tgl_surat_hps_gm_ke_dirops" placeholder="Tanggal Surat"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_hps_gm_ke_dirops')" name="pengirim_hps_gm_ke_dirops" placeholder="Dari Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_hps_gm_ke_dirops')" name="jabatan_pengirim_hps_gm_ke_dirops" placeholder="Dari Nama Jabatan"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_hps_gm_ke_dirops')" name="penerima_hps_gm_ke_dirops" placeholder="Ke Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_hps_gm_ke_dirops')" name="jabatan_penerima_hps_gm_ke_dirops" placeholder="Ke Nama Jabatan"></td>
-                                                                                    <td></td>
-                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps2/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
-                                                                                    <?php
-                                                                                    $this->db->select('*');
-                                                                                    $this->db->from('tbl_dokumen_surat_pra');
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Permohonan HPS Gm Ke Dirops');
-                                                                                    $row_data_1 = $this->db->get()->row_array() ?>
-                                                                                    <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
-                                                                                    <?php if ($row_data_1['file']) { ?>
-                                                                                        <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
-                                                                                    <?php } else { ?>
-                                                                                        <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
-                                                                                    <?php }  ?>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td scope="row">7</td>
-                                                                                    <td>Permohonan Harga Perkiraan Sendiri (HPS) Direktur Operasi ke Direktur Utama</td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_hps_dirops_ke_dirut')" name="no_surat_hps_dirops_ke_dirut" placeholder="No Surat"></td>
-                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_hps_dirops_ke_dirut')" name="tgl_surat_hps_dirops_ke_dirut" placeholder="Tanggal Surat"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_hps_dirops_ke_dirut')" name="pengirim_hps_dirops_ke_dirut" placeholder="Dari Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_hps_dirops_ke_dirut')" name="jabatan_pengirim_hps_dirops_ke_dirut" placeholder="Dari Nama Jabatan"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_hps_dirops_ke_dirut')" name="penerima_hps_dirops_ke_dirut" placeholder="Ke Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_hps_dirops_ke_dirut')" name="jabatan_penerima_hps_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
-                                                                                    <td></td>
-                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps3/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
-                                                                                    <?php
-                                                                                    $this->db->select('*');
-                                                                                    $this->db->from('tbl_dokumen_surat_pra');
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Permohonan HPS Dirops Ke Dirut');
-                                                                                    $row_data_1 = $this->db->get()->row_array() ?>
-                                                                                    <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
-                                                                                    <?php if ($row_data_1['file']) { ?>
-                                                                                        <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
-                                                                                    <?php } else { ?>
-                                                                                        <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
-                                                                                    <?php }  ?>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td scope="row">8</td>
-                                                                                    <td>Persetujuan Harga Perkiraan Sendiri (HPS) Direktur Utama ke Direktur Operasi</td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_persetujuan_hps_dirops_ke_dirut')" name="no_surat_persetujuan_hps_dirops_ke_dirut" placeholder="No Surat"></td>
-                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_persetujuan_hps_dirops_ke_dirut')" name="tgl_surat_persetujuan_hps_dirops_ke_dirut" placeholder="Tanggal Surat"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_pengirim_hps_dirops_ke_dirut')" name="persetujuan_pengirim_hps_dirops_ke_dirut" placeholder="Dari Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_pengirim_hps_dirops_ke_dirut')" name="persetujuan_jabatan_pengirim_hps_dirops_ke_dirut" placeholder="Dari Nama Jabatan"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_penerima_hps_dirops_ke_dirut')" name="persetujuan_penerima_hps_dirops_ke_dirut" placeholder="Ke Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_penerima_hps_dirops_ke_dirut')" name="persetujuan_jabatan_penerima_hps_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
-                                                                                    <td></td>
-                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps_persetujuan/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
-                                                                                    <?php
-                                                                                    $this->db->select('*');
-                                                                                    $this->db->from('tbl_dokumen_surat_pra');
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Persetujuan HPS Dirops Ke Dirut');
-                                                                                    $row_data_1 = $this->db->get()->row_array() ?>
-                                                                                    <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
-                                                                                    <?php if ($row_data_1['file']) { ?>
-                                                                                        <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
-                                                                                    <?php } else { ?>
-                                                                                        <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
-                                                                                    <?php }  ?>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td scope="row">9</td>
-                                                                                    <td>Nota Dinas Permohonan Pengadaan General Manager</td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_nota_dinas')" name="no_surat_nota_dinas" placeholder="No Surat"></td>
-                                                                                    <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_nota_dinas')" name="tgl_surat_nota_dinas" placeholder="Tanggal Surat"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_nota_dinas')" name="pengirim_nota_dinas" placeholder="Dari Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_nota_dinas')" name="jabatan_pengirim_nota_dinas" placeholder="Dari Nama Jabatan"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_nota_dinas')" name="penerima_nota_dinas" placeholder="Ke Nama"></td>
-                                                                                    <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_nota_dinas')" name="jabatan_penerima_nota_dinas" placeholder="Ke Nama Jabatan"></td>
-                                                                                    <td></td>
-                                                                                    <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_nota_dinas/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
-                                                                                    <?php
-                                                                                    $this->db->select('*');
-                                                                                    $this->db->from('tbl_dokumen_surat_pra');
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
-                                                                                    $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Nota Dinas');
-                                                                                    $row_data_1 = $this->db->get()->row_array() ?>
-                                                                                    <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
-                                                                                    <?php if ($row_data_1['file']) { ?>
-                                                                                        <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
-                                                                                    <?php } else { ?>
-                                                                                        <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
-                                                                                    <?php }  ?>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td scope="row">1</td>
+                                                                                            <td>Permohonan Izin Prinsip Coordinator Area ke General Manager</td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_pip_ca_ke_gm')" name="no_surat_pip_ca_ke_gm" placeholder="No Surat"></td>
+                                                                                            <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_pip_ca_ke_gm')" name="tgl_surat_pip_ca_ke_gm" placeholder="Tanggal Surat"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_pip_ca_ke_gm')" name="pengirim_pip_ca_ke_gm" placeholder="Dari Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_pip_ca_ke_gm')" name="jabatan_pengirim_pip_ca_ke_gm" placeholder="Dari Nama Jabatan"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_pip_ca_ke_gm')" name="penerima_pip_ca_ke_gm" placeholder="Ke Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_pip_ca_ke_gm')" name="jabatan_penerima_pip_ca_ke_gm" placeholder="Ke Nama Jabatan"></td>
+                                                                                            <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip1/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
+                                                                                            <?php
+                                                                                            $this->db->select('*');
+                                                                                            $this->db->from('tbl_dokumen_surat_pra');
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Permohonan Ip Ca Ke Gm');
+                                                                                            $row_data_1 = $this->db->get()->row_array() ?>
+                                                                                            <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
+                                                                                            <?php if ($row_data_1['file']) { ?>
+                                                                                                <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
+                                                                                            <?php } else { ?>
+                                                                                                <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
+                                                                                            <?php }  ?>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td scope="row">2</td>
+                                                                                            <td>Permohonan Izin Prinsip General Manager ke Direktur Operasi</td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_pip_gm_ke_dirops')" name="no_surat_pip_gm_ke_dirops" placeholder="No Surat"></td>
+                                                                                            <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_pip_gm_ke_dirops')" name="tgl_surat_pip_gm_ke_dirops" placeholder="Tanggal Surat"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_pip_gm_ke_dirops')" name="pengirim_pip_gm_ke_dirops" placeholder="Dari Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_pip_gm_ke_dirops')" name="jabatan_pengirim_pip_gm_ke_dirops" placeholder="Dari Nama Jabatan"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_pip_gm_ke_dirops')" name="penerima_pip_gm_ke_dirops" placeholder="Ke Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_pip_gm_ke_dirops')" name="jabatan_penerima_pip_gm_ke_dirops" placeholder="Ke Nama Jabatan"></td>
+                                                                                            
+                                                                                            <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip2/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
+                                                                                            <?php
+                                                                                            $this->db->select('*');
+                                                                                            $this->db->from('tbl_dokumen_surat_pra');
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Permohonan Ip Gm Ke Dirops');
+                                                                                            $row_data_1 = $this->db->get()->row_array() ?>
+                                                                                            <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
+                                                                                            <?php if ($row_data_1['file']) { ?>
+                                                                                                <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
+                                                                                            <?php } else { ?>
+                                                                                                <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
+                                                                                            <?php }  ?>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td scope="row">3</td>
+                                                                                            <td>Permohonan Izin Prinsip Direktur Operasi ke Direktur Utama</td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_pip_dirops_ke_dirut')" name="no_surat_pip_dirops_ke_dirut" placeholder="No Surat"></td>
+                                                                                            <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_pip_dirops_ke_dirut')" name="tgl_surat_pip_dirops_ke_dirut" placeholder="Tanggal Surat"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_pip_dirops_ke_dirut')" name="pengirim_pip_dirops_ke_dirut" placeholder="Dari Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_pip_dirops_ke_dirut')" name="jabatan_pengirim_pip_dirops_ke_dirut" placeholder="Dari Nama Jabatan"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_pip_dirops_ke_dirut')" name="penerima_pip_dirops_ke_dirut" placeholder="Ke Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_pip_dirops_ke_dirut')" name="jabatan_penerima_pip_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
+                                                                                            <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip3/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
+                                                                                            <?php
+                                                                                            $this->db->select('*');
+                                                                                            $this->db->from('tbl_dokumen_surat_pra');
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Permohonan Ip Dirops Ke Dirut');
+                                                                                            $row_data_1 = $this->db->get()->row_array() ?>
+                                                                                            <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
+                                                                                            <?php if ($row_data_1['file']) { ?>
+                                                                                                <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
+                                                                                            <?php } else { ?>
+                                                                                                <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
+                                                                                            <?php }  ?>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td scope="row">4</td>
+                                                                                            <td>Persetujuan Izin Prinsip Direktur Utama ke Direktur Operasi</td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_persetujuan_pip_dirops_ke_dirut')" name="no_surat_persetujuan_pip_dirops_ke_dirut" placeholder="No Surat"></td>
+                                                                                            <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_persetujuan_pip_dirops_ke_dirut')" name="tgl_surat_persetujuan_pip_dirops_ke_dirut" placeholder="Tanggal Surat"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_pengirim_pip_dirops_ke_dirut')" name="persetujuan_pengirim_pip_dirops_ke_dirut" placeholder="Dari Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_pengirim_pip_dirops_ke_dirut')" name="persetujuan_jabatan_pengirim_pip_dirops_ke_dirut" placeholder="Dari Nama Jabatan"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_penerima_pip_dirops_ke_dirut')" name="persetujuan_penerima_pip_dirops_ke_dirut" placeholder="Ke Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_penerima_pip_dirops_ke_dirut')" name="persetujuan_jabatan_penerima_pip_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
+                                                                                            <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip_persetujuan/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
+                                                                                            <?php
+                                                                                            $this->db->select('*');
+                                                                                            $this->db->from('tbl_dokumen_surat_pra');
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Persetujuan Ip Dirops Ke Dirut');
+                                                                                            $row_data_1 = $this->db->get()->row_array() ?>
+                                                                                            <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
+                                                                                            <?php if ($row_data_1['file']) { ?>
+                                                                                                <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
+                                                                                            <?php } else { ?>
+                                                                                                <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
+                                                                                            <?php }  ?>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td scope="row">5</td>
+                                                                                            <td>Permohonan Harga Perkiraan Sendiri (HPS) Coordinator Area ke General Manager</td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_hps_ca_ke_gm')" name="no_surat_hps_ca_ke_gm" placeholder="No Surat"></td>
+                                                                                            <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_hps_ca_ke_gm')" name="tgl_surat_hps_ca_ke_gm" placeholder="Tanggal Surat"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_hps_ca_ke_gm')" name="pengirim_hps_ca_ke_gm" placeholder="Dari Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_hps_ca_ke_gm')" name="jabatan_pengirim_hps_ca_ke_gm" placeholder="Dari Nama Jabatan"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_hps_ca_ke_gm')" name="penerima_hps_ca_ke_gm" placeholder="Ke Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_hps_ca_ke_gm')" name="jabatan_penerima_hps_ca_ke_gm" placeholder="Ke Nama Jabatan"></td>
+                                                                                            <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps1/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
+                                                                                            <?php
+                                                                                            $this->db->select('*');
+                                                                                            $this->db->from('tbl_dokumen_surat_pra');
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Permohonan HPS Ca Ke Gm');
+                                                                                            $row_data_1 = $this->db->get()->row_array() ?>
+                                                                                            <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
+                                                                                            <?php if ($row_data_1['file']) { ?>
+                                                                                                <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
+                                                                                            <?php } else { ?>
+                                                                                                <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
+                                                                                            <?php }  ?>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td scope="row">6</td>
+                                                                                            <td>Permohonan Harga Perkiraan Sendiri (HPS) General Manager ke Direktur Operasi</td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_hps_gm_ke_dirops')" name="no_surat_hps_gm_ke_dirops" placeholder="No Surat"></td>
+                                                                                            <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_hps_gm_ke_dirops')" name="tgl_surat_hps_gm_ke_dirops" placeholder="Tanggal Surat"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_hps_gm_ke_dirops')" name="pengirim_hps_gm_ke_dirops" placeholder="Dari Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_hps_gm_ke_dirops')" name="jabatan_pengirim_hps_gm_ke_dirops" placeholder="Dari Nama Jabatan"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_hps_gm_ke_dirops')" name="penerima_hps_gm_ke_dirops" placeholder="Ke Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_hps_gm_ke_dirops')" name="jabatan_penerima_hps_gm_ke_dirops" placeholder="Ke Nama Jabatan"></td>
+                                                                                            <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps2/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
+                                                                                            <?php
+                                                                                            $this->db->select('*');
+                                                                                            $this->db->from('tbl_dokumen_surat_pra');
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Permohonan HPS Gm Ke Dirops');
+                                                                                            $row_data_1 = $this->db->get()->row_array() ?>
+                                                                                            <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
+                                                                                            <?php if ($row_data_1['file']) { ?>
+                                                                                                <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
+                                                                                            <?php } else { ?>
+                                                                                                <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
+                                                                                            <?php }  ?>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td scope="row">7</td>
+                                                                                            <td>Permohonan Harga Perkiraan Sendiri (HPS) Direktur Operasi ke Direktur Utama</td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_hps_dirops_ke_dirut')" name="no_surat_hps_dirops_ke_dirut" placeholder="No Surat"></td>
+                                                                                            <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_hps_dirops_ke_dirut')" name="tgl_surat_hps_dirops_ke_dirut" placeholder="Tanggal Surat"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_hps_dirops_ke_dirut')" name="pengirim_hps_dirops_ke_dirut" placeholder="Dari Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_hps_dirops_ke_dirut')" name="jabatan_pengirim_hps_dirops_ke_dirut" placeholder="Dari Nama Jabatan"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_hps_dirops_ke_dirut')" name="penerima_hps_dirops_ke_dirut" placeholder="Ke Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_hps_dirops_ke_dirut')" name="jabatan_penerima_hps_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
+                                                                                            <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps3/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
+                                                                                            <?php
+                                                                                            $this->db->select('*');
+                                                                                            $this->db->from('tbl_dokumen_surat_pra');
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Permohonan HPS Dirops Ke Dirut');
+                                                                                            $row_data_1 = $this->db->get()->row_array() ?>
+                                                                                            <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
+                                                                                            <?php if ($row_data_1['file']) { ?>
+                                                                                                <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
+                                                                                            <?php } else { ?>
+                                                                                                <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
+                                                                                            <?php }  ?>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td scope="row">8</td>
+                                                                                            <td>Persetujuan Harga Perkiraan Sendiri (HPS) Direktur Utama ke Direktur Operasi</td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_persetujuan_hps_dirops_ke_dirut')" name="no_surat_persetujuan_hps_dirops_ke_dirut" placeholder="No Surat"></td>
+                                                                                            <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_persetujuan_hps_dirops_ke_dirut')" name="tgl_surat_persetujuan_hps_dirops_ke_dirut" placeholder="Tanggal Surat"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_pengirim_hps_dirops_ke_dirut')" name="persetujuan_pengirim_hps_dirops_ke_dirut" placeholder="Dari Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_pengirim_hps_dirops_ke_dirut')" name="persetujuan_jabatan_pengirim_hps_dirops_ke_dirut" placeholder="Dari Nama Jabatan"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_penerima_hps_dirops_ke_dirut')" name="persetujuan_penerima_hps_dirops_ke_dirut" placeholder="Ke Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_penerima_hps_dirops_ke_dirut')" name="persetujuan_jabatan_penerima_hps_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
+                                                                                            <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps_persetujuan/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
+                                                                                            <?php
+                                                                                            $this->db->select('*');
+                                                                                            $this->db->from('tbl_dokumen_surat_pra');
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Persetujuan HPS Dirops Ke Dirut');
+                                                                                            $row_data_1 = $this->db->get()->row_array() ?>
+                                                                                            <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
+                                                                                            <?php if ($row_data_1['file']) { ?>
+                                                                                                <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
+                                                                                            <?php } else { ?>
+                                                                                                <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
+                                                                                            <?php }  ?>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td scope="row">9</td>
+                                                                                            <td>Nota Dinas Permohonan Pengadaan General Manager</td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('no_surat_nota_dinas')" name="no_surat_nota_dinas" placeholder="No Surat"></td>
+                                                                                            <td><input type="date" style="width: 200px;" class="form-control form-control-sm" onchange="simpan_master_surat_tanggal('tgl_surat_nota_dinas')" name="tgl_surat_nota_dinas" placeholder="Tanggal Surat"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('pengirim_nota_dinas')" name="pengirim_nota_dinas" placeholder="Dari Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_nota_dinas')" name="jabatan_pengirim_nota_dinas" placeholder="Dari Nama Jabatan"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_nota_dinas')" name="penerima_nota_dinas" placeholder="Ke Nama"></td>
+                                                                                            <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_nota_dinas')" name="jabatan_penerima_nota_dinas" placeholder="Ke Nama Jabatan"></td>
+                                                                                            <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_nota_dinas/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
+                                                                                            <?php
+                                                                                            $this->db->select('*');
+                                                                                            $this->db->from('tbl_dokumen_surat_pra');
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.id_detail_program_penyedia_jasa', $row_program['id_detail_program_penyedia_jasa']);
+                                                                                            $this->db->where('tbl_dokumen_surat_pra.nama_file', 'Nota Dinas');
+                                                                                            $row_data_1 = $this->db->get()->row_array() ?>
+                                                                                            <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-danger" onclick="ById_dokumen(<?= $row_data_1['id_dokumen_surat_pra'] ?>)">Upload Surat</a></td>
+                                                                                            <?php if ($row_data_1['file']) { ?>
+                                                                                                <td><a target="_blank" href="<?= base_url('file_surat_prakualifikasi/') . $row_data_1['file'] ?>" style="width:150px;" class="btn btn-sm btn-success">Sudah Upload</a></td>
+                                                                                            <?php } else { ?>
+                                                                                                <td><a href="javascript:;" style="width:150px;" class="btn btn-sm btn-warning">Belum Upload Surat</a></td>
+                                                                                            <?php }  ?>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1224,66 +1219,65 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="modal fade" data-backdrop="false" id="modal_upload_dokumen_pra" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header bg-primary text-white">
-                                                        <h5 class="modal-title"> Upload Surat <label for="" id="name_file"></label></h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="container-fluid">
-                                                            <center>
-                                                                <form id="form_upload_surat" enctype="multipart/form-data">
-                                                                    <input type="hidden" name="id_dokumen_surat_pra">
-                                                                    <div class="input-group col-md-12">
-                                                                        <div class="input-group-append">
-                                                                            <button class="input-group-text attach_btn btn-grad100" type="button" id="loadFileXml" value="loadXml" onclick="document.getElementById('file').click();"><i class="fas fa-paperclip"></i></button>
-                                                                            <input type="file" style="display:none;" id="file" class="file" name="file" />
-                                                                        </div>
-                                                                        <input type="text" name="nama_file" class="form-control" disabled>
-                                                                        <div class="input-group-append">
-                                                                            <button type="submit" id="upload" name="upload" class="input-group-text  btn-grad100"><i class="fas fa-upload"></i></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                                <br>
-                                                                <div style="display: none;" id="error_file" class="alert alert-danger" role="alert">
-                                                                    ANDA BELUM MENGISI FILE !!!
-                                                                </div>
-                                                            </center>
-                                                            <br>
-                                                            <center>
-                                                                <div class="form-group col-md-6" id="process" style="display:none;">
-                                                                    <small for="" style="display:none;" id="sedang_dikirim">Sedang Mengupload....</small>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar progress-bar-striped active progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </center>
+                                            <div class="modal fade" data-backdrop="false" id="modal_upload_dokumen_pra" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header bg-primary text-white">
+                                                            <h5 class="modal-title"> Upload Surat <label for="" id="name_file"></label></h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
                                                         </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <div class="modal-body">
+                                                            <div class="container-fluid">
+                                                                <center>
+                                                                    <form id="form_upload_surat" enctype="multipart/form-data">
+                                                                        <input type="hidden" name="id_dokumen_surat_pra">
+                                                                        <div class="input-group col-md-12">
+                                                                            <div class="input-group-append">
+                                                                                <button class="input-group-text attach_btn btn-grad100" type="button" id="loadFileXml" value="loadXml" onclick="document.getElementById('file').click();"><i class="fas fa-paperclip"></i></button>
+                                                                                <input type="file" style="display:none;" id="file" class="file" name="file" />
+                                                                            </div>
+                                                                            <input type="text" name="nama_file" class="form-control" disabled>
+                                                                            <div class="input-group-append">
+                                                                                <button type="submit" id="upload" name="upload" class="input-group-text  btn-grad100"><i class="fas fa-upload"></i></button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                    <br>
+                                                                    <div style="display: none;" id="error_file" class="alert alert-danger" role="alert">
+                                                                        ANDA BELUM MENGISI FILE !!!
+                                                                    </div>
+                                                                </center>
+                                                                <br>
+                                                                <center>
+                                                                    <div class="form-group col-md-6" id="process" style="display:none;">
+                                                                        <small for="" style="display:none;" id="sedang_dikirim">Sedang Mengupload....</small>
+                                                                        <div class="progress">
+                                                                            <div class="progress-bar progress-bar-striped active progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </center>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- /.col -->
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                                <!-- Main row -->
+                                <!-- /.row -->
                             </div>
-                            <!-- /.row -->
-                            <!-- Main row -->
-                            <!-- /.row -->
+                            <!--/. container-fluid -->
                         </div>
-                        <!--/. container-fluid -->
-                    </div>
             </section>
             <!-- /.content -->
         </div>
@@ -1598,7 +1592,7 @@
                 <div class="container-fluid">
                     <p>
                         Berdasarkan Surat Keputusan Direksi PT JMTM nomor: 148/DIR-I/KPTS/2023 tanggal 27 Juni 2023 tentang Perubahan atas Keputusan Direksi nomor: 130/DIR-I/KPTS/2022 tentang Pedoman Pelaksanaan Pengadaan Barang/Jasa di Lingkungan PT Jasamarga Tollroad Maintenance;
-                        </p>
+                    </p>
                 </div>
             </div>
             <div class="modal-footer">

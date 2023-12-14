@@ -39,7 +39,13 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-2">
-                <label><?= $this->jam_tgl->tgl_indo($row_program_detail['tgl_surat_persetujuan_hps_dirops_ke_dirut']) ?></label>
+                <?php if ($row_program_detail['flow_pra_dokumen_kontrak'] == 1) { ?>
+                    <label><?= $this->jam_tgl->tgl_indo($row_program_detail['tgl_surat_persetujuan_hps_dirops_ke_dirut']) ?></label>
+                <?php } else { ?>
+                    <label><?= $this->jam_tgl->tgl_indo($row_program_detail['tgl_surat_persetujuan_hps_dirops_ke_dirut']) ?></label>
+                <?php }
+                ?>
+
             </div>
         </div>
         <div class="row">
@@ -77,8 +83,16 @@
             Selaku Pejabat Pemberi Persetujuan Harga Perkiraan Sendiri (HPS)
         </div>
         <div class="mt-2">
-            Menunjuk permohonan Surat Saudara nomor:  <?= $row_program_detail['no_surat_hps_gm_ke_dirops'] ?> tanggal <?= $this->jam_tgl->tgl_indo($row_program_detail['tgl_surat_hps_gm_ke_dirops']) ?> perihal Permohonan Harga Perkiraan Sendiri (HPS) Pengadaan <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label>
-             , bersama ini kami sampaikan Penetapan Harga Perkiraan Sendiri (HPS) untuk Pekerjaan dimaksud, sebagai berikut :
+            <?php if ($row_program_detail['flow_pra_dokumen_kontrak'] == 1) { ?>
+                Menunjuk permohonan Surat Saudara nomor: <?= $row_program_detail['no_surat_hps_gm_ke_dirops'] ?> tanggal <?= $this->jam_tgl->tgl_indo($row_program_detail['tgl_surat_hps_gm_ke_dirops']) ?> perihal Permohonan Harga Perkiraan Sendiri (HPS) Pengadaan <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label>
+                , bersama ini kami sampaikan Penetapan Harga Perkiraan Sendiri (HPS) untuk Pekerjaan dimaksud, sebagai berikut :
+            <?php } else { ?>
+                Menunjuk permohonan Surat Saudara nomor: <?= $row_program_detail['no_surat_hps_dirops_ke_dirut'] ?> tanggal <?= $this->jam_tgl->tgl_indo($row_program_detail['tgl_surat_hps_dirops_ke_dirut']) ?> perihal Permohonan Harga Perkiraan Sendiri (HPS) Pengadaan <label for=""><?= $row_program_detail['jenis_pengadaan'] ?></label> <label for=""><?= $row_program_detail['nama_pekerjaan_program_mata_anggaran'] ?></label>
+                , bersama ini kami sampaikan Penetapan Harga Perkiraan Sendiri (HPS) untuk Pekerjaan dimaksud, sebagai berikut :
+            <?php }
+            ?>
+
+
         </div>
 
         <div class="row mt-3">
@@ -415,13 +429,9 @@
                 return terbilang(Math.floor(parseInt(angka) / 1000000)) + " juta " + terbilang(parseInt(angka) % 1000000);
 
             } else if (angka < 1000000000000) {
-
                 return terbilang(Math.floor(parseInt(angka) / 1000000000)) + " milyar " + terbilang(parseInt(angka) % 1000000000);
-
             } else if (angka < 1000000000000000) {
-
                 return terbilang(Math.floor(parseInt(angka) / 1000000000000)) + " trilyun " + terbilang(parseInt(angka) % 1000000000000);
-
             }
 
         }

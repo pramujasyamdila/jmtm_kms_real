@@ -77,7 +77,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                                     </td>
                                                                 <?php   } ?>
                                                                 <td>
-                                                                    <a href="<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/buat_tagihan/') . $value['id_detail_program_penyedia_jasa'] ?>" class="btn btn-sm btn-primary btn-block">Taggihan Kontrak</a>
+                                                                    <a href="<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/buat_tagihan/') . $value['id_detail_program_penyedia_jasa'] ?>" class="btn btn-sm btn-primary btn-block">Tagihan Kontrak</a>
                                                                 </td>
                                                             </tr>
                                                         <?php } ?>

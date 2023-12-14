@@ -7387,4 +7387,10 @@ class Data_kontrak_model extends CI_Model
         {
             $this->db->delete('tbl_dokumen_mc_surat', ['id_dokumen_mc_surat' => $id_dokumen_mc_surat]);
         }
+
+            
+        public function deletedata_tracking($id_rapot_mc_traking)
+        {
+            $this->db->delete('tbl_rapot_dummy', ['id_rapot_mc_traking' => $id_rapot_mc_traking]);
+        }
 }

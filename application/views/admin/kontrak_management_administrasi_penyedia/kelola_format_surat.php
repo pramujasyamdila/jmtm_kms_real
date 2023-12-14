@@ -926,7 +926,6 @@
                                                                                 <th class="text-white">Jabatan</th>
                                                                                 <th class="text-white">Ke Nama</th>
                                                                                 <th class="text-white">Jabatan</th>
-                                                                                <th class="text-white">Informasi</th>
                                                                                 <th class="text-white">View</th>
                                                                                 <th class="text-white">Upload</th>
                                                                                 <th class="text-white">Status Upload</th>
@@ -943,7 +942,6 @@
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_pip_ca_ke_gm')" name="jabatan_pengirim_pip_ca_ke_gm" placeholder="Dari Nama Jabatan"></td>
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_pip_ca_ke_gm')" name="penerima_pip_ca_ke_gm" placeholder="Ke Nama"></td>
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_pip_ca_ke_gm')" name="jabatan_penerima_pip_ca_ke_gm" placeholder="Ke Nama Jabatan"></td>
-                                                                                <td><label for="" title="Struktur Organisasi" class="badge badge-info"><i class="fa fa-info-circle" aria-hidden="true"></i></label></td>
                                                                                 <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip1/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                 <?php
                                                                                 $this->db->select('*');
@@ -967,7 +965,6 @@
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_pip_gm_ke_dirops')" name="jabatan_pengirim_pip_gm_ke_dirops" placeholder="Dari Nama Jabatan"></td>
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_pip_gm_ke_dirops')" name="penerima_pip_gm_ke_dirops" placeholder="Ke Nama"></td>
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_pip_gm_ke_dirops')" name="jabatan_penerima_pip_gm_ke_dirops" placeholder="Ke Nama Jabatan"></td>
-                                                                                <td></td>
                                                                                 <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip2/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                 <?php
                                                                                 $this->db->select('*');
@@ -992,7 +989,6 @@
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_pengirim_pip_dirops_ke_dirut')" name="persetujuan_jabatan_pengirim_pip_dirops_ke_dirut" placeholder="Dari Nama Jabatan"></td>
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_penerima_pip_dirops_ke_dirut')" name="persetujuan_penerima_pip_dirops_ke_dirut" placeholder="Ke Nama"></td>
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_penerima_pip_dirops_ke_dirut')" name="persetujuan_jabatan_penerima_pip_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
-                                                                                <td></td>
                                                                                 <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_pip_persetujuan/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                 <?php
                                                                                 $this->db->select('*');
@@ -1016,7 +1012,6 @@
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_hps_ca_ke_gm')" name="jabatan_pengirim_hps_ca_ke_gm" placeholder="Dari Nama Jabatan"></td>
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_hps_ca_ke_gm')" name="penerima_hps_ca_ke_gm" placeholder="Ke Nama"></td>
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_hps_ca_ke_gm')" name="jabatan_penerima_hps_ca_ke_gm" placeholder="Ke Nama Jabatan"></td>
-                                                                                <td></td>
                                                                                 <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps1/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                 <?php
                                                                                 $this->db->select('*');
@@ -1040,7 +1035,6 @@
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_hps_gm_ke_dirops')" name="jabatan_pengirim_hps_gm_ke_dirops" placeholder="Dari Nama Jabatan"></td>
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_hps_gm_ke_dirops')" name="penerima_hps_gm_ke_dirops" placeholder="Ke Nama"></td>
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_hps_gm_ke_dirops')" name="jabatan_penerima_hps_gm_ke_dirops" placeholder="Ke Nama Jabatan"></td>
-                                                                                <td></td>
                                                                                 <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps2/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                 <?php
                                                                                 $this->db->select('*');
@@ -1064,7 +1058,6 @@
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_pengirim_hps_dirops_ke_dirut')" name="persetujuan_jabatan_pengirim_hps_dirops_ke_dirut" placeholder="Dari Nama Jabatan"></td>
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_penerima_hps_dirops_ke_dirut')" name="persetujuan_penerima_hps_dirops_ke_dirut" placeholder="Ke Nama"></td>
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('persetujuan_jabatan_penerima_hps_dirops_ke_dirut')" name="persetujuan_jabatan_penerima_hps_dirops_ke_dirut" placeholder="Ke Nama Jabatan"></td>
-                                                                                <td></td>
                                                                                 <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_hps_persetujuan/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                 <?php
                                                                                 $this->db->select('*');
@@ -1088,7 +1081,6 @@
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_pengirim_nota_dinas')" name="jabatan_pengirim_nota_dinas" placeholder="Dari Nama Jabatan"></td>
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('penerima_nota_dinas')" name="penerima_nota_dinas" placeholder="Ke Nama"></td>
                                                                                 <td><input type="text" style="width: 200px;" class="form-control form-control-sm" onkeyup="simpan_master_surat('jabatan_penerima_nota_dinas')" name="jabatan_penerima_nota_dinas" placeholder="Ke Nama Jabatan"></td>
-                                                                                <td></td>
                                                                                 <td><a class="btn btn-warning btn-sm" target="_blank" href="<?= base_url('admin/administrasi_penyedia/cetak_nota_dinas/' . $row_program['id_detail_program_penyedia_jasa']) ?>"> <i class="fas fa fa-file"> Preview Surat</i></a></td>
                                                                                 <?php
                                                                                 $this->db->select('*');

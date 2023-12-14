@@ -9,8 +9,8 @@
     </nav>
     <nav class="navbar navbar-expand-lg main-navbar" style="background-color:#fce49c;height:50px;
   position: fixed; top:50px;  padding-bottom: -10px;">
-            <b style="margin-left: auto; font-weight:1000" class="text-black"> Administrasi Tagihan</b>
-        </nav>
+        <b style="margin-left: auto; font-weight:1000" class="text-black"> Administrasi Tagihan</b>
+    </nav>
     <div class="row mt-5">
         <div class="col-md-9">
             <div class="card" style="margin-top: 20px; padding: 20px;background: rgb(36,93,120);
@@ -44,8 +44,10 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
             <div class="col-md-12">
                 <div class="card card-outline card-primary mb-4">
                     <br>
-                    <a style="width: 200px;margin-left:10px" target="_blank" href="<?= base_url('export_pdf/buat_pdf/print_tagihan/'. $row_kontrak['id_detail_program_penyedia_jasa'])?>" class="btn btn-info"> <i class="fas fa fa-file"></i> Report Print To PDF</a>
-                    <div class="card-header card-info card-outline"><strong>Histori Kontrak Penyedia</strong><span class="small ms-1"></span></div>
+                    <a style="width: 200px;margin-left:10px" target="_blank" href="<?= base_url('export_pdf/buat_pdf/print_tagihan/' . $row_kontrak['id_detail_program_penyedia_jasa']) ?>" class="btn btn-info"> <i class="fas fa fa-file"></i> Report Print To PDF</a>
+                    <div class="card-header card-info card-outline">
+                        <h2 style="font-family: 'Poppins', sans-serif;color:black"><b> HISTORI KONTRAK PENYEDIA JASA </b></h2><span class="small ms-1"></span>
+                    </div>
                     <div class="card-body">
                         <table class="table table-bordered table-striped">
                             <tr>
@@ -55,6 +57,10 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                             <tr>
                                 <th class="bg-warning" style="font-family: RNSSanz-Black;text-transform: uppercase;color:white;">Nomor Kontrak</th>
                                 <th colspan="2"><?= $row_kontrak['no_kontrak_penyedia'] ?></th>
+                            </tr>
+                            <tr>
+                                <th class="bg-warning" style="font-family: RNSSanz-Black;text-transform: uppercase;color:white;">Nama Pekerjaan</th>
+                                <th colspan="2"><?= $row_kontrak['nama_pekerjaan_program_mata_anggaran'] ?></th>
                             </tr>
                             <tr>
                                 <td style="background-color:#193B53;font-family: RNSSanz-Black;text-transform: uppercase;color:white;">Histori Kontrak</td>
@@ -172,6 +178,7 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                         <th style="font-size: 13px;color:white; width:250px" rowspan="2">Retensi</th>
                                         <th style="font-size: 13px;color:white; width:250px" rowspan="2">Pengembaliaan uang muka </th>
                                         <th style="font-size: 13px;color:white; width:250px" rowspan="2">Denda</th>
+                                        <th style="font-size: 13px;color:white; width:250px" rowspan="2">Sbo</th>
                                         <th style="font-size: 13px;color:white; width:250px" rowspan="2">Total Potongan</th>
                                         <th style="font-size: 13px;color:white; width:250px" rowspan="2">Total Invoice</th>
                                         <th style="font-size: 13px;color:white; width:250px" rowspan="2">Status Tracking</th>
@@ -319,6 +326,25 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                                 </div>
                                                 <div class="col-12">
                                                     <input type="text" disabled class="float-right form-control form-control-sm mt-1" style="width: 200px;" id="tanpa-rupiah-denda">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">SBO</label>
+                                        <div class="input-group mb-3">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="fa fa-money-bill-alt" aria-hidden="true"></i>
+                                                        </span>
+
+                                                        <input type="text" class="form-control" name="sbo" id="sbo2" aria-describedby="helpId" placeholder="SBO">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="text" disabled class="float-right form-control form-control-sm mt-1" style="width: 200px;" id="tanpa-rupiah-sbo">
                                                 </div>
                                             </div>
                                         </div>
@@ -969,25 +995,28 @@ background: linear-gradient(188deg, rgba(36,93,120,1) 47%, rgba(1,118,205,1) 92%
                                 <!-- <a class="btn-sm btn btn-success text-white" data-toggle="modal" data-target="#modal_pencairan" href=" javascript:;">Cairkan</a> -->
                             </div>
                         </div>
-                        <table id="datatable_traking_mc" style="font-size: 14px;" class="table table-striped table-bordered">
-                            <thead class="bg-primary">
-                                <tr>
-                                    <th class="text-white">No</th>
-                                    <th class="text-white">Uraian</th>
-                                    <th class="text-white">PIC</th>
-                                    <th class="text-white">Tanggal</th>
-                                    <th class="text-white">Catatan</th>
-                                    <th class="text-white">Vendor</th>
-                                    <th class="text-white">Area</th>
-                                    <th class="text-white">Pusat</th>
-                                    <th class="text-white">Finance</th>
-                                    <th class="text-white">Keterangan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        <div style="overflow-x: auto;">
+                            <table id="datatable_traking_mc" style="font-size: 14px;" class="table table-striped table-bordered">
+                                <thead class="bg-primary">
+                                    <tr>
+                                        <th class="text-white">No</th>
+                                        <th class="text-white">Uraian</th>
+                                        <th class="text-white">PIC</th>
+                                        <th class="text-white">Tanggal</th>
+                                        <th class="text-white">Catatan</th>
+                                        <th class="text-white">Vendor</th>
+                                        <th class="text-white">Area</th>
+                                        <th class="text-white">Pusat</th>
+                                        <th class="text-white">Finance</th>
+                                        <th class="text-white">Keterangan</th>
+                                        <th class="text-white">Hapus</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 

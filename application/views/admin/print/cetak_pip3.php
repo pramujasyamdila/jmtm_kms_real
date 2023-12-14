@@ -415,7 +415,7 @@
                     <label for="">7. Pembebanan Biaya</label>
                 </div>
                 <div class="col-md-9">
-                    <label for="">: Mata Anggaran <?= $row_program_detail['mata_anggaran_surat'] ?> <br> &nbsp; PT Jasamarga Tollroad Maintenance Area <?= $row_program_detail['lokasi_pekerjaan_surat']  ?> <?= $row_program_detail['tahun_anggaran_surat']  ?></label>
+                    <label for="">: Mata Anggaran <?= $row_program_detail['mata_anggaran_surat'] ?> <br> &nbsp; PT Jasamarga Tollroad Maintenance Area <?= $row_program_detail['lokasi_pekerjaan_surat']  ?> <br>  &nbsp; <?= $row_program_detail['tahun_anggaran_surat']  ?></label>
                 </div>
             </div>
         </div>

@@ -117,6 +117,7 @@ class Tagihan_kontrak extends CI_Controller
             $row[] = $kintek->hari_pusat . ' Hari';
             $row[] = $kintek->hari_finance . ' Hari';
             $row[] = $kintek->keterangan_traking;
+            $row[] = '<a href="javascript:;" class="btn btn-danger  btn-block btn-sm" onClick="hapus_tracking(' . "'" . $kintek->id_rapot_mc_traking . "','hapus_dok_penunjang'" . ')">  <i class="fas fa-trash"></i> Hapus</a>';
             $data[] = $row;
         }
         $output = array(
@@ -140,13 +141,12 @@ class Tagihan_kontrak extends CI_Controller
         $sts_retensi  = $this->input->post('sts_retensi');
         $nilai_retensi  = $this->input->post('nilai_retensi');
         $nilai_retensi_tanpa_persen  = $this->input->post('nilai_retensi_tanpa_persen');
-
-
         // bobot & denda
         $bobot  = $this->input->post('bobot');
         $denda  = $this->input->post('denda');
         // nilai_uang_muka
         $nilai_uang_muka  = $this->input->post('nilai_uang_muka');
+        $sbo  = $this->input->post('sbo');
         $get_kode_mc = $this->Taggihan_kontrak_admin_model->get_kode_mc($id_detail_program_penyedia_jasa);
         $urutku = $get_kode_mc + 1;
         $data_urut = $urutku++;
@@ -184,6 +184,7 @@ class Tagihan_kontrak extends CI_Controller
             $data = [
                 'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                 'jumlah_mc' => $jumlah_mc,
+                'sbo' => $sbo,
                 'no_mc_manipulasi' => $no_mc_manipulasi,
                 'tanggal_mc' => $tanggal_mc,
                 'no_mc' => 'um',
@@ -221,6 +222,7 @@ class Tagihan_kontrak extends CI_Controller
                     'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                     'jumlah_mc' => $this->input->post('sd_bulan_lalu_number'),
                     'no_mc_manipulasi' => $no_mc_manipulasi,
+                    'sbo' => $sbo,
                     'tanggal_mc' => $tanggal_mc,
                     'no_mc' => $data_urut,
                     'sd_bulan_lalu' => $this->input->post('sd_bulan_lalu_number'),
@@ -254,6 +256,7 @@ class Tagihan_kontrak extends CI_Controller
                 $data = [
                     'id_detail_program_penyedia_jasa' => $id_detail_program_penyedia_jasa,
                     'jumlah_mc' => $jumlah_mc,
+                    'sbo' => $sbo,
                     'no_mc_manipulasi' => $no_mc_manipulasi,
                     'tanggal_mc' => $tanggal_mc,
                     'no_mc' => $data_urut,
@@ -3197,6 +3200,14 @@ class Tagihan_kontrak extends CI_Controller
         $this->Data_kontrak_model->deletedata_dok_mc_baru($id_dokumen_mc);
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
+
+
+    public function hapus_tracking($id_rapot_mc_traking)
+    {
+        $this->Data_kontrak_model->deletedata_tracking($id_rapot_mc_traking);
+        $this->output->set_content_type('application/json')->set_output(json_encode('success'));
+    }
+
 
     public function get_data_nilai_kontrak_mc($id_detail_program_penyedia_jasa)
     {

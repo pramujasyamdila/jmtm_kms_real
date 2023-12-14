@@ -857,7 +857,7 @@
                     var html3 = '';
                     var x;
                     for (x = 0; x < response['data_teknis'].length; x++) {
-                        html3 += '<div class="row"><div class="col-md-1">2.' + [x + 1] + '</div>' +
+                        html3 += '<div class="row"><div class="col-md-1">2.' + ++x + '</div>' +
                             '<div class="col-md-11" style="margin-left: -40px;">' +
                             '<b>' + response['data_teknis'][x].nama_alasan + '</b>' +
                             '&nbsp;<a href="javascript:;" onclick="hapus_teknis(' + response['data_teknis'][x].id_alasan_teknis + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a>' +
@@ -869,7 +869,7 @@
                     var html4 = '';
                     var o;
                     for (o = 0; o < response['data_administrasi'].length; o++) {
-                        html4 += '<div class="row"><div class="col-md-1">1.' + [o + 1] + '</div>' +
+                        html4 += '<div class="row"><div class="col-md-1">1.' + ++o + '</div>' +
                             '<div class="col-md-11" style="margin-left: -40px;">' +
                             '<b>' + response['data_administrasi'][o].nama_alasan + '</b>' +
                             '&nbsp;<a href="javascript:;" onclick="hapus_administrasi(' + response['data_administrasi'][o].id_alasan_administrasi + ')" class="text-dark"><i class="text-danger fas fa fa-trash"></i></a>' +

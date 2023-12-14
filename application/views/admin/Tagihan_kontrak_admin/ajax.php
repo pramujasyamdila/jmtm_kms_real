@@ -160,15 +160,15 @@
                             } else if (persen_retensi == 10) {
                                 var nilai_retensi = response['get_detail_taggihan'][i].jumlah_mc * 0.10;
                             } else {
-                                var nilai_retensi = response['get_detail_taggihan'][i].jumlah_mc * 0.15;
+                                var nilai_retensi = response['get_detail_taggihan'][i].nilai_retensi;
                             }
                         }
 
                         var total_sd_setelah_ppn = parseInt(response['get_detail_taggihan'][i].sd_bulan_lalu) + parseInt(response['get_detail_taggihan'][i].setelah_ppn);
 
                         // logika potongan
-                        var total_potongan = parseInt(nilai_retensi) + parseInt(response['get_detail_taggihan'][i].nilai_uang_muka) + parseInt(response['get_detail_taggihan'][i].denda);
-                        var total_invoice = parseInt(total_sd_setelah_ppn) - parseInt(nilai_retensi);
+                        var total_potongan = parseInt(nilai_retensi) + parseInt(response['get_detail_taggihan'][i].nilai_uang_muka) + parseInt(response['get_detail_taggihan'][i].denda) + parseInt(response['get_detail_taggihan'][i].sbo);
+                        var total_invoice = parseInt(total_sd_setelah_ppn) - parseInt(total_potongan);
                         html +=
                             '<tr style="font-size:12px">' +
                             '<td style="font-size:12px" class = "tg-d2hi">' + response['get_detail_taggihan'][i].no_mc_manipulasi + '</td>' +
@@ -183,6 +183,7 @@
                             '<td style="font-size:12px" class = "tg-d2hi"> ' + 'Rp. ' + nilai_retensi.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + '</td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi"> ' + 'Rp. ' + response['get_detail_taggihan'][i].nilai_uang_muka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + '</td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi"> ' + 'Rp. ' + response['get_detail_taggihan'][i].denda.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + ' </td> ' +
+                            '<td style="font-size:12px" class = "tg-d2hi"> ' + 'Rp. ' + response['get_detail_taggihan'][i].sbo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + ' </td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi">' + 'Rp. ' + total_potongan.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + '</td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi">' + 'Rp. ' + total_invoice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + '</td> ' +
                             '<td style="font-size:12px" class = "tg-d2hi">' + sts_trakhir + '</td> ' +
@@ -254,7 +255,7 @@
                 $('[name="tanggal_mc"]').val(response['row_mc'].tanggal_mc);
                 $('[name="nilai_retensi_tanpa_persen"]').val(response['row_mc'].nilai_retensi);
                 $('[name="nilai_retensi"]').val(response['row_mc'].nilai_retensi);
-                $('[name="nilai_uang_muka"]').val(response['row_mc'].tanggal_mc);
+                $('[name="nilai_uang_muka"]').val(response['row_mc'].nilai_uang_muka);
                 $('[name="denda"]').val(response['row_mc'].denda);
                 $('[name="persen_ppn"]').val(response['row_mc'].persen_ppn);
                 if (response['row_mc'].no_mc == 'um') {
@@ -603,8 +604,6 @@
 
                 $(document).ready(function() {
                     $('#datatable_traking_mc').DataTable({
-                        "responsive": true,
-                        "autoWidth": false,
                         "processing": true,
                         "serverSide": true,
                         "searching": true,
@@ -1145,6 +1144,30 @@
     $("#denda2").keyup(function() {
         var harga = $("#denda2").val();
         var tanpa_rupiah = document.getElementById('tanpa-rupiah-denda');
+        tanpa_rupiah.value = formatRupiah(this.value, 'Rp. ');
+        /* Fungsi */
+        function formatRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                split = number_string.split(','),
+                sisa = split[0].length % 3,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+        }
+    });
+</script>
+
+<script>
+    $("#sbo2").keyup(function() {
+        var harga = $("#sbo").val();
+        var tanpa_rupiah = document.getElementById('tanpa-rupiah-sbo');
         tanpa_rupiah.value = formatRupiah(this.value, 'Rp. ');
         /* Fungsi */
         function formatRupiah(angka, prefix) {
@@ -3364,8 +3387,7 @@
                 id_mc: id_mc,
             },
             dataType: "JSON",
-            success: function(response) {
-            }
+            success: function(response) {}
         })
     }
 </script>
@@ -3374,7 +3396,7 @@
     var form_dok_mc_baru = $('#form_dok_mc_baru');
     var modal_upload_dokumen_mc_baru = $('#modal_upload_dokumen_mc_baru');
 
-    function Upload_po_pr_pp (type) {
+    function Upload_po_pr_pp(type) {
         modal_upload_dokumen_mc_baru.modal('show');
         var table_dok_mc_baru = $('#table_dok_mc_baru');
         $('[name="type_upload"]').val(type);
@@ -3483,4 +3505,30 @@
         });
     }
 
+
+    function hapus_tracking(id) {
+        Swal.fire({
+            title: "Apakah Anda Yakin!?",
+            text: 'Ingin Menghapus Data ?',
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('taggihan_kontrak_admin/tagihan_kontrak/hapus_tracking/') ?>" + id,
+                    dataType: "JSON",
+                    success: function(response) {
+                        if (response == 'success') {
+                            message('success', 'Berhasil!', 'Data Berhasil Di Hapus')
+                            location.reload()
+                        }
+                    }
+                })
+            } else {
+                message('success', 'Berhasil!', 'Data Tidak Jadi Di Hapus')
+            }
+        });
+    }
 </script>

@@ -133,7 +133,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td>Jenis Kontrak</td>
-                                                            <td><input type="text" class="form-control mt-2 mb-2" readonly value="<?= $row_kontrak['jenis_kontrak'] ?>"></td>
+                                                            <td><input type="text" class="form-control mt-2 mb-2" readonly value="Kontrak <?= $row_program['metode_pengadaan_sk'] ?>"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Tanggal Kontrak</td>
